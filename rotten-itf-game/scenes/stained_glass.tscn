@@ -12,15 +12,24 @@ texture = ExtResource("1_v7ybd")
 [node name="StGlassLight" type="Sprite2D" parent="." unique_id=1309907032]
 texture = ExtResource("2_a7b0x")
 
-[node name="PointLight2D" type="PointLight2D" parent="StGlassLight" unique_id=1805590217]
-color = Color(1, 1, 0.5686275, 0.69803923)
-energy = 0.54
+[node name="ExtendedLight" type="PointLight2D" parent="StGlassLight" unique_id=1805590217]
+z_index = 125
+color = Color(1, 1, 0.5803922, 1)
+energy = 0.34
+texture = ExtResource("2_a7b0x")
+offset = Vector2(-30.495, 0)
+texture_scale = 1.1
+
+[node name="InteriorLight" type="PointLight2D" parent="StGlassLight" unique_id=1530116056]
+z_index = 125
+color = Color(1, 1, 0.5803922, 1)
+energy = 0.44
 texture = ExtResource("2_a7b0x")
 
 [node name="StGlassBg" type="Sprite2D" parent="." unique_id=1692828321]
 texture = ExtResource("3_o74j8")
 
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=408215709]
+[node name="DirectionalLightOcclusion" type="DirectionalLight2D" parent="." unique_id=408215709]
 color = Color(0.6094544, 0.46185285, 0.36491126, 1)
-energy = 0.77
+energy = 1.72
 blend_mode = 1
