@@ -5,7 +5,6 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -850.0
 
-
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -38,3 +37,15 @@ func _physics_process(delta: float) -> void:
 		animated_sprite_2d.flip_h = false;
 	elif direction == -1.0: # left
 		animated_sprite_2d.flip_h = true;
+
+	#for i in get_slide_collision_count():
+		#var collision = get_slide_collision(i)
+		#if (collision.get_collider().name != "Ground"):
+			#print("Player collided with ", collision.get_collider().name)
+
+#func _on_area_2d_body_entered(body: Node2D) -> void:
+	#print("Entered!")
+	#print(body)
+
+#func _on_area_2d_body_exited(body: Node2D) -> void:
+	#print("Exited!")

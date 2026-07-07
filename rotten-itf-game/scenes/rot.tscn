@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bietk8n82415o"]
+
+[ext_resource type="Script" uid="uid://r3k4tix4pkd3" path="res://scripts/rot.gd" id="1_1gtbt"]
+[ext_resource type="Texture2D" uid="uid://4rnv5owd8dm1" path="res://assets/images/rot/IMG_0648.PNG" id="2_v3kdo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k7wxg"]
+size = Vector2(23.63829, 115)
+
+[node name="RotArea" type="Area2D" unique_id=1839110789]
+script = ExtResource("1_1gtbt")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2134328284]
+position = Vector2(126, 4.5)
+scale = Vector2(2.2399988, 1)
+shape = SubResource("RectangleShape2D_k7wxg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1649874022]
+position = Vector2(101.11, 1)
+texture = ExtResource("2_v3kdo")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
