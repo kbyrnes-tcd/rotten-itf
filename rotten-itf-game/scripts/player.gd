@@ -17,6 +17,13 @@ const JUMP_VELOCITY = -850.0
 func collect(item: InvItem):
 	inv.insert(item)
 
+func has(item: InvItem) -> bool:
+	return inv.has(item);
+
+# using items
+func use(item: InvItem):
+	inv.remove(item)
+
 # handling movement
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
