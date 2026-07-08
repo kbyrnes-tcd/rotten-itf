@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://dtf7n0o1f301e"]
+
+[ext_resource type="FontFile" uid="uid://bmj0pgvborgfq" path="res://assets/fonts/Grenze-Black.ttf" id="1_pa5wo"]
+[ext_resource type="Script" uid="uid://tt771uf6rtw8" path="res://scripts/dialogue_textbox.gd" id="1_y2pcl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q01m8"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 6
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j0jg5"]
+bg_color = Color(0.22130159, 0.22130162, 0.22130153, 1)
+
+[sub_resource type="FontFile" id="FontFile_tx375"]
+cache/0/variation_coordinates = {}
+cache/0/face_index = 0
+cache/0/embolden = 0.0
+cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
+cache/0/spacing_top = 0
+cache/0/spacing_bottom = 0
+cache/0/spacing_space = 0
+cache/0/spacing_glyph = 0
+cache/0/baseline_offset = 0.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/78/0/ascent = 0.0
+cache/0/78/0/descent = 0.0
+cache/0/78/0/underline_position = 0.0
+cache/0/78/0/underline_thickness = 0.0
+cache/0/78/0/scale = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_jpnp2"]
+font = ExtResource("1_pa5wo")
+font_size = 78
+
+[node name="Textbox" type="CanvasLayer" unique_id=424906784]
+script = ExtResource("1_y2pcl")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=422060786]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -87.0
+offset_top = -310.0
+offset_right = 87.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 30
+
+[node name="Panel" type="Panel" parent="MarginContainer" unique_id=2044904216]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_q01m8")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer" unique_id=448481500]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="Panel" type="Panel" parent="MarginContainer/MarginContainer" unique_id=362749546]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_j0jg5")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer" unique_id=372514733]
+layout_mode = 2
+
+[node name="start" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer" unique_id=326135598]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = SubResource("FontFile_tx375")
+theme_override_font_sizes/font_size = 78
+text = "*"
+label_settings = SubResource("LabelSettings_jpnp2")
+
+[node name="dialogue" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer" unique_id=1032522753]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_fonts/font = SubResource("FontFile_tx375")
+theme_override_font_sizes/font_size = 78
+text = " Test dialogue not sure about font test test test"
+label_settings = SubResource("LabelSettings_jpnp2")
+autowrap_mode = 2
+
+[node name="end" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer" unique_id=1476057325]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = SubResource("FontFile_tx375")
+theme_override_font_sizes/font_size = 78
+text = "v"
+label_settings = SubResource("LabelSettings_jpnp2")
