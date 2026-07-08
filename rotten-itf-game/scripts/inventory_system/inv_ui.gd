@@ -7,14 +7,15 @@ var is_open = false
 
 # onload: inventory is closed, load up images
 func _ready() -> void:
+	# whenever inventory.gd emits the update signal, we must call update_slots in here for ui
+	inv.update.connect(update_slots)
 	close()
 	update_slots()
 	
 # update item visuals via inv_ui_slot.gd>update func
 func update_slots():
-	print("updating slots with images")
-	for i in range(min(inv.items.size(), slots.size())):
-		slots[i].update(inv.items[i])
+	for i in range(min(inv.slots.size(), slots.size())):
+		slots[i].update(inv.slots[i])
 
 func close():
 	is_open = false;

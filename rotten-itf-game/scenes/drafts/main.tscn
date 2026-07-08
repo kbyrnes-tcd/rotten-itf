@@ -2,9 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://c6erfvcnubuee" path="res://icon.svg" id="2_0wfyh"]
+[ext_resource type="Script" uid="uid://deenwpb4no5r5" path="res://scripts/inventory_system/collectible_item.gd" id="3_gf3yc"]
+[ext_resource type="Resource" uid="uid://dt677afg3p4f0" path="res://scripts/inventory_system/items/orange_worm.tres" id="4_c7vjp"]
+[ext_resource type="Texture2D" uid="uid://cotxrl2gpbqxr" path="res://assets/images/worms/orange_worm_1.png" id="4_s7xyy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0wfyh"]
 size = Vector2(128, 130)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7xyy"]
+size = Vector2(20.360611, 20)
 
 [node name="Main" type="Node2D" unique_id=1166888353]
 
@@ -23,3 +29,22 @@ texture = ExtResource("2_0wfyh")
 position = Vector2(0, -1)
 scale = Vector2(5.455, 1)
 shape = SubResource("RectangleShape2D_0wfyh")
+
+[node name="CollectibleItem" type="Node2D" parent="." unique_id=730787031]
+position = Vector2(625, 487)
+script = ExtResource("3_gf3yc")
+item = ExtResource("4_c7vjp")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CollectibleItem" unique_id=32478065]
+scale = Vector2(3, 3)
+texture = ExtResource("4_s7xyy")
+
+[node name="Area2D" type="Area2D" parent="CollectibleItem" unique_id=1970851742]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectibleItem/Area2D" unique_id=982988102]
+position = Vector2(-1.4524536, 14)
+scale = Vector2(2.5095062, 1.0395054)
+shape = SubResource("RectangleShape2D_s7xyy")
+
+[connection signal="body_entered" from="CollectibleItem/Area2D" to="CollectibleItem" method="_on_area_2d_body_entered"]
