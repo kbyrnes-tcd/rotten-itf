@@ -5,9 +5,15 @@
 [ext_resource type="Texture2D" uid="uid://fexg253jlj5m" path="res://assets/images/rot/IMG_0646.PNG" id="3_4qltn"]
 [ext_resource type="PackedScene" uid="uid://bietk8n82415o" path="res://scenes/rot.tscn" id="3_p8c2o"]
 [ext_resource type="Texture2D" uid="uid://xuyjolcxx7bb" path="res://assets/images/rot/IMG_0647.PNG" id="4_k7wxg"]
+[ext_resource type="Texture2D" uid="uid://d06qp8h4mi861" path="res://assets/images/env/Temple_Layer_Background.png" id="6_k7wxg"]
+[ext_resource type="Shader" uid="uid://cv8gg3r3c6md3" path="res://scripts/pixelate.gdshader" id="6_yeoqx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p8c2o"]
 size = Vector2(128, 130)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3hg10"]
+shader = ExtResource("6_yeoqx")
+shader_parameter/pixelate_amount = 180
 
 [node name="Cinematics" type="Node2D" unique_id=2119182474]
 
@@ -51,6 +57,12 @@ scale = Vector2(2.4799988, 1)
 
 [node name="Sprite2D" parent="Rot33" index="1" unique_id=1649874022]
 texture = ExtResource("3_4qltn")
+
+[node name="TempleLayerBackground" type="Sprite2D" parent="." unique_id=1095996673]
+z_index = -5
+material = SubResource("ShaderMaterial_3hg10")
+position = Vector2(623, 329)
+texture = ExtResource("6_k7wxg")
 
 [editable path="Rot2"]
 [editable path="Rot33"]
