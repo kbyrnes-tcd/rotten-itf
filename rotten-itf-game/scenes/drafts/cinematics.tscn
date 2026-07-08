@@ -13,7 +13,7 @@ size = Vector2(128, 130)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3hg10"]
 shader = ExtResource("6_gcdrg")
-shader_parameter/pixelate_amount = 180
+shader_parameter/pixelate_amount = 150
 
 [node name="Cinematics" type="Node2D" unique_id=2119182474]
 
