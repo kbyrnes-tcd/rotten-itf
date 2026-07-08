@@ -2,8 +2,15 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var jump_fx: AudioStreamPlayer2D = $JumpFX
 
+@export var inv : Inventory
+
 const SPEED = 300.0
 const JUMP_VELOCITY = -850.0
+
+func _ready() -> void:
+	print("hello")
+	print(inv.items[0].name)
+	print(inv.items[0].texture)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

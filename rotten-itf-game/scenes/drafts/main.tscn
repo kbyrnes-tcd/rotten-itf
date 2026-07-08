@@ -9,10 +9,10 @@ size = Vector2(128, 130)
 [node name="Main" type="Node2D" unique_id=1166888353]
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("1_o5qli")]
-position = Vector2(418, 305)
+position = Vector2(385, 468)
 
 [node name="Ground" type="StaticBody2D" parent="." unique_id=1631808054]
-position = Vector2(419, 431)
+position = Vector2(579, 577)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Ground" unique_id=1946065389]

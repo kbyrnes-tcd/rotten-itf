@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://dt677afg3p4f0"]
+
+[ext_resource type="Script" uid="uid://b0vt1mp7wu6pu" path="res://scripts/inventory_system/inv_item.gd" id="1_nouh8"]
+[ext_resource type="Texture2D" uid="uid://cotxrl2gpbqxr" path="res://assets/images/worms/orange_worm_1.png" id="2_4lk5o"]
+
+[resource]
+script = ExtResource("1_nouh8")
+name = "orange_worm"
+texture = ExtResource("2_4lk5o")
+metadata/_custom_type_script = "uid://b0vt1mp7wu6pu"

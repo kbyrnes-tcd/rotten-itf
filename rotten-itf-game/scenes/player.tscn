@@ -2,10 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://vkmq8t1guwnr" path="res://assets/images/player/Hit (32x32).png" id="1_dqkch"]
 [ext_resource type="Script" uid="uid://w2bvkx0l5r8" path="res://scripts/player.gd" id="1_qlg0r"]
+[ext_resource type="Resource" uid="uid://bbfb2yem3oxv0" path="res://scripts/inventory_system/player_inventory.tres" id="2_fjrip"]
 [ext_resource type="Texture2D" uid="uid://dmebo23ctl5ik" path="res://assets/images/player/Idle (32x32).png" id="2_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://3w38knvapafe" path="res://assets/images/player/Jump (32x32).png" id="3_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://c15gnofeo03bn" path="res://assets/images/player/Run (32x32).png" id="4_fjrip"]
 [ext_resource type="AudioStream" uid="uid://dvdukd1lqtaao" path="res://assets/audio/jump.wav" id="6_tuyoq"]
+[ext_resource type="PackedScene" uid="uid://0hlcimiuwo6o" path="res://scenes/ui/inv_ui.tscn" id="8_smehm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qino5"]
 atlas = ExtResource("1_dqkch")
@@ -249,6 +251,7 @@ size = Vector2(20, 25.333332)
 [node name="Player" type="CharacterBody2D" unique_id=1515659648]
 scale = Vector2(3, 3)
 script = ExtResource("1_qlg0r")
+inv = ExtResource("2_fjrip")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=512896578]
 sprite_frames = SubResource("SpriteFrames_6adnx")
@@ -262,3 +265,9 @@ shape = SubResource("RectangleShape2D_qlg0r")
 
 [node name="JumpFX" type="AudioStreamPlayer2D" parent="." unique_id=1761152459]
 stream = ExtResource("6_tuyoq")
+
+[node name="InvUI" parent="." unique_id=959144703 instance=ExtResource("8_smehm")]
+offset_left = -32.0
+offset_top = -57.0
+offset_right = 34.0
+offset_bottom = -13.0
