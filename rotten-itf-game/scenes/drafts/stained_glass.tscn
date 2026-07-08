@@ -1,22 +1,22 @@
 [gd_scene format=3 uid="uid://ep33og7o2b2v"]
 
-[ext_resource type="Texture2D" uid="uid://ctpsvg6p4po7f" path="res://assets/images/env/st-glass-fg.PNG" id="1_v7ybd"]
-[ext_resource type="Texture2D" uid="uid://tkj1nalcvxhp" path="res://assets/images/env/st-glass-light.PNG" id="2_a7b0x"]
-[ext_resource type="Texture2D" uid="uid://srg6kckh762f" path="res://assets/images/env/st-glass-bg.PNG" id="3_o74j8"]
+[ext_resource type="Texture2D" uid="uid://ctpsvg6p4po7f" path="res://assets/images/env/st-glass-fg.PNG" id="1_xefp7"]
+[ext_resource type="Texture2D" uid="uid://tkj1nalcvxhp" path="res://assets/images/env/st-glass-light.PNG" id="2_c5p43"]
+[ext_resource type="Texture2D" uid="uid://srg6kckh762f" path="res://assets/images/env/st-glass-bg.PNG" id="3_wpspq"]
 
 [node name="StainedGlass" type="Node2D" unique_id=680894345]
 
 [node name="StGlassFg" type="Sprite2D" parent="." unique_id=1734605975]
-texture = ExtResource("1_v7ybd")
+texture = ExtResource("1_xefp7")
 
 [node name="StGlassLight" type="Sprite2D" parent="." unique_id=1309907032]
-texture = ExtResource("2_a7b0x")
+texture = ExtResource("2_c5p43")
 
 [node name="ExtendedLight" type="PointLight2D" parent="StGlassLight" unique_id=1805590217]
 z_index = 125
 color = Color(1, 1, 0.5803922, 1)
 energy = 0.34
-texture = ExtResource("2_a7b0x")
+texture = ExtResource("2_c5p43")
 offset = Vector2(-30.495, 0)
 texture_scale = 1.1
 
@@ -24,10 +24,10 @@ texture_scale = 1.1
 z_index = 125
 color = Color(1, 1, 0.5803922, 1)
 energy = 0.44
-texture = ExtResource("2_a7b0x")
+texture = ExtResource("2_c5p43")
 
 [node name="StGlassBg" type="Sprite2D" parent="." unique_id=1692828321]
-texture = ExtResource("3_o74j8")
+texture = ExtResource("3_wpspq")
 
 [node name="DirectionalLightOcclusion" type="DirectionalLight2D" parent="." unique_id=408215709]
 color = Color(0.6094544, 0.46185285, 0.36491126, 1)

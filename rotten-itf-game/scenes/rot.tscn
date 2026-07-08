@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bietk8n82415o"]
 
 [ext_resource type="Script" uid="uid://r3k4tix4pkd3" path="res://scripts/rot.gd" id="1_1gtbt"]
-[ext_resource type="Shader" uid="uid://cv8gg3r3c6md3" path="res://scripts/pixelate.gdshader" id="1_v3kdo"]
+[ext_resource type="Shader" uid="uid://cv8gg3r3c6md3" path="res://scripts/shaders/pixelate.gdshader" id="1_v3kdo"]
 [ext_resource type="Texture2D" uid="uid://4rnv5owd8dm1" path="res://assets/images/rot/IMG_0648.PNG" id="2_v3kdo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k7wxg"]
@@ -10,7 +10,6 @@ size = Vector2(23.63829, 115)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v3kdo"]
 shader = ExtResource("1_v3kdo")
 shader_parameter/pixelate_amount = 40
-shader_parameter/fade_amount = 1.0
 
 [node name="RotArea" type="Area2D" unique_id=1839110789]
 script = ExtResource("1_1gtbt")

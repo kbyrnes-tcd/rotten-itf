@@ -1,23 +1,23 @@
 [gd_scene format=3 uid="uid://bqcnao5i26gt4"]
 
-[ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="1_cnnah"]
-[ext_resource type="Texture2D" uid="uid://btvw0tm1fb350" path="res://assets/images/env/brick-wall.jpg" id="2_myg6a"]
-[ext_resource type="Texture2D" uid="uid://fexg253jlj5m" path="res://assets/images/rot/IMG_0646.PNG" id="3_4qltn"]
-[ext_resource type="PackedScene" uid="uid://bietk8n82415o" path="res://scenes/rot.tscn" id="3_p8c2o"]
-[ext_resource type="Texture2D" uid="uid://xuyjolcxx7bb" path="res://assets/images/rot/IMG_0647.PNG" id="4_k7wxg"]
-[ext_resource type="Texture2D" uid="uid://d06qp8h4mi861" path="res://assets/images/env/Temple_Layer_Background.png" id="6_k7wxg"]
-[ext_resource type="Shader" uid="uid://cv8gg3r3c6md3" path="res://scripts/pixelate.gdshader" id="6_yeoqx"]
+[ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="1_4caar"]
+[ext_resource type="Texture2D" uid="uid://btvw0tm1fb350" path="res://assets/images/env/brick-wall.jpg" id="2_532ng"]
+[ext_resource type="PackedScene" uid="uid://bietk8n82415o" path="res://scenes/rot.tscn" id="3_qrf0y"]
+[ext_resource type="Texture2D" uid="uid://xuyjolcxx7bb" path="res://assets/images/rot/IMG_0647.PNG" id="4_4rxy4"]
+[ext_resource type="Texture2D" uid="uid://fexg253jlj5m" path="res://assets/images/rot/IMG_0646.PNG" id="5_wiaou"]
+[ext_resource type="Shader" uid="uid://cv8gg3r3c6md3" path="res://scripts/shaders/pixelate.gdshader" id="6_gcdrg"]
+[ext_resource type="Texture2D" uid="uid://d06qp8h4mi861" path="res://assets/images/env/Temple_Layer_Background.png" id="7_7poft"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p8c2o"]
 size = Vector2(128, 130)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3hg10"]
-shader = ExtResource("6_yeoqx")
+shader = ExtResource("6_gcdrg")
 shader_parameter/pixelate_amount = 180
 
 [node name="Cinematics" type="Node2D" unique_id=2119182474]
 
-[node name="Player" parent="." unique_id=1515659648 instance=ExtResource("1_cnnah")]
+[node name="Player" parent="." unique_id=1515659648 instance=ExtResource("1_4caar")]
 position = Vector2(490, 464)
 
 [node name="Ground" type="StaticBody2D" parent="." unique_id=1340810883]
@@ -28,17 +28,17 @@ metadata/_edit_group_ = true
 [node name="Sprite2D" type="Sprite2D" parent="Ground" unique_id=1274592477]
 position = Vector2(3.000032, 2.5)
 scale = Vector2(0.7, 0.26358145)
-texture = ExtResource("2_myg6a")
+texture = ExtResource("2_532ng")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=650191869]
 position = Vector2(0, -1)
 scale = Vector2(5.455, 1)
 shape = SubResource("RectangleShape2D_p8c2o")
 
-[node name="Rot1" parent="." unique_id=1986813933 instance=ExtResource("3_p8c2o")]
+[node name="Rot1" parent="." unique_id=1986813933 instance=ExtResource("3_qrf0y")]
 position = Vector2(181, 446)
 
-[node name="Rot2" parent="." unique_id=1839110789 instance=ExtResource("3_p8c2o")]
+[node name="Rot2" parent="." unique_id=1839110789 instance=ExtResource("3_qrf0y")]
 position = Vector2(154, 446)
 
 [node name="CollisionShape2D" parent="Rot2" index="0" unique_id=2134328284]
@@ -46,9 +46,9 @@ position = Vector2(102.78, 5)
 scale = Vector2(1.88, 1)
 
 [node name="Sprite2D" parent="Rot2" index="1" unique_id=1649874022]
-texture = ExtResource("4_k7wxg")
+texture = ExtResource("4_4rxy4")
 
-[node name="Rot33" parent="." unique_id=2029955300 instance=ExtResource("3_p8c2o")]
+[node name="Rot33" parent="." unique_id=2029955300 instance=ExtResource("3_qrf0y")]
 position = Vector2(144, 449)
 
 [node name="CollisionShape2D" parent="Rot33" index="0" unique_id=2134328284]
@@ -56,13 +56,13 @@ position = Vector2(60, 2)
 scale = Vector2(2.4799988, 1)
 
 [node name="Sprite2D" parent="Rot33" index="1" unique_id=1649874022]
-texture = ExtResource("3_4qltn")
+texture = ExtResource("5_wiaou")
 
 [node name="TempleLayerBackground" type="Sprite2D" parent="." unique_id=1095996673]
 z_index = -5
 material = SubResource("ShaderMaterial_3hg10")
 position = Vector2(623, 329)
-texture = ExtResource("6_k7wxg")
+texture = ExtResource("7_7poft")
 
 [editable path="Rot2"]
 [editable path="Rot33"]
