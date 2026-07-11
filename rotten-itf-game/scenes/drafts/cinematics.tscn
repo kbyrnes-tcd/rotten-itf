@@ -8,7 +8,7 @@
 [ext_resource type="Shader" uid="uid://cv8gg3r3c6md3" path="res://scripts/shaders/pixelate.gdshader" id="6_gcdrg"]
 [ext_resource type="Texture2D" uid="uid://d06qp8h4mi861" path="res://assets/images/env/Temple_Layer_Background.png" id="7_7poft"]
 [ext_resource type="Texture2D" uid="uid://dvjljkkkuelcb" path="res://assets/images/ui/inventory-slot.png" id="8_532ng"]
-[ext_resource type="Script" uid="uid://bxk8d33jlrfj1" path="res://scripts/rot_collision.gd" id="9_qrf0y"]
+[ext_resource type="Script" uid="uid://bxk8d33jlrfj1" path="res://scripts/rot_vine.gd" id="9_qrf0y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p8c2o"]
 size = Vector2(128, 130)
