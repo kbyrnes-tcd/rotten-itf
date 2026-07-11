@@ -1,10 +1,9 @@
 extends Line2D
 var pts
-
 func _ready():
 	pts = points # assign points var (PackedVector2Arr)
-	inst_collisions()
-	
+	inst_collisions() # instantiate collision shape from inspector defined curve
+
 func inst_collisions():
 	for i in points.size() - 1:
 		var new_shape = CollisionShape2D.new()
@@ -13,23 +12,47 @@ func inst_collisions():
 		segment.a = points[i]
 		segment.b = points[i + 1]
 		new_shape.shape = segment
-	
-func update_collisions():
-	var new_shape
-	if (points.size() > 1):
-		for i in points.size() - 1:
-			new_shape = $StaticBody2D.get_child(i)
-			var segment = SegmentShape2D.new()
-			segment.a = points[i]
-			segment.b = points[i + 1]
-			new_shape.shape = segment
-	else:
-		for segment in $StaticBody2D.get_children():
-			$StaticBody2D.remove_child(segment)
+	#print('points: ' + str(points.size()))
+	#print('static body: ' + str($StaticBody2D.get_child_count()))
 
+func update_collisions():
+	var static_body = $StaticBody2D
+	# however many points there, there must be p-1 segments
+	# connecting 2 points to each other...
+	var segment_count = maxi(points.size() - 1, 0)
+
+	# reuse existing shapes, create only what's missing
+	for i in segment_count:
+		var cshape_node: CollisionShape2D
+		# if there are shapes defined beyond current iteration
+		if i < static_body.get_child_count():
+			# just fetch that
+			cshape_node = static_body.get_child(i)
+		# else, create new and add to static body
+		else:
+			cshape_node = CollisionShape2D.new()
+			static_body.add_child(cshape_node)
+
+		var segment = SegmentShape2D.new()
+		segment.a = points[i]
+		segment.b = points[i + 1]
+		cshape_node.shape = segment
+
+	# free any leftover shapes beyond what's the necess. segment_count
+	while static_body.get_child_count() > segment_count:
+		var c = static_body.get_child(static_body.get_child_count() - 1)
+		static_body.remove_child(c)
+		c.queue_free() # to remove from scene as well..
+			
 func _process(_delta):
 	if Input.is_action_just_pressed("interact"):
-		# on click of E, remove points
+		# on click of E, remove some point
 		pts.remove_at(1)
-		points = pts # update points (triggers setter, updates visuals)
+		points = pts # update points, visuals and vertices
+		update_collisions()
+
+	if Input.is_action_just_pressed("rot_extend"):
+		# on click of Q, add some point
+		pts.append(Vector2(randf_range(0, 200), randf_range(-10, -50)))
+		points = pts # update points, visuals and vertices
 		update_collisions()
