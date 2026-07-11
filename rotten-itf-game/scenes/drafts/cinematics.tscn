@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://fexg253jlj5m" path="res://assets/images/rot/IMG_0646.PNG" id="5_wiaou"]
 [ext_resource type="Shader" uid="uid://cv8gg3r3c6md3" path="res://scripts/shaders/pixelate.gdshader" id="6_gcdrg"]
 [ext_resource type="Texture2D" uid="uid://d06qp8h4mi861" path="res://assets/images/env/Temple_Layer_Background.png" id="7_7poft"]
+[ext_resource type="Texture2D" uid="uid://dvjljkkkuelcb" path="res://assets/images/ui/inventory-slot.png" id="8_532ng"]
+[ext_resource type="Script" uid="uid://bxk8d33jlrfj1" path="res://scripts/rot_collision.gd" id="9_qrf0y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p8c2o"]
 size = Vector2(128, 130)
@@ -15,10 +17,13 @@ size = Vector2(128, 130)
 shader = ExtResource("6_gcdrg")
 shader_parameter/pixelate_amount = 150
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qrf0y"]
+size = Vector2(20, 16.416668)
+
 [node name="Cinematics" type="Node2D" unique_id=2119182474]
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("1_4caar")]
-position = Vector2(490, 464)
+position = Vector2(635, 467)
 
 [node name="Ground" type="StaticBody2D" parent="." unique_id=1340810883]
 position = Vector2(565, 579)
@@ -36,9 +41,11 @@ scale = Vector2(5.455, 1)
 shape = SubResource("RectangleShape2D_p8c2o")
 
 [node name="Rot1" parent="." unique_id=1986813933 instance=ExtResource("3_qrf0y")]
+visible = false
 position = Vector2(181, 446)
 
 [node name="Rot2" parent="." unique_id=1839110789 instance=ExtResource("3_qrf0y")]
+visible = false
 position = Vector2(154, 446)
 
 [node name="CollisionShape2D" parent="Rot2" index="0" unique_id=2134328284]
@@ -49,6 +56,7 @@ scale = Vector2(1.88, 1)
 texture = ExtResource("4_4rxy4")
 
 [node name="Rot33" parent="." unique_id=2029955300 instance=ExtResource("3_qrf0y")]
+visible = false
 position = Vector2(144, 449)
 
 [node name="CollisionShape2D" parent="Rot33" index="0" unique_id=2134328284]
@@ -59,10 +67,53 @@ scale = Vector2(2.4799988, 1)
 texture = ExtResource("5_wiaou")
 
 [node name="TempleLayerBackground" type="Sprite2D" parent="." unique_id=1095996673]
+visible = false
 z_index = -5
 material = SubResource("ShaderMaterial_3hg10")
 position = Vector2(623, 329)
 texture = ExtResource("7_7poft")
+
+[node name="Block2" type="Node2D" parent="." unique_id=2135219249]
+position = Vector2(408, 467)
+scale = Vector2(6, 6)
+
+[node name="Sprite2D" type="Sprite2D" parent="Block2" unique_id=248981842]
+texture = ExtResource("8_532ng")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Block2/Sprite2D" unique_id=1909348915]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block2/Sprite2D/StaticBody2D" unique_id=1986194465]
+position = Vector2(0, 0.875)
+shape = SubResource("RectangleShape2D_qrf0y")
+
+[node name="Block" type="Node2D" parent="." unique_id=1753851023]
+position = Vector2(160, 467)
+scale = Vector2(6, 6)
+
+[node name="Sprite2D" type="Sprite2D" parent="Block" unique_id=545588756]
+texture = ExtResource("8_532ng")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Block/Sprite2D" unique_id=1915700794]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block/Sprite2D/StaticBody2D" unique_id=845807477]
+position = Vector2(0, 0.9166641)
+shape = SubResource("RectangleShape2D_qrf0y")
+
+[node name="Vine" type="Node2D" parent="." unique_id=214293607]
+position = Vector2(162.00002, 422)
+rotation = -0.09716422
+
+[node name="Line2D" type="Line2D" parent="Vine" unique_id=1467638584]
+points = PackedVector2Array(-0.025184631, -10.049866, 32.330437, -43.066742, 87.82195, -55.743225, 147.44193, -48.927216, 188.61511, -17.786072, 278.36313, 20.099213)
+width = 5.94
+default_color = Color(0, 0.46252555, 0.107798316, 1)
+script = ExtResource("9_qrf0y")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Vine/Line2D" unique_id=1411327605]
+
+[node name="Node2D" type="Node2D" parent="." unique_id=2069383614]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=544053664]
 
 [editable path="Rot2"]
 [editable path="Rot33"]
