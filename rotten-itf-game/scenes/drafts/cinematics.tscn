@@ -8,7 +8,6 @@
 [ext_resource type="Shader" uid="uid://cv8gg3r3c6md3" path="res://scripts/shaders/pixelate.gdshader" id="6_gcdrg"]
 [ext_resource type="Texture2D" uid="uid://d06qp8h4mi861" path="res://assets/images/env/Temple_Layer_Background.png" id="7_7poft"]
 [ext_resource type="Texture2D" uid="uid://dvjljkkkuelcb" path="res://assets/images/ui/inventory-slot.png" id="8_532ng"]
-[ext_resource type="Script" uid="uid://bxk8d33jlrfj1" path="res://scripts/rot_vine.gd" id="9_qrf0y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p8c2o"]
 size = Vector2(128, 130)
@@ -19,6 +18,44 @@ shader_parameter/pixelate_amount = 150
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qrf0y"]
 size = Vector2(20, 16.416668)
+
+[sub_resource type="GDScript" id="GDScript_532ng"]
+script/source = "extends Line2D
+var pts
+
+func _ready():
+	pts = points # assign points var (PackedVector2Arr)
+	inst_collisions()
+	
+func inst_collisions():
+	for i in points.size() - 1:
+		var new_shape = CollisionShape2D.new()
+		$StaticBody2D.add_child(new_shape)
+		var segment = SegmentShape2D.new()
+		segment.a = points[i]
+		segment.b = points[i + 1]
+		new_shape.shape = segment
+	
+func update_collisions():
+	var new_shape
+	if (points.size() > 1):
+		for i in points.size() - 1:
+			new_shape = $StaticBody2D.get_child(i)
+			var segment = SegmentShape2D.new()
+			segment.a = points[i]
+			segment.b = points[i + 1]
+			new_shape.shape = segment
+	else:
+		for segment in $StaticBody2D.get_children():
+			$StaticBody2D.remove_child(segment)
+
+func _process(_delta):
+	if Input.is_action_just_pressed(\"interact\"):
+		# on click of E, remove points
+		pts.remove_at(1)
+		points = pts # update points (triggers setter, updates visuals)
+		update_collisions()
+"
 
 [node name="Cinematics" type="Node2D" unique_id=2119182474]
 
@@ -107,7 +144,7 @@ rotation = -0.09716422
 points = PackedVector2Array(-0.025184631, -10.049866, 32.330437, -43.066742, 87.82195, -55.743225, 147.44193, -48.927216, 188.61511, -17.786072, 278.36313, 20.099213)
 width = 5.94
 default_color = Color(0, 0.46252555, 0.107798316, 1)
-script = ExtResource("9_qrf0y")
+script = SubResource("GDScript_532ng")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Vine/Line2D" unique_id=1411327605]
 
