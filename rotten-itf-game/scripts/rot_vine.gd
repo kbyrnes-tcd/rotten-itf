@@ -1,7 +1,7 @@
 extends Line2D
 var pts
 func _ready():
-	print("readyyyy")
+	print("rot_vine.gd")
 	pts = points # assign points var (PackedVector2Arr)
 	inst_collisions() # instantiate collision shape from inspector defined curve
 
