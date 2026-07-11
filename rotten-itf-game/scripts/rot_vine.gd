@@ -1,6 +1,7 @@
 extends Line2D
 var pts
 func _ready():
+	print("readyyyy")
 	pts = points # assign points var (PackedVector2Arr)
 	inst_collisions() # instantiate collision shape from inspector defined curve
 
@@ -12,8 +13,8 @@ func inst_collisions():
 		segment.a = points[i]
 		segment.b = points[i + 1]
 		new_shape.shape = segment
-	#print('points: ' + str(points.size()))
-	#print('static body: ' + str($StaticBody2D.get_child_count()))
+	print('points: ' + str(points.size()))
+	print('static body: ' + str($StaticBody2D.get_child_count()))
 
 func update_collisions():
 	var static_body = $StaticBody2D
@@ -24,11 +25,9 @@ func update_collisions():
 	# reuse existing shapes, create only what's missing
 	for i in segment_count:
 		var cshape_node: CollisionShape2D
-		# if there are shapes defined beyond current iteration
+		# if there are more shapes
 		if i < static_body.get_child_count():
-			# just fetch that
 			cshape_node = static_body.get_child(i)
-		# else, create new and add to static body
 		else:
 			cshape_node = CollisionShape2D.new()
 			static_body.add_child(cshape_node)
@@ -38,11 +37,11 @@ func update_collisions():
 		segment.b = points[i + 1]
 		cshape_node.shape = segment
 
-	# free any leftover shapes beyond what's the necess. segment_count
+	# free any leftover shapes beyond what's segment_count
 	while static_body.get_child_count() > segment_count:
 		var c = static_body.get_child(static_body.get_child_count() - 1)
 		static_body.remove_child(c)
-		c.queue_free() # to remove from scene as well..
+		c.queue_free()
 			
 func _process(_delta):
 	if Input.is_action_just_pressed("interact"):
