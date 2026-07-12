@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c15gnofeo03bn" path="res://assets/images/player/Run (32x32).png" id="4_fjrip"]
 [ext_resource type="AudioStream" uid="uid://dvdukd1lqtaao" path="res://assets/audio/jump.wav" id="6_tuyoq"]
 [ext_resource type="PackedScene" uid="uid://0hlcimiuwo6o" path="res://scenes/ui/inv_ui.tscn" id="8_smehm"]
+[ext_resource type="Texture2D" uid="uid://bg2xv2dit48xi" path="res://assets/images/worms/lantern.png" id="9_ur7pv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qino5"]
 atlas = ExtResource("1_dqkch")
@@ -248,6 +249,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qlg0r"]
 size = Vector2(20.666668, 25.333332)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_y4r1p"]
+radius = 29.313183
+
 [node name="Player" type="CharacterBody2D" unique_id=1515659648]
 scale = Vector2(3, 3)
 script = ExtResource("1_qlg0r")
@@ -271,3 +275,16 @@ offset_left = -32.0
 offset_top = -57.0
 offset_right = 34.0
 offset_bottom = -13.0
+
+[node name="Lantern" type="Node2D" parent="." unique_id=964616978]
+position = Vector2(17.333334, 2.666667)
+scale = Vector2(0.455, 0.455)
+
+[node name="Sprite2D" type="Sprite2D" parent="Lantern" unique_id=142452027]
+texture = ExtResource("9_ur7pv")
+
+[node name="LanternArea2D" type="Area2D" parent="Lantern" unique_id=1614078195]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lantern/LanternArea2D" unique_id=877712953]
+position = Vector2(10.256411, -2.197803)
+shape = SubResource("CircleShape2D_y4r1p")

@@ -75,6 +75,13 @@ shape = SubResource("RectangleShape2D_qrf0y")
 
 [node name="Vine" parent="." unique_id=1749191672 instance=ExtResource("6_qrf0y")]
 
+[node name="Vine2" parent="." unique_id=786803427 instance=ExtResource("6_qrf0y")]
+position = Vector2(558.00006, 413.00003)
+rotation = -0.8352458
+
+[node name="Line2D" parent="Vine2" index="0" unique_id=1590463200]
+points = PackedVector2Array(-0.025184631, -10.049866, 32.330437, -43.066742, 87.82195, -55.743225, 147.44193, -48.927216)
+
 [node name="Rot1" parent="." unique_id=1986813933 instance=ExtResource("3_qrf0y")]
 visible = false
 position = Vector2(181, 446)
@@ -101,14 +108,13 @@ scale = Vector2(2.4799988, 1)
 [node name="Sprite2D" parent="Rot33" index="1" unique_id=1649874022]
 texture = ExtResource("5_wiaou")
 
-[node name="Vine2" parent="." unique_id=377101891 instance=ExtResource("6_qrf0y")]
-position = Vector2(559.00006, 417.00003)
-rotation = -0.8419682
+[connection signal="area_entered" from="Vine/Line2D/LineArea2D" to="Vine/Line2D" method="_on_line_area_2d_area_entered"]
+[connection signal="area_exited" from="Vine/Line2D/LineArea2D" to="Vine/Line2D" method="_on_line_area_2d_area_exited"]
+[connection signal="area_entered" from="Vine2/Line2D/LineArea2D" to="Vine2/Line2D" method="_on_line_area_2d_area_entered"]
+[connection signal="area_exited" from="Vine2/Line2D/LineArea2D" to="Vine2/Line2D" method="_on_line_area_2d_area_exited"]
 
-[node name="Line2D" parent="Vine2" index="0" unique_id=1590463200]
-points = PackedVector2Array(-0.025184631, -10.049866, 32.330437, -43.066742, 87.82195, -55.743225, 147.44193, -48.927216)
-
+[editable path="Player"]
 [editable path="Vine"]
+[editable path="Vine2"]
 [editable path="Rot2"]
 [editable path="Rot33"]
-[editable path="Vine2"]

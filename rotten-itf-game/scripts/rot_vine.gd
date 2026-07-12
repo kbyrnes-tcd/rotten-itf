@@ -21,21 +21,21 @@ func inst_collisions():
 		var length = points[i].distance_to(points[i + 1])
 		rect.extents = Vector2(length / 2, width / 2)
 		new_shape_area.shape = rect
-		$Area2D.add_child(new_shape_area)
+		$LineArea2D.add_child(new_shape_area)
 
 		# defining static_body simply along vertices
-		$StaticBody2D.add_child(new_shape_static)
+		$LineStaticBody2D.add_child(new_shape_static)
 		var segment = SegmentShape2D.new()
 		segment.a = points[i]
 		segment.b = points[i + 1]
 		new_shape_static.shape = segment
 		
 	#print('points: ' + str(points.size()))
-	#print('static body: ' + str($StaticBody2D.get_child_count()))
+	#print('static body: ' + str($LineStaticBody2D.get_child_count()))
 
 func update_collisions():
-	var static_body = $StaticBody2D
-	var area = $Area2D
+	var static_body = $LineStaticBody2D
+	var area = $LineArea2D
 	# however many points there, there must be p-1 segments
 	# connecting 2 points to each other...
 	var segment_count = maxi(points.size() - 1, 0)
@@ -92,10 +92,17 @@ func _process(_delta):
 			points = pts # update points, visuals and vertices
 			update_collisions()
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.name == "Player":
+# for player body detection
+#func _on_area_2d_body_entered(body: Node2D) -> void:
+	#pass
+#func _on_area_2d_body_exited(body: Node2D) -> void:
+	#pass
+
+# for player > lantern > area2d detection
+func _on_line_area_2d_area_entered(area: Area2D) -> void:
+	if area.name == "LanternArea2D":
 		player_in_area = true
 		
-func _on_area_2d_body_exited(body: Node2D) -> void:
-	if body.name == "Player":
+func _on_line_area_2d_area_exited(area: Area2D) -> void:
+	if area.name == "LanternArea2D":
 		player_in_area = false
