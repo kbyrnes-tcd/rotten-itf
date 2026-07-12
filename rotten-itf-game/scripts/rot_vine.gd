@@ -1,5 +1,6 @@
 extends Line2D
 var pts
+var player_in_area
 
 func _ready():
 	pts = points # assign points var (PackedVector2Arr)
@@ -77,18 +78,24 @@ func update_collisions():
 		area_shape.queue_free()
 			
 func _process(_delta):
-	if Input.is_action_just_pressed("interact"):
-		# on click of E, remove some point
-		pts.remove_at(1)
-		points = pts # update points, visuals and vertices
-		update_collisions()
+	if player_in_area:
+		# only accept Q/E inputs when in radius of the vine...
+		if Input.is_action_just_pressed("interact"):
+			# on click of E, remove some point
+			pts.remove_at(1)
+			points = pts # update points, visuals and vertices
+			update_collisions()
 
-	if Input.is_action_just_pressed("rot_extend"):
-		# on click of Q, add some point
-		pts.append(Vector2(randf_range(0, 200), randf_range(-10, -50)))
-		points = pts # update points, visuals and vertices
-		update_collisions()
+		if Input.is_action_just_pressed("rot_extend"):
+			# on click of Q, add some point
+			pts.append(Vector2(randf_range(0, 200), randf_range(-10, -50)))
+			points = pts # update points, visuals and vertices
+			update_collisions()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
-		print("hello player")
+		player_in_area = true
+		
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body.name == "Player":
+		player_in_area = false
