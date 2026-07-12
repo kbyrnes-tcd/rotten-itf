@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://kicj2478es6o"]
+
+[ext_resource type="Script" uid="uid://bxk8d33jlrfj1" path="res://scripts/rot_vine.gd" id="1_0h50i"]
+
+[node name="Vine" type="Node2D" unique_id=1749191672]
+rotation = -1.1309078
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1590463200]
+points = PackedVector2Array(-0.025184631, -10.049866, 32.330437, -43.066742, 87.82195, -55.743225, 147.44193, -48.927216, 188.61511, -17.786072, 206.29855, -3.1497803, 197.25229, 38.68518, 247.23047, 43.898926)
+width = 5.94
+default_color = Color(0, 0.46252555, 0.107798316, 1)
+script = ExtResource("1_0h50i")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Line2D" unique_id=78523614]
+
+[node name="Area2D" type="Area2D" parent="Line2D" unique_id=1042866426]

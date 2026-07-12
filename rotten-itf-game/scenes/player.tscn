@@ -246,7 +246,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qlg0r"]
-size = Vector2(20, 25.333332)
+size = Vector2(20.666668, 25.333332)
 
 [node name="Player" type="CharacterBody2D" unique_id=1515659648]
 scale = Vector2(3, 3)
