@@ -1,8 +1,13 @@
 extends Line2D
+@onready var line_2d: Line2D = $"."
+
 var pts
 var player_in_area
+var segments_in_area
+var collider_in_area
 
 func _ready():
+	segments_in_area = []
 	pts = points # assign points var (PackedVector2Arr)
 	inst_collisions() # instantiate collision shape from inspector defined curve
 
@@ -10,7 +15,7 @@ func _ready():
 
 func inst_collisions():
 	for i in points.size() - 1:
-		# need 2 define both st_body and area for overlap detection and 'solid' collisions
+		# need 2 define ST_BODY for 'solid' collisions and AREA for overlap detection 
 		var new_shape_static = CollisionShape2D.new()
 		var new_shape_area = CollisionShape2D.new()
 		
@@ -38,10 +43,10 @@ func update_collisions():
 	var area = $LineArea2D
 	# however many points there, there must be p-1 segments
 	# connecting 2 points to each other...
-	var segment_count = maxi(points.size() - 1, 0)
+	var needed_segment_count = maxi(points.size() - 1, 0)
 
 	# reuse existing shapes, create only what's missing
-	for i in segment_count:
+	for i in needed_segment_count:
 		var cshape_node_static: CollisionShape2D
 		var cshape_node_area: CollisionShape2D
 		# if there are more shapes
@@ -68,8 +73,8 @@ func update_collisions():
 		rect.extents = Vector2(length / 2, width / 2)
 		cshape_node_area.shape = rect
 
-	# free any leftover shapes beyond what's segment_count
-	while static_body.get_child_count() > segment_count:
+	# free any leftover shapes beyond what's needed_segment_count
+	while static_body.get_child_count() > needed_segment_count:
 		var static_shape = static_body.get_child(static_body.get_child_count() - 1)
 		static_body.remove_child(static_shape)
 		static_shape.queue_free()
@@ -77,32 +82,46 @@ func update_collisions():
 		area.remove_child(area_shape)
 		area_shape.queue_free()
 			
-func _process(_delta):
-	if player_in_area:
-		# only accept Q/E inputs when in radius of the vine...
-		if Input.is_action_just_pressed("interact"):
-			# on click of E, remove some point
-			pts.remove_at(1)
-			points = pts # update points, visuals and vertices
-			update_collisions()
-
-		if Input.is_action_just_pressed("rot_extend"):
-			# on click of Q, add some point
-			pts.append(Vector2(randf_range(0, 200), randf_range(-10, -50)))
-			points = pts # update points, visuals and vertices
-			update_collisions()
+#func _process(_delta):
+	#if player_in_area:
+		## only accept Q/E inputs when in radius of the vine...
+		#if Input.is_action_just_pressed("interact"):
+			## on click of E, remove some point
+			#pts.remove_at(1)
+			#points = pts # update points, visuals and vertices
+			#update_collisions()
+#
+		#if Input.is_action_just_pressed("rot_extend"):
+			## on click of Q, add some point
+			#pts.append(Vector2(randf_range(0, 200), randf_range(-10, -50)))
+			#points = pts # update points, visuals and vertices
+			#update_collisions()
 
 # for player body detection
-#func _on_area_2d_body_entered(body: Node2D) -> void:
-	#pass
-#func _on_area_2d_body_exited(body: Node2D) -> void:
-	#pass
+func _on_area_2d_body_entered(_body: Node2D) -> void:
+	#print(body.name)
+	pass
 
-# for player > lantern > area2d detection
-func _on_line_area_2d_area_entered(area: Area2D) -> void:
-	if area.name == "LanternArea2D":
-		player_in_area = true
+func _on_line_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	# converting points into global positions so we can check intersection with Area2Ds
+	var space_state = get_world_2d().direct_space_state
+	
+	for i in range(0, points.size()-1):
+		var global_pos = line_2d.to_global(points[i])
+		var parameters = PhysicsPointQueryParameters2D.new()
+		parameters.position = global_pos
+		parameters.collide_with_areas = true
+		parameters.collide_with_bodies = false
+		parameters.collision_mask = 1
 		
-func _on_line_area_2d_area_exited(area: Area2D) -> void:
-	if area.name == "LanternArea2D":
-		player_in_area = false
+		# stores Area2Ds the current point intersects w/
+		var current_point_intersections = space_state.intersect_point(parameters)
+		
+		for intersection in current_point_intersections:
+			# compare the current _on_line_area_2d_area_shape_entered NODE (area) against point/intersected COLLIDER
+			if intersection.collider == area:
+				pts.remove_at(i)
+				points = pts
+
+	# update collision shapes to match new points
+	call_deferred("update_collisions")

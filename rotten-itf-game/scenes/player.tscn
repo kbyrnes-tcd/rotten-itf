@@ -250,7 +250,7 @@ animations = [{
 size = Vector2(20.666668, 25.333332)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y4r1p"]
-radius = 29.313183
+radius = 36.637367
 
 [node name="Player" type="CharacterBody2D" unique_id=1515659648]
 scale = Vector2(3, 3)
@@ -263,7 +263,7 @@ animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.66269505
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=66024058]
+[node name="PlyrCollisionShape2D" type="CollisionShape2D" parent="." unique_id=66024058]
 position = Vector2(0.6666667, 3.3333335)
 shape = SubResource("RectangleShape2D_qlg0r")
 
@@ -284,7 +284,8 @@ scale = Vector2(0.455, 0.455)
 texture = ExtResource("9_ur7pv")
 
 [node name="LanternArea2D" type="Area2D" parent="Lantern" unique_id=1614078195]
+position = Vector2(13.186813, -7.326008)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Lantern/LanternArea2D" unique_id=877712953]
+[node name="LntrnCollisionShape2D" type="CollisionShape2D" parent="Lantern/LanternArea2D" unique_id=877712953]
 position = Vector2(10.256411, -2.197803)
 shape = SubResource("CircleShape2D_y4r1p")

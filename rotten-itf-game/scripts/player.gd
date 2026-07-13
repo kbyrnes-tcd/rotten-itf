@@ -64,8 +64,6 @@ func _physics_process(delta: float) -> void:
 			#print("Player collided with ", collision.get_collider().name)
 
 #func _on_area_2d_body_entered(body: Node2D) -> void:
-	#print("Entered!")
-	#print(body)
-
+	#print('player detects: ' + body.name)
 #func _on_area_2d_body_exited(body: Node2D) -> void:
 	#print("Exited!")
