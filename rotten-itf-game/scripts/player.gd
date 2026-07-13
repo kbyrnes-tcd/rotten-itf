@@ -1,17 +1,13 @@
 extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var jump_fx: AudioStreamPlayer2D = $JumpFX
+@onready var lantern: Node2D = $Lantern
 
 # inventory system
 @export var inv : Inventory
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -850.0
-
-#func _ready() -> void:
-	#print("hello")
-	#print(inv.items[0].name)
-	#print(inv.items[0].texture)
 
 # collecting items
 func collect(item: InvItem):
@@ -24,6 +20,12 @@ func has(item: InvItem) -> bool:
 func use(item: InvItem):
 	inv.remove(item)
 
+# de/activating lantern
+func _process(_delta):
+	if Input.is_action_just_pressed("interact"):
+		lantern.process_mode = Node.PROCESS_MODE_DISABLED if (lantern.process_mode == Node.PROCESS_MODE_INHERIT) else Node.PROCESS_MODE_INHERIT
+		lantern.visible = false if (lantern.visible == true) else lantern.visible == false
+		
 # handling movement
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
