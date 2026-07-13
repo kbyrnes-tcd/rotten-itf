@@ -308,6 +308,6 @@ collide_with_areas = true
 
 [node name="RayLine2D" type="Line2D" parent="Gun/RayCast2D" unique_id=345017324]
 points = PackedVector2Array(0, 0, -1.4305115e-06, 29.666668)
-width = 0.5
+width = 2.0
 default_color = Color(0.1882353, 0.3647059, 0.23137255, 1)
 joint_mode = 2
