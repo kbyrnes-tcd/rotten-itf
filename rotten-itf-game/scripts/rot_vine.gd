@@ -1,7 +1,7 @@
 extends Line2D
 @onready var line_2d: Line2D = $"."
 
-var pts
+var pts = []
 var player_in_area
 var segments_in_area
 var collider_in_area
@@ -35,9 +35,6 @@ func inst_collisions():
 		segment.b = points[i + 1]
 		new_shape_static.shape = segment
 		
-	#print('points: ' + str(points.size()))
-	#print('static body: ' + str($LineStaticBody2D.get_child_count()))
-
 func update_collisions():
 	var static_body = $LineStaticBody2D
 	var area = $LineArea2D
@@ -102,7 +99,7 @@ func _on_area_2d_body_entered(_body: Node2D) -> void:
 	#print(body.name)
 	pass
 
-func _on_line_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+func _on_line_area_2d_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
 	# converting points into global positions so we can check intersection with Area2Ds
 	var space_state = get_world_2d().direct_space_state
 	

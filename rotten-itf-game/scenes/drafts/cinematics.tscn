@@ -24,7 +24,7 @@ position = Vector2(41, 462)
 
 [node name="Ground" type="StaticBody2D" parent="." unique_id=1340810883]
 position = Vector2(565, 579)
-scale = Vector2(1.7199988, 1.0119224)
+scale = Vector2(2.5199988, 1.0119224)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Ground" unique_id=1274592477]
@@ -74,9 +74,19 @@ shape = SubResource("RectangleShape2D_qrf0y")
 
 [node name="Vine" parent="." unique_id=1749191672 instance=ExtResource("6_qrf0y")]
 
+[node name="Line2D" parent="Vine" index="0" unique_id=1590463200]
+points = PackedVector2Array(308.26556, 469.82285, 390.26556, 452.82285, 364.26556, 397.82285, 408.26556, 335.82285, 490.26556, 364.82285, 471.26556, 281.82285)
+
 [node name="Vine2" parent="." unique_id=1657169479 instance=ExtResource("6_qrf0y")]
-position = Vector2(437, 413.9999)
-rotation = -0.42644188
+
+[node name="Line2D" parent="Vine2" index="0" unique_id=1590463200]
+points = PackedVector2Array(613.26556, 262.82285, 682.26556, 286.82285, 623.26556, 370.82285)
+
+[node name="TestVine" parent="." unique_id=996528017 instance=ExtResource("6_qrf0y")]
+visible = false
+
+[node name="Line2D" parent="TestVine" index="0" unique_id=1590463200]
+points = PackedVector2Array(71, 478)
 
 [connection signal="area_entered" from="Vine/Line2D/LineArea2D" to="Vine/Line2D" method="_on_line_area_2d_area_entered"]
 [connection signal="area_exited" from="Vine/Line2D/LineArea2D" to="Vine/Line2D" method="_on_line_area_2d_area_exited"]
@@ -84,6 +94,10 @@ rotation = -0.42644188
 [connection signal="area_entered" from="Vine2/Line2D/LineArea2D" to="Vine2/Line2D" method="_on_line_area_2d_area_entered"]
 [connection signal="area_exited" from="Vine2/Line2D/LineArea2D" to="Vine2/Line2D" method="_on_line_area_2d_area_exited"]
 [connection signal="area_shape_entered" from="Vine2/Line2D/LineArea2D" to="Vine2/Line2D" method="_on_line_area_2d_area_shape_entered"]
+[connection signal="area_entered" from="TestVine/Line2D/LineArea2D" to="TestVine/Line2D" method="_on_line_area_2d_area_entered"]
+[connection signal="area_exited" from="TestVine/Line2D/LineArea2D" to="TestVine/Line2D" method="_on_line_area_2d_area_exited"]
+[connection signal="area_shape_entered" from="TestVine/Line2D/LineArea2D" to="TestVine/Line2D" method="_on_line_area_2d_area_shape_entered"]
 
 [editable path="Vine"]
 [editable path="Vine2"]
+[editable path="TestVine"]
