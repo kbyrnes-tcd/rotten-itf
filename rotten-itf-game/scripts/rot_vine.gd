@@ -100,9 +100,9 @@ func _on_area_2d_body_entered(_body: Node2D) -> void:
 	pass
 
 func _on_line_area_2d_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
-	# converting points into global positions so we can check intersection with Area2Ds
 	var space_state = get_world_2d().direct_space_state
 	
+	# converting points into global positions so we can check intersection with Area2Ds
 	for i in range(0, points.size()-1):
 		var global_pos = line_2d.to_global(points[i])
 		var parameters = PhysicsPointQueryParameters2D.new()
@@ -115,8 +115,10 @@ func _on_line_area_2d_area_shape_entered(_area_rid: RID, area: Area2D, _area_sha
 		var current_point_intersections = space_state.intersect_point(parameters)
 		
 		for intersection in current_point_intersections:
+			print(intersection.collider.name)
 			# compare the current _on_line_area_2d_area_shape_entered NODE (area) against point/intersected COLLIDER
 			if intersection.collider == area:
+				print("removing point!")
 				pts.remove_at(i)
 				points = pts
 

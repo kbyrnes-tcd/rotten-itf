@@ -1,10 +1,18 @@
 extends CharacterBody2D
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+# character sprites and audio
+@onready var animated_sprite_2d: AnimatedSprite2D = $CharacterSprites/AnimatedSprite2D
 @onready var jump_fx: AudioStreamPlayer2D = $JumpFX
-@onready var lantern: Node2D = $Lantern
+# character and item sprites
+@onready var character_sprites: Node2D = $CharacterSprites
+
+# character equipment/items
+@onready var lantern: Node2D = $CharacterSprites/Lantern
+@onready var gun_sprite: Sprite2D = $CharacterSprites/GunSprite2D
+
 @onready var gun: Node2D = $Gun
 @onready var ray_cast_2d: RayCast2D = $Gun/RayCast2D
 @onready var ray_line_2d: Line2D = $Gun/RayCast2D/RayLine2D
+
 @onready var scene: Node2D = $".."
 const ROT_VINE = preload("uid://kicj2478es6o")
 
@@ -13,6 +21,7 @@ const ROT_VINE = preload("uid://kicj2478es6o")
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -850.0
+var scale_x_transform = 1
 
 # collecting items
 func collect(item: InvItem):
@@ -34,6 +43,7 @@ func _process(_delta):
 	if Input.is_action_just_pressed("rot_extend"):
 		gun.process_mode = Node.PROCESS_MODE_DISABLED if (gun.process_mode == Node.PROCESS_MODE_INHERIT) else Node.PROCESS_MODE_INHERIT
 		gun.visible = false if (gun.visible == true) else gun.visible == false
+		gun_sprite.visible = false if (gun_sprite.visible == true) else gun_sprite.visible == false
 
 func add_vine(src, dest):
 	print("inst @ " + str(src) + " & " + str(dest))
@@ -91,11 +101,12 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	# handle sprite direction
-	if direction == 1.0: # right
-		animated_sprite_2d.flip_h = false;
-	elif direction == -1.0: # left
-		animated_sprite_2d.flip_h = true;
-
+	if direction != 0:
+		var facing = sign(direction)
+		character_sprites.scale.x = facing * abs(character_sprites.scale.x)
+		# mirror the gun node's starting pos
+		gun.position.x = facing * abs(gun.position.x)
+	
 	#for i in get_slide_collision_count():
 		#var collision = get_slide_collision(i)
 		#if (collision.get_collider().name != "Ground"):
