@@ -285,6 +285,7 @@ position = Vector2(10.256411, -2.197803)
 shape = SubResource("CircleShape2D_y4r1p")
 
 [node name="GunSprite2D" type="Sprite2D" parent="CharacterSprites" unique_id=1835702057]
+visible = false
 position = Vector2(17.94, 4.666667)
 scale = Vector2(0.67, 0.67)
 texture = ExtResource("10_y4r1p")
@@ -299,6 +300,8 @@ offset_right = 34.0
 offset_bottom = -13.0
 
 [node name="Gun" type="Node2D" parent="." unique_id=805094962]
+process_mode = 4
+visible = false
 position = Vector2(10, 4.666667)
 
 [node name="RayCast2D" type="RayCast2D" parent="Gun" unique_id=957316887]

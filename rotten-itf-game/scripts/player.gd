@@ -34,17 +34,22 @@ func has(item: InvItem) -> bool:
 func use(item: InvItem):
 	inv.remove(item)
 
-# de/activating lantern
+# de/activating lantern/gun: only one at a time
 func _process(_delta):
 	if Input.is_action_just_pressed("interact"):
 		lantern.process_mode = Node.PROCESS_MODE_DISABLED if (lantern.process_mode == Node.PROCESS_MODE_INHERIT) else Node.PROCESS_MODE_INHERIT
 		lantern.visible = false if (lantern.visible == true) else lantern.visible == false
-	
+		gun.process_mode = Node.PROCESS_MODE_DISABLED
+		gun.visible = false
+		gun_sprite.visible = false
+		
 	if Input.is_action_just_pressed("rot_extend"):
 		gun.process_mode = Node.PROCESS_MODE_DISABLED if (gun.process_mode == Node.PROCESS_MODE_INHERIT) else Node.PROCESS_MODE_INHERIT
 		gun.visible = false if (gun.visible == true) else gun.visible == false
 		gun_sprite.visible = false if (gun_sprite.visible == true) else gun_sprite.visible == false
-
+		lantern.process_mode = Node.PROCESS_MODE_DISABLED
+		lantern.visible = false
+		
 func add_vine(src, dest):
 	print("inst @ " + str(src) + " & " + str(dest))
 	var vine = ROT_VINE.instantiate()
