@@ -14,5 +14,6 @@ script = ExtResource("1_0h50i")
 
 [node name="LineArea2D" type="Area2D" parent="Line2D" unique_id=1042866426]
 
+[connection signal="area_shape_entered" from="Line2D/LineArea2D" to="Line2D" method="_on_line_area_2d_area_shape_entered"]
 [connection signal="body_entered" from="Line2D/LineArea2D" to="Line2D" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Line2D/LineArea2D" to="Line2D" method="_on_area_2d_body_exited"]

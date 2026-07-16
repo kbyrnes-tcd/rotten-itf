@@ -10,12 +10,14 @@ const ROT_VINE = preload("uid://kicj2478es6o")
 
 func _ready():
 	segments_in_area = []
+	print("i am newly inst and i am doing my stuff!")
 	pts = points # assign points var (PackedVector2Arr)
 	call_deferred("inst_collisions") # instantiate collision shape from inspector defined curve
 
 # line2D collision: https://kidscancode.org/godot_recipes/4.x/2d/line_collision/index.html
 
 func inst_collisions():
+	print("inst coll!")
 	for i in points.size() - 1:
 		# need 2 define ST_BODY for 'solid' collisions and AREA for overlap detection 
 		var new_shape_static = CollisionShape2D.new()

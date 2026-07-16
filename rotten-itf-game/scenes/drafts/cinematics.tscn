@@ -91,13 +91,10 @@ points = PackedVector2Array(71, 478)
 
 [connection signal="area_entered" from="Vine/Line2D/LineArea2D" to="Vine/Line2D" method="_on_line_area_2d_area_entered"]
 [connection signal="area_exited" from="Vine/Line2D/LineArea2D" to="Vine/Line2D" method="_on_line_area_2d_area_exited"]
-[connection signal="area_shape_entered" from="Vine/Line2D/LineArea2D" to="Vine/Line2D" method="_on_line_area_2d_area_shape_entered"]
 [connection signal="area_entered" from="Vine2/Line2D/LineArea2D" to="Vine2/Line2D" method="_on_line_area_2d_area_entered"]
 [connection signal="area_exited" from="Vine2/Line2D/LineArea2D" to="Vine2/Line2D" method="_on_line_area_2d_area_exited"]
-[connection signal="area_shape_entered" from="Vine2/Line2D/LineArea2D" to="Vine2/Line2D" method="_on_line_area_2d_area_shape_entered"]
 [connection signal="area_entered" from="TestVine/Line2D/LineArea2D" to="TestVine/Line2D" method="_on_line_area_2d_area_entered"]
 [connection signal="area_exited" from="TestVine/Line2D/LineArea2D" to="TestVine/Line2D" method="_on_line_area_2d_area_exited"]
-[connection signal="area_shape_entered" from="TestVine/Line2D/LineArea2D" to="TestVine/Line2D" method="_on_line_area_2d_area_shape_entered"]
 
 [editable path="Vine"]
 [editable path="Vine2"]
