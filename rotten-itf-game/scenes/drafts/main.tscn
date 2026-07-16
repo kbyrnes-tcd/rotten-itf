@@ -13,7 +13,8 @@ size = Vector2(128, 145.60507)
 position = Vector2(-221, -203)
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("1_s7xyy")]
-position = Vector2(385, 468)
+position = Vector2(410, 494)
+scale = Vector2(2, 2)
 
 [node name="Ground" type="StaticBody2D" parent="." unique_id=1631808054]
 position = Vector2(579, 633)
@@ -31,15 +32,18 @@ shape = SubResource("RectangleShape2D_0wfyh")
 
 [node name="OrangeWorm" parent="." unique_id=385129123 instance=ExtResource("3_8mlnd")]
 position = Vector2(625, 487)
+scale = Vector2(2, 3)
 
 [node name="OrangeWorm2" parent="." unique_id=1316661098 instance=ExtResource("3_8mlnd")]
 position = Vector2(702, 343)
+scale = Vector2(2, 3)
 
 [node name="Sprite2D" parent="OrangeWorm2" index="0" unique_id=1696524264]
 flip_h = true
 
 [node name="GreenWorm" parent="." unique_id=1305437828 instance=ExtResource("3_8mlnd")]
 position = Vector2(765, 486.00003)
+scale = Vector2(2, 3)
 item = ExtResource("4_i8c17")
 
 [node name="Lantern" parent="." unique_id=1931797563 instance=ExtResource("5_35clj")]

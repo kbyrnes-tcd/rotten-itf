@@ -1,3 +1,97 @@
 [gd_scene format=3 uid="uid://w78vttqkmxaj"]
 
+[ext_resource type="Texture2D" uid="uid://cf8apj3uoflpk" path="res://assets/images/env/placeholders/Placeholder_bg.png" id="1_3syjq"]
+[ext_resource type="Texture2D" uid="uid://4bboojc7e87q" path="res://assets/images/env/placeholders/Placeholder_grass_ground.png" id="2_wg12t"]
+[ext_resource type="Texture2D" uid="uid://7wl4cp2ufuqk" path="res://assets/images/env/placeholders/Placeholder_temple.png" id="3_775pl"]
+[ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="4_3336g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3336g"]
+size = Vector2(2596, 33)
+
 [node name="Scene_01" type="Node2D" unique_id=358721782]
+
+[node name="Panel1" type="Node2D" parent="." unique_id=311141096]
+
+[node name="Background" type="Node2D" parent="Panel1" unique_id=20800015]
+position = Vector2(320, 180)
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel1/Background" unique_id=1104457338]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_3syjq")
+
+[node name="Ground" type="Node2D" parent="Panel1" unique_id=1171761337]
+position = Vector2(320, 342)
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel1/Ground" unique_id=241511891]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_wg12t")
+
+[node name="Panel2" type="Node2D" parent="." unique_id=804553990]
+position = Vector2(961, 180)
+
+[node name="Background2" type="Node2D" parent="Panel2" unique_id=969003033]
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel2/Background2" unique_id=1155313221]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_3syjq")
+
+[node name="Ground2" type="Node2D" parent="Panel2" unique_id=532612348]
+position = Vector2(0, 162)
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel2/Ground2" unique_id=1729969145]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_wg12t")
+
+[node name="Panel3" type="Node2D" parent="." unique_id=1002248890]
+position = Vector2(1599, 180)
+
+[node name="Background3" type="Node2D" parent="Panel3" unique_id=627040979]
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel3/Background3" unique_id=1636823564]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_3syjq")
+
+[node name="Temple" type="Node2D" parent="Panel3" unique_id=221250192]
+position = Vector2(564, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel3/Temple" unique_id=759440489]
+position = Vector2(-431, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_775pl")
+
+[node name="Ground3" type="Node2D" parent="Panel3" unique_id=1854170429]
+position = Vector2(0, 162)
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel3/Ground3" unique_id=1061355635]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_wg12t")
+
+[node name="Panel4" type="Node2D" parent="." unique_id=2122363125]
+position = Vector2(2237, 180)
+
+[node name="Background4" type="Node2D" parent="Panel4" unique_id=390037599]
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel4/Background4" unique_id=375936948]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_3syjq")
+
+[node name="Ground4" type="Node2D" parent="Panel4" unique_id=1536562725]
+position = Vector2(0, 162)
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel4/Ground4" unique_id=74164920]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_wg12t")
+
+[node name="Player" parent="." unique_id=1515659648 instance=ExtResource("4_3336g")]
+position = Vector2(61, 293)
+scale = Vector2(2, 2)
+SPEED = 250.0
+
+[node name="Colliders" type="Node2D" parent="." unique_id=2145202998]
+
+[node name="GroundCollider" type="StaticBody2D" parent="Colliders" unique_id=1613639351]
+position = Vector2(0, 342)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/GroundCollider" unique_id=409099627]
+position = Vector2(1288, -0.5)
+shape = SubResource("RectangleShape2D_3336g")
