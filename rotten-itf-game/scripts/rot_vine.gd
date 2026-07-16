@@ -5,11 +5,13 @@ var pts = []
 var player_in_area
 var segments_in_area
 var collider_in_area
+const ROT_VINE = preload("uid://kicj2478es6o")
+@onready var scene: Node2D = $"../.."
 
 func _ready():
 	segments_in_area = []
 	pts = points # assign points var (PackedVector2Arr)
-	inst_collisions() # instantiate collision shape from inspector defined curve
+	call_deferred("inst_collisions") # instantiate collision shape from inspector defined curve
 
 # line2D collision: https://kidscancode.org/godot_recipes/4.x/2d/line_collision/index.html
 
@@ -101,7 +103,8 @@ func _on_area_2d_body_entered(_body: Node2D) -> void:
 
 func _on_line_area_2d_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
 	var space_state = get_world_2d().direct_space_state
-	
+	var indices = [] # to store points within lantern-area; to later split at
+	print("lantern detecteddddddddd")
 	# converting points into global positions so we can check intersection with Area2Ds
 	for i in range(0, points.size()-1):
 		var global_pos = line_2d.to_global(points[i])
@@ -115,12 +118,31 @@ func _on_line_area_2d_area_shape_entered(_area_rid: RID, area: Area2D, _area_sha
 		var current_point_intersections = space_state.intersect_point(parameters)
 		
 		for intersection in current_point_intersections:
-			print(intersection.collider.name)
+			#print(intersection.collider.name)
 			# compare the current _on_line_area_2d_area_shape_entered NODE (area) against point/intersected COLLIDER
 			if intersection.collider == area:
-				print("removing point!")
-				pts.remove_at(i)
-				points = pts
+				indices.append(i)
+	
+	# SPLITTING
+	# account for splitting over a number of points rather than just one index
+	if indices.is_empty():
+		return
 
-	# update collision shapes to match new points
+	var first = indices[0]
+	var last = indices[indices.size() - 1]
+	var head = points.slice(0, first)
+	var tail = points.slice(last + 1, points.size())
+	
+	if tail.size() > 1:
+		add_vine(tail)
+	pts = head
+	points = pts
+
+	# outside of loops
 	call_deferred("update_collisions")
+
+func add_vine(pts_slice: PackedVector2Array):
+	#print("inst along" + str(pts_slice[0]) + " & " + str(pts_slice[pts_slice.size()-1]))
+	var vine = ROT_VINE.instantiate()
+	vine.get_child(0).points = pts_slice
+	scene.add_child(vine)

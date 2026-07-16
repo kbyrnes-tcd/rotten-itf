@@ -5,7 +5,6 @@
 [node name="Vine" type="Node2D" unique_id=1749191672]
 
 [node name="Line2D" type="Line2D" parent="." unique_id=1590463200]
-position = Vector2(-0.26556042, 11.177147)
 points = PackedVector2Array(2.2655604, -8.177147, 24.26556, 5.822853)
 width = 7.0
 default_color = Color(0, 0.46252555, 0.107798316, 1)
