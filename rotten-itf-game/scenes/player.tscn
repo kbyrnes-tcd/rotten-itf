@@ -8,6 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://c15gnofeo03bn" path="res://assets/images/player/Run (32x32).png" id="4_fjrip"]
 [ext_resource type="AudioStream" uid="uid://dvdukd1lqtaao" path="res://assets/audio/jump.wav" id="6_tuyoq"]
 [ext_resource type="PackedScene" uid="uid://0hlcimiuwo6o" path="res://scenes/ui/inv_ui.tscn" id="8_smehm"]
+[ext_resource type="Texture2D" uid="uid://bg2xv2dit48xi" path="res://assets/images/worms/lantern.png" id="9_ur7pv"]
+[ext_resource type="Texture2D" uid="uid://dbkabib4tp1d" path="res://assets/images/rot/gun.png" id="10_y4r1p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qlg0r"]
+size = Vector2(20.666668, 25.333332)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qino5"]
 atlas = ExtResource("1_dqkch")
@@ -245,23 +250,44 @@ animations = [{
 "speed": 20.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qlg0r"]
-size = Vector2(20, 25.333332)
+[sub_resource type="CircleShape2D" id="CircleShape2D_y4r1p"]
+radius = 35.19535
 
 [node name="Player" type="CharacterBody2D" unique_id=1515659648]
 scale = Vector2(3, 3)
 script = ExtResource("1_qlg0r")
 inv = ExtResource("2_fjrip")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=512896578]
+[node name="PlyrCollisionShape2D" type="CollisionShape2D" parent="." unique_id=66024058]
+position = Vector2(0.6666667, 3.3333335)
+shape = SubResource("RectangleShape2D_qlg0r")
+
+[node name="CharacterSprites" type="Node2D" parent="." unique_id=2095860029]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterSprites" unique_id=512896578]
 sprite_frames = SubResource("SpriteFrames_6adnx")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.66269505
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=66024058]
-position = Vector2(0.6666667, 3.3333335)
-shape = SubResource("RectangleShape2D_qlg0r")
+[node name="Lantern" type="Node2D" parent="CharacterSprites" unique_id=964616978]
+position = Vector2(17.333334, 2.666667)
+scale = Vector2(0.455, 0.455)
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterSprites/Lantern" unique_id=142452027]
+texture = ExtResource("9_ur7pv")
+
+[node name="LanternArea2D" type="Area2D" parent="CharacterSprites/Lantern" unique_id=1614078195]
+position = Vector2(13.186813, -7.326008)
+
+[node name="LntrnCollisionShape2D" type="CollisionShape2D" parent="CharacterSprites/Lantern/LanternArea2D" unique_id=877712953]
+position = Vector2(10.256411, -2.197803)
+shape = SubResource("CircleShape2D_y4r1p")
+
+[node name="GunSprite2D" type="Sprite2D" parent="CharacterSprites" unique_id=1835702057]
+position = Vector2(17.94, 4.666667)
+scale = Vector2(0.67, 0.67)
+texture = ExtResource("10_y4r1p")
 
 [node name="JumpFX" type="AudioStreamPlayer2D" parent="." unique_id=1761152459]
 stream = ExtResource("6_tuyoq")
@@ -271,3 +297,17 @@ offset_left = -32.0
 offset_top = -57.0
 offset_right = 34.0
 offset_bottom = -13.0
+
+[node name="Gun" type="Node2D" parent="." unique_id=805094962]
+position = Vector2(10, 4.666667)
+
+[node name="RayCast2D" type="RayCast2D" parent="Gun" unique_id=957316887]
+rotation = -1.5707964
+target_position = Vector2(0, 30)
+collide_with_areas = true
+
+[node name="RayLine2D" type="Line2D" parent="Gun/RayCast2D" unique_id=345017324]
+points = PackedVector2Array(0, 0, -1.4305115e-06, 29.666668)
+width = 2.0
+default_color = Color(0.1882353, 0.3647059, 0.23137255, 1)
+joint_mode = 2

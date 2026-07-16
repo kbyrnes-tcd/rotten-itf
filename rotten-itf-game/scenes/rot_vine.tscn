@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://kicj2478es6o"]
+
+[ext_resource type="Script" uid="uid://bxk8d33jlrfj1" path="res://scripts/rot_vine.gd" id="1_0h50i"]
+
+[node name="Vine" type="Node2D" unique_id=1749191672]
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1590463200]
+points = PackedVector2Array(2.2655604, -8.177147, 24.26556, 5.822853)
+width = 7.0
+default_color = Color(0, 0.46252555, 0.107798316, 1)
+script = ExtResource("1_0h50i")
+
+[node name="LineStaticBody2D" type="StaticBody2D" parent="Line2D" unique_id=78523614]
+
+[node name="LineArea2D" type="Area2D" parent="Line2D" unique_id=1042866426]
+
+[connection signal="area_shape_entered" from="Line2D/LineArea2D" to="Line2D" method="_on_line_area_2d_area_shape_entered"]
+[connection signal="body_entered" from="Line2D/LineArea2D" to="Line2D" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Line2D/LineArea2D" to="Line2D" method="_on_area_2d_body_exited"]
