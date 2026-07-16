@@ -10,14 +10,12 @@ const ROT_VINE = preload("uid://kicj2478es6o")
 
 func _ready():
 	segments_in_area = []
-	print("i am newly inst and i am doing my stuff!")
 	pts = points # assign points var (PackedVector2Arr)
 	call_deferred("inst_collisions") # instantiate collision shape from inspector defined curve
 
 # line2D collision: https://kidscancode.org/godot_recipes/4.x/2d/line_collision/index.html
 
 func inst_collisions():
-	print("inst coll!")
 	for i in points.size() - 1:
 		# need 2 define ST_BODY for 'solid' collisions and AREA for overlap detection 
 		var new_shape_static = CollisionShape2D.new()
@@ -135,12 +133,21 @@ func _on_line_area_2d_area_shape_entered(_area_rid: RID, area: Area2D, _area_sha
 		var head = points.slice(0, first)
 		var tail = points.slice(last + 1, points.size())
 		
+		#var points_in_area = points.slice(first, last+2)
+		
 		if tail.size() > 1:
+			add_vine(head)
 			add_vine(tail)
-		pts = head
+		
+		pts.clear()
 		points = pts
-
-		# outside of loops
+		
+		# TODO: TEMPORARY NON-COLLISION
+		# intersected area still exists but no collision	
+		#pts = points_in_area
+		#points = pts
+		#call_deferred("update_collisions")
+		#call_deferred("time_out_collision")
 		call_deferred("update_collisions")
 
 func add_vine(pts_slice: PackedVector2Array):
@@ -148,3 +155,9 @@ func add_vine(pts_slice: PackedVector2Array):
 	var vine = ROT_VINE.instantiate()
 	vine.get_child(0).points = pts_slice
 	scene.add_child(vine)
+	#call_deferred("queue_free")
+	
+func time_out_collision():
+	$".".get_child(0).process_mode=Node.PROCESS_MODE_DISABLED
+	await get_tree().create_timer(3.0).timeout
+	$".".get_child(0).process_mode=Node.PROCESS_MODE_INHERIT
