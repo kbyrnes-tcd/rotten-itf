@@ -104,44 +104,44 @@ func _on_area_2d_body_entered(_body: Node2D) -> void:
 	pass
 
 func _on_line_area_2d_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
-	var space_state = get_world_2d().direct_space_state
-	var indices = [] # to store points within lantern-area; to later split at
-	print("lantern detecteddddddddd")
-	# converting points into global positions so we can check intersection with Area2Ds
-	for i in range(0, points.size()-1):
-		var global_pos = line_2d.to_global(points[i])
-		var parameters = PhysicsPointQueryParameters2D.new()
-		parameters.position = global_pos
-		parameters.collide_with_areas = true
-		parameters.collide_with_bodies = false
-		parameters.collision_mask = 1
+	if area.name == "LanternArea2D":
+		var space_state = get_world_2d().direct_space_state
+		var indices = [] # to store points within lantern-area; to later split at
+		# converting points into global positions so we can check intersection with Area2Ds
+		for i in range(0, points.size()-1):
+			var global_pos = line_2d.to_global(points[i])
+			var parameters = PhysicsPointQueryParameters2D.new()
+			parameters.position = global_pos
+			parameters.collide_with_areas = true
+			parameters.collide_with_bodies = false
+			parameters.collision_mask = 1
+			
+			# stores Area2Ds the current point intersects w/
+			var current_point_intersections = space_state.intersect_point(parameters)
+			
+			for intersection in current_point_intersections:
+				#print(intersection.collider.name)
+				# compare the current _on_line_area_2d_area_shape_entered NODE (area) against point/intersected COLLIDER
+				if intersection.collider == area:
+					indices.append(i)
 		
-		# stores Area2Ds the current point intersects w/
-		var current_point_intersections = space_state.intersect_point(parameters)
+		# SPLITTING
+		# account for splitting over a number of points rather than just one index
+		if indices.is_empty():
+			return
+
+		var first = indices[0]
+		var last = indices[indices.size() - 1]
+		var head = points.slice(0, first)
+		var tail = points.slice(last + 1, points.size())
 		
-		for intersection in current_point_intersections:
-			#print(intersection.collider.name)
-			# compare the current _on_line_area_2d_area_shape_entered NODE (area) against point/intersected COLLIDER
-			if intersection.collider == area:
-				indices.append(i)
-	
-	# SPLITTING
-	# account for splitting over a number of points rather than just one index
-	if indices.is_empty():
-		return
+		if tail.size() > 1:
+			add_vine(tail)
+		pts = head
+		points = pts
 
-	var first = indices[0]
-	var last = indices[indices.size() - 1]
-	var head = points.slice(0, first)
-	var tail = points.slice(last + 1, points.size())
-	
-	if tail.size() > 1:
-		add_vine(tail)
-	pts = head
-	points = pts
-
-	# outside of loops
-	call_deferred("update_collisions")
+		# outside of loops
+		call_deferred("update_collisions")
 
 func add_vine(pts_slice: PackedVector2Array):
 	#print("inst along" + str(pts_slice[0]) + " & " + str(pts_slice[pts_slice.size()-1]))
