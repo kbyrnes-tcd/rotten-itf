@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://bavjvyb2vynwb"]
+
+[ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="1_s7xyy"]
+[ext_resource type="Texture2D" uid="uid://btvw0tm1fb350" path="res://assets/images/env/brick-wall.jpg" id="2_c7vjp"]
+[ext_resource type="PackedScene" uid="uid://ufmhebijpwbb" path="res://scenes/collectible_item.tscn" id="3_8mlnd"]
+[ext_resource type="Resource" uid="uid://6pxkrw3jqp6n" path="res://scripts/inventory_system/items/green_worm.tres" id="4_i8c17"]
+[ext_resource type="PackedScene" uid="uid://04yyftmutrku" path="res://scenes/item_consumer.tscn" id="5_35clj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0wfyh"]
+size = Vector2(128, 145.60507)
+
+[node name="Main" type="Node2D" unique_id=1166888353]
+position = Vector2(-221, -203)
+
+[node name="Player" parent="." unique_id=1515659648 instance=ExtResource("1_s7xyy")]
+position = Vector2(385, 468)
+
+[node name="Ground" type="StaticBody2D" parent="." unique_id=1631808054]
+position = Vector2(579, 633)
+scale = Vector2(1.7677535, -1.3315735)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground" unique_id=1946065389]
+position = Vector2(1, 0)
+scale = Vector2(1, 0.31999946)
+texture = ExtResource("2_c7vjp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=2008563852]
+position = Vector2(0, 6.8025513)
+scale = Vector2(5.455, 1)
+shape = SubResource("RectangleShape2D_0wfyh")
+
+[node name="OrangeWorm" parent="." unique_id=385129123 instance=ExtResource("3_8mlnd")]
+position = Vector2(625, 487)
+
+[node name="OrangeWorm2" parent="." unique_id=1316661098 instance=ExtResource("3_8mlnd")]
+position = Vector2(702, 343)
+
+[node name="Sprite2D" parent="OrangeWorm2" index="0" unique_id=1696524264]
+flip_h = true
+
+[node name="GreenWorm" parent="." unique_id=1305437828 instance=ExtResource("3_8mlnd")]
+position = Vector2(765, 486.00003)
+item = ExtResource("4_i8c17")
+
+[node name="Lantern" parent="." unique_id=1931797563 instance=ExtResource("5_35clj")]
+position = Vector2(310, 470)
+
+[editable path="OrangeWorm2"]

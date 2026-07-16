@@ -19,8 +19,8 @@ const ROT_VINE = preload("uid://kicj2478es6o")
 # inventory system
 @export var inv : Inventory
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -850.0
+const SPEED = 150.0
+const JUMP_VELOCITY = -650.0
 var scale_x_transform = 1
 
 # collecting items
