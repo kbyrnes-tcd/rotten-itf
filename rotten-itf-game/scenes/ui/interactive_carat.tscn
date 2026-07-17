@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bimatr4hej8ja"]
+
+[ext_resource type="Script" uid="uid://b1kcip586q27h" path="res://scripts/interactive_carat.gd" id="1_xk45g"]
+[ext_resource type="Texture2D" uid="uid://cd4cbrmm0xm5a" path="res://assets/images/ui/carat.png" id="2_i8hah"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xk45g"]
+size = Vector2(20, 36.794254)
+
+[node name="InteractiveCarat" type="Node2D" unique_id=1099497837]
+script = ExtResource("1_xk45g")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=398849491]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_i8hah")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1489179703]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1877122585]
+position = Vector2(0, 70)
+scale = Vector2(3.5200016, 8.360001)
+shape = SubResource("RectangleShape2D_xk45g")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
