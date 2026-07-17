@@ -1,0 +1,156 @@
+[gd_scene format=3 uid="uid://c1t3wm504d0eh"]
+
+[ext_resource type="Script" uid="uid://bq7wqiwq0l3vb" path="res://scripts/constellation_minigame.gd" id="1_aiiqg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aiiqg"]
+bg_color = Color(0.9490196, 0.92156863, 0.84705883, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_opwrk"]
+bg_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hn4x1"]
+bg_color = Color(0.05490196, 0.047058824, 0.078431375, 1)
+
+[node name="ConstellationMiniGame" type="Control" unique_id=1388183436]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aiiqg")
+
+[node name="Background" type="ColorRect" parent="." unique_id=546783929]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05490196, 0.047058824, 0.078431375, 1)
+
+[node name="MainSplit" type="HBoxContainer" parent="." unique_id=1057022010]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="LetterPanel" type="Panel" parent="MainSplit" unique_id=1040154083]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aiiqg")
+
+[node name="LetterMargin" type="MarginContainer" parent="MainSplit/LetterPanel" unique_id=743109648]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 304.0
+offset_top = 2.0
+offset_right = 704.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="LetterContent" type="VBoxContainer" parent="MainSplit/LetterPanel/LetterMargin" unique_id=594126654]
+layout_mode = 2
+
+[node name="LetterTitle" type="Label" parent="MainSplit/LetterPanel/LetterMargin/LetterContent" unique_id=1785264693]
+layout_mode = 2
+
+[node name="LetterBody" type="RichTextLabel" parent="MainSplit/LetterPanel/LetterMargin/LetterContent" unique_id=1675308958]
+layout_mode = 2
+fit_content = true
+scroll_active = false
+
+[node name="GapRow" type="HBoxContainer" parent="MainSplit/LetterPanel/LetterMargin/LetterContent" unique_id=31347012]
+layout_mode = 2
+
+[node name="GapBefore" type="Label" parent="MainSplit/LetterPanel/LetterMargin/LetterContent/GapRow" unique_id=1602538460]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="GapSlot" type="Panel" parent="MainSplit/LetterPanel/LetterMargin/LetterContent/GapRow" unique_id=1077847534]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_opwrk")
+
+[node name="GapLabel" type="Label" parent="MainSplit/LetterPanel/LetterMargin/LetterContent/GapRow/GapSlot" unique_id=954039695]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GapAfter" type="Label" parent="MainSplit/LetterPanel/LetterMargin/LetterContent/GapRow" unique_id=1769861912]
+layout_mode = 2
+size_flags_horizontal = 3
+autowrap_mode = 2
+
+[node name="StarPanel" type="Panel" parent="MainSplit" unique_id=1853166917]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hn4x1")
+
+[node name="StarMargin" type="MarginContainer" parent="MainSplit/StarPanel" unique_id=1425903309]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_left = 755.0
+offset_top = 4.0
+offset_right = 1904.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="StarContent" type="VBoxContainer" parent="MainSplit/StarPanel/StarMargin" unique_id=973903925]
+layout_mode = 2
+
+[node name="StarInstruction" type="Label" parent="MainSplit/StarPanel/StarMargin/StarContent" unique_id=1414108282]
+layout_mode = 2
+
+[node name="SymbolGrid" type="GridContainer" parent="MainSplit/StarPanel/StarMargin/StarContent" unique_id=1444565647]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 2
+
+[node name="ContinueButton" type="Button" parent="." unique_id=1682867494]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -39.5
+offset_top = -31.0
+offset_right = 39.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 8
+text = "Continue"
+
+[node name="FeedbackLabel" type="Label" parent="." unique_id=1352769540]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
