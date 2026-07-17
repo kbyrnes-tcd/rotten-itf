@@ -36,7 +36,7 @@ func use(item: InvItem):
 
 # de/activating lantern
 func _process(_delta):
-	if Input.is_action_just_pressed("interact"):
+	if Input.is_action_just_pressed("rot_cut"):
 		lantern.process_mode = Node.PROCESS_MODE_DISABLED if (lantern.process_mode == Node.PROCESS_MODE_INHERIT) else Node.PROCESS_MODE_INHERIT
 		lantern.visible = false if (lantern.visible == true) else lantern.visible == false
 	
