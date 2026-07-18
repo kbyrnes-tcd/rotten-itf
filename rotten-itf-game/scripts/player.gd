@@ -19,8 +19,8 @@ const ROT_VINE = preload("uid://kicj2478es6o")
 # inventory system
 @export var inv : Inventory
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -850.0
+@export var SPEED = 150.0
+@export var JUMP_VELOCITY = -650.0
 var scale_x_transform = 1
 
 # collecting items
@@ -36,7 +36,7 @@ func use(item: InvItem):
 
 # de/activating lantern
 func _process(_delta):
-	if Input.is_action_just_pressed("interact"):
+	if Input.is_action_just_pressed("rot_cut"):
 		lantern.process_mode = Node.PROCESS_MODE_DISABLED if (lantern.process_mode == Node.PROCESS_MODE_INHERIT) else Node.PROCESS_MODE_INHERIT
 		lantern.visible = false if (lantern.visible == true) else lantern.visible == false
 	
