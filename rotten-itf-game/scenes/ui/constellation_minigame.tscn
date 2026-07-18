@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://c1rnbd3vqkq72"]
+[gd_scene format=3 uid="uid://c1t3wm504d0eh"]
 
-[ext_resource type="Script" path="res://scripts/constellation_minigame.gd" id="1_aiiqg"]
+[ext_resource type="Script" uid="uid://bq7wqiwq0l3vb" path="res://scripts/constellation_minigame.gd" id="1_aiiqg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aiiqg"]
 bg_color = Color(0.9490196, 0.92156863, 0.84705883, 1)
