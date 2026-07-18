@@ -254,9 +254,10 @@ animations = [{
 radius = 35.19535
 
 [node name="Player" type="CharacterBody2D" unique_id=1515659648]
-scale = Vector2(3, 3)
 script = ExtResource("1_qlg0r")
 inv = ExtResource("2_fjrip")
+SPEED = 250.0
+JUMP_VELOCITY = -850.0
 
 [node name="PlyrCollisionShape2D" type="CollisionShape2D" parent="." unique_id=66024058]
 position = Vector2(0.6666667, 3.3333335)
@@ -298,6 +299,7 @@ offset_left = -32.0
 offset_top = -57.0
 offset_right = 34.0
 offset_bottom = -13.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Gun" type="Node2D" parent="." unique_id=805094962]
 process_mode = 4
@@ -314,3 +316,16 @@ points = PackedVector2Array(0, 0, -1.4305115e-06, 29.666668)
 width = 2.0
 default_color = Color(0.1882353, 0.3647059, 0.23137255, 1)
 joint_mode = 2
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1705181399]
+offset = Vector2(85, 0)
+limit_left = -80
+limit_top = 200
+limit_right = 2470
+limit_bottom = 158
+limit_smoothed = true
+rotation_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_top_margin = 0.0
+drag_right_margin = 0.0
+drag_bottom_margin = 0.0

@@ -20,11 +20,12 @@ size = Vector2(20, 16.416668)
 [node name="Cinematics" type="Node2D" unique_id=2119182474]
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("1_4caar")]
-position = Vector2(41, 462)
+position = Vector2(121, 300)
+scale = Vector2(1.5, 1.5)
 
 [node name="Ground" type="StaticBody2D" parent="." unique_id=1340810883]
-position = Vector2(565, 579)
-scale = Vector2(2.5199988, 1.0119224)
+position = Vector2(355, 372)
+scale = Vector2(1.1125047, 0.7125058)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Ground" unique_id=1274592477]
@@ -45,8 +46,8 @@ position = Vector2(623, 329)
 texture = ExtResource("7_7poft")
 
 [node name="Block2" type="Node2D" parent="." unique_id=2135219249]
-position = Vector2(530, 466.00003)
-scale = Vector2(12.999995, 6)
+position = Vector2(292, 303)
+scale = Vector2(7.18, 2.59)
 
 [node name="Sprite2D" type="Sprite2D" parent="Block2" unique_id=248981842]
 texture = ExtResource("8_532ng")
@@ -59,8 +60,8 @@ scale = Vector2(0.76615393, 1)
 shape = SubResource("RectangleShape2D_qrf0y")
 
 [node name="Block" type="Node2D" parent="." unique_id=1753851023]
-position = Vector2(751.00006, 302)
-scale = Vector2(14.76, 3.3600006)
+position = Vector2(513, 139)
+scale = Vector2(7.18, 2.59)
 
 [node name="Sprite2D" type="Sprite2D" parent="Block" unique_id=545588756]
 texture = ExtResource("8_532ng")
@@ -75,12 +76,7 @@ shape = SubResource("RectangleShape2D_qrf0y")
 [node name="Vine" parent="." unique_id=1749191672 instance=ExtResource("6_qrf0y")]
 
 [node name="Line2D" parent="Vine" index="0" unique_id=1590463200]
-points = PackedVector2Array(242.26556, 481.82285, 265, 483, 289.12393, 478.51987, 310.3733, 474.57358, 337.57806, 469.52124, 372.19333, 463.09268, 405, 457, 376, 404, 387.26556, 390.82285, 404.26556, 372.82285, 414.26556, 353.82285, 422.26556, 330.82285, 426.26556, 306.82285, 444.26556, 290.82285)
-
-[node name="Vine2" parent="." unique_id=1657169479 instance=ExtResource("6_qrf0y")]
-
-[node name="Line2D" parent="Vine2" index="0" unique_id=1590463200]
-points = PackedVector2Array(589, 342, 648, 345, 663, 324, 701, 334, 707.1692, 296.98456, 716, 248, 719, 213, 729, 157, 731, 127, 740.2261, 86.296814, 748, 52, 758, 17, 791, 50, 820, 76, 816.5016, 107.096695, 812.22253, 145.1327, 807.7396, 184.98022, 803.78186, 220.15982, 800.05304, 253.30533, 793, 316, 812, 340, 847, 342, 879, 340, 915, 337, 936, 339)
+points = PackedVector2Array(290, 260, 315, 266, 337, 265, 330, 241, 353, 237, 341, 219, 369, 192, 359, 141, 400, 164, 410, 106, 426, 124, 449, 76, 494, 102, 542, 100, 562, 86, 579, 96, 601, 139)
 
 [node name="TestVine" parent="." unique_id=996528017 instance=ExtResource("6_qrf0y")]
 visible = false
@@ -90,11 +86,8 @@ points = PackedVector2Array(71, 478)
 
 [connection signal="area_entered" from="Vine/Line2D/LineArea2D" to="Vine/Line2D" method="_on_line_area_2d_area_entered"]
 [connection signal="area_exited" from="Vine/Line2D/LineArea2D" to="Vine/Line2D" method="_on_line_area_2d_area_exited"]
-[connection signal="area_entered" from="Vine2/Line2D/LineArea2D" to="Vine2/Line2D" method="_on_line_area_2d_area_entered"]
-[connection signal="area_exited" from="Vine2/Line2D/LineArea2D" to="Vine2/Line2D" method="_on_line_area_2d_area_exited"]
 [connection signal="area_entered" from="TestVine/Line2D/LineArea2D" to="TestVine/Line2D" method="_on_line_area_2d_area_entered"]
 [connection signal="area_exited" from="TestVine/Line2D/LineArea2D" to="TestVine/Line2D" method="_on_line_area_2d_area_exited"]
 
 [editable path="Vine"]
-[editable path="Vine2"]
 [editable path="TestVine"]
