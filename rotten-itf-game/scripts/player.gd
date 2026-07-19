@@ -50,10 +50,32 @@ func _process(_delta):
 		lantern.process_mode = Node.PROCESS_MODE_DISABLED
 		lantern.visible = false
 		
-func add_vine(src, dest):
-	print("inst @ " + str(src) + " & " + str(dest))
+func midpoint(src: Vector2, dest: Vector2):
+	return Vector2(src.x+dest.x, src.y+dest.y)/2
+	
+func add_vine(src: Vector2, dest: Vector2):
+	#print("inst @ " + str(src) + " & " + str(dest))
+	var dist_scale : int = roundf(src.distance_to(dest)/70)
+	#print(dist_scale)
+	
 	var vine = ROT_VINE.instantiate()
-	vine.get_child(0).points = PackedVector2Array([src, dest])
+	var vine_points : PackedVector2Array = PackedVector2Array([src, dest])
+	
+	var counter = 0
+	# while: iterates over all passes necessary to segment points w/ dist_scale
+	while counter < dist_scale:
+		var vine_points_acc : PackedVector2Array = PackedVector2Array([vine_points[0]])
+		# for: iterates over all points
+		for i in range(vine_points.size()-1):
+			var source = vine_points[i]
+			var desti = vine_points[i + 1]
+			var midp = midpoint(source, desti)
+			vine_points_acc.append(midp)
+			vine_points_acc.append(desti)
+		vine_points = vine_points_acc
+		counter += 1
+	
+	vine.get_child(0).points = vine_points
 	scene.add_child(vine)
 
 # handling movement
