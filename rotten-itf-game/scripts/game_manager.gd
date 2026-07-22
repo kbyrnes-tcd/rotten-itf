@@ -1,5 +1,5 @@
 extends Node
-static var level_prog = ["Scene_00", "Scene_01", "Scene_02"]
+static var level_prog = ["Begin", "Scene_01", "Scene_02"]
 static var level_root: Node2D
 
 func _ready() -> void:
