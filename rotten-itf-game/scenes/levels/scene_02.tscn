@@ -1,13 +1,12 @@
-[gd_scene format=3 uid="uid://w78vttqkmxaj"]
+[gd_scene format=3 uid="uid://db00qg8xwqve6"]
 
-[ext_resource type="Texture2D" uid="uid://cf8apj3uoflpk" path="res://assets/images/env/placeholders/Placeholder_bg.png" id="1_3syjq"]
-[ext_resource type="Texture2D" uid="uid://4bboojc7e87q" path="res://assets/images/env/placeholders/Placeholder_grass_ground.png" id="2_wg12t"]
-[ext_resource type="PackedScene" uid="uid://ufmhebijpwbb" path="res://scenes/collectible_item.tscn" id="3_5t0pk"]
-[ext_resource type="Texture2D" uid="uid://7wl4cp2ufuqk" path="res://assets/images/env/placeholders/Placeholder_temple.png" id="3_775pl"]
-[ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="4_3336g"]
-[ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="4_c6wtd"]
-[ext_resource type="PackedScene" uid="uid://bimatr4hej8ja" path="res://scenes/ui/interactive_carat.tscn" id="5_8bo55"]
-[ext_resource type="Script" uid="uid://cvirlabisap40" path="res://scripts/camera_path.gd" id="5_jmjgo"]
+[ext_resource type="Texture2D" uid="uid://cf8apj3uoflpk" path="res://assets/images/env/placeholders/Placeholder_bg.png" id="1_lvonh"]
+[ext_resource type="Texture2D" uid="uid://4bboojc7e87q" path="res://assets/images/env/placeholders/Placeholder_grass_ground.png" id="2_2tqn1"]
+[ext_resource type="Texture2D" uid="uid://7wl4cp2ufuqk" path="res://assets/images/env/placeholders/Placeholder_temple.png" id="3_4n1ul"]
+[ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="4_qsi71"]
+[ext_resource type="PackedScene" uid="uid://bimatr4hej8ja" path="res://scenes/ui/interactive_carat.tscn" id="5_jpmnv"]
+[ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="6_6c07b"]
+[ext_resource type="Script" uid="uid://cvirlabisap40" path="res://scripts/camera_path.gd" id="7_wxmuh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3336g"]
 size = Vector2(2596, 33)
@@ -27,14 +26,14 @@ position = Vector2(320, 180)
 
 [node name="Sprite2D" type="Sprite2D" parent="Panel1/Background" unique_id=1104457338]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_3syjq")
+texture = ExtResource("1_lvonh")
 
 [node name="Ground" type="Node2D" parent="Panel1" unique_id=1171761337]
 position = Vector2(320, 342)
 
 [node name="Sprite2D" type="Sprite2D" parent="Panel1/Ground" unique_id=241511891]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_wg12t")
+texture = ExtResource("2_2tqn1")
 
 [node name="Panel2" type="Node2D" parent="." unique_id=804553990]
 position = Vector2(961, 180)
@@ -43,16 +42,14 @@ position = Vector2(961, 180)
 
 [node name="Sprite2D" type="Sprite2D" parent="Panel2/Background2" unique_id=1155313221]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_3syjq")
+texture = ExtResource("1_lvonh")
 
 [node name="Ground2" type="Node2D" parent="Panel2" unique_id=532612348]
 position = Vector2(0, 162)
 
 [node name="Sprite2D" type="Sprite2D" parent="Panel2/Ground2" unique_id=1729969145]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_wg12t")
-
-[node name="OrangeWorm" parent="Panel2" unique_id=385129123 instance=ExtResource("3_5t0pk")]
+texture = ExtResource("2_2tqn1")
 
 [node name="Panel3" type="Node2D" parent="." unique_id=1002248890]
 position = Vector2(1599, 180)
@@ -61,20 +58,20 @@ position = Vector2(1599, 180)
 
 [node name="Sprite2D" type="Sprite2D" parent="Panel3/Background3" unique_id=1636823564]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_3syjq")
+texture = ExtResource("1_lvonh")
 
 [node name="Temple" type="Node2D" parent="Panel3" unique_id=221250192]
-position = Vector2(564, 0)
+position = Vector2(-796, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Panel3/Temple" unique_id=759440489]
 position = Vector2(-431, 0)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_775pl")
+texture = ExtResource("3_4n1ul")
 
-[node name="DoorArea2D" parent="Panel3/Temple/Sprite2D" unique_id=1160326856 instance=ExtResource("4_c6wtd")]
+[node name="DoorArea2D" parent="Panel3/Temple/Sprite2D" unique_id=1160326856 instance=ExtResource("4_qsi71")]
 position = Vector2(-180, 146)
 
-[node name="InteractiveCarat" parent="Panel3/Temple/Sprite2D" unique_id=1099497837 instance=ExtResource("5_8bo55")]
+[node name="InteractiveCarat" parent="Panel3/Temple/Sprite2D" unique_id=1099497837 instance=ExtResource("5_jpmnv")]
 position = Vector2(-180, 0)
 
 [node name="Sprite2D" parent="Panel3/Temple/Sprite2D/InteractiveCarat" index="0" unique_id=398849491]
@@ -89,7 +86,7 @@ position = Vector2(0, 162)
 
 [node name="Sprite2D" type="Sprite2D" parent="Panel3/Ground3" unique_id=1061355635]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_wg12t")
+texture = ExtResource("2_2tqn1")
 
 [node name="Panel4" type="Node2D" parent="." unique_id=2122363125]
 position = Vector2(2237, 180)
@@ -98,14 +95,14 @@ position = Vector2(2237, 180)
 
 [node name="Sprite2D" type="Sprite2D" parent="Panel4/Background4" unique_id=375936948]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_3syjq")
+texture = ExtResource("1_lvonh")
 
 [node name="Ground4" type="Node2D" parent="Panel4" unique_id=1536562725]
 position = Vector2(0, 162)
 
 [node name="Sprite2D" type="Sprite2D" parent="Panel4/Ground4" unique_id=74164920]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_wg12t")
+texture = ExtResource("2_2tqn1")
 
 [node name="Colliders" type="Node2D" parent="." unique_id=2145202998]
 
@@ -134,14 +131,14 @@ scale = Vector2(0.15999758, 1)
 position = Vector2(1288, -0.5)
 shape = SubResource("RectangleShape2D_3336g")
 
-[node name="Player" parent="." unique_id=1515659648 instance=ExtResource("4_3336g")]
+[node name="Player" parent="." unique_id=1515659648 instance=ExtResource("6_6c07b")]
 position = Vector2(49, 309)
 
 [node name="CameraPath2D" type="Path2D" parent="." unique_id=983943170]
 process_mode = 4
 visible = false
 curve = SubResource("Curve2D_3336g")
-script = ExtResource("5_jmjgo")
+script = ExtResource("7_wxmuh")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="CameraPath2D" unique_id=1327510548]
 position = Vector2(180, 300)
