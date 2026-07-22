@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://ufmhebijpwbb" path="res://scenes/collectible_item.tscn" id="3_8mlnd"]
 [ext_resource type="Resource" uid="uid://6pxkrw3jqp6n" path="res://scripts/inventory_system/items/green_worm.tres" id="4_i8c17"]
 [ext_resource type="PackedScene" uid="uid://04yyftmutrku" path="res://scenes/item_consumer.tscn" id="5_35clj"]
+[ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="6_8mlnd"]
+[ext_resource type="PackedScene" uid="uid://w78vttqkmxaj" path="res://scenes/levels/scene_01.tscn" id="7_i8c17"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0wfyh"]
 size = Vector2(128, 145.60507)
@@ -15,6 +17,9 @@ position = Vector2(-221, -203)
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("1_s7xyy")]
 position = Vector2(410, 494)
 scale = Vector2(2, 2)
+
+[node name="Camera2D" parent="Player" index="5" unique_id=1705181399]
+limit_left = -339
 
 [node name="Ground" type="StaticBody2D" parent="." unique_id=1631808054]
 position = Vector2(579, 633)
@@ -49,4 +54,9 @@ item = ExtResource("4_i8c17")
 [node name="Lantern" parent="." unique_id=1931797563 instance=ExtResource("5_35clj")]
 position = Vector2(310, 470)
 
+[node name="DoorArea2D" parent="." unique_id=1160326856 instance=ExtResource("6_8mlnd")]
+position = Vector2(101.00001, 376.00003)
+next_scene = ExtResource("7_i8c17")
+
+[editable path="Player"]
 [editable path="OrangeWorm2"]
