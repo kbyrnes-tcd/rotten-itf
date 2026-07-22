@@ -1,10 +1,14 @@
 extends Node
 static var level_prog = ["Begin", "Scene_01", "Scene_02"]
 static var level_root: Node2D
+@export var _debug_level_num: int
 
 func _ready() -> void:
 	level_root = get_node("World/LevelRoot")
-	load_level(level_prog[1]) # AUTOLOAD SCENE_00
+	if !_debug_level_num:
+		load_level(level_prog[1]) # AUTOLOAD SCENE_01
+	else:
+		load_level(level_prog[_debug_level_num]) # DEBUG STATE
 
 static func unload_level():
 	if level_root.get_child_count() > 0:
