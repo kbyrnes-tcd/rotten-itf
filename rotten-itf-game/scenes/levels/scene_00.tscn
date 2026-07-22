@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://b5f1lcarbpx50"]
+
+[ext_resource type="PackedScene" uid="uid://cpwsgbr3fr7by" path="res://scenes/ui/pause_menu.tscn" id="1_cy77x"]
+
+[node name="Essentials" type="Node2D" unique_id=1446151240]
+
+[node name="Managers" type="Node" parent="." unique_id=164732293]
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1138512013]
+
+[node name="PauseMenu" parent="UI" unique_id=111660448 instance=ExtResource("1_cy77x")]
+visible = false
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=970880927]
+
+[node name="Cinematic" type="Control" parent="HUD" unique_id=679957608]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="InvHUD" type="Control" parent="HUD" unique_id=672854218]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="World" type="Node2D" parent="." unique_id=1061914356]
+
+[node name="LevelRoot" type="Node2D" parent="World" unique_id=676028835]
