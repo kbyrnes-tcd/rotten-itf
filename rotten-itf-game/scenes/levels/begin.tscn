@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cqsam3tswmb5s" path="res://scripts/game_manager.gd" id="1_o5pa4"]
 [ext_resource type="PackedScene" uid="uid://cpwsgbr3fr7by" path="res://scenes/ui/pause_menu.tscn" id="2_ep3c1"]
+[ext_resource type="PackedScene" uid="uid://0hlcimiuwo6o" path="res://scenes/ui/inv_ui.tscn" id="3_ep3c1"]
 
 [node name="Essentials" type="Node2D" unique_id=1446151240]
 script = ExtResource("1_o5pa4")
@@ -19,7 +20,28 @@ anchors_preset = 0
 
 [node name="InvHUD" type="Control" parent="HUD" unique_id=672854218]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.5, 2.5)
+
+[node name="InvUI" parent="HUD/InvHUD" unique_id=959144703 instance=ExtResource("3_ep3c1")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -22.0
+offset_right = 33.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="World" type="Node2D" parent="." unique_id=1061914356]
 
