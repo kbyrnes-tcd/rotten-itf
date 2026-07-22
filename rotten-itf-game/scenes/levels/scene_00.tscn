@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://b5f1lcarbpx50"]
 
 [ext_resource type="PackedScene" uid="uid://cpwsgbr3fr7by" path="res://scenes/ui/pause_menu.tscn" id="1_cy77x"]
+[ext_resource type="Script" uid="uid://cqsam3tswmb5s" path="res://scripts/game_manager.gd" id="1_hd4uo"]
 
 [node name="Essentials" type="Node2D" unique_id=1446151240]
-
-[node name="Managers" type="Node" parent="." unique_id=164732293]
+script = ExtResource("1_hd4uo")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1138512013]
 
