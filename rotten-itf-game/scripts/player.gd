@@ -115,6 +115,7 @@ func _process(_delta):
 func _physics_process(delta: float) -> void:
 	# RAYCASTING W/ ROT-GNUN
 	# if the gun is activated, have it track mouse_pos
+	#grow active vine each frame
 	if is_growing and active_vine:
 		var pts = active_vine.points
 		#check for empty array
