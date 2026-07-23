@@ -45,7 +45,9 @@ func _physics_process(_delta: float) -> void:
 	else:
 		pass
 
-func update_pos():
+func update_pos(new_pos : Vector2):
 	# update pos st. global_pos = target_pos 
 	# also incr. target_pos if necessary
+	ray_origin = new_pos
+	global_position = new_pos
 	pass 

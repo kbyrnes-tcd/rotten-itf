@@ -8,12 +8,13 @@ size = Vector2(20, 73.20604)
 
 [node name="RotMaze" type="Node2D" unique_id=1812960501]
 
-[node name="PlayerRot" type="Node2D" parent="." unique_id=127352751]
+[node name="PlayerRot" type="Node2D" parent="." unique_id=127352751 node_paths=PackedStringArray("rays")]
 position = Vector2(25, 49)
 script = ExtResource("1_xvw2m")
+rays = [NodePath("up"), NodePath("down"), NodePath("left"), NodePath("right")]
 
 [node name="vine" type="Line2D" parent="PlayerRot" unique_id=788601042]
-points = PackedVector2Array(0, 0, 0, 0)
+points = PackedVector2Array(0, 0, -1, 0)
 default_color = Color(0, 0.37140125, 0.37265688, 1)
 
 [node name="up" type="RayCast2D" parent="PlayerRot" unique_id=1880139067]
