@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://bu2p77kl4tq6c"]
+
+[ext_resource type="Script" uid="uid://ccwt8g7y74l3h" path="res://scripts/minigames/player_rot.gd" id="1_xvw2m"]
+[ext_resource type="Script" uid="uid://cdwsqlsxmy7tw" path="res://scripts/minigames/player_rot_rays.gd" id="2_f7y2v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f7y2v"]
+size = Vector2(20, 73.20604)
+
+[node name="RotMaze" type="Node2D" unique_id=1812960501]
+
+[node name="PlayerRot" type="Node2D" parent="." unique_id=127352751]
+position = Vector2(318, 280)
+script = ExtResource("1_xvw2m")
+
+[node name="vine" type="Line2D" parent="PlayerRot" unique_id=788601042]
+points = PackedVector2Array(0, 0, 0, 0)
+default_color = Color(0, 0.37140125, 0.37265688, 1)
+
+[node name="ray" type="RayCast2D" parent="PlayerRot" unique_id=626950914]
+target_position = Vector2(0, 200)
+script = ExtResource("2_f7y2v")
+
+[node name="down" type="RayCast2D" parent="PlayerRot" unique_id=145307514]
+visible = false
+script = ExtResource("2_f7y2v")
+
+[node name="left" type="RayCast2D" parent="PlayerRot" unique_id=183705460]
+visible = false
+target_position = Vector2(-50, 0)
+script = ExtResource("2_f7y2v")
+
+[node name="right" type="RayCast2D" parent="PlayerRot" unique_id=352440431]
+visible = false
+target_position = Vector2(50, 0)
+script = ExtResource("2_f7y2v")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=2010187822]
+position = Vector2(357, 289)
+scale = Vector2(0.6000011, 3.0400014)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D" unique_id=1643765991]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D" unique_id=1879099981]
+shape = SubResource("RectangleShape2D_f7y2v")
+
+[node name="Node2D2" type="Node2D" parent="." unique_id=2063834369]
+position = Vector2(277, 289)
+scale = Vector2(0.6000011, 3.0400014)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D2" unique_id=1194519094]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D2/StaticBody2D" unique_id=678894994]
+shape = SubResource("RectangleShape2D_f7y2v")
+
+[node name="Node2D3" type="Node2D" parent="." unique_id=376818636]
+position = Vector2(160, 393)
+rotation = 1.5707964
+scale = Vector2(0.6000011, 3.0400014)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D3" unique_id=388951448]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D3/StaticBody2D" unique_id=1619875988]
+shape = SubResource("RectangleShape2D_f7y2v")
+
+[node name="Node2D4" type="Node2D" parent="." unique_id=249913092]
+position = Vector2(221, 471.00003)
+rotation = 1.5707964
+scale = Vector2(0.6000011, 6.199999)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D4" unique_id=1494486185]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D4/StaticBody2D" unique_id=1475183360]
+shape = SubResource("RectangleShape2D_f7y2v")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1733059183]
+position = Vector2(268, 304)
+zoom = Vector2(0.55, 0.55)
