@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bu2p77kl4tq6c"]
 
-[ext_resource type="Script" uid="uid://ccwt8g7y74l3h" path="res://scripts/minigames/player_rot.gd" id="1_xvw2m"]
-[ext_resource type="Script" uid="uid://cdwsqlsxmy7tw" path="res://scripts/minigames/player_rot_rays.gd" id="2_f7y2v"]
+[ext_resource type="Script" uid="uid://ccwt8g7y74l3h" path="res://scripts/minigames/mg_player_rot.gd" id="1_xvw2m"]
+[ext_resource type="Script" uid="uid://cdwsqlsxmy7tw" path="res://scripts/minigames/mg_dir_rays.gd" id="2_f7y2v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f7y2v"]
 size = Vector2(20, 73.20604)
@@ -9,16 +9,26 @@ size = Vector2(20, 73.20604)
 [node name="RotMaze" type="Node2D" unique_id=1812960501]
 
 [node name="PlayerRot" type="Node2D" parent="." unique_id=127352751]
-position = Vector2(0, 49)
-rotation = -1.5707964
+position = Vector2(25, 49)
 script = ExtResource("1_xvw2m")
 
 [node name="vine" type="Line2D" parent="PlayerRot" unique_id=788601042]
 points = PackedVector2Array(0, 0, 0, 0)
 default_color = Color(0, 0.37140125, 0.37265688, 1)
 
-[node name="ray" type="RayCast2D" parent="PlayerRot" unique_id=626950914]
-target_position = Vector2(0, 200)
+[node name="up" type="RayCast2D" parent="PlayerRot" unique_id=1880139067]
+target_position = Vector2(0, -50)
+script = ExtResource("2_f7y2v")
+
+[node name="down" type="RayCast2D" parent="PlayerRot" unique_id=1822064433]
+script = ExtResource("2_f7y2v")
+
+[node name="left" type="RayCast2D" parent="PlayerRot" unique_id=2055200983]
+target_position = Vector2(-50, 0)
+script = ExtResource("2_f7y2v")
+
+[node name="right" type="RayCast2D" parent="PlayerRot" unique_id=626950914]
+target_position = Vector2(50, 0)
 script = ExtResource("2_f7y2v")
 
 [node name="TOP" type="Node2D" parent="." unique_id=2010187822]
@@ -114,3 +124,8 @@ shape = SubResource("RectangleShape2D_f7y2v")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1733059183]
 position = Vector2(268, 304)
 zoom = Vector2(0.425, 0.425)
+
+[connection signal="can_extend" from="PlayerRot/up" to="PlayerRot" method="_on_up_can_extend"]
+[connection signal="can_extend" from="PlayerRot/down" to="PlayerRot" method="_on_down_can_extend"]
+[connection signal="can_extend" from="PlayerRot/left" to="PlayerRot" method="_on_left_can_extend"]
+[connection signal="can_extend" from="PlayerRot/right" to="PlayerRot" method="_on_right_can_extend"]
