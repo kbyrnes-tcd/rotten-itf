@@ -30,6 +30,9 @@ var is_growing = false
 #pixels per second
 const GROWTH_SPEED = 120.0
 
+#gun/artifact state
+var gun_equipped := false
+
 # collecting items
 func collect(item: InvItem):
 	inv.insert(item)
@@ -80,25 +83,24 @@ func stop_vine():
 		active_vine.call_deferred("update_collisions")
 	is_growing = false
 	active_vine = null
-
-#func add_vine(src, dest):
-	#print("instan: " + str(src) + " & " + str(dest))
-	#var vine = ROT_VINE.instantiate()
-	#vine.get_child(0).points = PackedVector2Array([src, dest])
-	#scene.add_child(vine)
 	
-# de/activating lantern
+# de/activating lantern/gun: only one at a time
 func _process(_delta):
 	if Input.is_action_just_pressed("rot_cut"):
 		lantern.process_mode = Node.PROCESS_MODE_DISABLED if (lantern.process_mode == Node.PROCESS_MODE_INHERIT) else Node.PROCESS_MODE_INHERIT
-		lantern.visible = not lantern.visible
-	
+		lantern.visible = false if (lantern.visible == true) else lantern.visible == false
+		gun.process_mode = Node.PROCESS_MODE_DISABLED
+		gun.visible = false
+		gun_sprite.visible = false
+		
+		
 	if Input.is_action_just_pressed("rot_extend"):
-		#gun.process_mode = Node.PROCESS_MODE_DISABLED if (gun.process_mode == Node.PROCESS_MODE_INHERIT) else Node.PROCESS_MODE_INHERIT
-		gun.visible = true
-		gun_sprite.visible = true
+		gun.process_mode = Node.PROCESS_MODE_DISABLED if (gun.process_mode == Node.PROCESS_MODE_INHERIT) else Node.PROCESS_MODE_INHERIT
+		gun.visible = false if (gun.visible == true) else gun.visible == false
+		gun_sprite.visible = false if (gun_sprite.visible == true) else gun_sprite.visible == false
+		lantern.process_mode = Node.PROCESS_MODE_DISABLED
+		lantern.visible = false
 		start_vine()
-	
 	if Input.is_action_just_released("rot_extend"):
 		gun.visible = false
 		gun_sprite.visible = false
@@ -110,6 +112,34 @@ func _process(_delta):
 		ray_line_2d.points[1] = ray_cast_2d.to_local(
 			ray_cast_2d.global_position + dir * preview_length
 		)
+		
+func midpoint(src: Vector2, dest: Vector2):
+	return Vector2(src.x+dest.x, src.y+dest.y)/2
+	
+func add_vine(src: Vector2, dest: Vector2):
+	#print("inst @ " + str(src) + " & " + str(dest))
+	var dist_scale : int = roundf(src.distance_to(dest)/70)
+	#print(dist_scale)
+	
+	var vine = ROT_VINE.instantiate()
+	var vine_points : PackedVector2Array = PackedVector2Array([src, dest])
+	
+	var counter = 0
+	# while: iterates over all passes necessary to segment points w/ dist_scale
+	while counter < dist_scale:
+		var vine_points_acc : PackedVector2Array = PackedVector2Array([vine_points[0]])
+		# for: iterates over all points
+		for i in range(vine_points.size()-1):
+			var source = vine_points[i]
+			var desti = vine_points[i + 1]
+			var midp = midpoint(source, desti)
+			vine_points_acc.append(midp)
+			vine_points_acc.append(desti)
+		vine_points = vine_points_acc
+		counter += 1
+	
+	vine.get_child(0).points = vine_points
+	scene.add_child(vine)
 
 # handling movement
 func _physics_process(delta: float) -> void:
