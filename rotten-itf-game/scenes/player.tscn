@@ -6,12 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://cf33r77wuoojw" path="res://assets/images/player/daphne_animations/walk/Daphne_-_Walk-1.png" id="4_jej6c"]
 [ext_resource type="Texture2D" uid="uid://b3n8hkw04lpfr" path="res://assets/images/player/daphne_animations/walk/Daphne_-_Walk-2.png" id="5_f1ej7"]
 [ext_resource type="Texture2D" uid="uid://ysdkjlxr5e5p" path="res://assets/images/player/daphne_animations/walk/Daphne_-_Walk-3.png" id="6_oprun"]
-[ext_resource type="AudioStream" uid="uid://dvdukd1lqtaao" path="res://assets/audio/jump.wav" id="6_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://dbl1u5dyg80wg" path="res://assets/images/player/daphne_animations/walk/Daphne_-_Walk-5.png" id="7_a8ls1"]
 [ext_resource type="Texture2D" uid="uid://bxktoy1lxxuni" path="res://assets/images/player/daphne_animations/walk/Daphne_-_Walk-6.png" id="8_qfm1y"]
 [ext_resource type="Texture2D" uid="uid://ca02wnf21bi7r" path="res://assets/images/player/daphne_animations/walk/Daphne_-_Walk-7.png" id="9_fulsm"]
 [ext_resource type="Texture2D" uid="uid://bg2xv2dit48xi" path="res://assets/images/worms/lantern.png" id="9_ur7pv"]
 [ext_resource type="Texture2D" uid="uid://dbkabib4tp1d" path="res://assets/images/rot/gun.png" id="10_y4r1p"]
+[ext_resource type="AudioStream" uid="uid://b26cttun5gmbe" path="res://assets/audio/daphne/RITF_Character_Walking_v1.mp3" id="12_3v2ag"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3v2ag"]
 radius = 11.333333
@@ -25,7 +25,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 12.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -51,7 +51,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"jump",
-"speed": 12.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -77,7 +77,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 12.0
+"speed": 7.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y4r1p"]
@@ -86,7 +86,6 @@ radius = 35.19535
 [node name="Player" type="CharacterBody2D" unique_id=1515659648]
 script = ExtResource("1_qlg0r")
 inv = ExtResource("2_fjrip")
-SPEED = 250.0
 JUMP_VELOCITY = -850.0
 
 [node name="PlyrCollisionShape2D" type="CollisionShape2D" parent="." unique_id=66024058]
@@ -96,9 +95,8 @@ shape = SubResource("CapsuleShape2D_3v2ag")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterSprites" unique_id=512896578]
 sprite_frames = SubResource("SpriteFrames_6adnx")
-animation = &"run"
+animation = &"jump"
 autoplay = "idle"
-frame_progress = 0.107018344
 
 [node name="Lantern" type="Node2D" parent="CharacterSprites" unique_id=964616978]
 position = Vector2(17.333334, 2.666667)
@@ -119,8 +117,9 @@ position = Vector2(17.94, 4.666667)
 scale = Vector2(0.67, 0.67)
 texture = ExtResource("10_y4r1p")
 
-[node name="JumpFX" type="AudioStreamPlayer2D" parent="." unique_id=1761152459]
-stream = ExtResource("6_tuyoq")
+[node name="WalkFX" type="AudioStreamPlayer2D" parent="." unique_id=1761152459]
+stream = ExtResource("12_3v2ag")
+volume_db = -10.0
 
 [node name="Gun" type="Node2D" parent="." unique_id=805094962]
 position = Vector2(10, 4.666667)
