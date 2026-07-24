@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cdwsqlsxmy7tw" path="res://scripts/minigames/mg_dir_rays.gd" id="2_f7y2v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f7y2v"]
-size = Vector2(20, 73.20604)
+size = Vector2(20, 79.2117)
 
 [node name="RotMaze" type="Node2D" unique_id=1812960501]
 
@@ -33,7 +33,7 @@ target_position = Vector2(50, 0)
 script = ExtResource("2_f7y2v")
 
 [node name="TOP" type="Node2D" parent="." unique_id=2010187822]
-position = Vector2(226, 7)
+position = Vector2(226, 30)
 rotation = 1.5707964
 scale = Vector2(0.6000011, 6.2800035)
 
@@ -43,13 +43,14 @@ scale = Vector2(0.6000011, 6.2800035)
 shape = SubResource("RectangleShape2D_f7y2v")
 
 [node name="TOP2" type="Node2D" parent="." unique_id=2063834369]
-position = Vector2(160.99998, 97)
+position = Vector2(164.99998, 67.99999)
 rotation = 1.5707964
 scale = Vector2(0.6000011, 4.6000013)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="TOP2" unique_id=1194519094]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TOP2/StaticBody2D" unique_id=678894994]
+position = Vector2(-11.666633, -3.0434809)
 shape = SubResource("RectangleShape2D_f7y2v")
 
 [node name="TOP4" type="Node2D" parent="." unique_id=1005296183]
@@ -60,6 +61,7 @@ scale = Vector2(0.6000011, 3.6800008)
 [node name="StaticBody2D" type="StaticBody2D" parent="TOP4" unique_id=1878630339]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TOP4/StaticBody2D" unique_id=415976545]
+position = Vector2(-38.333263, -8.967388)
 shape = SubResource("RectangleShape2D_f7y2v")
 
 [node name="TOP5" type="Node2D" parent="." unique_id=1608475936]
@@ -70,6 +72,7 @@ scale = Vector2(0.6000011, 3.6800008)
 [node name="StaticBody2D" type="StaticBody2D" parent="TOP5" unique_id=1633387976]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TOP5/StaticBody2D" unique_id=518318971]
+position = Vector2(-83.33318, -8.967388)
 shape = SubResource("RectangleShape2D_f7y2v")
 
 [node name="LHS" type="Node2D" parent="." unique_id=119523813]
@@ -80,6 +83,7 @@ scale = Vector2(0.6000011, 3.6800008)
 [node name="StaticBody2D" type="StaticBody2D" parent="LHS" unique_id=1104755784]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LHS/StaticBody2D" unique_id=360740953]
+position = Vector2(-68.33315, 8.423903)
 shape = SubResource("RectangleShape2D_f7y2v")
 
 [node name="LHS4" type="Node2D" parent="." unique_id=1503618945]
@@ -90,6 +94,7 @@ scale = Vector2(0.6000011, 1.8000002)
 [node name="StaticBody2D" type="StaticBody2D" parent="LHS4" unique_id=306480768]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LHS4/StaticBody2D" unique_id=1779291818]
+position = Vector2(-64.99993, 16.666666)
 shape = SubResource("RectangleShape2D_f7y2v")
 
 [node name="LHS3" type="Node2D" parent="." unique_id=211357880]
@@ -110,6 +115,7 @@ scale = Vector2(0.6000011, 6.199999)
 [node name="StaticBody2D" type="StaticBody2D" parent="RHS" unique_id=1494486185]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RHS/StaticBody2D" unique_id=1475183360]
+position = Vector2(78.33319, -0.16129348)
 shape = SubResource("RectangleShape2D_f7y2v")
 
 [node name="FIN" type="Node2D" parent="." unique_id=478678882]
@@ -125,8 +131,3 @@ shape = SubResource("RectangleShape2D_f7y2v")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1733059183]
 position = Vector2(268, 304)
 zoom = Vector2(0.425, 0.425)
-
-[connection signal="can_extend" from="PlayerRot/up" to="PlayerRot" method="_on_up_can_extend"]
-[connection signal="can_extend" from="PlayerRot/down" to="PlayerRot" method="_on_down_can_extend"]
-[connection signal="can_extend" from="PlayerRot/left" to="PlayerRot" method="_on_left_can_extend"]
-[connection signal="can_extend" from="PlayerRot/right" to="PlayerRot" method="_on_right_can_extend"]
