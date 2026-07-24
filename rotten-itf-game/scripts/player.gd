@@ -1,7 +1,7 @@
 extends CharacterBody2D
 # character sprites and audio
 @onready var animated_sprite_2d: AnimatedSprite2D = $CharacterSprites/AnimatedSprite2D
-@onready var jump_fx: AudioStreamPlayer2D = $JumpFX
+@onready var walk_fx: AudioStreamPlayer2D = $WalkFX
 # character and item sprites
 @onready var character_sprites: Node2D = $CharacterSprites
 
@@ -101,6 +101,11 @@ func _physics_process(delta: float) -> void:
 				var dest = ray_cast_2d.get_collision_point()
 				call_deferred("add_vine", src, dest)
 
+	if Input.is_action_just_pressed("left") or Input.is_action_just_pressed("right"):
+		walk_fx.play()
+	if Input.is_action_just_released("left") or Input.is_action_just_released("right"):
+		walk_fx.stop()
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -115,7 +120,6 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY;
-		jump_fx.play();
 
 	# Get the input direction and handle the movement/deceleration.
 	var direction := Input.get_axis("left", "right")

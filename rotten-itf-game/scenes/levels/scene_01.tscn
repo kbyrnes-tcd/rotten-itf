@@ -135,7 +135,7 @@ position = Vector2(1288, -0.5)
 shape = SubResource("RectangleShape2D_3336g")
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("4_3336g")]
-position = Vector2(49, 309)
+position = Vector2(49, 280)
 
 [node name="CameraPath2D" type="Path2D" parent="." unique_id=983943170]
 process_mode = 4

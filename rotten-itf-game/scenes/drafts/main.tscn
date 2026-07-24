@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://bavjvyb2vynwb"]
 
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="1_s7xyy"]
-[ext_resource type="Texture2D" uid="uid://btvw0tm1fb350" path="res://assets/images/env/brick-wall.jpg" id="2_c7vjp"]
+[ext_resource type="Texture2D" uid="uid://btvw0tm1fb350" path="res://assets/images/env/archived/brick-wall.jpg" id="2_c7vjp"]
 [ext_resource type="PackedScene" uid="uid://ufmhebijpwbb" path="res://scenes/collectible_item.tscn" id="3_8mlnd"]
 [ext_resource type="Resource" uid="uid://6pxkrw3jqp6n" path="res://scripts/inventory_system/items/green_worm.tres" id="4_i8c17"]
 [ext_resource type="PackedScene" uid="uid://04yyftmutrku" path="res://scenes/item_consumer.tscn" id="5_35clj"]
 [ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="6_8mlnd"]
 [ext_resource type="PackedScene" uid="uid://w78vttqkmxaj" path="res://scenes/levels/scene_01.tscn" id="7_i8c17"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0wfyh"]
 size = Vector2(128, 145.60507)

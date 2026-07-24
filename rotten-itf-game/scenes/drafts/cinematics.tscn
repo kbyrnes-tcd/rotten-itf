@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://bqcnao5i26gt4"]
 
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="1_4caar"]
-[ext_resource type="Texture2D" uid="uid://btvw0tm1fb350" path="res://assets/images/env/brick-wall.jpg" id="2_532ng"]
+[ext_resource type="Texture2D" uid="uid://btvw0tm1fb350" path="res://assets/images/env/archived/brick-wall.jpg" id="2_532ng"]
 [ext_resource type="Shader" uid="uid://cv8gg3r3c6md3" path="res://scripts/shaders/pixelate.gdshader" id="6_gcdrg"]
 [ext_resource type="PackedScene" uid="uid://kicj2478es6o" path="res://scenes/rot_vine.tscn" id="6_qrf0y"]
-[ext_resource type="Texture2D" uid="uid://d06qp8h4mi861" path="res://assets/images/env/Temple_Layer_Background.png" id="7_7poft"]
+[ext_resource type="Texture2D" uid="uid://d06qp8h4mi861" path="res://assets/images/env/archived/Temple_Layer_Background.png" id="7_7poft"]
 [ext_resource type="Texture2D" uid="uid://dvjljkkkuelcb" path="res://assets/images/ui/inventory-slot.png" id="8_532ng"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p8c2o"]
 size = Vector2(128, 130)

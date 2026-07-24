@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tkj1nalcvxhp"
-path="res://.godot/imported/st-glass-light.PNG-630eef8f9059190efeeac1f5bbaabdaf.ctex"
+uid="uid://3w38knvapafe"
+path="res://.godot/imported/Jump (32x32).png-da5c38f1d0ac49d62fd44e1fa76283c5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/env/st-glass-light.PNG"
-dest_files=["res://.godot/imported/st-glass-light.PNG-630eef8f9059190efeeac1f5bbaabdaf.ctex"]
+source_file="res://assets/images/player/archived/Jump (32x32).png"
+dest_files=["res://.godot/imported/Jump (32x32).png-da5c38f1d0ac49d62fd44e1fa76283c5.ctex"]
 
 [params]
 
