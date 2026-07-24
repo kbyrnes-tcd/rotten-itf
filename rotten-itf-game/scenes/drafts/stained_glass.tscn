@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://ep33og7o2b2v"]
 
-[ext_resource type="Texture2D" uid="uid://ctpsvg6p4po7f" path="res://assets/images/env/st-glass-fg.PNG" id="1_xefp7"]
-[ext_resource type="Texture2D" uid="uid://tkj1nalcvxhp" path="res://assets/images/env/st-glass-light.PNG" id="2_c5p43"]
-[ext_resource type="Texture2D" uid="uid://srg6kckh762f" path="res://assets/images/env/st-glass-bg.PNG" id="3_wpspq"]
+[ext_resource type="Texture2D" uid="uid://ctpsvg6p4po7f" path="res://assets/images/env/archived/st-glass-fg.PNG" id="1_xefp7"]
+[ext_resource type="Texture2D" uid="uid://tkj1nalcvxhp" path="res://assets/images/env/archived/st-glass-light.PNG" id="2_c5p43"]
+[ext_resource type="Texture2D" uid="uid://srg6kckh762f" path="res://assets/images/env/archived/st-glass-bg.PNG" id="3_wpspq"]
+
 
 [node name="StainedGlass" type="Node2D" unique_id=680894345]
 position = Vector2(532, 241)
