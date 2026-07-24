@@ -14,7 +14,7 @@ size = Vector2(128, 145.60507)
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("1_u81e1")]
 position = Vector2(385, 468)
 
-[node name="Camera2D" parent="Player" index="5" unique_id=1705181399]
+[node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
 limit_left = -108
 limit_top = 569
 limit_right = 1250
