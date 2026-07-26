@@ -62,6 +62,12 @@ func start_vine():
 	var dir = get_snapped_direction()
 	var src = global_position + dir * 40.0
 	
+	#project wherever mouse cliked onto snapped direction
+	var mouse_pos = get_global_mouse_position()
+	var diff = mouse_pos - global_position
+	var projected_length = diff.dot(dir)
+	var target = global_position + dir * max(projected_length, 40.0)
+	
 	#instantiate vine scene
 	var vine_instance = ROT_VINE.instantiate()
 	scene.add_child(vine_instance)
@@ -73,10 +79,11 @@ func start_vine():
 	])
 	
 	is_growing = true
-	#store direction of vine
+	#store direction of vine and target position
 	active_vine.set_meta("dir", dir)
 	active_vine.set_meta("src", src)
-	print("vine started :3" + str(src) + "going here" + str(dir))
+	active_vine.set_meta("target", target)
+	print("vine started :3" + str(src) + "towards: " + str(target) + "going here" + str(dir))
 	
 func stop_vine():
 	if is_growing and active_vine:
@@ -152,9 +159,18 @@ func _physics_process(delta: float) -> void:
 		if pts.size() < 2:
 			return
 		var dir: Vector2 = active_vine.get_meta("dir")
+		var target: Vector2 = active_vine.get_meta("target")
 		var tip_local = pts[pts.size() - 1]
 		var tip_global = active_vine.to_global(tip_local)
 		var next_global = tip_global + dir * GROWTH_SPEED * delta
+		
+		#check to stop growth on target
+		var dist_to_target = (target - tip_global).dot(dir)
+		if dist_to_target <= 0:
+			pts[pts.size() - 1] = active_vine.to_local(target)
+			active_vine.points = pts
+			stop_vine()
+			return
 		
 		#collision check
 		var space_state = get_world_2d().direct_space_state
@@ -180,8 +196,15 @@ func _physics_process(delta: float) -> void:
 			stop_vine()
 		else:
 			#extend the tip
-			pts[pts.size() - 1] = active_vine.to_local(next_global)
-			active_vine.points = pts
+			var new_pts: PackedVector2Array = PackedVector2Array(active_vine.points)
+			var last_fixed = active_vine.to_global(new_pts[new_pts.size() - 2])
+			var dist = last_fixed.distance_to(next_global)
+			
+			if dist >= 16.0:
+				new_pts.append(active_vine.to_local(next_global))
+			else:
+				new_pts[new_pts.size() - 1] = active_vine.to_local(next_global)
+			active_vine.points = new_pts
 			active_vine.call_deferred("update_collisions")
 	# Add the gravity.
 	if not is_on_floor():
