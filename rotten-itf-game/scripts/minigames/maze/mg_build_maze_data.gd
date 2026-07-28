@@ -5,10 +5,21 @@ class_name MazeData
 
 @export var rebuild: bool = false:
 	set(value):
-		graph_data = build_graph()
-		print("graph rebuilt  w/ %s nodes." %graph_data.size())
+		# only in editor not at runtime..
+		if Engine.is_editor_hint():
+			graph_data = build_graph()
+			print("graph rebuilt  w/ %s nodes." %graph_data.size())
 
 @export var graph_data: Dictionary = {}
+
+func get_pos(node_id: String) -> Vector2:
+	return graph_data[node_id]["pos"]
+
+func get_valid_dirs(node_id: String) -> Array:
+	return graph_data[node_id]["edges"].keys()
+
+func get_next_node(node_id: String, dir: String) -> String:
+	return graph_data[node_id]["edges"].get(dir, "")
 
 func build_graph() -> Dictionary:
 	var nodes := {}

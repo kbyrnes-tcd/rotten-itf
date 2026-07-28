@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bu2p77kl4tq6c"]
 
+[ext_resource type="Script" uid="uid://ccwt8g7y74l3h" path="res://scripts/minigames/maze/mg_player_rot.gd" id="1_35ab0"]
 [ext_resource type="Texture2D" uid="uid://cd4cbrmm0xm5a" path="res://assets/images/ui/carat.png" id="3_35ab0"]
 [ext_resource type="Script" uid="uid://cs0ki84qae7lo" path="res://scripts/minigames/maze/mg_build_maze_data.gd" id="3_f424p"]
 
@@ -8,8 +9,10 @@ size = Vector2(653, 25)
 
 [node name="RotMaze" type="Node2D" unique_id=1812960501]
 
-[node name="PlayerRot" type="Node2D" parent="." unique_id=127352751]
+[node name="PlayerRot" type="Node2D" parent="." unique_id=127352751 node_paths=PackedStringArray("graph")]
 position = Vector2(31, 59)
+script = ExtResource("1_35ab0")
+graph = NodePath("../MazePath")
 
 [node name="vine" type="Line2D" parent="PlayerRot" unique_id=788601042]
 points = PackedVector2Array(0, 0, 6.7, 0)
@@ -141,6 +144,7 @@ shape = SubResource("RectangleShape2D_atmvc")
 
 [node name="MazePath" type="Node2D" parent="." unique_id=824729220]
 script = ExtResource("3_f424p")
+rebuild = true
 graph_data = {
 &"A": {
 "dist": {

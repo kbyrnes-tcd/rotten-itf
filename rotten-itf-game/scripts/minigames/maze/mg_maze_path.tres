@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="MazeDict" format=3 uid="uid://dnxwlho26gwpm"]
-
-[ext_resource type="Script" uid="uid://dlb1mnpn1tghs" path="res://scripts/minigames/maze/mg_maze_dict.gd" id="1_pxkfn"]
-
-[resource]
-script = ExtResource("1_pxkfn")
-metadata/_custom_type_script = "uid://dlb1mnpn1tghs"
