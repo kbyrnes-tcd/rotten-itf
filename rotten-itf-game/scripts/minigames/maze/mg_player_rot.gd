@@ -39,7 +39,8 @@ func update_rays(new_pos : Vector2):
 		ray.update_pos(new_pos_global)
 		ray.force_raycast_update()
 
-var breathe_room = Vector2(70,20)
+
+var breathe_room = Vector2(0,0)
 
 func process_idle():
 	# IDLE: waiting for click/direction - MOUSE CONTROL
@@ -68,15 +69,16 @@ func process_idle():
 	
 	# VISUAL UPDATE: shows until col_point
 	if active_ray.is_colliding():
-		var preview_point_global = active_ray.get_collision_point() - (breathe_room * active_dir)
+		var preview_point_global = active_ray.get_collision_point()
 		preview_tip_point = $debug_preview.to_local(preview_point_global)
 		$debug_preview.points[-1] = preview_tip_point
 
 func fork_check() -> bool:
 	# check other rays for possible dir-changes
-	# IGNORE current ray and opp_dir
 	var check : bool = false
 	for ray in rays:
+		ray.force_raycast_update()
+		# IGNORE current ray and opp_dir
 		if ray == active_ray or ray.name == active_ray.get_opp_dir_name():
 			continue
 		check = check or ray.can_i_extend()
@@ -98,7 +100,7 @@ func process_growing(delta: float):
 		return
 	
 	elif active_ray.is_colliding():
-		print("collision detected ahead, visual growth update incoming")
+		#("collision detected ahead, visual growth update incoming")
 		var col_point : Vector2 = $vine.to_local(active_ray.get_collision_point())
 		# need to convert this to vine's local space so that it can be compared to tip_point eventually
 		col_point += breathe_room * active_dir
