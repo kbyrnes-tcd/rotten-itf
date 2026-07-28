@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ccwt8g7y74l3h" path="res://scripts/minigames/mg_player_rot.gd" id="1_xvw2m"]
 [ext_resource type="Script" uid="uid://cdwsqlsxmy7tw" path="res://scripts/minigames/mg_dir_rays.gd" id="2_f7y2v"]
+[ext_resource type="Texture2D" uid="uid://cd4cbrmm0xm5a" path="res://assets/images/ui/carat.png" id="3_35ab0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f7y2v"]
 size = Vector2(20, 79.2117)
@@ -14,23 +15,49 @@ script = ExtResource("1_xvw2m")
 rays = [NodePath("up"), NodePath("down"), NodePath("left"), NodePath("right")]
 
 [node name="vine" type="Line2D" parent="PlayerRot" unique_id=788601042]
-points = PackedVector2Array(0, 0, -1, 0)
+points = PackedVector2Array(0, 0, 0, 0)
+default_color = Color(0, 0.37140125, 0.37265688, 1)
+
+[node name="debug_preview" type="Line2D" parent="PlayerRot" unique_id=2109781731]
+points = PackedVector2Array(0, 0, 0, 0)
 default_color = Color(0, 0.37140125, 0.37265688, 1)
 
 [node name="up" type="RayCast2D" parent="PlayerRot" unique_id=1880139067]
 target_position = Vector2(0, -50)
 script = ExtResource("2_f7y2v")
 
+[node name="up_sprite" type="Sprite2D" parent="PlayerRot/up" unique_id=725394007]
+position = Vector2(0, -4)
+scale = Vector2(0.015, 0.015)
+texture = ExtResource("3_35ab0")
+
 [node name="down" type="RayCast2D" parent="PlayerRot" unique_id=1822064433]
 script = ExtResource("2_f7y2v")
+
+[node name="down_sprite" type="Sprite2D" parent="PlayerRot/down" unique_id=1525052547]
+position = Vector2(0, 4.18)
+scale = Vector2(0.015, -0.015)
+texture = ExtResource("3_35ab0")
 
 [node name="left" type="RayCast2D" parent="PlayerRot" unique_id=2055200983]
 target_position = Vector2(-50, 0)
 script = ExtResource("2_f7y2v")
 
+[node name="left_sprite" type="Sprite2D" parent="PlayerRot/left" unique_id=1975552267]
+position = Vector2(-4, 0)
+rotation = -1.5707964
+scale = Vector2(0.015, 0.015)
+texture = ExtResource("3_35ab0")
+
 [node name="right" type="RayCast2D" parent="PlayerRot" unique_id=626950914]
 target_position = Vector2(50, 0)
 script = ExtResource("2_f7y2v")
+
+[node name="right_sprite" type="Sprite2D" parent="PlayerRot/right" unique_id=83214696]
+position = Vector2(4, 0)
+rotation = 1.5707964
+scale = Vector2(0.015, 0.015)
+texture = ExtResource("3_35ab0")
 
 [node name="TOP" type="Node2D" parent="." unique_id=2010187822]
 position = Vector2(226, 30)
@@ -61,7 +88,7 @@ scale = Vector2(0.6000011, 3.6800008)
 [node name="StaticBody2D" type="StaticBody2D" parent="TOP4" unique_id=1878630339]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TOP4/StaticBody2D" unique_id=415976545]
-position = Vector2(-38.333263, -8.967388)
+position = Vector2(-38.333263, -5.706519)
 shape = SubResource("RectangleShape2D_f7y2v")
 
 [node name="TOP5" type="Node2D" parent="." unique_id=1608475936]
@@ -83,7 +110,7 @@ scale = Vector2(0.6000011, 3.6800008)
 [node name="StaticBody2D" type="StaticBody2D" parent="LHS" unique_id=1104755784]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LHS/StaticBody2D" unique_id=360740953]
-position = Vector2(-68.33315, 8.423903)
+position = Vector2(-54.999844, 8.9673815)
 shape = SubResource("RectangleShape2D_f7y2v")
 
 [node name="LHS4" type="Node2D" parent="." unique_id=1503618945]
@@ -94,7 +121,7 @@ scale = Vector2(0.6000011, 1.8000002)
 [node name="StaticBody2D" type="StaticBody2D" parent="LHS4" unique_id=306480768]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LHS4/StaticBody2D" unique_id=1779291818]
-position = Vector2(-64.99993, 16.666666)
+position = Vector2(-44.99997, 16.666666)
 shape = SubResource("RectangleShape2D_f7y2v")
 
 [node name="LHS3" type="Node2D" parent="." unique_id=211357880]
