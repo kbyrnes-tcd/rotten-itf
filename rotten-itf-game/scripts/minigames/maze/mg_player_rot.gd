@@ -68,12 +68,23 @@ func process_idle():
 		$vine_debug.points = debug_vine
 
 func clear_preview():
-	# reset debug view
+	# clear debug view
 	debug_vine = PackedVector2Array([[0,0], [0,0]])
 	$vine_debug.points = debug_vine
 	# hide arrow_dirs
 	for dir_sprite in $dir_arrows.get_children():
 		dir_sprite.visible = false
+		
+func update_preview():
+	# update debug view to new tip
+	debug_tip_point = graph.get_pos(next_node)
+	debug_vine = [$vine_debug.to_local(debug_tip_point), $vine_debug.to_local(debug_tip_point)]
+	$vine_debug.points = debug_vine
+	
+	# show & update arrow_dirs pos
+	$dir_arrows.position = $dir_arrows.get_parent().to_local(debug_tip_point)
+	for dir_sprite in $dir_arrows.get_children():
+		dir_sprite.visible = true
 
 func process_growing(delta: float):
 	#print("GROWING")
@@ -84,29 +95,35 @@ func process_growing(delta: float):
 		# clear debug preview & arrow_dirs
 		clear_preview()
 		next_node = graph.graph_data[active_node]["edges"][active_dir]
+		var n_node_pos = graph.get_pos(next_node)
 		tip_point = graph.get_pos(next_node)
 
+		# extend tip incr.
 		var current_tip = to_global(pts[-1])
 		var moving_tip = current_tip.move_toward(tip_point, grow_speed * delta)
 		pts[-1] = $vine.to_local(moving_tip)
-
 		$vine.points = pts
+
+		# trans. to stopped when close enough
+		if moving_tip.is_equal_approx(n_node_pos):
+			current_state = State.STOPPED
+
 	else: current_state = State.IDLE
 
-#func process_stopped():
-	# add tip_point to points, moving rot along concretely & update its dir_arrows to that pos.
-	#pts.append(tip_point)
-	#$vine.points = pts
-	#update_rays(tip_point)
-#
-	## resync the debug preview to the appended point
-	#var tip_global = $vine.to_global(tip_point)
-	#var tip_local_preview = $debug_preview.to_local(tip_global)
-	#$debug_preview.points = PackedVector2Array([tip_local_preview, tip_local_preview])
-
-	#active_dir = null
-	#active_ray = null
-	#current_state = State.IDLE
+func process_stopped():
+	#print("STOPPED")
+	
+	# actually append point to arr
+	pts.append($vine.to_local(tip_point))
+	$vine.points = pts
+	
+	# update preview first then pointers ?!??!?!? ORDER IS ANNOYING.
+	active_node = next_node
+	active_dir = ""
+	update_preview()
+	
+	current_state = State.IDLE
+	return
 
 func _physics_process(delta: float) -> void:
 	#print(current_state)
@@ -115,8 +132,8 @@ func _physics_process(delta: float) -> void:
 			process_idle()
 		State.GROWING:
 			process_growing(delta)
-		#State.STOPPED:
-			#process_stopped()
+		State.STOPPED:
+			process_stopped()
 			
 	if Input.is_action_just_pressed("click") && current_state == State.IDLE:
 		current_state = State.GROWING
