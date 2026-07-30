@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://puh0sscx60aj"]
+
+[ext_resource type="Script" uid="uid://cbhmpgeome6oa" path="res://scripts/rot_seed_placed.gd" id="1_nu5n6"]
+
+[node name="RotSeedPlaced" type="Node2D" unique_id=1928208089]
+script = ExtResource("1_nu5n6")

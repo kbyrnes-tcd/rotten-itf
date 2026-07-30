@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://bqcnao5i26gt4"]
 
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="1_4caar"]
-[ext_resource type="Texture2D" uid="uid://btvw0tm1fb350" path="res://assets/images/env/archived/brick-wall.jpg" id="2_532ng"]
+[ext_resource type="Texture2D" uid="uid://btvw0tm1fb350" path="res://assets/images/env/brick-wall.jpg" id="2_532ng"]
 [ext_resource type="Shader" uid="uid://cv8gg3r3c6md3" path="res://scripts/shaders/pixelate.gdshader" id="6_gcdrg"]
 [ext_resource type="PackedScene" uid="uid://kicj2478es6o" path="res://scenes/rot_vine.tscn" id="6_qrf0y"]
-[ext_resource type="Texture2D" uid="uid://d06qp8h4mi861" path="res://assets/images/env/archived/Temple_Layer_Background.png" id="7_7poft"]
+[ext_resource type="Texture2D" uid="uid://d06qp8h4mi861" path="res://assets/images/env/Temple_Layer_Background.png" id="7_7poft"]
+[ext_resource type="Texture2D" uid="uid://cxs3xwh0i8t0q" path="res://assets/images/rot/Rot-V1-3.PNG" id="7_532ng"]
 [ext_resource type="Texture2D" uid="uid://dvjljkkkuelcb" path="res://assets/images/ui/inventory-slot.png" id="8_532ng"]
-
+[ext_resource type="Texture2D" uid="uid://dyfb4jh6yq53g" path="res://assets/images/rot/Rot-V2-Single.PNG" id="8_qrf0y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p8c2o"]
 size = Vector2(128, 130)
@@ -18,11 +19,26 @@ shader_parameter/pixelate_amount = 150
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qrf0y"]
 size = Vector2(20, 16.416668)
 
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_4caar"]
+frames = 2
+frame_0/texture = ExtResource("7_532ng")
+frame_1/texture = ExtResource("8_qrf0y")
+frame_1/duration = 1.0
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_532ng"]
+frames = 2
+frame_0/texture = ExtResource("7_532ng")
+frame_1/texture = ExtResource("8_qrf0y")
+frame_1/duration = 1.0
+
 [node name="Cinematics" type="Node2D" unique_id=2119182474]
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("1_4caar")]
 position = Vector2(121, 300)
 scale = Vector2(1.5, 1.5)
+inv = null
+SPEED = 150.0
+JUMP_VELOCITY = -650.0
 
 [node name="Ground" type="StaticBody2D" parent="." unique_id=1340810883]
 position = Vector2(355, 372)
@@ -78,12 +94,18 @@ shape = SubResource("RectangleShape2D_qrf0y")
 
 [node name="Line2D" parent="Vine" index="0" unique_id=1590463200]
 points = PackedVector2Array(290, 260, 315, 266, 337, 265, 330, 241, 353, 237, 341, 219, 369, 192, 359, 141, 400, 164, 410, 106, 426, 124, 449, 76, 494, 102, 542, 100, 562, 86, 579, 96, 601, 139)
+default_color = Color(0.9418091, 1, 0.9404754, 1)
+texture = SubResource("AnimatedTexture_4caar")
+texture_mode = 2
 
 [node name="TestVine" parent="." unique_id=996528017 instance=ExtResource("6_qrf0y")]
 visible = false
 
 [node name="Line2D" parent="TestVine" index="0" unique_id=1590463200]
 points = PackedVector2Array(71, 478)
+default_color = Color(0.92941177, 1, 0.9254902, 0.7921569)
+texture = SubResource("AnimatedTexture_532ng")
+texture_mode = 2
 
 [connection signal="area_entered" from="Vine/Line2D/LineArea2D" to="Vine/Line2D" method="_on_line_area_2d_area_entered"]
 [connection signal="area_exited" from="Vine/Line2D/LineArea2D" to="Vine/Line2D" method="_on_line_area_2d_area_exited"]
