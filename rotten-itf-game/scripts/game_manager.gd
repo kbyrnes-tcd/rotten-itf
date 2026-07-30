@@ -1,14 +1,24 @@
 extends Node
+class_name GameManager
+
 static var level_prog = ["Begin", "Scene_01", "Scene_02"]
 static var level_root: Node2D
-@export var _debug_level_num: int
+@export var _debug_level: PackedScene
 
 func _ready() -> void:
 	level_root = get_node("World/LevelRoot")
-	if !_debug_level_num:
+	if !_debug_level:
 		load_level(level_prog[1]) # AUTOLOAD SCENE_01
 	else:
-		load_level(level_prog[_debug_level_num]) # DEBUG STATE
+		level_root.add_child(_debug_level.instantiate()) # DEBUG STATE
+
+static func unload_minigame():
+	print("unloading minigameeeeee")
+	return
+	
+static func load_minigame():
+	print("loading minigameeeeee")
+	return
 
 static func unload_level():
 	if level_root.get_child_count() > 0:

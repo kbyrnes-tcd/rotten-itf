@@ -2,10 +2,12 @@
 
 [ext_resource type="Script" uid="uid://cqsam3tswmb5s" path="res://scripts/game_manager.gd" id="1_o5pa4"]
 [ext_resource type="PackedScene" uid="uid://cpwsgbr3fr7by" path="res://scenes/ui/pause_menu.tscn" id="2_ep3c1"]
+[ext_resource type="PackedScene" uid="uid://h1dqndhb88on" path="res://scenes/levels/main.tscn" id="2_ty236"]
 [ext_resource type="PackedScene" uid="uid://0hlcimiuwo6o" path="res://scenes/ui/inv_ui.tscn" id="3_ep3c1"]
 
 [node name="Essentials" type="Node2D" unique_id=1446151240]
 script = ExtResource("1_o5pa4")
+_debug_level = ExtResource("2_ty236")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1138512013]
 
