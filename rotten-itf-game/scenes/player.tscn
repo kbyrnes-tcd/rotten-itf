@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://vkmq8t1guwnr" path="res://assets/images/player/Hit (32x32).png" id="1_dqkch"]
 [ext_resource type="Script" uid="uid://w2bvkx0l5r8" path="res://scripts/player.gd" id="1_qlg0r"]
-[ext_resource type="Resource" uid="uid://bbfb2yem3oxv0" path="res://scripts/inventory_system/player_inventory.tres" id="2_fjrip"]
 [ext_resource type="Texture2D" uid="uid://dmebo23ctl5ik" path="res://assets/images/player/Idle (32x32).png" id="2_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://3w38knvapafe" path="res://assets/images/player/Jump (32x32).png" id="3_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://c15gnofeo03bn" path="res://assets/images/player/Run (32x32).png" id="4_fjrip"]
@@ -157,7 +156,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_k0e7r")
 }],
-"loop": true,
+"loop": 1,
 "name": &"hit",
 "speed": 20.0
 }, {
@@ -195,7 +194,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_oo8pe")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle",
 "speed": 20.0
 }, {
@@ -203,7 +202,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("3_tuyoq")
 }],
-"loop": true,
+"loop": 1,
 "name": &"jump",
 "speed": 20.0
 }, {
@@ -244,7 +243,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7jj1y")
 }],
-"loop": true,
+"loop": 1,
 "name": &"run",
 "speed": 20.0
 }]
@@ -254,9 +253,6 @@ radius = 35.19535
 
 [node name="Player" type="CharacterBody2D" unique_id=1515659648]
 script = ExtResource("1_qlg0r")
-inv = ExtResource("2_fjrip")
-SPEED = 250.0
-JUMP_VELOCITY = -850.0
 
 [node name="PlyrCollisionShape2D" type="CollisionShape2D" parent="." unique_id=66024058]
 position = Vector2(0.6666667, 3.3333335)
@@ -271,6 +267,7 @@ autoplay = "idle"
 frame_progress = 0.66269505
 
 [node name="Lantern" type="Node2D" parent="CharacterSprites" unique_id=964616978]
+visible = false
 position = Vector2(17.333334, 2.666667)
 scale = Vector2(0.455, 0.455)
 
