@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bu2p77kl4tq6c"]
 
 [ext_resource type="Script" uid="uid://ccwt8g7y74l3h" path="res://scripts/minigames/maze/mg_player_rot.gd" id="1_35ab0"]
+[ext_resource type="Script" uid="uid://cdwsqlsxmy7tw" path="res://scripts/minigames/maze/mg_dir.gd" id="2_f424p"]
 [ext_resource type="Texture2D" uid="uid://cd4cbrmm0xm5a" path="res://assets/images/ui/carat.png" id="3_35ab0"]
 [ext_resource type="Script" uid="uid://cs0ki84qae7lo" path="res://scripts/minigames/maze/mg_build_maze_data.gd" id="3_f424p"]
 
@@ -23,7 +24,9 @@ points = PackedVector2Array(0, 0, 0, 0)
 width = 2.5
 default_color = Color(0.88235295, 0.37254903, 0.37254903, 1)
 
-[node name="dir_arrows" type="Node2D" parent="PlayerRot" unique_id=491516785]
+[node name="dir_arrows" type="Node2D" parent="PlayerRot" unique_id=491516785 node_paths=PackedStringArray("graph")]
+script = ExtResource("2_f424p")
+graph = NodePath("../../MazePath")
 
 [node name="up_sprite" type="Sprite2D" parent="PlayerRot/dir_arrows" unique_id=725394007]
 position = Vector2(0, -11)
@@ -229,3 +232,5 @@ position = Vector2(31, 187)
 
 [node name="Z" type="Marker2D" parent="MazePath" unique_id=26024740]
 position = Vector2(381, 304)
+
+[connection signal="active_node_changed" from="PlayerRot" to="PlayerRot/dir_arrows" method="_on_player_rot_active_node_changed"]

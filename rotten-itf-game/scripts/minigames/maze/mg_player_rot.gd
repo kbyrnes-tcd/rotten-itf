@@ -11,6 +11,7 @@ var tip_point : Vector2
 var pts : PackedVector2Array = PackedVector2Array([])
 var debug_vine : PackedVector2Array = PackedVector2Array([])  # for idle debugging
 var debug_tip_point : Vector2
+signal active_node_changed
 
 func _ready() -> void:
 	pts = $vine.points
@@ -18,6 +19,7 @@ func _ready() -> void:
 	debug_vine = $vine_debug.points
 	debug_tip_point = debug_vine[-1]
 	active_node = "A"
+	active_node_changed.emit(active_node)
 
 func get_snapped_direction():
 	var mouse_pos = get_global_mouse_position()
@@ -72,8 +74,7 @@ func clear_preview():
 	debug_vine = PackedVector2Array([[0,0], [0,0]])
 	$vine_debug.points = debug_vine
 	# hide arrow_dirs
-	for dir_sprite in $dir_arrows.get_children():
-		dir_sprite.visible = false
+	$dir_arrows.visible = false
 		
 func update_preview():
 	# update debug view to new tip
@@ -82,9 +83,8 @@ func update_preview():
 	$vine_debug.points = debug_vine
 	
 	# show & update arrow_dirs pos
+	$dir_arrows.visible = true
 	$dir_arrows.position = $dir_arrows.get_parent().to_local(debug_tip_point)
-	for dir_sprite in $dir_arrows.get_children():
-		dir_sprite.visible = true
 
 func process_growing(delta: float):
 	#print("GROWING")
@@ -110,13 +110,13 @@ func process_growing(delta: float):
 
 	else: current_state = State.IDLE
 
-func process_stopped():	
+func process_stopped():
 	# actually append point to arr
 	pts.append($vine.to_local(tip_point))
 	$vine.points = pts
 	
-	# update preview first then pointers ?!??!?!? ORDER IS ANNOYING.
 	active_node = next_node
+	active_node_changed.emit(next_node)
 	if active_node == "Z":
 		print("YOU WON")
 		current_state = State.WON
