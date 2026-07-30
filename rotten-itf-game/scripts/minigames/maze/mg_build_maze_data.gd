@@ -21,6 +21,9 @@ func get_valid_dirs(node_id: String) -> Array:
 func get_next_node(node_id: String, dir: String) -> String:
 	return graph_data[node_id]["edges"].get(dir, "")
 
+#func get_fin_node(node_id: String) -> Array:
+	#return node w/ flag fin
+
 func build_graph() -> Dictionary:
 	var nodes := {}
 	for marker in get_children():

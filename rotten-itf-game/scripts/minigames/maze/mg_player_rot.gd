@@ -1,7 +1,7 @@
 extends Node2D
 
 # INIT: FSM, Global vars for active ray/dir
-enum State { IDLE, GROWING, STOPPED }
+enum State { IDLE, GROWING, STOPPED, WON }
 @export var graph: MazeData
 var current_state : State = State.IDLE
 var active_node : String
@@ -61,8 +61,8 @@ func process_idle():
 		return # no valid dir detected
 	
 	# VISUAL UPDATE: shows active dir until node along that edge_dir
-	if graph.graph_data[active_node]["edges"].keys().has(active_dir):
-		var n_node = graph.graph_data[active_node]["edges"][active_dir]
+	if graph.get_valid_dirs(active_node).has(active_dir):
+		var n_node = graph.get_next_node(active_node, active_dir)
 		debug_tip_point = graph.get_pos(n_node)
 		debug_vine[-1] = $vine_debug.to_local(debug_tip_point)
 		$vine_debug.points = debug_vine
@@ -91,10 +91,10 @@ func process_growing(delta: float):
 	var grow_speed: float = 200.0  # pixels /sec
 
 	# if active_node can grow towards active_dir, do... extend the tip
-	if graph.graph_data[active_node]["edges"].keys().has(active_dir):
+	if graph.get_valid_dirs(active_node).has(active_dir):
 		# clear debug preview & arrow_dirs
 		clear_preview()
-		next_node = graph.graph_data[active_node]["edges"][active_dir]
+		next_node = graph.get_next_node(active_node, active_dir)
 		var n_node_pos = graph.get_pos(next_node)
 		tip_point = graph.get_pos(next_node)
 
@@ -110,15 +110,18 @@ func process_growing(delta: float):
 
 	else: current_state = State.IDLE
 
-func process_stopped():
-	#print("STOPPED")
-	
+func process_stopped():	
 	# actually append point to arr
 	pts.append($vine.to_local(tip_point))
 	$vine.points = pts
 	
 	# update preview first then pointers ?!??!?!? ORDER IS ANNOYING.
 	active_node = next_node
+	if active_node == "Z":
+		print("YOU WON")
+		current_state = State.WON
+		return
+		
 	active_dir = ""
 	update_preview()
 	
@@ -126,7 +129,6 @@ func process_stopped():
 	return
 
 func _physics_process(delta: float) -> void:
-	#print(current_state)
 	match current_state:
 		State.IDLE:
 			process_idle()
@@ -134,6 +136,9 @@ func _physics_process(delta: float) -> void:
 			process_growing(delta)
 		State.STOPPED:
 			process_stopped()
+		State.WON:
+			clear_preview()
+			pass
 			
 	if Input.is_action_just_pressed("click") && current_state == State.IDLE:
 		current_state = State.GROWING
