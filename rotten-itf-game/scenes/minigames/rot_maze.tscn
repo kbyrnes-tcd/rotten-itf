@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bu2p77kl4tq6c"]
+[gd_scene format=3 uid="uid://b0xdv5nobjlkk"]
 
 [ext_resource type="Script" uid="uid://ccwt8g7y74l3h" path="res://scripts/minigames/maze/mg_player_rot.gd" id="1_35ab0"]
 [ext_resource type="Script" uid="uid://cdwsqlsxmy7tw" path="res://scripts/minigames/maze/mg_dir.gd" id="2_f424p"]
@@ -49,10 +49,6 @@ position = Vector2(11, 0)
 rotation = 1.5707964
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("3_35ab0")
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1733059183]
-position = Vector2(268, 304)
-zoom = Vector2(0.425, 0.425)
 
 [node name="COLLISIONS" type="Node2D" parent="." unique_id=615619389]
 position = Vector2(0, 17)

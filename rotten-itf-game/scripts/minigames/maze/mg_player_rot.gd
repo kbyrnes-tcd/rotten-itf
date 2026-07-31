@@ -65,7 +65,7 @@ func process_idle():
 	# VISUAL UPDATE: shows active dir until node along that edge_dir
 	if graph.get_valid_dirs(active_node).has(active_dir):
 		var n_node = graph.get_next_node(active_node, active_dir)
-		debug_tip_point = graph.get_pos(n_node)
+		debug_tip_point = graph.to_global(graph.get_pos((n_node)))
 		debug_vine[-1] = $vine_debug.to_local(debug_tip_point)
 		$vine_debug.points = debug_vine
 
@@ -78,7 +78,7 @@ func clear_preview():
 		
 func update_preview():
 	# update debug view to new tip
-	debug_tip_point = graph.get_pos(next_node)
+	debug_tip_point = graph.to_global(graph.get_pos((next_node)))
 	debug_vine = [$vine_debug.to_local(debug_tip_point), $vine_debug.to_local(debug_tip_point)]
 	$vine_debug.points = debug_vine
 	
@@ -95,8 +95,8 @@ func process_growing(delta: float):
 		# clear debug preview & arrow_dirs
 		clear_preview()
 		next_node = graph.get_next_node(active_node, active_dir)
-		var n_node_pos = graph.get_pos(next_node)
-		tip_point = graph.get_pos(next_node)
+		var n_node_pos = graph.to_global(graph.get_pos((next_node)))
+		tip_point = graph.to_global(graph.get_pos((next_node)))
 
 		# extend tip incr.
 		var current_tip = to_global(pts[-1])

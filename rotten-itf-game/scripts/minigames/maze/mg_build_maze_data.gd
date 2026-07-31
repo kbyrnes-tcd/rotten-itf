@@ -28,7 +28,7 @@ func build_graph() -> Dictionary:
 	var nodes := {}
 	for marker in get_children():
 		nodes[marker.name] = { 
-			"pos": marker.global_position, 
+			"pos": to_local(marker.global_position),
 			"edges": {}, 
 			# init dist for neighbors as some max-value
 			"dist": {

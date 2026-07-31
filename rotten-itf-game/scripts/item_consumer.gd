@@ -12,7 +12,7 @@ var player_in_area : bool = false;
 func _ready() -> void:
 	print("this lantern requires an " + item.name)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if player_in_area && Input.is_action_just_pressed("interact"):
 		if (player.has(item)):
 				player.use(item)
@@ -23,16 +23,15 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("collect"):
-		GameGlobals.load_minigame()
 		player = body
 		player_in_area = true
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.has_method("collect"):
 		player_in_area = false
-		GameGlobals.unload_minigame()
 
 # lantern specific visual stuff can change/remove
 func deactivate():
 	activated_sprite.texture = activated_tex
 	collision_shape_2d.disabled = true
+	GameGlobals.load_minigame(GameGlobals.Minigame.MAZE)
