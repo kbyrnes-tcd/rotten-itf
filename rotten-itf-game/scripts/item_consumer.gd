@@ -3,7 +3,6 @@ extends Node2D
 var player = null;
 var player_in_area : bool = false;
 
-#@export var game_manager : GameManager
 @export var item : InvItem # the required item for this lantern/consumer object
 @export var activated_tex : Texture2D
 
@@ -24,14 +23,14 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("collect"):
-		#game_manager.load_minigame()
+		GameGlobals.load_minigame()
 		player = body
 		player_in_area = true
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.has_method("collect"):
 		player_in_area = false
-		#game_manager.unload_minigame()
+		GameGlobals.unload_minigame()
 
 # lantern specific visual stuff can change/remove
 func deactivate():

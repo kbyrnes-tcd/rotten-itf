@@ -1,16 +1,26 @@
 extends Node
-class_name GameManager
+class_name GameGlobals
 
 static var level_prog = ["Begin", "Scene_01", "Scene_02"]
 static var level_root: Node2D
-@export var _debug_level: PackedScene
+var debug : bool = true
 
 func _ready() -> void:
-	level_root = get_node("World/LevelRoot")
-	if !_debug_level:
+	var scene = get_tree().current_scene
+	level_root = scene.get_node("World/LevelRoot")
+
+	var debug_node : Node = scene.get_node_or_null("DebugConfig") if debug else null
+	if debug_node == null:
+		print("no debug")
 		load_level(level_prog[1]) # AUTOLOAD SCENE_01
 	else:
-		level_root.add_child(_debug_level.instantiate()) # DEBUG STATE
+		print("opening debug")
+		var debug_scene : PackedScene = debug_node._debug_level
+		if debug_scene == null:
+			push_warning("DebugConfig found but _debug_level is unset")
+			load_level(level_prog[1]) # AUTOLOAD SCENE_01 IF DIDN'T SET DEBUG_LVL CORRECTLY
+		else:
+			level_root.add_child(debug_scene.instantiate())
 
 static func unload_minigame():
 	print("unloading minigameeeeee")
