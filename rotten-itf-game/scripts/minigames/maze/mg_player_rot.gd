@@ -120,6 +120,8 @@ func process_stopped():
 	if active_node == "Z":
 		print("YOU WON")
 		current_state = State.WON
+		clear_preview()
+		GameGlobals.unload_minigame()
 		return
 		
 	active_dir = ""
@@ -136,9 +138,9 @@ func _physics_process(delta: float) -> void:
 			process_growing(delta)
 		State.STOPPED:
 			process_stopped()
-		State.WON:
-			clear_preview()
-			pass
+		#State.WON:
+			#clear_preview()
+			#pass
 			
 	if Input.is_action_just_pressed("click") && current_state == State.IDLE:
 		current_state = State.GROWING

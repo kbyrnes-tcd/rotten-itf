@@ -14,7 +14,7 @@ enum Minigame { NONE, MAZE, LETTER }
 static var pause_menu: Control
 static var color_rect: ColorRect
 
-var running_another_scene : bool = true
+var running_another_scene : bool = false # for running minigames and etc.
 
 func _ready() -> void:
 	if !running_another_scene:
@@ -53,7 +53,7 @@ static func unload_minigame():
 	resume(false)
 	# unload mg_root child from tree
 	var c_mg : Node = mg_root.get_child(0)
-	mg_root.remove_child(c_mg)
+	c_mg.queue_free()
 	return
 	
 static func load_minigame(mg : int):

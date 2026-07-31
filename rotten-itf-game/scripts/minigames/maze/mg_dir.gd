@@ -13,5 +13,4 @@ func update_dir_arrows(active_node : String):
 
 func _on_player_rot_active_node_changed(active_node : String) -> void:
 	update_dir_arrows(active_node)
-	print("active node is %s" %active_node)
 	return
