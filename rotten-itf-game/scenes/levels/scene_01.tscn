@@ -7,16 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="4_3336g"]
 [ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="4_c6wtd"]
 [ext_resource type="PackedScene" uid="uid://bimatr4hej8ja" path="res://scenes/ui/interactive_carat.tscn" id="5_8bo55"]
-[ext_resource type="Script" uid="uid://cvirlabisap40" path="res://scripts/camera_path.gd" id="5_jmjgo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3336g"]
 size = Vector2(2596, 33)
-
-[sub_resource type="Curve2D" id="Curve2D_3336g"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 180, 300, 0, 0, 0, 0, 2090, 294)
-}
-point_count = 2
 
 [node name="Scene_01" type="Node2D" unique_id=358721782]
 
@@ -136,18 +129,5 @@ shape = SubResource("RectangleShape2D_3336g")
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("4_3336g")]
 position = Vector2(49, 309)
-
-[node name="CameraPath2D" type="Path2D" parent="." unique_id=983943170]
-process_mode = 4
-visible = false
-curve = SubResource("Curve2D_3336g")
-script = ExtResource("5_jmjgo")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="CameraPath2D" unique_id=1327510548]
-position = Vector2(180, 300)
-rotation = -0.0031413508
-
-[node name="Camera2D" type="Camera2D" parent="CameraPath2D/PathFollow2D" unique_id=835803065]
-position = Vector2(140, -120)
 
 [editable path="Panel3/Temple/Sprite2D/InteractiveCarat"]
