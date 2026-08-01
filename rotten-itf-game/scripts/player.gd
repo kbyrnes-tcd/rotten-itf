@@ -265,13 +265,16 @@ extends CharacterBody2D
 
 const ROT_VINE = preload("uid://kicj2478es6o")
 const GROWTH_SPEED = 120.0
+const GLOWWORM = preload("res://scripts/inventory_system/items/orange_worm.tres")
+const GLOWWORM_MAX = 5
+const USE_INTERVAL = 2.0
 
 @export var inv: Inventory
 @export var SPEED = 150.0
 @export var JUMP_VELOCITY = -650.0
 
 # Enums and state variables
-enum ToolState { IDLE, LANTERN_ON, GUN_ON }
+enum ToolState { IDLE, LANTERN_ON, LANTERN_EQUIPPED, GUN_EQUIPPED, GUN_ON }
 #enum MoveState { IDLE, RUNNING, JUMPING, FALLING }
 
 var tool_state = ToolState.IDLE
@@ -279,6 +282,9 @@ var tool_state = ToolState.IDLE
 
 var active_vine = null
 var is_growing = false
+
+var glowworm_uses = 0
+var use_timer = 0.0
 
 func collect(item: InvItem):
 	inv.insert(item)
@@ -288,7 +294,20 @@ func has(item: InvItem) -> bool:
 
 func use(item: InvItem):
 	inv.remove(item)
-
+	
+func _ready():
+	#gun starts hidden and disabled
+	gun.visible = false
+	gun_sprite.visible = false
+	gun.process_mode = Node.PROCESS_MODE_DISABLED
+	#lantern starts hidden and disabled  
+	lantern.visible = false
+	lantern.process_mode = Node.PROCESS_MODE_DISABLED
+	#light starts off
+	var light = lantern.get_node_or_null("PointLight2D")
+	if light:
+		light.enabled = false
+	
 func get_snapped_direction() -> Vector2:
 	var mouse_pos = get_global_mouse_position()
 	var diff = mouse_pos - global_position
@@ -347,14 +366,43 @@ func add_vine(src: Vector2, dest: Vector2):
 	vine.get_child(0).points = vine_points
 	scene.add_child(vine)
 
+#lantern visuals
+func update_lantern_visuals():
+	var life_ratio = float(glowworm_uses)/float(GLOWWORM_MAX)
+	lantern.modulate.a = lerp(0., 1.0, life_ratio)
+	var light = lantern.get_node_or_null("PointLight2D")
+	if light:
+		light.texture_scale = lerp(0.3, 1.0, life_ratio)
+		light.energy = lerp(0.3, 1.5, life_ratio)
+
+func activate_light():
+	var light = lantern.get_node_or_null("PointLight2D")
+	if light:
+		light.enabled = true
+
+func deactivate_light():
+	var light = lantern.get_node_or_null("PointLight2D")
+	if light:
+		light.enabled = false
+		
 #change tool state
 func change_tool_state(new_state: ToolState):
 	print("tool: " + str(tool_state) + "to " + str(new_state))
 	#exit current state
 	match tool_state:
-		ToolState.LANTERN_ON:
+		ToolState.LANTERN_EQUIPPED: 
 			lantern.visible = false
 			lantern.process_mode = Node.PROCESS_MODE_DISABLED
+			lantern.modulate.a = 1.0
+		ToolState.LANTERN_ON:
+			deactivate_light()
+			lantern.visible = false
+			lantern.process_mode = Node.PROCESS_MODE_DISABLED
+			lantern.modulate.a = 1.0
+		ToolState.GUN_EQUIPPED:
+			gun.visible = false
+			gun_sprite.visible = false
+			gun.process_mode = Node.PROCESS_MODE_DISABLED
 		ToolState.GUN_ON:
 			gun.visible = false
 			gun_sprite.visible = false
@@ -366,49 +414,146 @@ func change_tool_state(new_state: ToolState):
 	match new_state:
 		ToolState.IDLE:
 			pass
+		ToolState.LANTERN_EQUIPPED:
+			lantern.visible = true
+			lantern.process_mode = Node.PROCESS_MODE_INHERIT
+			if glowworm_uses <= 0:
+				glowworm_uses = GLOWWORM_MAX
+				use_timer = 0.0
+			update_lantern_visuals()
 		ToolState.LANTERN_ON:
 			lantern.visible = true
 			lantern.process_mode = Node.PROCESS_MODE_INHERIT
-		ToolState.GUN_ON:
+			activate_light()
+		ToolState.GUN_EQUIPPED:
 			gun.visible = true
 			gun_sprite.visible = true
 			gun.process_mode = Node.PROCESS_MODE_INHERIT
-			var dir = get_snapped_direction()
-			ray_line_2d.points[1] = ray_cast_2d.to_local(
-				ray_cast_2d.global_position + dir * 200.0
-			)
+		ToolState.GUN_ON:
+			pass
+
 
 #tool input
-func _process(_delta):
-	#W toggles lantern
+func _process(delta):
+	match tool_state:
+		ToolState.IDLE:
+			_tool_idle()
+		ToolState.LANTERN_EQUIPPED:
+			_tool_lantern_equipped()
+		ToolState.LANTERN_ON:
+			_tool_lantern_on(delta)
+		ToolState.GUN_EQUIPPED:
+			_tool_gun_equipped()
+		ToolState.GUN_ON:
+			_tool_gun_on()
+
+func _tool_idle():
 	if Input.is_action_just_pressed("rot_cut"):
-		if tool_state == ToolState.LANTERN_ON:
-			change_tool_state(ToolState.IDLE)
+		if inv.has(GLOWWORM):
+			change_tool_state(ToolState.LANTERN_EQUIPPED)
 		else:
-			change_tool_state(ToolState.LANTERN_ON)
-
-	#Q toggles gun
+			print("no glowworms! WOMP WOMP")
 	if Input.is_action_just_pressed("equip_rot"):
-		if tool_state == ToolState.GUN_ON:
-			change_tool_state(ToolState.IDLE)
+		change_tool_state(ToolState.GUN_EQUIPPED)
+
+func _tool_lantern_equipped(): 
+	if Input.is_action_just_pressed("rot_cut"):
+		change_tool_state(ToolState.IDLE)
+		return
+	if Input.is_action_just_pressed("equip_rot"):
+		change_tool_state(ToolState.GUN_EQUIPPED)
+		return
+	if Input.is_action_pressed("lantern_toggle"):
+		change_tool_state(ToolState.LANTERN_ON)
+	
+func _tool_lantern_on(delta: float):
+	if Input.is_action_pressed("lantern_toggle"):
+		change_tool_state(ToolState.LANTERN_EQUIPPED)
+		return
+	if Input.is_action_just_pressed("rot_cut"):
+		change_tool_state(ToolState.IDLE)
+		return
+	
+	#decay of the glowworms with every use -- amount of times one glowworm is used
+	use_timer += delta
+	if use_timer >= USE_INTERVAL:
+		use_timer = 0.0
+		glowworm_uses -= 1
+		update_lantern_visuals()
+		print("glowworms uses left: " + str(glowworm_uses))
+		if glowworm_uses <= 0:
+			inv.remove(GLOWWORM)
+			print("glowworm used")
+			if inv.has(GLOWWORM):
+				glowworm_uses = GLOWWORM_MAX
+				use_timer = 0.0
+				print("next glowworm loaded")
+			else:
+				print("out of glowworms")
+				change_tool_state(ToolState.IDLE)
+
+func _tool_gun_equipped():
+	if Input.is_action_just_pressed("equip_rot"):
+		change_tool_state(ToolState.IDLE)
+		return
+	if Input.is_action_just_pressed("rot_cut"):
+		if inv.has(GLOWWORM):
+			change_tool_state(ToolState.LANTERN_EQUIPPED)
 		else:
-			change_tool_state(ToolState.GUN_ON)
-
-	#fires rot only when gun is on
-	if Input.is_action_just_pressed("rot_extend") and tool_state == ToolState.GUN_ON and not is_growing:
+			print("no glowworms! WOMP WOMP")
+		return
+	if Input.is_action_just_pressed("rot_extend") and not is_growing:
 		start_vine()
+		change_tool_state(ToolState.GUN_ON)
+		return
+	ray_cast_2d.force_raycast_update()
+	var dir = get_snapped_direction()
+	ray_line_2d.points[1] = ray_cast_2d.to_local(
+		ray_cast_2d.global_position + dir * 200.0
+	)
 
-	#release stops rot shooting
-	if Input.is_action_just_released("rot_extend"):
-		if is_growing:
-			stop_vine()
-
-	if tool_state == ToolState.GUN_ON:
-		var dir = get_snapped_direction()
-		ray_cast_2d.force_raycast_update()
-		ray_line_2d.points[1] = ray_cast_2d.to_local(
-			ray_cast_2d.global_position + dir * 200.0
-		)
+func _tool_gun_on():
+	if not is_growing:
+		change_tool_state(ToolState.GUN_EQUIPPED)
+		return
+	if Input.is_action_just_pressed("equip_rot"):
+		stop_vine()
+		change_tool_state(ToolState.IDLE)
+		return
+	var dir = get_snapped_direction()
+	ray_line_2d.points[1] = ray_cast_2d.to_local(
+		ray_cast_2d.global_position + dir * 200.0
+	)
+#func _process(_delta):
+	##W toggles lantern
+	#if Input.is_action_just_pressed("rot_cut"):
+		#if tool_state == ToolState.LANTERN_ON:
+			#change_tool_state(ToolState.IDLE)
+		#else:
+			#change_tool_state(ToolState.LANTERN_ON)
+#
+	##Q toggles gun
+	#if Input.is_action_just_pressed("equip_rot"):
+		#if tool_state == ToolState.GUN_ON:
+			#change_tool_state(ToolState.IDLE)
+		#else:
+			#change_tool_state(ToolState.GUN_ON)
+#
+	##fires rot only when gun is on
+	#if Input.is_action_just_pressed("rot_extend") and tool_state == ToolState.GUN_ON and not is_growing:
+		#start_vine()
+#
+	##release stops rot shooting
+	#if Input.is_action_just_released("rot_extend"):
+		#if is_growing:
+			#stop_vine()
+#
+	#if tool_state == ToolState.GUN_ON:
+		#var dir = get_snapped_direction()
+		#ray_cast_2d.force_raycast_update()
+		#ray_line_2d.points[1] = ray_cast_2d.to_local(
+			#ray_cast_2d.global_position + dir * 200.0
+		#)
 
 func _handle_vine_growth(delta: float):
 	if not is_growing or not active_vine:
