@@ -24,8 +24,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3336g"]
 size = Vector2(2915, 33)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qlg0r"]
-size = Vector2(20.666668, 25.333332)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8rgwm"]
+radius = 13.0
+height = 80.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qino5"]
 atlas = ExtResource("10_2lj5v")
@@ -191,8 +192,12 @@ texture = ExtResource("5_c6wtd")
 position = Vector2(0, 301)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/GroundCollider" unique_id=409099627]
-position = Vector2(1447.5, -0.5)
+position = Vector2(1444, 5)
 shape = SubResource("RectangleShape2D_3336g")
+
+[node name="Ramp" type="CollisionPolygon2D" parent="Colliders/GroundCollider" unique_id=1718664119]
+position = Vector2(1675, -17)
+polygon = PackedVector2Array(-3, 5, 36, -8, 1500, -8, 1506, 13)
 
 [node name="LeftOobCollider" type="StaticBody2D" parent="Colliders" unique_id=2121097576]
 position = Vector2(-9.094947e-13, 388)
@@ -213,14 +218,14 @@ position = Vector2(1288, -0.5)
 shape = SubResource("RectangleShape2D_3336g")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1515659648]
-position = Vector2(86, 244)
+position = Vector2(44, 243)
 script = ExtResource("8_elhth")
 inv = ExtResource("9_ancih")
 JUMP_VELOCITY = -450.0
 
 [node name="PlyrCollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=66024058]
-position = Vector2(0.6666667, 3.3333335)
-shape = SubResource("RectangleShape2D_qlg0r")
+position = Vector2(-0.9999593, 5.2452087e-06)
+shape = SubResource("CapsuleShape2D_8rgwm")
 
 [node name="CharacterSprites" type="Node2D" parent="Player" unique_id=2095860029]
 
