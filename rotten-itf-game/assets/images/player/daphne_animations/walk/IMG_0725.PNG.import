@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccqsdbqc4654n"
-path="res://.godot/imported/1-Backdrop.png-e1de57cd7afa19f8266f368bb485f05f.ctex"
+uid="uid://dfwfp8eqktoae"
+path="res://.godot/imported/IMG_0725.PNG-68c9b8de9080d81b2af192dc4fe34ed9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/env/p1_start/parallax/1-Backdrop.png"
-dest_files=["res://.godot/imported/1-Backdrop.png-e1de57cd7afa19f8266f368bb485f05f.ctex"]
+source_file="res://assets/images/player/daphne_animations/walk/IMG_0725.PNG"
+dest_files=["res://.godot/imported/IMG_0725.PNG-68c9b8de9080d81b2af192dc4fe34ed9.ctex"]
 
 [params]
 

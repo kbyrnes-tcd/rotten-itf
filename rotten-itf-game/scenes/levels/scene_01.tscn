@@ -2,38 +2,193 @@
 
 [ext_resource type="Texture2D" uid="uid://5qshld0g75rv" path="res://assets/images/env/p1_start/CONDENSED-Back.png" id="2_775pl"]
 [ext_resource type="Texture2D" uid="uid://coin0yvs6xqds" path="res://assets/images/env/p1_start/1-Backdrop.png" id="2_wg12t"]
+[ext_resource type="Texture2D" uid="uid://3cs77nnx2dpv" path="res://assets/images/env/p1_start/parallax/3-Mid bushes.png" id="3_5t0pk"]
 [ext_resource type="Texture2D" uid="uid://cv06841c8kh4t" path="res://assets/images/env/p1_start/SIMPLE-Front.png" id="3_3336g"]
-[ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="4_3336g"]
+[ext_resource type="Texture2D" uid="uid://o8dro18but5g" path="res://assets/images/env/p1_start/parallax/4.midtrees.png" id="4_b3nsi"]
+[ext_resource type="Texture2D" uid="uid://mw60m6635v67" path="res://assets/images/env/p1_start/parallax/2-TreesBack.png" id="4_jmjgo"]
+[ext_resource type="Texture2D" uid="uid://75jap5nxxlg5" path="res://assets/images/env/p1_start/parallax/9-treesinfront .png" id="5_c6wtd"]
+[ext_resource type="Script" uid="uid://w2bvkx0l5r8" path="res://scripts/player.gd" id="8_elhth"]
+[ext_resource type="Resource" uid="uid://bbfb2yem3oxv0" path="res://scripts/inventory_system/player_inventory.tres" id="9_ancih"]
+[ext_resource type="Texture2D" uid="uid://vkmq8t1guwnr" path="res://assets/images/player/Hit (32x32).png" id="10_2lj5v"]
+[ext_resource type="Texture2D" uid="uid://dbkfgvy1p72bc" path="res://assets/images/player/daphne_animations/walk/IMG_0718.PNG" id="11_8rgwm"]
+[ext_resource type="Texture2D" uid="uid://bo0sxfa5trfge" path="res://assets/images/player/daphne_animations/walk/IMG_0720.PNG" id="12_56i2g"]
+[ext_resource type="Texture2D" uid="uid://cnks65vsw5sxe" path="res://assets/images/player/daphne_animations/walk/IMG_0721.PNG" id="13_kgrr2"]
+[ext_resource type="Texture2D" uid="uid://dtegs0rgn2hs6" path="res://assets/images/player/daphne_animations/walk/IMG_0722.PNG" id="14_gxcbl"]
+[ext_resource type="Texture2D" uid="uid://bg2xv2dit48xi" path="res://assets/images/worms/lantern.png" id="14_kgrr2"]
+[ext_resource type="Texture2D" uid="uid://dbkabib4tp1d" path="res://assets/images/rot/gun.png" id="15_gxcbl"]
+[ext_resource type="Texture2D" uid="uid://mhmjlw2ny82r" path="res://assets/images/player/daphne_animations/walk/IMG_0723.PNG" id="15_rjn0o"]
+[ext_resource type="Texture2D" uid="uid://dkti3x7pgkukg" path="res://assets/images/player/daphne_animations/walk/IMG_0724.PNG" id="16_hmrpv"]
+[ext_resource type="AudioStream" uid="uid://dvdukd1lqtaao" path="res://assets/audio/jump.wav" id="16_rjn0o"]
+[ext_resource type="Texture2D" uid="uid://dfwfp8eqktoae" path="res://assets/images/player/daphne_animations/walk/IMG_0725.PNG" id="17_hk3tp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3336g"]
 size = Vector2(2915, 33)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qlg0r"]
+size = Vector2(20.666668, 25.333332)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qino5"]
+atlas = ExtResource("10_2lj5v")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xkep"]
+atlas = ExtResource("10_2lj5v")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_doaq5"]
+atlas = ExtResource("10_2lj5v")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_erh1e"]
+atlas = ExtResource("10_2lj5v")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5uyv"]
+atlas = ExtResource("10_2lj5v")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dcw0"]
+atlas = ExtResource("10_2lj5v")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0e7r"]
+atlas = ExtResource("10_2lj5v")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6adnx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qino5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xkep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_doaq5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_erh1e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5uyv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8dcw0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0e7r")
+}],
+"loop": 1,
+"name": &"hit",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_gxcbl")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_8rgwm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_56i2g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_kgrr2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_gxcbl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_rjn0o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_hmrpv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_hk3tp")
+}],
+"loop": 1,
+"name": &"jump",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_8rgwm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_56i2g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_kgrr2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_gxcbl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_rjn0o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_hmrpv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_hk3tp")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y4r1p"]
+radius = 35.19535
+
 [node name="Scene_01" type="Node2D" unique_id=358721782]
 
-[node name="Environment" type="Node2D" parent="." unique_id=408982068]
-position = Vector2(1445, 179)
+[node name="Environment" type="Node2D" parent="." unique_id=1199873399]
+position = Vector2(1444, 179)
 
-[node name="Background" type="CanvasLayer" parent="Environment" unique_id=999309728]
-layer = -1
+[node name="Background" type="Parallax2D" parent="Environment" unique_id=588063960]
+scroll_scale = Vector2(0.6, 1)
 
 [node name="1Backdrop" type="Sprite2D" parent="Environment/Background" unique_id=1435361381]
-position = Vector2(1445, 179)
 texture = ExtResource("2_wg12t")
 
-[node name="CondensedBack" type="Sprite2D" parent="Environment/Background" unique_id=125937943]
-position = Vector2(1445, 179)
+[node name="2TreesBack" type="Sprite2D" parent="Environment/Background" unique_id=1461737863]
+texture = ExtResource("4_jmjgo")
+
+[node name="Midground" type="Parallax2D" parent="Environment" unique_id=380232047]
+scroll_scale = Vector2(0.8, 1)
+
+[node name="3MidBushes" type="Sprite2D" parent="Environment/Midground" unique_id=474325509]
+texture = ExtResource("3_5t0pk")
+
+[node name="4_midtrees" type="Sprite2D" parent="Environment/Midground" unique_id=1778064843]
+texture = ExtResource("4_b3nsi")
+
+[node name="Building" type="Parallax2D" parent="Environment" unique_id=731269053]
+
+[node name="CondensedBack" type="Sprite2D" parent="Environment/Building" unique_id=125937943]
 texture = ExtResource("2_775pl")
 
-[node name="Foreground" type="CanvasLayer" parent="Environment" unique_id=451835745]
-
-[node name="SimpleFront" type="Sprite2D" parent="Environment/Foreground" unique_id=617101434]
-position = Vector2(1445, 179)
+[node name="SimpleFront" type="Sprite2D" parent="Environment/Building" unique_id=617101434]
+z_index = 1
 texture = ExtResource("3_3336g")
+
+[node name="Foreground" type="Parallax2D" parent="Environment" unique_id=483883464]
+z_index = 1
+
+[node name="9Treesinfront" type="Sprite2D" parent="Environment/Foreground" unique_id=642854661]
+texture = ExtResource("5_c6wtd")
 
 [node name="Colliders" type="Node2D" parent="." unique_id=2145202998]
 
 [node name="GroundCollider" type="StaticBody2D" parent="Colliders" unique_id=1613639351]
-position = Vector2(0, 307)
+position = Vector2(0, 301)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/GroundCollider" unique_id=409099627]
 position = Vector2(1447.5, -0.5)
@@ -57,5 +212,71 @@ scale = Vector2(0.15999758, 1)
 position = Vector2(1288, -0.5)
 shape = SubResource("RectangleShape2D_3336g")
 
-[node name="Player" parent="." unique_id=1515659648 instance=ExtResource("4_3336g")]
-position = Vector2(2047, 261)
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1515659648]
+position = Vector2(86, 244)
+script = ExtResource("8_elhth")
+inv = ExtResource("9_ancih")
+JUMP_VELOCITY = -450.0
+
+[node name="PlyrCollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=66024058]
+position = Vector2(0.6666667, 3.3333335)
+shape = SubResource("RectangleShape2D_qlg0r")
+
+[node name="CharacterSprites" type="Node2D" parent="Player" unique_id=2095860029]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player/CharacterSprites" unique_id=512896578]
+sprite_frames = SubResource("SpriteFrames_6adnx")
+animation = &"run"
+autoplay = "idle"
+
+[node name="Lantern" type="Node2D" parent="Player/CharacterSprites" unique_id=964616978]
+position = Vector2(17.333334, 2.666667)
+scale = Vector2(0.455, 0.455)
+
+[node name="Sprite2D" type="Sprite2D" parent="Player/CharacterSprites/Lantern" unique_id=142452027]
+texture = ExtResource("14_kgrr2")
+
+[node name="LanternArea2D" type="Area2D" parent="Player/CharacterSprites/Lantern" unique_id=1614078195]
+position = Vector2(13.186813, -7.326008)
+
+[node name="LntrnCollisionShape2D" type="CollisionShape2D" parent="Player/CharacterSprites/Lantern/LanternArea2D" unique_id=877712953]
+position = Vector2(10.256411, -2.197803)
+shape = SubResource("CircleShape2D_y4r1p")
+
+[node name="GunSprite2D" type="Sprite2D" parent="Player/CharacterSprites" unique_id=1835702057]
+visible = false
+position = Vector2(17.94, 4.666667)
+scale = Vector2(0.67, 0.67)
+texture = ExtResource("15_gxcbl")
+
+[node name="JumpFX" type="AudioStreamPlayer2D" parent="Player" unique_id=1761152459]
+stream = ExtResource("16_rjn0o")
+
+[node name="Gun" type="Node2D" parent="Player" unique_id=805094962]
+process_mode = 4
+visible = false
+position = Vector2(10, 4.666667)
+
+[node name="RayCast2D" type="RayCast2D" parent="Player/Gun" unique_id=957316887]
+rotation = -1.5707964
+target_position = Vector2(0, 30)
+collide_with_areas = true
+
+[node name="RayLine2D" type="Line2D" parent="Player/Gun/RayCast2D" unique_id=345017324]
+points = PackedVector2Array(0, 0, -1.4305115e-06, 29.666668)
+width = 2.0
+default_color = Color(0.1882353, 0.3647059, 0.23137255, 1)
+joint_mode = 2
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1705181399]
+offset = Vector2(85, 0)
+limit_left = -80
+limit_top = 200
+limit_right = 2751
+limit_bottom = 158
+limit_smoothed = true
+rotation_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_top_margin = 0.0
+drag_right_margin = 0.0
+drag_bottom_margin = 0.0
