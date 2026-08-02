@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cdwsqlsxmy7tw" path="res://scripts/minigames/maze/mg_dir.gd" id="4_y13p6"]
 [ext_resource type="Texture2D" uid="uid://cd4cbrmm0xm5a" path="res://assets/images/ui/carat.png" id="5_eujl3"]
 [ext_resource type="Script" uid="uid://cs0ki84qae7lo" path="res://scripts/minigames/maze/mg_build_maze_data.gd" id="6_q10y1"]
+[ext_resource type="PackedScene" uid="uid://cpu885nisbhmc" path="res://scenes/ui/constellation_minigame.tscn" id="7_y13p6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_atmvc"]
 size = Vector2(653, 25)
@@ -97,6 +98,7 @@ _bundled = {
 script = ExtResource("1_ep3c1")
 debug_level = ExtResource("2_ty236")
 maze_mg = SubResource("PackedScene_jm4ic")
+letter_mg = ExtResource("7_y13p6")
 pause_menu = NodePath("../UI/PauseMenu")
 color_rect = NodePath("../UI/PauseMenu/ColorRect")
 

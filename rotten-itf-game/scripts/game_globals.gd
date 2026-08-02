@@ -58,13 +58,24 @@ static func unload_minigame():
 	
 static func load_minigame(mg : int):
 	pause(false)
-	var inst : Node2D
+	var inst : Node
 	match mg:
 		Minigame.MAZE:
 			inst = config.maze_mg.instantiate()
+		Minigame.LETTER:
+			inst = config.letter_mg.instantiate()
 	mg_root.add_child(inst)
 	#inst.scale = Vector2(0.7, 0.7)
 	#inst.position = tree.root.size / 2 
+	if inst is Control:
+		var viewport_size = tree.root.get_visible_rect().size
+		inst.position = Vector2.ZERO
+		inst.size = viewport_size
+		var main_split = inst.get_node_or_null("MainSplit")
+		if main_split:
+			main_split.position = Vector2.ZERO
+			main_split.size = viewport_size
+		
 
 static func unload_level():
 	if level_root.get_child_count() > 0:
