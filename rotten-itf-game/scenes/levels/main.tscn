@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://h1dqndhb88on"]
 
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="1_u81e1"]
-[ext_resource type="Texture2D" uid="uid://btvw0tm1fb350" path="res://assets/images/env/brick-wall.jpg" id="2_b6bv0"]
+[ext_resource type="Texture2D" uid="uid://btvw0tm1fb350" path="res://assets/images/env/archive/brick-wall.jpg" id="2_b6bv0"]
 [ext_resource type="PackedScene" uid="uid://ufmhebijpwbb" path="res://scenes/collectible_item.tscn" id="3_ubwgw"]
 [ext_resource type="Resource" uid="uid://6pxkrw3jqp6n" path="res://scripts/inventory_system/items/green_worm.tres" id="4_vkq25"]
 [ext_resource type="PackedScene" uid="uid://04yyftmutrku" path="res://scenes/item_consumer.tscn" id="5_7lrji"]
@@ -14,7 +14,7 @@ size = Vector2(128, 145.60507)
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("1_u81e1")]
 position = Vector2(385, 468)
 
-[node name="Camera2D" parent="Player" index="5" unique_id=1705181399]
+[node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
 limit_left = -108
 limit_top = 569
 limit_right = 1250
