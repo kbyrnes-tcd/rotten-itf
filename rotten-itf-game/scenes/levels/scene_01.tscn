@@ -2,30 +2,41 @@
 
 [ext_resource type="Texture2D" uid="uid://5qshld0g75rv" path="res://assets/images/env/p1_start/CONDENSED-Back.png" id="2_775pl"]
 [ext_resource type="Texture2D" uid="uid://coin0yvs6xqds" path="res://assets/images/env/p1_start/1-Backdrop.png" id="2_wg12t"]
+[ext_resource type="Texture2D" uid="uid://cv06841c8kh4t" path="res://assets/images/env/p1_start/SIMPLE-Front.png" id="3_3336g"]
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="4_3336g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3336g"]
-size = Vector2(2596, 33)
+size = Vector2(2915, 33)
 
 [node name="Scene_01" type="Node2D" unique_id=358721782]
 
 [node name="Environment" type="Node2D" parent="." unique_id=408982068]
+position = Vector2(1445, 179)
 
-[node name="1Backdrop" type="Sprite2D" parent="Environment" unique_id=1435361381]
-position = Vector2(1446, 179)
+[node name="Background" type="CanvasLayer" parent="Environment" unique_id=999309728]
+layer = -1
+
+[node name="1Backdrop" type="Sprite2D" parent="Environment/Background" unique_id=1435361381]
+position = Vector2(1445, 179)
 texture = ExtResource("2_wg12t")
 
-[node name="CondensedBack" type="Sprite2D" parent="Environment" unique_id=125937943]
-position = Vector2(1446, 181)
+[node name="CondensedBack" type="Sprite2D" parent="Environment/Background" unique_id=125937943]
+position = Vector2(1445, 179)
 texture = ExtResource("2_775pl")
+
+[node name="Foreground" type="CanvasLayer" parent="Environment" unique_id=451835745]
+
+[node name="SimpleFront" type="Sprite2D" parent="Environment/Foreground" unique_id=617101434]
+position = Vector2(1445, 179)
+texture = ExtResource("3_3336g")
 
 [node name="Colliders" type="Node2D" parent="." unique_id=2145202998]
 
 [node name="GroundCollider" type="StaticBody2D" parent="Colliders" unique_id=1613639351]
-position = Vector2(0, 316)
+position = Vector2(0, 307)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/GroundCollider" unique_id=409099627]
-position = Vector2(1288, -0.5)
+position = Vector2(1447.5, -0.5)
 shape = SubResource("RectangleShape2D_3336g")
 
 [node name="LeftOobCollider" type="StaticBody2D" parent="Colliders" unique_id=2121097576]
@@ -38,7 +49,7 @@ position = Vector2(1288, -0.5)
 shape = SubResource("RectangleShape2D_3336g")
 
 [node name="RightOobCollider" type="StaticBody2D" parent="Colliders" unique_id=1561221912]
-position = Vector2(2557, 359)
+position = Vector2(2885, 359)
 rotation = -1.5707964
 scale = Vector2(0.15999758, 1)
 
@@ -47,4 +58,4 @@ position = Vector2(1288, -0.5)
 shape = SubResource("RectangleShape2D_3336g")
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("4_3336g")]
-position = Vector2(49, 277)
+position = Vector2(2047, 261)
