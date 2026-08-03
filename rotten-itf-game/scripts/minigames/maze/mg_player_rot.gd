@@ -13,6 +13,8 @@ var debug_vine : PackedVector2Array = PackedVector2Array([])  # for idle debuggi
 var debug_tip_point : Vector2
 signal active_node_changed
 
+@export var debug : bool
+
 func _ready() -> void:
 	pts = $vine.points
 	tip_point = pts[pts.size()-1]
@@ -114,14 +116,25 @@ func process_stopped():
 	# actually append point to arr
 	pts.append($vine.to_local(tip_point))
 	$vine.points = pts
-	
+		
 	active_node = next_node
 	active_node_changed.emit(next_node)
+	
+	# connector nodes
+	if graph.is_node_conn(active_node):
+		# set active_dir to next_node dir
+		active_dir = graph.get_valid_dirs(active_node)[0]
+		update_preview()
+		current_state = State.GROWING
+		return
+	
+	# win state
 	if active_node == "Z":
 		print("YOU WON")
 		current_state = State.WON
 		clear_preview()
-		GameGlobals.unload_minigame()
+		if !debug:
+			GameGlobals.unload_minigame()
 		return
 		
 	active_dir = ""

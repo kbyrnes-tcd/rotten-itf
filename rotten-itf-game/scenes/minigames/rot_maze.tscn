@@ -8,12 +8,16 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_atmvc"]
 size = Vector2(653, 25)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rrkfw"]
+size = Vector2(171.11115, 20)
+
 [node name="RotMaze" type="Node2D" unique_id=1812960501]
 
 [node name="PlayerRot" type="Node2D" parent="." unique_id=127352751 node_paths=PackedStringArray("graph")]
 position = Vector2(31, 58)
 script = ExtResource("1_35ab0")
 graph = NodePath("../MazePath")
+debug = true
 
 [node name="vine" type="Line2D" parent="PlayerRot" unique_id=788601042]
 points = PackedVector2Array(0, 0, 6.7, 0)
@@ -55,7 +59,7 @@ position = Vector2(0, 17)
 scale = Vector2(0.6629249, 1.2145727)
 
 [node name="TOP" type="StaticBody2D" parent="COLLISIONS" unique_id=1748033280]
-scale = Vector2(1, 0.99999994)
+scale = Vector2(0.42285898, 0.6296296)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="COLLISIONS/TOP" unique_id=365251770]
 position = Vector2(316.5, -2.5)
@@ -63,16 +67,82 @@ shape = SubResource("RectangleShape2D_atmvc")
 
 [node name="TOP2" type="StaticBody2D" parent="COLLISIONS" unique_id=1019646706]
 position = Vector2(0, 82.33348)
-scale = Vector2(1.5084665, 0.32933494)
+scale = Vector2(0.5430479, 0.32933494)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="COLLISIONS/TOP2" unique_id=2018803246]
 position = Vector2(170, -69.99979)
 scale = Vector2(0.5199994, 1)
 shape = SubResource("RectangleShape2D_atmvc")
 
+[node name="TOP5" type="StaticBody2D" parent="COLLISIONS" unique_id=221535041]
+position = Vector2(454.04837, 53.516773)
+scale = Vector2(0.5430479, 0.32933494)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="COLLISIONS/TOP5" unique_id=1421106754]
+position = Vector2(75.5556, 0)
+scale = Vector2(1, 0.99999994)
+shape = SubResource("RectangleShape2D_rrkfw")
+
+[node name="TOP6" type="StaticBody2D" parent="COLLISIONS" unique_id=1372678072]
+position = Vector2(181.01598, 153.96361)
+scale = Vector2(0.81751907, 0.2744061)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="COLLISIONS/TOP6" unique_id=894759645]
+position = Vector2(75.5556, 0)
+scale = Vector2(1, 0.99999994)
+shape = SubResource("RectangleShape2D_rrkfw")
+
+[node name="TOP11" type="StaticBody2D" parent="COLLISIONS" unique_id=927152828]
+position = Vector2(301.6933, 99.623535)
+rotation = -1.5707964
+scale = Vector2(-0.3529337, 0.8200655)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="COLLISIONS/TOP11" unique_id=1670225282]
+position = Vector2(75.5556, 0)
+scale = Vector2(1, 0.99999994)
+shape = SubResource("RectangleShape2D_rrkfw")
+
+[node name="TOP12" type="StaticBody2D" parent="COLLISIONS" unique_id=791865903]
+position = Vector2(414.8283, 99.62351)
+rotation = -1.5707964
+scale = Vector2(-0.3529337, 0.8200655)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="COLLISIONS/TOP12" unique_id=1031737497]
+position = Vector2(75.5556, 0)
+scale = Vector2(1, 0.99999994)
+shape = SubResource("RectangleShape2D_rrkfw")
+
+[node name="TOP9" type="StaticBody2D" parent="COLLISIONS" unique_id=175632200]
+position = Vector2(414.82828, 155.61028)
+scale = Vector2(0.81751907, 0.2744061)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="COLLISIONS/TOP9" unique_id=567140740]
+position = Vector2(75.5556, 0)
+scale = Vector2(1, 0.99999994)
+shape = SubResource("RectangleShape2D_rrkfw")
+
+[node name="TOP8" type="StaticBody2D" parent="COLLISIONS" unique_id=930493584]
+position = Vector2(289.6256, 185.25035)
+scale = Vector2(2.2928689, 0.32933494)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="COLLISIONS/TOP8" unique_id=1436742465]
+position = Vector2(60.5263, -5.0000224)
+scale = Vector2(1, 0.99999994)
+shape = SubResource("RectangleShape2D_rrkfw")
+
+[node name="TOP7" type="StaticBody2D" parent="COLLISIONS" unique_id=2012982482]
+position = Vector2(638.0813, 171.25365)
+rotation = -1.5707964
+scale = Vector2(1.1010358, 1.2304018)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="COLLISIONS/TOP7" unique_id=1317272431]
+position = Vector2(75.5556, 0)
+scale = Vector2(1, 0.99999994)
+shape = SubResource("RectangleShape2D_rrkfw")
+
 [node name="TOP3" type="StaticBody2D" parent="COLLISIONS" unique_id=567507265]
-position = Vector2(0, 133.38025)
-scale = Vector2(1.5084665, 0.32933494)
+position = Vector2(266.99857, 71.63013)
+scale = Vector2(0.30169332, 0.32933494)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="COLLISIONS/TOP3" unique_id=1495254827]
 position = Vector2(170, -69.99979)
@@ -80,8 +150,8 @@ scale = Vector2(0.5199994, 1)
 shape = SubResource("RectangleShape2D_atmvc")
 
 [node name="TOP4" type="StaticBody2D" parent="COLLISIONS" unique_id=1377117114]
-position = Vector2(-1.5084665, 192.66035)
-scale = Vector2(1.5084665, 0.32933494)
+position = Vector2(171.96518, 122.67686)
+scale = Vector2(0.8447412, 0.32933494)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="COLLISIONS/TOP4" unique_id=872545037]
 position = Vector2(170, -69.99979)
@@ -89,8 +159,8 @@ scale = Vector2(0.5199994, 1)
 shape = SubResource("RectangleShape2D_atmvc")
 
 [node name="RHS" type="StaticBody2D" parent="COLLISIONS" unique_id=537599443]
-position = Vector2(591.31885, -14.820026)
-rotation = 1.5707964
+position = Vector2(653.166, -49.40009)
+rotation = 3.1415927
 scale = Vector2(0.8233348, 0.6033884)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="COLLISIONS/RHS" unique_id=1877947233]
@@ -99,7 +169,7 @@ scale = Vector2(0.5199994, 1)
 shape = SubResource("RectangleShape2D_atmvc")
 
 [node name="LHS" type="StaticBody2D" parent="COLLISIONS" unique_id=129140037]
-position = Vector2(476.6754, -13.996692)
+position = Vector2(143.30432, -17.290031)
 rotation = 1.5707964
 scale = Vector2(0.8233348, 0.6033884)
 
@@ -109,7 +179,7 @@ scale = Vector2(-0.08000064, 1)
 shape = SubResource("RectangleShape2D_atmvc")
 
 [node name="LHS3" type="StaticBody2D" parent="COLLISIONS" unique_id=1342241254]
-position = Vector2(-46.762463, -110.32686)
+position = Vector2(-46.762463, -109.50354)
 rotation = 1.5707964
 scale = Vector2(1.1856023, 0.6033884)
 
@@ -119,7 +189,7 @@ scale = Vector2(-0.08000064, 1)
 shape = SubResource("RectangleShape2D_atmvc")
 
 [node name="LHS4" type="StaticBody2D" parent="COLLISIONS" unique_id=1310071162]
-position = Vector2(-45.253998, 0)
+position = Vector2(232.30383, -116.91353)
 rotation = 1.5707964
 scale = Vector2(1.1856023, 0.6033884)
 
@@ -128,22 +198,34 @@ position = Vector2(116.999985, -67.49979)
 scale = Vector2(-0.08000064, 1)
 shape = SubResource("RectangleShape2D_atmvc")
 
-[node name="LHS2" type="StaticBody2D" parent="COLLISIONS" unique_id=1620369353]
-position = Vector2(478.18387, -13.996692)
+[node name="LHS5" type="StaticBody2D" parent="COLLISIONS" unique_id=1589096196]
+position = Vector2(333.37112, -117.736885)
 rotation = 1.5707964
-scale = Vector2(1.9760036, 0.6033884)
+scale = Vector2(1.1856023, 0.6033884)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="COLLISIONS/LHS5" unique_id=345936870]
+position = Vector2(116.999985, -67.49979)
+scale = Vector2(-0.08000064, 1)
+shape = SubResource("RectangleShape2D_atmvc")
+
+[node name="LHS2" type="StaticBody2D" parent="COLLISIONS" unique_id=1620369353]
+position = Vector2(413.31985, -55.986755)
+rotation = 1.5707964
+scale = Vector2(1.1916015, 0.6033884)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="COLLISIONS/LHS2" unique_id=1205699440]
 position = Vector2(116.999985, -67.49979)
 scale = Vector2(-0.08000064, 1)
 shape = SubResource("RectangleShape2D_atmvc")
 
-[node name="BTM" type="StaticBody2D" parent="COLLISIONS" unique_id=803927653]
-position = Vector2(497.79395, 270.0538)
-scale = Vector2(0.24466331, 0.6962745)
+[node name="LHS6" type="StaticBody2D" parent="COLLISIONS" unique_id=2126968998]
+position = Vector2(494.77698, -57.63343)
+rotation = 1.5707964
+scale = Vector2(1.1916015, 0.6033884)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="COLLISIONS/BTM" unique_id=42107680]
-position = Vector2(316.5, -2.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="COLLISIONS/LHS6" unique_id=441895190]
+position = Vector2(137.49869, -72.49985)
+scale = Vector2(0.14110276, 1)
 shape = SubResource("RectangleShape2D_atmvc")
 
 [node name="MazePath" type="Node2D" parent="." unique_id=824729220]
@@ -153,80 +235,155 @@ graph_data = {
 "dist": {
 "down": Vector2(99999, 99999),
 "left": Vector2(99999, 99999),
-"right": Vector2(350, 0),
+"right": Vector2(111, 0),
 "up": Vector2(99999, 99999)
 },
 "edges": {
-"right": &"B"
+"right": &"B-Conn"
 },
-"pos": Vector2(31, 58)
+"pos": Vector2(31, 49)
 },
-&"B": {
+&"B-Conn": {
 "dist": {
-"down": Vector2(0, 129),
-"left": Vector2(-350, 0),
+"down": Vector2(0, 68),
+"left": Vector2(99999, 99999),
 "right": Vector2(99999, 99999),
 "up": Vector2(99999, 99999)
 },
 "edges": {
-"down": &"C",
-"left": &"A"
+"down": &"C-Conn"
 },
-"pos": Vector2(381, 58)
+"pos": Vector2(142, 49)
 },
-&"C": {
-"dist": {
-"down": Vector2(0, 117),
-"left": Vector2(-350, 0),
-"right": Vector2(99999, 99999),
-"up": Vector2(0, -129)
-},
-"edges": {
-"down": &"Z",
-"left": &"D",
-"up": &"B"
-},
-"pos": Vector2(381, 187)
-},
-&"D": {
+&"C-Conn": {
 "dist": {
 "down": Vector2(99999, 99999),
 "left": Vector2(99999, 99999),
-"right": Vector2(350, 0),
+"right": Vector2(133, 0),
 "up": Vector2(99999, 99999)
 },
 "edges": {
-"right": &"C"
+"right": &"D-Conn"
 },
-"pos": Vector2(31, 187)
+"pos": Vector2(142, 117)
+},
+&"D-Conn": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(99999, 99999),
+"right": Vector2(99999, 99999),
+"up": Vector2(0, -62)
+},
+"edges": {
+"up": &"E-Conn"
+},
+"pos": Vector2(275, 117)
+},
+&"E-Conn": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(99999, 99999),
+"right": Vector2(111, 0),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"right": &"F-Conn"
+},
+"pos": Vector2(275, 55)
+},
+&"F-Conn": {
+"dist": {
+"down": Vector2(0, 166),
+"left": Vector2(99999, 99999),
+"right": Vector2(99999, 99999),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"down": &"G"
+},
+"pos": Vector2(386, 55)
+},
+&"G": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(-148, 0),
+"right": Vector2(99999, 99999),
+"up": Vector2(0, -166)
+},
+"edges": {
+"left": &"H",
+"up": &"F-Conn"
+},
+"pos": Vector2(386, 221)
+},
+&"H": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(-96, 0),
+"right": Vector2(148, 0),
+"up": Vector2(0, -46)
+},
+"edges": {
+"left": &"Z",
+"right": &"G",
+"up": &"I"
+},
+"pos": Vector2(238, 221)
+},
+&"I": {
+"dist": {
+"down": Vector2(0, 46),
+"left": Vector2(99999, 99999),
+"right": Vector2(99999, 99999),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"down": &"H"
+},
+"pos": Vector2(238, 175)
 },
 &"Z": {
 "dist": {
 "down": Vector2(99999, 99999),
 "left": Vector2(99999, 99999),
-"right": Vector2(99999, 99999),
-"up": Vector2(0, -246)
+"right": Vector2(96, 0),
+"up": Vector2(99999, 99999)
 },
 "edges": {
-"up": &"B"
+"right": &"H"
 },
-"pos": Vector2(381, 304)
+"pos": Vector2(142, 221)
 }
 }
 
 [node name="A" type="Marker2D" parent="MazePath" unique_id=128998496]
-position = Vector2(31, 58)
+position = Vector2(31, 49)
 
-[node name="B" type="Marker2D" parent="MazePath" unique_id=7654088]
-position = Vector2(381, 58)
+[node name="B-Conn" type="Marker2D" parent="MazePath" unique_id=7654088]
+position = Vector2(142, 49)
 
-[node name="C" type="Marker2D" parent="MazePath" unique_id=2023527363]
-position = Vector2(381, 187)
+[node name="C-Conn" type="Marker2D" parent="MazePath" unique_id=2023527363]
+position = Vector2(142, 117)
 
-[node name="D" type="Marker2D" parent="MazePath" unique_id=1004743051]
-position = Vector2(31, 187)
+[node name="D-Conn" type="Marker2D" parent="MazePath" unique_id=1004743051]
+position = Vector2(275, 117)
 
-[node name="Z" type="Marker2D" parent="MazePath" unique_id=26024740]
-position = Vector2(381, 304)
+[node name="E-Conn" type="Marker2D" parent="MazePath" unique_id=288208594]
+position = Vector2(275, 55)
+
+[node name="F-Conn" type="Marker2D" parent="MazePath" unique_id=1165841009]
+position = Vector2(386, 55)
+
+[node name="G" type="Marker2D" parent="MazePath" unique_id=919055484]
+position = Vector2(386, 221)
+
+[node name="H" type="Marker2D" parent="MazePath" unique_id=908725975]
+position = Vector2(238, 221)
+
+[node name="I" type="Marker2D" parent="MazePath" unique_id=1813901132]
+position = Vector2(238, 175)
+
+[node name="Z" type="Marker2D" parent="MazePath" unique_id=836344133]
+position = Vector2(142, 221)
 
 [connection signal="active_node_changed" from="PlayerRot" to="PlayerRot/dir_arrows" method="_on_player_rot_active_node_changed"]
