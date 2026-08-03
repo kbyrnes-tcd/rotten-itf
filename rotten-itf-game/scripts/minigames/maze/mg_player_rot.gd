@@ -116,14 +116,17 @@ func process_stopped():
 	# actually append point to arr
 	pts.append($vine.to_local(tip_point))
 	$vine.points = pts
-		
+	
+	var incoming_dir = active_dir
 	active_node = next_node
 	active_node_changed.emit(next_node)
 	
 	# connector nodes
 	if graph.is_node_conn(active_node):
-		# set active_dir to next_node dir
-		active_dir = graph.get_valid_dirs(active_node)[0]
+		var opposite_dir = {"left":"right","right":"left","up":"down","down":"up"}[incoming_dir]
+		var valid_dirs = graph.get_valid_dirs(active_node)
+		valid_dirs.erase(opposite_dir) # don't just bounce back in the active opp. dir...
+		active_dir = valid_dirs[0]
 		update_preview()
 		current_state = State.GROWING
 		return

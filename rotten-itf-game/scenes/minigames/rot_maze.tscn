@@ -246,12 +246,13 @@ graph_data = {
 &"B-Conn": {
 "dist": {
 "down": Vector2(0, 68),
-"left": Vector2(99999, 99999),
+"left": Vector2(-111, 0),
 "right": Vector2(99999, 99999),
 "up": Vector2(99999, 99999)
 },
 "edges": {
-"down": &"C-Conn"
+"down": &"C-Conn",
+"left": &"A"
 },
 "pos": Vector2(142, 49)
 },
@@ -260,33 +261,36 @@ graph_data = {
 "down": Vector2(99999, 99999),
 "left": Vector2(99999, 99999),
 "right": Vector2(133, 0),
-"up": Vector2(99999, 99999)
+"up": Vector2(0, -68)
 },
 "edges": {
-"right": &"D-Conn"
+"right": &"D-Conn",
+"up": &"B-Conn"
 },
 "pos": Vector2(142, 117)
 },
 &"D-Conn": {
 "dist": {
 "down": Vector2(99999, 99999),
-"left": Vector2(99999, 99999),
+"left": Vector2(-133, 0),
 "right": Vector2(99999, 99999),
 "up": Vector2(0, -62)
 },
 "edges": {
+"left": &"C-Conn",
 "up": &"E-Conn"
 },
 "pos": Vector2(275, 117)
 },
 &"E-Conn": {
 "dist": {
-"down": Vector2(99999, 99999),
+"down": Vector2(0, 62),
 "left": Vector2(99999, 99999),
 "right": Vector2(111, 0),
 "up": Vector2(99999, 99999)
 },
 "edges": {
+"down": &"D-Conn",
 "right": &"F-Conn"
 },
 "pos": Vector2(275, 55)
@@ -294,12 +298,13 @@ graph_data = {
 &"F-Conn": {
 "dist": {
 "down": Vector2(0, 166),
-"left": Vector2(99999, 99999),
+"left": Vector2(-111, 0),
 "right": Vector2(99999, 99999),
 "up": Vector2(99999, 99999)
 },
 "edges": {
-"down": &"G"
+"down": &"G",
+"left": &"E-Conn"
 },
 "pos": Vector2(386, 55)
 },

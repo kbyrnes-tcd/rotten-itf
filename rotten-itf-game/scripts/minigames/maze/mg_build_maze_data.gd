@@ -73,11 +73,6 @@ func build_graph() -> Dictionary:
 			# & NO collision via rayquery
 			var query = PhysicsRayQueryParameters2D.create(x.global_position, y.global_position)
 			var result = space_state.intersect_ray(query)
-			
-			# if the current node is a conn, and the dir_node we're tryna link it to is prev. stored, skip
-			if is_node_conn(x.name) && !is_node_before(x.name, y.name):
-				continue
-			
 			# magnitude instead of raw vec2 comparison...
 			if result.is_empty() && cur_dist.length() < nodes[x.name]["dist"][dir].length():
 				# only record edge in array if there was NO intersection!
