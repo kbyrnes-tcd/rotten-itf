@@ -1,4 +1,4 @@
-extends Control
+extends Node2D
 
 #Each gap is a line of Persephone letter --> text before and after the hidden word 
 #and correct = constellation symbol word meaning
@@ -53,6 +53,39 @@ var current_tween = null
 signal minigame_complete
 
 func _ready():
+	#to run even if game is paused
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	#size everything for viewport
+	var vp = get_viewport().get_visible_rect().size
+	$Background.size = vp
+	$Background.position = Vector2.ZERO
+	
+	$MainSplit.size = vp
+	$MainSplit.position = Vector2.ZERO
+	#feedbacklabel position
+	feedback_label.position = Vector2(vp.x/2 - 150, vp.y - 80)
+	feedback_label.size = Vector2(300,40)
+	#continue button position
+	continue_button.position = Vector2(vp.x/2 - 60, vp.y - 40)
+	continue_button.size = Vector2(120, 30)
+	
+	#letter internal padding
+	var letter_margin = $MainSplit/LetterPanel/LetterMargin
+	letter_margin.add_theme_constant_override("margin_left", 20)
+	letter_margin.add_theme_constant_override("margin_righ", 20)
+	letter_margin.add_theme_constant_override("margin_top", 20)
+	letter_margin.add_theme_constant_override("margin_bottom", 20)
+	
+	var gap_before_node = $MainSplit/LetterPanel/LetterMargin/LetterContent/GapRow/GapBefore
+	var gap_after_node = $MainSplit/LetterPanel/LetterMargin/LetterContent/GapRow/GapAfter
+	gap_before_node.custom_minimum_size = Vector2(120,0)
+	gap_after_node.custom_minimum_size = Vector2(120,0)
+	gap_before_node.autowrap_mode = TextServer.AUTOWRAP_WORD
+	gap_after_node.autowrap_mode = TextServer.AUTOWRAP_WORD
+	
+	
+	$MainSplit/LetterPanel.custom_minimum_size = Vector2(vp.x * 0.55, vp.y)
+	$MainSplit/StarPanel.custom_minimum_size = Vector2(vp.x * 0.45, vp.y)
 	continue_button.visible = false
 	feedback_label.visible = false
 	#initialize continue button
@@ -69,7 +102,8 @@ func build_symbol_buttons():
 		var btn = Button.new()
 		btn.text = symbol
 		btn.custom_minimum_size = Vector2(120,80)
-		btn.pressed.connect(func(): _on_symbol_selected(symbol))
+		var captured = symbol
+		btn.pressed.connect(func(): _on_symbol_selected(captured))
 		symbol_grid.add_child(btn)
 
 #left side with respective gaps
@@ -86,6 +120,7 @@ func show_current_gap():
 
 #checks for correct matches when symbols are selected 
 func _on_symbol_selected(symbol: String):
+	print("selected: " + symbol)
 	var gap = gaps[current_gap_index]
 	if symbol == gap["correct"]:
 		correct_placement(symbol)
@@ -119,8 +154,19 @@ func wrong_placement(_symbol: String):
 #hides all the gaps and shows the completed final letter
 func all_gaps_filled():
 	$MainSplit/LetterPanel/LetterMargin/LetterContent/GapRow.visible = false
-	letter_body.visible = true
-	letter_body.text = build_complete_letter()
+	$MainSplit/StarPanel.visible = false
+	
+	var letter_label = Label.new()
+	letter_label.text = build_complete_letter()
+	letter_label.autowrap_mode = TextServer.AUTOWRAP_WORD
+	letter_label.custom_minimum_size = Vector2(300, 0)
+	letter_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	letter_label.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	$MainSplit/LetterPanel/LetterMargin/LetterContent.add_child(letter_label)
+	
+	#hide the letter_body
+	letter_body.visible = false
+	
 	continue_button.visible = true
 	feedback_label.text = "The letter is complete."
 	feedback_label.visible = true
@@ -135,10 +181,11 @@ func build_complete_letter() -> String:
 
 #two presses to trigger next scene
 func _on_continue_button_pressed():
-	if letter_body.visible and not letter_read:
+	if not letter_read:
 		letter_read = true
 		continue_button.text = "POV shift"
 		feedback_label.text = "She sealed the letter..bla bla"
+		$MainSplit/LetterPanel.visible = false
 	else: 
 		emit_signal("minigame_complete")
-		queue_free()
+		GameGlobals.unload_minigame()
