@@ -2,8 +2,15 @@
 
 [ext_resource type="Script" uid="uid://ccwt8g7y74l3h" path="res://scripts/minigames/maze/mg_player_rot.gd" id="1_35ab0"]
 [ext_resource type="Script" uid="uid://cdwsqlsxmy7tw" path="res://scripts/minigames/maze/mg_dir.gd" id="2_f424p"]
+[ext_resource type="Shader" uid="uid://4suobfpap5ey" path="res://scripts/shaders/rot_maze.gdshader" id="2_gsbbd"]
 [ext_resource type="Texture2D" uid="uid://cd4cbrmm0xm5a" path="res://assets/images/ui/carat.png" id="3_35ab0"]
 [ext_resource type="Script" uid="uid://cs0ki84qae7lo" path="res://scripts/minigames/maze/mg_build_maze_data.gd" id="3_f424p"]
+[ext_resource type="Script" uid="uid://cwicyq0sd6krn" path="res://scripts/minigames/maze/mg_rot_visual.gd" id="4_wqrwn"]
+[ext_resource type="Texture2D" uid="uid://cu5xgwkk7be6p" path="res://assets/images/rot/tile-rot/Rot1of3.1.png" id="5_gjyw5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_02ys2"]
+shader = ExtResource("2_gsbbd")
+shader_parameter/scroll_speed = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_atmvc"]
 size = Vector2(653, 25)
@@ -20,8 +27,17 @@ graph = NodePath("../MazePath")
 debug = true
 
 [node name="vine" type="Line2D" parent="PlayerRot" unique_id=788601042]
-points = PackedVector2Array(0, 0, 6.7, 0)
-default_color = Color(0, 0.37140125, 0.37265688, 1)
+material = SubResource("ShaderMaterial_02ys2")
+points = PackedVector2Array(0, 0, 0, 0)
+width = 15.0
+default_color = Color(1, 1, 1, 0)
+texture = ExtResource("5_gjyw5")
+texture_mode = 1
+script = ExtResource("4_wqrwn")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="PlayerRot/vine" unique_id=1043121702]
+
+[node name="Area2D" type="Area2D" parent="PlayerRot/vine" unique_id=208098243]
 
 [node name="vine_debug" type="Line2D" parent="PlayerRot" unique_id=1982657699]
 points = PackedVector2Array(0, 0, 0, 0)

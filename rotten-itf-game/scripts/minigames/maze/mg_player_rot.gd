@@ -41,8 +41,6 @@ func get_snapped_direction():
 			dir_ray = $up
 	return [dir_vector, dir_ray]
 
-var breathe_room = Vector2(0,0)
-
 func process_idle():
 	# IDLE: waiting for input to set direction
 	
@@ -116,6 +114,8 @@ func process_stopped():
 	# actually append point to arr
 	pts.append($vine.to_local(tip_point))
 	$vine.points = pts
+	print('appended point calling update...')
+	RotVisual.update_texture_indices($vine.points)
 	
 	var incoming_dir = active_dir
 	active_node = next_node
