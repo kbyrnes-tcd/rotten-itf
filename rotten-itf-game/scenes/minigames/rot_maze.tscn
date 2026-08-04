@@ -10,7 +10,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_02ys2"]
 shader = ExtResource("2_gsbbd")
-shader_parameter/scroll_speed = 1.0
+shader_parameter/scroll_speed = 0.15
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_atmvc"]
 size = Vector2(653, 25)
