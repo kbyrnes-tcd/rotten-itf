@@ -9,9 +9,10 @@ static var tree
 static var config : Node
 #static var tween
 enum Minigame { NONE, MAZE, LETTER }
-#static var current_mg
+static var current_mg
 
 static var pause_menu: Control
+static var hud: CanvasLayer
 static var color_rect: ColorRect
 
 var running_another_scene : bool = false # for running minigames and etc.
@@ -22,10 +23,11 @@ func _ready() -> void:
 		scene = tree.current_scene
 		level_root = scene.get_node("World/LevelRoot")
 		mg_root = scene.get_node("MinigameLayer/MgRoot")
-		#current_mg = Minigame.NONE
+		current_mg = Minigame.NONE
 		
 		config = scene.get_node("Config")
 		pause_menu = config.pause_menu
+		hud = config.hud
 		var debug_scene : PackedScene = config.debug_level
 		#tween = create_tween()
 		#tween.tween_property(color_rect, "modulate:a", 0.5, 0.67)
@@ -36,7 +38,9 @@ func _ready() -> void:
 			level_root.add_child(debug_scene.instantiate())
 
 static func resume(w_menu : bool):
-	tree.paused = false
+	# only resume if currently not in minigame
+	if current_mg == Minigame.NONE:
+		tree.paused = false
 	#tween.tween_property(color_rect, "modulate:a", 0.0, 0.67)
 	if w_menu:
 		pause_menu.visible = false
@@ -48,12 +52,13 @@ static func pause(w_menu : bool):
 	tree.paused = true
 
 static func unload_minigame():
-	print("unloading...")
 	# resume game
+	current_mg = Minigame.NONE
 	resume(false)
 	# unload mg_root child from tree
 	var c_mg : Node = mg_root.get_child(0)
 	c_mg.queue_free()
+	hud.visible = true
 	return
 	
 static func load_minigame(mg : int):
@@ -61,12 +66,15 @@ static func load_minigame(mg : int):
 	var inst : Node
 	match mg:
 		Minigame.MAZE:
+			current_mg = Minigame.MAZE
 			inst = config.maze_mg.instantiate()
 		Minigame.LETTER:
+			current_mg = Minigame.LETTER
 			inst = config.letter_mg.instantiate()
+			
 	mg_root.add_child(inst)
-	#inst.scale = Vector2(0.7, 0.7)
-	#inst.position = tree.root.size / 2 
+	hud.visible = false
+	
 	if inst is Control:
 		var viewport_size = tree.root.get_visible_rect().size
 		inst.position = Vector2.ZERO

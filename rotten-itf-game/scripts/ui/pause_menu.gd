@@ -1,5 +1,5 @@
 extends Control
-	
+
 func _process(_delta):
 	# for bringing up the pause menu in the first place
 	if Input.is_action_just_pressed("pause") and !get_tree().paused:
