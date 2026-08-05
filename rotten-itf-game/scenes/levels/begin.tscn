@@ -2,100 +2,17 @@
 
 [ext_resource type="Script" uid="uid://dlk2h13w2xeca" path="res://scripts/game_globals_config.gd" id="1_ep3c1"]
 [ext_resource type="PackedScene" uid="uid://cpwsgbr3fr7by" path="res://scenes/ui/pause_menu.tscn" id="2_ep3c1"]
-[ext_resource type="Script" uid="uid://ccwt8g7y74l3h" path="res://scripts/minigames/maze/mg_player_rot.gd" id="3_68t1h"]
+[ext_resource type="PackedScene" uid="uid://b0xdv5nobjlkk" path="res://scenes/minigames/rot_maze.tscn" id="2_ty236"]
+[ext_resource type="PackedScene" uid="uid://h1dqndhb88on" path="res://scenes/levels/main.tscn" id="2_whljo"]
 [ext_resource type="PackedScene" uid="uid://0hlcimiuwo6o" path="res://scenes/ui/inv_ui.tscn" id="3_ep3c1"]
-[ext_resource type="Script" uid="uid://cdwsqlsxmy7tw" path="res://scripts/minigames/maze/mg_dir.gd" id="4_y13p6"]
-[ext_resource type="Texture2D" uid="uid://cd4cbrmm0xm5a" path="res://assets/images/ui/carat.png" id="5_eujl3"]
-[ext_resource type="Script" uid="uid://cs0ki84qae7lo" path="res://scripts/minigames/maze/mg_build_maze_data.gd" id="6_q10y1"]
 [ext_resource type="PackedScene" uid="uid://cpu885nisbhmc" path="res://scenes/ui/constellation_minigame.tscn" id="7_y13p6"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_atmvc"]
-size = Vector2(653, 25)
-
-[sub_resource type="PackedScene" id="PackedScene_jm4ic"]
-_bundled = {
-"conn_count": 1,
-"conns": PackedInt32Array(3, 6, 52, 51, 2, 0, 0),
-"editable_instances": [],
-"id_paths": [],
-"names": PackedStringArray("RotMaze", "process_mode", "Node2D", "Main", "position", "scale", "ColorRect", "offset_left", "offset_top", "offset_right", "offset_bottom", "PlayerRot", "script", "graph", "vine", "points", "default_color", "Line2D", "vine_debug", "width", "dir_arrows", "up_sprite", "texture", "Sprite2D", "left_sprite", "rotation", "down_sprite", "right_sprite", "COLLISIONS", "TOP", "StaticBody2D", "CollisionShape2D", "shape", "TOP2", "TOP3", "TOP4", "RHS", "LHS", "LHS3", "LHS4", "LHS2", "BTM", "MazePath", "graph_data", "A", "Marker2D", "B", "C", "D", "Z", "Camera2D", "_on_player_rot_active_node_changed", "active_node_changed"),
-"node_count": 39,
-"node_ids": PackedInt32Array(1812960501, 109622202, 1655596142, 127352751, 788601042, 1982657699, 491516785, 725394007, 1975552267, 1525052547, 83214696, 615619389, 1748033280, 365251770, 1019646706, 2018803246, 567507265, 1495254827, 1377117114, 872545037, 537599443, 1877947233, 129140037, 934114920, 1342241254, 405829695, 1310071162, 1682564214, 1620369353, 1205699440, 803927653, 42107680, 824729220, 128998496, 7654088, 2023527363, 1004743051, 26024740, 1733059183),
-"node_paths": [],
-"nodes": PackedInt32Array(-1, -1, 2, 0, -1, 1, 1, 0, 0, 0, 0, 2, 3, -1, 2, 4, 1, 5, 2, 0, 1, 0, 6, 6, -1, 5, 7, 3, 8, 4, 9, 5, 10, 6, 5, 7, 0, 1, 0, 2, 11, -1, 3, 4, 8, 12, 9, 1073741837, 10, 0, 3, 0, 17, 14, -1, 2, 15, 11, 16, 12, 0, 3, 0, 17, 18, -1, 3, 15, 13, 19, 14, 16, 15, 0, 3, 0, 2, 20, -1, 2, 12, 16, 1073741837, 17, 0, 6, 0, 23, 21, -1, 3, 4, 18, 5, 19, 22, 20, 0, 6, 0, 23, 24, -1, 4, 4, 21, 25, 22, 5, 19, 22, 20, 0, 6, 0, 23, 26, -1, 3, 4, 23, 5, 24, 22, 20, 0, 6, 0, 23, 27, -1, 4, 4, 25, 25, 26, 5, 19, 22, 20, 0, 1, 0, 2, 28, -1, 2, 4, 27, 5, 28, 0, 11, 0, 30, 29, -1, 1, 5, 29, 0, 12, 0, 31, 31, -1, 2, 4, 30, 32, 31, 0, 11, 0, 30, 33, -1, 2, 4, 32, 5, 33, 0, 14, 0, 31, 31, -1, 3, 4, 34, 5, 35, 32, 31, 0, 11, 0, 30, 34, -1, 2, 4, 36, 5, 33, 0, 16, 0, 31, 31, -1, 3, 4, 34, 5, 35, 32, 31, 0, 11, 0, 30, 35, -1, 2, 4, 37, 5, 33, 0, 18, 0, 31, 31, -1, 3, 4, 34, 5, 35, 32, 31, 0, 11, 0, 30, 36, -1, 3, 4, 38, 25, 26, 5, 39, 0, 20, 0, 31, 31, -1, 3, 4, 34, 5, 35, 32, 31, 0, 11, 0, 30, 37, -1, 3, 4, 40, 25, 26, 5, 39, 0, 22, 0, 31, 31, -1, 3, 4, 41, 5, 42, 32, 31, 0, 11, 0, 30, 38, -1, 3, 4, 43, 25, 26, 5, 44, 0, 24, 0, 31, 31, -1, 3, 4, 41, 5, 42, 32, 31, 0, 11, 0, 30, 39, -1, 3, 4, 45, 25, 26, 5, 44, 0, 26, 0, 31, 31, -1, 3, 4, 41, 5, 42, 32, 31, 0, 11, 0, 30, 40, -1, 3, 4, 46, 25, 26, 5, 47, 0, 28, 0, 31, 31, -1, 3, 4, 41, 5, 42, 32, 31, 0, 11, 0, 30, 41, -1, 2, 4, 48, 5, 49, 0, 30, 0, 31, 31, -1, 2, 4, 30, 32, 31, 0, 1, 0, 2, 42, -1, 2, 12, 50, 43, 51, 0, 32, 0, 45, 44, -1, 1, 4, 8, 0, 32, 0, 45, 46, -1, 1, 4, 52, 0, 32, 0, 45, 47, -1, 1, 4, 53, 0, 32, 0, 45, 48, -1, 1, 4, 54, 0, 32, 0, 45, 49, -1, 1, 4, 55, 0, 0, 0, 50, 50, -1, 2, 4, 56, 5, 2, 0),
-"variants": [3, Vector2(24, 90), Vector2(0.5, 0.5), -64.0, -60.0, -24.0, -20.0, Vector2(13.400002, 11.000001), Vector2(31, 58), ExtResource("3_68t1h"), NodePath("../MazePath"), PackedVector2Array(0, 0, 6.7, 0), Color(0, 0.37140125, 0.37265688, 1), PackedVector2Array(0, 0, 0, 0), 2.5, Color(0.88235295, 0.37254903, 0.37254903, 1), ExtResource("4_y13p6"), NodePath("../../MazePath"), Vector2(0, -11), Vector2(0.05, 0.05), ExtResource("5_eujl3"), Vector2(-11, 0), -1.5707964, Vector2(0, 11), Vector2(0.05, -0.05), Vector2(11, 0), 1.5707964, Vector2(0, 17), Vector2(0.6629249, 1.2145727), Vector2(1, 0.99999994), Vector2(316.5, -2.5), SubResource("RectangleShape2D_atmvc"), Vector2(0, 82.33348), Vector2(1.5084665, 0.32933494), Vector2(170, -69.99979), Vector2(0.5199994, 1), Vector2(0, 133.38025), Vector2(-1.5084665, 192.66035), Vector2(591.31885, -14.820026), Vector2(0.8233348, 0.6033884), Vector2(476.6754, -13.996692), Vector2(116.999985, -67.49979), Vector2(-0.08000064, 1), Vector2(-46.762463, -110.32686), Vector2(1.1856023, 0.6033884), Vector2(-45.253998, 0), Vector2(478.18387, -13.996692), Vector2(1.9760036, 0.6033884), Vector2(497.79395, 270.0538), Vector2(0.24466331, 0.6962745), ExtResource("6_q10y1"), {
-&"A": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(99999, 99999),
-"right": Vector2(350, 0),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"right": &"B"
-},
-"pos": Vector2(31, 58)
-},
-&"B": {
-"dist": {
-"down": Vector2(0, 129),
-"left": Vector2(-350, 0),
-"right": Vector2(99999, 99999),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"down": &"C",
-"left": &"A"
-},
-"pos": Vector2(381, 58)
-},
-&"C": {
-"dist": {
-"down": Vector2(0, 117),
-"left": Vector2(-350, 0),
-"right": Vector2(99999, 99999),
-"up": Vector2(0, -129)
-},
-"edges": {
-"down": &"Z",
-"left": &"D",
-"up": &"B"
-},
-"pos": Vector2(381, 187)
-},
-&"D": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(99999, 99999),
-"right": Vector2(350, 0),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"right": &"C"
-},
-"pos": Vector2(31, 187)
-},
-&"Z": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(99999, 99999),
-"right": Vector2(99999, 99999),
-"up": Vector2(0, -246)
-},
-"edges": {
-"up": &"B"
-},
-"pos": Vector2(381, 304)
-}
-}, Vector2(381, 58), Vector2(381, 187), Vector2(31, 187), Vector2(381, 304), Vector2(134, 152)],
-"version": 3
-}
 
 [node name="Essentials" type="Node2D" unique_id=1446151240]
 
 [node name="Config" type="Node" parent="." unique_id=550139588 node_paths=PackedStringArray("pause_menu", "color_rect")]
 script = ExtResource("1_ep3c1")
-maze_mg = SubResource("PackedScene_jm4ic")
+debug_level = ExtResource("2_whljo")
+maze_mg = ExtResource("2_ty236")
 letter_mg = ExtResource("7_y13p6")
 pause_menu = NodePath("../UI/PauseMenu")
 color_rect = NodePath("../UI/PauseMenu/ColorRect")

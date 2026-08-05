@@ -3,4 +3,4 @@ extends Node
 @export var maze_mg: PackedScene
 @export var letter_mg: PackedScene
 @export var pause_menu: Control
-@export var color_rect: ColorRect
+@export var color_rect: ColorRect	
