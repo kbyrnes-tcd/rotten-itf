@@ -13,7 +13,7 @@ func _ready() -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("collect"):
 		player = body
-		if (player.has(item)):
+		if (player.has(item) and player.can_take_item(item)):
 			player.use(item)
 			# item consumer is now 'satiated'
 			call_deferred("deactivate")

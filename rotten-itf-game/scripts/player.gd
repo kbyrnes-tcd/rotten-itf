@@ -285,6 +285,8 @@ var is_growing = false
 
 var glowworm_uses = 0
 var use_timer = 0.0
+var worm_in_use: bool = false
+
 
 func collect(item: InvItem):
 	inv.insert(item)
@@ -376,6 +378,7 @@ func update_lantern_visuals():
 		light.energy = lerp(0.3, 1.5, life_ratio)
 
 func activate_light():
+	worm_in_use = true
 	var light = lantern.get_node_or_null("PointLight2D")
 	if light:
 		light.enabled = true
@@ -392,6 +395,7 @@ func change_tool_state(new_state: ToolState):
 	match tool_state:
 		ToolState.LANTERN_EQUIPPED: 
 			lantern.visible = false
+			worm_in_use = false
 			lantern.process_mode = Node.PROCESS_MODE_DISABLED
 			lantern.modulate.a = 1.0
 		ToolState.LANTERN_ON:
@@ -417,10 +421,14 @@ func change_tool_state(new_state: ToolState):
 		ToolState.LANTERN_EQUIPPED:
 			lantern.visible = true
 			lantern.process_mode = Node.PROCESS_MODE_INHERIT
-			if glowworm_uses <= 0:
+			worm_in_use = true
+			if inv.has(GLOWWORM) and glowworm_uses <= 0:
 				glowworm_uses = GLOWWORM_MAX
 				use_timer = 0.0
-			update_lantern_visuals()
+			if inv.has(GLOWWORM):
+				update_lantern_visuals()
+			else: 
+				lantern.modulate.a = 0.3
 		ToolState.LANTERN_ON:
 			lantern.visible = true
 			lantern.process_mode = Node.PROCESS_MODE_INHERIT
@@ -449,10 +457,11 @@ func _process(delta):
 
 func _tool_idle():
 	if Input.is_action_just_pressed("rot_cut"):
-		if inv.has(GLOWWORM):
-			change_tool_state(ToolState.LANTERN_EQUIPPED)
-		else:
-			print("no glowworms! WOMP WOMP")
+		change_tool_state(ToolState.LANTERN_EQUIPPED)
+		#if inv.has(GLOWWORM):
+			#change_tool_state(ToolState.LANTERN_EQUIPPED)
+		#else:
+			#print("no glowworms! WOMP WOMP")
 	if Input.is_action_just_pressed("equip_rot"):
 		change_tool_state(ToolState.GUN_EQUIPPED)
 
@@ -464,10 +473,13 @@ func _tool_lantern_equipped():
 		change_tool_state(ToolState.GUN_EQUIPPED)
 		return
 	if Input.is_action_pressed("lantern_toggle"):
-		change_tool_state(ToolState.LANTERN_ON)
+		if inv.has(GLOWWORM):
+			change_tool_state(ToolState.LANTERN_ON)
+		else:
+			print("no glowworms! WOMP WOMP")
 	
 func _tool_lantern_on(delta: float):
-	if Input.is_action_pressed("lantern_toggle"):
+	if Input.is_action_just_released("lantern_toggle"):
 		change_tool_state(ToolState.LANTERN_EQUIPPED)
 		return
 	if Input.is_action_just_pressed("rot_cut"):
@@ -490,7 +502,7 @@ func _tool_lantern_on(delta: float):
 				print("next glowworm loaded")
 			else:
 				print("out of glowworms")
-				change_tool_state(ToolState.IDLE)
+				change_tool_state(ToolState.LANTERN_EQUIPPED)
 
 func _tool_gun_equipped():
 	if Input.is_action_just_pressed("equip_rot"):
@@ -635,6 +647,12 @@ func _physics_process(delta: float):
 	_handle_movement(delta)
 	move_and_slide()
 	_handle_sprite_direction()
+
+#to avoid other wall lanterns, etc to take worm from handheld lantern
+func can_take_item(item: InvItem) -> bool:
+	if item == GLOWWORM and worm_in_use:
+		return false
+	return true
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	print('player detects: ' + body.name)
