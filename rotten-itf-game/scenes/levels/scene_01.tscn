@@ -1,116 +1,28 @@
 [gd_scene format=3 uid="uid://w78vttqkmxaj"]
 
-[ext_resource type="Texture2D" uid="uid://cf8apj3uoflpk" path="res://assets/images/env/placeholders/Placeholder_bg.png" id="1_3syjq"]
-[ext_resource type="Texture2D" uid="uid://4bboojc7e87q" path="res://assets/images/env/placeholders/Placeholder_grass_ground.png" id="2_wg12t"]
-[ext_resource type="PackedScene" uid="uid://ufmhebijpwbb" path="res://scenes/collectible_item.tscn" id="3_5t0pk"]
-[ext_resource type="Texture2D" uid="uid://7wl4cp2ufuqk" path="res://assets/images/env/placeholders/Placeholder_temple.png" id="3_775pl"]
+[ext_resource type="Texture2D" uid="uid://5qshld0g75rv" path="res://assets/images/env/p1_start/CONDENSED-Back.png" id="2_775pl"]
+[ext_resource type="Texture2D" uid="uid://coin0yvs6xqds" path="res://assets/images/env/p1_start/1-Backdrop.png" id="2_wg12t"]
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="4_3336g"]
-[ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="4_c6wtd"]
-[ext_resource type="PackedScene" uid="uid://bimatr4hej8ja" path="res://scenes/ui/interactive_carat.tscn" id="5_8bo55"]
-[ext_resource type="Script" uid="uid://cvirlabisap40" path="res://scripts/camera_path.gd" id="5_jmjgo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3336g"]
 size = Vector2(2596, 33)
 
-[sub_resource type="Curve2D" id="Curve2D_3336g"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 180, 300, 0, 0, 0, 0, 2090, 294)
-}
-point_count = 2
-
 [node name="Scene_01" type="Node2D" unique_id=358721782]
 
-[node name="Panel1" type="Node2D" parent="." unique_id=311141096]
+[node name="Environment" type="Node2D" parent="." unique_id=408982068]
 
-[node name="Background" type="Node2D" parent="Panel1" unique_id=20800015]
-position = Vector2(320, 180)
-
-[node name="Sprite2D" type="Sprite2D" parent="Panel1/Background" unique_id=1104457338]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_3syjq")
-
-[node name="Ground" type="Node2D" parent="Panel1" unique_id=1171761337]
-position = Vector2(320, 342)
-
-[node name="Sprite2D" type="Sprite2D" parent="Panel1/Ground" unique_id=241511891]
-scale = Vector2(0.5, 0.5)
+[node name="1Backdrop" type="Sprite2D" parent="Environment" unique_id=1435361381]
+position = Vector2(1446, 179)
 texture = ExtResource("2_wg12t")
 
-[node name="Panel2" type="Node2D" parent="." unique_id=804553990]
-position = Vector2(961, 180)
-
-[node name="Background2" type="Node2D" parent="Panel2" unique_id=969003033]
-
-[node name="Sprite2D" type="Sprite2D" parent="Panel2/Background2" unique_id=1155313221]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_3syjq")
-
-[node name="Ground2" type="Node2D" parent="Panel2" unique_id=532612348]
-position = Vector2(0, 162)
-
-[node name="Sprite2D" type="Sprite2D" parent="Panel2/Ground2" unique_id=1729969145]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_wg12t")
-
-[node name="OrangeWorm" parent="Panel2" unique_id=385129123 instance=ExtResource("3_5t0pk")]
-
-[node name="Panel3" type="Node2D" parent="." unique_id=1002248890]
-position = Vector2(1599, 180)
-
-[node name="Background3" type="Node2D" parent="Panel3" unique_id=627040979]
-
-[node name="Sprite2D" type="Sprite2D" parent="Panel3/Background3" unique_id=1636823564]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_3syjq")
-
-[node name="Temple" type="Node2D" parent="Panel3" unique_id=221250192]
-position = Vector2(564, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Panel3/Temple" unique_id=759440489]
-position = Vector2(-431, 0)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_775pl")
-
-[node name="DoorArea2D" parent="Panel3/Temple/Sprite2D" unique_id=1160326856 instance=ExtResource("4_c6wtd")]
-position = Vector2(-180, 146)
-
-[node name="InteractiveCarat" parent="Panel3/Temple/Sprite2D" unique_id=1099497837 instance=ExtResource("5_8bo55")]
-position = Vector2(-180, 0)
-
-[node name="Sprite2D" parent="Panel3/Temple/Sprite2D/InteractiveCarat" index="0" unique_id=398849491]
-visible = false
-
-[node name="CollisionShape2D" parent="Panel3/Temple/Sprite2D/InteractiveCarat/Area2D" parent_id_path=PackedInt32Array(1099497837, 1489179703) index="0" unique_id=1877122585]
-position = Vector2(0, 140.19998)
-scale = Vector2(16.000004, 8.360001)
-
-[node name="Ground3" type="Node2D" parent="Panel3" unique_id=1854170429]
-position = Vector2(0, 162)
-
-[node name="Sprite2D" type="Sprite2D" parent="Panel3/Ground3" unique_id=1061355635]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_wg12t")
-
-[node name="Panel4" type="Node2D" parent="." unique_id=2122363125]
-position = Vector2(2237, 180)
-
-[node name="Background4" type="Node2D" parent="Panel4" unique_id=390037599]
-
-[node name="Sprite2D" type="Sprite2D" parent="Panel4/Background4" unique_id=375936948]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_3syjq")
-
-[node name="Ground4" type="Node2D" parent="Panel4" unique_id=1536562725]
-position = Vector2(0, 162)
-
-[node name="Sprite2D" type="Sprite2D" parent="Panel4/Ground4" unique_id=74164920]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_wg12t")
+[node name="CondensedBack" type="Sprite2D" parent="Environment" unique_id=125937943]
+position = Vector2(1446, 181)
+texture = ExtResource("2_775pl")
 
 [node name="Colliders" type="Node2D" parent="." unique_id=2145202998]
 
 [node name="GroundCollider" type="StaticBody2D" parent="Colliders" unique_id=1613639351]
-position = Vector2(0, 342)
+position = Vector2(0, 316)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/GroundCollider" unique_id=409099627]
 position = Vector2(1288, -0.5)
@@ -135,19 +47,4 @@ position = Vector2(1288, -0.5)
 shape = SubResource("RectangleShape2D_3336g")
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("4_3336g")]
-position = Vector2(49, 309)
-
-[node name="CameraPath2D" type="Path2D" parent="." unique_id=983943170]
-process_mode = 4
-visible = false
-curve = SubResource("Curve2D_3336g")
-script = ExtResource("5_jmjgo")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="CameraPath2D" unique_id=1327510548]
-position = Vector2(180, 300)
-rotation = -0.0031413508
-
-[node name="Camera2D" type="Camera2D" parent="CameraPath2D/PathFollow2D" unique_id=835803065]
-position = Vector2(140, -120)
-
-[editable path="Panel3/Temple/Sprite2D/InteractiveCarat"]
+position = Vector2(49, 277)

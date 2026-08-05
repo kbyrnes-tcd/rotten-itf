@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://srg6kckh762f"
-path="res://.godot/imported/st-glass-bg.PNG-533dd1bbbd47bdea491de12dae98ea5d.ctex"
+uid="uid://tkj1nalcvxhp"
+path="res://.godot/imported/st-glass-light.PNG-316d00ae3c6c77454b46b06e43c8c6aa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/env/st-glass-bg.PNG"
-dest_files=["res://.godot/imported/st-glass-bg.PNG-533dd1bbbd47bdea491de12dae98ea5d.ctex"]
+source_file="res://assets/images/env/archive/st-glass-light.PNG"
+dest_files=["res://.godot/imported/st-glass-light.PNG-316d00ae3c6c77454b46b06e43c8c6aa.ctex"]
 
 [params]
 

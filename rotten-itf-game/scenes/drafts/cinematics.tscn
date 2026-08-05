@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://bqcnao5i26gt4"]
 
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="1_4caar"]
-[ext_resource type="Texture2D" uid="uid://btvw0tm1fb350" path="res://assets/images/env/brick-wall.jpg" id="2_532ng"]
+[ext_resource type="Texture2D" uid="uid://btvw0tm1fb350" path="res://assets/images/env/archive/brick-wall.jpg" id="2_532ng"]
 [ext_resource type="Shader" uid="uid://cv8gg3r3c6md3" path="res://scripts/shaders/pixelate.gdshader" id="6_gcdrg"]
 [ext_resource type="PackedScene" uid="uid://kicj2478es6o" path="res://scenes/rot_vine.tscn" id="6_qrf0y"]
-[ext_resource type="Texture2D" uid="uid://d06qp8h4mi861" path="res://assets/images/env/Temple_Layer_Background.png" id="7_7poft"]
+[ext_resource type="Texture2D" uid="uid://d06qp8h4mi861" path="res://assets/images/env/archive/Temple_Layer_Background.png" id="7_7poft"]
 [ext_resource type="Texture2D" uid="uid://cxs3xwh0i8t0q" path="res://assets/images/rot/Rot-V1-3.PNG" id="7_532ng"]
 [ext_resource type="Texture2D" uid="uid://dvjljkkkuelcb" path="res://assets/images/ui/inventory-slot.png" id="8_532ng"]
 [ext_resource type="Texture2D" uid="uid://dyfb4jh6yq53g" path="res://assets/images/rot/Rot-V2-Single.PNG" id="8_qrf0y"]
@@ -36,9 +36,6 @@ frame_1/duration = 1.0
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("1_4caar")]
 position = Vector2(121, 300)
 scale = Vector2(1.5, 1.5)
-inv = null
-SPEED = 150.0
-JUMP_VELOCITY = -650.0
 
 [node name="Ground" type="StaticBody2D" parent="." unique_id=1340810883]
 position = Vector2(355, 372)

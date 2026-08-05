@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctpsvg6p4po7f"
-path="res://.godot/imported/st-glass-fg.PNG-93b094bee5d57994ade25e15954b24b9.ctex"
+uid="uid://dmebo23ctl5ik"
+path="res://.godot/imported/Idle (32x32).png-a50e9f538e65e38d0b33ae48b6e66286.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/env/st-glass-fg.PNG"
-dest_files=["res://.godot/imported/st-glass-fg.PNG-93b094bee5d57994ade25e15954b24b9.ctex"]
+source_file="res://assets/images/player/archived/Idle (32x32).png"
+dest_files=["res://.godot/imported/Idle (32x32).png-a50e9f538e65e38d0b33ae48b6e66286.ctex"]
 
 [params]
 

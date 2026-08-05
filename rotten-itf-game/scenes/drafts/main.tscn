@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bavjvyb2vynwb"]
 
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="1_s7xyy"]
-[ext_resource type="Texture2D" uid="uid://btvw0tm1fb350" path="res://assets/images/env/brick-wall.jpg" id="2_c7vjp"]
+[ext_resource type="Texture2D" uid="uid://btvw0tm1fb350" path="res://assets/images/env/archive/brick-wall.jpg" id="2_c7vjp"]
 [ext_resource type="PackedScene" uid="uid://ufmhebijpwbb" path="res://scenes/collectible_item.tscn" id="3_8mlnd"]
 [ext_resource type="Resource" uid="uid://6pxkrw3jqp6n" path="res://scripts/inventory_system/items/green_worm.tres" id="4_i8c17"]
 [ext_resource type="PackedScene" uid="uid://04yyftmutrku" path="res://scenes/item_consumer.tscn" id="5_35clj"]
@@ -18,7 +18,7 @@ position = Vector2(-221, -203)
 position = Vector2(410, 494)
 scale = Vector2(2, 2)
 
-[node name="Camera2D" parent="Player" index="5" unique_id=1705181399]
+[node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
 limit_left = -339
 
 [node name="Ground" type="StaticBody2D" parent="." unique_id=1631808054]
