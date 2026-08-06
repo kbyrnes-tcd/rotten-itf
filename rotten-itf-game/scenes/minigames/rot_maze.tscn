@@ -12,25 +12,19 @@
 shader = ExtResource("2_gsbbd")
 shader_parameter/scroll_speed = 0.1
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_atmvc"]
-size = Vector2(653, 25)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rrkfw"]
-size = Vector2(171.11115, 20)
-
 [node name="RotMaze" type="Node2D" unique_id=1812960501]
 process_mode = 3
 position = Vector2(135, 55)
-scale = Vector2(0.5, 0.5)
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1333124157]
 offset_left = -35.0
 offset_top = -45.0
-offset_right = 465.0
-offset_bottom = 380.0
+offset_right = 265.0
+offset_bottom = 155.0
 
 [node name="PlayerRot" type="Node2D" parent="." unique_id=127352751 node_paths=PackedStringArray("graph")]
-position = Vector2(31, 58)
+position = Vector2(20, 48)
+scale = Vector2(0.3, 0.3)
 script = ExtResource("1_35ab0")
 graph = NodePath("../MazePath")
 debug = true
@@ -80,180 +74,6 @@ rotation = 1.5707964
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("3_35ab0")
 
-[node name="COLLISIONS" type="Node2D" parent="." unique_id=615619389]
-position = Vector2(0, 17)
-scale = Vector2(0.6629249, 1.2145727)
-
-[node name="TOP" type="StaticBody2D" parent="COLLISIONS" unique_id=1748033280]
-scale = Vector2(0.42285898, 0.6296296)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="COLLISIONS/TOP" unique_id=365251770]
-position = Vector2(316.5, -2.5)
-shape = SubResource("RectangleShape2D_atmvc")
-
-[node name="TOP2" type="StaticBody2D" parent="COLLISIONS" unique_id=1019646706]
-position = Vector2(0, 82.33348)
-scale = Vector2(0.5430479, 0.32933494)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="COLLISIONS/TOP2" unique_id=2018803246]
-position = Vector2(170, -69.99979)
-scale = Vector2(0.5199994, 1)
-shape = SubResource("RectangleShape2D_atmvc")
-
-[node name="TOP5" type="StaticBody2D" parent="COLLISIONS" unique_id=221535041]
-position = Vector2(454.04837, 53.516773)
-scale = Vector2(0.5430479, 0.32933494)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="COLLISIONS/TOP5" unique_id=1421106754]
-position = Vector2(75.5556, 0)
-scale = Vector2(1, 0.99999994)
-shape = SubResource("RectangleShape2D_rrkfw")
-
-[node name="TOP6" type="StaticBody2D" parent="COLLISIONS" unique_id=1372678072]
-position = Vector2(181.01598, 153.96361)
-scale = Vector2(0.81751907, 0.2744061)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="COLLISIONS/TOP6" unique_id=894759645]
-position = Vector2(75.5556, 0)
-scale = Vector2(1, 0.99999994)
-shape = SubResource("RectangleShape2D_rrkfw")
-
-[node name="TOP11" type="StaticBody2D" parent="COLLISIONS" unique_id=927152828]
-position = Vector2(301.6933, 99.623535)
-rotation = -1.5707964
-scale = Vector2(-0.3529337, 0.8200655)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="COLLISIONS/TOP11" unique_id=1670225282]
-position = Vector2(75.5556, 0)
-scale = Vector2(1, 0.99999994)
-shape = SubResource("RectangleShape2D_rrkfw")
-
-[node name="TOP12" type="StaticBody2D" parent="COLLISIONS" unique_id=791865903]
-position = Vector2(414.8283, 99.62351)
-rotation = -1.5707964
-scale = Vector2(-0.3529337, 0.8200655)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="COLLISIONS/TOP12" unique_id=1031737497]
-position = Vector2(75.5556, 0)
-scale = Vector2(1, 0.99999994)
-shape = SubResource("RectangleShape2D_rrkfw")
-
-[node name="TOP9" type="StaticBody2D" parent="COLLISIONS" unique_id=175632200]
-position = Vector2(414.82828, 155.61028)
-scale = Vector2(0.81751907, 0.2744061)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="COLLISIONS/TOP9" unique_id=567140740]
-position = Vector2(75.5556, 0)
-scale = Vector2(1, 0.99999994)
-shape = SubResource("RectangleShape2D_rrkfw")
-
-[node name="TOP8" type="StaticBody2D" parent="COLLISIONS" unique_id=930493584]
-position = Vector2(289.6256, 185.25035)
-scale = Vector2(2.2928689, 0.32933494)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="COLLISIONS/TOP8" unique_id=1436742465]
-position = Vector2(60.5263, -5.0000224)
-scale = Vector2(1, 0.99999994)
-shape = SubResource("RectangleShape2D_rrkfw")
-
-[node name="TOP7" type="StaticBody2D" parent="COLLISIONS" unique_id=2012982482]
-position = Vector2(638.0813, 171.25365)
-rotation = -1.5707964
-scale = Vector2(1.1010358, 1.2304018)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="COLLISIONS/TOP7" unique_id=1317272431]
-position = Vector2(75.5556, 0)
-scale = Vector2(1, 0.99999994)
-shape = SubResource("RectangleShape2D_rrkfw")
-
-[node name="TOP3" type="StaticBody2D" parent="COLLISIONS" unique_id=567507265]
-position = Vector2(266.99857, 71.63013)
-scale = Vector2(0.30169332, 0.32933494)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="COLLISIONS/TOP3" unique_id=1495254827]
-position = Vector2(170, -69.99979)
-scale = Vector2(0.5199994, 1)
-shape = SubResource("RectangleShape2D_atmvc")
-
-[node name="TOP4" type="StaticBody2D" parent="COLLISIONS" unique_id=1377117114]
-position = Vector2(171.96518, 122.67686)
-scale = Vector2(0.8447412, 0.32933494)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="COLLISIONS/TOP4" unique_id=872545037]
-position = Vector2(170, -69.99979)
-scale = Vector2(0.5199994, 1)
-shape = SubResource("RectangleShape2D_atmvc")
-
-[node name="RHS" type="StaticBody2D" parent="COLLISIONS" unique_id=537599443]
-position = Vector2(653.166, -49.40009)
-rotation = 3.1415927
-scale = Vector2(0.8233348, 0.6033884)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="COLLISIONS/RHS" unique_id=1877947233]
-position = Vector2(170, -69.99979)
-scale = Vector2(0.5199994, 1)
-shape = SubResource("RectangleShape2D_atmvc")
-
-[node name="LHS" type="StaticBody2D" parent="COLLISIONS" unique_id=129140037]
-position = Vector2(143.30432, -17.290031)
-rotation = 1.5707964
-scale = Vector2(0.8233348, 0.6033884)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="COLLISIONS/LHS" unique_id=934114920]
-position = Vector2(116.999985, -67.49979)
-scale = Vector2(-0.08000064, 1)
-shape = SubResource("RectangleShape2D_atmvc")
-
-[node name="LHS3" type="StaticBody2D" parent="COLLISIONS" unique_id=1342241254]
-position = Vector2(-46.762463, -109.50354)
-rotation = 1.5707964
-scale = Vector2(1.1856023, 0.6033884)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="COLLISIONS/LHS3" unique_id=405829695]
-position = Vector2(116.999985, -67.49979)
-scale = Vector2(-0.08000064, 1)
-shape = SubResource("RectangleShape2D_atmvc")
-
-[node name="LHS4" type="StaticBody2D" parent="COLLISIONS" unique_id=1310071162]
-position = Vector2(232.30383, -116.91353)
-rotation = 1.5707964
-scale = Vector2(1.1856023, 0.6033884)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="COLLISIONS/LHS4" unique_id=1682564214]
-position = Vector2(116.999985, -67.49979)
-scale = Vector2(-0.08000064, 1)
-shape = SubResource("RectangleShape2D_atmvc")
-
-[node name="LHS5" type="StaticBody2D" parent="COLLISIONS" unique_id=1589096196]
-position = Vector2(333.37112, -117.736885)
-rotation = 1.5707964
-scale = Vector2(1.1856023, 0.6033884)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="COLLISIONS/LHS5" unique_id=345936870]
-position = Vector2(116.999985, -67.49979)
-scale = Vector2(-0.08000064, 1)
-shape = SubResource("RectangleShape2D_atmvc")
-
-[node name="LHS2" type="StaticBody2D" parent="COLLISIONS" unique_id=1620369353]
-position = Vector2(413.31985, -55.986755)
-rotation = 1.5707964
-scale = Vector2(1.1916015, 0.6033884)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="COLLISIONS/LHS2" unique_id=1205699440]
-position = Vector2(116.999985, -67.49979)
-scale = Vector2(-0.08000064, 1)
-shape = SubResource("RectangleShape2D_atmvc")
-
-[node name="LHS6" type="StaticBody2D" parent="COLLISIONS" unique_id=2126968998]
-position = Vector2(494.77698, -57.63343)
-rotation = 1.5707964
-scale = Vector2(1.1916015, 0.6033884)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="COLLISIONS/LHS6" unique_id=441895190]
-position = Vector2(137.49869, -72.49985)
-scale = Vector2(0.14110276, 1)
-shape = SubResource("RectangleShape2D_atmvc")
-
 [node name="MazePath" type="Node2D" parent="." unique_id=824729220]
 script = ExtResource("3_f424p")
 graph_data = {
@@ -261,160 +81,280 @@ graph_data = {
 "dist": {
 "down": Vector2(99999, 99999),
 "left": Vector2(99999, 99999),
-"right": Vector2(111, 0),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"right": &"B-Conn"
-},
-"pos": Vector2(31, 49)
-},
-&"B-Conn": {
-"dist": {
-"down": Vector2(0, 68),
-"left": Vector2(-111, 0),
 "right": Vector2(99999, 99999),
+"up": Vector2(0, -19)
+},
+"edges": {
+"up": &"B"
+},
+"pos": Vector2(20, 49)
+},
+&"B": {
+"dist": {
+"down": Vector2(0, 19),
+"left": Vector2(99999, 99999),
+"right": Vector2(107, 0),
 "up": Vector2(99999, 99999)
 },
 "edges": {
-"down": &"C-Conn",
-"left": &"A"
+"down": &"A",
+"right": &"B2"
 },
-"pos": Vector2(142, 49)
+"pos": Vector2(20, 30)
 },
-&"C-Conn": {
+&"B10": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(-24, 0),
+"right": Vector2(99999, 99999),
+"up": Vector2(0, -23)
+},
+"edges": {
+"left": &"B11",
+"up": &"B7"
+},
+"pos": Vector2(178, 9)
+},
+&"B11": {
 "dist": {
 "down": Vector2(99999, 99999),
 "left": Vector2(99999, 99999),
-"right": Vector2(133, 0),
-"up": Vector2(0, -68)
-},
-"edges": {
-"right": &"D-Conn",
-"up": &"B-Conn"
-},
-"pos": Vector2(142, 117)
-},
-&"D-Conn": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(-133, 0),
-"right": Vector2(99999, 99999),
-"up": Vector2(0, -62)
-},
-"edges": {
-"left": &"C-Conn",
-"up": &"E-Conn"
-},
-"pos": Vector2(275, 117)
-},
-&"E-Conn": {
-"dist": {
-"down": Vector2(0, 62),
-"left": Vector2(99999, 99999),
-"right": Vector2(111, 0),
+"right": Vector2(24, 0),
 "up": Vector2(99999, 99999)
 },
 "edges": {
-"down": &"D-Conn",
-"right": &"F-Conn"
+"right": &"B10"
 },
-"pos": Vector2(275, 55)
+"pos": Vector2(154, 9)
 },
-&"F-Conn": {
-"dist": {
-"down": Vector2(0, 166),
-"left": Vector2(-111, 0),
-"right": Vector2(99999, 99999),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"down": &"G",
-"left": &"E-Conn"
-},
-"pos": Vector2(386, 55)
-},
-&"G": {
+&"B12": {
 "dist": {
 "down": Vector2(99999, 99999),
-"left": Vector2(-148, 0),
-"right": Vector2(99999, 99999),
-"up": Vector2(0, -166)
-},
-"edges": {
-"left": &"H",
-"up": &"F-Conn"
-},
-"pos": Vector2(386, 221)
-},
-&"H": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(-96, 0),
-"right": Vector2(148, 0),
-"up": Vector2(0, -46)
-},
-"edges": {
-"left": &"Z",
-"right": &"G",
-"up": &"I"
-},
-"pos": Vector2(238, 221)
-},
-&"I": {
-"dist": {
-"down": Vector2(0, 46),
 "left": Vector2(99999, 99999),
 "right": Vector2(99999, 99999),
+"up": Vector2(0, -23)
+},
+"edges": {
+"up": &"B13"
+},
+"pos": Vector2(217, 9)
+},
+&"B13": {
+"dist": {
+"down": Vector2(0, 23),
+"left": Vector2(-39, 0),
+"right": Vector2(99999, 99999),
 "up": Vector2(99999, 99999)
 },
 "edges": {
-"down": &"H"
+"down": &"B12",
+"left": &"B7"
 },
-"pos": Vector2(238, 175)
+"pos": Vector2(217, -14)
+},
+&"B14": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(-25, 0),
+"right": Vector2(99999, 99999),
+"up": Vector2(0, -23)
+},
+"edges": {
+"left": &"B15",
+"up": &"B8"
+},
+"pos": Vector2(78, 9)
+},
+&"B15": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(99999, 99999),
+"right": Vector2(25, 0),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"right": &"B14"
+},
+"pos": Vector2(53, 9)
+},
+&"B2": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(-107, 0),
+"right": Vector2(90, 0),
+"up": Vector2(0, -21)
+},
+"edges": {
+"left": &"B",
+"right": &"B3",
+"up": &"B4"
+},
+"pos": Vector2(127, 30)
+},
+&"B3": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(-90, 0),
+"right": Vector2(99999, 99999),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"left": &"B2"
+},
+"pos": Vector2(217, 30)
+},
+&"B4": {
+"dist": {
+"down": Vector2(0, 21),
+"left": Vector2(-23, 0),
+"right": Vector2(99999, 99999),
+"up": Vector2(0, -23)
+},
+"edges": {
+"down": &"B2",
+"left": &"B5",
+"up": &"B6"
+},
+"pos": Vector2(127, 9)
+},
+&"B5": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(99999, 99999),
+"right": Vector2(23, 0),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"right": &"B4"
+},
+"pos": Vector2(104, 9)
+},
+&"B6": {
+"dist": {
+"down": Vector2(0, 23),
+"left": Vector2(-49, 0),
+"right": Vector2(51, 0),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"down": &"B4",
+"left": &"B8",
+"right": &"B7"
+},
+"pos": Vector2(127, -14)
+},
+&"B7": {
+"dist": {
+"down": Vector2(0, 23),
+"left": Vector2(-51, 0),
+"right": Vector2(39, 0),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"down": &"B10",
+"left": &"B6",
+"right": &"B13"
+},
+"pos": Vector2(178, -14)
+},
+&"B8": {
+"dist": {
+"down": Vector2(0, 23),
+"left": Vector2(-58, 0),
+"right": Vector2(49, 0),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"down": &"B14",
+"left": &"B9",
+"right": &"B6"
+},
+"pos": Vector2(78, -14)
+},
+&"B9": {
+"dist": {
+"down": Vector2(0, 16),
+"left": Vector2(99999, 99999),
+"right": Vector2(58, 0),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"down": &"Z",
+"right": &"B8"
+},
+"pos": Vector2(20, -14)
 },
 &"Z": {
 "dist": {
 "down": Vector2(99999, 99999),
 "left": Vector2(99999, 99999),
-"right": Vector2(96, 0),
-"up": Vector2(99999, 99999)
+"right": Vector2(99999, 99999),
+"up": Vector2(0, -16)
 },
 "edges": {
-"right": &"H"
+"up": &"B9"
 },
-"pos": Vector2(142, 221)
+"pos": Vector2(20, 2)
 }
 }
 
 [node name="A" type="Marker2D" parent="MazePath" unique_id=128998496]
-position = Vector2(31, 49)
+position = Vector2(20, 49)
 
-[node name="B-Conn" type="Marker2D" parent="MazePath" unique_id=7654088]
-position = Vector2(142, 49)
+[node name="B" type="Marker2D" parent="MazePath" unique_id=7654088]
+position = Vector2(20, 30)
 
-[node name="C-Conn" type="Marker2D" parent="MazePath" unique_id=2023527363]
-position = Vector2(142, 117)
+[node name="B2" type="Marker2D" parent="MazePath" unique_id=1896769603]
+position = Vector2(127, 30)
 
-[node name="D-Conn" type="Marker2D" parent="MazePath" unique_id=1004743051]
-position = Vector2(275, 117)
+[node name="B3" type="Marker2D" parent="MazePath" unique_id=1356374660]
+position = Vector2(217, 30)
 
-[node name="E-Conn" type="Marker2D" parent="MazePath" unique_id=288208594]
-position = Vector2(275, 55)
+[node name="B4" type="Marker2D" parent="MazePath" unique_id=2053830098]
+position = Vector2(127, 9)
 
-[node name="F-Conn" type="Marker2D" parent="MazePath" unique_id=1165841009]
-position = Vector2(386, 55)
+[node name="B5" type="Marker2D" parent="MazePath" unique_id=1154842837]
+position = Vector2(104, 9)
 
-[node name="G" type="Marker2D" parent="MazePath" unique_id=919055484]
-position = Vector2(386, 221)
+[node name="B6" type="Marker2D" parent="MazePath" unique_id=1343618652]
+position = Vector2(127, -14)
 
-[node name="H" type="Marker2D" parent="MazePath" unique_id=908725975]
-position = Vector2(238, 221)
+[node name="B7" type="Marker2D" parent="MazePath" unique_id=1274607364]
+position = Vector2(178, -14)
 
-[node name="I" type="Marker2D" parent="MazePath" unique_id=1813901132]
-position = Vector2(238, 175)
+[node name="B10" type="Marker2D" parent="MazePath" unique_id=1540776212]
+position = Vector2(178, 9)
 
-[node name="Z" type="Marker2D" parent="MazePath" unique_id=836344133]
-position = Vector2(142, 221)
+[node name="B11" type="Marker2D" parent="MazePath" unique_id=1250174559]
+position = Vector2(154, 9)
+
+[node name="B12" type="Marker2D" parent="MazePath" unique_id=311742429]
+position = Vector2(217, 9)
+
+[node name="B13" type="Marker2D" parent="MazePath" unique_id=1748932221]
+position = Vector2(217, -14)
+
+[node name="B14" type="Marker2D" parent="MazePath" unique_id=955201424]
+position = Vector2(78, 9)
+
+[node name="B15" type="Marker2D" parent="MazePath" unique_id=1109028743]
+position = Vector2(53, 9)
+
+[node name="B8" type="Marker2D" parent="MazePath" unique_id=1770602411]
+position = Vector2(78, -14)
+
+[node name="B9" type="Marker2D" parent="MazePath" unique_id=1703892595]
+position = Vector2(20, -14)
+
+[node name="Z" type="Marker2D" parent="MazePath" unique_id=1782419882]
+position = Vector2(20, 2)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=887680724]
+position = Vector2(-23, -22)
+scale = Vector2(1.445, 1.445)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1140312313]
+position = Vector2(98, 25)
+polygon = PackedVector2Array(-75, -27, -75, 27, -72, 27, -72, 7, 2, 7, 2, 0, -15, 0, -15, -8, 2, -8, 2, -15, -25, -15, -25, 0, -50, 0, -50, -8, -33, -8, -33, -15, -64, -15, -64, -3, -72, -3, -72, -23, 71, -23, 71, 2, 63, 2, 63, -15, 45, -15, 45, 0, 20, 0, 20, -8, 37, -8, 37, -15, 10, -15, 10, 7, 71, 7, 71, 15, -64, 15, -64, 27, 75, 27, 75, -27)
 
 [connection signal="active_node_changed" from="PlayerRot" to="PlayerRot/dir_arrows" method="_on_player_rot_active_node_changed"]

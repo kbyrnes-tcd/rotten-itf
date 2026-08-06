@@ -18,8 +18,8 @@ func get_pos(node_id: String) -> Vector2:
 func get_valid_dirs(node_id: String) -> Array:
 	return graph_data[node_id]["edges"].keys()
 
-func is_node_before(node_1: String, node_2: String) -> bool:
-	return ord(node_1[0]) < ord(node_2[0])
+#func is_node_before(node_1: String, node_2: String) -> bool:
+	#return ord(node_1[0]) < ord(node_2[0])
 
 func is_node_conn(node_id: String) -> bool:
 	return node_id.contains("-Conn")
