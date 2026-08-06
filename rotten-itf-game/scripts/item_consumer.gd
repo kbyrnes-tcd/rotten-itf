@@ -5,6 +5,7 @@ var player_in_area : bool = false;
 
 @export var item : InvItem # the required item for this lantern/consumer object
 @export var activated_tex : Texture2D
+@export var minigame: GameGlobals.Minigame = GameGlobals.Minigame.MAZE
 
 @onready var collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
 @onready var activated_sprite: Sprite2D = $Sprite2D/ActivatedSprite
@@ -14,7 +15,7 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	if player_in_area && Input.is_action_just_pressed("interact"):
-		if (player.has(item)):
+		if (player.has(item) and player.can_take_item(item)):
 				player.use(item)
 				# item consumer is now 'satiated'
 				call_deferred("deactivate")
@@ -34,4 +35,4 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 func deactivate():
 	activated_sprite.texture = activated_tex
 	collision_shape_2d.disabled = true
-	GameGlobals.load_minigame(GameGlobals.Minigame.MAZE)
+	GameGlobals.load_minigame(minigame)
