@@ -22,12 +22,10 @@
 [ext_resource type="AudioStream" uid="uid://dvdukd1lqtaao" path="res://assets/audio/jump.wav" id="16_rjn0o"]
 [ext_resource type="Texture2D" uid="uid://dfwfp8eqktoae" path="res://assets/images/player/daphne_animations/walk/IMG_0725.PNG" id="17_hk3tp"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_56i2g"]
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8rgwm"]
 shader = ExtResource("3_56i2g")
-shader_parameter/speed = 0.25
-shader_parameter/strength = 0.2
+shader_parameter/speed = 0.8
+shader_parameter/strength = 0.15
 shader_parameter/y_origin = 0.0
 shader_parameter/restrict_dir = 0
 
@@ -40,8 +38,8 @@ shader_parameter/restrict_dir = 0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kgrr2"]
 shader = ExtResource("3_56i2g")
-shader_parameter/speed = 0.25
-shader_parameter/strength = 0.05
+shader_parameter/speed = 0.01
+shader_parameter/strength = -0.05
 shader_parameter/y_origin = 0.0
 shader_parameter/restrict_dir = 0
 
@@ -181,7 +179,6 @@ position = Vector2(1444, 179)
 scroll_scale = Vector2(0.6, 1)
 
 [node name="1Backdrop" type="Sprite2D" parent="Environment/Background" unique_id=1435361381]
-material = SubResource("ShaderMaterial_56i2g")
 texture = ExtResource("2_wg12t")
 
 [node name="2TreesBack" type="Sprite2D" parent="Environment/Background" unique_id=1461737863]
