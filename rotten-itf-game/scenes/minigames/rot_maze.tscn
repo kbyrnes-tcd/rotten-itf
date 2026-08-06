@@ -19,6 +19,15 @@ size = Vector2(653, 25)
 size = Vector2(171.11115, 20)
 
 [node name="RotMaze" type="Node2D" unique_id=1812960501]
+process_mode = 3
+position = Vector2(135, 55)
+scale = Vector2(0.5, 0.5)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1333124157]
+offset_left = -35.0
+offset_top = -45.0
+offset_right = 465.0
+offset_bottom = 380.0
 
 [node name="PlayerRot" type="Node2D" parent="." unique_id=127352751 node_paths=PackedStringArray("graph")]
 position = Vector2(31, 58)
