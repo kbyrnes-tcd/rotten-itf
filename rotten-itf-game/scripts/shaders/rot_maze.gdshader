@@ -1,7 +1,7 @@
 shader_type canvas_item;
 render_mode blend_mix, unshaded;
 
-uniform float scroll_speed = 1.0;
+uniform float scroll_speed = .1;
 
 void fragment() {
 	vec2 moving_uv = vec2(fract(UV.x - TIME * scroll_speed), UV.y);
