@@ -15,7 +15,7 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	if player_in_area && Input.is_action_just_pressed("interact"):
-		if (player.has(item)):
+		if (player.has(item) and player.can_take_item(item)):
 				player.use(item)
 				# item consumer is now 'satiated'
 				call_deferred("deactivate")
