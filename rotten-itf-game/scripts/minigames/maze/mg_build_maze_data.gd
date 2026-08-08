@@ -65,9 +65,11 @@ func build_graph() -> Dictionary:
 				elif cur_dist.x < 0 && cur_dist.x:
 					dir = "left"
 			else:
-				#print("in else case for some reason...")
 				continue
 	
+			if dir == "":
+				continue
+				
 			# ONLY ADD TO EDGES IF...
 			# x,y are closer than what is already in nodes[x.name]["edges"][dir]
 			# & NO collision via rayquery
