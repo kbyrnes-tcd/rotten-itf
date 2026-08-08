@@ -25,11 +25,10 @@ offset_bottom = 155.0
 color = Color(0, 0.34217384, 0.34299055, 1)
 
 [node name="PlayerRot" type="Node2D" parent="." unique_id=127352751 node_paths=PackedStringArray("graph")]
-position = Vector2(175, -10)
+position = Vector2(172, -14)
 scale = Vector2(0.3, 0.3)
 script = ExtResource("1_35ab0")
 graph = NodePath("../MazePath")
-debug = true
 
 [node name="vine" type="Line2D" parent="PlayerRot" unique_id=788601042]
 material = SubResource("ShaderMaterial_02ys2")
@@ -77,10 +76,11 @@ scale = Vector2(0.05, 0.05)
 texture = ExtResource("3_35ab0")
 
 [node name="MazeShape" type="Sprite2D" parent="." unique_id=837615859]
-position = Vector2(116, 56)
+position = Vector2(113, 51)
 texture = ExtResource("7_hff37")
 
 [node name="MazePath" type="Node2D" parent="." unique_id=824729220]
+position = Vector2(-3, -5)
 script = ExtResource("3_f424p")
 graph_data = {
 &"A": {
@@ -356,7 +356,7 @@ position = Vector2(148, 82)
 position = Vector2(148, 116)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=887680724]
-position = Vector2(-22, -18)
+position = Vector2(-25, -23)
 scale = Vector2(1.445, 1.445)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=939216115]
