@@ -114,7 +114,7 @@ func process_stopped():
 	# actually append point to arr
 	pts.append($vine.to_local(tip_point))
 	$vine.points = pts
-	print('appended point calling update...')
+	#print('appended point calling update...')
 	#RotVisual.update_texture_indices($vine.points)
 	
 	var incoming_dir = active_dir
