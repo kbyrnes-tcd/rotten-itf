@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://bq7wqiwq0l3vb" path="res://scripts/constellation_minigame.gd" id="1_aiiqg"]
 
 [node name="ConstellationMinigamee" type="Node2D" unique_id=1541574832]
+position = Vector2(80, 45)
+scale = Vector2(0.7, 0.7)
 script = ExtResource("1_aiiqg")
 
 [node name="Background" type="ColorRect" parent="." unique_id=1257963536]

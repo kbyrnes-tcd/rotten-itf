@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbl1u5dyg80wg"
-path="res://.godot/imported/Daphne_-_Walk-5.png-cfa04d8dc85cc4b0845a057ce6d9e13e.ctex"
+uid="uid://i82h85gfpxl2"
+path="res://.godot/imported/Maze-P1.png-e2bbf967ea17e4bdd4771a7f98551e82.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/player/daphne_animations/walk/Daphne_-_Walk-5.png"
-dest_files=["res://.godot/imported/Daphne_-_Walk-5.png-cfa04d8dc85cc4b0845a057ce6d9e13e.ctex"]
+source_file="res://assets/images/minigames/maze-pieces/Maze-P1.png"
+dest_files=["res://.godot/imported/Maze-P1.png-e2bbf967ea17e4bdd4771a7f98551e82.ctex"]
 
 [params]
 

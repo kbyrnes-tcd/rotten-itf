@@ -18,6 +18,12 @@ func get_pos(node_id: String) -> Vector2:
 func get_valid_dirs(node_id: String) -> Array:
 	return graph_data[node_id]["edges"].keys()
 
+#func is_node_before(node_1: String, node_2: String) -> bool:
+	#return ord(node_1[0]) < ord(node_2[0])
+
+func is_node_conn(node_id: String) -> bool:
+	return node_id.contains("-Conn")
+
 func get_next_node(node_id: String, dir: String) -> String:
 	return graph_data[node_id]["edges"].get(dir, "")
 
@@ -59,15 +65,18 @@ func build_graph() -> Dictionary:
 				elif cur_dist.x < 0 && cur_dist.x:
 					dir = "left"
 			else:
-				print("in else case for some reason...")
 				continue
 	
+			if dir == "":
+				continue
+				
 			# ONLY ADD TO EDGES IF...
 			# x,y are closer than what is already in nodes[x.name]["edges"][dir]
 			# & NO collision via rayquery
 			var query = PhysicsRayQueryParameters2D.create(x.global_position, y.global_position)
 			var result = space_state.intersect_ray(query)
-			if result.is_empty() && cur_dist < nodes[x.name]["dist"][dir]:
+			# magnitude instead of raw vec2 comparison...
+			if result.is_empty() && cur_dist.length() < nodes[x.name]["dist"][dir].length():
 				# only record edge in array if there was NO intersection!
 				nodes[x.name]["edges"][dir] = y.name
 				nodes[x.name]["dist"][dir] = cur_dist

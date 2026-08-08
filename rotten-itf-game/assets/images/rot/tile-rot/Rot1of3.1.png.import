@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cf33r77wuoojw"
-path="res://.godot/imported/Daphne_-_Walk-1.png-cffce9a384dbfa28e5b3881634636283.ctex"
+uid="uid://cu5xgwkk7be6p"
+path="res://.godot/imported/Rot1of3.1.png-d9c59be80f5ae495475c33f421812991.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/player/daphne_animations/walk/Daphne_-_Walk-1.png"
-dest_files=["res://.godot/imported/Daphne_-_Walk-1.png-cffce9a384dbfa28e5b3881634636283.ctex"]
+source_file="res://assets/images/rot/tile-rot/Rot1of3.1.png"
+dest_files=["res://.godot/imported/Rot1of3.1.png-d9c59be80f5ae495475c33f421812991.ctex"]
 
 [params]
 

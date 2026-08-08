@@ -13,6 +13,8 @@ var debug_vine : PackedVector2Array = PackedVector2Array([])  # for idle debuggi
 var debug_tip_point : Vector2
 signal active_node_changed
 
+@export var debug : bool
+
 func _ready() -> void:
 	pts = $vine.points
 	tip_point = pts[pts.size()-1]
@@ -38,8 +40,6 @@ func get_snapped_direction():
 		Vector2(0, -1):
 			dir_ray = $up
 	return [dir_vector, dir_ray]
-
-var breathe_room = Vector2(0,0)
 
 func process_idle():
 	# IDLE: waiting for input to set direction
@@ -114,14 +114,30 @@ func process_stopped():
 	# actually append point to arr
 	pts.append($vine.to_local(tip_point))
 	$vine.points = pts
+	#print('appended point calling update...')
+	#RotVisual.update_texture_indices($vine.points)
 	
+	var incoming_dir = active_dir
 	active_node = next_node
 	active_node_changed.emit(next_node)
+	
+	# connector nodes
+	if graph.is_node_conn(active_node):
+		var opposite_dir = {"left":"right","right":"left","up":"down","down":"up"}[incoming_dir]
+		var valid_dirs = graph.get_valid_dirs(active_node)
+		valid_dirs.erase(opposite_dir) # don't just bounce back in the active opp. dir...
+		active_dir = valid_dirs[0]
+		update_preview()
+		current_state = State.GROWING
+		return
+	
+	# win state
 	if active_node == "Z":
 		print("YOU WON")
 		current_state = State.WON
 		clear_preview()
-		GameGlobals.unload_minigame()
+		if !debug:
+			GameGlobals.unload_minigame()
 		return
 		
 	active_dir = ""
