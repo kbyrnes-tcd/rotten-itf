@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://vkmq8t1guwnr" path="res://assets/images/player/Hit (32x32).png" id="1_dqkch"]
 [ext_resource type="Script" uid="uid://w2bvkx0l5r8" path="res://scripts/player.gd" id="1_qlg0r"]
-[ext_resource type="Resource" uid="uid://bbfb2yem3oxv0" path="res://scripts/inventory_system/player_inventory.tres" id="2_fjrip"]
 [ext_resource type="Texture2D" uid="uid://dmebo23ctl5ik" path="res://assets/images/player/Idle (32x32).png" id="2_qlg0r"]
+[ext_resource type="Resource" uid="uid://bbfb2yem3oxv0" path="res://scripts/inventory_system/player_inventory.tres" id="2_ur7pv"]
 [ext_resource type="Texture2D" uid="uid://3w38knvapafe" path="res://assets/images/player/Jump (32x32).png" id="3_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://c15gnofeo03bn" path="res://assets/images/player/Run (32x32).png" id="4_fjrip"]
 [ext_resource type="AudioStream" uid="uid://dvdukd1lqtaao" path="res://assets/audio/jump.wav" id="6_tuyoq"]
@@ -157,7 +157,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_k0e7r")
 }],
-"loop": true,
+"loop": 1,
 "name": &"hit",
 "speed": 20.0
 }, {
@@ -195,7 +195,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_oo8pe")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle",
 "speed": 20.0
 }, {
@@ -203,7 +203,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("3_tuyoq")
 }],
-"loop": true,
+"loop": 1,
 "name": &"jump",
 "speed": 20.0
 }, {
@@ -244,7 +244,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7jj1y")
 }],
-"loop": true,
+"loop": 1,
 "name": &"run",
 "speed": 20.0
 }]
@@ -252,11 +252,14 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_y4r1p"]
 radius = 35.19535
 
+[sub_resource type="Gradient" id="Gradient_j0jg5"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_q01m8"]
+gradient = SubResource("Gradient_j0jg5")
+
 [node name="Player" type="CharacterBody2D" unique_id=1515659648]
 script = ExtResource("1_qlg0r")
-inv = ExtResource("2_fjrip")
-SPEED = 250.0
-JUMP_VELOCITY = -850.0
+inv = ExtResource("2_ur7pv")
 
 [node name="PlyrCollisionShape2D" type="CollisionShape2D" parent="." unique_id=66024058]
 position = Vector2(0.6666667, 3.3333335)
@@ -271,6 +274,8 @@ autoplay = "idle"
 frame_progress = 0.66269505
 
 [node name="Lantern" type="Node2D" parent="CharacterSprites" unique_id=964616978]
+process_mode = 4
+visible = false
 position = Vector2(17.333334, 2.666667)
 scale = Vector2(0.455, 0.455)
 
@@ -283,6 +288,11 @@ position = Vector2(13.186813, -7.326008)
 [node name="LntrnCollisionShape2D" type="CollisionShape2D" parent="CharacterSprites/Lantern/LanternArea2D" unique_id=877712953]
 position = Vector2(10.256411, -2.197803)
 shape = SubResource("CircleShape2D_y4r1p")
+
+[node name="PointLight2D" type="PointLight2D" parent="CharacterSprites/Lantern" unique_id=1223419189]
+color = Color(0.9137255, 0.9254902, 0.16862746, 0.9372549)
+energy = 1.5
+texture = SubResource("GradientTexture2D_q01m8")
 
 [node name="GunSprite2D" type="Sprite2D" parent="CharacterSprites" unique_id=1835702057]
 visible = false

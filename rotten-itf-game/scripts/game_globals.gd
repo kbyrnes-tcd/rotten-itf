@@ -52,6 +52,7 @@ static func pause(w_menu : bool):
 	tree.paused = true
 
 static func unload_minigame():
+	print('unloading...')
 	# resume game
 	current_mg = Minigame.NONE
 	resume(false)
