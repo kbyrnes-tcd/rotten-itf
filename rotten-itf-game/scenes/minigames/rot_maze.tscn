@@ -9,9 +9,13 @@
 [ext_resource type="Script" uid="uid://cwicyq0sd6krn" path="res://scripts/minigames/maze/mg_rot_visual.gd" id="4_wqrwn"]
 [ext_resource type="Texture2D" uid="uid://c5fldkni2g4ht" path="res://assets/images/minigames/maze-pieces/Maze-Shape.png" id="7_hff37"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_02ys2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4d02b"]
 shader = ExtResource("2_gsbbd")
 shader_parameter/scroll_speed = 0.1
+
+[sub_resource type="Curve" id="Curve_hff37"]
+_data = [Vector2(0, 0.020201921), 0.0, 0.0, 0, 0, Vector2(0.21226415, 0.59595954), 0.0, 0.0, 0, 0, Vector2(0.5707547, 0.6464646), 0.0, 0.0, 0, 0, Vector2(0.9292453, 0.6161616), 0.0, 0.0, 0, 0, Vector2(1, 0.47474742), 0.0, 0.0, 0, 0]
+point_count = 5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rrkfw"]
 size = Vector2(4.4636536, 20)
@@ -28,20 +32,24 @@ offset_bottom = 155.0
 color = Color(0, 0.34217384, 0.34299055, 1)
 
 [node name="PlayerRot" type="Node2D" parent="." unique_id=127352751 node_paths=PackedStringArray("graph")]
+material = SubResource("ShaderMaterial_4d02b")
 position = Vector2(172, -14)
 scale = Vector2(0.3, 0.3)
 script = ExtResource("1_35ab0")
 graph = NodePath("../MazePath")
 
 [node name="vine" type="Line2D" parent="PlayerRot" unique_id=788601042]
-material = SubResource("ShaderMaterial_02ys2")
+texture_repeat = 2
 position = Vector2(1, 0)
 points = PackedVector2Array(0, 0, 0, 0)
-width = 15.0
-default_color = Color(1, 1, 1, 0)
+width = 20.0
+width_curve = SubResource("Curve_hff37")
 texture = ExtResource("3_gjyw5")
 texture_mode = 1
 script = ExtResource("4_wqrwn")
+wave_strength = 0.1
+wave_speed = 1.5
+wave_frequency = 1.5
 
 [node name="StaticBody2D" type="StaticBody2D" parent="PlayerRot/vine" unique_id=1043121702]
 
@@ -83,6 +91,7 @@ position = Vector2(113, 51)
 texture = ExtResource("7_hff37")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=887680724]
+visible = false
 position = Vector2(-25, -23)
 scale = Vector2(1.445, 1.445)
 
@@ -232,17 +241,17 @@ scale = Vector2(0.6920415, 0.6920415)
 polygon = PackedVector2Array(64, 20, 64, 54, 44, 54, 44, 36, 49, 36, 49, 49, 59, 49, 59, 27, 34, 27, 34, 57, 36, 57, 36, 29, 57, 29, 57, 44, 52, 44, 52, 34, 41, 34, 41, 56, 66, 56, 66, 20)
 
 [node name="MazePath" type="Node2D" parent="." unique_id=824729220]
+visible = false
 script = ExtResource("3_f424p")
 graph_data = {
 &"A": {
 "dist": {
-"down": Vector2(0, 14),
+"down": Vector2(99999, 99999),
 "left": Vector2(-27, 0),
 "right": Vector2(99999, 99999),
 "up": Vector2(99999, 99999)
 },
 "edges": {
-"down": &"A84",
 "left": &"A18"
 },
 "pos": Vector2(172, -14)
@@ -357,13 +366,12 @@ graph_data = {
 },
 &"A18": {
 "dist": {
-"down": Vector2(0, 14),
+"down": Vector2(99999, 99999),
 "left": Vector2(-27, 0),
 "right": Vector2(27, 0),
 "up": Vector2(99999, 99999)
 },
 "edges": {
-"down": &"A82",
 "left": &"A17",
 "right": &"A"
 },
@@ -1283,12 +1291,11 @@ graph_data = {
 "down": Vector2(99999, 99999),
 "left": Vector2(-10, 0),
 "right": Vector2(17, 0),
-"up": Vector2(0, -14)
+"up": Vector2(99999, 99999)
 },
 "edges": {
 "left": &"A32",
-"right": &"A31",
-"up": &"A18"
+"right": &"A31"
 },
 "pos": Vector2(145, 0)
 },
@@ -1310,11 +1317,10 @@ graph_data = {
 "down": Vector2(99999, 99999),
 "left": Vector2(-10, 0),
 "right": Vector2(99999, 99999),
-"up": Vector2(0, -14)
+"up": Vector2(99999, 99999)
 },
 "edges": {
-"left": &"A31",
-"up": &"A"
+"left": &"A31"
 },
 "pos": Vector2(172, 0)
 },
