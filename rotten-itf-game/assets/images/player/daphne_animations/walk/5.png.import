@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmebo23ctl5ik"
-path="res://.godot/imported/Idle (32x32).png-80b5829e967944c7bbf5958bc74c9b27.ctex"
+uid="uid://d368i2i7y0gf8"
+path="res://.godot/imported/5.png-02c2569709e717c533f7f3cb25045d5f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/player/Idle (32x32).png"
-dest_files=["res://.godot/imported/Idle (32x32).png-80b5829e967944c7bbf5958bc74c9b27.ctex"]
+source_file="res://assets/images/player/daphne_animations/walk/5.png"
+dest_files=["res://.godot/imported/5.png-02c2569709e717c533f7f3cb25045d5f.ctex"]
 
 [params]
 
