@@ -19,6 +19,10 @@ const GLOWWORM = preload("res://scripts/inventory_system/items/orange_worm.tres"
 const GLOWWORM_MAX = 5
 const USE_INTERVAL = 2.0
 
+const WORM_ICON = preload("res://assets/images/worms/Glowworm.png")
+const SEGMENT_FILLED = preload("res://assets/images/ui/Glowworm_Bar_Filled.png")
+const SEGMENT_EMPTY = preload("res://assets/images/ui/Glowworm_Bar_Empty.png")
+
 @export var inv: Inventory
 @export var SPEED = 150.0
 @export var JUMP_VELOCITY = -650.0
@@ -290,18 +294,20 @@ func build_worm_segments():
 	segments.clear()
 	#create rect per number of uses
 	for i in GLOWWORM_MAX:
-		var rect = ColorRect.new()
-		rect.custom_minimum_size = Vector2(20,6)
-		segment_container.add_child(rect)
-		segments.append(rect)
+		var dot = TextureRect.new()
+		dot.texture = SEGMENT_FILLED
+		dot.custom_minimum_size = Vector2(16,5)
+		dot.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		segment_container.add_child(dot)
+		segments.append(dot)
 	update_worm_segments()
 	
 func update_worm_segments():
 	for i in segments.size():
 		if i < glowworm_uses:
-			segments[i].color = Color("#F8C840")
+			segments[i].texture = SEGMENT_FILLED
 		else:
-			segments[i].color = Color("#3A2A08")
+			segments[i].texture = SEGMENT_EMPTY
 			
 
 func _tool_gun_equipped():

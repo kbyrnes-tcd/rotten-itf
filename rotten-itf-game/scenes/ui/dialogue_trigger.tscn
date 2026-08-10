@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://bd3r1j21a2opr"]
+
+[sub_resource type="GDScript" id="GDScript_uj0ns"]
+script/source = "extends Node2D
+
+@export var dialogue_lines: Array[String] = []
+@export var speaker: String = \"\"
+@export var one_shot: bool = true
+
+var player_in_area = false
+var triggered = false
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	$Area2D.body_entered.connect(_on_area_2d_body_entered)
+	$Area2D.body_exited.connect(_on_area_2d_body_exited)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta):
+	if player_in_area and Input.is_action_just_pressed(\"interact\"):
+		if one_shot and triggered:
+			return
+		trigger_dialogue()
+	
+func trigger_dialogue():
+	triggered = true
+	var dialogue_manager = get_tree().get_first_node_in_group(\"dialogue_manager\")
+	print(\"dialogue manager found: \" + str(dialogue_manager))
+	if dialogue_manager:
+		for line in dialogue_lines:
+			dialogue_manager.queue_text(line, speaker)
+
+func _on_area_2d_body_entered(body: Node2D):
+	if body.has_method(\"collect\"):
+		player_in_area = false
+
+func _on_area_2d_body_exited(body: Node2D):
+	if body.has_method(\"collect\"):
+		player_in_area = false
+"
+
+[node name="DialogueTrigger" type="Node2D" unique_id=413688381]
+script = SubResource("GDScript_uj0ns")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1114588435]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1913681013]
+position = Vector2(0, -1)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
