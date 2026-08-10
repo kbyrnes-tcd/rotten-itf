@@ -9,13 +9,12 @@
 
 [node name="Essentials" type="Node2D" unique_id=1446151240]
 
-[node name="Config" type="Node" parent="." unique_id=550139588 node_paths=PackedStringArray("pause_menu", "color_rect", "hud")]
+[node name="Config" type="Node" parent="." unique_id=550139588 node_paths=PackedStringArray("pause_menu", "hud")]
 script = ExtResource("1_ep3c1")
 debug_level = ExtResource("2_whljo")
 maze_mg = ExtResource("2_ty236")
 letter_mg = ExtResource("7_y13p6")
 pause_menu = NodePath("../UI/PauseMenu")
-color_rect = NodePath("../UI/PauseMenu/ColorRect")
 hud = NodePath("../HUD")
 
 [node name="MinigameLayer" type="CanvasLayer" parent="." unique_id=1910232469]
