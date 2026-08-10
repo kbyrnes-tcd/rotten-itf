@@ -109,7 +109,7 @@ animations = [{
 "texture": ExtResource("21_fdfoy")
 }],
 "loop": 1,
-"name": &"run",
+"name": &"walk",
 "speed": 8.0
 }]
 
@@ -133,8 +133,9 @@ shape = SubResource("CapsuleShape2D_b3nsi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterSprites" unique_id=512896578]
 sprite_frames = SubResource("SpriteFrames_6adnx")
-animation = &"idle"
+animation = &"walk"
 autoplay = "idle"
+frame_progress = 0.8339207
 
 [node name="Lantern" type="Node2D" parent="CharacterSprites" unique_id=964616978]
 process_mode = 4
