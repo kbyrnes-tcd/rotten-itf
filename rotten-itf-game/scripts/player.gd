@@ -135,11 +135,19 @@ func activate_light():
 	var light = lantern.get_node_or_null("PointLight2D")
 	if light:
 		light.enabled = true
+	var area = lantern.get_node_or_null("LanternArea2D")
+	if area:
+		area.monitoring = true
+		area.monitorable = true
 
 func deactivate_light():
 	var light = lantern.get_node_or_null("PointLight2D")
 	if light:
 		light.enabled = false
+	var area = lantern.get_node_or_null("LanternArea2D")
+	if area:
+		area.monitoring = false
+		area.monitorable = false
 		
 #change tool state
 func change_tool_state(new_state: ToolState):
@@ -152,6 +160,10 @@ func change_tool_state(new_state: ToolState):
 			worm_hud.visible = false
 			lantern.process_mode = Node.PROCESS_MODE_DISABLED
 			lantern.modulate.a = 1.0
+			var area = lantern.get_node_or_null("LanternArea2D")
+			if area:
+				area.monitoring = false
+				area.monitorable = false
 		ToolState.LANTERN_ON:
 			deactivate_light()
 			worm_in_use = false
@@ -159,6 +171,10 @@ func change_tool_state(new_state: ToolState):
 			lantern.visible = false
 			lantern.process_mode = Node.PROCESS_MODE_DISABLED
 			lantern.modulate.a = 1.0
+			var area = lantern.get_node_or_null("LanternArea2D")
+			if area:
+				area.monitoring = false
+				area.monitorable = false
 		ToolState.GUN_EQUIPPED:
 			gun.visible = false
 			gun_sprite.visible = false
@@ -178,6 +194,10 @@ func change_tool_state(new_state: ToolState):
 			lantern.visible = true
 			lantern.process_mode = Node.PROCESS_MODE_INHERIT
 			#worm_in_use = true
+			var area = lantern.get_node_or_null("LanternArea2D")
+			if area:
+				area.monitoring = false
+				area.monitorable = false
 			update_lantern_visuals()
 			lantern.modulate.a = 0.3
 		ToolState.LANTERN_ON:

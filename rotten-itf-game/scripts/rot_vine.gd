@@ -180,7 +180,6 @@ func animate_tentacle(delta):
 	for i in range(rest_points.size()):
 		var point = rest_points[i]
 		
-		#keep root still
 		if i > 0:
 			var direction = rest_points[i] - rest_points[i-1]
 			var normal = direction.normalized().orthogonal()
