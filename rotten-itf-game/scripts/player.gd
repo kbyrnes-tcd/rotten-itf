@@ -296,7 +296,7 @@ func build_worm_segments():
 	for i in GLOWWORM_MAX:
 		var dot = TextureRect.new()
 		dot.texture = SEGMENT_FILLED
-		dot.custom_minimum_size = Vector2(16,5)
+		dot.custom_minimum_size = Vector2(16,16)
 		dot.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		segment_container.add_child(dot)
 		segments.append(dot)

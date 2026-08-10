@@ -11,7 +11,7 @@ func _on_resume_pressed() -> void:
 	GameGlobals.resume(true)
 
 func _on_settings_pressed() -> void:
-	pass # Replace with function body.
+	pass
 
 func _on_quit_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().quit()
