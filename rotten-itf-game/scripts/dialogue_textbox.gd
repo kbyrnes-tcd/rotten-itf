@@ -3,11 +3,16 @@ extends CanvasLayer
 
 const CHAR_READ_RATE = 0.05
 
-@onready var textbox_container = $MarginContainer
-@onready var character_name_label = $MarginContainer/CharacterName
-@onready var start_symbol = $MarginContainer/MarginContainer/HBoxContainer/start
-@onready var end_symbol = $MarginContainer/MarginContainer/HBoxContainer/end
-@onready var label = $MarginContainer/MarginContainer/HBoxContainer/dialogue
+@onready var textbox_container = $DialogueAnchor
+@onready var character_name_label = $DialogueAnchor/NamePlate/HBoxContainer/CharacterName
+@onready var label = $DialogueAnchor/DialogueBox/MarginContainer/VBoxContainer/DialogueText
+@onready var continue_hint = $DialogueAnchor/DialogueBox/MarginContainer/VBoxContainer/ContinueHint
+@onready var portrait = $DialogueAnchor/Portrait
+
+const PORTRAITS = {
+	#"Daphne" : preload()
+	"Persephone" : preload("res://assets/images/player/persephone/Persephone_HUD.png")
+}
 
 enum State{
 	READY,
@@ -20,12 +25,13 @@ var text_queue = []
 var current_tween = null
 
 func _ready():
+
 	hide_textbox()
-	queue_text("Daphne help...")
-	queue_text("I am here")
-	queue_text("You are not responsbile")
+	queue_text("Daphne help...", "Persephone")
+	#queue_text("I am here" , "Daphne")
+	queue_text("You are not responsbile", "Persephone")
 	
-func _process(delta):
+func _process(_delta):
 	match current_state:
 		State.READY:
 			if text_queue.size() > 0:
@@ -36,7 +42,7 @@ func _process(delta):
 				label.visible_ratio = 1.0
 				if current_tween:
 					current_tween.kill()
-				end_symbol.text = "v"
+				continue_hint.visible = true
 				change_state(State.FINISHED)
 		State.FINISHED:
 			if Input.is_action_just_pressed("ui_accept"):
@@ -48,14 +54,20 @@ func queue_text(next_text: String, speaker: String = ""):
 	text_queue.push_back({"text": next_text, "speaker": speaker})
 	
 func hide_textbox():
-	start_symbol.text = ""
-	end_symbol.text = ""
 	label.text = ""
+	character_name_label.text = ""
+	continue_hint.visible = false
+	portrait.visible = false
 	textbox_container.hide()
 	
-func show_textbox(character_name: String = ""):
-	start_symbol.text = "*"
-	character_name_label.text = character_name
+func show_textbox(speaker: String = ""):
+	character_name_label.text = speaker
+	if PORTRAITS.has(speaker):
+		portrait.texture = PORTRAITS[speaker]
+		portrait.visible = true
+	else:
+		portrait.visible = false
+	continue_hint.visible = false
 	textbox_container.show()
 
 func display_text():
@@ -64,14 +76,13 @@ func display_text():
 	var speaker = entry["speaker"]
 	label.text = next_text
 	label.visible_ratio = 0.0
-	end_symbol.text = ""
 	change_state(State.READING)
 	show_textbox(speaker)
 	#Create tween
 	current_tween = create_tween()
 	current_tween.tween_property(label, "visible_ratio", 1.0, len(next_text) * CHAR_READ_RATE)
 	current_tween.tween_callback(func():
-		end_symbol.text = "v"
+		continue_hint.visible = true
 		change_state(State.FINISHED))
 		
 func change_state(next_state):
