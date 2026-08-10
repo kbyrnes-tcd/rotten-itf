@@ -9,6 +9,9 @@ extends CharacterBody2D
 @onready var ray_cast_2d: RayCast2D = $Gun/RayCast2D
 @onready var ray_line_2d: Line2D = $Gun/RayCast2D/RayLine2D
 @onready var scene: Node2D = $".."
+@onready var worm_hud = $CanvasLayer/WormHUD
+@onready var segment_container = $CanvasLayer/WormHUD/SegmentContainer
+
 
 const ROT_VINE = preload("uid://kicj2478es6o")
 const GROWTH_SPEED = 120.0
@@ -30,10 +33,10 @@ var tool_state = ToolState.IDLE
 var active_vine = null
 var is_growing = false
 
-var glowworm_uses = 0
+var glowworm_uses = GLOWWORM_MAX
 var use_timer = 0.0
 var worm_in_use: bool = false
-
+var segments: Array = []
 
 func collect(item: InvItem):
 	inv.insert(item)
@@ -56,6 +59,7 @@ func _ready():
 	var light = lantern.get_node_or_null("PointLight2D")
 	if light:
 		light.enabled = false
+	build_worm_segments()
 	
 func get_snapped_direction() -> Vector2:
 	var mouse_pos = get_global_mouse_position()
@@ -91,6 +95,7 @@ func start_vine():
 
 func stop_vine():
 	if is_growing and active_vine:
+		active_vine.set_rest_shape()
 		active_vine.call_deferred("update_collisions")
 	is_growing = false
 	active_vine = null
@@ -119,6 +124,7 @@ func add_vine(src: Vector2, dest: Vector2):
 func update_lantern_visuals():
 	var life_ratio = float(glowworm_uses)/float(GLOWWORM_MAX)
 	lantern.modulate.a = lerp(0., 1.0, life_ratio)
+	update_worm_segments()
 	var light = lantern.get_node_or_null("PointLight2D")
 	if light:
 		light.texture_scale = lerp(0.3, 1.0, life_ratio)
@@ -129,11 +135,19 @@ func activate_light():
 	var light = lantern.get_node_or_null("PointLight2D")
 	if light:
 		light.enabled = true
+	var area = lantern.get_node_or_null("LanternArea2D")
+	if area:
+		area.monitoring = true
+		area.monitorable = true
 
 func deactivate_light():
 	var light = lantern.get_node_or_null("PointLight2D")
 	if light:
 		light.enabled = false
+	var area = lantern.get_node_or_null("LanternArea2D")
+	if area:
+		area.monitoring = false
+		area.monitorable = false
 		
 #change tool state
 func change_tool_state(new_state: ToolState):
@@ -142,14 +156,25 @@ func change_tool_state(new_state: ToolState):
 	match tool_state:
 		ToolState.LANTERN_EQUIPPED: 
 			lantern.visible = false
-			worm_in_use = false
+			#worm_in_use = false
+			worm_hud.visible = false
 			lantern.process_mode = Node.PROCESS_MODE_DISABLED
 			lantern.modulate.a = 1.0
+			var area = lantern.get_node_or_null("LanternArea2D")
+			if area:
+				area.monitoring = false
+				area.monitorable = false
 		ToolState.LANTERN_ON:
 			deactivate_light()
+			worm_in_use = false
+			worm_hud.visible = false
 			lantern.visible = false
 			lantern.process_mode = Node.PROCESS_MODE_DISABLED
 			lantern.modulate.a = 1.0
+			var area = lantern.get_node_or_null("LanternArea2D")
+			if area:
+				area.monitoring = false
+				area.monitorable = false
 		ToolState.GUN_EQUIPPED:
 			gun.visible = false
 			gun_sprite.visible = false
@@ -168,18 +193,26 @@ func change_tool_state(new_state: ToolState):
 		ToolState.LANTERN_EQUIPPED:
 			lantern.visible = true
 			lantern.process_mode = Node.PROCESS_MODE_INHERIT
+			#worm_in_use = true
+			var area = lantern.get_node_or_null("LanternArea2D")
+			if area:
+				area.monitoring = false
+				area.monitorable = false
+			update_lantern_visuals()
+			lantern.modulate.a = 0.3
+		ToolState.LANTERN_ON:
+			lantern.visible = true
+			lantern.process_mode = Node.PROCESS_MODE_INHERIT
 			worm_in_use = true
+			worm_hud.visible = true
+			update_worm_segments()
 			if inv.has(GLOWWORM) and glowworm_uses <= 0:
 				glowworm_uses = GLOWWORM_MAX
 				use_timer = 0.0
 			if inv.has(GLOWWORM):
-				update_lantern_visuals()
+				activate_light()
 			else: 
 				lantern.modulate.a = 0.3
-		ToolState.LANTERN_ON:
-			lantern.visible = true
-			lantern.process_mode = Node.PROCESS_MODE_INHERIT
-			activate_light()
 		ToolState.GUN_EQUIPPED:
 			gun.visible = true
 			gun_sprite.visible = true
@@ -251,15 +284,32 @@ func _tool_lantern_on(delta: float):
 				print("out of glowworms")
 				change_tool_state(ToolState.LANTERN_EQUIPPED)
 
+func build_worm_segments():
+	for child in segment_container.get_children():
+		child.queue_free()
+	segments.clear()
+	#create rect per number of uses
+	for i in GLOWWORM_MAX:
+		var rect = ColorRect.new()
+		rect.custom_minimum_size = Vector2(20,6)
+		segment_container.add_child(rect)
+		segments.append(rect)
+	update_worm_segments()
+	
+func update_worm_segments():
+	for i in segments.size():
+		if i < glowworm_uses:
+			segments[i].color = Color("#F8C840")
+		else:
+			segments[i].color = Color("#3A2A08")
+			
+
 func _tool_gun_equipped():
 	if Input.is_action_just_pressed("equip_rot"):
 		change_tool_state(ToolState.IDLE)
 		return
 	if Input.is_action_just_pressed("rot_cut"):
-		if inv.has(GLOWWORM):
-			change_tool_state(ToolState.LANTERN_EQUIPPED)
-		else:
-			print("no glowworms! WOMP WOMP")
+		change_tool_state(ToolState.LANTERN_EQUIPPED)
 		return
 	if Input.is_action_just_pressed("rot_extend") and not is_growing:
 		start_vine()
@@ -294,11 +344,17 @@ func _handle_vine_growth(delta: float):
 	var pts = active_vine.points
 	if pts.size() < 2:
 		return
+	#var curve = Curve.new()
+	#curve.add_point(Vector2(0,1))
+	#curve.add_point(Vector2(0.8,1))
+	#curve.add_point(Vector2(1,0))
+	
+	#active_vine.width_curve = curve
 	var dir: Vector2 = active_vine.get_meta("dir")
 	var target: Vector2 = active_vine.get_meta("target")
 	var tip_local = pts[pts.size() - 1]
 	var tip_global = active_vine.to_global(tip_local)
-	var next_global = tip_global + dir * GROWTH_SPEED * delta
+	var next_global = tip_global + dir * GROWTH_SPEED * delta 
 	var dist_to_target = (target - tip_global).dot(dir)
 	if dist_to_target <= 0:
 		pts[pts.size() - 1] = active_vine.to_local(target)

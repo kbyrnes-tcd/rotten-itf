@@ -5,10 +5,25 @@ var pts = []
 var player_in_area
 var segments_in_area
 var collider_in_area
+var rest_points: PackedVector2Array
+var wave_time := 0.0
+var collision_timer:= 0.0
+@export var wave_strength := 3.0
+@export var wave_speed:= 2.0
+@export var wave_frequency := 0.8
+
 const ROT_VINE = preload("uid://kicj2478es6o")
 @onready var scene: Node2D = $"../.."
 
 func _ready():
+	width = 20
+	
+	var curve = Curve.new()
+	curve.add_point(Vector2(0,0.1))
+	curve.add_point(Vector2(0.7,0.6))
+	curve.add_point(Vector2(1,0.0))
+	
+	width_curve = curve
 	segments_in_area = []
 	pts = points # assign points var (PackedVector2Arr)
 	call_deferred("inst_collisions") # instantiate collision shape from inspector defined curve
@@ -80,21 +95,6 @@ func update_collisions():
 		var area_shape = area.get_child(area.get_child_count() - 1)
 		area.remove_child(area_shape)
 		area_shape.queue_free()
-			
-#func _process(_delta):
-	#if player_in_area:
-		## only accept Q/E inputs when in radius of the vine...
-		#if Input.is_action_just_pressed("interact"):
-			## on click of E, remove some point
-			#pts.remove_at(1)
-			#points = pts # update points, visuals and vertices
-			#update_collisions()
-#
-		#if Input.is_action_just_pressed("rot_extend"):
-			## on click of Q, add some point
-			#pts.append(Vector2(randf_range(0, 200), randf_range(-10, -50)))
-			#points = pts # update points, visuals and vertices
-			#update_collisions()
 
 # for player body detection
 func _on_area_2d_body_entered(_body: Node2D) -> void:
@@ -102,6 +102,7 @@ func _on_area_2d_body_entered(_body: Node2D) -> void:
 	pass
 
 func _on_line_area_2d_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
+	#print("rot touched", area.name)
 	if area.name == "LanternArea2D":
 		var space_state = get_world_2d().direct_space_state
 		var indices = [] # to store points within lantern-area; to later split at
@@ -112,7 +113,7 @@ func _on_line_area_2d_area_shape_entered(_area_rid: RID, area: Area2D, _area_sha
 			parameters.position = global_pos
 			parameters.collide_with_areas = true
 			parameters.collide_with_bodies = false
-			parameters.collision_mask = 1
+			parameters.collision_mask = 255
 			
 			# stores Area2Ds the current point intersects w/
 			var current_point_intersections = space_state.intersect_point(parameters)
@@ -137,10 +138,14 @@ func _on_line_area_2d_area_shape_entered(_area_rid: RID, area: Area2D, _area_sha
 		
 		if tail.size() > 1:
 			add_vine(head)
+		if tail.size() > 1:
 			add_vine(tail)
 		
 		pts.clear()
 		points = pts
+		
+		rest_points.clear()
+		points.clear()
 		
 		# TODO: TEMPORARY NON-COLLISION
 		# intersected area still exists but no collision	
@@ -161,3 +166,38 @@ func time_out_collision():
 	$".".get_child(0).process_mode=Node.PROCESS_MODE_DISABLED
 	await get_tree().create_timer(3.0).timeout
 	$".".get_child(0).process_mode=Node.PROCESS_MODE_INHERIT
+	
+func set_rest_shape():
+	rest_points = points.duplicate()
+	
+func animate_tentacle(delta):
+	if rest_points.size() < 3:
+		return
+	
+	wave_time += delta * wave_speed
+	var animated_points := PackedVector2Array()
+	
+	for i in range(rest_points.size()):
+		var point = rest_points[i]
+		
+		if i > 0:
+			var direction = rest_points[i] - rest_points[i-1]
+			var normal = direction.normalized().orthogonal()
+			
+			#stronger movement near tip
+			var influence = float(i) / rest_points.size()
+			
+			var offset = sin(
+				wave_time + i * wave_frequency
+			) * wave_strength * influence
+			
+			point += normal * offset
+		animated_points.append(point)
+	points = animated_points
+	
+func _process(delta):
+	animate_tentacle(delta)
+	collision_timer += delta
+	if collision_timer > 0.1:
+		update_collisions()
+		collision_timer = 0

@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c15gnofeo03bn" path="res://assets/images/player/Run (32x32).png" id="4_fjrip"]
 [ext_resource type="AudioStream" uid="uid://dvdukd1lqtaao" path="res://assets/audio/jump.wav" id="6_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://bg2xv2dit48xi" path="res://assets/images/worms/lantern.png" id="9_ur7pv"]
+[ext_resource type="Texture2D" uid="uid://cotxrl2gpbqxr" path="res://assets/images/worms/orange_worm_1.png" id="10_d2wvv"]
 [ext_resource type="Texture2D" uid="uid://dbkabib4tp1d" path="res://assets/images/rot/gun.png" id="10_y4r1p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qlg0r"]
@@ -331,3 +332,22 @@ drag_horizontal_enabled = true
 drag_top_margin = 0.0
 drag_right_margin = 0.0
 drag_bottom_margin = 0.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=381364680]
+
+[node name="WormHUD" type="HBoxContainer" parent="CanvasLayer" unique_id=22575049]
+visible = false
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 60.0
+offset_bottom = 60.0
+
+[node name="WormIcon" type="TextureRect" parent="CanvasLayer/WormHUD" unique_id=1741458078]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("10_d2wvv")
+stretch_mode = 5
+
+[node name="SegmentContainer" type="HBoxContainer" parent="CanvasLayer/WormHUD" unique_id=2011706504]
+layout_mode = 2
+theme_override_constants/separation = 4
