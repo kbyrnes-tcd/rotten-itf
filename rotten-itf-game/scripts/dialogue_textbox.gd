@@ -4,6 +4,7 @@ extends CanvasLayer
 const CHAR_READ_RATE = 0.05
 
 @onready var textbox_container = $MarginContainer
+@onready var character_name_label = $MarginContainer/CharacterName
 @onready var start_symbol = $MarginContainer/MarginContainer/HBoxContainer/start
 @onready var end_symbol = $MarginContainer/MarginContainer/HBoxContainer/end
 @onready var label = $MarginContainer/MarginContainer/HBoxContainer/dialogue
@@ -43,8 +44,8 @@ func _process(delta):
 				if text_queue.size() == 0:
 					hide_textbox()
 					
-func queue_text(next_text):
-	text_queue.push_back(next_text)
+func queue_text(next_text: String, speaker: String = ""):
+	text_queue.push_back({"text": next_text, "speaker": speaker})
 	
 func hide_textbox():
 	start_symbol.text = ""
@@ -52,17 +53,20 @@ func hide_textbox():
 	label.text = ""
 	textbox_container.hide()
 	
-func show_textbox():
+func show_textbox(character_name: String = ""):
 	start_symbol.text = "*"
+	character_name_label.text = character_name
 	textbox_container.show()
 
 func display_text():
-	var next_text = text_queue.pop_front()
+	var entry = text_queue.pop_front()
+	var next_text = entry["text"]
+	var speaker = entry["speaker"]
 	label.text = next_text
 	label.visible_ratio = 0.0
 	end_symbol.text = ""
 	change_state(State.READING)
-	show_textbox()
+	show_textbox(speaker)
 	#Create tween
 	current_tween = create_tween()
 	current_tween.tween_property(label, "visible_ratio", 1.0, len(next_text) * CHAR_READ_RATE)

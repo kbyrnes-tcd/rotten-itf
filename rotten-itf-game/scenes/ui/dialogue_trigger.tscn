@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c1epxp5spnua"]
+
+[ext_resource type="Script" uid="uid://12dnuuvmv3i7" path="res://scripts/ui/dialogue_trigger.gd" id="1_byapi"]
+
+[node name="DialogueTrigger" type="Node2D" unique_id=413688381]
+script = ExtResource("1_byapi")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1114588435]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1913681013]
