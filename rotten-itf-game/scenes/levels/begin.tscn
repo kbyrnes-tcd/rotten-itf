@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://dlk2h13w2xeca" path="res://scripts/game_globals_config.gd" id="1_ep3c1"]
 [ext_resource type="PackedScene" uid="uid://cpwsgbr3fr7by" path="res://scenes/ui/pause_menu.tscn" id="2_ep3c1"]
 [ext_resource type="PackedScene" uid="uid://b0xdv5nobjlkk" path="res://scenes/minigames/rot_maze.tscn" id="2_ty236"]
-[ext_resource type="PackedScene" uid="uid://h1dqndhb88on" path="res://scenes/levels/main.tscn" id="2_whljo"]
 [ext_resource type="PackedScene" uid="uid://0hlcimiuwo6o" path="res://scenes/ui/inv_ui.tscn" id="3_ep3c1"]
 [ext_resource type="PackedScene" uid="uid://cpu885nisbhmc" path="res://scenes/ui/constellation_minigame.tscn" id="7_y13p6"]
 
@@ -11,7 +10,6 @@
 
 [node name="Config" type="Node" parent="." unique_id=550139588 node_paths=PackedStringArray("pause_menu", "hud")]
 script = ExtResource("1_ep3c1")
-debug_level = ExtResource("2_whljo")
 maze_mg = ExtResource("2_ty236")
 letter_mg = ExtResource("7_y13p6")
 pause_menu = NodePath("../UI/PauseMenu")

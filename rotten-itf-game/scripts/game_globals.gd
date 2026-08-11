@@ -15,7 +15,7 @@ static var pause_menu: Control
 static var hud: CanvasLayer
 static var color_rect: ColorRect
 
-var running_another_scene : bool = false # for running minigames and etc.
+var running_another_scene : bool = true # for running minigames and etc.
 
 func _ready() -> void:
 	if !running_another_scene:
