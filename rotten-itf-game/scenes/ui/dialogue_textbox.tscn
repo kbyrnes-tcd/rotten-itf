@@ -25,10 +25,13 @@ script = ExtResource("1_y2pcl")
 [node name="DialogueAnchor" type="Control" parent="." unique_id=427589958]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 3
+anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 120.0
+offset_left = 113.0
+offset_top = -100.0
+offset_right = -101.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -65,7 +68,7 @@ scroll_active = false
 [node name="ContinueHint" type="Label" parent="DialogueAnchor/DialogueBox/MarginContainer/VBoxContainer" unique_id=1123649260]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 8
 text = "Press Enter to continue"
 horizontal_alignment = 2
 vertical_alignment = 2
@@ -73,16 +76,18 @@ vertical_alignment = 2
 [node name="NamePlate" type="Panel" parent="DialogueAnchor" unique_id=31804283]
 custom_minimum_size = Vector2(120, 40)
 layout_mode = 0
-offset_left = 20.0
-offset_top = -40.0
-offset_right = 140.0
-offset_bottom = 10.0
+offset_left = 12.0
+offset_top = -33.0
+offset_right = 132.0
+offset_bottom = 9.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_nbikq")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="DialogueAnchor/NamePlate" unique_id=378396151]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 8.0
+offset_top = -1.0
+offset_right = 112.0
+offset_bottom = 39.0
 
 [node name="LeftDeco" type="TextureRect" parent="DialogueAnchor/NamePlate/HBoxContainer" unique_id=343008414]
 layout_mode = 2
@@ -91,17 +96,30 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_pa5wo")
 theme_override_font_sizes/font_size = 20
-text = "Persephone"
+text = "Daphne"
 horizontal_alignment = 1
 
 [node name="RightDeco" type="TextureRect" parent="DialogueAnchor/NamePlate/HBoxContainer" unique_id=672717769]
 layout_mode = 2
 
-[node name="Portrait" type="TextureRect" parent="DialogueAnchor" unique_id=1720300129]
-custom_minimum_size = Vector2(150, 190)
+[node name="PortraitLeft" type="TextureRect" parent="DialogueAnchor" unique_id=1720300129]
+custom_minimum_size = Vector2(90, 100)
+custom_maximum_size = Vector2(120, 150)
 layout_mode = 0
-offset_left = -150.0
-offset_top = -80.0
-offset_bottom = 110.0
+offset_left = -114.0
+offset_top = -68.0
+offset_right = 6.0
+offset_bottom = 82.0
+expand_mode = 2
+stretch_mode = 5
+
+[node name="PortraitRight" type="TextureRect" parent="DialogueAnchor" unique_id=1129125853]
+custom_minimum_size = Vector2(90, 100)
+custom_maximum_size = Vector2(120, 150)
+layout_mode = 0
+offset_left = 257.0
+offset_top = -68.0
+offset_right = 377.0
+offset_bottom = 82.0
 expand_mode = 2
 stretch_mode = 5

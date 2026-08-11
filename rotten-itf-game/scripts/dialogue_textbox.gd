@@ -7,11 +7,18 @@ const CHAR_READ_RATE = 0.05
 @onready var character_name_label = $DialogueAnchor/NamePlate/HBoxContainer/CharacterName
 @onready var label = $DialogueAnchor/DialogueBox/MarginContainer/VBoxContainer/DialogueText
 @onready var continue_hint = $DialogueAnchor/DialogueBox/MarginContainer/VBoxContainer/ContinueHint
-@onready var portrait = $DialogueAnchor/Portrait
+@onready var portrait = $DialogueAnchor/PortraitLeft
+@onready var portrait_right = $DialogueAnchor/PortraitRight
 
 const PORTRAITS = {
-	#"Daphne" : preload()
+	"Daphne" : preload("res://assets/images/player/daphne_animations/portrait/daphne.png"),
 	"Persephone" : preload("res://assets/images/player/persephone/Persephone_HUD.png")
+}
+
+const SPEAKER_SIDE = {
+	"Daphne": "left",
+	"Persephone": "right",
+	"HighPriestess": "right"
 }
 
 enum State{
@@ -27,9 +34,9 @@ var current_tween = null
 func _ready():
 
 	hide_textbox()
-	queue_text("Daphne help...", "Persephone")
-	#queue_text("I am here" , "Daphne")
-	queue_text("You are not responsbile", "Persephone")
+	queue_text("Daphne help...", "Daphne")
+	queue_text("I am here" , "Persephone")
+	queue_text("You are not responsbile", "Daphne")
 	
 func _process(_delta):
 	match current_state:
@@ -62,12 +69,22 @@ func hide_textbox():
 	
 func show_textbox(speaker: String = ""):
 	character_name_label.text = speaker
-	if PORTRAITS.has(speaker):
-		portrait.texture = PORTRAITS[speaker]
-		portrait.visible = true
-	else:
-		portrait.visible = false
 	continue_hint.visible = false
+	
+	portrait.visible = false
+	portrait_right.visible = false
+	
+	if PORTRAITS.has(speaker):
+		var side = SPEAKER_SIDE.get(speaker, "left")
+		if side == "left":
+			portrait.texture = PORTRAITS[speaker]
+			portrait.visible = true
+			portrait.flip_h = false
+		else:
+			portrait_right.texture = PORTRAITS[speaker]
+			portrait_right.visible = true
+			portrait_right.flip_h = true
+
 	textbox_container.show()
 
 func display_text():
