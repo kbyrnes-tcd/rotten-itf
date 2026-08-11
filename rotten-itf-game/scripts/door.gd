@@ -7,6 +7,7 @@ var near_door = false
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("interact") && near_door:
 		#print("opening door")
+		AudioManager.play_os("open_door")
 		GameGlobals.next_level()
 
 func _on_body_entered(body: Node2D) -> void:
