@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://uv0xefhyr1gj" path="res://assets/images/player/daphne_animations/idle/2.png" id="4_ujl30"]
 [ext_resource type="Texture2D" uid="uid://ck1l12h6jgsbx" path="res://assets/images/player/daphne_animations/idle/3.png" id="5_31cv2"]
 [ext_resource type="Texture2D" uid="uid://c48udo5rq6a5r" path="res://assets/images/player/daphne_animations/idle/4.png" id="6_pf23h"]
-[ext_resource type="AudioStream" uid="uid://dvdukd1lqtaao" path="res://assets/audio/jump.wav" id="6_tuyoq"]
+[ext_resource type="AudioStream" uid="uid://dvdukd1lqtaao" path="res://assets/audio/archive/jump.wav" id="6_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://dn3p4usii4em8" path="res://assets/images/player/daphne_animations/idle/5.png" id="7_dt7fs"]
 [ext_resource type="Texture2D" uid="uid://cris0yxx5jc55" path="res://assets/images/player/daphne_animations/idle/6.png" id="8_wqfne"]
 [ext_resource type="Texture2D" uid="uid://bg2xv2dit48xi" path="res://assets/images/worms/lantern.png" id="9_ur7pv"]

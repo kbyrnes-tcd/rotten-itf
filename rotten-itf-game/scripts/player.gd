@@ -83,16 +83,13 @@ func _handle_animation():
 		if tool_state == ToolState.IDLE:
 			animated_sprite_2d.animation = "idle"
 		else:
-			# TODO: SFX for equipping
 			animated_sprite_2d.animation = "idle_equipped"
 		
 	if move_state == MoveState.WALKING:
-		#TODO: SFX for walking
 		if tool_state == ToolState.IDLE:
 			animated_sprite_2d.animation = "walk"
 		else:
 			# TODO: add walk_equipped anim
-			# TODO: SFX for equipping
 			animated_sprite_2d.animation = "walk"
 			#print("should be WALK and equipped!")
 
@@ -106,7 +103,9 @@ func _handle_movement(delta: float):
 		
 	if velocity.x > 1 or velocity.x < -1:
 		move_state = MoveState.WALKING
+		AudioManager.play_fx("walk")
 	else:
+		AudioManager.stop_fx()
 		move_state = MoveState.IDLE
 		
 	if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -245,6 +244,7 @@ func change_tool_state(new_state: ToolState):
 		ToolState.IDLE:
 			pass
 		ToolState.LANTERN_EQUIPPED:
+			AudioManager.play_os("equip")
 			lantern.visible = true
 			lantern.process_mode = Node.PROCESS_MODE_INHERIT
 			#worm_in_use = true
@@ -268,6 +268,7 @@ func change_tool_state(new_state: ToolState):
 			else: 
 				lantern.modulate.a = 0.3
 		ToolState.GUN_EQUIPPED:
+			AudioManager.play_os("equip")
 			gun.visible = true
 			gun_sprite.visible = true
 			gun.process_mode = Node.PROCESS_MODE_INHERIT
