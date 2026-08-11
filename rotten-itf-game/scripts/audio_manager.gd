@@ -8,14 +8,10 @@ var active_walk_fx : AudioStreamPlayer # walking fx should be able to be layered
 @export var clips: Node
 @export_group("Source")
 @export var fx: Dictionary[String, AudioStream] = {
-	"walk": null,
-	"open_door": null,
-	"equip": null,
-	"place": null,
-	"grow": null,
-	"shrink": null,
-	"torch": null
 }
+@export_group("Arrays")
+@export var win_fx: Array[AudioStream] = []
+@export var scraps_fx: Array[AudioStream] = []
 
 # need 2 rework like w/ play_os to play dynamic ambience
 func play_ambience(name: String, from: float = 0.0, skip_restart: bool = false) -> void:
@@ -54,4 +50,10 @@ func play_os(name: String, from: float = 0.0) -> void:
 	#print("playing one shot fx %s" %name)
 	active_os = clips.get_node("OneShotFX")
 	active_os.stream = fx[name]
+	active_os.play(from)
+	
+func play_os_from_arr(arr_name: String, from: float = 0.0) -> void:
+	active_os = clips.get_node("OneShotFX")
+	var os_arr = get(arr_name + "_fx")
+	active_os.stream = os_arr.pick_random()
 	active_os.play(from)

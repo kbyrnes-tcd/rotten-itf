@@ -15,7 +15,7 @@ static var pause_menu: Control
 static var hud: CanvasLayer
 static var color_rect: ColorRect
 
-var running_another_scene : bool = true # for running minigames and etc.
+var running_another_scene : bool = false # for running minigames and etc.
 
 func _ready() -> void:
 	#AudioManager.play_ambience("Ambience", 0, true)
@@ -53,8 +53,8 @@ static func pause(w_menu : bool):
 	tree.paused = true
 
 static func unload_minigame():
-	print('unloading...')
 	# resume game
+	AudioManager.play_os_from_arr("win")
 	current_mg = Minigame.NONE
 	resume(false)
 	# unload mg_root child from tree

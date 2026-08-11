@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://1p8epjr5sxul"
+path="res://.godot/imported/RITF_Minigame_Win (3).mp3-e9dd0c207b053a1bd098d8608499560a.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/fx/RITF_Minigame_Win (3).mp3"
+dest_files=["res://.godot/imported/RITF_Minigame_Win (3).mp3-e9dd0c207b053a1bd098d8608499560a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

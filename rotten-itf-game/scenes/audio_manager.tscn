@@ -9,6 +9,12 @@
 [ext_resource type="AudioStream" uid="uid://bgjgbkxw5jv1g" path="res://assets/audio/fx/RITF_Rot_Grow_v1.mp3" id="6_8igv3"]
 [ext_resource type="AudioStream" uid="uid://cl0i2mefa1o5c" path="res://assets/audio/fx/RITF_Rot_Shrink_v1.mp3" id="7_2y2jw"]
 [ext_resource type="AudioStream" uid="uid://csnx8f17nohhm" path="res://assets/audio/fx/RITF_Torches_Lit_v1.mp3" id="8_2y5yn"]
+[ext_resource type="AudioStream" uid="uid://2yi57fn0psjb" path="res://assets/audio/fx/RITF_Minigame_Win (1).mp3" id="9_2y2jw"]
+[ext_resource type="AudioStream" uid="uid://rvb11j436gjm" path="res://assets/audio/fx/RITF_Minigame_Win (2).mp3" id="10_2y5yn"]
+[ext_resource type="AudioStream" uid="uid://1p8epjr5sxul" path="res://assets/audio/fx/RITF_Minigame_Win (3).mp3" id="11_oucy0"]
+[ext_resource type="AudioStream" uid="uid://dl2yaejaa2r4h" path="res://assets/audio/fx/RITF_Minigame_Win (4).mp3" id="12_cuol6"]
+[ext_resource type="AudioStream" uid="uid://6tadeq0h04w8" path="res://assets/audio/fx/RITF_Minigame_Win (5).mp3" id="13_m1k83"]
+[ext_resource type="AudioStream" uid="uid://dgdqmsms7tfes" path="res://assets/audio/fx/RITF_Minigame_Win (6).mp3" id="14_2y5yn"]
 
 [node name="AudioManager" type="Node" unique_id=1881333437 node_paths=PackedStringArray("clips")]
 process_mode = 3
@@ -23,6 +29,7 @@ fx = Dictionary[String, AudioStream]({
 "torch": ExtResource("8_2y5yn"),
 "walk": ExtResource("2_ujhup")
 })
+win_fx = Array[AudioStream]([ExtResource("9_2y2jw"), ExtResource("10_2y5yn"), ExtResource("11_oucy0"), ExtResource("12_cuol6"), ExtResource("13_m1k83"), ExtResource("14_2y5yn")])
 
 [node name="Clips" type="Node" parent="." unique_id=571957435]
 
