@@ -103,15 +103,14 @@ func _handle_movement(delta: float):
 		
 	if velocity.x > 1 or velocity.x < -1:
 		move_state = MoveState.WALKING
-		AudioManager.play_fx("walk")
+		AudioManager.play_walk_fx()
 	else:
-		AudioManager.stop_fx()
+		AudioManager.stop_walk_fx()
 		move_state = MoveState.IDLE
 		
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		move_state = MoveState.JUMPING
-		#jump_fx.play()
 	
 	var direction := Input.get_axis("left", "right")
 	if direction:
@@ -244,7 +243,6 @@ func change_tool_state(new_state: ToolState):
 		ToolState.IDLE:
 			pass
 		ToolState.LANTERN_EQUIPPED:
-			AudioManager.play_os("equip")
 			lantern.visible = true
 			lantern.process_mode = Node.PROCESS_MODE_INHERIT
 			#worm_in_use = true
@@ -268,7 +266,7 @@ func change_tool_state(new_state: ToolState):
 			else: 
 				lantern.modulate.a = 0.3
 		ToolState.GUN_EQUIPPED:
-			AudioManager.play_os("equip")
+			#AudioManager.play_os("equip")
 			gun.visible = true
 			gun_sprite.visible = true
 			gun.process_mode = Node.PROCESS_MODE_INHERIT
@@ -295,13 +293,16 @@ func _tool_lantern_equipped():
 		return
 	if Input.is_action_pressed("lantern_toggle"):
 		if inv.has(GLOWWORM):
+			AudioManager.play_fx("shrink")
 			change_tool_state(ToolState.LANTERN_ON)
-		#else:
+		else:
+			AudioManager.stop_fx()
 			#print("no glowworms! WOMP WOMP")
 	
 func _tool_lantern_on(delta: float):
 	if Input.is_action_just_released("lantern_toggle"):
 		change_tool_state(ToolState.LANTERN_EQUIPPED)
+		AudioManager.stop_fx()
 		return
 	if Input.is_action_just_pressed("rot_cut"):
 		change_tool_state(ToolState.IDLE)

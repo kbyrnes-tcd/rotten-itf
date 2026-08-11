@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/RITF_Rot_Shrink_v1.mp3-2bcaf9a9f76e9e8419fcfe
 [params]
 
 loop=true
-loop_offset=0
-bpm=0
+loop_offset=0.34
+bpm=0.0
 beat_count=0
 bar_beats=4

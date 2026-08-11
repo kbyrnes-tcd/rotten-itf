@@ -33,3 +33,6 @@ stream = ExtResource("2_liach")
 volume_db = -15.0
 
 [node name="LoopFX" type="AudioStreamPlayer" parent="Clips" unique_id=674846746]
+volume_db = -15.0
+
+[node name="WalkFX" type="AudioStreamPlayer" parent="Clips" unique_id=671642168]

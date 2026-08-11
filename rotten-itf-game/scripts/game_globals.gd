@@ -15,10 +15,10 @@ static var pause_menu: Control
 static var hud: CanvasLayer
 static var color_rect: ColorRect
 
-var running_another_scene : bool = false # for running minigames and etc.
+var running_another_scene : bool = true # for running minigames and etc.
 
 func _ready() -> void:
-	AudioManager.play_ambience("Ambience", 0, true)
+	#AudioManager.play_ambience("Ambience", 0, true)
 	if !running_another_scene:
 		tree = get_tree()
 		scene = tree.current_scene

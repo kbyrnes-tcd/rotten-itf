@@ -75,7 +75,12 @@ texture = ExtResource("9_7lrji")
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("1_u81e1")]
 position = Vector2(469, 484)
 
+[node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
+limit_top = -7
+limit_bottom = 642
+
 [connection signal="body_entered" from="LetterDesk/Area2D" to="LetterDesk" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="LetterDesk/Area2D" to="LetterDesk" method="_on_area_2d_body_exited"]
 
 [editable path="OrangeWorm2"]
+[editable path="Player"]
