@@ -26,9 +26,8 @@
 [ext_resource type="Texture2D" uid="uid://cumkiail4jkws" path="res://assets/images/player/daphne_animations/walk/6.png" id="20_giy8y"]
 [ext_resource type="Texture2D" uid="uid://dtb51xdfxpbet" path="res://assets/images/player/daphne_animations/walk/7.png" id="21_fdfoy"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b3nsi"]
-radius = 12.0
-height = 80.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_whljo"]
+size = Vector2(24.5, 78.75)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6adnx"]
 animations = [{
@@ -126,16 +125,15 @@ script = ExtResource("1_qlg0r")
 inv = ExtResource("2_ur7pv")
 
 [node name="PlyrCollisionShape2D" type="CollisionShape2D" parent="." unique_id=66024058]
-position = Vector2(-4, 0)
-shape = SubResource("CapsuleShape2D_b3nsi")
+position = Vector2(-3.25, 1.375)
+shape = SubResource("RectangleShape2D_whljo")
 
 [node name="CharacterSprites" type="Node2D" parent="." unique_id=2095860029]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterSprites" unique_id=512896578]
 sprite_frames = SubResource("SpriteFrames_6adnx")
-animation = &"walk"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.8339207
 
 [node name="Lantern" type="Node2D" parent="CharacterSprites" unique_id=964616978]
 process_mode = 4
