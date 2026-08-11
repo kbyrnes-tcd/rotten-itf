@@ -2,31 +2,93 @@
 
 [ext_resource type="Texture2D" uid="uid://5qshld0g75rv" path="res://assets/images/env/p1_start/CONDENSED-Back.png" id="2_775pl"]
 [ext_resource type="Texture2D" uid="uid://coin0yvs6xqds" path="res://assets/images/env/p1_start/1-Backdrop.png" id="2_wg12t"]
+[ext_resource type="Texture2D" uid="uid://3cs77nnx2dpv" path="res://assets/images/env/p1_start/parallax/3-Mid bushes.png" id="3_5t0pk"]
+[ext_resource type="Shader" uid="uid://pv5hmh5jce1m" path="res://scripts/shaders/pixel_sway.gdshader" id="3_56i2g"]
+[ext_resource type="Texture2D" uid="uid://cv06841c8kh4t" path="res://assets/images/env/p1_start/SIMPLE-Front.png" id="3_3336g"]
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="4_3336g"]
+[ext_resource type="Texture2D" uid="uid://o8dro18but5g" path="res://assets/images/env/p1_start/parallax/4.midtrees.png" id="4_b3nsi"]
+[ext_resource type="Texture2D" uid="uid://mw60m6635v67" path="res://assets/images/env/p1_start/parallax/2-TreesBack.png" id="4_jmjgo"]
+[ext_resource type="Texture2D" uid="uid://75jap5nxxlg5" path="res://assets/images/env/p1_start/parallax/9-treesinfront .png" id="5_c6wtd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8rgwm"]
+shader = ExtResource("3_56i2g")
+shader_parameter/speed = 0.8
+shader_parameter/strength = 0.15
+shader_parameter/y_origin = 0.0
+shader_parameter/restrict_dir = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gxcbl"]
+shader = ExtResource("3_56i2g")
+shader_parameter/speed = 0.25
+shader_parameter/strength = 0.05
+shader_parameter/y_origin = 0.0
+shader_parameter/restrict_dir = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kgrr2"]
+shader = ExtResource("3_56i2g")
+shader_parameter/speed = 0.01
+shader_parameter/strength = -0.05
+shader_parameter/y_origin = 0.0
+shader_parameter/restrict_dir = 0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3336g"]
-size = Vector2(2596, 33)
+size = Vector2(2915, 33)
 
 [node name="Scene_01" type="Node2D" unique_id=358721782]
 
-[node name="Environment" type="Node2D" parent="." unique_id=408982068]
+[node name="Environment" type="Node2D" parent="." unique_id=1199873399]
+position = Vector2(1444, 179)
 
-[node name="1Backdrop" type="Sprite2D" parent="Environment" unique_id=1435361381]
-position = Vector2(1446, 179)
+[node name="Background" type="Parallax2D" parent="Environment" unique_id=588063960]
+scroll_scale = Vector2(0.6, 1)
+
+[node name="1Backdrop" type="Sprite2D" parent="Environment/Background" unique_id=1435361381]
 texture = ExtResource("2_wg12t")
 
-[node name="CondensedBack" type="Sprite2D" parent="Environment" unique_id=125937943]
-position = Vector2(1446, 181)
+[node name="2TreesBack" type="Sprite2D" parent="Environment/Background" unique_id=1461737863]
+texture = ExtResource("4_jmjgo")
+
+[node name="Midground" type="Parallax2D" parent="Environment" unique_id=380232047]
+scroll_scale = Vector2(0.8, 1)
+
+[node name="3MidBushes" type="Sprite2D" parent="Environment/Midground" unique_id=474325509]
+material = SubResource("ShaderMaterial_8rgwm")
+scale = Vector2(1.005, 1.005)
+texture = ExtResource("3_5t0pk")
+
+[node name="4_midtrees" type="Sprite2D" parent="Environment/Midground" unique_id=1778064843]
+material = SubResource("ShaderMaterial_gxcbl")
+texture = ExtResource("4_b3nsi")
+
+[node name="Building" type="Parallax2D" parent="Environment" unique_id=731269053]
+
+[node name="CondensedBack" type="Sprite2D" parent="Environment/Building" unique_id=125937943]
 texture = ExtResource("2_775pl")
+
+[node name="SimpleFront" type="Sprite2D" parent="Environment/Building" unique_id=617101434]
+z_index = 1
+texture = ExtResource("3_3336g")
+
+[node name="Foreground" type="Parallax2D" parent="Environment" unique_id=483883464]
+z_index = 1
+
+[node name="9Treesinfront" type="Sprite2D" parent="Environment/Foreground" unique_id=642854661]
+material = SubResource("ShaderMaterial_kgrr2")
+scale = Vector2(1.005, 1.005)
+texture = ExtResource("5_c6wtd")
 
 [node name="Colliders" type="Node2D" parent="." unique_id=2145202998]
 
 [node name="GroundCollider" type="StaticBody2D" parent="Colliders" unique_id=1613639351]
-position = Vector2(0, 316)
+position = Vector2(0, 301)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/GroundCollider" unique_id=409099627]
-position = Vector2(1288, -0.5)
+position = Vector2(1444, 5)
 shape = SubResource("RectangleShape2D_3336g")
+
+[node name="Ramp" type="CollisionPolygon2D" parent="Colliders/GroundCollider" unique_id=1718664119]
+position = Vector2(1675, -17)
+polygon = PackedVector2Array(-3, 5, 36, -8, 1500, -8, 1506, 13)
 
 [node name="LeftOobCollider" type="StaticBody2D" parent="Colliders" unique_id=2121097576]
 position = Vector2(-9.094947e-13, 388)
@@ -38,7 +100,7 @@ position = Vector2(1288, -0.5)
 shape = SubResource("RectangleShape2D_3336g")
 
 [node name="RightOobCollider" type="StaticBody2D" parent="Colliders" unique_id=1561221912]
-position = Vector2(2557, 359)
+position = Vector2(2885, 359)
 rotation = -1.5707964
 scale = Vector2(0.15999758, 1)
 
@@ -47,4 +109,5 @@ position = Vector2(1288, -0.5)
 shape = SubResource("RectangleShape2D_3336g")
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("4_3336g")]
-position = Vector2(49, 277)
+position = Vector2(79, 250)
+scale = Vector2(1, 1.0076721)

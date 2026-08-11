@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+# Player equipment in scene, animation and SFX data
 @onready var animated_sprite_2d: AnimatedSprite2D = $CharacterSprites/AnimatedSprite2D
 @onready var jump_fx: AudioStreamPlayer2D = $JumpFX
 @onready var character_sprites: Node2D = $CharacterSprites
@@ -12,41 +13,33 @@ extends CharacterBody2D
 @onready var worm_hud = $CanvasLayer/WormHUD
 @onready var segment_container = $CanvasLayer/WormHUD/SegmentContainer
 
-
+# Rot and Glowworm data
 const ROT_VINE = preload("uid://kicj2478es6o")
 const GROWTH_SPEED = 120.0
 const GLOWWORM = preload("res://scripts/inventory_system/items/orange_worm.tres")
 const GLOWWORM_MAX = 5
 const USE_INTERVAL = 2.0
+var active_vine = null
+var is_growing = false
 
+# Glowworm HUD data
+var glowworm_uses = GLOWWORM_MAX
+var use_timer = 0.0
+var worm_in_use: bool = false
+var segments: Array = []
+
+# Drag and drop player inv, set player speed/jump params
 @export var inv: Inventory
 @export var SPEED = 150.0
 @export var JUMP_VELOCITY = -650.0
 
 # Enums and state variables
 enum ToolState { IDLE, LANTERN_ON, LANTERN_EQUIPPED, GUN_EQUIPPED, GUN_ON }
-#enum MoveState { IDLE, RUNNING, JUMPING, FALLING }
+enum MoveState { IDLE, WALKING, JUMPING, FALLING }
 
 var tool_state = ToolState.IDLE
-#var move_state = MoveState.IDLE
+var move_state = MoveState.IDLE
 
-var active_vine = null
-var is_growing = false
-
-var glowworm_uses = GLOWWORM_MAX
-var use_timer = 0.0
-var worm_in_use: bool = false
-var segments: Array = []
-
-func collect(item: InvItem):
-	inv.insert(item)
-
-func has(item: InvItem) -> bool:
-	return inv.has(item)
-
-func use(item: InvItem):
-	inv.remove(item)
-	
 func _ready():
 	#gun starts hidden and disabled
 	gun.visible = false
@@ -60,7 +53,97 @@ func _ready():
 	if light:
 		light.enabled = false
 	build_worm_segments()
+
+# Tool FSM
+func _process(delta):
+	match tool_state:
+		ToolState.IDLE:
+			_tool_idle()
+		ToolState.LANTERN_EQUIPPED:
+			#animated_sprite_2d.animation = "idle_equipped"
+			_tool_lantern_equipped()
+		ToolState.LANTERN_ON:
+			_tool_lantern_on(delta)
+		ToolState.GUN_EQUIPPED:
+			#animated_sprite_2d.animation = "idle_equipped"
+			_tool_gun_equipped()
+		ToolState.GUN_ON:
+			_tool_gun_on()
+
+# MOVEMENT
+func _physics_process(delta: float):
+	_handle_animation()
+	_handle_vine_growth(delta)
+	_handle_movement(delta)
+	move_and_slide()
+	_handle_sprite_direction()
 	
+func _handle_animation():
+	if move_state == MoveState.IDLE:
+		if tool_state == ToolState.IDLE:
+			animated_sprite_2d.animation = "idle"
+		else:
+			# TODO: SFX for equipping
+			animated_sprite_2d.animation = "idle_equipped"
+		
+	if move_state == MoveState.WALKING:
+		#TODO: SFX for walking
+		if tool_state == ToolState.IDLE:
+			animated_sprite_2d.animation = "walk"
+		else:
+			# TODO: add walk_equipped anim
+			# TODO: SFX for equipping
+			animated_sprite_2d.animation = "walk"
+			#print("should be WALK and equipped!")
+
+func _handle_movement(delta: float):
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+		animated_sprite_2d.animation = "jump" # keeping jump anim call here as it is a single sprite render
+		move_state = MoveState.FALLING
+	else:
+		move_state = MoveState.IDLE
+		
+	if velocity.x > 1 or velocity.x < -1:
+		move_state = MoveState.WALKING
+	else:
+		move_state = MoveState.IDLE
+		
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+		move_state = MoveState.JUMPING
+		#jump_fx.play()
+	
+	var direction := Input.get_axis("left", "right")
+	if direction:
+		velocity.x = direction * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+
+func _handle_sprite_direction():
+	var direction = Input.get_axis("left", "right")
+	if direction != 0:
+		var facing = sign(direction)
+		character_sprites.scale.x = facing * abs(character_sprites.scale.x)
+		gun.position.x = facing * abs(gun.position.x)
+
+# INVENTORY FUNCTIONS
+func collect(item: InvItem):
+	inv.insert(item)
+
+func has(item: InvItem) -> bool:
+	return inv.has(item)
+
+func use(item: InvItem):
+	inv.remove(item)
+
+# to avoid other wall lanterns, etc to take worm from handheld lantern
+func can_take_item(item: InvItem) -> bool:
+	if item == GLOWWORM and worm_in_use:
+		return false
+	return true
+	
+# ROT GROWTH AND MOUSE-INTERACTION
 func get_snapped_direction() -> Vector2:
 	var mouse_pos = get_global_mouse_position()
 	var diff = mouse_pos - global_position
@@ -80,8 +163,8 @@ func start_vine():
 	var vine_instance = ROT_VINE.instantiate()
 	scene.add_child(vine_instance)
 	active_vine = vine_instance.get_child(0)
-	print(active_vine.position)
-	print(active_vine.global_position)
+	#print(active_vine.position)
+	#print(active_vine.global_position)
 	active_vine.points = PackedVector2Array([
 		active_vine.to_local(src),
 		active_vine.to_local(src)
@@ -90,8 +173,8 @@ func start_vine():
 	active_vine.set_meta("dir", dir)
 	active_vine.set_meta("src", src)
 	active_vine.set_meta("target", target)
-	print("vine started from " + str(src) + " toward " + str(target))
-	print("dir: " + str(dir) + " mouse: " + str(get_global_mouse_position()) + " player: " + str(global_position))
+	#print("vine started from " + str(src) + " toward " + str(target))
+	#print("dir: " + str(dir) + " mouse: " + str(get_global_mouse_position()) + " player: " + str(global_position))
 
 func stop_vine():
 	if is_growing and active_vine:
@@ -120,38 +203,9 @@ func add_vine(src: Vector2, dest: Vector2):
 	vine.get_child(0).points = vine_points
 	scene.add_child(vine)
 
-#lantern visuals
-func update_lantern_visuals():
-	var life_ratio = float(glowworm_uses)/float(GLOWWORM_MAX)
-	lantern.modulate.a = lerp(0., 1.0, life_ratio)
-	update_worm_segments()
-	var light = lantern.get_node_or_null("PointLight2D")
-	if light:
-		light.texture_scale = lerp(0.3, 1.0, life_ratio)
-		light.energy = lerp(0.3, 1.5, life_ratio)
-
-func activate_light():
-	worm_in_use = true
-	var light = lantern.get_node_or_null("PointLight2D")
-	if light:
-		light.enabled = true
-	var area = lantern.get_node_or_null("LanternArea2D")
-	if area:
-		area.monitoring = true
-		area.monitorable = true
-
-func deactivate_light():
-	var light = lantern.get_node_or_null("PointLight2D")
-	if light:
-		light.enabled = false
-	var area = lantern.get_node_or_null("LanternArea2D")
-	if area:
-		area.monitoring = false
-		area.monitorable = false
-		
-#change tool state
+# CHANGING TOOL STATE, visuals
 func change_tool_state(new_state: ToolState):
-	print("tool: " + str(tool_state) + "to " + str(new_state))
+	#print("tool: " + str(tool_state) + "to " + str(new_state))
 	#exit current state
 	match tool_state:
 		ToolState.LANTERN_EQUIPPED: 
@@ -220,21 +274,7 @@ func change_tool_state(new_state: ToolState):
 		ToolState.GUN_ON:
 			pass
 
-
-#tool input
-func _process(delta):
-	match tool_state:
-		ToolState.IDLE:
-			_tool_idle()
-		ToolState.LANTERN_EQUIPPED:
-			_tool_lantern_equipped()
-		ToolState.LANTERN_ON:
-			_tool_lantern_on(delta)
-		ToolState.GUN_EQUIPPED:
-			_tool_gun_equipped()
-		ToolState.GUN_ON:
-			_tool_gun_on()
-
+# TOOL FSM functions
 func _tool_idle():
 	if Input.is_action_just_pressed("rot_cut"):
 		change_tool_state(ToolState.LANTERN_EQUIPPED)
@@ -255,8 +295,8 @@ func _tool_lantern_equipped():
 	if Input.is_action_pressed("lantern_toggle"):
 		if inv.has(GLOWWORM):
 			change_tool_state(ToolState.LANTERN_ON)
-		else:
-			print("no glowworms! WOMP WOMP")
+		#else:
+			#print("no glowworms! WOMP WOMP")
 	
 func _tool_lantern_on(delta: float):
 	if Input.is_action_just_released("lantern_toggle"):
@@ -272,37 +312,17 @@ func _tool_lantern_on(delta: float):
 		use_timer = 0.0
 		glowworm_uses -= 1
 		update_lantern_visuals()
-		print("glowworms uses left: " + str(glowworm_uses))
+		#print("glowworms uses left: " + str(glowworm_uses))
 		if glowworm_uses <= 0:
 			inv.remove(GLOWWORM)
-			print("glowworm used")
+			#print("glowworm used")
 			if inv.has(GLOWWORM):
 				glowworm_uses = GLOWWORM_MAX
 				use_timer = 0.0
-				print("next glowworm loaded")
+				#print("next glowworm loaded")
 			else:
-				print("out of glowworms")
+				#print("out of glowworms")
 				change_tool_state(ToolState.LANTERN_EQUIPPED)
-
-func build_worm_segments():
-	for child in segment_container.get_children():
-		child.queue_free()
-	segments.clear()
-	#create rect per number of uses
-	for i in GLOWWORM_MAX:
-		var rect = ColorRect.new()
-		rect.custom_minimum_size = Vector2(20,6)
-		segment_container.add_child(rect)
-		segments.append(rect)
-	update_worm_segments()
-	
-func update_worm_segments():
-	for i in segments.size():
-		if i < glowworm_uses:
-			segments[i].color = Color("#F8C840")
-		else:
-			segments[i].color = Color("#3A2A08")
-			
 
 func _tool_gun_equipped():
 	if Input.is_action_just_pressed("equip_rot"):
@@ -370,13 +390,13 @@ func _handle_vine_growth(delta: float):
 	var result = space_state.intersect_point(params, 32)
 	var hit_wall = false
 	for r in result:
-		print(r.collider)
+		#print(r.collider)
 		if active_vine.get_parent().has_node("LineStaticBody2D"):
 			if r.collider == active_vine.get_parent().get_node("LineStaticBody2D"):
 				continue
 		hit_wall = true
 		break
-	print(result)
+	#print(result)
 	if hit_wall:
 		stop_vine()
 	else:
@@ -389,50 +409,63 @@ func _handle_vine_growth(delta: float):
 			new_pts[new_pts.size() - 1] = active_vine.to_local(next_global)
 		active_vine.points = new_pts
 		active_vine.call_deferred("update_collisions")
-	print("Growing")
-	print("tip:", tip_global)
-	print("next:", next_global)
-	print("target:", target)
-	print("dist:", dist_to_target)
+	#print("Growing")
+	#print("tip:", tip_global)
+	#print("next:", next_global)
+	#print("target:", target)
+	#print("dist:", dist_to_target)
 
-func _handle_movement(delta: float):
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-		animated_sprite_2d.animation = "jump"
-	if velocity.x > 1 or velocity.x < -1:
-		animated_sprite_2d.animation = "run"
-	else:
-		animated_sprite_2d.animation = "idle"
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-		jump_fx.play()
-	var direction := Input.get_axis("left", "right")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+# LANTERN VISUALS
+func update_lantern_visuals():
+	var life_ratio = float(glowworm_uses)/float(GLOWWORM_MAX)
+	lantern.modulate.a = lerp(0., 1.0, life_ratio)
+	update_worm_segments()
+	var light = lantern.get_node_or_null("PointLight2D")
+	if light:
+		light.texture_scale = lerp(0.3, 1.0, life_ratio)
+		light.energy = lerp(0.3, 1.5, life_ratio)
 
-func _handle_sprite_direction():
-	var direction = Input.get_axis("left", "right")
-	if direction != 0:
-		var facing = sign(direction)
-		character_sprites.scale.x = facing * abs(character_sprites.scale.x)
-		gun.position.x = facing * abs(gun.position.x)
+func activate_light():
+	worm_in_use = true
+	var light = lantern.get_node_or_null("PointLight2D")
+	if light:
+		light.enabled = true
+	var area = lantern.get_node_or_null("LanternArea2D")
+	if area:
+		area.monitoring = true
+		area.monitorable = true
 
-func _physics_process(delta: float):
-	_handle_vine_growth(delta)
-	_handle_movement(delta)
-	move_and_slide()
-	_handle_sprite_direction()
+func deactivate_light():
+	var light = lantern.get_node_or_null("PointLight2D")
+	if light:
+		light.enabled = false
+	var area = lantern.get_node_or_null("LanternArea2D")
+	if area:
+		area.monitoring = false
+		area.monitorable = false
 
-#to avoid other wall lanterns, etc to take worm from handheld lantern
-func can_take_item(item: InvItem) -> bool:
-	if item == GLOWWORM and worm_in_use:
-		return false
-	return true
+# WORM VISUALS
+func build_worm_segments():
+	for child in segment_container.get_children():
+		child.queue_free()
+	segments.clear()
+	#create rect per number of uses
+	for i in GLOWWORM_MAX:
+		var rect = ColorRect.new()
+		rect.custom_minimum_size = Vector2(20,6)
+		segment_container.add_child(rect)
+		segments.append(rect)
+	update_worm_segments()
+	
+func update_worm_segments():
+	for i in segments.size():
+		if i < glowworm_uses:
+			segments[i].color = Color("#F8C840")
+		else:
+			segments[i].color = Color("#3A2A08")
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	print('player detects: ' + body.name)
-
-func _on_area_2d_body_exited(_body: Node2D) -> void:
-	print("Exited!")
+#func _on_area_2d_body_entered(body: Node2D) -> void:
+	#print('player detects: ' + body.name)
+#
+#func _on_area_2d_body_exited(_body: Node2D) -> void:
+	#print("Exited!")
