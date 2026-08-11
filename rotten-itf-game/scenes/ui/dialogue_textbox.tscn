@@ -3,101 +3,123 @@
 [ext_resource type="FontFile" uid="uid://bmj0pgvborgfq" path="res://assets/fonts/Grenze-Black.ttf" id="1_pa5wo"]
 [ext_resource type="Script" uid="uid://tt771uf6rtw8" path="res://scripts/dialogue_textbox.gd" id="1_y2pcl"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q01m8"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4keky"]
 bg_color = Color(0, 0, 0, 1)
-border_width_left = 6
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 border_color = Color(1, 1, 1, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j0jg5"]
-bg_color = Color(0.22130159, 0.22130162, 0.22130153, 1)
-
-[sub_resource type="FontFile" id="FontFile_tx375"]
-cache/0/variation_coordinates = {}
-cache/0/face_index = 0
-cache/0/embolden = 0.0
-cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
-cache/0/spacing_top = 0
-cache/0/spacing_bottom = 0
-cache/0/spacing_space = 0
-cache/0/spacing_glyph = 0
-cache/0/baseline_offset = 0.0
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/78/0/ascent = 0.0
-cache/0/78/0/descent = 0.0
-cache/0/78/0/underline_position = 0.0
-cache/0/78/0/underline_thickness = 0.0
-cache/0/78/0/scale = 1.0
-
-[sub_resource type="LabelSettings" id="LabelSettings_jpnp2"]
-font = ExtResource("1_pa5wo")
-font_size = 78
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nbikq"]
+bg_color = Color(0.16470589, 0.039215688, 0.039215688, 1)
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="Textbox" type="CanvasLayer" unique_id=424906784]
 script = ExtResource("1_y2pcl")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=422060786]
+[node name="DialogueAnchor" type="Control" parent="." unique_id=427589958]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 3
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -87.0
-offset_top = -310.0
-offset_right = 87.0
+offset_left = 113.0
+offset_top = -100.0
+offset_right = -101.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_constants/margin_left = 80
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 80
-theme_override_constants/margin_bottom = 30
 
-[node name="Panel" type="Panel" parent="MarginContainer" unique_id=2044904216]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_q01m8")
+[node name="DialogueBox" type="Panel" parent="DialogueAnchor" unique_id=551013381]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4keky")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer" unique_id=448481500]
-layout_mode = 2
-theme_override_constants/margin_left = 25
-theme_override_constants/margin_top = 25
-theme_override_constants/margin_right = 25
-theme_override_constants/margin_bottom = 25
+[node name="MarginContainer" type="MarginContainer" parent="DialogueAnchor/DialogueBox" unique_id=333941734]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="Panel" type="Panel" parent="MarginContainer/MarginContainer" unique_id=362749546]
-visible = false
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_j0jg5")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer" unique_id=372514733]
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogueAnchor/DialogueBox/MarginContainer" unique_id=947773729]
 layout_mode = 2
 
-[node name="start" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer" unique_id=326135598]
+[node name="DialogueText" type="RichTextLabel" parent="DialogueAnchor/DialogueBox/MarginContainer/VBoxContainer" unique_id=1974559428]
 layout_mode = 2
-size_flags_vertical = 0
-theme_override_fonts/font = SubResource("FontFile_tx375")
-theme_override_font_sizes/font_size = 78
-text = "*"
-label_settings = SubResource("LabelSettings_jpnp2")
+size_flags_vertical = 3
+bbcode_enabled = true
+scroll_active = false
 
-[node name="dialogue" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer" unique_id=1032522753]
+[node name="ContinueHint" type="Label" parent="DialogueAnchor/DialogueBox/MarginContainer/VBoxContainer" unique_id=1123649260]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-theme_override_fonts/font = SubResource("FontFile_tx375")
-theme_override_font_sizes/font_size = 78
-text = " Test dialogue not sure about font test test test"
-label_settings = SubResource("LabelSettings_jpnp2")
-autowrap_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 8
+text = "Press Enter to continue"
+horizontal_alignment = 2
+vertical_alignment = 2
 
-[node name="end" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer" unique_id=1476057325]
+[node name="NamePlate" type="Panel" parent="DialogueAnchor" unique_id=31804283]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 0
+offset_left = 12.0
+offset_top = -33.0
+offset_right = 132.0
+offset_bottom = 9.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_nbikq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DialogueAnchor/NamePlate" unique_id=378396151]
+layout_mode = 0
+offset_left = 8.0
+offset_top = -1.0
+offset_right = 112.0
+offset_bottom = 39.0
+
+[node name="LeftDeco" type="TextureRect" parent="DialogueAnchor/NamePlate/HBoxContainer" unique_id=343008414]
 layout_mode = 2
-size_flags_vertical = 8
-theme_override_fonts/font = SubResource("FontFile_tx375")
-theme_override_font_sizes/font_size = 78
-text = "v"
-label_settings = SubResource("LabelSettings_jpnp2")
+
+[node name="CharacterName" type="Label" parent="DialogueAnchor/NamePlate/HBoxContainer" unique_id=1237755147]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_pa5wo")
+theme_override_font_sizes/font_size = 20
+text = "Daphne"
+horizontal_alignment = 1
+
+[node name="RightDeco" type="TextureRect" parent="DialogueAnchor/NamePlate/HBoxContainer" unique_id=672717769]
+layout_mode = 2
+
+[node name="PortraitLeft" type="TextureRect" parent="DialogueAnchor" unique_id=1720300129]
+custom_minimum_size = Vector2(90, 100)
+custom_maximum_size = Vector2(120, 150)
+layout_mode = 0
+offset_left = -114.0
+offset_top = -68.0
+offset_right = 6.0
+offset_bottom = 82.0
+expand_mode = 2
+stretch_mode = 5
+
+[node name="PortraitRight" type="TextureRect" parent="DialogueAnchor" unique_id=1129125853]
+custom_minimum_size = Vector2(90, 100)
+custom_maximum_size = Vector2(120, 150)
+layout_mode = 0
+offset_left = 257.0
+offset_top = -68.0
+offset_right = 377.0
+offset_bottom = 82.0
+expand_mode = 2
+stretch_mode = 5
