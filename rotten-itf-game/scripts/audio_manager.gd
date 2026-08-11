@@ -26,7 +26,7 @@ func play_ambience(name: String, from: float = 0.0, skip_restart: bool = false) 
 	
 func play_fx(name: String, from: float = 0.0) -> void:
 	if !active_fx:
-		print("playing fx %s" %name)
+		#print("playing fx %s" %name)
 		active_fx = clips.get_node("LoopFX")
 		active_fx.stream = fx[name]
 		active_fx.play(from)
@@ -34,7 +34,7 @@ func play_fx(name: String, from: float = 0.0) -> void:
 	
 func stop_fx() -> void:
 	if active_fx:
-		print("stopping fx")
+		#print("stopping fx")
 		active_fx.stop()
 		active_fx = null
 
@@ -51,6 +51,7 @@ func stop_walk_fx() -> void:
 
 # one shot - only played once no loop
 func play_os(name: String, from: float = 0.0) -> void:
+	#print("playing one shot fx %s" %name)
 	active_os = clips.get_node("OneShotFX")
 	active_os.stream = fx[name]
 	active_os.play(from)

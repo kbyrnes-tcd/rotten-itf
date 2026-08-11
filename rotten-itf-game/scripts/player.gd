@@ -180,6 +180,7 @@ func stop_vine():
 		active_vine.call_deferred("update_collisions")
 	is_growing = false
 	active_vine = null
+	AudioManager.stop_fx()
 
 func midpoint(src: Vector2, dest: Vector2) -> Vector2:
 	return Vector2(src.x + dest.x, src.y + dest.y) / 2
@@ -266,7 +267,6 @@ func change_tool_state(new_state: ToolState):
 			else: 
 				lantern.modulate.a = 0.3
 		ToolState.GUN_EQUIPPED:
-			#AudioManager.play_os("equip")
 			gun.visible = true
 			gun_sprite.visible = true
 			gun.process_mode = Node.PROCESS_MODE_INHERIT
@@ -276,12 +276,14 @@ func change_tool_state(new_state: ToolState):
 # TOOL FSM functions
 func _tool_idle():
 	if Input.is_action_just_pressed("rot_cut"):
+		AudioManager.play_os("equip")
 		change_tool_state(ToolState.LANTERN_EQUIPPED)
 		#if inv.has(GLOWWORM):
 			#change_tool_state(ToolState.LANTERN_EQUIPPED)
 		#else:
 			#print("no glowworms! WOMP WOMP")
 	if Input.is_action_just_pressed("equip_rot"):
+		AudioManager.play_os("equip")
 		change_tool_state(ToolState.GUN_EQUIPPED)
 
 func _tool_lantern_equipped(): 
@@ -293,10 +295,8 @@ func _tool_lantern_equipped():
 		return
 	if Input.is_action_pressed("lantern_toggle"):
 		if inv.has(GLOWWORM):
-			AudioManager.play_fx("shrink")
 			change_tool_state(ToolState.LANTERN_ON)
-		else:
-			AudioManager.stop_fx()
+		#else:
 			#print("no glowworms! WOMP WOMP")
 	
 func _tool_lantern_on(delta: float):
@@ -317,6 +317,7 @@ func _tool_lantern_on(delta: float):
 		#print("glowworms uses left: " + str(glowworm_uses))
 		if glowworm_uses <= 0:
 			inv.remove(GLOWWORM)
+			AudioManager.stop_fx()
 			#print("glowworm used")
 			if inv.has(GLOWWORM):
 				glowworm_uses = GLOWWORM_MAX
@@ -334,6 +335,7 @@ func _tool_gun_equipped():
 		change_tool_state(ToolState.LANTERN_EQUIPPED)
 		return
 	if Input.is_action_just_pressed("rot_extend") and not is_growing:
+		AudioManager.play_fx("grow")
 		start_vine()
 		change_tool_state(ToolState.GUN_ON)
 		return
@@ -466,8 +468,6 @@ func update_worm_segments():
 		else:
 			segments[i].color = Color("#3A2A08")
 
-#func _on_area_2d_body_entered(body: Node2D) -> void:
-	#print('player detects: ' + body.name)
-#
-#func _on_area_2d_body_exited(_body: Node2D) -> void:
-	#print("Exited!")
+#func _on_lantern_sfx_area_area_shape_exited(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	#if area.name == "LineArea2D":
+		#AudioManager.stop_fx()

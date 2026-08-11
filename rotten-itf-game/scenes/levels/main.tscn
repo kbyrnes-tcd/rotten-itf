@@ -75,6 +75,9 @@ texture = ExtResource("9_7lrji")
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("1_u81e1")]
 position = Vector2(469, 484)
 
+[node name="Lantern" parent="Player/CharacterSprites" parent_id_path=PackedInt32Array(1515659648, 2095860029) index="1" unique_id=964616978]
+visible = true
+
 [node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
 limit_top = -7
 limit_bottom = 642
