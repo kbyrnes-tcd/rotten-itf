@@ -153,16 +153,16 @@ func start_vine():
 	if is_growing:
 		return
 	var dir = get_snapped_direction()
-	var src = global_position + dir * 40.0
+	var src = gun_sprite.global_position + dir * 10.0
 	var mouse_pos = get_global_mouse_position()
-	var diff = mouse_pos - global_position
+	var diff = mouse_pos - gun_sprite.global_position
 	var projected_length = diff.dot(dir)
-	var target = global_position + dir * max(projected_length, 40.0)
+	var target = gun_sprite.global_position + dir * max(projected_length, 40.0)
 	var vine_instance = ROT_VINE.instantiate()
 	scene.add_child(vine_instance)
 	active_vine = vine_instance.get_child(0)
 	#print(active_vine.position)
-	#print(active_vine.global_position)
+	#print(active_vine.gun_sprite.global_position)
 	active_vine.points = PackedVector2Array([
 		active_vine.to_local(src),
 		active_vine.to_local(src)
