@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c52t314uuliqu"]
+
+[ext_resource type="Script" uid="uid://lmi7e4m3uuwl" path="res://assets/addons/DebugOverlay.gd" id="1_ii0vc"]
+
+[node name="DebugOverlay" type="CanvasLayer" unique_id=941069553]
+process_mode = 3
+layer = 10
+script = ExtResource("1_ii0vc")
+
+[node name="Label" type="Label" parent="." unique_id=1382128055]
+theme_override_font_sizes/font_size = 8
