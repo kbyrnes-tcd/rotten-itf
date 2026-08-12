@@ -7,4 +7,5 @@
 script = ExtResource("1_jq40k")
 name = "green_worm"
 texture = ExtResource("2_4qllb")
+desc = "This is a green worm"
 metadata/_custom_type_script = "uid://b0vt1mp7wu6pu"

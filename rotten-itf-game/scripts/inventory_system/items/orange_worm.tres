@@ -7,4 +7,5 @@
 script = ExtResource("1_nouh8")
 name = "orange_worm"
 texture = ExtResource("2_nouh8")
+desc = "This is a glow worm"
 metadata/_custom_type_script = "uid://b0vt1mp7wu6pu"

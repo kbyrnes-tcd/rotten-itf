@@ -13,3 +13,7 @@ func update(slot: InvSlot):
 		item_sprite.texture = slot.item.texture;
 		amount_text.visible = true;
 		amount_text.text = str(slot.amount);
+	if slot.get_active():
+		$SlotSprite.modulate = Color.WHITE
+	else: 
+		$SlotSprite.modulate = Color.GRAY
