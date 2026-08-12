@@ -20,15 +20,24 @@ point_count = 5
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rrkfw"]
 size = Vector2(4.4636536, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hff37"]
+size = Vector2(2.4999943, 48.75432)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_02ys2"]
+size = Vector2(5.1333237, 20.176392)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gjyw5"]
+size = Vector2(1.4507513, 25.149448)
+
 [node name="RotMaze" type="Node2D" unique_id=1812960501]
 process_mode = 3
 position = Vector2(135, 55)
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1333124157]
 offset_left = -35.0
-offset_top = -45.0
+offset_top = -46.0
 offset_right = 265.0
-offset_bottom = 155.0
+offset_bottom = 154.0
 color = Color(0, 0.34217384, 0.34299055, 1)
 
 [node name="PlayerRot" type="Node2D" parent="." unique_id=127352751 node_paths=PackedStringArray("graph")]
@@ -41,15 +50,15 @@ graph = NodePath("../MazePath")
 [node name="vine" type="Line2D" parent="PlayerRot" unique_id=788601042]
 texture_repeat = 2
 position = Vector2(1, 0)
-points = PackedVector2Array(0, 0, 0, 0)
+points = PackedVector2Array(0.19, 0.12, 0.155, 0.205)
 width = 20.0
 width_curve = SubResource("Curve_hff37")
 texture = ExtResource("3_gjyw5")
 texture_mode = 1
 script = ExtResource("4_wqrwn")
-wave_strength = 0.1
-wave_speed = 1.5
-wave_frequency = 1.5
+wave_strength = 0.01
+wave_speed = 0.5
+wave_frequency = 0.5
 
 [node name="StaticBody2D" type="StaticBody2D" parent="PlayerRot/vine" unique_id=1043121702]
 
@@ -86,12 +95,1446 @@ rotation = 1.5707964
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("3_35ab0")
 
+[node name="MazePath" type="Node2D" parent="." unique_id=824729220]
+script = ExtResource("3_f424p")
+graph_data = {
+&"A": {
+"dist": {
+"down": Vector2(0, 15),
+"left": Vector2(-27, 0),
+"right": Vector2(99999, 99999),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"down": &"A84",
+"left": &"A18"
+},
+"pos": Vector2(172, -15)
+},
+&"A10": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(-31, 0),
+"right": Vector2(99999, 99999),
+"up": Vector2(0, -7)
+},
+"edges": {
+"left": &"A9",
+"up": &"A11"
+},
+"pos": Vector2(159, 45)
+},
+&"A11": {
+"dist": {
+"down": Vector2(0, 7),
+"left": Vector2(-10, 0),
+"right": Vector2(10, 0),
+"up": Vector2(0, -5)
+},
+"edges": {
+"down": &"A10",
+"left": &"A81",
+"right": &"A12",
+"up": &"A80"
+},
+"pos": Vector2(159, 38)
+},
+&"A12": {
+"dist": {
+"down": Vector2(0, 16),
+"left": Vector2(-10, 0),
+"right": Vector2(99999, 99999),
+"up": Vector2(0, -13)
+},
+"edges": {
+"down": &"A33",
+"left": &"A11",
+"up": &"A78"
+},
+"pos": Vector2(169, 38)
+},
+&"A13": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(-115, 0),
+"right": Vector2(5, 0),
+"up": Vector2(0, -8)
+},
+"edges": {
+"left": &"A36",
+"right": &"A14",
+"up": &"A33"
+},
+"pos": Vector2(169, 62)
+},
+&"A14": {
+"dist": {
+"down": Vector2(0, 7),
+"left": Vector2(-5, 0),
+"right": Vector2(99999, 99999),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"down": &"A40",
+"left": &"A13"
+},
+"pos": Vector2(174, 62)
+},
+&"A15": {
+"dist": {
+"down": Vector2(0, 27),
+"left": Vector2(-29, 0),
+"right": Vector2(99999, 99999),
+"up": Vector2(0, -7)
+},
+"edges": {
+"down": &"A41",
+"left": &"A16",
+"up": &"A40"
+},
+"pos": Vector2(174, 76)
+},
+&"A16": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(99999, 99999),
+"right": Vector2(29, 0),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"right": &"A15"
+},
+"pos": Vector2(145, 76)
+},
+&"A17": {
+"dist": {
+"down": Vector2(0, 15),
+"left": Vector2(-27, 0),
+"right": Vector2(27, 0),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"down": &"A29-Conn2",
+"left": &"A2",
+"right": &"A18"
+},
+"pos": Vector2(118, -15)
+},
+&"A18": {
+"dist": {
+"down": Vector2(0, 15),
+"left": Vector2(-27, 0),
+"right": Vector2(27, 0),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"down": &"A82",
+"left": &"A17",
+"right": &"A"
+},
+"pos": Vector2(145, -15)
+},
+&"A19": {
+"dist": {
+"down": Vector2(0, 15),
+"left": Vector2(99999, 99999),
+"right": Vector2(27, 0),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"down": &"A20",
+"right": &"A2"
+},
+"pos": Vector2(64, -15)
+},
+&"A2": {
+"dist": {
+"down": Vector2(0, 15),
+"left": Vector2(-27, 0),
+"right": Vector2(27, 0),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"down": &"A4-Conn",
+"left": &"A19",
+"right": &"A17"
+},
+"pos": Vector2(91, -15)
+},
+&"A20": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(-10, 0),
+"right": Vector2(17, 0),
+"up": Vector2(0, -15)
+},
+"edges": {
+"left": &"A21",
+"right": &"A4-Conn2",
+"up": &"A19"
+},
+"pos": Vector2(64, 0)
+},
+&"A21": {
+"dist": {
+"down": Vector2(0, 15),
+"left": Vector2(99999, 99999),
+"right": Vector2(10, 0),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"down": &"A23",
+"right": &"A20"
+},
+"pos": Vector2(54, 0)
+},
+&"A22": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(-30, 0),
+"right": Vector2(7, 0),
+"up": Vector2(0, -26)
+},
+"edges": {
+"left": &"A50-Conn",
+"right": &"A49",
+"up": &"A51"
+},
+"pos": Vector2(77, 111)
+},
+&"A23": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(-7, 0),
+"right": Vector2(27, 0),
+"up": Vector2(0, -15)
+},
+"edges": {
+"left": &"A24",
+"right": &"A5",
+"up": &"A21"
+},
+"pos": Vector2(54, 15)
+},
+&"A24": {
+"dist": {
+"down": Vector2(0, 38),
+"left": Vector2(99999, 99999),
+"right": Vector2(7, 0),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"down": &"A26-Conn",
+"right": &"A23"
+},
+"pos": Vector2(47, 15)
+},
+&"A25": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(-39, 0),
+"right": Vector2(29, 0),
+"up": Vector2(0, -7)
+},
+"edges": {
+"left": &"Z",
+"right": &"B-Conn",
+"up": &"A44"
+},
+"pos": Vector2(152, 111)
+},
+&"A26": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(-38, 0),
+"right": Vector2(99999, 99999),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"left": &"A26-Conn"
+},
+"pos": Vector2(85, 53)
+},
+&"A26-Conn": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(99999, 99999),
+"right": Vector2(38, 0),
+"up": Vector2(0, -38)
+},
+"edges": {
+"right": &"A26",
+"up": &"A24"
+},
+"pos": Vector2(47, 53)
+},
+&"A29": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(99999, 99999),
+"right": Vector2(27, 0),
+"up": Vector2(0, -15)
+},
+"edges": {
+"right": &"A39",
+"up": &"A29-Conn"
+},
+"pos": Vector2(108, 15)
+},
+&"A29-Conn": {
+"dist": {
+"down": Vector2(0, 15),
+"left": Vector2(99999, 99999),
+"right": Vector2(10, 0),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"down": &"A29",
+"right": &"A29-Conn2"
+},
+"pos": Vector2(108, 0)
+},
+&"A29-Conn2": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(-10, 0),
+"right": Vector2(99999, 99999),
+"up": Vector2(0, -15)
+},
+"edges": {
+"left": &"A29-Conn",
+"up": &"A17"
+},
+"pos": Vector2(118, 0)
+},
+&"A30": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(-27, 0),
+"right": Vector2(18, 0),
+"up": Vector2(0, -15)
+},
+"edges": {
+"left": &"A39",
+"right": &"A74",
+"up": &"A31"
+},
+"pos": Vector2(162, 15)
+},
+&"A31": {
+"dist": {
+"down": Vector2(0, 15),
+"left": Vector2(-17, 0),
+"right": Vector2(10, 0),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"down": &"A30",
+"left": &"A82",
+"right": &"A84"
+},
+"pos": Vector2(162, 0)
+},
+&"A32": {
+"dist": {
+"down": Vector2(0, 15),
+"left": Vector2(99999, 99999),
+"right": Vector2(10, 0),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"down": &"A39",
+"right": &"A82"
+},
+"pos": Vector2(135, 0)
+},
+&"A33": {
+"dist": {
+"down": Vector2(0, 8),
+"left": Vector2(-29, 0),
+"right": Vector2(11, 0),
+"up": Vector2(0, -16)
+},
+"edges": {
+"down": &"A13",
+"left": &"A34",
+"right": &"A35",
+"up": &"A12"
+},
+"pos": Vector2(169, 54)
+},
+&"A34": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(99999, 99999),
+"right": Vector2(29, 0),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"right": &"A33"
+},
+"pos": Vector2(140, 54)
+},
+&"A35": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(-11, 0),
+"right": Vector2(99999, 99999),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"left": &"A33"
+},
+"pos": Vector2(180, 54)
+},
+&"A36": {
+"dist": {
+"down": Vector2(0, 7),
+"left": Vector2(99999, 99999),
+"right": Vector2(115, 0),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"down": &"A37",
+"right": &"A13"
+},
+"pos": Vector2(54, 62)
+},
+&"A37": {
+"dist": {
+"down": Vector2(0, 35),
+"left": Vector2(-7, 0),
+"right": Vector2(120, 0),
+"up": Vector2(0, -7)
+},
+"edges": {
+"down": &"A56",
+"left": &"A38",
+"right": &"A40",
+"up": &"A36"
+},
+"pos": Vector2(54, 69)
+},
+&"A38": {
+"dist": {
+"down": Vector2(0, 42),
+"left": Vector2(99999, 99999),
+"right": Vector2(7, 0),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"down": &"A50-Conn",
+"right": &"A37"
+},
+"pos": Vector2(47, 69)
+},
+&"A39": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(-27, 0),
+"right": Vector2(27, 0),
+"up": Vector2(0, -15)
+},
+"edges": {
+"left": &"A29",
+"right": &"A30",
+"up": &"A32"
+},
+"pos": Vector2(135, 15)
+},
+&"A4-Conn": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(-10, 0),
+"right": Vector2(99999, 99999),
+"up": Vector2(0, -15)
+},
+"edges": {
+"left": &"A4-Conn2",
+"up": &"A2"
+},
+"pos": Vector2(91, 0)
+},
+&"A4-Conn2": {
+"dist": {
+"down": Vector2(0, 15),
+"left": Vector2(-17, 0),
+"right": Vector2(10, 0),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"down": &"A5",
+"left": &"A20",
+"right": &"A4-Conn"
+},
+"pos": Vector2(81, 0)
+},
+&"A40": {
+"dist": {
+"down": Vector2(0, 7),
+"left": Vector2(-120, 0),
+"right": Vector2(7, 0),
+"up": Vector2(0, -7)
+},
+"edges": {
+"down": &"A15",
+"left": &"A37",
+"right": &"A86",
+"up": &"A14"
+},
+"pos": Vector2(174, 69)
+},
+&"A41": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(-14, 0),
+"right": Vector2(99999, 99999),
+"up": Vector2(0, -27)
+},
+"edges": {
+"left": &"A42",
+"up": &"A15"
+},
+"pos": Vector2(174, 103)
+},
+&"A42": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(99999, 99999),
+"right": Vector2(14, 0),
+"up": Vector2(0, -13)
+},
+"edges": {
+"right": &"A41",
+"up": &"A43"
+},
+"pos": Vector2(160, 103)
+},
+&"A43": {
+"dist": {
+"down": Vector2(0, 13),
+"left": Vector2(99999, 99999),
+"right": Vector2(99999, 99999),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"down": &"A42"
+},
+"pos": Vector2(160, 90)
+},
+&"A44": {
+"dist": {
+"down": Vector2(0, 7),
+"left": Vector2(99999, 99999),
+"right": Vector2(99999, 99999),
+"up": Vector2(0, -19)
+},
+"edges": {
+"down": &"A25",
+"up": &"A45"
+},
+"pos": Vector2(152, 104)
+},
+&"A45": {
+"dist": {
+"down": Vector2(0, 19),
+"left": Vector2(99999, 99999),
+"right": Vector2(99999, 99999),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"down": &"A44"
+},
+"pos": Vector2(152, 85)
+},
+&"A46": {
+"dist": {
+"down": Vector2(0, 8),
+"left": Vector2(99999, 99999),
+"right": Vector2(99999, 99999),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"down": &"A47"
+},
+"pos": Vector2(168, 85)
+},
+&"A47": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(99999, 99999),
+"right": Vector2(99999, 99999),
+"up": Vector2(0, -8)
+},
+"edges": {
+"up": &"A46"
+},
+"pos": Vector2(168, 93)
+},
+&"A49": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(-7, 0),
+"right": Vector2(29, 0),
+"up": Vector2(0, -33)
+},
+"edges": {
+"left": &"A22",
+"right": &"Z",
+"up": &"A57"
+},
+"pos": Vector2(84, 111)
+},
+&"A5": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(-27, 0),
+"right": Vector2(7, 0),
+"up": Vector2(0, -15)
+},
+"edges": {
+"left": &"A23",
+"right": &"A58",
+"up": &"A4-Conn2"
+},
+"pos": Vector2(81, 15)
+},
+&"A50-Conn": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(99999, 99999),
+"right": Vector2(30, 0),
+"up": Vector2(0, -42)
+},
+"edges": {
+"right": &"A22",
+"up": &"A38"
+},
+"pos": Vector2(47, 111)
+},
+&"A51": {
+"dist": {
+"down": Vector2(0, 26),
+"left": Vector2(-16, 0),
+"right": Vector2(99999, 99999),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"down": &"A22",
+"left": &"A52"
+},
+"pos": Vector2(77, 85)
+},
+&"A52": {
+"dist": {
+"down": Vector2(0, 9),
+"left": Vector2(99999, 99999),
+"right": Vector2(16, 0),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"down": &"A53",
+"right": &"A51"
+},
+"pos": Vector2(61, 85)
+},
+&"A53": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(99999, 99999),
+"right": Vector2(99999, 99999),
+"up": Vector2(0, -9)
+},
+"edges": {
+"up": &"A52"
+},
+"pos": Vector2(61, 94)
+},
+&"A54": {
+"dist": {
+"down": Vector2(0, 13),
+"left": Vector2(99999, 99999),
+"right": Vector2(99999, 99999),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"down": &"A55"
+},
+"pos": Vector2(69, 91)
+},
+&"A55": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(-15, 0),
+"right": Vector2(99999, 99999),
+"up": Vector2(0, -13)
+},
+"edges": {
+"left": &"A56",
+"up": &"A54"
+},
+"pos": Vector2(69, 104)
+},
+&"A56": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(99999, 99999),
+"right": Vector2(15, 0),
+"up": Vector2(0, -35)
+},
+"edges": {
+"right": &"A55",
+"up": &"A37"
+},
+"pos": Vector2(54, 104)
+},
+&"A57": {
+"dist": {
+"down": Vector2(0, 33),
+"left": Vector2(99999, 99999),
+"right": Vector2(99999, 99999),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"down": &"A49"
+},
+"pos": Vector2(84, 78)
+},
+&"A58": {
+"dist": {
+"down": Vector2(0, 9),
+"left": Vector2(-7, 0),
+"right": Vector2(11, 0),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"down": &"A85",
+"left": &"A5",
+"right": &"A6"
+},
+"pos": Vector2(88, 15)
+},
+&"A59": {
+"dist": {
+"down": Vector2(0, 20),
+"left": Vector2(99999, 99999),
+"right": Vector2(29, 0),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"down": &"A60",
+"right": &"A85"
+},
+"pos": Vector2(59, 24)
+},
+&"A6": {
+"dist": {
+"down": Vector2(0, 10),
+"left": Vector2(-11, 0),
+"right": Vector2(99999, 99999),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"down": &"A7",
+"left": &"A58"
+},
+"pos": Vector2(99, 15)
+},
+&"A60": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(99999, 99999),
+"right": Vector2(19, 0),
+"up": Vector2(0, -20)
+},
+"edges": {
+"right": &"A61",
+"up": &"A59"
+},
+"pos": Vector2(59, 44)
+},
+&"A61": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(-19, 0),
+"right": Vector2(99999, 99999),
+"up": Vector2(0, -7)
+},
+"edges": {
+"left": &"A60",
+"up": &"A62"
+},
+"pos": Vector2(78, 44)
+},
+&"A62": {
+"dist": {
+"down": Vector2(0, 7),
+"left": Vector2(-10, 0),
+"right": Vector2(10, 0),
+"up": Vector2(0, -5)
+},
+"edges": {
+"down": &"A61",
+"left": &"A64",
+"right": &"A63",
+"up": &"A66"
+},
+"pos": Vector2(78, 37)
+},
+&"A63": {
+"dist": {
+"down": Vector2(0, 8),
+"left": Vector2(-10, 0),
+"right": Vector2(99999, 99999),
+"up": Vector2(0, -13)
+},
+"edges": {
+"down": &"A67",
+"left": &"A62",
+"up": &"A85"
+},
+"pos": Vector2(88, 37)
+},
+&"A64": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(99999, 99999),
+"right": Vector2(10, 0),
+"up": Vector2(0, -5)
+},
+"edges": {
+"right": &"A62",
+"up": &"A65"
+},
+"pos": Vector2(68, 37)
+},
+&"A65": {
+"dist": {
+"down": Vector2(0, 5),
+"left": Vector2(99999, 99999),
+"right": Vector2(10, 0),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"down": &"A64",
+"right": &"A66"
+},
+"pos": Vector2(68, 32)
+},
+&"A66": {
+"dist": {
+"down": Vector2(0, 5),
+"left": Vector2(-10, 0),
+"right": Vector2(99999, 99999),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"down": &"A62",
+"left": &"A65"
+},
+"pos": Vector2(78, 32)
+},
+&"A67": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(99999, 99999),
+"right": Vector2(99999, 99999),
+"up": Vector2(0, -8)
+},
+"edges": {
+"up": &"A63"
+},
+"pos": Vector2(88, 45)
+},
+&"A68": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(99999, 99999),
+"right": Vector2(99999, 99999),
+"up": Vector2(0, -20)
+},
+"edges": {
+"up": &"A7"
+},
+"pos": Vector2(99, 45)
+},
+&"A69": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(99999, 99999),
+"right": Vector2(20, 0),
+"up": Vector2(0, -8)
+},
+"edges": {
+"right": &"A9",
+"up": &"A70"
+},
+"pos": Vector2(108, 45)
+},
+&"A7": {
+"dist": {
+"down": Vector2(0, 20),
+"left": Vector2(99999, 99999),
+"right": Vector2(29, 0),
+"up": Vector2(0, -10)
+},
+"edges": {
+"down": &"A68",
+"right": &"A8",
+"up": &"A6"
+},
+"pos": Vector2(99, 25)
+},
+&"A70": {
+"dist": {
+"down": Vector2(0, 8),
+"left": Vector2(99999, 99999),
+"right": Vector2(10, 0),
+"up": Vector2(0, -5)
+},
+"edges": {
+"down": &"A69",
+"right": &"A73",
+"up": &"A71"
+},
+"pos": Vector2(108, 37)
+},
+&"A71": {
+"dist": {
+"down": Vector2(0, 5),
+"left": Vector2(99999, 99999),
+"right": Vector2(10, 0),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"down": &"A70",
+"right": &"A72"
+},
+"pos": Vector2(108, 32)
+},
+&"A72": {
+"dist": {
+"down": Vector2(0, 5),
+"left": Vector2(-10, 0),
+"right": Vector2(99999, 99999),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"down": &"A73",
+"left": &"A71"
+},
+"pos": Vector2(118, 32)
+},
+&"A73": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(-10, 0),
+"right": Vector2(10, 0),
+"up": Vector2(0, -5)
+},
+"edges": {
+"left": &"A70",
+"right": &"A75",
+"up": &"A72"
+},
+"pos": Vector2(118, 37)
+},
+&"A74": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(-18, 0),
+"right": Vector2(99999, 99999),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"left": &"A30"
+},
+"pos": Vector2(180, 15)
+},
+&"A75": {
+"dist": {
+"down": Vector2(0, 8),
+"left": Vector2(-10, 0),
+"right": Vector2(99999, 99999),
+"up": Vector2(0, -12)
+},
+"edges": {
+"down": &"A9",
+"left": &"A73",
+"up": &"A8"
+},
+"pos": Vector2(128, 37)
+},
+&"A76-Conn": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(99999, 99999),
+"right": Vector2(99999, 99999),
+"up": Vector2(0, -14)
+},
+"edges": {
+"up": &"A76-Conn2"
+},
+"pos": Vector2(140, 39)
+},
+&"A76-Conn2": {
+"dist": {
+"down": Vector2(0, 14),
+"left": Vector2(99999, 99999),
+"right": Vector2(29, 0),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"down": &"A76-Conn",
+"right": &"A78"
+},
+"pos": Vector2(140, 25)
+},
+&"A78": {
+"dist": {
+"down": Vector2(0, 13),
+"left": Vector2(-29, 0),
+"right": Vector2(99999, 99999),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"down": &"A12",
+"left": &"A76-Conn2"
+},
+"pos": Vector2(169, 25)
+},
+&"A79": {
+"dist": {
+"down": Vector2(0, 5),
+"left": Vector2(99999, 99999),
+"right": Vector2(10, 0),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"down": &"A81",
+"right": &"A80"
+},
+"pos": Vector2(149, 33)
+},
+&"A8": {
+"dist": {
+"down": Vector2(0, 12),
+"left": Vector2(-29, 0),
+"right": Vector2(99999, 99999),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"down": &"A75",
+"left": &"A7"
+},
+"pos": Vector2(128, 25)
+},
+&"A80": {
+"dist": {
+"down": Vector2(0, 5),
+"left": Vector2(-10, 0),
+"right": Vector2(99999, 99999),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"down": &"A11",
+"left": &"A79"
+},
+"pos": Vector2(159, 33)
+},
+&"A81": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(99999, 99999),
+"right": Vector2(10, 0),
+"up": Vector2(0, -5)
+},
+"edges": {
+"right": &"A11",
+"up": &"A79"
+},
+"pos": Vector2(149, 38)
+},
+&"A82": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(-10, 0),
+"right": Vector2(17, 0),
+"up": Vector2(0, -15)
+},
+"edges": {
+"left": &"A32",
+"right": &"A31",
+"up": &"A18"
+},
+"pos": Vector2(145, 0)
+},
+&"A84": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(-10, 0),
+"right": Vector2(99999, 99999),
+"up": Vector2(0, -15)
+},
+"edges": {
+"left": &"A31",
+"up": &"A"
+},
+"pos": Vector2(172, 0)
+},
+&"A85": {
+"dist": {
+"down": Vector2(0, 13),
+"left": Vector2(-29, 0),
+"right": Vector2(99999, 99999),
+"up": Vector2(0, -9)
+},
+"edges": {
+"down": &"A63",
+"left": &"A59",
+"up": &"A58"
+},
+"pos": Vector2(88, 24)
+},
+&"A86": {
+"dist": {
+"down": Vector2(0, 42),
+"left": Vector2(-7, 0),
+"right": Vector2(99999, 99999),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"down": &"B-Conn",
+"left": &"A40"
+},
+"pos": Vector2(181, 69)
+},
+&"A9": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(-20, 0),
+"right": Vector2(31, 0),
+"up": Vector2(0, -8)
+},
+"edges": {
+"left": &"A69",
+"right": &"A10",
+"up": &"A75"
+},
+"pos": Vector2(128, 45)
+},
+&"B-Conn": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(-29, 0),
+"right": Vector2(99999, 99999),
+"up": Vector2(0, -42)
+},
+"edges": {
+"left": &"A25",
+"up": &"A86"
+},
+"pos": Vector2(181, 111)
+},
+&"Z": {
+"dist": {
+"down": Vector2(99999, 99999),
+"left": Vector2(-29, 0),
+"right": Vector2(39, 0),
+"up": Vector2(99999, 99999)
+},
+"edges": {
+"left": &"A49",
+"right": &"A25"
+},
+"pos": Vector2(113, 111)
+}
+}
+
+[node name="A" type="Marker2D" parent="MazePath" unique_id=128998496]
+position = Vector2(172, -15)
+
+[node name="A18" type="Marker2D" parent="MazePath" unique_id=1310111065]
+position = Vector2(145, -15)
+
+[node name="A82" type="Marker2D" parent="MazePath" unique_id=504870662]
+position = Vector2(145, 0)
+
+[node name="A2" type="Marker2D" parent="MazePath" unique_id=667012529]
+position = Vector2(91, -15)
+
+[node name="A19" type="Marker2D" parent="MazePath" unique_id=1756220613]
+position = Vector2(64, -15)
+
+[node name="A17" type="Marker2D" parent="MazePath" unique_id=1521363488]
+position = Vector2(118, -15)
+
+[node name="A29-Conn" type="Marker2D" parent="MazePath" unique_id=1059440085]
+position = Vector2(108, 0)
+
+[node name="A29-Conn2" type="Marker2D" parent="MazePath" unique_id=282704381]
+position = Vector2(118, 0)
+
+[node name="A29" type="Marker2D" parent="MazePath" unique_id=320123845]
+position = Vector2(108, 15)
+
+[node name="A39" type="Marker2D" parent="MazePath" unique_id=1698948262]
+position = Vector2(135, 15)
+
+[node name="A30" type="Marker2D" parent="MazePath" unique_id=1343926100]
+position = Vector2(162, 15)
+
+[node name="A74" type="Marker2D" parent="MazePath" unique_id=67350462]
+position = Vector2(180, 15)
+
+[node name="A31" type="Marker2D" parent="MazePath" unique_id=1716141277]
+position = Vector2(162, 0)
+
+[node name="A84" type="Marker2D" parent="MazePath" unique_id=47847118]
+position = Vector2(172, 0)
+
+[node name="A32" type="Marker2D" parent="MazePath" unique_id=172795089]
+position = Vector2(135, 0)
+
+[node name="A20" type="Marker2D" parent="MazePath" unique_id=1625486147]
+position = Vector2(64, 0)
+
+[node name="A21" type="Marker2D" parent="MazePath" unique_id=978118610]
+position = Vector2(54, 0)
+
+[node name="A23" type="Marker2D" parent="MazePath" unique_id=1669882897]
+position = Vector2(54, 15)
+
+[node name="A24" type="Marker2D" parent="MazePath" unique_id=1850925712]
+position = Vector2(47, 15)
+
+[node name="A26-Conn" type="Marker2D" parent="MazePath" unique_id=1516735225]
+position = Vector2(47, 53)
+
+[node name="A26" type="Marker2D" parent="MazePath" unique_id=833402690]
+position = Vector2(85, 53)
+
+[node name="A4-Conn" type="Marker2D" parent="MazePath" unique_id=1226556897]
+position = Vector2(91, 0)
+
+[node name="A4-Conn2" type="Marker2D" parent="MazePath" unique_id=2083246606]
+position = Vector2(81, 0)
+
+[node name="A5" type="Marker2D" parent="MazePath" unique_id=1634880151]
+position = Vector2(81, 15)
+
+[node name="A6" type="Marker2D" parent="MazePath" unique_id=568400272]
+position = Vector2(99, 15)
+
+[node name="A7" type="Marker2D" parent="MazePath" unique_id=1083472080]
+position = Vector2(99, 25)
+
+[node name="A8" type="Marker2D" parent="MazePath" unique_id=1611179840]
+position = Vector2(128, 25)
+
+[node name="A58" type="Marker2D" parent="MazePath" unique_id=1046551858]
+position = Vector2(88, 15)
+
+[node name="A59" type="Marker2D" parent="MazePath" unique_id=1612616672]
+position = Vector2(59, 24)
+
+[node name="A85" type="Marker2D" parent="MazePath" unique_id=964323798]
+position = Vector2(88, 24)
+
+[node name="A60" type="Marker2D" parent="MazePath" unique_id=1728374024]
+position = Vector2(59, 44)
+
+[node name="A61" type="Marker2D" parent="MazePath" unique_id=1134052277]
+position = Vector2(78, 44)
+
+[node name="A62" type="Marker2D" parent="MazePath" unique_id=1233516157]
+position = Vector2(78, 37)
+
+[node name="A63" type="Marker2D" parent="MazePath" unique_id=1866028130]
+position = Vector2(88, 37)
+
+[node name="A64" type="Marker2D" parent="MazePath" unique_id=1980463149]
+position = Vector2(68, 37)
+
+[node name="A65" type="Marker2D" parent="MazePath" unique_id=1592595299]
+position = Vector2(68, 32)
+
+[node name="A66" type="Marker2D" parent="MazePath" unique_id=1084533779]
+position = Vector2(78, 32)
+
+[node name="A67" type="Marker2D" parent="MazePath" unique_id=1412890416]
+position = Vector2(88, 45)
+
+[node name="A68" type="Marker2D" parent="MazePath" unique_id=1058898837]
+position = Vector2(99, 45)
+
+[node name="A69" type="Marker2D" parent="MazePath" unique_id=1050756842]
+position = Vector2(108, 45)
+
+[node name="A70" type="Marker2D" parent="MazePath" unique_id=1326826518]
+position = Vector2(108, 37)
+
+[node name="A71" type="Marker2D" parent="MazePath" unique_id=1132045218]
+position = Vector2(108, 32)
+
+[node name="A72" type="Marker2D" parent="MazePath" unique_id=902680001]
+position = Vector2(118, 32)
+
+[node name="A73" type="Marker2D" parent="MazePath" unique_id=1294869268]
+position = Vector2(118, 37)
+
+[node name="A75" type="Marker2D" parent="MazePath" unique_id=1503261111]
+position = Vector2(128, 37)
+
+[node name="A76-Conn" type="Marker2D" parent="MazePath" unique_id=325379906]
+position = Vector2(140, 39)
+
+[node name="A76-Conn2" type="Marker2D" parent="MazePath" unique_id=23711067]
+position = Vector2(140, 25)
+
+[node name="A78" type="Marker2D" parent="MazePath" unique_id=1906554358]
+position = Vector2(169, 25)
+
+[node name="A79" type="Marker2D" parent="MazePath" unique_id=1981077532]
+position = Vector2(149, 33)
+
+[node name="A80" type="Marker2D" parent="MazePath" unique_id=1111392642]
+position = Vector2(159, 33)
+
+[node name="A81" type="Marker2D" parent="MazePath" unique_id=866108308]
+position = Vector2(149, 38)
+
+[node name="A9" type="Marker2D" parent="MazePath" unique_id=2027484599]
+position = Vector2(128, 45)
+
+[node name="A10" type="Marker2D" parent="MazePath" unique_id=1698522119]
+position = Vector2(159, 45)
+
+[node name="A11" type="Marker2D" parent="MazePath" unique_id=586105356]
+position = Vector2(159, 38)
+
+[node name="A12" type="Marker2D" parent="MazePath" unique_id=724320703]
+position = Vector2(169, 38)
+
+[node name="A13" type="Marker2D" parent="MazePath" unique_id=858725688]
+position = Vector2(169, 62)
+
+[node name="A33" type="Marker2D" parent="MazePath" unique_id=1002536098]
+position = Vector2(169, 54)
+
+[node name="A34" type="Marker2D" parent="MazePath" unique_id=1547898078]
+position = Vector2(140, 54)
+
+[node name="A35" type="Marker2D" parent="MazePath" unique_id=840602617]
+position = Vector2(180, 54)
+
+[node name="A36" type="Marker2D" parent="MazePath" unique_id=56473252]
+position = Vector2(54, 62)
+
+[node name="A37" type="Marker2D" parent="MazePath" unique_id=2051622]
+position = Vector2(54, 69)
+
+[node name="A38" type="Marker2D" parent="MazePath" unique_id=516200299]
+position = Vector2(47, 69)
+
+[node name="A50-Conn" type="Marker2D" parent="MazePath" unique_id=2004470784]
+position = Vector2(47, 111)
+
+[node name="A40" type="Marker2D" parent="MazePath" unique_id=1569286413]
+position = Vector2(174, 69)
+
+[node name="A86" type="Marker2D" parent="MazePath" unique_id=2075167185]
+position = Vector2(181, 69)
+
+[node name="A41" type="Marker2D" parent="MazePath" unique_id=1349840667]
+position = Vector2(174, 103)
+
+[node name="A42" type="Marker2D" parent="MazePath" unique_id=1970199006]
+position = Vector2(160, 103)
+
+[node name="A44" type="Marker2D" parent="MazePath" unique_id=2100827489]
+position = Vector2(152, 104)
+
+[node name="A45" type="Marker2D" parent="MazePath" unique_id=27357828]
+position = Vector2(152, 85)
+
+[node name="A46" type="Marker2D" parent="MazePath" unique_id=1422297334]
+position = Vector2(168, 85)
+
+[node name="A47" type="Marker2D" parent="MazePath" unique_id=1095742427]
+position = Vector2(168, 93)
+
+[node name="Z-Fin" type="Marker2D" parent="MazePath" unique_id=1083480427]
+position = Vector2(84, 111)
+
+[node name="Z-Fin2" type="Marker2D" parent="MazePath" unique_id=2044250553]
+position = Vector2(77, 111)
+
+[node name="A51" type="Marker2D" parent="MazePath" unique_id=1911392220]
+position = Vector2(77, 85)
+
+[node name="A52" type="Marker2D" parent="MazePath" unique_id=769050843]
+position = Vector2(61, 85)
+
+[node name="A53" type="Marker2D" parent="MazePath" unique_id=761687391]
+position = Vector2(61, 94)
+
+[node name="A54" type="Marker2D" parent="MazePath" unique_id=1350180016]
+position = Vector2(69, 91)
+
+[node name="A55" type="Marker2D" parent="MazePath" unique_id=1653527313]
+position = Vector2(69, 104)
+
+[node name="A56" type="Marker2D" parent="MazePath" unique_id=1033182520]
+position = Vector2(54, 104)
+
+[node name="A57" type="Marker2D" parent="MazePath" unique_id=1416538465]
+position = Vector2(84, 78)
+
+[node name="A43" type="Marker2D" parent="MazePath" unique_id=2043105278]
+position = Vector2(160, 90)
+
+[node name="A14" type="Marker2D" parent="MazePath" unique_id=1260908729]
+position = Vector2(174, 62)
+
+[node name="A15" type="Marker2D" parent="MazePath" unique_id=1256329871]
+position = Vector2(174, 76)
+
+[node name="A16" type="Marker2D" parent="MazePath" unique_id=664158591]
+position = Vector2(145, 76)
+
+[node name="B-Conn" type="Marker2D" parent="MazePath" unique_id=430601815]
+position = Vector2(181, 111)
+
+[node name="Z-Fin3" type="Marker2D" parent="MazePath" unique_id=1606526458]
+position = Vector2(152, 111)
+
+[node name="Z-Fin4" type="Marker2D" parent="MazePath" unique_id=1782419882]
+position = Vector2(113, 111)
+
 [node name="MazeShape" type="Sprite2D" parent="." unique_id=837615859]
 position = Vector2(113, 51)
 texture = ExtResource("7_hff37")
 
+[node name="fin_vine" type="Line2D" parent="." unique_id=1487766107]
+texture_repeat = 2
+position = Vector2(113, 111)
+scale = Vector2(0.3, 0.3)
+points = PackedVector2Array(-226.66663, 6.666687, -153.33759, 7.5176015, -70.10739, 10.778043, -30.371134, 9.298772, 29.378363, 6.4665565, 75.33998, 7.1133714, 189.86761, 6.9776764)
+width = 20.0
+width_curve = SubResource("Curve_hff37")
+texture = ExtResource("3_gjyw5")
+texture_mode = 1
+script = ExtResource("4_wqrwn")
+wave_strength = 0.01
+wave_speed = 0.5
+wave_frequency = 0.5
+
+[node name="StaticBody2D" type="StaticBody2D" parent="fin_vine" unique_id=1371840764]
+
+[node name="Area2D" type="Area2D" parent="fin_vine" unique_id=874943178]
+
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=887680724]
-visible = false
 position = Vector2(-25, -23)
 scale = Vector2(1.445, 1.445)
 
@@ -99,15 +1542,25 @@ scale = Vector2(1.445, 1.445)
 position = Vector2(82.027, 38.062)
 shape = SubResource("RectangleShape2D_rrkfw")
 
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="StaticBody2D" unique_id=667232701]
+position = Vector2(112.64707, 29.199825)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_hff37")
+
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=1447613627]
 position = Vector2(53.671997, 39.446087)
 scale = Vector2(1, 1.083045)
 shape = SubResource("RectangleShape2D_rrkfw")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D" unique_id=1876821983]
-position = Vector2(85.81315, 15.224916)
-scale = Vector2(1.4310706, 0.79799765)
-shape = SubResource("RectangleShape2D_rrkfw")
+position = Vector2(85.81315, 15.662815)
+scale = Vector2(1.4310708, 0.7979977)
+shape = SubResource("RectangleShape2D_02ys2")
+
+[node name="CollisionShape2D16" type="CollisionShape2D" parent="StaticBody2D" unique_id=1206219944]
+position = Vector2(88.92733, 17.64706)
+scale = Vector2(1.4310708, 0.7979977)
+shape = SubResource("RectangleShape2D_gjyw5")
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D" unique_id=1163725275]
 position = Vector2(95.50173, 53.979237)
@@ -239,1388 +1692,5 @@ polygon = PackedVector2Array(-57, 20, -57, 23, -27, 23, -27, 57, -20, 57, -20, 2
 position = Vector2(95.50173, 51.211067)
 scale = Vector2(0.6920415, 0.6920415)
 polygon = PackedVector2Array(64, 20, 64, 54, 44, 54, 44, 36, 49, 36, 49, 49, 59, 49, 59, 27, 34, 27, 34, 57, 36, 57, 36, 29, 57, 29, 57, 44, 52, 44, 52, 34, 41, 34, 41, 56, 66, 56, 66, 20)
-
-[node name="MazePath" type="Node2D" parent="." unique_id=824729220]
-visible = false
-script = ExtResource("3_f424p")
-graph_data = {
-&"A": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(-27, 0),
-"right": Vector2(99999, 99999),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"left": &"A18"
-},
-"pos": Vector2(172, -14)
-},
-&"A10": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(-31, 0),
-"right": Vector2(99999, 99999),
-"up": Vector2(0, -7)
-},
-"edges": {
-"left": &"A9",
-"up": &"A11"
-},
-"pos": Vector2(159, 45)
-},
-&"A11": {
-"dist": {
-"down": Vector2(0, 7),
-"left": Vector2(-10, 0),
-"right": Vector2(10, 0),
-"up": Vector2(0, -5)
-},
-"edges": {
-"down": &"A10",
-"left": &"A81",
-"right": &"A12",
-"up": &"A80"
-},
-"pos": Vector2(159, 38)
-},
-&"A12": {
-"dist": {
-"down": Vector2(0, 16),
-"left": Vector2(-10, 0),
-"right": Vector2(99999, 99999),
-"up": Vector2(0, -13)
-},
-"edges": {
-"down": &"A33",
-"left": &"A11",
-"up": &"A78"
-},
-"pos": Vector2(169, 38)
-},
-&"A13": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(-115, 0),
-"right": Vector2(5, 0),
-"up": Vector2(0, -9)
-},
-"edges": {
-"left": &"A36",
-"right": &"A14",
-"up": &"A33"
-},
-"pos": Vector2(169, 63)
-},
-&"A14": {
-"dist": {
-"down": Vector2(0, 7),
-"left": Vector2(-5, 0),
-"right": Vector2(99999, 99999),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"down": &"A40",
-"left": &"A13"
-},
-"pos": Vector2(174, 63)
-},
-&"A15": {
-"dist": {
-"down": Vector2(0, 26),
-"left": Vector2(99999, 99999),
-"right": Vector2(99999, 99999),
-"up": Vector2(0, -8)
-},
-"edges": {
-"down": &"A41",
-"up": &"A40"
-},
-"pos": Vector2(174, 78)
-},
-&"A16": {
-"dist": {
-"down": Vector2(0, 34),
-"left": Vector2(99999, 99999),
-"right": Vector2(99999, 99999),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"down": &"Z"
-},
-"pos": Vector2(145, 78)
-},
-&"A17": {
-"dist": {
-"down": Vector2(0, 14),
-"left": Vector2(-27, 0),
-"right": Vector2(27, 0),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"down": &"A83",
-"left": &"A2",
-"right": &"A18"
-},
-"pos": Vector2(118, -14)
-},
-&"A18": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(-27, 0),
-"right": Vector2(27, 0),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"left": &"A17",
-"right": &"A"
-},
-"pos": Vector2(145, -14)
-},
-&"A19": {
-"dist": {
-"down": Vector2(0, 14),
-"left": Vector2(99999, 99999),
-"right": Vector2(27, 0),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"down": &"A20",
-"right": &"A2"
-},
-"pos": Vector2(64, -14)
-},
-&"A2": {
-"dist": {
-"down": Vector2(0, 14),
-"left": Vector2(-27, 0),
-"right": Vector2(27, 0),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"down": &"A3",
-"left": &"A19",
-"right": &"A17"
-},
-"pos": Vector2(91, -14)
-},
-&"A20": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(-10, 0),
-"right": Vector2(17, 0),
-"up": Vector2(0, -14)
-},
-"edges": {
-"left": &"A21",
-"right": &"A4",
-"up": &"A19"
-},
-"pos": Vector2(64, 0)
-},
-&"A21": {
-"dist": {
-"down": Vector2(0, 16),
-"left": Vector2(99999, 99999),
-"right": Vector2(10, 0),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"down": &"A22",
-"right": &"A20"
-},
-"pos": Vector2(54, 0)
-},
-&"A22": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(-7, 0),
-"right": Vector2(27, 0),
-"up": Vector2(0, -16)
-},
-"edges": {
-"left": &"A24",
-"right": &"A5",
-"up": &"A21"
-},
-"pos": Vector2(54, 16)
-},
-&"A23": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(-7, 0),
-"right": Vector2(27, 0),
-"up": Vector2(0, -16)
-},
-"edges": {
-"left": &"A24",
-"right": &"A5",
-"up": &"A21"
-},
-"pos": Vector2(54, 16)
-},
-&"A24": {
-"dist": {
-"down": Vector2(0, 38),
-"left": Vector2(99999, 99999),
-"right": Vector2(7, 0),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"down": &"A25",
-"right": &"A22"
-},
-"pos": Vector2(47, 16)
-},
-&"A25": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(99999, 99999),
-"right": Vector2(38, 0),
-"up": Vector2(0, -38)
-},
-"edges": {
-"right": &"A26",
-"up": &"A24"
-},
-"pos": Vector2(47, 54)
-},
-&"A26": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(-38, 0),
-"right": Vector2(99999, 99999),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"left": &"A25"
-},
-"pos": Vector2(85, 54)
-},
-&"A27": {
-"dist": {
-"down": Vector2(0, 16),
-"left": Vector2(99999, 99999),
-"right": Vector2(10, 0),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"down": &"A28",
-"right": &"A83"
-},
-"pos": Vector2(108, 0)
-},
-&"A28": {
-"dist": {
-"down": Vector2(0, 16),
-"left": Vector2(-8, 0),
-"right": Vector2(27, 0),
-"up": Vector2(0, -16)
-},
-"edges": {
-"down": &"A71",
-"left": &"A6",
-"right": &"A29",
-"up": &"A27"
-},
-"pos": Vector2(108, 16)
-},
-&"A29": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(-27, 0),
-"right": Vector2(27, 0),
-"up": Vector2(0, -16)
-},
-"edges": {
-"left": &"A28",
-"right": &"A30",
-"up": &"A32"
-},
-"pos": Vector2(135, 16)
-},
-&"A3": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(-10, 0),
-"right": Vector2(99999, 99999),
-"up": Vector2(0, -14)
-},
-"edges": {
-"left": &"A4",
-"up": &"A2"
-},
-"pos": Vector2(91, 0)
-},
-&"A30": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(-27, 0),
-"right": Vector2(99999, 99999),
-"up": Vector2(0, -16)
-},
-"edges": {
-"left": &"A29",
-"up": &"A31"
-},
-"pos": Vector2(162, 16)
-},
-&"A31": {
-"dist": {
-"down": Vector2(0, 16),
-"left": Vector2(-17, 0),
-"right": Vector2(10, 0),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"down": &"A30",
-"left": &"A82",
-"right": &"A84"
-},
-"pos": Vector2(162, 0)
-},
-&"A32": {
-"dist": {
-"down": Vector2(0, 16),
-"left": Vector2(99999, 99999),
-"right": Vector2(10, 0),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"down": &"A29",
-"right": &"A82"
-},
-"pos": Vector2(135, 0)
-},
-&"A33": {
-"dist": {
-"down": Vector2(0, 9),
-"left": Vector2(-29, 0),
-"right": Vector2(11, 0),
-"up": Vector2(0, -16)
-},
-"edges": {
-"down": &"A13",
-"left": &"A34",
-"right": &"A35",
-"up": &"A12"
-},
-"pos": Vector2(169, 54)
-},
-&"A34": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(99999, 99999),
-"right": Vector2(29, 0),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"right": &"A33"
-},
-"pos": Vector2(140, 54)
-},
-&"A35": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(-11, 0),
-"right": Vector2(99999, 99999),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"left": &"A33"
-},
-"pos": Vector2(180, 54)
-},
-&"A36": {
-"dist": {
-"down": Vector2(0, 7),
-"left": Vector2(99999, 99999),
-"right": Vector2(115, 0),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"down": &"A37",
-"right": &"A13"
-},
-"pos": Vector2(54, 63)
-},
-&"A37": {
-"dist": {
-"down": Vector2(0, 34),
-"left": Vector2(-7, 0),
-"right": Vector2(120, 0),
-"up": Vector2(0, -7)
-},
-"edges": {
-"down": &"A56",
-"left": &"A38",
-"right": &"A40",
-"up": &"A36"
-},
-"pos": Vector2(54, 70)
-},
-&"A38": {
-"dist": {
-"down": Vector2(0, 42),
-"left": Vector2(99999, 99999),
-"right": Vector2(7, 0),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"down": &"A39",
-"right": &"A37"
-},
-"pos": Vector2(47, 70)
-},
-&"A39": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(99999, 99999),
-"right": Vector2(30, 0),
-"up": Vector2(0, -42)
-},
-"edges": {
-"right": &"A50",
-"up": &"A38"
-},
-"pos": Vector2(47, 112)
-},
-&"A4": {
-"dist": {
-"down": Vector2(0, 16),
-"left": Vector2(-17, 0),
-"right": Vector2(10, 0),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"down": &"A5",
-"left": &"A20",
-"right": &"A3"
-},
-"pos": Vector2(81, 0)
-},
-&"A40": {
-"dist": {
-"down": Vector2(0, 8),
-"left": Vector2(-120, 0),
-"right": Vector2(99999, 99999),
-"up": Vector2(0, -7)
-},
-"edges": {
-"down": &"A15",
-"left": &"A37",
-"up": &"A14"
-},
-"pos": Vector2(174, 70)
-},
-&"A41": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(-14, 0),
-"right": Vector2(99999, 99999),
-"up": Vector2(0, -26)
-},
-"edges": {
-"left": &"A42",
-"up": &"A15"
-},
-"pos": Vector2(174, 104)
-},
-&"A42": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(99999, 99999),
-"right": Vector2(14, 0),
-"up": Vector2(0, -12)
-},
-"edges": {
-"right": &"A41",
-"up": &"A43"
-},
-"pos": Vector2(160, 104)
-},
-&"A43": {
-"dist": {
-"down": Vector2(0, 12),
-"left": Vector2(99999, 99999),
-"right": Vector2(99999, 99999),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"down": &"A42"
-},
-"pos": Vector2(160, 92)
-},
-&"A44": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(99999, 99999),
-"right": Vector2(99999, 99999),
-"up": Vector2(0, -19)
-},
-"edges": {
-"up": &"A45"
-},
-"pos": Vector2(152, 104)
-},
-&"A45": {
-"dist": {
-"down": Vector2(0, 19),
-"left": Vector2(99999, 99999),
-"right": Vector2(99999, 99999),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"down": &"A44"
-},
-"pos": Vector2(152, 85)
-},
-&"A46": {
-"dist": {
-"down": Vector2(0, 7),
-"left": Vector2(99999, 99999),
-"right": Vector2(99999, 99999),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"down": &"A47"
-},
-"pos": Vector2(168, 85)
-},
-&"A47": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(99999, 99999),
-"right": Vector2(99999, 99999),
-"up": Vector2(0, -7)
-},
-"edges": {
-"up": &"A46"
-},
-"pos": Vector2(168, 92)
-},
-&"A48": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(-35, 0),
-"right": Vector2(99999, 99999),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"left": &"Z"
-},
-"pos": Vector2(180, 112)
-},
-&"A49": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(-7, 0),
-"right": Vector2(61, 0),
-"up": Vector2(0, -34)
-},
-"edges": {
-"left": &"A50",
-"right": &"Z",
-"up": &"A57"
-},
-"pos": Vector2(84, 112)
-},
-&"A5": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(-27, 0),
-"right": Vector2(6, 0),
-"up": Vector2(0, -16)
-},
-"edges": {
-"left": &"A22",
-"right": &"A58",
-"up": &"A4"
-},
-"pos": Vector2(81, 16)
-},
-&"A50": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(-30, 0),
-"right": Vector2(7, 0),
-"up": Vector2(0, -27)
-},
-"edges": {
-"left": &"A39",
-"right": &"A49",
-"up": &"A51"
-},
-"pos": Vector2(77, 112)
-},
-&"A51": {
-"dist": {
-"down": Vector2(0, 27),
-"left": Vector2(-16, 0),
-"right": Vector2(99999, 99999),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"down": &"A50",
-"left": &"A52"
-},
-"pos": Vector2(77, 85)
-},
-&"A52": {
-"dist": {
-"down": Vector2(0, 9),
-"left": Vector2(99999, 99999),
-"right": Vector2(16, 0),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"down": &"A53",
-"right": &"A51"
-},
-"pos": Vector2(61, 85)
-},
-&"A53": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(99999, 99999),
-"right": Vector2(99999, 99999),
-"up": Vector2(0, -9)
-},
-"edges": {
-"up": &"A52"
-},
-"pos": Vector2(61, 94)
-},
-&"A54": {
-"dist": {
-"down": Vector2(0, 12),
-"left": Vector2(99999, 99999),
-"right": Vector2(99999, 99999),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"down": &"A55"
-},
-"pos": Vector2(68, 92)
-},
-&"A55": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(-14, 0),
-"right": Vector2(99999, 99999),
-"up": Vector2(0, -12)
-},
-"edges": {
-"left": &"A56",
-"up": &"A54"
-},
-"pos": Vector2(68, 104)
-},
-&"A56": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(99999, 99999),
-"right": Vector2(14, 0),
-"up": Vector2(0, -34)
-},
-"edges": {
-"right": &"A55",
-"up": &"A37"
-},
-"pos": Vector2(54, 104)
-},
-&"A57": {
-"dist": {
-"down": Vector2(0, 34),
-"left": Vector2(99999, 99999),
-"right": Vector2(99999, 99999),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"down": &"A49"
-},
-"pos": Vector2(84, 78)
-},
-&"A58": {
-"dist": {
-"down": Vector2(0, 9),
-"left": Vector2(-6, 0),
-"right": Vector2(13, 0),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"down": &"A85",
-"left": &"A5",
-"right": &"A6"
-},
-"pos": Vector2(87, 16)
-},
-&"A59": {
-"dist": {
-"down": Vector2(0, 20),
-"left": Vector2(99999, 99999),
-"right": Vector2(28, 0),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"down": &"A60",
-"right": &"A85"
-},
-"pos": Vector2(59, 25)
-},
-&"A6": {
-"dist": {
-"down": Vector2(0, 10),
-"left": Vector2(-13, 0),
-"right": Vector2(8, 0),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"down": &"A7",
-"left": &"A58",
-"right": &"A28"
-},
-"pos": Vector2(100, 16)
-},
-&"A60": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(99999, 99999),
-"right": Vector2(19, 0),
-"up": Vector2(0, -20)
-},
-"edges": {
-"right": &"A61",
-"up": &"A59"
-},
-"pos": Vector2(59, 45)
-},
-&"A61": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(-19, 0),
-"right": Vector2(9, 0),
-"up": Vector2(0, -7)
-},
-"edges": {
-"left": &"A60",
-"right": &"A67",
-"up": &"A62"
-},
-"pos": Vector2(78, 45)
-},
-&"A62": {
-"dist": {
-"down": Vector2(0, 7),
-"left": Vector2(-10, 0),
-"right": Vector2(9, 0),
-"up": Vector2(0, -5)
-},
-"edges": {
-"down": &"A61",
-"left": &"A64",
-"right": &"A63",
-"up": &"A66"
-},
-"pos": Vector2(78, 38)
-},
-&"A63": {
-"dist": {
-"down": Vector2(0, 7),
-"left": Vector2(-9, 0),
-"right": Vector2(99999, 99999),
-"up": Vector2(0, -13)
-},
-"edges": {
-"down": &"A67",
-"left": &"A62",
-"up": &"A85"
-},
-"pos": Vector2(87, 38)
-},
-&"A64": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(99999, 99999),
-"right": Vector2(10, 0),
-"up": Vector2(0, -5)
-},
-"edges": {
-"right": &"A62",
-"up": &"A65"
-},
-"pos": Vector2(68, 38)
-},
-&"A65": {
-"dist": {
-"down": Vector2(0, 5),
-"left": Vector2(99999, 99999),
-"right": Vector2(10, 0),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"down": &"A64",
-"right": &"A66"
-},
-"pos": Vector2(68, 33)
-},
-&"A66": {
-"dist": {
-"down": Vector2(0, 5),
-"left": Vector2(-10, 0),
-"right": Vector2(99999, 99999),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"down": &"A62",
-"left": &"A65"
-},
-"pos": Vector2(78, 33)
-},
-&"A67": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(-9, 0),
-"right": Vector2(99999, 99999),
-"up": Vector2(0, -7)
-},
-"edges": {
-"left": &"A61",
-"up": &"A63"
-},
-"pos": Vector2(87, 45)
-},
-&"A68": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(99999, 99999),
-"right": Vector2(99999, 99999),
-"up": Vector2(0, -19)
-},
-"edges": {
-"up": &"A7"
-},
-"pos": Vector2(100, 45)
-},
-&"A69": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(99999, 99999),
-"right": Vector2(18, 0),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"right": &"A9"
-},
-"pos": Vector2(110, 45)
-},
-&"A7": {
-"dist": {
-"down": Vector2(0, 19),
-"left": Vector2(99999, 99999),
-"right": Vector2(28, 0),
-"up": Vector2(0, -10)
-},
-"edges": {
-"down": &"A68",
-"right": &"A8",
-"up": &"A6"
-},
-"pos": Vector2(100, 26)
-},
-&"A70": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(99999, 99999),
-"right": Vector2(10, 0),
-"up": Vector2(0, -6)
-},
-"edges": {
-"right": &"A73",
-"up": &"A71"
-},
-"pos": Vector2(108, 38)
-},
-&"A71": {
-"dist": {
-"down": Vector2(0, 6),
-"left": Vector2(99999, 99999),
-"right": Vector2(10, 0),
-"up": Vector2(0, -16)
-},
-"edges": {
-"down": &"A70",
-"right": &"A72",
-"up": &"A28"
-},
-"pos": Vector2(108, 32)
-},
-&"A72": {
-"dist": {
-"down": Vector2(0, 6),
-"left": Vector2(-10, 0),
-"right": Vector2(99999, 99999),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"down": &"A73",
-"left": &"A71"
-},
-"pos": Vector2(118, 32)
-},
-&"A73": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(-10, 0),
-"right": Vector2(10, 0),
-"up": Vector2(0, -6)
-},
-"edges": {
-"left": &"A70",
-"right": &"A75",
-"up": &"A72"
-},
-"pos": Vector2(118, 38)
-},
-&"A75": {
-"dist": {
-"down": Vector2(0, 7),
-"left": Vector2(-10, 0),
-"right": Vector2(99999, 99999),
-"up": Vector2(0, -12)
-},
-"edges": {
-"down": &"A9",
-"left": &"A73",
-"up": &"A8"
-},
-"pos": Vector2(128, 38)
-},
-&"A76": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(99999, 99999),
-"right": Vector2(99999, 99999),
-"up": Vector2(0, -14)
-},
-"edges": {
-"up": &"A77"
-},
-"pos": Vector2(140, 39)
-},
-&"A77": {
-"dist": {
-"down": Vector2(0, 14),
-"left": Vector2(99999, 99999),
-"right": Vector2(29, 0),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"down": &"A76",
-"right": &"A78"
-},
-"pos": Vector2(140, 25)
-},
-&"A78": {
-"dist": {
-"down": Vector2(0, 13),
-"left": Vector2(-29, 0),
-"right": Vector2(99999, 99999),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"down": &"A12",
-"left": &"A77"
-},
-"pos": Vector2(169, 25)
-},
-&"A79": {
-"dist": {
-"down": Vector2(0, 5),
-"left": Vector2(99999, 99999),
-"right": Vector2(10, 0),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"down": &"A81",
-"right": &"A80"
-},
-"pos": Vector2(149, 33)
-},
-&"A8": {
-"dist": {
-"down": Vector2(0, 12),
-"left": Vector2(-28, 0),
-"right": Vector2(99999, 99999),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"down": &"A75",
-"left": &"A7"
-},
-"pos": Vector2(128, 26)
-},
-&"A80": {
-"dist": {
-"down": Vector2(0, 5),
-"left": Vector2(-10, 0),
-"right": Vector2(99999, 99999),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"down": &"A11",
-"left": &"A79"
-},
-"pos": Vector2(159, 33)
-},
-&"A81": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(99999, 99999),
-"right": Vector2(10, 0),
-"up": Vector2(0, -5)
-},
-"edges": {
-"right": &"A11",
-"up": &"A79"
-},
-"pos": Vector2(149, 38)
-},
-&"A82": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(-10, 0),
-"right": Vector2(17, 0),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"left": &"A32",
-"right": &"A31"
-},
-"pos": Vector2(145, 0)
-},
-&"A83": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(-10, 0),
-"right": Vector2(99999, 99999),
-"up": Vector2(0, -14)
-},
-"edges": {
-"left": &"A27",
-"up": &"A17"
-},
-"pos": Vector2(118, 0)
-},
-&"A84": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(-10, 0),
-"right": Vector2(99999, 99999),
-"up": Vector2(99999, 99999)
-},
-"edges": {
-"left": &"A31"
-},
-"pos": Vector2(172, 0)
-},
-&"A85": {
-"dist": {
-"down": Vector2(0, 13),
-"left": Vector2(-28, 0),
-"right": Vector2(99999, 99999),
-"up": Vector2(0, -9)
-},
-"edges": {
-"down": &"A63",
-"left": &"A59",
-"up": &"A58"
-},
-"pos": Vector2(87, 25)
-},
-&"A9": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(-18, 0),
-"right": Vector2(31, 0),
-"up": Vector2(0, -7)
-},
-"edges": {
-"left": &"A69",
-"right": &"A10",
-"up": &"A75"
-},
-"pos": Vector2(128, 45)
-},
-&"Z": {
-"dist": {
-"down": Vector2(99999, 99999),
-"left": Vector2(-61, 0),
-"right": Vector2(35, 0),
-"up": Vector2(0, -34)
-},
-"edges": {
-"left": &"A49",
-"right": &"A48",
-"up": &"A16"
-},
-"pos": Vector2(145, 112)
-}
-}
-
-[node name="A" type="Marker2D" parent="MazePath" unique_id=128998496]
-position = Vector2(172, -14)
-
-[node name="A18" type="Marker2D" parent="MazePath" unique_id=1310111065]
-position = Vector2(145, -14)
-
-[node name="A82" type="Marker2D" parent="MazePath" unique_id=504870662]
-position = Vector2(145, 0)
-
-[node name="A2" type="Marker2D" parent="MazePath" unique_id=667012529]
-position = Vector2(91, -14)
-
-[node name="A19" type="Marker2D" parent="MazePath" unique_id=1756220613]
-position = Vector2(64, -14)
-
-[node name="A17" type="Marker2D" parent="MazePath" unique_id=1521363488]
-position = Vector2(118, -14)
-
-[node name="A27" type="Marker2D" parent="MazePath" unique_id=1059440085]
-position = Vector2(108, 0)
-
-[node name="A83" type="Marker2D" parent="MazePath" unique_id=282704381]
-position = Vector2(118, 0)
-
-[node name="A28" type="Marker2D" parent="MazePath" unique_id=320123845]
-position = Vector2(108, 16)
-
-[node name="A29" type="Marker2D" parent="MazePath" unique_id=1698948262]
-position = Vector2(135, 16)
-
-[node name="A30" type="Marker2D" parent="MazePath" unique_id=1343926100]
-position = Vector2(162, 16)
-
-[node name="A31" type="Marker2D" parent="MazePath" unique_id=1716141277]
-position = Vector2(162, 0)
-
-[node name="A84" type="Marker2D" parent="MazePath" unique_id=47847118]
-position = Vector2(172, 0)
-
-[node name="A32" type="Marker2D" parent="MazePath" unique_id=172795089]
-position = Vector2(135, 0)
-
-[node name="A20" type="Marker2D" parent="MazePath" unique_id=1625486147]
-position = Vector2(64, 0)
-
-[node name="A21" type="Marker2D" parent="MazePath" unique_id=978118610]
-position = Vector2(54, 0)
-
-[node name="A22" type="Marker2D" parent="MazePath" unique_id=87905179]
-position = Vector2(54, 16)
-
-[node name="A23" type="Marker2D" parent="MazePath" unique_id=1669882897]
-position = Vector2(54, 16)
-
-[node name="A24" type="Marker2D" parent="MazePath" unique_id=1850925712]
-position = Vector2(47, 16)
-
-[node name="A25" type="Marker2D" parent="MazePath" unique_id=1516735225]
-position = Vector2(47, 54)
-
-[node name="A26" type="Marker2D" parent="MazePath" unique_id=833402690]
-position = Vector2(85, 54)
-
-[node name="A3" type="Marker2D" parent="MazePath" unique_id=1226556897]
-position = Vector2(91, 0)
-
-[node name="A4" type="Marker2D" parent="MazePath" unique_id=2083246606]
-position = Vector2(81, 0)
-
-[node name="A5" type="Marker2D" parent="MazePath" unique_id=1634880151]
-position = Vector2(81, 16)
-
-[node name="A6" type="Marker2D" parent="MazePath" unique_id=568400272]
-position = Vector2(100, 16)
-
-[node name="A7" type="Marker2D" parent="MazePath" unique_id=1083472080]
-position = Vector2(100, 26)
-
-[node name="A8" type="Marker2D" parent="MazePath" unique_id=1611179840]
-position = Vector2(128, 26)
-
-[node name="A58" type="Marker2D" parent="MazePath" unique_id=1046551858]
-position = Vector2(87, 16)
-
-[node name="A59" type="Marker2D" parent="MazePath" unique_id=1612616672]
-position = Vector2(59, 25)
-
-[node name="A85" type="Marker2D" parent="MazePath" unique_id=964323798]
-position = Vector2(87, 25)
-
-[node name="A60" type="Marker2D" parent="MazePath" unique_id=1728374024]
-position = Vector2(59, 45)
-
-[node name="A61" type="Marker2D" parent="MazePath" unique_id=1134052277]
-position = Vector2(78, 45)
-
-[node name="A62" type="Marker2D" parent="MazePath" unique_id=1233516157]
-position = Vector2(78, 38)
-
-[node name="A63" type="Marker2D" parent="MazePath" unique_id=1866028130]
-position = Vector2(87, 38)
-
-[node name="A64" type="Marker2D" parent="MazePath" unique_id=1980463149]
-position = Vector2(68, 38)
-
-[node name="A65" type="Marker2D" parent="MazePath" unique_id=1592595299]
-position = Vector2(68, 33)
-
-[node name="A66" type="Marker2D" parent="MazePath" unique_id=1084533779]
-position = Vector2(78, 33)
-
-[node name="A67" type="Marker2D" parent="MazePath" unique_id=1412890416]
-position = Vector2(87, 45)
-
-[node name="A68" type="Marker2D" parent="MazePath" unique_id=1058898837]
-position = Vector2(100, 45)
-
-[node name="A69" type="Marker2D" parent="MazePath" unique_id=1050756842]
-position = Vector2(110, 45)
-
-[node name="A70" type="Marker2D" parent="MazePath" unique_id=1326826518]
-position = Vector2(108, 38)
-
-[node name="A71" type="Marker2D" parent="MazePath" unique_id=1132045218]
-position = Vector2(108, 32)
-
-[node name="A72" type="Marker2D" parent="MazePath" unique_id=902680001]
-position = Vector2(118, 32)
-
-[node name="A73" type="Marker2D" parent="MazePath" unique_id=1294869268]
-position = Vector2(118, 38)
-
-[node name="A75" type="Marker2D" parent="MazePath" unique_id=1503261111]
-position = Vector2(128, 38)
-
-[node name="A76" type="Marker2D" parent="MazePath" unique_id=325379906]
-position = Vector2(140, 39)
-
-[node name="A77" type="Marker2D" parent="MazePath" unique_id=23711067]
-position = Vector2(140, 25)
-
-[node name="A78" type="Marker2D" parent="MazePath" unique_id=1906554358]
-position = Vector2(169, 25)
-
-[node name="A79" type="Marker2D" parent="MazePath" unique_id=1981077532]
-position = Vector2(149, 33)
-
-[node name="A80" type="Marker2D" parent="MazePath" unique_id=1111392642]
-position = Vector2(159, 33)
-
-[node name="A81" type="Marker2D" parent="MazePath" unique_id=866108308]
-position = Vector2(149, 38)
-
-[node name="A9" type="Marker2D" parent="MazePath" unique_id=2027484599]
-position = Vector2(128, 45)
-
-[node name="A10" type="Marker2D" parent="MazePath" unique_id=1698522119]
-position = Vector2(159, 45)
-
-[node name="A11" type="Marker2D" parent="MazePath" unique_id=586105356]
-position = Vector2(159, 38)
-
-[node name="A12" type="Marker2D" parent="MazePath" unique_id=724320703]
-position = Vector2(169, 38)
-
-[node name="A13" type="Marker2D" parent="MazePath" unique_id=858725688]
-position = Vector2(169, 63)
-
-[node name="A33" type="Marker2D" parent="MazePath" unique_id=1002536098]
-position = Vector2(169, 54)
-
-[node name="A34" type="Marker2D" parent="MazePath" unique_id=1547898078]
-position = Vector2(140, 54)
-
-[node name="A35" type="Marker2D" parent="MazePath" unique_id=840602617]
-position = Vector2(180, 54)
-
-[node name="A36" type="Marker2D" parent="MazePath" unique_id=56473252]
-position = Vector2(54, 63)
-
-[node name="A37" type="Marker2D" parent="MazePath" unique_id=2051622]
-position = Vector2(54, 70)
-
-[node name="A38" type="Marker2D" parent="MazePath" unique_id=516200299]
-position = Vector2(47, 70)
-
-[node name="A39" type="Marker2D" parent="MazePath" unique_id=2004470784]
-position = Vector2(47, 112)
-
-[node name="A40" type="Marker2D" parent="MazePath" unique_id=1569286413]
-position = Vector2(174, 70)
-
-[node name="A41" type="Marker2D" parent="MazePath" unique_id=1349840667]
-position = Vector2(174, 104)
-
-[node name="A42" type="Marker2D" parent="MazePath" unique_id=1970199006]
-position = Vector2(160, 104)
-
-[node name="A44" type="Marker2D" parent="MazePath" unique_id=2100827489]
-position = Vector2(152, 104)
-
-[node name="A45" type="Marker2D" parent="MazePath" unique_id=27357828]
-position = Vector2(152, 85)
-
-[node name="A46" type="Marker2D" parent="MazePath" unique_id=1422297334]
-position = Vector2(168, 85)
-
-[node name="A47" type="Marker2D" parent="MazePath" unique_id=1095742427]
-position = Vector2(168, 92)
-
-[node name="A48" type="Marker2D" parent="MazePath" unique_id=430601815]
-position = Vector2(180, 112)
-
-[node name="A49" type="Marker2D" parent="MazePath" unique_id=1083480427]
-position = Vector2(84, 112)
-
-[node name="A50" type="Marker2D" parent="MazePath" unique_id=2044250553]
-position = Vector2(77, 112)
-
-[node name="A51" type="Marker2D" parent="MazePath" unique_id=1911392220]
-position = Vector2(77, 85)
-
-[node name="A52" type="Marker2D" parent="MazePath" unique_id=769050843]
-position = Vector2(61, 85)
-
-[node name="A53" type="Marker2D" parent="MazePath" unique_id=761687391]
-position = Vector2(61, 94)
-
-[node name="A54" type="Marker2D" parent="MazePath" unique_id=1350180016]
-position = Vector2(68, 92)
-
-[node name="A55" type="Marker2D" parent="MazePath" unique_id=1653527313]
-position = Vector2(68, 104)
-
-[node name="A56" type="Marker2D" parent="MazePath" unique_id=1033182520]
-position = Vector2(54, 104)
-
-[node name="A57" type="Marker2D" parent="MazePath" unique_id=1416538465]
-position = Vector2(84, 78)
-
-[node name="A43" type="Marker2D" parent="MazePath" unique_id=2043105278]
-position = Vector2(160, 92)
-
-[node name="A14" type="Marker2D" parent="MazePath" unique_id=1260908729]
-position = Vector2(174, 63)
-
-[node name="A15" type="Marker2D" parent="MazePath" unique_id=1256329871]
-position = Vector2(174, 78)
-
-[node name="A16" type="Marker2D" parent="MazePath" unique_id=664158591]
-position = Vector2(145, 78)
-
-[node name="Z" type="Marker2D" parent="MazePath" unique_id=1782419882]
-position = Vector2(145, 112)
 
 [connection signal="active_node_changed" from="PlayerRot" to="PlayerRot/dir_arrows" method="_on_player_rot_active_node_changed"]

@@ -6,7 +6,7 @@ enum State { IDLE, GROWING, STOPPED, WON }
 var current_state : State = State.IDLE
 var active_node : String
 var next_node : String
-var active_dir : String
+var active_dir
 var tip_point : Vector2
 var pts : PackedVector2Array = PackedVector2Array([])
 var debug_vine : PackedVector2Array = PackedVector2Array([])  # for idle debugging
@@ -25,29 +25,29 @@ func _ready() -> void:
 
 func get_snapped_direction():
 	var mouse_pos = get_global_mouse_position()
-	var diff = mouse_pos - pts[pts.size()-1]
+	var diff = mouse_pos - tip_point
 	var angle = diff.angle()
 	var snapped_angle = snappedf(angle, PI/2.0)
 	var dir_vector = Vector2(cos(snapped_angle), sin(snapped_angle)).round()
-	var dir_ray : RayCast2D
+	var dir
 	match dir_vector:
 		Vector2(1,0):
-			dir_ray = $right
+			dir = "right"
 		Vector2(-1,0):
-			dir_ray = $left
+			dir = "left"
 		Vector2(0,1):
-			dir_ray = $down
+			dir = "down"
 		Vector2(0, -1):
-			dir_ray = $up
-	return [dir_vector, dir_ray]
+			dir = "up"
+		_:
+			dir = null
+	return dir
 
 func process_idle():
 	# IDLE: waiting for input to set direction
 	
 	# MOUSE CONTROL
-	#var dir_data = get_snapped_direction()
-	#active_dir = dir_data[0]
-	#active_ray = dir_data[1]
+	#active_dir = get_snapped_direction()
 
 	# WASD/ARROW KEYS CONTROL
 	if Input.is_action_just_pressed("up"):
@@ -61,13 +61,16 @@ func process_idle():
 	
 	if active_dir == null:
 		return # no valid dir detected
+	if active_dir and !graph.get_valid_dirs(active_node).has(active_dir):
+		active_dir = null
+		return
 	
 	# VISUAL UPDATE: shows active dir until node along that edge_dir
-	if graph.get_valid_dirs(active_node).has(active_dir):
-		var n_node = graph.get_next_node(active_node, active_dir)
-		debug_tip_point = graph.to_global(graph.get_pos((n_node)))
-		debug_vine[-1] = $vine_debug.to_local(debug_tip_point)
-		$vine_debug.points = debug_vine
+	#if graph.get_valid_dirs(active_node).has(active_dir):
+		#var n_node = graph.get_next_node(active_node, active_dir)
+		#debug_tip_point = graph.to_global(graph.get_pos((n_node)))
+		#debug_vine[-1] = $vine_debug.to_local(debug_tip_point)
+		#$vine_debug.points = debug_vine
 
 func clear_preview():
 	# clear debug view
@@ -134,15 +137,15 @@ func process_stopped():
 		return
 	
 	# win state
-	if active_node == "Z":
-		print("YOU WON")
+	if active_node.contains("Z"):
+		print("YOU WON!!!!!!!!!!!!!!!!!!!!!!!!!")
 		current_state = State.WON
 		clear_preview()
 		if !debug:
 			GameGlobals.unload_minigame()
 		return
 		
-	active_dir = ""
+	active_dir = null
 	update_preview()
 	
 	current_state = State.IDLE
@@ -160,5 +163,5 @@ func _physics_process(delta: float) -> void:
 			#clear_preview()
 			#pass
 			
-	if Input.is_action_just_pressed("click") && current_state == State.IDLE:
+	if current_state == State.IDLE and active_dir:
 		current_state = State.GROWING
