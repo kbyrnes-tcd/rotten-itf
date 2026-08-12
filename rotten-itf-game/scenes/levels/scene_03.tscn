@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bfd835hclty4v"]
+
+[ext_resource type="Texture2D" uid="uid://cdgkbxsdejqkq" path="res://assets/images/env/altar/Altarv1.png" id="1_lvqkp"]
+[ext_resource type="Texture2D" uid="uid://xetnkgsgwjn2" path="res://assets/images/env/altar/Altar_Collision_Mask.png" id="2_p368k"]
+[ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="3_p368k"]
+
+[node name="Scene03" type="Node2D" unique_id=345651132]
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1309616939]
+position = Vector2(1924, 282)
+texture = ExtResource("1_lvqkp")
+
+[node name="Collision" type="StaticBody2D" parent="Background" unique_id=32036546]
+
+[node name="MaskSprite" type="Sprite2D" parent="Background/Collision" unique_id=79364579]
+visible = false
+texture = ExtResource("2_p368k")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/Collision" unique_id=411311759]
+polygon = PackedVector2Array(-1920, 270, -1461.1, 270, -1463, 158, -1463, 155, -1902, 155, -1902, -57.100006, -72, -59, -72, -258, 552, -258, 554, -61, 554, -58, 1902, -57.100006, 1902, 93, 543.19995, 93, 474.1001, 155, 26, 155, 26, 148, 22, 145, 22, 143.9, -59.400024, 93, -570.69995, 93, -642.69995, 154, -1309, 154, -1311, 270, 1920, 270, 1920, -270, -1920, -270)
+
+[node name="Player" parent="." unique_id=1515659648 instance=ExtResource("3_p368k")]
+position = Vector2(66, 388)
