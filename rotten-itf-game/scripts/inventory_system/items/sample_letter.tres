@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="LetterCopy" format=3 uid="uid://s4hhnrut3gn7"]
+
+[ext_resource type="Script" uid="uid://cns60n54qqwcq" path="res://scripts/inventory_system/resource_def/letter_copy.gd" id="1_kr1wl"]
+
+[resource]
+script = ExtResource("1_kr1wl")
+copy = "This is my story"
+metadata/_custom_type_script = "uid://cns60n54qqwcq"

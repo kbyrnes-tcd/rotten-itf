@@ -6,14 +6,15 @@ static var level_root: Node2D
 static var mg_root: Node2D
 static var scene
 static var tree
-static var config : Node
-#static var tween
+static var config: Node
+# static var tween
 enum Minigame { NONE, MAZE, LETTER }
 static var current_mg
 
 static var pause_menu: Control
 static var hud: CanvasLayer
 static var color_rect: ColorRect
+static var letter_ui: LetterUI
 
 var running_another_scene : bool = false # for running minigames and etc.
 
@@ -24,6 +25,7 @@ func _ready() -> void:
 		scene = tree.current_scene
 		level_root = scene.get_node("World/LevelRoot")
 		mg_root = scene.get_node("MinigameLayer/MgRoot")
+		letter_ui = scene.get_node("HUD/LetterHUD/LetterUI")
 		current_mg = Minigame.NONE
 		
 		config = scene.get_node("Config")
@@ -85,7 +87,14 @@ static func load_minigame(mg : int):
 		if main_split:
 			main_split.position = Vector2.ZERO
 			main_split.size = viewport_size
-		
+
+static func load_ui(letter : LetterCopy):
+	letter_ui.visible = true
+	letter_ui.set_label(letter.copy)
+	
+static func un_load_ui():
+	if letter_ui.visible:
+		letter_ui.visible = false
 
 static func unload_level():
 	if level_root.get_child_count() > 0:

@@ -34,15 +34,25 @@ func clear_selection():
 	label.text = ""
 	for i in range(inv.slots.size()):
 		inv.slots[i].set_unactive()
-	
+
+func activate_slot(slot : InvSlot):
+	slot.set_active()
+	set_label(slot.item.desc)
+	# if the selected inv item has a ui_twin to render, call it on the GameManager
+	if slot.item.ui_twin:
+		GameGlobals.load_ui(slot.item.ui_twin)
+
 func _process(_delta):
 	if Input.is_action_just_pressed(("inv")):
+		print("wth")
 		var _foo = close() if is_open else open()
+	
+	if Input.is_action_just_pressed(("pause")):
+		GameGlobals.un_load_ui()
 
 	if visible:
 		for i in range(0, 6):
 			if inv.slots[i].has_item() and Input.is_action_just_pressed("inv_%d" % (i + 1)):
 				clear_selection()
-				inv.slots[i].set_active()
-				set_label(inv.slots[i].item.desc)
+				activate_slot(inv.slots[i])
 				update_slots()

@@ -146,7 +146,6 @@ func _on_line_area_2d_area_shape_entered(_area_rid: RID, area: Area2D, _area_sha
 		points = pts
 		
 		rest_points.clear()
-		points.clear()
 		
 		# TODO: TEMPORARY NON-COLLISION
 		# intersected area still exists but no collision	

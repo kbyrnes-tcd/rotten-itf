@@ -1,11 +1,13 @@
 [gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://6pxkrw3jqp6n"]
 
-[ext_resource type="Script" uid="uid://b0vt1mp7wu6pu" path="res://scripts/inventory_system/inv_item.gd" id="1_jq40k"]
+[ext_resource type="Script" uid="uid://b0vt1mp7wu6pu" path="res://scripts/inventory_system/resource_def/inv_item.gd" id="1_4qllb"]
 [ext_resource type="Texture2D" uid="uid://drrgtpc3u6638" path="res://assets/images/worms/green_worm_1.png" id="2_4qllb"]
+[ext_resource type="Resource" uid="uid://s4hhnrut3gn7" path="res://scripts/inventory_system/items/sample_letter.tres" id="3_54m3a"]
 
 [resource]
-script = ExtResource("1_jq40k")
+script = ExtResource("1_4qllb")
 name = "green_worm"
 texture = ExtResource("2_4qllb")
 desc = "This is a green worm"
+ui_twin = ExtResource("3_54m3a")
 metadata/_custom_type_script = "uid://b0vt1mp7wu6pu"
