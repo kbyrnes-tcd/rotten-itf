@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://coslqn83cxfcy"]
+
+[ext_resource type="Script" uid="uid://blst515txhg5j" path="res://scripts/zoom_trigger.gd" id="1_w3aj0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xfvsv"]
+size = Vector2(300, 20)
+
+[node name="ZoomTrigger" type="Node2D" unique_id=1302506614]
+
+[node name="ZoomTrigger" type="Area2D" parent="." unique_id=1589551699]
+script = ExtResource("1_w3aj0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZoomTrigger" unique_id=955197067]
+shape = SubResource("RectangleShape2D_xfvsv")

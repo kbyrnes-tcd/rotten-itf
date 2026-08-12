@@ -18,6 +18,9 @@ func _setup_hover(btn: Button):
 	btn.mouse_exited.connect(func(): sprite.visible = false)
 
 func _process(_delta):
+	if Input.is_action_just_pressed("pause"):
+		if not GameGlobals.tree:
+			return
 	# for bringing up the pause menu in the first place
 	if Input.is_action_just_pressed("pause") and !get_tree().paused:
 		GameGlobals.pause(true)
