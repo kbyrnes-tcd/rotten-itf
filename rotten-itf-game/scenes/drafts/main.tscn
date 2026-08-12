@@ -14,13 +14,6 @@ size = Vector2(128, 145.60507)
 [node name="Main" type="Node2D" unique_id=1166888353]
 position = Vector2(-221, -203)
 
-[node name="Player" parent="." unique_id=1515659648 instance=ExtResource("1_s7xyy")]
-position = Vector2(410, 494)
-scale = Vector2(2, 2)
-
-[node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
-limit_left = -339
-
 [node name="Ground" type="StaticBody2D" parent="." unique_id=1631808054]
 position = Vector2(579, 633)
 scale = Vector2(1.7677535, -1.3315735)
@@ -58,5 +51,7 @@ position = Vector2(310, 470)
 position = Vector2(101.00001, 376.00003)
 next_scene = ExtResource("7_i8c17")
 
-[editable path="Player"]
+[node name="Player" parent="." unique_id=1515659648 instance=ExtResource("1_s7xyy")]
+position = Vector2(445, 484)
+
 [editable path="OrangeWorm2"]

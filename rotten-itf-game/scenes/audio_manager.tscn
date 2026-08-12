@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://dqb247hkkmxdc"]
+
+[ext_resource type="Script" uid="uid://cbajjw6amhf43" path="res://scripts/audio_manager.gd" id="1_8qd8g"]
+[ext_resource type="AudioStream" uid="uid://bxrnruirclmfe" path="res://assets/audio/ambience/RITF_DemeterTempleExt_Ambience_v1.mp3" id="2_liach"]
+[ext_resource type="AudioStream" uid="uid://bpkgxdoeb1c23" path="res://assets/audio/fx/RITF_Character_Walking_v2.mp3" id="2_ujhup"]
+[ext_resource type="AudioStream" uid="uid://cmtmmhntksl4d" path="res://assets/audio/fx/RITF_Door_Open_v1.mp3" id="3_064dn"]
+[ext_resource type="AudioStream" uid="uid://ngihcyaf4j56" path="res://assets/audio/fx/RITF_Glowworms_Equip_v1.mp3" id="4_ic5jq"]
+[ext_resource type="AudioStream" uid="uid://bawvaetxc187w" path="res://assets/audio/fx/RITF_Glowworms_Place_v1.mp3" id="5_if78k"]
+[ext_resource type="AudioStream" uid="uid://bgjgbkxw5jv1g" path="res://assets/audio/fx/RITF_Rot_Grow_v1.mp3" id="6_8igv3"]
+[ext_resource type="AudioStream" uid="uid://cl0i2mefa1o5c" path="res://assets/audio/fx/RITF_Rot_Shrink_v1.mp3" id="7_2y2jw"]
+[ext_resource type="AudioStream" uid="uid://csnx8f17nohhm" path="res://assets/audio/fx/RITF_Torches_Lit_v1.mp3" id="8_2y5yn"]
+[ext_resource type="AudioStream" uid="uid://2yi57fn0psjb" path="res://assets/audio/fx/RITF_Minigame_Win (1).mp3" id="9_2y2jw"]
+[ext_resource type="AudioStream" uid="uid://rvb11j436gjm" path="res://assets/audio/fx/RITF_Minigame_Win (2).mp3" id="10_2y5yn"]
+[ext_resource type="AudioStream" uid="uid://1p8epjr5sxul" path="res://assets/audio/fx/RITF_Minigame_Win (3).mp3" id="11_oucy0"]
+[ext_resource type="AudioStream" uid="uid://dl2yaejaa2r4h" path="res://assets/audio/fx/RITF_Minigame_Win (4).mp3" id="12_cuol6"]
+[ext_resource type="AudioStream" uid="uid://6tadeq0h04w8" path="res://assets/audio/fx/RITF_Minigame_Win (5).mp3" id="13_m1k83"]
+[ext_resource type="AudioStream" uid="uid://dgdqmsms7tfes" path="res://assets/audio/fx/RITF_Minigame_Win (6).mp3" id="14_2y5yn"]
+
+[node name="AudioManager" type="Node" unique_id=1881333437 node_paths=PackedStringArray("clips")]
+process_mode = 3
+script = ExtResource("1_8qd8g")
+clips = NodePath("Clips")
+fx = Dictionary[String, AudioStream]({
+"equip": ExtResource("4_ic5jq"),
+"grow": ExtResource("6_8igv3"),
+"open_door": ExtResource("3_064dn"),
+"place": ExtResource("5_if78k"),
+"shrink": ExtResource("7_2y2jw"),
+"torch": ExtResource("8_2y5yn"),
+"walk": ExtResource("2_ujhup")
+})
+win_fx = Array[AudioStream]([ExtResource("9_2y2jw"), ExtResource("10_2y5yn"), ExtResource("11_oucy0"), ExtResource("12_cuol6"), ExtResource("13_m1k83"), ExtResource("14_2y5yn")])
+
+[node name="Clips" type="Node" parent="." unique_id=571957435]
+
+[node name="Ambience" type="AudioStreamPlayer" parent="Clips" unique_id=982820113]
+stream = ExtResource("2_liach")
+
+[node name="OneShotFX" type="AudioStreamPlayer" parent="Clips" unique_id=1126395305]
+volume_db = -15.0
+
+[node name="LoopFX" type="AudioStreamPlayer" parent="Clips" unique_id=674846746]
+volume_db = -15.0
+
+[node name="WalkFX" type="AudioStreamPlayer" parent="Clips" unique_id=671642168]
