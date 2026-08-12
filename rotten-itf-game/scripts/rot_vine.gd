@@ -104,6 +104,7 @@ func _on_area_2d_body_entered(_body: Node2D) -> void:
 func _on_line_area_2d_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
 	#print("rot touched", area.name)
 	if area.name == "LanternArea2D":
+		AudioManager.play_fx("shrink")
 		var space_state = get_world_2d().direct_space_state
 		var indices = [] # to store points within lantern-area; to later split at
 		# converting points into global positions so we can check intersection with Area2Ds

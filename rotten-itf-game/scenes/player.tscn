@@ -6,14 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://uv0xefhyr1gj" path="res://assets/images/player/daphne_animations/idle/2.png" id="4_ujl30"]
 [ext_resource type="Texture2D" uid="uid://ck1l12h6jgsbx" path="res://assets/images/player/daphne_animations/idle/3.png" id="5_31cv2"]
 [ext_resource type="Texture2D" uid="uid://c48udo5rq6a5r" path="res://assets/images/player/daphne_animations/idle/4.png" id="6_pf23h"]
-[ext_resource type="AudioStream" uid="uid://dvdukd1lqtaao" path="res://assets/audio/jump.wav" id="6_tuyoq"]
+[ext_resource type="AudioStream" uid="uid://dvdukd1lqtaao" path="res://assets/audio/archive/jump.wav" id="6_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://dn3p4usii4em8" path="res://assets/images/player/daphne_animations/idle/5.png" id="7_dt7fs"]
 [ext_resource type="Texture2D" uid="uid://cris0yxx5jc55" path="res://assets/images/player/daphne_animations/idle/6.png" id="8_wqfne"]
-[ext_resource type="Texture2D" uid="uid://bg2xv2dit48xi" path="res://assets/images/worms/lantern.png" id="9_ur7pv"]
 [ext_resource type="Texture2D" uid="uid://bhqyi5ionbt65" path="res://assets/images/player/daphne_animations/idle_equipped/1.png" id="9_wnwbv"]
 [ext_resource type="Texture2D" uid="uid://cotxrl2gpbqxr" path="res://assets/images/worms/orange_worm_1.png" id="10_d2wvv"]
 [ext_resource type="Texture2D" uid="uid://df5u3skxpm6vv" path="res://assets/images/player/daphne_animations/idle_equipped/2.png" id="10_gl8cc"]
-[ext_resource type="Texture2D" uid="uid://dbkabib4tp1d" path="res://assets/images/rot/gun.png" id="10_y4r1p"]
 [ext_resource type="Texture2D" uid="uid://chc4mdqxb82dk" path="res://assets/images/player/daphne_animations/idle_equipped/3.png" id="11_487ah"]
 [ext_resource type="Texture2D" uid="uid://t6wco3rwb7v7" path="res://assets/images/player/daphne_animations/idle_equipped/4.png" id="12_md1ol"]
 [ext_resource type="Texture2D" uid="uid://bvbw8kmo458po" path="res://assets/images/player/daphne_animations/idle_equipped/5.png" id="13_bj30b"]
@@ -25,10 +23,11 @@
 [ext_resource type="Texture2D" uid="uid://d368i2i7y0gf8" path="res://assets/images/player/daphne_animations/walk/5.png" id="19_2dvfe"]
 [ext_resource type="Texture2D" uid="uid://cumkiail4jkws" path="res://assets/images/player/daphne_animations/walk/6.png" id="20_giy8y"]
 [ext_resource type="Texture2D" uid="uid://dtb51xdfxpbet" path="res://assets/images/player/daphne_animations/walk/7.png" id="21_fdfoy"]
+[ext_resource type="Texture2D" uid="uid://5q1pecy286vi" path="res://assets/images/player/equipment/Lantern.png" id="22_ke2ow"]
+[ext_resource type="Texture2D" uid="uid://bxl2jpi2iq4hf" path="res://assets/images/player/equipment/Amulet.png" id="23_ke2ow"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b3nsi"]
-radius = 12.0
-height = 80.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_whljo"]
+size = Vector2(24.5, 78.75)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6adnx"]
 animations = [{
@@ -126,25 +125,24 @@ script = ExtResource("1_qlg0r")
 inv = ExtResource("2_ur7pv")
 
 [node name="PlyrCollisionShape2D" type="CollisionShape2D" parent="." unique_id=66024058]
-position = Vector2(-4, 0)
-shape = SubResource("CapsuleShape2D_b3nsi")
+position = Vector2(-3.25, 1.375)
+shape = SubResource("RectangleShape2D_whljo")
 
 [node name="CharacterSprites" type="Node2D" parent="." unique_id=2095860029]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterSprites" unique_id=512896578]
 sprite_frames = SubResource("SpriteFrames_6adnx")
-animation = &"walk"
+animation = &"idle_equipped"
 autoplay = "idle"
-frame_progress = 0.8339207
 
 [node name="Lantern" type="Node2D" parent="CharacterSprites" unique_id=964616978]
 process_mode = 4
 visible = false
-position = Vector2(17.333334, 2.666667)
+position = Vector2(18.000002, -34.999996)
 scale = Vector2(0.455, 0.455)
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterSprites/Lantern" unique_id=142452027]
-texture = ExtResource("9_ur7pv")
+texture = ExtResource("22_ke2ow")
 
 [node name="LanternArea2D" type="Area2D" parent="CharacterSprites/Lantern" unique_id=1614078195]
 position = Vector2(13.186813, -7.326008)
@@ -160,9 +158,9 @@ texture = SubResource("GradientTexture2D_q01m8")
 
 [node name="GunSprite2D" type="Sprite2D" parent="CharacterSprites" unique_id=1835702057]
 visible = false
-position = Vector2(17.94, 4.666667)
+position = Vector2(18.025, -34.305)
 scale = Vector2(0.67, 0.67)
-texture = ExtResource("10_y4r1p")
+texture = ExtResource("23_ke2ow")
 
 [node name="JumpFX" type="AudioStreamPlayer2D" parent="." unique_id=1761152459]
 stream = ExtResource("6_tuyoq")
@@ -170,7 +168,7 @@ stream = ExtResource("6_tuyoq")
 [node name="Gun" type="Node2D" parent="." unique_id=805094962]
 process_mode = 4
 visible = false
-position = Vector2(10, 4.666667)
+position = Vector2(20.085, -34)
 
 [node name="RayCast2D" type="RayCast2D" parent="Gun" unique_id=957316887]
 rotation = -1.5707964

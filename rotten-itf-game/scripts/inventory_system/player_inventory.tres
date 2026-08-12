@@ -1,10 +1,13 @@
 [gd_resource type="Resource" script_class="Inventory" format=3 uid="uid://bbfb2yem3oxv0"]
 
 [ext_resource type="Script" uid="uid://dsv6t02gawlnl" path="res://scripts/inventory_system/inv_slot.gd" id="2_bqrqy"]
+[ext_resource type="Resource" uid="uid://dt677afg3p4f0" path="res://scripts/inventory_system/items/orange_worm.tres" id="3_gsj5c"]
 [ext_resource type="Script" uid="uid://dl0wx3xs3seeq" path="res://scripts/inventory_system/inventory.gd" id="3_mjrco"]
 
 [sub_resource type="Resource" id="Resource_mjrco"]
 script = ExtResource("2_bqrqy")
+item = ExtResource("3_gsj5c")
+amount = 2
 metadata/_custom_type_script = "uid://dsv6t02gawlnl"
 
 [sub_resource type="Resource" id="Resource_gsj5c"]

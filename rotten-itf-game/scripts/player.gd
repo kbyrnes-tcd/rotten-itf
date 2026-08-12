@@ -83,16 +83,13 @@ func _handle_animation():
 		if tool_state == ToolState.IDLE:
 			animated_sprite_2d.animation = "idle"
 		else:
-			# TODO: SFX for equipping
 			animated_sprite_2d.animation = "idle_equipped"
 		
 	if move_state == MoveState.WALKING:
-		#TODO: SFX for walking
 		if tool_state == ToolState.IDLE:
 			animated_sprite_2d.animation = "walk"
 		else:
 			# TODO: add walk_equipped anim
-			# TODO: SFX for equipping
 			animated_sprite_2d.animation = "walk"
 			#print("should be WALK and equipped!")
 
@@ -106,13 +103,14 @@ func _handle_movement(delta: float):
 		
 	if velocity.x > 1 or velocity.x < -1:
 		move_state = MoveState.WALKING
+		AudioManager.play_walk_fx()
 	else:
+		AudioManager.stop_walk_fx()
 		move_state = MoveState.IDLE
 		
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		move_state = MoveState.JUMPING
-		#jump_fx.play()
 	
 	var direction := Input.get_axis("left", "right")
 	if direction:
@@ -155,16 +153,16 @@ func start_vine():
 	if is_growing:
 		return
 	var dir = get_snapped_direction()
-	var src = global_position + dir * 40.0
+	var src = gun_sprite.global_position + dir * 10.0
 	var mouse_pos = get_global_mouse_position()
-	var diff = mouse_pos - global_position
+	var diff = mouse_pos - gun_sprite.global_position
 	var projected_length = diff.dot(dir)
-	var target = global_position + dir * max(projected_length, 40.0)
+	var target = gun_sprite.global_position + dir * max(projected_length, 40.0)
 	var vine_instance = ROT_VINE.instantiate()
 	scene.add_child(vine_instance)
 	active_vine = vine_instance.get_child(0)
 	#print(active_vine.position)
-	#print(active_vine.global_position)
+	#print(active_vine.gun_sprite.global_position)
 	active_vine.points = PackedVector2Array([
 		active_vine.to_local(src),
 		active_vine.to_local(src)
@@ -182,6 +180,7 @@ func stop_vine():
 		active_vine.call_deferred("update_collisions")
 	is_growing = false
 	active_vine = null
+	AudioManager.stop_fx()
 
 func midpoint(src: Vector2, dest: Vector2) -> Vector2:
 	return Vector2(src.x + dest.x, src.y + dest.y) / 2
@@ -277,12 +276,14 @@ func change_tool_state(new_state: ToolState):
 # TOOL FSM functions
 func _tool_idle():
 	if Input.is_action_just_pressed("rot_cut"):
+		AudioManager.play_os("equip")
 		change_tool_state(ToolState.LANTERN_EQUIPPED)
 		#if inv.has(GLOWWORM):
 			#change_tool_state(ToolState.LANTERN_EQUIPPED)
 		#else:
 			#print("no glowworms! WOMP WOMP")
 	if Input.is_action_just_pressed("equip_rot"):
+		AudioManager.play_os("equip")
 		change_tool_state(ToolState.GUN_EQUIPPED)
 
 func _tool_lantern_equipped(): 
@@ -301,6 +302,7 @@ func _tool_lantern_equipped():
 func _tool_lantern_on(delta: float):
 	if Input.is_action_just_released("lantern_toggle"):
 		change_tool_state(ToolState.LANTERN_EQUIPPED)
+		AudioManager.stop_fx()
 		return
 	if Input.is_action_just_pressed("rot_cut"):
 		change_tool_state(ToolState.IDLE)
@@ -315,6 +317,7 @@ func _tool_lantern_on(delta: float):
 		#print("glowworms uses left: " + str(glowworm_uses))
 		if glowworm_uses <= 0:
 			inv.remove(GLOWWORM)
+			AudioManager.stop_fx()
 			#print("glowworm used")
 			if inv.has(GLOWWORM):
 				glowworm_uses = GLOWWORM_MAX
@@ -332,6 +335,7 @@ func _tool_gun_equipped():
 		change_tool_state(ToolState.LANTERN_EQUIPPED)
 		return
 	if Input.is_action_just_pressed("rot_extend") and not is_growing:
+		AudioManager.play_fx("grow")
 		start_vine()
 		change_tool_state(ToolState.GUN_ON)
 		return
@@ -464,8 +468,6 @@ func update_worm_segments():
 		else:
 			segments[i].color = Color("#3A2A08")
 
-#func _on_area_2d_body_entered(body: Node2D) -> void:
-	#print('player detects: ' + body.name)
-#
-#func _on_area_2d_body_exited(_body: Node2D) -> void:
-	#print("Exited!")
+#func _on_lantern_sfx_area_area_shape_exited(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	#if area.name == "LineArea2D":
+		#AudioManager.stop_fx()

@@ -87,8 +87,9 @@ func update_preview():
 	$dir_arrows.position = $dir_arrows.get_parent().to_local(debug_tip_point)
 
 func process_growing(delta: float):
+	AudioManager.play_fx("grow")
 	#print("GROWING")
-	var grow_speed: float = 200.0  # pixels /sec
+	var grow_speed: float = 90.0  # pixels /sec
 
 	# if active_node can grow towards active_dir, do... extend the tip
 	if graph.get_valid_dirs(active_node).has(active_dir):
@@ -111,6 +112,7 @@ func process_growing(delta: float):
 	else: current_state = State.IDLE
 
 func process_stopped():
+	AudioManager.stop_fx()
 	# actually append point to arr
 	pts.append($vine.to_local(tip_point))
 	$vine.points = pts
