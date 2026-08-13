@@ -3,7 +3,6 @@ extends Control
 @onready var inv: Inventory = preload("uid://bbfb2yem3oxv0")
 @onready var slots: Array = $NinePatchRect/GridContainer.get_children()
 
-var is_open = false
 @onready var label: Label = $NinePatchRect/Label
 
 # onload: inventory is closed, load up images
@@ -20,12 +19,14 @@ func update_slots():
 		slots[i].update(inv.slots[i])
 
 func close():
-	is_open = false;
-	visible = false;
+	if visible:
+		visible = false;
+		visible = false;
 	
 func open():
-	is_open = true;
-	visible = true;
+	if !visible:
+		visible = true;
+		visible = true;
 
 func set_label(desc : String):
 	label.text = desc
@@ -40,15 +41,11 @@ func activate_slot(slot : InvSlot):
 	set_label(slot.item.desc)
 	# if the selected inv item has a ui_twin to render, call it on the GameManager
 	if slot.item.ui_twin:
-		GameGlobals.load_ui(slot.item.ui_twin)
+		GameGlobals.load_letter_ui(slot.item.ui_twin)
 
 func _process(_delta):
 	if Input.is_action_just_pressed(("inv")):
-		print("wth")
-		var _foo = close() if is_open else open()
-	
-	if Input.is_action_just_pressed(("pause")):
-		GameGlobals.un_load_ui()
+		var _foo = close() if visible else open()
 
 	if visible:
 		for i in range(0, 6):

@@ -10,8 +10,8 @@ var player_in_area : bool = false;
 @onready var collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
 @onready var activated_sprite: Sprite2D = $Sprite2D/ActivatedSprite
 
-func _ready() -> void:
-	print("this lantern requires an " + item.name)
+#func _ready() -> void:
+	#print("this lantern requires an " + item.name)
 
 func _physics_process(_delta: float) -> void:
 	if player_in_area && Input.is_action_just_pressed("interact"):

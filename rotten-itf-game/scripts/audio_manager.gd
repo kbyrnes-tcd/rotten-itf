@@ -26,7 +26,7 @@ func play_fx(fx_name: String, from: float = 0.0) -> void:
 		active_fx = clips.get_node("LoopFX")
 		active_fx.stream = fx[fx_name]
 		active_fx.play(from)
-		print(active_fx)
+		#print(active_fx)
 	
 func stop_fx() -> void:
 	if active_fx:

@@ -12,9 +12,9 @@ enum Minigame { NONE, MAZE, LETTER }
 static var current_mg
 
 static var pause_menu: Control
-static var hud: CanvasLayer
 static var color_rect: ColorRect
 static var letter_ui: LetterUI
+var inv_ui: Control
 
 var running_another_scene : bool = false # for running minigames and etc.
 
@@ -26,11 +26,11 @@ func _ready() -> void:
 		level_root = scene.get_node("World/LevelRoot")
 		mg_root = scene.get_node("MinigameLayer/MgRoot")
 		letter_ui = scene.get_node("HUD/LetterHUD/LetterUI")
+		inv_ui = scene.get_node("HUD/InvHUD/InvUI")
 		current_mg = Minigame.NONE
 		
 		config = scene.get_node("Config")
 		pause_menu = config.pause_menu
-		hud = config.hud
 		var debug_scene : PackedScene = config.debug_level
 		#tween = create_tween()
 		#tween.tween_property(color_rect, "modulate:a", 0.5, 0.67)
@@ -39,6 +39,15 @@ func _ready() -> void:
 			load_level(level_prog[1])
 		else:
 			level_root.add_child(debug_scene.instantiate())
+
+func _process(_delta: float) -> void:
+	# esc button closes letter pop_ups and inventory, and exits minigames
+	if Input.is_action_just_pressed("esc"):
+		un_load_letter_ui()
+		if current_mg != Minigame.NONE:
+			unload_minigame()
+		if inv_ui.visible:
+			inv_ui.visible = false
 
 static func resume(w_menu : bool):
 	# only resume if currently not in minigame
@@ -62,7 +71,6 @@ static func unload_minigame():
 	# unload mg_root child from tree
 	var c_mg : Node = mg_root.get_child(0)
 	c_mg.queue_free()
-	hud.visible = true
 	return
 	
 static func load_minigame(mg : int):
@@ -77,7 +85,6 @@ static func load_minigame(mg : int):
 			inst = config.letter_mg.instantiate()
 			
 	mg_root.add_child(inst)
-	hud.visible = false
 	
 	if inst is Control:
 		var viewport_size = tree.root.get_visible_rect().size
@@ -88,11 +95,11 @@ static func load_minigame(mg : int):
 			main_split.position = Vector2.ZERO
 			main_split.size = viewport_size
 
-static func load_ui(letter : LetterCopy):
+static func load_letter_ui(letter : LetterCopy):
 	letter_ui.visible = true
 	letter_ui.set_label(letter.copy)
 	
-static func un_load_ui():
+static func un_load_letter_ui():
 	if letter_ui.visible:
 		letter_ui.visible = false
 
