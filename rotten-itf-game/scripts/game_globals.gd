@@ -45,11 +45,12 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	# esc button closes letter pop_ups and inventory, and exits minigames
 	if Input.is_action_just_pressed("esc"):
-		un_load_letter_ui()
-		if current_mg != Minigame.NONE:
+		if letter_ui.visible:
+			letter_ui.visible = false
+		elif current_mg != Minigame.NONE:
 			unload_mid_minigame()
-		if inv_ui.visible:
-			inv_ui.visible = false
+		elif inv_ui.visible:
+			inv_ui.close()
 
 static func resume(w_menu : bool):
 	# only resume if currently not in minigame
@@ -91,8 +92,9 @@ static func unload_minigame():
 	return
 	
 static func load_minigame(mg : int):
-	if inv_ui.visible:
-		inv_ui.visible = false
+	if inv_ui.visible or letter_ui.visible:
+		inv_ui.close()
+		letter_ui.visible = false
 	pause(false)
 	
 	var inst : Node
@@ -125,10 +127,6 @@ static func load_minigame(mg : int):
 static func load_letter_ui(letter : LetterCopy):
 	letter_ui.visible = true
 	letter_ui.set_label(letter.copy)
-	
-static func un_load_letter_ui():
-	if letter_ui.visible:
-		letter_ui.visible = false
 
 static func unload_level():
 	if level_root.get_child_count() > 0:
