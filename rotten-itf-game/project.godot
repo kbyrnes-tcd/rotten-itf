@@ -17,9 +17,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GameAuto="*uid://cqsam3tswmb5s"
 AudioManager="*uid://dqb247hkkmxdc"
 DebugOverlayTemp="*uid://c52t314uuliqu"
+GameAuto="*uid://cqsam3tswmb5s"
 
 [display]
 

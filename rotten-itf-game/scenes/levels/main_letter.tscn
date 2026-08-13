@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://bws5e00rlbl7t"]
+
+[ext_resource type="Texture2D" uid="uid://btvw0tm1fb350" path="res://assets/images/env/archive/brick-wall.jpg" id="1_umqvd"]
+[ext_resource type="PackedScene" uid="uid://ufmhebijpwbb" path="res://scenes/collectible_item.tscn" id="2_ettca"]
+[ext_resource type="Resource" uid="uid://6pxkrw3jqp6n" path="res://scripts/inventory_system/items/green_worm.tres" id="3_6eduv"]
+[ext_resource type="Script" uid="uid://csgyemaib401c" path="res://scripts/item_consumer.gd" id="5_48s3s"]
+[ext_resource type="Resource" uid="uid://dt677afg3p4f0" path="res://scripts/inventory_system/items/orange_worm.tres" id="6_w70n4"]
+[ext_resource type="Texture2D" uid="uid://cotxrl2gpbqxr" path="res://assets/images/worms/orange_worm_1.png" id="7_ar0vr"]
+[ext_resource type="Texture2D" uid="uid://dvjljkkkuelcb" path="res://assets/images/ui/inventory-slot.png" id="8_ggxwh"]
+[ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="9_uvlx8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q01m8"]
+size = Vector2(100, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0wfyh"]
+size = Vector2(128, 145.60507)
+
+[node name="Main" type="Node2D" unique_id=1166888353]
+
+[node name="MinigameSpawner" type="Node2D" parent="." unique_id=1517481799]
+position = Vector2(378, 482)
+script = ExtResource("5_48s3s")
+item = ExtResource("6_w70n4")
+activated_tex = ExtResource("7_ar0vr")
+minigame = 2
+
+[node name="ColorRect" type="ColorRect" parent="MinigameSpawner" unique_id=1705352610]
+offset_left = -33.0
+offset_top = -19.0
+offset_right = 67.0
+offset_bottom = 31.0
+color = Color(0.5372549, 0.31764707, 0.16078432, 1)
+
+[node name="Area2D" type="Area2D" parent="MinigameSpawner" unique_id=1811484501]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MinigameSpawner/Area2D" unique_id=1306135057]
+shape = SubResource("RectangleShape2D_q01m8")
+
+[node name="Sprite2D" type="Sprite2D" parent="MinigameSpawner" unique_id=1707438627]
+
+[node name="ActivatedSprite" type="Sprite2D" parent="MinigameSpawner/Sprite2D" unique_id=2025913135]
+texture = ExtResource("8_ggxwh")
+
+[node name="Ground" type="StaticBody2D" parent="." unique_id=1631808054]
+position = Vector2(579, 633)
+scale = Vector2(1.7677535, -1.3315735)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground" unique_id=1946065389]
+position = Vector2(1, 0)
+scale = Vector2(1, 0.31999946)
+texture = ExtResource("1_umqvd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=2008563852]
+position = Vector2(0, 6.8025513)
+scale = Vector2(5.455, 1)
+shape = SubResource("RectangleShape2D_0wfyh")
+
+[node name="OrangeWorm" parent="." unique_id=385129123 instance=ExtResource("2_ettca")]
+position = Vector2(625, 487)
+
+[node name="OrangeWorm2" parent="." unique_id=1316661098 instance=ExtResource("2_ettca")]
+position = Vector2(702, 343)
+
+[node name="Sprite2D" parent="OrangeWorm2" index="0" unique_id=1696524264]
+flip_h = true
+
+[node name="GreenWorm" parent="." unique_id=1305437828 instance=ExtResource("2_ettca")]
+position = Vector2(765, 486.00003)
+item = ExtResource("3_6eduv")
+
+[node name="Player" parent="." unique_id=1515659648 instance=ExtResource("9_uvlx8")]
+position = Vector2(469, 484)
+
+[node name="Lantern" parent="Player/CharacterSprites" parent_id_path=PackedInt32Array(1515659648, 2095860029) index="1" unique_id=964616978]
+visible = true
+
+[node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
+limit_top = -7
+limit_bottom = 642
+
+[connection signal="body_entered" from="MinigameSpawner/Area2D" to="MinigameSpawner" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="MinigameSpawner/Area2D" to="MinigameSpawner" method="_on_area_2d_body_exited"]
+
+[editable path="OrangeWorm2"]
+[editable path="Player"]

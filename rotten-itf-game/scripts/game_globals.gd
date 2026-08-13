@@ -14,11 +14,13 @@ static var current_mg
 static var pause_menu: Control
 static var color_rect: ColorRect
 static var letter_ui: LetterUI
-var inv_ui: Control
 
+static var mid_mg : Node
+static var inv_ui : Control
 var running_another_scene : bool = false # for running minigames and etc.
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	AudioManager.play_ambience("Ambience", 0, true)
 	if !running_another_scene:
 		tree = get_tree()
@@ -45,7 +47,7 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("esc"):
 		un_load_letter_ui()
 		if current_mg != Minigame.NONE:
-			unload_minigame()
+			unload_mid_minigame()
 		if inv_ui.visible:
 			inv_ui.visible = false
 
@@ -63,18 +65,36 @@ static func pause(w_menu : bool):
 		pause_menu.visible = true
 	tree.paused = true
 
-static func unload_minigame():
+static func unload_mid_minigame():
+	print("Tryna unload mid mg")
 	# resume game
+	current_mg = Minigame.NONE
+	resume(false)
+	# store mg_root child from tree into mid_mg
+	mid_mg = mg_root.get_child(0)
+	mg_root.get_child(0).process_mode = Node.PROCESS_MODE_DISABLED
+	mg_root.get_child(0).visible = false
+	return
+
+static func unload_minigame():
+	print("player has won, unloading fr")
 	AudioManager.play_os_from_arr("win")
 	current_mg = Minigame.NONE
 	resume(false)
 	# unload mg_root child from tree
-	var c_mg : Node = mg_root.get_child(0)
+	var c_mg := mg_root.get_child(0)
+	var mg_spawner : ItemConsumer = level_root.get_child(0).get_child(0)
+	# set minigame as complete: deactivate on item_consumer...
+	mg_spawner.satisfied()
 	c_mg.queue_free()
+	mid_mg = null
 	return
 	
 static func load_minigame(mg : int):
+	if inv_ui.visible:
+		inv_ui.visible = false
 	pause(false)
+	
 	var inst : Node
 	match mg:
 		Minigame.MAZE:
@@ -83,6 +103,13 @@ static func load_minigame(mg : int):
 		Minigame.LETTER:
 			current_mg = Minigame.LETTER
 			inst = config.letter_mg.instantiate()
+
+	if mid_mg:
+		# if player left mid_mg reload that
+		mg_root.get_child(0).process_mode = Node.PROCESS_MODE_ALWAYS
+		mg_root.get_child(0).visible = true
+		mid_mg = null
+		return
 			
 	mg_root.add_child(inst)
 	

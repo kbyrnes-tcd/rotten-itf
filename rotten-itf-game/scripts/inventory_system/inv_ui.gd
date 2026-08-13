@@ -24,7 +24,8 @@ func close():
 		visible = false;
 	
 func open():
-	if !visible:
+	if !visible and !get_tree().paused:
+		# dont open inv while paused...
 		visible = true;
 		visible = true;
 
