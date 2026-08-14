@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://deocyng7rlpbi"
-path="res://.godot/imported/RITF_Gardenmediumrot.png-c98b951bf76ebb301b11c4a1a11633fb.ctex"
+uid="uid://dgwjnqq4radaq"
+path="res://.godot/imported/RITF_Gardenbackrot.png-d5d228e55cf4522d14b96522dd7bbf40.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/env/p2_garden/RITF_Gardenmediumrot.png"
-dest_files=["res://.godot/imported/RITF_Gardenmediumrot.png-c98b951bf76ebb301b11c4a1a11633fb.ctex"]
+source_file="res://assets/images/env/p2_garden_ext/RITF_Gardenbackrot.png"
+dest_files=["res://.godot/imported/RITF_Gardenbackrot.png-d5d228e55cf4522d14b96522dd7bbf40.ctex"]
 
 [params]
 

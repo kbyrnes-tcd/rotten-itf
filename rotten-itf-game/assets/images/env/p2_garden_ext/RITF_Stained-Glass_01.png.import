@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ck4esxtghri8x"
-path="res://.godot/imported/RITF_Stained-Glass_01.png-0af312776ab11b130dc9303a12738a2c.ctex"
+path="res://.godot/imported/RITF_Stained-Glass_01.png-4f343cf23234632db0a36112237d8d7b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/env/p2_garden/RITF_Stained-Glass_01.png"
-dest_files=["res://.godot/imported/RITF_Stained-Glass_01.png-0af312776ab11b130dc9303a12738a2c.ctex"]
+source_file="res://assets/images/env/p2_garden_ext/RITF_Stained-Glass_01.png"
+dest_files=["res://.godot/imported/RITF_Stained-Glass_01.png-4f343cf23234632db0a36112237d8d7b.ctex"]
 
 [params]
 

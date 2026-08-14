@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cu14g5k5q86pn"
-path="res://.godot/imported/RITF_Garden.just pillars.png-711fab819fe13a9643104017d854816b.ctex"
+uid="uid://b7fnan1n4ud8f"
+path="res://.godot/imported/RITF_Garden-backdrop.png-44c96b8909ee3354e76abf655c44d5e6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/env/p2_garden/RITF_Garden.just pillars.png"
-dest_files=["res://.godot/imported/RITF_Garden.just pillars.png-711fab819fe13a9643104017d854816b.ctex"]
+source_file="res://assets/images/env/p2_garden_ext/RITF_Garden-backdrop.png"
+dest_files=["res://.godot/imported/RITF_Garden-backdrop.png-44c96b8909ee3354e76abf655c44d5e6.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cisaoh8xxs8dk"
-path="res://.godot/imported/RITF_GardenbehindNEW.png-9b9230131ae0e51b9994d05bb89fcc59.ctex"
+uid="uid://1k6yhyu0d08r"
+path="res://.godot/imported/Firsthallwaynobackground.png-42d5189393ad167991705c0608fa79c7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/env/p2_garden/RITF_GardenbehindNEW.png"
-dest_files=["res://.godot/imported/RITF_GardenbehindNEW.png-9b9230131ae0e51b9994d05bb89fcc59.ctex"]
+source_file="res://assets/images/env/p2_garden_int/Firsthallwaynobackground.png"
+dest_files=["res://.godot/imported/Firsthallwaynobackground.png-42d5189393ad167991705c0608fa79c7.ctex"]
 
 [params]
 
