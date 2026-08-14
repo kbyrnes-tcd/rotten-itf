@@ -7,7 +7,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2tqn1"]
 shader = ExtResource("1_b43xs")
 shader_parameter/pixelate_amount = 15
-shader_parameter/darken_amount = 0.5
+shader_parameter/darken_amount = 0.825
 
 [node name="Vine" type="Node2D" unique_id=1749191672]
 
