@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://db00qg8xwqve6"]
 
 [ext_resource type="PackedScene" uid="uid://dismh7ltsr7nx" path="res://scenes/rot_dressing.tscn" id="1_0svnh"]
-[ext_resource type="Texture2D" uid="uid://b7fnan1n4ud8f" path="res://assets/images/env/p2_garden/RITF_Garden-backdrop.png" id="1_ni34o"]
-[ext_resource type="Texture2D" uid="uid://dxc4tbw54rgba" path="res://assets/images/env/p2_garden/RITF_Garden-behind.png" id="2_otxm1"]
-[ext_resource type="Texture2D" uid="uid://cgc6i8nifbb0c" path="res://assets/images/env/p2_garden/RITF_Garden-infront.png" id="3_s71pa"]
+[ext_resource type="Texture2D" uid="uid://dgwjnqq4radaq" path="res://assets/images/env/p2_garden/RITF_Gardenbackrot.png" id="1_4n1ul"]
+[ext_resource type="Texture2D" uid="uid://deocyng7rlpbi" path="res://assets/images/env/p2_garden/RITF_Gardenmediumrot.png" id="2_4n1ul"]
+[ext_resource type="Texture2D" uid="uid://cr6nmb6vkj1yh" path="res://assets/images/env/p2_garden/RITF_Gardenfrontrot.png" id="3_qsi71"]
 [ext_resource type="Texture2D" uid="uid://3t3q6orpnxyr" path="res://assets/images/env/p2_garden/Rotmap.png" id="4_0svnh"]
 [ext_resource type="Texture2D" uid="uid://cu14g5k5q86pn" path="res://assets/images/env/p2_garden/RITF_Garden.just pillars.png" id="4_4n1ul"]
 [ext_resource type="Texture2D" uid="uid://dyfb4jh6yq53g" path="res://assets/images/rot/Rot-V2-Single.PNG" id="6_2tqn1"]
@@ -95,17 +95,17 @@ size = Vector2(2596, 33)
 position = Vector2(2025, 215)
 
 [node name="Backdrop" type="Parallax2D" parent="Environment" unique_id=1373402238]
-z_index = -2
-scroll_scale = Vector2(0.8, 1)
+z_index = -3
+scroll_scale = Vector2(0.85, 1)
 
 [node name="RitfGardenBackdrop" type="Sprite2D" parent="Environment/Backdrop" unique_id=43126088]
-texture = ExtResource("1_ni34o")
+texture = ExtResource("1_4n1ul")
 
 [node name="Behind" type="Parallax2D" parent="Environment" unique_id=2131073960]
 z_index = -1
 
 [node name="RitfGardenBehind" type="Sprite2D" parent="Environment/Behind" unique_id=1950120688]
-texture = ExtResource("2_otxm1")
+texture = ExtResource("2_4n1ul")
 region_enabled = true
 region_rect = Rect2(0, 0, 4050, 270)
 
@@ -113,7 +113,7 @@ region_rect = Rect2(0, 0, 4050, 270)
 z_index = 1
 
 [node name="RitfGardenInfront" type="Sprite2D" parent="Environment/Infront" unique_id=1598557972]
-texture = ExtResource("3_s71pa")
+texture = ExtResource("3_qsi71")
 
 [node name="RitfGarden_justPillars" type="Sprite2D" parent="Environment/Infront" unique_id=401904569]
 texture = ExtResource("4_4n1ul")
@@ -365,12 +365,12 @@ width = 12.0
 width_curve = SubResource("Curve_410gd")
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("6_6c07b")]
-position = Vector2(2653, 288)
+position = Vector2(78, 288)
 
 [node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
-limit_left = 7
+limit_left = -82
 limit_top = 88
-limit_right = 4194
+limit_right = 3939
 limit_bottom = 342
 
 [node name="Colliders" type="Node2D" parent="." unique_id=2145202998]
@@ -400,6 +400,13 @@ scale = Vector2(0.15999758, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/RightOobCollider" unique_id=2075318962]
 position = Vector2(1288, -0.5)
 shape = SubResource("RectangleShape2D_3336g")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1256881528]
+color = Color(0.7107411, 0.71074116, 0.7107411, 1)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1276469286]
+color = Color(1, 0.7921569, 0.62352943, 0.26666668)
+energy = 0.8
 
 [connection signal="area_shape_entered" from="RotOnWallsInFront/Vine7/Line2D2/LineArea2D" to="RotOnWallsInFront/Vine7/Line2D2" method="_on_line_area_2d_area_shape_entered"]
 [connection signal="body_entered" from="RotOnWallsInFront/Vine7/Line2D2/LineArea2D" to="RotOnWallsInFront/Vine7/Line2D2" method="_on_area_2d_body_entered"]
