@@ -15,6 +15,32 @@
 [ext_resource type="AudioStream" uid="uid://dl2yaejaa2r4h" path="res://assets/audio/fx/RITF_Minigame_Win (4).mp3" id="12_cuol6"]
 [ext_resource type="AudioStream" uid="uid://6tadeq0h04w8" path="res://assets/audio/fx/RITF_Minigame_Win (5).mp3" id="13_m1k83"]
 [ext_resource type="AudioStream" uid="uid://dgdqmsms7tfes" path="res://assets/audio/fx/RITF_Minigame_Win (6).mp3" id="14_2y5yn"]
+[ext_resource type="AudioStream" uid="uid://ce23i7vs8skqh" path="res://assets/audio/alphabet/a.wav" id="15_2igfy"]
+[ext_resource type="AudioStream" uid="uid://bqj7x3bjhatpq" path="res://assets/audio/alphabet/b.wav" id="16_gi52w"]
+[ext_resource type="AudioStream" uid="uid://blpvn1naxlms1" path="res://assets/audio/alphabet/c.wav" id="17_g71vj"]
+[ext_resource type="AudioStream" uid="uid://d3urvclrjpq5e" path="res://assets/audio/alphabet/d.wav" id="18_ladlq"]
+[ext_resource type="AudioStream" uid="uid://bgkb86113espm" path="res://assets/audio/alphabet/e.wav" id="19_ku15p"]
+[ext_resource type="AudioStream" uid="uid://el2wt78nwrw3" path="res://assets/audio/alphabet/f.wav" id="20_sa6p2"]
+[ext_resource type="AudioStream" uid="uid://clp5nwj8lkkm" path="res://assets/audio/alphabet/g.wav" id="21_opu6i"]
+[ext_resource type="AudioStream" uid="uid://c4lnfpkmahqim" path="res://assets/audio/alphabet/h.wav" id="22_t2ybr"]
+[ext_resource type="AudioStream" uid="uid://ba5bfdmi5myxg" path="res://assets/audio/alphabet/i.wav" id="23_cewst"]
+[ext_resource type="AudioStream" uid="uid://db5gue8t356l1" path="res://assets/audio/alphabet/j.wav" id="24_g5lra"]
+[ext_resource type="AudioStream" uid="uid://clxqk4y3ixfas" path="res://assets/audio/alphabet/k.wav" id="25_ccetw"]
+[ext_resource type="AudioStream" uid="uid://dci8w80n6wrbu" path="res://assets/audio/alphabet/l.wav" id="26_bsfxv"]
+[ext_resource type="AudioStream" uid="uid://dxyk8i1q40wal" path="res://assets/audio/alphabet/m.wav" id="27_5n573"]
+[ext_resource type="AudioStream" uid="uid://c0qtwff6j5i87" path="res://assets/audio/alphabet/n.wav" id="28_550e2"]
+[ext_resource type="AudioStream" uid="uid://d3uojkb8sg8w2" path="res://assets/audio/alphabet/o.wav" id="29_wutdd"]
+[ext_resource type="AudioStream" uid="uid://3nyn7u2rbyj0" path="res://assets/audio/alphabet/p.wav" id="30_n4ll6"]
+[ext_resource type="AudioStream" uid="uid://bayednuojys5f" path="res://assets/audio/alphabet/q.wav" id="31_b6biq"]
+[ext_resource type="AudioStream" uid="uid://due6xnufankbn" path="res://assets/audio/alphabet/r.wav" id="32_7vawh"]
+[ext_resource type="AudioStream" uid="uid://cux1larmu47o1" path="res://assets/audio/alphabet/s.wav" id="33_g3h6h"]
+[ext_resource type="AudioStream" uid="uid://cjq2fwvf1qmh0" path="res://assets/audio/alphabet/t.wav" id="34_g22av"]
+[ext_resource type="AudioStream" uid="uid://dcv5vsowytngt" path="res://assets/audio/alphabet/u.wav" id="35_kjqg2"]
+[ext_resource type="AudioStream" uid="uid://gspmc6tfifiq" path="res://assets/audio/alphabet/v.wav" id="36_6u176"]
+[ext_resource type="AudioStream" uid="uid://tixihtt01vh7" path="res://assets/audio/alphabet/w.wav" id="37_llx4k"]
+[ext_resource type="AudioStream" uid="uid://duq34wxy85obd" path="res://assets/audio/alphabet/x.wav" id="38_k76kq"]
+[ext_resource type="AudioStream" uid="uid://t0wnrar7v8le" path="res://assets/audio/alphabet/y.wav" id="39_4gnqx"]
+[ext_resource type="AudioStream" uid="uid://cen4njdibrv4t" path="res://assets/audio/alphabet/z.wav" id="40_kqu28"]
 
 [node name="AudioManager" type="Node" unique_id=1881333437 node_paths=PackedStringArray("clips")]
 process_mode = 3
@@ -30,6 +56,7 @@ fx = Dictionary[String, AudioStream]({
 "walk": ExtResource("2_ujhup")
 })
 win_fx = Array[AudioStream]([ExtResource("9_2y2jw"), ExtResource("10_2y5yn"), ExtResource("11_oucy0"), ExtResource("12_cuol6"), ExtResource("13_m1k83"), ExtResource("14_2y5yn")])
+alphabet_fx = Array[AudioStream]([ExtResource("15_2igfy"), ExtResource("16_gi52w"), ExtResource("17_g71vj"), ExtResource("18_ladlq"), ExtResource("19_ku15p"), ExtResource("20_sa6p2"), ExtResource("21_opu6i"), ExtResource("22_t2ybr"), ExtResource("23_cewst"), ExtResource("24_g5lra"), ExtResource("25_ccetw"), ExtResource("26_bsfxv"), ExtResource("27_5n573"), ExtResource("28_550e2"), ExtResource("29_wutdd"), ExtResource("30_n4ll6"), ExtResource("31_b6biq"), ExtResource("32_7vawh"), ExtResource("33_g3h6h"), ExtResource("34_g22av"), ExtResource("35_kjqg2"), ExtResource("36_6u176"), ExtResource("37_llx4k"), ExtResource("38_k76kq"), ExtResource("39_4gnqx"), ExtResource("40_kqu28"), null])
 
 [node name="Clips" type="Node" parent="." unique_id=571957435]
 
