@@ -61,11 +61,15 @@ scale = Vector2(0.118892506, 0.13843648)
 [node name="Chandelier" parent="." unique_id=813450568 instance=ExtResource("7_5i8uq")]
 
 [node name="Sprite2D" parent="Chandelier" index="0" unique_id=735904489]
-position = Vector2(535, 165)
-scale = Vector2(0.23295446, 0.18824296)
+position = Vector2(539, 155)
+scale = Vector2(2.5378306, 1.5405674)
 
 [node name="CollisionShape2D" parent="Chandelier/StaticBody2D" parent_id_path=PackedInt32Array(813450568, 1604754245) index="0" unique_id=278047665]
 position = Vector2(535, 199)
+
+[node name="Chain" parent="Chandelier" index="3" unique_id=573397967]
+position = Vector2(518, 63)
+scale = Vector2(0.85714185, 0.5974027)
 
 [node name="Lever" parent="." unique_id=1312271664 node_paths=PackedStringArray("chandelier") instance=ExtResource("8_y5j78")]
 chandelier = NodePath("../Chandelier")
