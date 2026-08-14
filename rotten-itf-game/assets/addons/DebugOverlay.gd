@@ -60,7 +60,7 @@ func process_monitor(monitor) -> String:
 	return ""
 
 
-func _process(delta):
+func _process(_delta):
 	if d_visible:
 		var label_text = ""
 

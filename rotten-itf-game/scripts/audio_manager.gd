@@ -1,9 +1,11 @@
 extends Node
 
 var active_ambience : AudioStreamPlayer
-var active_os : AudioStreamPlayer # one shot sfx
 var active_fx : AudioStreamPlayer # looping fx that only one of can play at a time e.g. grow/shrink
 var active_walk_fx : AudioStreamPlayer # walking fx should be able to be layered
+@onready var active_os: AudioStreamPlayer = $Clips/OneShotFX
+var walk_tween : Tween
+var fx_tween : Tween
 
 @export var clips: Node
 @export_group("Source")
@@ -14,39 +16,51 @@ var active_walk_fx : AudioStreamPlayer # walking fx should be able to be layered
 @export var scraps_fx: Array[AudioStream] = []
 @export var alphabet_fx : Array[AudioStream] = []
 
-func _ready() -> void:
-	active_os = clips.get_node("OneShotFX")
-	active_walk_fx = clips.get_node("WalkFX")
-
 # need 2 rework like w/ play_os to play dynamic ambience
 func play_ambience(am_name: String, from: float = 0.0, skip_restart: bool = false) -> void:
 	if skip_restart and active_ambience and active_ambience.name == am_name:
 		return
 	active_ambience = clips.get_node(am_name)
 	active_ambience.play(from)
+
+func fade(c_tween:Tween, stream:AudioStreamPlayer, start_vol := 0.0, end_vol := 0.0, dur := 0.5):
+	if c_tween:
+		c_tween.kill()
+	c_tween = create_tween()
+	stream.volume_db = start_vol
+	c_tween.tween_property(stream, "volume_db", end_vol, dur)
+	await c_tween.finished
+	c_tween.stop()
 	
-func play_fx(fx_name: String, from: float = 0.0) -> void:
-	if !active_fx:
-		#print("playing fx %s" %fx_name)
-		active_fx = clips.get_node("LoopFX")
-		active_fx.stream = fx[fx_name]
-		active_fx.play(from)
-	
-func stop_fx() -> void:
-	if active_fx:
-		#print("stopping fx")
-		active_fx.stop()
-		active_fx = null
+	# if fading out
+	if end_vol < start_vol:
+		stream.stop()
+
+	return
 
 func play_walk_fx() -> void:
 	if !active_walk_fx:
+		active_walk_fx = clips.get_node("WalkFX")
 		active_walk_fx.stream = fx["walk"]
+		fade(walk_tween, active_walk_fx, -10.0, 0.0, 0.2)
 		active_walk_fx.play()
 
 func stop_walk_fx() -> void:
 	if active_walk_fx:
-		active_walk_fx.stop()
+		fade(walk_tween, active_walk_fx, 0.0, -10.0, 0.2)
 		active_walk_fx = null
+
+func play_fx(fx_name: String, from: float = 0.0) -> void:
+	if !active_fx:
+		active_fx = clips.get_node("LoopFX")
+		active_fx.stream = fx[fx_name]
+		fade(fx_tween, active_fx, -50.0, -15.0, 1.0)
+		active_fx.play(from)
+	
+func stop_fx() -> void:
+	if active_fx:
+		fade(fx_tween, active_fx, -15.0, -50.0, 1.0)
+		active_fx = null
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("down"):

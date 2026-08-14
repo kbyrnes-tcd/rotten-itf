@@ -70,3 +70,5 @@ volume_db = -15.0
 volume_db = -15.0
 
 [node name="WalkFX" type="AudioStreamPlayer" parent="Clips" unique_id=671642168]
+
+[node name="WalkFX2" type="AudioStreamPlayer" parent="Clips" unique_id=1799273754]
