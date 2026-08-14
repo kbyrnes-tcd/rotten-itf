@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://qtqiun326hpr"]
+
+[ext_resource type="Script" uid="uid://3n4dg0ogdsqm" path="res://scripts/lever.gd" id="1_4kwec"]
+[ext_resource type="Texture2D" uid="uid://bg2xv2dit48xi" path="res://assets/images/worms/lantern.png" id="2_ncfea"]
+[ext_resource type="Texture2D" uid="uid://cd4cbrmm0xm5a" path="res://assets/images/ui/carat.png" id="3_qxmkn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxmkn"]
+size = Vector2(20, 38)
+
+[node name="Lever" type="Area2D" unique_id=833142988]
+script = ExtResource("1_4kwec")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1833286394]
+z_index = 1
+texture = ExtResource("2_ncfea")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1930738376]
+position = Vector2(-2, 3)
+shape = SubResource("RectangleShape2D_qxmkn")
+
+[node name="InteractHint" type="Sprite2D" parent="." unique_id=106943939]
+texture = ExtResource("3_qxmkn")

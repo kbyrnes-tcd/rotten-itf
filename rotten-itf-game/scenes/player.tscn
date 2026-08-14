@@ -131,6 +131,7 @@ shape = SubResource("RectangleShape2D_whljo")
 [node name="CharacterSprites" type="Node2D" parent="." unique_id=2095860029]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterSprites" unique_id=512896578]
+z_index = 2
 sprite_frames = SubResource("SpriteFrames_6adnx")
 animation = &"idle_equipped"
 autoplay = "idle"
@@ -185,7 +186,7 @@ joint_mode = 2
 offset = Vector2(85, 0)
 limit_left = -80
 limit_top = 200
-limit_right = 2470
+limit_right = 3840
 limit_bottom = 158
 limit_smoothed = true
 rotation_smoothing_enabled = true

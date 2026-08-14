@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://c1epxp5spnua"]
 
+[ext_resource type="Texture2D" uid="uid://cd4cbrmm0xm5a" path="res://assets/images/ui/carat.png" id="1_byapi"]
+
 [sub_resource type="GDScript" id="GDScript_uj0ns"]
 script/source = "extends Node2D
 
@@ -48,3 +50,6 @@ speaker = "Daphne"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1913681013]
 position = Vector2(0, -1)
+
+[node name="Interact" type="Sprite2D" parent="." unique_id=125428239]
+texture = ExtResource("1_byapi")

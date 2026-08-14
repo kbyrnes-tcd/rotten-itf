@@ -3,6 +3,7 @@ extends Node2D
 @export var dialogue_lines: Array[String] = []
 @export var speaker: Array[String] = []
 @export var one_shot: bool = true
+@onready var hint = $Interact
 
 var player_in_area = false
 var triggered = false
@@ -33,9 +34,11 @@ func trigger_dialogue():
 func _on_area_2d_body_entered(body: Node2D):
 	if body.has_method("collect"):
 		player_in_area = true
+		hint.visible = true
 		print("player in dialogue area")
 
 
 func _on_area_2d_body_exited(body: Node2D):
 	if body.has_method("collect"):
 		player_in_area = false
+		hint.visible = false
