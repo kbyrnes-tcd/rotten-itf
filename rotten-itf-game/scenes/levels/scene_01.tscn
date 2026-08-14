@@ -1,26 +1,20 @@
 [gd_scene format=3 uid="uid://w78vttqkmxaj"]
 
-[ext_resource type="Texture2D" uid="uid://5qshld0g75rv" path="res://assets/images/env/p1_start/CONDENSED-Back.png" id="2_775pl"]
-[ext_resource type="Texture2D" uid="uid://coin0yvs6xqds" path="res://assets/images/env/p1_start/1-Backdrop.png" id="2_wg12t"]
-[ext_resource type="Texture2D" uid="uid://3cs77nnx2dpv" path="res://assets/images/env/p1_start/parallax/3-Mid bushes.png" id="3_5t0pk"]
+[ext_resource type="Texture2D" uid="uid://dclvu8v18i6k" path="res://assets/images/env/p1_start/Backdrop.png" id="1_5t0pk"]
+[ext_resource type="Texture2D" uid="uid://dj3brv73c322l" path="res://assets/images/env/p1_start/parallax/Bushes.png" id="3_5t0pk"]
 [ext_resource type="Shader" uid="uid://pv5hmh5jce1m" path="res://scripts/shaders/pixel_sway.gdshader" id="3_56i2g"]
-[ext_resource type="Texture2D" uid="uid://cv06841c8kh4t" path="res://assets/images/env/p1_start/SIMPLE-Front.png" id="3_3336g"]
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="4_3336g"]
-[ext_resource type="Texture2D" uid="uid://o8dro18but5g" path="res://assets/images/env/p1_start/parallax/4.midtrees.png" id="4_b3nsi"]
-[ext_resource type="Texture2D" uid="uid://mw60m6635v67" path="res://assets/images/env/p1_start/parallax/2-TreesBack.png" id="4_jmjgo"]
-[ext_resource type="Texture2D" uid="uid://75jap5nxxlg5" path="res://assets/images/env/p1_start/parallax/9-treesinfront .png" id="5_c6wtd"]
+[ext_resource type="Texture2D" uid="uid://bqo7dghd4prj1" path="res://assets/images/env/p1_start/Building_Back.png" id="5_b3nsi"]
+[ext_resource type="Texture2D" uid="uid://75jap5nxxlg5" path="res://assets/images/env/p1_start/parallax/TreesInFront.png" id="5_c6wtd"]
+[ext_resource type="Texture2D" uid="uid://04tiqv4hnn5o" path="res://assets/images/env/p1_start/Building_Front.png" id="6_amr1b"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8rgwm"]
-shader = ExtResource("3_56i2g")
-shader_parameter/speed = 0.8
-shader_parameter/strength = 0.15
-shader_parameter/y_origin = 0.0
-shader_parameter/restrict_dir = 0
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8bo55"]
+load_path = "res://.godot/imported/Trees.png-61f64ec7b583c9702c4d368fac49f2b6.ctex"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gxcbl"]
 shader = ExtResource("3_56i2g")
 shader_parameter/speed = 0.25
-shader_parameter/strength = 0.05
+shader_parameter/strength = 0.15
 shader_parameter/y_origin = 0.0
 shader_parameter/restrict_dir = 0
 
@@ -43,31 +37,26 @@ position = Vector2(1444, 179)
 scroll_scale = Vector2(0.6, 1)
 
 [node name="1Backdrop" type="Sprite2D" parent="Environment/Background" unique_id=1435361381]
-texture = ExtResource("2_wg12t")
-
-[node name="2TreesBack" type="Sprite2D" parent="Environment/Background" unique_id=1461737863]
-texture = ExtResource("4_jmjgo")
+texture = ExtResource("1_5t0pk")
 
 [node name="Midground" type="Parallax2D" parent="Environment" unique_id=380232047]
 scroll_scale = Vector2(0.8, 1)
 
-[node name="3MidBushes" type="Sprite2D" parent="Environment/Midground" unique_id=474325509]
-material = SubResource("ShaderMaterial_8rgwm")
-scale = Vector2(1.005, 1.005)
-texture = ExtResource("3_5t0pk")
-
 [node name="4_midtrees" type="Sprite2D" parent="Environment/Midground" unique_id=1778064843]
+texture = SubResource("CompressedTexture2D_8bo55")
+
+[node name="Bushes" type="Sprite2D" parent="Environment/Midground" unique_id=978415814]
 material = SubResource("ShaderMaterial_gxcbl")
-texture = ExtResource("4_b3nsi")
+texture = ExtResource("3_5t0pk")
 
 [node name="Building" type="Parallax2D" parent="Environment" unique_id=731269053]
 
 [node name="CondensedBack" type="Sprite2D" parent="Environment/Building" unique_id=125937943]
-texture = ExtResource("2_775pl")
+texture = ExtResource("5_b3nsi")
 
 [node name="SimpleFront" type="Sprite2D" parent="Environment/Building" unique_id=617101434]
 z_index = 1
-texture = ExtResource("3_3336g")
+texture = ExtResource("6_amr1b")
 
 [node name="Foreground" type="Parallax2D" parent="Environment" unique_id=483883464]
 z_index = 1

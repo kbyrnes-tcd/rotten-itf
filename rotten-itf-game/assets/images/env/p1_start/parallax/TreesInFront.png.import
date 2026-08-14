@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5qshld0g75rv"
-path="res://.godot/imported/CONDENSED-Back.png-aaad3f3949e91fd57dfb58d39e3f7e48.ctex"
+uid="uid://75jap5nxxlg5"
+path="res://.godot/imported/TreesInFront.png-7faf75f718f55ad9bd1b38c49d936994.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/env/p1_start/CONDENSED-Back.png"
-dest_files=["res://.godot/imported/CONDENSED-Back.png-aaad3f3949e91fd57dfb58d39e3f7e48.ctex"]
+source_file="res://assets/images/env/p1_start/parallax/TreesInFront.png"
+dest_files=["res://.godot/imported/TreesInFront.png-7faf75f718f55ad9bd1b38c49d936994.ctex"]
 
 [params]
 

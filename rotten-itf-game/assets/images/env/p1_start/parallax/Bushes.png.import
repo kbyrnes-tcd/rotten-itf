@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3cs77nnx2dpv"
-path="res://.godot/imported/3-Mid bushes.png-5abdb3fead5defafb03bd4e68ebcc1a2.ctex"
+uid="uid://dj3brv73c322l"
+path="res://.godot/imported/Bushes.png-c3771e61911a4b8a9a1a5af971484ac1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/env/p1_start/parallax/3-Mid bushes.png"
-dest_files=["res://.godot/imported/3-Mid bushes.png-5abdb3fead5defafb03bd4e68ebcc1a2.ctex"]
+source_file="res://assets/images/env/p1_start/parallax/Bushes.png"
+dest_files=["res://.godot/imported/Bushes.png-c3771e61911a4b8a9a1a5af971484ac1.ctex"]
 
 [params]
 
