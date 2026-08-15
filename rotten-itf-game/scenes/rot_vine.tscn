@@ -1,12 +1,19 @@
 [gd_scene format=3 uid="uid://kicj2478es6o"]
 
 [ext_resource type="Script" uid="uid://bxk8d33jlrfj1" path="res://scripts/rot_vine.gd" id="1_0h50i"]
+[ext_resource type="Shader" uid="uid://cv8gg3r3c6md3" path="res://scripts/shaders/pixelate.gdshader" id="1_2w5qb"]
 [ext_resource type="Texture2D" uid="uid://dyfb4jh6yq53g" path="res://assets/images/rot/Rot-V2-Single.PNG" id="1_4d02b"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b43xs"]
+shader = ExtResource("1_2w5qb")
+shader_parameter/pixelate_amount = 20
+shader_parameter/darken_amount = 2.0
 
 [node name="Vine" type="Node2D" unique_id=1749191672]
 
 [node name="Line2D" type="Line2D" parent="." unique_id=1590463200]
 texture_repeat = 2
+material = SubResource("ShaderMaterial_b43xs")
 points = PackedVector2Array(2.2655604, -8.177147, 24.26556, 5.822853)
 width = 7.0
 default_color = Color(0.93333334, 1, 0.93333334, 0.7176471)

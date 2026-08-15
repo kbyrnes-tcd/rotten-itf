@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://cg75k4w0pepcp"]
+
+[ext_resource type="Texture2D" uid="uid://dgwjnqq4radaq" path="res://assets/images/env/p2_garden_ext/RITF_Gardenbackrot.png" id="1_yrcn3"]
+[ext_resource type="Texture2D" uid="uid://1k6yhyu0d08r" path="res://assets/images/env/p2_garden_int/Firsthallwaynobackground.png" id="2_3aray"]
+[ext_resource type="PackedScene" uid="uid://di31qowjleyl4" path="res://scenes/rot_dressing_new.tscn" id="4_xgkue"]
+[ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="9_mb6sg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c63m2"]
+size = Vector2(2596, 43.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3aray"]
+size = Vector2(2565.0068, 61)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3336g"]
+size = Vector2(2596, 55.5)
+
+[node name="Scene_02_int" type="Node2D" unique_id=358721782]
+
+[node name="Environment" type="Node2D" parent="." unique_id=1527416479]
+position = Vector2(2025, 215)
+
+[node name="Backdrop" type="Parallax2D" parent="Environment" unique_id=1373402238]
+z_index = -3
+scroll_scale = Vector2(0.85, 1)
+
+[node name="RitfGardenBackdrop" type="Sprite2D" parent="Environment/Backdrop" unique_id=43126088]
+texture = ExtResource("1_yrcn3")
+
+[node name="Building" type="Parallax2D" parent="Environment" unique_id=1040732582]
+z_index = -2
+
+[node name="RitfGardenInterior" type="Sprite2D" parent="Environment/Building" unique_id=1598557972]
+position = Vector2(-586, 0)
+texture = ExtResource("2_3aray")
+
+[node name="Player" parent="." unique_id=1515659648 instance=ExtResource("9_mb6sg")]
+position = Vector2(525, 258)
+
+[node name="Lantern" parent="Player/CharacterSprites" parent_id_path=PackedInt32Array(1515659648, 2095860029) index="1" unique_id=964616978]
+visible = true
+
+[node name="LntrnCollisionShape2D" parent="Player/CharacterSprites/Lantern/LanternArea2D" parent_id_path=PackedInt32Array(1515659648, 1614078195) index="0" unique_id=877712953]
+scale = Vector2(2.0710225, 2.2047858)
+
+[node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
+limit_left = -82
+limit_top = 88
+limit_right = 2788
+limit_bottom = 342
+
+[node name="Colliders" type="Node2D" parent="." unique_id=2145202998]
+
+[node name="Ground&CeilingCollider" type="StaticBody2D" parent="Colliders" unique_id=1613639351]
+position = Vector2(-7, 317)
+scale = Vector2(1.1199994, 1)
+
+[node name="Ground" type="CollisionShape2D" parent="Colliders/Ground&CeilingCollider" unique_id=409099627]
+position = Vector2(1288, 5.625)
+shape = SubResource("RectangleShape2D_c63m2")
+
+[node name="StairGround" type="CollisionShape2D" parent="Colliders/Ground&CeilingCollider" unique_id=949422799]
+position = Vector2(1244.197, -47.5)
+scale = Vector2(0.17857102, 1)
+shape = SubResource("RectangleShape2D_3aray")
+
+[node name="Ceil" type="CollisionShape2D" parent="Colliders/Ground&CeilingCollider" unique_id=1275661467]
+position = Vector2(1288.3936, -234.75)
+shape = SubResource("RectangleShape2D_3336g")
+
+[node name="StairsL" type="CollisionPolygon2D" parent="Colliders/Ground&CeilingCollider" unique_id=1518057120]
+polygon = PackedVector2Array(1015.1791, -78, 953.5719, -16, 1015.1791, -16)
+
+[node name="StairsR" type="CollisionPolygon2D" parent="Colliders/Ground&CeilingCollider" unique_id=1402788989]
+position = Vector2(527.67883, 10)
+polygon = PackedVector2Array(945.53625, -88, 945.53625, -26, 1015.1791, -26)
+
+[node name="LeftOobCollider" type="StaticBody2D" parent="Colliders" unique_id=2121097576]
+position = Vector2(-9.094947e-13, 388)
+rotation = -1.5707964
+scale = Vector2(0.15999758, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/LeftOobCollider" unique_id=1995729879]
+position = Vector2(1288, -0.5)
+shape = SubResource("RectangleShape2D_3336g")
+
+[node name="RightOobCollider" type="StaticBody2D" parent="Colliders" unique_id=1561221912]
+position = Vector2(2871, 352)
+rotation = -1.5707964
+scale = Vector2(0.15999758, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/RightOobCollider" unique_id=2075318962]
+position = Vector2(1288, -0.5)
+shape = SubResource("RectangleShape2D_3336g")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1256881528]
+color = Color(0.7107411, 0.71074116, 0.7107411, 1)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1276469286]
+color = Color(1, 0.7921569, 0.62352943, 0.26666668)
+energy = 0.8
+
+[node name="RotOnDoor" type="Node2D" parent="." unique_id=1348113335]
+z_index = -2
+
+[node name="Line2D2" parent="RotOnDoor" unique_id=1110441175 instance=ExtResource("4_xgkue")]
+points = PackedVector2Array(495, 224, 452.2045, 226.7834, 412.5545, 229.36229, 372, 232, 333.39178, 229.64583, 290, 227, 238, 221, 188, 215, 138, 216, 106, 221, 70, 216, -12.744873, 207.69586)
+
+[editable path="Player"]

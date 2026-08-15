@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://o8dro18but5g"
-path="res://.godot/imported/4.midtrees.png-d89f826baae5ce93c4d069612d070c63.ctex"
+uid="uid://3t3q6orpnxyr"
+path="res://.godot/imported/Rotmap.png-b9dfce71919d10c05c1d3534aacb00b1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/env/p1_start/parallax/4.midtrees.png"
-dest_files=["res://.godot/imported/4.midtrees.png-d89f826baae5ce93c4d069612d070c63.ctex"]
+source_file="res://assets/images/env/p2_garden_ext/Rotmap.png"
+dest_files=["res://.godot/imported/Rotmap.png-b9dfce71919d10c05c1d3534aacb00b1.ctex"]
 
 [params]
 
