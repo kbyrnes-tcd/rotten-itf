@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dgwjnqq4radaq" path="res://assets/images/env/p2_garden_ext/RITF_Gardenbackrot.png" id="1_yrcn3"]
 [ext_resource type="Texture2D" uid="uid://1k6yhyu0d08r" path="res://assets/images/env/p2_garden_int/Firsthallwaynobackground.png" id="2_3aray"]
+[ext_resource type="PackedScene" uid="uid://di31qowjleyl4" path="res://scenes/rot_dressing_new.tscn" id="4_xgkue"]
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="9_mb6sg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c63m2"]
@@ -92,7 +93,22 @@ color = Color(0.7107411, 0.71074116, 0.7107411, 1)
 color = Color(1, 0.7921569, 0.62352943, 0.26666668)
 energy = 0.8
 
-[node name="RotBehind" type="Node2D" parent="." unique_id=1348113335]
-z_index = -1
+[node name="RotOnDoor" type="Node2D" parent="." unique_id=1348113335]
+z_index = -2
+position = Vector2(845, 218)
+
+[node name="Line2D" parent="RotOnDoor" unique_id=1590463200 instance=ExtResource("4_xgkue")]
+points = PackedVector2Array(-9, -8, 12, 2, 16, 16, 16, 32, 3, 44, 1, 62, -10, 74)
+clearable = true
+
+[node name="Line2D2" parent="RotOnDoor" unique_id=2010779019 instance=ExtResource("4_xgkue")]
+points = PackedVector2Array(-23, 20, -1, 36, 17, 32, 60, 40, 84, 59, 108, 70, 127, 51)
+clearable = true
+
+[node name="Line2D3" parent="RotOnDoor" unique_id=1866731290 instance=ExtResource("4_xgkue")]
+position = Vector2(-56, 23)
+rotation = -0.7256698
+points = PackedVector2Array(-23, 20, -1, 36, 17, 32, 33.832626, 35.131653, 60, 40, 84, 59, 108, 70, 127, 51)
+clearable = true
 
 [editable path="Player"]
