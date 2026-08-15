@@ -34,7 +34,13 @@ position = Vector2(-586, 0)
 texture = ExtResource("2_3aray")
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("9_mb6sg")]
-position = Vector2(882, 258)
+position = Vector2(525, 258)
+
+[node name="Lantern" parent="Player/CharacterSprites" parent_id_path=PackedInt32Array(1515659648, 2095860029) index="1" unique_id=964616978]
+visible = true
+
+[node name="LntrnCollisionShape2D" parent="Player/CharacterSprites/Lantern/LanternArea2D" parent_id_path=PackedInt32Array(1515659648, 1614078195) index="0" unique_id=877712953]
+scale = Vector2(2.0710225, 2.2047858)
 
 [node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
 limit_left = -82
@@ -95,20 +101,8 @@ energy = 0.8
 
 [node name="RotOnDoor" type="Node2D" parent="." unique_id=1348113335]
 z_index = -2
-position = Vector2(845, 218)
 
-[node name="Line2D" parent="RotOnDoor" unique_id=1590463200 instance=ExtResource("4_xgkue")]
-points = PackedVector2Array(-9, -8, 12, 2, 16, 16, 16, 32, 3, 44, 1, 62, -10, 74)
-clearable = true
-
-[node name="Line2D2" parent="RotOnDoor" unique_id=2010779019 instance=ExtResource("4_xgkue")]
-points = PackedVector2Array(-23, 20, -1, 36, 17, 32, 60, 40, 84, 59, 108, 70, 127, 51)
-clearable = true
-
-[node name="Line2D3" parent="RotOnDoor" unique_id=1866731290 instance=ExtResource("4_xgkue")]
-position = Vector2(-56, 23)
-rotation = -0.7256698
-points = PackedVector2Array(-23, 20, -1, 36, 17, 32, 33.832626, 35.131653, 60, 40, 84, 59, 108, 70, 127, 51)
-clearable = true
+[node name="Line2D2" parent="RotOnDoor" unique_id=1110441175 instance=ExtResource("4_xgkue")]
+points = PackedVector2Array(495, 224, 452.2045, 226.7834, 412.5545, 229.36229, 372, 232, 333.39178, 229.64583, 290, 227, 238, 221, 188, 215, 138, 216, 106, 221, 70, 216, -12.744873, 207.69586)
 
 [editable path="Player"]

@@ -95,6 +95,7 @@ func update_collisions():
 		var area_shape = area.get_child(area.get_child_count() - 1)
 		area.remove_child(area_shape)
 		area_shape.queue_free()
+	queue_redraw()
 
 # for player body detection
 func _on_area_2d_body_entered(_body: Node2D) -> void:
@@ -137,7 +138,7 @@ func _on_line_area_2d_area_shape_entered(_area_rid: RID, area: Area2D, _area_sha
 		
 		#var points_in_area = points.slice(first, last+2)
 		
-		if tail.size() > 1:
+		if head.size() > 1:
 			add_vine(head)
 		if tail.size() > 1:
 			add_vine(tail)
