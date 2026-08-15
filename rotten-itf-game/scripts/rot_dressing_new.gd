@@ -69,7 +69,8 @@ func inst_collisions():
 			new_shape_static.shape = segment
 
 func _on_line_area_2d_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
-	if clearable and area.name == "LanternArea2D":
+	var player : Player = area.get_parent().get_parent().get_parent()
+	if player.get_tool_state() == 1 and clearable and area.name == "LanternArea2D":
 		AudioManager.play_fx("shrink")
 		var space_state = get_world_2d().direct_space_state
 		var indices = [] # to store points within lantern-area; to later split at
@@ -101,7 +102,7 @@ func _on_line_area_2d_area_shape_entered(_area_rid: RID, area: Area2D, _area_sha
 		var tail = points.slice(last + 1, points.size())
 		
 		#var points_in_area = points.slice(first, last+2)
-		print(tail.size())
+		#print(tail.size())
 		if tail.size() > 1:
 			add_vine(head)
 		if tail.size() > 1:
@@ -118,7 +119,7 @@ func add_vine(pts_slice: PackedVector2Array):
 	var vine = ROT_DRESSING.instantiate()
 	vine.points = pts_slice
 	scene.add_child(vine)
-	print("inst: %s w/ points: %s and in scene: %s" %[vine, pts_slice, scene])
+	#print("inst: %s w/ points: %s and in scene: %s" %[vine, pts_slice, scene])
 	return
 	
 func time_out_collision():

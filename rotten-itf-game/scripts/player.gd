@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 # Player equipment in scene, animation and SFX data
 @onready var animated_sprite_2d: AnimatedSprite2D = $CharacterSprites/AnimatedSprite2D
@@ -69,7 +70,10 @@ func _process(delta):
 			_tool_gun_equipped()
 		ToolState.GUN_ON:
 			_tool_gun_on()
-
+			
+func get_tool_state():
+	return tool_state
+	
 # MOVEMENT
 func _physics_process(delta: float):
 	_handle_animation()

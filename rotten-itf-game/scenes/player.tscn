@@ -185,7 +185,6 @@ frame_progress = 0.1119532
 
 [node name="Lantern" type="Node2D" parent="CharacterSprites" unique_id=964616978]
 process_mode = 4
-visible = false
 position = Vector2(18.750002, -2.4999995)
 scale = Vector2(0.455, 0.455)
 
@@ -196,7 +195,7 @@ texture = ExtResource("22_ke2ow")
 
 [node name="LanternArea2D" type="Area2D" parent="CharacterSprites/Lantern" unique_id=1614078195]
 position = Vector2(24.725266, 5.494503)
-scale = Vector2(1.3851515, 1.3410437)
+scale = Vector2(1.2257706, 1.0789826)
 
 [node name="LntrnCollisionShape2D" type="CollisionShape2D" parent="CharacterSprites/Lantern/LanternArea2D" unique_id=877712953]
 position = Vector2(10.256411, -2.197803)
