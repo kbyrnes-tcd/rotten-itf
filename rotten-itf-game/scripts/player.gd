@@ -341,7 +341,7 @@ func _tool_gun_equipped():
 	var dir = get_snapped_direction()
 	var _pts = ray_line_2d.points
 	_pts[1] = ray_cast_2d.to_local(
-		ray_cast_2d.global_position + dir * 200.0
+		ray_cast_2d.global_position + dir * 100.0
 	)
 	ray_line_2d.points = _pts
 
@@ -356,7 +356,7 @@ func _tool_gun_on():
 	var dir = get_snapped_direction()
 	var _pts = ray_line_2d.points
 	_pts[1] = ray_cast_2d.to_local(
-		ray_cast_2d.global_position + dir * 200.0
+		ray_cast_2d.global_position + dir * 100.0
 	)
 	ray_line_2d.points = _pts
 
