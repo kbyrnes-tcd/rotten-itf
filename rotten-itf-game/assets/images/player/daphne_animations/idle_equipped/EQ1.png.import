@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dn3p4usii4em8"
-path="res://.godot/imported/5.png-5b9b721f20a2ef28926bcffefd386e2e.ctex"
+uid="uid://c7l8gftu1swb"
+path="res://.godot/imported/EQ1.png-25291680e04886b93302181096cd0bfa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/player/daphne_animations/idle/5.png"
-dest_files=["res://.godot/imported/5.png-5b9b721f20a2ef28926bcffefd386e2e.ctex"]
+source_file="res://assets/images/player/daphne_animations/idle_equipped/EQ1.png"
+dest_files=["res://.godot/imported/EQ1.png-25291680e04886b93302181096cd0bfa.ctex"]
 
 [params]
 

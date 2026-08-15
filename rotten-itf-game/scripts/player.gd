@@ -89,9 +89,7 @@ func _handle_animation():
 		if tool_state == ToolState.IDLE:
 			animated_sprite_2d.animation = "walk"
 		else:
-			# TODO: add walk_equipped anim
-			animated_sprite_2d.animation = "walk"
-			#print("should be WALK and equipped!")
+			animated_sprite_2d.animation = "walk_equipped"
 
 func _handle_movement(delta: float):
 	if not is_on_floor():
