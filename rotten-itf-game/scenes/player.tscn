@@ -116,9 +116,14 @@ animations = [{
 radius = 35.19535
 
 [sub_resource type="Gradient" id="Gradient_j0jg5"]
+offsets = PackedFloat32Array(0, 0.6796116)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_q01m8"]
 gradient = SubResource("Gradient_j0jg5")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
 
 [node name="Player" type="CharacterBody2D" unique_id=1515659648]
 script = ExtResource("1_qlg0r")
@@ -137,7 +142,6 @@ autoplay = "idle"
 
 [node name="Lantern" type="Node2D" parent="CharacterSprites" unique_id=964616978]
 process_mode = 4
-visible = false
 position = Vector2(18.000002, -34.999996)
 scale = Vector2(0.455, 0.455)
 
@@ -146,13 +150,15 @@ texture = ExtResource("22_ke2ow")
 
 [node name="LanternArea2D" type="Area2D" parent="CharacterSprites/Lantern" unique_id=1614078195]
 position = Vector2(13.186813, -7.326008)
+scale = Vector2(1.3851515, 1.3410437)
 
 [node name="LntrnCollisionShape2D" type="CollisionShape2D" parent="CharacterSprites/Lantern/LanternArea2D" unique_id=877712953]
 position = Vector2(10.256411, -2.197803)
 shape = SubResource("CircleShape2D_y4r1p")
 
 [node name="PointLight2D" type="PointLight2D" parent="CharacterSprites/Lantern" unique_id=1223419189]
-color = Color(0.9137255, 0.9254902, 0.16862746, 0.9372549)
+position = Vector2(-4.1919748e-06, -8.3839495e-06)
+color = Color(0.5803922, 1, 0.92941177, 1)
 energy = 1.5
 texture = SubResource("GradientTexture2D_q01m8")
 
