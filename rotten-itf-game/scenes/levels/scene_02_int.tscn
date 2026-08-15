@@ -2,90 +2,16 @@
 
 [ext_resource type="Texture2D" uid="uid://dgwjnqq4radaq" path="res://assets/images/env/p2_garden_ext/RITF_Gardenbackrot.png" id="1_yrcn3"]
 [ext_resource type="Texture2D" uid="uid://1k6yhyu0d08r" path="res://assets/images/env/p2_garden_int/Firsthallwaynobackground.png" id="2_3aray"]
-[ext_resource type="Texture2D" uid="uid://3t3q6orpnxyr" path="res://assets/images/env/p2_garden_ext/Rotmap.png" id="5_1uc2l"]
-[ext_resource type="PackedScene" uid="uid://dismh7ltsr7nx" path="res://scenes/rot_dressing.tscn" id="6_4eiva"]
-[ext_resource type="Texture2D" uid="uid://dyfb4jh6yq53g" path="res://assets/images/rot/Rot-V2-Single.PNG" id="7_ctauk"]
-[ext_resource type="Script" uid="uid://bc1k5ojr0ocy" path="res://scripts/rot_dressing.gd" id="8_4ef8g"]
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="9_mb6sg"]
 
-[sub_resource type="Curve" id="Curve_qsi71"]
-_data = [Vector2(0, 0.1), 0.0, 0.0, 0, 0, Vector2(0.7, 0.6), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c63m2"]
+size = Vector2(2596, 43.25)
 
-[sub_resource type="Curve" id="Curve_jpmnv"]
-_data = [Vector2(0, 0.1), 0.0, 0.0, 0, 0, Vector2(0.7, 0.6), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Curve" id="Curve_6c07b"]
-_data = [Vector2(0, 0.1), 0.0, 0.0, 0, 0, Vector2(0.7, 0.6), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Curve" id="Curve_wxmuh"]
-_data = [Vector2(0, 0.1), 0.0, 0.0, 0, 0, Vector2(0.7, 0.6), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Curve" id="Curve_hlwvo"]
-_data = [Vector2(0, 0.1), 0.0, 0.0, 0, 0, Vector2(0.7, 0.6), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Curve" id="Curve_5kx1g"]
-_data = [Vector2(0, 0.1), 0.0, 0.0, 0, 0, Vector2(0.7, 0.6), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Curve" id="Curve_g384x"]
-_data = [Vector2(0, 0.1), 0.0, 0.0, 0, 0, Vector2(0.7, 0.6), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Curve" id="Curve_1y1pv"]
-_data = [Vector2(0, 0.1), 0.0, 0.0, 0, 0, Vector2(0.7, 0.6), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Curve" id="Curve_p6g6u"]
-_data = [Vector2(0, 0.1), 0.0, 0.0, 0, 0, Vector2(0.7, 0.6), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Curve" id="Curve_5kona"]
-_data = [Vector2(0, 0.1), 0.0, 0.0, 0, 0, Vector2(0.7, 0.6), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Curve" id="Curve_2kk5h"]
-_data = [Vector2(0, 0.1), 0.0, 0.0, 0, 0, Vector2(0.7, 0.6), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Curve" id="Curve_foff1"]
-_data = [Vector2(0, 0.1), 0.0, 0.0, 0, 0, Vector2(0.7, 0.6), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Curve" id="Curve_7sprn"]
-_data = [Vector2(0, 0.1), 0.0, 0.0, 0, 0, Vector2(0.7, 0.6), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Curve" id="Curve_6kkjy"]
-_data = [Vector2(0, 0.1), 0.0, 0.0, 0, 0, Vector2(0.7, 0.6), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Curve" id="Curve_cfvux"]
-_data = [Vector2(0, 0.1), 0.0, 0.0, 0, 0, Vector2(0.7, 0.6), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Curve" id="Curve_kkggf"]
-_data = [Vector2(0, 0.1), 0.0, 0.0, 0, 0, Vector2(0.7, 0.6), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Curve" id="Curve_410gd"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5388128, 0.6950355), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Curve" id="Curve_q38up"]
-_data = [Vector2(0, 0.1), 0.0, 0.0, 0, 0, Vector2(0.7, 0.6), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Curve" id="Curve_ei617"]
-_data = [Vector2(0, 0.1), 0.0, 0.0, 0, 0, Vector2(0.7, 0.6), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3aray"]
+size = Vector2(2565.0068, 61)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3336g"]
-size = Vector2(2596, 33)
+size = Vector2(2596, 55.5)
 
 [node name="Scene_02_int" type="Node2D" unique_id=358721782]
 
@@ -99,263 +25,15 @@ scroll_scale = Vector2(0.85, 1)
 [node name="RitfGardenBackdrop" type="Sprite2D" parent="Environment/Backdrop" unique_id=43126088]
 texture = ExtResource("1_yrcn3")
 
-[node name="Infront" type="Parallax2D" parent="Environment" unique_id=1040732582]
+[node name="Building" type="Parallax2D" parent="Environment" unique_id=1040732582]
+z_index = -2
 
-[node name="RitfGardenInterior" type="Sprite2D" parent="Environment/Infront" unique_id=1598557972]
+[node name="RitfGardenInterior" type="Sprite2D" parent="Environment/Building" unique_id=1598557972]
 position = Vector2(-586, 0)
 texture = ExtResource("2_3aray")
 
-[node name="Rotmap" type="Sprite2D" parent="." unique_id=386733338]
-visible = false
-modulate = Color(1, 1, 1, 0.2)
-position = Vector2(2025, 215)
-texture = ExtResource("5_1uc2l")
-
-[node name="RotOnWallsBehind" type="Node2D" parent="." unique_id=229553472]
-visible = false
-position = Vector2(29, 75)
-
-[node name="Vine7" parent="RotOnWallsBehind" unique_id=1529591086 instance=ExtResource("6_4eiva")]
-position = Vector2(881, 117)
-
-[node name="Line2D" parent="RotOnWallsBehind/Vine7" index="0" unique_id=1590463200]
-points = PackedVector2Array(9, -6, -1.97991, -4.7790103, -12.784591, 3.2961884, -9.807608, 18.963926, -8.319958, 33.045708, 1.1861167, 49.50868, -1.3146636, 68.86853, 14.24096, 84.75904, 21.85309, 99.06856, 27.065058, 115.7494)
-width = 14.0
-width_curve = SubResource("Curve_qsi71")
-
-[node name="Vine" parent="RotOnWallsBehind" unique_id=760610973 instance=ExtResource("6_4eiva")]
-position = Vector2(768, 101)
-
-[node name="Line2D" parent="RotOnWallsBehind/Vine" index="0" unique_id=1590463200]
-points = PackedVector2Array(13, -6, 35, -4, 48.05791, 7.94209, 56.98843, 22.007437, 56.801765, 41, 56, 54, 56, 76, 56, 93, 56, 110, 59.058426, 125.33897, 64.24571, 139.2694, 55.61838, 155.79797)
-width = 11.0
-width_curve = SubResource("Curve_jpmnv")
-
-[node name="Vine6" parent="RotOnWallsBehind" unique_id=825058560 instance=ExtResource("6_4eiva")]
-position = Vector2(67.00006, 96)
-
-[node name="Line2D" parent="RotOnWallsBehind/Vine6" index="0" unique_id=1590463200]
-points = PackedVector2Array(2.2655604, -8.177147, -9.5916, 18.189095, -24.085272, 32.953888, -18.450554, 45.409527, -13.235103, 64.81415, -19.975395, 90.84472, -13.172495, 108.09401, -6.021466, 123.0366, -16.253197, 136.89638, -23.051054, 152.35332, -15.671162, 163.70848)
-width = 10.0
-width_curve = SubResource("Curve_6c07b")
-
-[node name="Vine8" parent="RotOnWallsBehind" unique_id=1007158828 instance=ExtResource("6_4eiva")]
-position = Vector2(689.25543, 102.49774)
-rotation = -2.9035897
-scale = Vector2(1, -1)
-
-[node name="Line2D" parent="RotOnWallsBehind/Vine8" index="0" unique_id=1590463200]
-position = Vector2(-4.550996, -9.848312)
-rotation = 0.23666345
-points = PackedVector2Array(2, 0.0026855469, -16.951748, 12.079336, -26.727123, 30.138266, -17.906599, 45.106884, -12.661414, 64.60298, -20.293497, 90.69561, -15.048098, 108.64285, -8.955735, 124.1481, -18.358624, 135.18753, -23.059958, 151.92749, -13.0454035, 161.29675)
-width = 20.0
-width_curve = SubResource("Curve_wxmuh")
-
-[node name="Vine10" parent="RotOnWallsBehind" unique_id=536181994 instance=ExtResource("6_4eiva")]
-position = Vector2(536.99994, 121)
-rotation = -3.4837275
-scale = Vector2(1, -1)
-
-[node name="Line2D" parent="RotOnWallsBehind/Vine10" index="0" unique_id=1590463200]
-position = Vector2(-4.550996, -9.848312)
-rotation = 0.23666345
-points = PackedVector2Array(-7.6220703, 1.1632385, -4.3836036, 24.196445, -11.370605, 50.229847, -12.668722, 65.17086, -26.649601, 102.56096, -24.668228, 117.05726, -25.597149, 140.49536, -6.2655835, 154.19133, 7.895016, 153.47406, 24.063444, 150.89977)
-width = 12.0
-width_curve = SubResource("Curve_hlwvo")
-
-[node name="Vine11" parent="RotOnWallsBehind" unique_id=1402699938 instance=ExtResource("6_4eiva")]
-position = Vector2(539, 167.00002)
-rotation = -3.0858972
-scale = Vector2(1, -1)
-
-[node name="Line2D" parent="RotOnWallsBehind/Vine11" index="0" unique_id=1590463200]
-position = Vector2(-4.550996, -9.848312)
-rotation = 0.23666345
-points = PackedVector2Array(-7.6220703, 1.1632385, -6.506822, 38.321495, -22.273602, 77.292564, -27.602482, 102.48796)
-width = 14.0
-width_curve = SubResource("Curve_5kx1g")
-
-[node name="Vine16" parent="RotOnWallsBehind" unique_id=1194319335 instance=ExtResource("6_4eiva")]
-position = Vector2(605.00006, 175)
-rotation = -2.3561945
-scale = Vector2(1, -1)
-
-[node name="Line2D" parent="RotOnWallsBehind/Vine16" index="0" unique_id=1590463200]
-position = Vector2(-4.550996, -9.848312)
-rotation = 0.23666345
-points = PackedVector2Array(-5.9714966, 10.116211, -16.843824, 26.910795, -12.45497, 48.049007, -29.064552, 72.13008, -31.139528, 106.74578)
-width = 11.0
-width_curve = SubResource("Curve_g384x")
-
-[node name="Vine2" parent="RotOnWallsBehind" unique_id=1015695675 instance=ExtResource("6_4eiva")]
-position = Vector2(261, 36)
-
-[node name="Line2D" parent="RotOnWallsBehind/Vine2" index="0" unique_id=1590463200]
-points = PackedVector2Array(2.2655604, -8.177147, 24.574347, 5.3304276, -11.588792, 15.70438, -2.24594, 51.631023, 7.4890685, 83.14623, -4.300907, 119.86255, 8.352889, 154.84407, -19.277012, 206.25494)
-width = 16.0
-width_curve = SubResource("Curve_1y1pv")
-
-[node name="Vine3" parent="RotOnWallsBehind" unique_id=1886989071 instance=ExtResource("6_4eiva")]
-position = Vector2(261, 36)
-
-[node name="Line2D" parent="RotOnWallsBehind/Vine3" index="0" unique_id=1590463200]
-position = Vector2(119, 8)
-points = PackedVector2Array(45, 50, 28, 50, 18.96767, 56.45261, 9.204131, 64.255165, 7.797085, 86.99118, -7.764072, 106.42695, -11.529403, 125.758514, -2.5361695, 162.38405, -1.8613551, 190, -12.624675, 206.2815)
-width = 14.0
-width_curve = SubResource("Curve_p6g6u")
-
-[node name="Vine4" parent="RotOnWallsBehind" unique_id=1196444702 instance=ExtResource("6_4eiva")]
-position = Vector2(261, 36)
-
-[node name="Line2D" parent="RotOnWallsBehind/Vine4" index="0" unique_id=1590463200]
-position = Vector2(101, 18)
-points = PackedVector2Array(24, 53, 12.975074, 71.985565, 2.3516428, 102.12894, -6.5206733, 107.862785, -8.656149, 126.21219, 4.9736376, 154.52997, -5.9663844, 172.01978, -20.254204, 194.2911)
-width = 15.0
-width_curve = SubResource("Curve_5kona")
-
-[node name="Vine5" parent="RotOnWallsBehind" unique_id=1909767272 instance=ExtResource("6_4eiva")]
-position = Vector2(67, 96)
-
-[node name="Line2D" parent="RotOnWallsBehind/Vine5" index="0" unique_id=1590463200]
-position = Vector2(101, 15)
-rotation = 0.2889891
-points = PackedVector2Array(2.2655604, -8.177147, -10.089004, 17.96113, -24.660564, 32.36687, -18.782568, 45.532825, -12.61015, 64.58266, -18.559866, 91.14336, -12.112684, 107.572655, -6.3312225, 122.98938, -17.849884, 135.57918, -25.54635, 150.93806, -17.175776, 164.39821)
-width = 17.0
-width_curve = SubResource("Curve_2kk5h")
-
-[node name="Vine9" parent="RotOnWallsBehind" unique_id=1489209084 instance=ExtResource("6_4eiva")]
-position = Vector2(-28, 94)
-
-[node name="Line2D" parent="RotOnWallsBehind/Vine9" index="0" unique_id=1590463200]
-points = PackedVector2Array(2.2655604, -8.177147, 27.040743, -1.1404134, 47.583252, -2.6968203, 118.93388, -5.163774, 138.98976, 13.011579, 168.6038, 32.62556, 193.58362, 42.156597, 202.268, 51.6588, 204.05255, 71.9975, 203.34871, 127.04904, 205.04613, 150.91475)
-width = 12.0
-width_curve = SubResource("Curve_foff1")
-
-[node name="Vine12" parent="RotOnWallsBehind" unique_id=1831156170 instance=ExtResource("6_4eiva")]
-position = Vector2(651, 114)
-
-[node name="Line2D" parent="RotOnWallsBehind/Vine12" index="0" unique_id=1590463200]
-points = PackedVector2Array(15, -14, -2.2530873, 1.7310948, -2.178032, 22, -3.304093, 36.099415)
-width = 11.0
-width_curve = SubResource("Curve_7sprn")
-
-[node name="Vine13" parent="RotOnWallsBehind" unique_id=107968496 instance=ExtResource("6_4eiva")]
-position = Vector2(1023, 146)
-
-[node name="Line2D" parent="RotOnWallsBehind/Vine13" index="0" unique_id=1590463200]
-points = PackedVector2Array(27, -40, 6.967872, -27.049427, 3.7537074, -18.082098, 3.4606647, 19, 3.1967065, 55, 11.120007, 75.352, 4.219249, 87.5796, 17.517294, 108.31376)
-width = 14.0
-width_curve = SubResource("Curve_6kkjy")
-
-[node name="Vine14" parent="RotOnWallsBehind" unique_id=1342304024 instance=ExtResource("6_4eiva")]
-position = Vector2(1097, 93)
-
-[node name="Line2D" parent="RotOnWallsBehind/Vine14" index="0" unique_id=1590463200]
-points = PackedVector2Array(27, -40, 11.085516, -26.894749, 12.003977, 7.9998865, -14.19841, 22.65609, -6.828211, 46.288074, -20.877974, 62.276962, -23.909065, 78.82955, -46.12644, 101.87356, -39.14008, 121.74203, -25.37483, 143.03967, -28.724604, 164.45508)
-width = 14.0
-width_curve = SubResource("Curve_cfvux")
-
-[node name="Vine15" parent="RotOnWallsBehind" unique_id=1759776827 instance=ExtResource("6_4eiva")]
-position = Vector2(1228, 88)
-
-[node name="Line2D" parent="RotOnWallsBehind/Vine15" index="0" unique_id=1590463200]
-points = PackedVector2Array(22, -34, 21.222303, -5.9920607, 12.23249, 8.149457, -85.97638, 50.05511, -104.24153, 62.665573, -118.71032, 76.28968, -120.49213, 90.89342, -116.55566, 102.5657, -119.30617, 119.7823, -119.484665, 142.97893, -118.290375, 165)
-width = 20.0
-width_curve = SubResource("Curve_kkggf")
-
-[node name="RotOnWallsInFront" type="Node2D" parent="." unique_id=645220016]
-visible = false
-position = Vector2(805.99994, 99.99999)
-rotation = 0.23800284
-scale = Vector2(-1, 1)
-
-[node name="Vine7" parent="RotOnWallsInFront" unique_id=1468797443 instance=ExtResource("6_4eiva")]
-position = Vector2(-387.8158, -68.35931)
-rotation = -2.9035897
-scale = Vector2(1, -1)
-
-[node name="Line2D" parent="RotOnWallsInFront/Vine7" index="0" unique_id=1590463200]
-points = PackedVector2Array(-4, 1, -18.927578, 14.083564, -11.975279, 33.99135, -21.236027, 52.8882, 0.3995028, 95.314545, 3.9248996, 122.15927, 4.6753626, 145.0576, 1.7506282, 171.86119, 7.31077, 180.43079, 6.973788, 197.99857, 0.3795684, 201.88568)
-width = 12.0
-width_curve = SubResource("Curve_410gd")
-
-[node name="Line2D2" type="Line2D" parent="RotOnWallsInFront/Vine7" unique_id=1638323520]
-texture_repeat = 2
-position = Vector2(50, 7.0000043)
-points = PackedVector2Array(-23, -5, -22.850906, 13, -20.657167, 52.982857, -20.54537, 80, 4.2753696, 106.745026, 5.0639777, 147.99846, 3.572077, 168.97964, 4.0388746, 180.08739, 4.6426644, 194.09697)
-width = 19.0
-width_curve = SubResource("Curve_q38up")
-default_color = Color(0.93333334, 1, 0.93333334, 0.7176471)
-texture = ExtResource("7_ctauk")
-texture_mode = 1
-script = ExtResource("8_4ef8g")
-
-[node name="LineStaticBody2D" type="StaticBody2D" parent="RotOnWallsInFront/Vine7/Line2D2" unique_id=393531205]
-
-[node name="LineArea2D" type="Area2D" parent="RotOnWallsInFront/Vine7/Line2D2" unique_id=912670139]
-
-[node name="Line2D3" type="Line2D" parent="RotOnWallsInFront/Vine7" unique_id=1745558699]
-texture_repeat = 2
-position = Vector2(24.999996, 27.000008)
-points = PackedVector2Array(2, 108.000015, 8.111089, 147.98335, 1.8283095, 158.57983, 3.0326693, 181.00002)
-width = 16.0
-width_curve = SubResource("Curve_ei617")
-default_color = Color(0.93333334, 1, 0.93333334, 0.7176471)
-texture = ExtResource("7_ctauk")
-texture_mode = 1
-script = ExtResource("8_4ef8g")
-
-[node name="LineStaticBody2D" type="StaticBody2D" parent="RotOnWallsInFront/Vine7/Line2D3" unique_id=1456781444]
-
-[node name="LineArea2D" type="Area2D" parent="RotOnWallsInFront/Vine7/Line2D3" unique_id=362067336]
-
-[node name="RotOnFountain" type="Node2D" parent="." unique_id=1327320404]
-visible = false
-position = Vector2(3225, 176)
-
-[node name="Vine7" parent="RotOnFountain" unique_id=1749191672 instance=ExtResource("6_4eiva")]
-position = Vector2(-387.8158, -68.35931)
-rotation = -2.9035897
-scale = Vector2(1, -1)
-
-[node name="Line2D" parent="RotOnFountain/Vine7" index="0" unique_id=1590463200]
-points = PackedVector2Array(12.43457, -3.8167114, 10.128662, 48.10321, 44.37793, 55.383118, 47.086426, 61.18524, 40.4563, 84.27292, 36.034424, 110.98337, 49.16797, 116.22766, 57.20703, 121.26489, 37.08081, 191.49982, 50.68628, 194.80048, 58.018066, 202.75323)
-width = 12.0
-width_curve = SubResource("Curve_410gd")
-
-[node name="Vine8" parent="RotOnFountain" unique_id=2114088514 instance=ExtResource("6_4eiva")]
-position = Vector2(-297.99988, -70)
-rotation = -2.9035897
-scale = Vector2(1, -1)
-
-[node name="Line2D" parent="RotOnFountain/Vine8" index="0" unique_id=1590463200]
-points = PackedVector2Array(35.09424, 58.935303, 38.596436, 74.19098, 38.44702, 87.53186, 28.815186, 97.54324, 22.127441, 112.38489, 43.300293, 122.666504, 48.274414, 140.33734, 34.841553, 161.77469, 28.240234, 188.98538)
-width = 12.0
-width_curve = SubResource("Curve_410gd")
-
-[node name="Vine10" parent="RotOnFountain" unique_id=2144988542 instance=ExtResource("6_4eiva")]
-position = Vector2(-250.99988, -33)
-rotation = -2.9035897
-scale = Vector2(1, -1)
-
-[node name="Line2D" parent="RotOnFountain/Vine10" index="0" unique_id=1590463200]
-points = PackedVector2Array(36.693604, 183.83307, -10.218018, 169.36526, -51.50537, 161.40686, -80.92432, 151.18283, -106.89868, 147.96844)
-width = 12.0
-width_curve = SubResource("Curve_410gd")
-
-[node name="Vine9" parent="RotOnFountain" unique_id=1809699887 instance=ExtResource("6_4eiva")]
-position = Vector2(-370.99988, 10)
-rotation = -2.9035897
-scale = Vector2(1, -1)
-
-[node name="Line2D" parent="RotOnFountain/Vine9" index="0" unique_id=1590463200]
-position = Vector2(-2.8003862, 15.784735)
-points = PackedVector2Array(-13.62207, 98.566925, 33.024414, 109.88345, 51.989258, 116.54233, 59.528076, 119.40027)
-width = 12.0
-width_curve = SubResource("Curve_410gd")
-
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("9_mb6sg")]
-position = Vector2(44, 258)
+position = Vector2(882, 258)
 
 [node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
 limit_left = -82
@@ -365,13 +43,29 @@ limit_bottom = 342
 
 [node name="Colliders" type="Node2D" parent="." unique_id=2145202998]
 
-[node name="GroundCollider" type="StaticBody2D" parent="Colliders" unique_id=1613639351]
+[node name="Ground&CeilingCollider" type="StaticBody2D" parent="Colliders" unique_id=1613639351]
 position = Vector2(-7, 317)
 scale = Vector2(1.1199994, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/GroundCollider" unique_id=409099627]
-position = Vector2(1288, -0.5)
+[node name="Ground" type="CollisionShape2D" parent="Colliders/Ground&CeilingCollider" unique_id=409099627]
+position = Vector2(1288, 5.625)
+shape = SubResource("RectangleShape2D_c63m2")
+
+[node name="StairGround" type="CollisionShape2D" parent="Colliders/Ground&CeilingCollider" unique_id=949422799]
+position = Vector2(1244.197, -47.5)
+scale = Vector2(0.17857102, 1)
+shape = SubResource("RectangleShape2D_3aray")
+
+[node name="Ceil" type="CollisionShape2D" parent="Colliders/Ground&CeilingCollider" unique_id=1275661467]
+position = Vector2(1288.3936, -234.75)
 shape = SubResource("RectangleShape2D_3336g")
+
+[node name="StairsL" type="CollisionPolygon2D" parent="Colliders/Ground&CeilingCollider" unique_id=1518057120]
+polygon = PackedVector2Array(1015.1791, -78, 953.5719, -16, 1015.1791, -16)
+
+[node name="StairsR" type="CollisionPolygon2D" parent="Colliders/Ground&CeilingCollider" unique_id=1402788989]
+position = Vector2(527.67883, 10)
+polygon = PackedVector2Array(945.53625, -88, 945.53625, -26, 1015.1791, -26)
 
 [node name="LeftOobCollider" type="StaticBody2D" parent="Colliders" unique_id=2121097576]
 position = Vector2(-9.094947e-13, 388)
@@ -398,32 +92,7 @@ color = Color(0.7107411, 0.71074116, 0.7107411, 1)
 color = Color(1, 0.7921569, 0.62352943, 0.26666668)
 energy = 0.8
 
-[connection signal="area_shape_entered" from="RotOnWallsInFront/Vine7/Line2D2/LineArea2D" to="RotOnWallsInFront/Vine7/Line2D2" method="_on_line_area_2d_area_shape_entered"]
-[connection signal="body_entered" from="RotOnWallsInFront/Vine7/Line2D2/LineArea2D" to="RotOnWallsInFront/Vine7/Line2D2" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="RotOnWallsInFront/Vine7/Line2D2/LineArea2D" to="RotOnWallsInFront/Vine7/Line2D2" method="_on_area_2d_body_exited"]
-[connection signal="area_shape_entered" from="RotOnWallsInFront/Vine7/Line2D3/LineArea2D" to="RotOnWallsInFront/Vine7/Line2D3" method="_on_line_area_2d_area_shape_entered"]
-[connection signal="body_entered" from="RotOnWallsInFront/Vine7/Line2D3/LineArea2D" to="RotOnWallsInFront/Vine7/Line2D3" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="RotOnWallsInFront/Vine7/Line2D3/LineArea2D" to="RotOnWallsInFront/Vine7/Line2D3" method="_on_area_2d_body_exited"]
+[node name="RotBehind" type="Node2D" parent="." unique_id=1348113335]
+z_index = -1
 
-[editable path="RotOnWallsBehind/Vine7"]
-[editable path="RotOnWallsBehind/Vine"]
-[editable path="RotOnWallsBehind/Vine6"]
-[editable path="RotOnWallsBehind/Vine8"]
-[editable path="RotOnWallsBehind/Vine10"]
-[editable path="RotOnWallsBehind/Vine11"]
-[editable path="RotOnWallsBehind/Vine16"]
-[editable path="RotOnWallsBehind/Vine2"]
-[editable path="RotOnWallsBehind/Vine3"]
-[editable path="RotOnWallsBehind/Vine4"]
-[editable path="RotOnWallsBehind/Vine5"]
-[editable path="RotOnWallsBehind/Vine9"]
-[editable path="RotOnWallsBehind/Vine12"]
-[editable path="RotOnWallsBehind/Vine13"]
-[editable path="RotOnWallsBehind/Vine14"]
-[editable path="RotOnWallsBehind/Vine15"]
-[editable path="RotOnWallsInFront/Vine7"]
-[editable path="RotOnFountain/Vine7"]
-[editable path="RotOnFountain/Vine8"]
-[editable path="RotOnFountain/Vine10"]
-[editable path="RotOnFountain/Vine9"]
 [editable path="Player"]
