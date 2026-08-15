@@ -13,12 +13,12 @@ static var current_mg
 
 static var pause_menu: Control
 static var color_rect: ColorRect
-static var letter_ui: LetterUI
+static var letter_ui: Control
 
 static var mid_mg : Node
 static var inv_ui : Control
 var running_another_scene : bool = false # for running minigames and etc.
-
+static var current_scene_has_mg : bool = false
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	AudioManager.play_ambience("Ambience", 0, true)
@@ -67,7 +67,7 @@ static func pause(w_menu : bool):
 	tree.paused = true
 
 static func unload_mid_minigame():
-	print("Tryna unload mid mg")
+	#print("Tryna unload mid mg")
 	# resume game
 	current_mg = Minigame.NONE
 	resume(false)
@@ -78,6 +78,7 @@ static func unload_mid_minigame():
 	return
 
 static func unload_minigame():
+	#if current_scene_has_mg:
 	print("player has won, unloading fr")
 	AudioManager.play_os_from_arr("win")
 	current_mg = Minigame.NONE

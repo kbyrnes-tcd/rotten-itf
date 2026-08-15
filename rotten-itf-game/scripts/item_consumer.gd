@@ -20,7 +20,6 @@ func _physics_process(_delta: float) -> void:
 	if player_in_area and Input.is_action_just_pressed("interact"):
 		if (player.has(item) and player.can_take_item(item)):
 				#player.use(item) # comment out to not actually subtract from player inv
-				print("hello")
 				GameGlobals.load_minigame(minigame)
 				mid_minigame = true
 		else:
