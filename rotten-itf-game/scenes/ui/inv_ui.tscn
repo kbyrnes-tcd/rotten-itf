@@ -5,7 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://cl6df2qdvgr0" path="res://scenes/ui/inv_ui_slot.tscn" id="3_shghf"]
 
 [node name="InvUI" type="Control" unique_id=959144703]
-custom_minimum_size = Vector2(66, 44)
+process_mode = 3
+custom_minimum_size = Vector2(66, 56.5)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 66.0
@@ -16,11 +17,28 @@ script = ExtResource("1_ef5jc")
 layout_mode = 0
 offset_right = 66.0
 offset_bottom = 44.0
+scale = Vector2(1, 1.2819903)
 texture = ExtResource("2_htl50")
 patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
+
+[node name="Label" type="Label" parent="NinePatchRect" unique_id=1718326604]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 4
+text = "This item is awesum."
+vertical_alignment = 2
 
 [node name="GridContainer" type="GridContainer" parent="NinePatchRect" unique_id=125647624]
 layout_mode = 1
@@ -35,6 +53,7 @@ offset_right = 29.0
 offset_bottom = 18.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1, 0.71918666)
 columns = 3
 
 [node name="Inv_Ui_Slot1" parent="NinePatchRect/GridContainer" unique_id=1590680367 instance=ExtResource("3_shghf")]

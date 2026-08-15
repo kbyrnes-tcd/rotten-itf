@@ -3,7 +3,7 @@ extends Control
 @onready var inv: Inventory = preload("uid://bbfb2yem3oxv0")
 @onready var slots: Array = $NinePatchRect/GridContainer.get_children()
 
-var is_open = false
+@onready var label: Label = $NinePatchRect/Label
 
 # onload: inventory is closed, load up images
 func _ready() -> void:
@@ -11,6 +11,7 @@ func _ready() -> void:
 	inv.update.connect(update_slots)
 	close()
 	update_slots()
+	label.text = ""
 	
 # update item visuals via inv_ui_slot.gd>update func
 func update_slots():
@@ -18,13 +19,50 @@ func update_slots():
 		slots[i].update(inv.slots[i])
 
 func close():
-	is_open = false;
-	visible = false;
+	if visible:
+		visible = false;
+		get_tree().paused = false
+		clear_selection()
 	
 func open():
-	is_open = true;
-	visible = true;
+	if !visible and !get_tree().paused:
+		# dont open inv while paused...
+		get_tree().paused = true
+		visible = true;
+
+func set_label(desc : String):
+	label.text = desc
+
+func clear_selection():
+	label.text = ""
+	render_ui_twin = false
+	ui_twin = null
+	for i in range(inv.slots.size()):
+		inv.slots[i].set_unactive()
+	update_slots()
+
+var render_ui_twin := false
+var ui_twin
+
+func activate_slot(slot : InvSlot):
+	slot.set_active()
+	set_label(slot.item.desc)
+	# if the selected inv item has a ui_twin to render, call it on the GameManager
+	if slot.item.ui_twin:
+		render_ui_twin = true
+		ui_twin = slot.item.ui_twin
+	update_slots()
 
 func _process(_delta):
 	if Input.is_action_just_pressed(("inv")):
-		var _foo = close() if is_open else open() 
+		var _foo = close() if visible else open()
+
+	if render_ui_twin and (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("click")):
+		GameGlobals.load_letter_ui(ui_twin)
+
+	if visible:
+		for i in range(0, 6):
+			if inv.slots[i].has_item() and Input.is_action_just_pressed("inv_%d" % (i + 1)):
+				clear_selection()
+				activate_slot(inv.slots[i])
+				update_slots()

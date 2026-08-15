@@ -186,7 +186,7 @@ func midpoint(src: Vector2, dest: Vector2) -> Vector2:
 	return Vector2(src.x + dest.x, src.y + dest.y) / 2
 
 func add_vine(src: Vector2, dest: Vector2):
-	var dist_scale: int = roundf(src.distance_to(dest) / 70)
+	var dist_scale = roundf(src.distance_to(dest) / 70)
 	var vine = ROT_VINE.instantiate()
 	var vine_points: PackedVector2Array = PackedVector2Array([src, dest])
 	var counter = 0

@@ -11,6 +11,7 @@ offset_bottom = 16.0
 script = ExtResource("1_xk2dx")
 
 [node name="SlotSprite" type="Sprite2D" parent="." unique_id=537074285]
+modulate = Color(1, 1, 1, 0.53333336)
 texture = ExtResource("1_jeme5")
 centered = false
 
@@ -29,3 +30,6 @@ offset_bottom = 30.0
 scale = Vector2(0.4, 0.4)
 text = "99"
 horizontal_alignment = 2
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
