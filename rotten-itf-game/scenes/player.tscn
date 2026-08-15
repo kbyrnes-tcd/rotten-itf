@@ -27,7 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://bxl2jpi2iq4hf" path="res://assets/images/player/equipment/Amulet.png" id="23_ke2ow"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_whljo"]
-size = Vector2(24.5, 78.75)
+size = Vector2(22.5, 62.75)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6adnx"]
 animations = [{
@@ -125,6 +125,7 @@ script = ExtResource("1_qlg0r")
 inv = ExtResource("2_ur7pv")
 
 [node name="PlyrCollisionShape2D" type="CollisionShape2D" parent="." unique_id=66024058]
+z_index = 1
 position = Vector2(-3.25, 1.375)
 shape = SubResource("RectangleShape2D_whljo")
 
