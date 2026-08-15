@@ -210,7 +210,7 @@ func change_tool_state(new_state: ToolState):
 			#worm_in_use = false
 			worm_hud.visible = false
 			lantern.process_mode = Node.PROCESS_MODE_DISABLED
-			lantern.modulate.a = 1.0
+			#lantern.modulate.a = 1.0
 			var area = lantern.get_node_or_null("LanternArea2D")
 			if area:
 				area.monitoring = false
@@ -221,7 +221,7 @@ func change_tool_state(new_state: ToolState):
 			worm_hud.visible = false
 			lantern.visible = false
 			lantern.process_mode = Node.PROCESS_MODE_DISABLED
-			lantern.modulate.a = 1.0
+			#lantern.modulate.a = 1.0
 			var area = lantern.get_node_or_null("LanternArea2D")
 			if area:
 				area.monitoring = false
@@ -250,7 +250,7 @@ func change_tool_state(new_state: ToolState):
 				area.monitoring = false
 				area.monitorable = false
 			update_lantern_visuals()
-			lantern.modulate.a = 0.3
+			#lantern.modulate.a = 0.3
 		ToolState.LANTERN_ON:
 			lantern.visible = true
 			lantern.process_mode = Node.PROCESS_MODE_INHERIT
@@ -262,8 +262,8 @@ func change_tool_state(new_state: ToolState):
 				use_timer = 0.0
 			if inv.has(GLOWWORM):
 				activate_light()
-			else: 
-				lantern.modulate.a = 0.3
+			#else: 
+				#lantern.modulate.a = 0.3
 		ToolState.GUN_EQUIPPED:
 			gun.visible = true
 			gun_sprite.visible = true
@@ -420,7 +420,7 @@ func _handle_vine_growth(delta: float):
 # LANTERN VISUALS
 func update_lantern_visuals():
 	var life_ratio = float(glowworm_uses)/float(GLOWWORM_MAX)
-	lantern.modulate.a = lerp(0., 1.0, life_ratio)
+	#lantern.modulate.a = lerp(0., 1.0, life_ratio)
 	update_worm_segments()
 	var light = lantern.get_node_or_null("PointLight2D")
 	if light:
