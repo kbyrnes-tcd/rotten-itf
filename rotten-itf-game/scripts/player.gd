@@ -32,7 +32,8 @@ var segments: Array = []
 # Drag and drop player inv, set player speed/jump params
 @export var inv: Inventory
 @export var SPEED = 150.0
-@export var JUMP_VELOCITY = -650.0
+@export var FULL_JUMP_VELOCITY = -650.0
+@export var MID_JUMP_VELOCITY = -500.0
 
 # Enums and state variables
 enum ToolState { IDLE, LANTERN_ON, LANTERN_EQUIPPED, GUN_EQUIPPED, GUN_ON }
@@ -110,10 +111,13 @@ func _handle_movement(delta: float):
 		AudioManager.stop_walk_fx()
 		move_state = MoveState.IDLE
 		
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	if Input.is_action_just_pressed("jump") and is_on_floor() and !$FullJumpRayCast.is_colliding():
+		velocity.y = FULL_JUMP_VELOCITY
 		move_state = MoveState.JUMPING
-	
+	elif Input.is_action_just_pressed("jump") and is_on_floor() and !$MidJumpRayCast.is_colliding():
+		velocity.y = MID_JUMP_VELOCITY
+		move_state = MoveState.JUMPING
+		
 	var direction := Input.get_axis("left", "right")
 	if direction:
 		velocity.x = direction * SPEED

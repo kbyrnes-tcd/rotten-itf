@@ -77,7 +77,7 @@ shape = SubResource("RectangleShape2D_3336g")
 
 [node name="Ramp" type="CollisionPolygon2D" parent="Colliders/GroundCollider" unique_id=1718664119]
 position = Vector2(1675, -17)
-polygon = PackedVector2Array(-3, 5, 36, -8, 1500, -8, 1506, 13)
+polygon = PackedVector2Array(-3, 6, 36, -8, 1500, -8, 1506, 13)
 
 [node name="LeftOobCollider" type="StaticBody2D" parent="Colliders" unique_id=2121097576]
 position = Vector2(-9.094947e-13, 388)

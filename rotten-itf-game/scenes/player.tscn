@@ -245,6 +245,14 @@ drag_top_margin = 0.0
 drag_right_margin = 0.0
 drag_bottom_margin = 0.0
 
+[node name="FullJumpRayCast" type="RayCast2D" parent="." unique_id=1638252249]
+scale = Vector2(0.99999976, 0.99999976)
+target_position = Vector2(0, -120)
+
+[node name="MidJumpRayCast" type="RayCast2D" parent="." unique_id=1895618936]
+scale = Vector2(0.99999976, 0.99999976)
+target_position = Vector2(0, -80)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=381364680]
 
 [node name="WormHUD" type="HBoxContainer" parent="CanvasLayer" unique_id=22575049]
