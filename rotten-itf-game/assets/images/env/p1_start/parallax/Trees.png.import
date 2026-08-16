@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmj1a5apk3w36"
-path="res://.godot/imported/Amulet.png-5f4fe052ef19024ee93a8916b4552f66.ctex"
+uid="uid://bm5fyms6wejyn"
+path="res://.godot/imported/Trees.png-61f64ec7b583c9702c4d368fac49f2b6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/player/equipment/Amulet.png"
-dest_files=["res://.godot/imported/Amulet.png-5f4fe052ef19024ee93a8916b4552f66.ctex"]
+source_file="res://assets/images/env/p1_start/parallax/Trees.png"
+dest_files=["res://.godot/imported/Trees.png-61f64ec7b583c9702c4d368fac49f2b6.ctex"]
 
 [params]
 

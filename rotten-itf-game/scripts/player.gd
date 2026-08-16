@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 # Player equipment in scene, animation and SFX data
 @onready var animated_sprite_2d: AnimatedSprite2D = $CharacterSprites/AnimatedSprite2D
@@ -31,7 +32,8 @@ var segments: Array = []
 # Drag and drop player inv, set player speed/jump params
 @export var inv: Inventory
 @export var SPEED = 150.0
-@export var JUMP_VELOCITY = -650.0
+@export var FULL_JUMP_VELOCITY = -650.0
+@export var MID_JUMP_VELOCITY = -500.0
 
 # Enums and state variables
 enum ToolState { IDLE, LANTERN_ON, LANTERN_EQUIPPED, GUN_EQUIPPED, GUN_ON }
@@ -69,7 +71,10 @@ func _process(delta):
 			_tool_gun_equipped()
 		ToolState.GUN_ON:
 			_tool_gun_on()
-
+			
+func get_tool_state():
+	return tool_state
+	
 # MOVEMENT
 func _physics_process(delta: float):
 	_handle_animation()
@@ -89,9 +94,7 @@ func _handle_animation():
 		if tool_state == ToolState.IDLE:
 			animated_sprite_2d.animation = "walk"
 		else:
-			# TODO: add walk_equipped anim
-			animated_sprite_2d.animation = "walk"
-			#print("should be WALK and equipped!")
+			animated_sprite_2d.animation = "walk_equipped"
 
 func _handle_movement(delta: float):
 	if not is_on_floor():
@@ -108,10 +111,13 @@ func _handle_movement(delta: float):
 		AudioManager.stop_walk_fx()
 		move_state = MoveState.IDLE
 		
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	if Input.is_action_just_pressed("jump") and is_on_floor() and !$FullJumpRayCast.is_colliding():
+		velocity.y = FULL_JUMP_VELOCITY
 		move_state = MoveState.JUMPING
-	
+	elif Input.is_action_just_pressed("jump") and is_on_floor() and !$MidJumpRayCast.is_colliding():
+		velocity.y = MID_JUMP_VELOCITY
+		move_state = MoveState.JUMPING
+		
 	var direction := Input.get_axis("left", "right")
 	if direction:
 		velocity.x = direction * SPEED
@@ -212,7 +218,7 @@ func change_tool_state(new_state: ToolState):
 			#worm_in_use = false
 			worm_hud.visible = false
 			lantern.process_mode = Node.PROCESS_MODE_DISABLED
-			lantern.modulate.a = 1.0
+			#lantern.modulate.a = 1.0
 			var area = lantern.get_node_or_null("LanternArea2D")
 			if area:
 				area.monitoring = false
@@ -223,7 +229,7 @@ func change_tool_state(new_state: ToolState):
 			worm_hud.visible = false
 			lantern.visible = false
 			lantern.process_mode = Node.PROCESS_MODE_DISABLED
-			lantern.modulate.a = 1.0
+			#lantern.modulate.a = 1.0
 			var area = lantern.get_node_or_null("LanternArea2D")
 			if area:
 				area.monitoring = false
@@ -252,7 +258,7 @@ func change_tool_state(new_state: ToolState):
 				area.monitoring = false
 				area.monitorable = false
 			update_lantern_visuals()
-			lantern.modulate.a = 0.3
+			#lantern.modulate.a = 0.3
 		ToolState.LANTERN_ON:
 			lantern.visible = true
 			lantern.process_mode = Node.PROCESS_MODE_INHERIT
@@ -264,8 +270,8 @@ func change_tool_state(new_state: ToolState):
 				use_timer = 0.0
 			if inv.has(GLOWWORM):
 				activate_light()
-			else: 
-				lantern.modulate.a = 0.3
+			#else: 
+				#lantern.modulate.a = 0.3
 		ToolState.GUN_EQUIPPED:
 			gun.visible = true
 			gun_sprite.visible = true
@@ -343,7 +349,7 @@ func _tool_gun_equipped():
 	var dir = get_snapped_direction()
 	var _pts = ray_line_2d.points
 	_pts[1] = ray_cast_2d.to_local(
-		ray_cast_2d.global_position + dir * 200.0
+		ray_cast_2d.global_position + dir * 100.0
 	)
 	ray_line_2d.points = _pts
 
@@ -358,7 +364,7 @@ func _tool_gun_on():
 	var dir = get_snapped_direction()
 	var _pts = ray_line_2d.points
 	_pts[1] = ray_cast_2d.to_local(
-		ray_cast_2d.global_position + dir * 200.0
+		ray_cast_2d.global_position + dir * 100.0
 	)
 	ray_line_2d.points = _pts
 
@@ -422,7 +428,7 @@ func _handle_vine_growth(delta: float):
 # LANTERN VISUALS
 func update_lantern_visuals():
 	var life_ratio = float(glowworm_uses)/float(GLOWWORM_MAX)
-	lantern.modulate.a = lerp(0., 1.0, life_ratio)
+	#lantern.modulate.a = lerp(0., 1.0, life_ratio)
 	update_worm_segments()
 	var light = lantern.get_node_or_null("PointLight2D")
 	if light:

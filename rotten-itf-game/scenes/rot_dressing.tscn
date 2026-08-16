@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dismh7ltsr7nx"]
+
+[ext_resource type="Shader" uid="uid://cv8gg3r3c6md3" path="res://scripts/shaders/pixelate.gdshader" id="1_b43xs"]
+[ext_resource type="Texture2D" uid="uid://dyfb4jh6yq53g" path="res://assets/images/rot/Rot-V2-Single.PNG" id="1_f4lte"]
+[ext_resource type="Script" uid="uid://bc1k5ojr0ocy" path="res://scripts/rot_dressing.gd" id="2_f4lte"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2tqn1"]
+shader = ExtResource("1_b43xs")
+shader_parameter/pixelate_amount = 15
+shader_parameter/darken_amount = 1.0
+
+[node name="Vine" type="Node2D" unique_id=1749191672]
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1590463200]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_2tqn1")
+points = PackedVector2Array(2.2655604, -8.177147, 34, 3, 58, 20)
+width = 7.0
+default_color = Color(0.93333334, 1, 0.93333334, 0.7176471)
+texture = ExtResource("1_f4lte")
+texture_mode = 1
+script = ExtResource("2_f4lte")
+
+[node name="LineStaticBody2D" type="StaticBody2D" parent="Line2D" unique_id=78523614]
+
+[node name="LineArea2D" type="Area2D" parent="Line2D" unique_id=1042866426]
+
+[connection signal="area_shape_entered" from="Line2D/LineArea2D" to="Line2D" method="_on_line_area_2d_area_shape_entered"]
+[connection signal="body_entered" from="Line2D/LineArea2D" to="Line2D" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Line2D/LineArea2D" to="Line2D" method="_on_area_2d_body_exited"]
