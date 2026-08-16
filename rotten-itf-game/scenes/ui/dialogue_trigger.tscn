@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://bd3r1j21a2opr"]
+[gd_scene format=3 uid="uid://c1epxp5spnua"]
+
+[ext_resource type="Texture2D" uid="uid://cd4cbrmm0xm5a" path="res://assets/images/ui/carat.png" id="1_byapi"]
 
 [sub_resource type="GDScript" id="GDScript_uj0ns"]
 script/source = "extends Node2D
@@ -32,7 +34,7 @@ func trigger_dialogue():
 
 func _on_area_2d_body_entered(body: Node2D):
 	if body.has_method(\"collect\"):
-		player_in_area = false
+		player_in_area = true
 
 func _on_area_2d_body_exited(body: Node2D):
 	if body.has_method(\"collect\"):
@@ -41,11 +43,13 @@ func _on_area_2d_body_exited(body: Node2D):
 
 [node name="DialogueTrigger" type="Node2D" unique_id=413688381]
 script = SubResource("GDScript_uj0ns")
+dialogue_lines = Array[String](["Hey Daphne whats up"])
+speaker = "Daphne"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1114588435]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1913681013]
 position = Vector2(0, -1)
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[node name="Interact" type="Sprite2D" parent="." unique_id=125428239]
+texture = ExtResource("1_byapi")

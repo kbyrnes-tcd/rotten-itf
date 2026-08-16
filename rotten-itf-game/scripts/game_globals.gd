@@ -1,7 +1,7 @@
 extends Node
 class_name GameGlobals
 
-static var level_prog = ["Begin", "Scene_01", "Scene_02"]
+static var level_prog = ["Begin", "Scene_01", "Scene_02", "Scene_03"]
 static var level_root: Node2D
 static var mg_root: Node2D
 static var scene

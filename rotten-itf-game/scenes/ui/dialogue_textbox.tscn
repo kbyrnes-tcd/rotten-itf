@@ -31,7 +31,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 113.0
 offset_top = -100.0
-offset_right = -101.0
+offset_right = -107.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -40,6 +40,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 21.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4keky")
@@ -49,6 +50,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -9.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 10
@@ -77,9 +79,9 @@ vertical_alignment = 2
 custom_minimum_size = Vector2(120, 40)
 layout_mode = 0
 offset_left = 12.0
-offset_top = -33.0
+offset_top = -9.0
 offset_right = 132.0
-offset_bottom = 9.0
+offset_bottom = 33.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_nbikq")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="DialogueAnchor/NamePlate" unique_id=378396151]

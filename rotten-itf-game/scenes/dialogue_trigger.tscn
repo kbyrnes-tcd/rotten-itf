@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://coig2atkogxk6"]
+
+[ext_resource type="Script" uid="uid://ddnjkodm10cvk" path="res://scripts/dialogue_trigger.gd" id="1_o7blk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q01m8"]
+
+[node name="DialogueTrigger" type="Node2D" unique_id=1229587785]
+script = ExtResource("1_o7blk")
+dialogue_lines = Array[String](["Hey Daphne wasup", "not much...", "rot???", "girl sure"])
+speaker = Array[String](["Persephone", "Daphne", "Persephone", "Daphne"])
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1509858234]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1896570957]
+shape = SubResource("RectangleShape2D_q01m8")

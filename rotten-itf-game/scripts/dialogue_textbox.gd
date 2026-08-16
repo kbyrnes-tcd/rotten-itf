@@ -32,11 +32,11 @@ var text_queue = []
 var current_tween = null
 
 func _ready():
-
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	hide_textbox()
-	queue_text("Daphne help...", "Daphne")
-	queue_text("I am here" , "Persephone")
-	queue_text("You are not responsbile", "Daphne")
+	#queue_text("Daphne help...", "Daphne")
+	#queue_text("I am here" , "Persephone")
+	#queue_text("You are not responsbile", "Daphne")
 	
 func _process(_delta):
 	match current_state:
