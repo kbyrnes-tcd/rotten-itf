@@ -69,8 +69,7 @@ func inst_collisions():
 			new_shape_static.shape = segment
 
 func _on_line_area_2d_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
-	var player : Player = area.get_parent().get_parent().get_parent()
-	if player.get_tool_state() == 1 and clearable and area.name == "LanternArea2D":
+	if GameGlobals.player.get_tool_state() == 1 and clearable and area.name == "LanternArea2D":
 		AudioManager.play_fx("shrink")
 		var space_state = get_world_2d().direct_space_state
 		var indices = [] # to store points within lantern-area; to later split at

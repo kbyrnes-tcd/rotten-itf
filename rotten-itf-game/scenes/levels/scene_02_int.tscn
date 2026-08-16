@@ -101,5 +101,7 @@ z_index = -2
 
 [node name="Line2D2" parent="RotOnDoor" unique_id=1110441175 instance=ExtResource("4_xgkue")]
 points = PackedVector2Array(847, 261, 811, 264, 771.2272, 259.8745, 677, 259, 606.12244, 248.84216, 568, 264, 452.2045, 226.7834, 412.5545, 229.36229, 372, 232, 333.39178, 229.64583, 290, 227, 238, 221, 188, 215, 138, 216, 106, 221, 70, 216, -12.744873, 207.69586)
+collidable = null
+clearable = null
 
 [editable path="Player"]
