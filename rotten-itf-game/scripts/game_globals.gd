@@ -10,21 +10,22 @@ static var config: Node
 # static var tween
 enum Minigame { NONE, MAZE, LETTER }
 static var current_mg
-
+static var player : Player
 static var pause_menu: Control
 static var color_rect: ColorRect
 static var letter_ui: Control
 
 static var mid_mg : Node
 static var inv_ui : Control
-var running_another_scene : bool = false # for running minigames and etc.
-static var current_scene_has_mg : bool = false
+var running_another_scene : bool = true # for running minigames and etc.
+
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	AudioManager.play_ambience("Ambience", 0, true)
+	tree = get_tree()
+	scene = tree.current_scene
+	player = scene.find_child("Player")
 	if !running_another_scene:
-		tree = get_tree()
-		scene = tree.current_scene
 		level_root = scene.get_node("World/LevelRoot")
 		mg_root = scene.get_node("MinigameLayer/MgRoot")
 		letter_ui = scene.get_node("HUD/LetterHUD/LetterUI")
@@ -40,7 +41,9 @@ func _ready() -> void:
 		if debug_scene == null:
 			load_level(level_prog[1])
 		else:
-			level_root.add_child(debug_scene.instantiate())
+			var debug_node := debug_scene.instantiate()
+			level_root.add_child(debug_node)
+			player = debug_node.find_child("Player")
 
 func _process(_delta: float) -> void:
 	# esc button closes letter pop_ups and inventory, and exits minigames
@@ -78,7 +81,6 @@ static func unload_mid_minigame():
 	return
 
 static func unload_minigame():
-	#if current_scene_has_mg:
 	print("player has won, unloading fr")
 	AudioManager.play_os_from_arr("win")
 	current_mg = Minigame.NONE
@@ -140,6 +142,7 @@ static func load_level(level_name: String):
 	var scene_node : Node = c_scene.instantiate()
 	if (c_scene):
 		level_root.add_child(scene_node)
+		player = scene_node.find_child("Player")
 
 static func next_level():
 	var curr_index : int = level_prog.find(level_root.get_child(0).name)

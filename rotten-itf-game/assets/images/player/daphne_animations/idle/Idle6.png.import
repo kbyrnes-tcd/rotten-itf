@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmj1a5apk3w36"
-path="res://.godot/imported/Amulet.png-5f4fe052ef19024ee93a8916b4552f66.ctex"
+uid="uid://ck1ip70xegy8l"
+path="res://.godot/imported/Idle6.png-17f3e64759b1edf1e5e097b6a62da238.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/player/equipment/Amulet.png"
-dest_files=["res://.godot/imported/Amulet.png-5f4fe052ef19024ee93a8916b4552f66.ctex"]
+source_file="res://assets/images/player/daphne_animations/idle/Idle6.png"
+dest_files=["res://.godot/imported/Idle6.png-17f3e64759b1edf1e5e097b6a62da238.ctex"]
 
 [params]
 

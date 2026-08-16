@@ -11,6 +11,7 @@ shader_type canvas_item;
 render_mode blend_mix;
 
 uniform int pixelate_amount = 180;
+uniform float darken_amount = 1.0;
 
 void fragment()
 {
@@ -22,5 +23,6 @@ void fragment()
     // isolate the fade out factor by checking current Alpha channel (getting affected by Rot.gd)
     float alpha_fade = COLOR.a / max(texture(TEXTURE, UV).a, 0.0001);
     uv_text.a *= alpha_fade;
+	uv_text.rgb *= darken_amount;
     COLOR = uv_text;
 }
