@@ -166,6 +166,7 @@ shader_parameter/color2 = Color(0.3137255, 0.21960784, 0.2901961, 0.50980395)
 shader_parameter/opacity = 1.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1515659648]
+position = Vector2(32.999996, 233.99998)
 scale = Vector2(0.8, 0.8)
 script = ExtResource("1_qlg0r")
 inv = ExtResource("2_gl8cc")
