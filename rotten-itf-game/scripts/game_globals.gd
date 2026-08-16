@@ -2,6 +2,15 @@ extends Node
 class_name GameGlobals
 
 static var level_prog = ["Begin", "Scene_01", "Scene_02", "Scene_03"]
+# PROGRESSION: ext_path, garden_int, garden_ext, altar, quarters, tower, p-altar, underworld
+static var audio_prog := [
+	{"ambience": "Ext_Ambiance","music": "Temple_Music"}, #ext_path
+	{"ambience": "Int_Ambiance","music": "Temple_Music"}, #garden_int
+	{"ambience": "Garden_Ambience", "music": "Temple_Music"}, #garden_ext
+	{"ambience": "Int_Ambiance", "music": "Temple_Music"} #altar
+	#{"ambience": "", "music": ""}
+]
+
 static var level_root: Node2D
 static var mg_root: Node2D
 static var scene
@@ -39,7 +48,7 @@ func _ready() -> void:
 		#tween.tween_property(color_rect, "modulate:a", 0.5, 0.67)
 		
 		if debug_scene == null:
-			load_level(level_prog[1])
+			load_level(level_prog[0])
 		else:
 			var debug_node := debug_scene.instantiate()
 			level_root.add_child(debug_node)
