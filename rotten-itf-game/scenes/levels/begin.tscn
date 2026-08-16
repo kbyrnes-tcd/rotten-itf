@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://dlk2h13w2xeca" path="res://scripts/game_globals_config.gd" id="1_ep3c1"]
 [ext_resource type="PackedScene" uid="uid://cpwsgbr3fr7by" path="res://scenes/ui/pause_menu.tscn" id="2_ep3c1"]
-[ext_resource type="PackedScene" uid="uid://cwbsao03j5sj6" path="res://scenes/levels/scene_05.tscn" id="2_mn8rq"]
+[ext_resource type="PackedScene" uid="uid://h1dqndhb88on" path="res://scenes/levels/main_maze.tscn" id="2_mn8rq"]
 [ext_resource type="PackedScene" uid="uid://b0xdv5nobjlkk" path="res://scenes/minigames/rot_maze.tscn" id="2_ty236"]
 [ext_resource type="PackedScene" uid="uid://0hlcimiuwo6o" path="res://scenes/ui/inv_ui.tscn" id="3_ep3c1"]
-[ext_resource type="PackedScene" uid="uid://dtf7n0o1f301e" path="res://scenes/ui/dialogue_textbox.tscn" id="6_whljo"]
+[ext_resource type="PackedScene" uid="uid://cnitmpmsmrrr6" path="res://scenes/ui/letter_ui.tscn" id="6_mn8rq"]
 [ext_resource type="PackedScene" uid="uid://cpu885nisbhmc" path="res://scenes/ui/constellation_minigame.tscn" id="7_y13p6"]
 
 [node name="Essentials" type="Node2D" unique_id=1446151240]
@@ -53,13 +53,37 @@ offset_bottom = 22.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="LetterHUD" type="Control" parent="HUD" unique_id=200915129]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+
+[node name="LetterUI" parent="HUD/LetterHUD" unique_id=1849127550 instance=ExtResource("6_mn8rq")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="UI" type="CanvasLayer" parent="." unique_id=1138512013]
 process_mode = 3
 
 [node name="PauseMenu" parent="UI" unique_id=111660448 instance=ExtResource("2_ep3c1")]
 visible = false
-
-[node name="Textbox" parent="UI" unique_id=424906784 groups=["dialogue_manager"] instance=ExtResource("6_whljo")]
 
 [node name="World" type="Node2D" parent="." unique_id=1061914356]
 

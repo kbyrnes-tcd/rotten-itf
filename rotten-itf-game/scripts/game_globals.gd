@@ -6,29 +6,33 @@ static var level_root: Node2D
 static var mg_root: Node2D
 static var scene
 static var tree
-static var config : Node
-#static var tween
+static var config: Node
+# static var tween
 enum Minigame { NONE, MAZE, LETTER }
 static var current_mg
 
 static var pause_menu: Control
-static var hud: CanvasLayer
 static var color_rect: ColorRect
+static var letter_ui: Control
 
+static var mid_mg : Node
+static var inv_ui : Control
 var running_another_scene : bool = false # for running minigames and etc.
-
+static var current_scene_has_mg : bool = false
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	AudioManager.play_ambience("Ambience", 0, true)
 	if !running_another_scene:
 		tree = get_tree()
 		scene = tree.current_scene
 		level_root = scene.get_node("World/LevelRoot")
 		mg_root = scene.get_node("MinigameLayer/MgRoot")
+		letter_ui = scene.get_node("HUD/LetterHUD/LetterUI")
+		inv_ui = scene.get_node("HUD/InvHUD/InvUI")
 		current_mg = Minigame.NONE
 		
 		config = scene.get_node("Config")
 		pause_menu = config.pause_menu
-		hud = config.hud
 		var debug_scene : PackedScene = config.debug_level
 		#tween = create_tween()
 		#tween.tween_property(color_rect, "modulate:a", 0.5, 0.67)
@@ -37,6 +41,16 @@ func _ready() -> void:
 			load_level(level_prog[1])
 		else:
 			level_root.add_child(debug_scene.instantiate())
+
+func _process(_delta: float) -> void:
+	# esc button closes letter pop_ups and inventory, and exits minigames
+	if Input.is_action_just_pressed("esc"):
+		if letter_ui.visible:
+			letter_ui.visible = false
+		elif current_mg != Minigame.NONE:
+			unload_mid_minigame()
+		elif inv_ui.visible:
+			inv_ui.close()
 
 static func resume(w_menu : bool):
 	# only resume if currently not in minigame
@@ -52,19 +66,38 @@ static func pause(w_menu : bool):
 		pause_menu.visible = true
 	tree.paused = true
 
-static func unload_minigame():
+static func unload_mid_minigame():
+	#print("Tryna unload mid mg")
 	# resume game
+	current_mg = Minigame.NONE
+	resume(false)
+	# store mg_root child from tree into mid_mg
+	mid_mg = mg_root.get_child(0)
+	mg_root.get_child(0).process_mode = Node.PROCESS_MODE_DISABLED
+	mg_root.get_child(0).visible = false
+	return
+
+static func unload_minigame():
+	#if current_scene_has_mg:
+	print("player has won, unloading fr")
 	AudioManager.play_os_from_arr("win")
 	current_mg = Minigame.NONE
 	resume(false)
 	# unload mg_root child from tree
-	var c_mg : Node = mg_root.get_child(0)
+	var c_mg := mg_root.get_child(0)
+	var mg_spawner : ItemConsumer = level_root.get_child(0).get_child(0)
+	# set minigame as complete: deactivate on item_consumer...
+	mg_spawner.satisfied()
 	c_mg.queue_free()
-	hud.visible = true
+	mid_mg = null
 	return
 	
 static func load_minigame(mg : int):
+	if inv_ui.visible or letter_ui.visible:
+		inv_ui.close()
+		letter_ui.visible = false
 	pause(false)
+	
 	var inst : Node
 	match mg:
 		Minigame.MAZE:
@@ -73,9 +106,15 @@ static func load_minigame(mg : int):
 		Minigame.LETTER:
 			current_mg = Minigame.LETTER
 			inst = config.letter_mg.instantiate()
+
+	if mid_mg:
+		# if player left mid_mg reload that
+		mg_root.get_child(0).process_mode = Node.PROCESS_MODE_ALWAYS
+		mg_root.get_child(0).visible = true
+		mid_mg = null
+		return
 			
 	mg_root.add_child(inst)
-	hud.visible = false
 	
 	if inst is Control:
 		var viewport_size = tree.root.get_visible_rect().size
@@ -85,7 +124,10 @@ static func load_minigame(mg : int):
 		if main_split:
 			main_split.position = Vector2.ZERO
 			main_split.size = viewport_size
-		
+
+static func load_letter_ui(letter : LetterCopy):
+	letter_ui.visible = true
+	letter_ui.set_label(letter.copy)
 
 static func unload_level():
 	if level_root.get_child_count() > 0:
