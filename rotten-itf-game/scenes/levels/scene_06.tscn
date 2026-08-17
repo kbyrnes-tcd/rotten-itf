@@ -15,6 +15,9 @@ size = Vector2(1122, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oftv0"]
 size = Vector2(20, 235.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q01m8"]
+size = Vector2(1161, 20)
+
 [node name="Scene06" type="Node2D" unique_id=311908995]
 
 [node name="Background" type="Sprite2D" parent="." unique_id=306356458]
@@ -31,17 +34,21 @@ position = Vector2(66, 228.99998)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=304900103]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=397814039]
+[node name="LeftCollision" type="CollisionShape2D" parent="StaticBody2D" unique_id=397814039]
 position = Vector2(3, 183)
 shape = SubResource("RectangleShape2D_nbikq")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1738080502]
+[node name="BottomCollision" type="CollisionShape2D" parent="StaticBody2D" unique_id=1738080502]
 position = Vector2(573, 285)
 shape = SubResource("RectangleShape2D_b3hyr")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=326114271]
+[node name="RightCollision" type="CollisionShape2D" parent="StaticBody2D" unique_id=326114271]
 position = Vector2(1144, 182)
 shape = SubResource("RectangleShape2D_oftv0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=803533418]
+position = Vector2(566, 54)
+shape = SubResource("RectangleShape2D_q01m8")
 
 [node name="RotMap" parent="." unique_id=1749191672 instance=ExtResource("4_8sk0i")]
 position = Vector2(174, 167)

@@ -17,7 +17,7 @@ static var letter_ui: Control
 
 static var mid_mg : Node
 static var inv_ui : Control
-var running_another_scene : bool = true # for running minigames and etc.
+var running_another_scene : bool = false # for running minigames and etc.
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
