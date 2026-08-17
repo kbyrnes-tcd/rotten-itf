@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://dtf7n0o1f301e"]
 
-[ext_resource type="FontFile" uid="uid://bmj0pgvborgfq" path="res://assets/fonts/Grenze-Black.ttf" id="1_pa5wo"]
 [ext_resource type="Script" uid="uid://tt771uf6rtw8" path="res://scripts/dialogue_textbox.gd" id="1_y2pcl"]
+[ext_resource type="FontFile" uid="uid://3u1i6waxj8qa" path="res://assets/fonts/HyperlegibleSans-Bold.ttf" id="2_xcyex"]
+[ext_resource type="FontFile" uid="uid://b6i7rpldejb8" path="res://assets/fonts/FaytePixel-Soft.ttf" id="3_6ytya"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4keky"]
 bg_color = Color(0, 0, 0, 1)
@@ -64,12 +65,14 @@ layout_mode = 2
 [node name="DialogueText" type="RichTextLabel" parent="DialogueAnchor/DialogueBox/MarginContainer/VBoxContainer" unique_id=1974559428]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("2_xcyex")
 bbcode_enabled = true
 scroll_active = false
 
 [node name="ContinueHint" type="Label" parent="DialogueAnchor/DialogueBox/MarginContainer/VBoxContainer" unique_id=1123649260]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_xcyex")
 theme_override_font_sizes/font_size = 8
 text = "Press Enter to continue"
 horizontal_alignment = 2
@@ -86,18 +89,18 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_nbikq")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="DialogueAnchor/NamePlate" unique_id=378396151]
 layout_mode = 0
-offset_left = 8.0
-offset_top = -1.0
-offset_right = 112.0
-offset_bottom = 39.0
+offset_left = 6.0
+offset_top = 8.0
+offset_right = 110.0
+offset_bottom = 40.0
 
 [node name="LeftDeco" type="TextureRect" parent="DialogueAnchor/NamePlate/HBoxContainer" unique_id=343008414]
 layout_mode = 2
 
 [node name="CharacterName" type="Label" parent="DialogueAnchor/NamePlate/HBoxContainer" unique_id=1237755147]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_pa5wo")
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("3_6ytya")
+theme_override_font_sizes/font_size = 26
 text = "Daphne"
 horizontal_alignment = 1
 

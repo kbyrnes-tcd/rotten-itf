@@ -12,6 +12,12 @@ func has(item: InvItem) -> bool:
 		return true
 	else: return false
 
+func count(item: InvItem) -> int:
+	var item_slots = slots.filter(func(slot): return slot.item == item)
+	if item_slots.is_empty():
+		return 0
+	return item_slots[0].amount
+
 func insert(item: InvItem):
 	# inserting to correct slot
 	# if slot for the current item exists, and it is not empty, increment

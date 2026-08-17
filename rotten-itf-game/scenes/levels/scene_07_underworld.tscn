@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://oxw3mtmjbnj2" path="res://assets/images/env/underworld/Underworld_Exterior.png" id="1_425tl"]
 [ext_resource type="Texture2D" uid="uid://ryabja3raxip" path="res://assets/images/env/underworld/Underworld_Interior.png" id="2_xllsq"]
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="3_xllsq"]
+[ext_resource type="PackedScene" uid="uid://c1epxp5spnua" path="res://scenes/ui/dialogue_trigger.tscn" id="4_5qgul"]
+[ext_resource type="Script" uid="uid://ddnjkodm10cvk" path="res://scripts/dialogue_trigger.gd" id="5_8jksi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q01m8"]
 size = Vector2(20, 295)
@@ -15,6 +17,8 @@ size = Vector2(29, 287)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nbikq"]
 size = Vector2(2913, 40)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q01m8"]
 
 [node name="Scene07Underworld" type="Node2D" unique_id=1008943527]
 
@@ -57,4 +61,19 @@ shape = SubResource("RectangleShape2D_4keky")
 position = Vector2(1439, 57)
 shape = SubResource("RectangleShape2D_nbikq")
 
+[node name="DialogueTrigger" parent="." unique_id=413688381 instance=ExtResource("4_5qgul")]
+script = ExtResource("5_8jksi")
+dialogue_lines = Array[String](["Hades...yes hmm", "Zeus...no hmm"])
+speaker = Array[String](["Zeus", "Hades"])
+
+[node name="CollisionShape2D" parent="DialogueTrigger/Area2D" parent_id_path=PackedInt32Array(413688381, 1114588435) index="0" unique_id=1913681013]
+position = Vector2(959, 222)
+shape = SubResource("CircleShape2D_q01m8")
+
+[node name="Interact" parent="DialogueTrigger" index="1" unique_id=125428239]
+visible = false
+position = Vector2(959.00006, 174)
+scale = Vector2(0.09079814, 0.08184042)
+
 [editable path="Player"]
+[editable path="DialogueTrigger"]
