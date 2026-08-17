@@ -4,11 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://xetnkgsgwjn2" path="res://assets/images/env/altar/Altar_Collision_Mask.png" id="2_p368k"]
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="3_p368k"]
 [ext_resource type="PackedScene" uid="uid://coslqn83cxfcy" path="res://scenes/zoom_trigger.tscn" id="4_bork3"]
-[ext_resource type="PackedScene" uid="uid://bd3r1j21a2opr" path="res://scenes/ui/dialogue_trigger.tscn" id="5_0760f"]
+[ext_resource type="PackedScene" uid="uid://c1epxp5spnua" path="res://scenes/ui/dialogue_trigger.tscn" id="5_0760f"]
 [ext_resource type="Script" uid="uid://ddnjkodm10cvk" path="res://scripts/dialogue_trigger.gd" id="6_nuytq"]
 [ext_resource type="PackedScene" uid="uid://ddm8l1j51pxi2" path="res://scenes/chandelier.tscn" id="7_5i8uq"]
 [ext_resource type="PackedScene" uid="uid://qtqiun326hpr" path="res://scenes/lever.tscn" id="8_y5j78"]
 [ext_resource type="Script" uid="uid://cdxfomkkfwywg" path="res://scripts/fallen_trigger.gd" id="9_6m4hc"]
+[ext_resource type="PackedScene" uid="uid://dr3ff06oljyer" path="res://scenes/lio_trigger.tscn" id="10_y5j78"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o7blk"]
 
@@ -33,6 +34,7 @@ texture = ExtResource("2_p368k")
 polygon = PackedVector2Array(-1920, 270, -1461.1, 270, -1463, 158, -1463, 155, -1902, 155, -1902, -57.100006, -72, -59, -72, -258, 552, -258, 554, -61, 554, -58, 1902, -57.100006, 1902, 93, 543.19995, 93, 474.1001, 155, 26, 155, 41.45935, 156.00003, 39.5531, 156.00003, 22, 143.9, -59.400024, 93, -570.69995, 93, -642.69995, 154, -1309, 154, -1311, 270, 1920, 270, 1920, -270, -1920, -270)
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("3_p368k")]
+z_index = 1
 position = Vector2(144, 228)
 
 [node name="ZoomTrigger" parent="." unique_id=1302506614 instance=ExtResource("4_bork3")]
@@ -74,6 +76,7 @@ scale = Vector2(0.85714185, 0.5974027)
 chandelier = NodePath("../Chandelier")
 
 [node name="Sprite2D" parent="Lever" index="0" unique_id=1833286394]
+z_index = 0
 position = Vector2(370.00003, 244)
 scale = Vector2(0.74390244, 0.72077924)
 
@@ -93,6 +96,9 @@ chandelier = NodePath("../Chandelier")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FallenTrigger" unique_id=1339456471]
 position = Vector2(55, -37)
 shape = SubResource("RectangleShape2D_5i8uq")
+
+[node name="LioTrigger" parent="." unique_id=110257511 instance=ExtResource("10_y5j78")]
+position = Vector2(2073, 235)
 
 [editable path="ZoomTrigger"]
 [editable path="DialogueTrigger"]
