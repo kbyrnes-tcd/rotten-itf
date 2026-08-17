@@ -205,6 +205,7 @@ shape = SubResource("CircleShape2D_y4r1p")
 position = Vector2(2.7472482, 2.7472513)
 color = Color(0.5803922, 1, 0.92941177, 1)
 energy = 1.5
+range_z_max = 0
 texture = SubResource("GradientTexture2D_q01m8")
 
 [node name="GunSprite2D" type="Sprite2D" parent="CharacterSprites" unique_id=1835702057]
