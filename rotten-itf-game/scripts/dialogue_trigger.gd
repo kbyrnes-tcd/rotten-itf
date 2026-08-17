@@ -25,7 +25,7 @@ func trigger_dialogue():
 	var dialogue_manager = get_tree().get_first_node_in_group("dialogue_manager")
 	if dialogue_manager:
 		GameGlobals.pause()
-		print("paused game, starting off dialog")
+		AudioManager.increase_music_vol(20.0)
 		for i in dialogue_lines.size():
 			var speak = speaker[i] if i < speaker.size() else ""
 			dialogue_manager.queue_text(dialogue_lines[i], speak)

@@ -85,11 +85,11 @@ func play_music(song: String) -> void:
 		music_tween = await fade(music_tween, active_music, -50.0, -30, 1.0)
 		active_music.play()
 
-func increase_music_vol(amount : float = 15.0):
-	music_tween = await fade(music_tween, active_music, active_music.volume_db, active_music.volume_db + amount)
+func increase_music_vol(amount: float = 15.0, dur: float = 1.5):
+	music_tween = await fade(music_tween, active_music, active_music.volume_db, active_music.volume_db + amount, dur)
 
-func decrease_music_vol(amount : float = 15.0):
-	music_tween = await fade(music_tween, active_music, active_music.volume_db, active_music.volume_db - amount)
+func decrease_music_vol(amount: float = 15.0, dur: float = 1.5):
+	music_tween = await fade(music_tween, active_music, active_music.volume_db, active_music.volume_db - amount, dur)
 
 func play_walk_fx() -> void:
 	if !active_walk_fx:
@@ -130,15 +130,20 @@ func play_dialog(copy: String, letter_speed: float = 0.15, base_pitch: float = 1
 			continue
 		index = randi_range(0, index)
 
-		var dialog_audio := AudioStreamPlayer.new()
-		dialog_audio.volume_db = -10.0
-		get_tree().root.add_child(dialog_audio)
-		dialog_audio.stream = alphabet_fx[index]
+		#var dialog_audio := AudioStreamPlayer.new()
+		#get_tree().root.add_child(dialog_audio)
+		if !active_os: active_os = clips.get_node("OneShotFX")
+		active_os.volume_db = -20.0
+		active_os.stream = alphabet_fx[index]
 		# pitch and variance
-		dialog_audio.pitch_scale = base_pitch + randf_range(-pitch_variance, pitch_variance)
-		dialog_audio.play()
+		active_os.pitch_scale = base_pitch + randf_range(-pitch_variance, pitch_variance)
+		active_os.play()
 		await get_tree().create_timer(letter_speed).timeout
-		dialog_audio.queue_free() 
+		active_os = null
+	
+	# return active_os to original state
+	active_os = clips.get_node("OneShotFX")
+	active_os.volume_db = -20.0
 
 func play_os_from_arr(arr_name: String, index : int = -1, from: float = 0.0) -> void:
 	var os_arr = get(arr_name + "_fx")
