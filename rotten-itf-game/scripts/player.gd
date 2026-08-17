@@ -58,6 +58,11 @@ func _ready():
 
 # Tool FSM
 func _process(delta):
+	if Input.is_action_just_pressed("debug_worm"):
+		for i in 5:
+			inv.insert(GLOWWORM)
+			print("5 worms refilled, now: " + str(inv.count(GLOWWORM)))
+			
 	match tool_state:
 		ToolState.IDLE:
 			_tool_idle()
@@ -71,7 +76,6 @@ func _process(delta):
 			_tool_gun_equipped()
 		ToolState.GUN_ON:
 			_tool_gun_on()
-			
 func get_tool_state():
 	return tool_state
 	
