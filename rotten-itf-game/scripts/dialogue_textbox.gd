@@ -55,6 +55,8 @@ func _process(_delta):
 			if Input.is_action_just_pressed("ui_accept"):
 				change_state(State.READY)
 				if text_queue.size() == 0:
+					#print("DIALOG FINISHED!!!!!")
+					GameGlobals.resume()
 					hide_textbox()
 					
 func queue_text(next_text: String, speaker: String = ""):

@@ -67,7 +67,7 @@ func _process(_delta: float) -> void:
 		elif inv_ui.visible:
 			inv_ui.close()
 
-static func resume(w_menu : bool):
+static func resume(w_menu : bool = false):
 	# only resume if currently not in minigame
 	if current_mg == Minigame.NONE:
 		tree.paused = false
@@ -75,7 +75,7 @@ static func resume(w_menu : bool):
 	if w_menu:
 		pause_menu.visible = false
 
-static func pause(w_menu : bool):
+static func pause(w_menu : bool = false):
 	#tween.tween_property(color_rect, "modulate:a", 0.5, 0.67)
 	if w_menu:
 		pause_menu.visible = true
