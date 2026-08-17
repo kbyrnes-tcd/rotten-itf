@@ -93,8 +93,8 @@ func show_textbox(speaker: String = ""):
 func display_text():
 	var entry = text_queue.pop_front()
 	var next_text = entry["text"]
-	AudioManager.play_dialog(next_text)
 	var speaker = entry["speaker"]
+	AudioManager.play_dialog(next_text, speaker)
 	label.text = next_text
 	label.visible_ratio = 0.0
 	change_state(State.READING)

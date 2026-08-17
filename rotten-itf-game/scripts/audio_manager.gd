@@ -121,7 +121,7 @@ func stop_fx() -> void:
 	#if Input.is_action_just_pressed("up"):
 		#AudioManager.play_dialog("Hi")
 		
-func play_dialog(copy: String, letter_speed: float = 0.15, base_pitch: float = 1.5, pitch_variance: float = 0.25) -> void:
+func play_dialog(copy: String, speaker: String = "", letter_speed: float = 0.15, base_pitch: float = 1.5, pitch_variance: float = 0.25) -> void:
 	copy = copy.to_lower().substr(0, 20)
 	for c in copy:
 		var index := ord(c)-97
@@ -129,6 +129,8 @@ func play_dialog(copy: String, letter_speed: float = 0.15, base_pitch: float = 1
 			await get_tree().create_timer(letter_speed * 1.05).timeout
 			continue
 		index = randi_range(0, index)
+		
+		if speaker != "Daphne": base_pitch = 1.25
 
 		#var dialog_audio := AudioStreamPlayer.new()
 		#get_tree().root.add_child(dialog_audio)
