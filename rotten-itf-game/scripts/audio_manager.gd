@@ -26,10 +26,10 @@ var music_tween : Tween
 @export var alphabet_fx : Array[AudioStream] = []
 
 func get_cur_song():
-	return "%s & %s" %[active_music.stream.resource_path.get_file().get_basename(), active_music.volume_db]
+	return "%s & %s" %[active_music.stream.resource_path.get_file().get_basename(), active_music.volume_db] if active_music!=null else "n/a"
 
 func get_cur_ambience():
-	return "%s & %s" %[active_ambience.stream.resource_path.get_file().get_basename(), active_ambience.volume_db]
+	return "%s & %s" %[active_ambience.stream.resource_path.get_file().get_basename(), active_ambience.volume_db] if active_ambience!=null else "n/a"
 
 func fade(c_tween:Tween, stream:AudioStreamPlayer, start_vol := 0.0, end_vol := 0.0, dur := 0.5):
 	if c_tween:
@@ -85,11 +85,11 @@ func play_music(song: String) -> void:
 		music_tween = await fade(music_tween, active_music, -50.0, -30, 1.0)
 		active_music.play()
 
-func increase_music_vol():
-	music_tween = await fade(music_tween, active_music, active_music.volume_db, active_music.volume_db + 15.0)
+func increase_music_vol(amount : float = 15.0):
+	music_tween = await fade(music_tween, active_music, active_music.volume_db, active_music.volume_db + amount)
 
-func decrease_music_vol():
-	music_tween = await fade(music_tween, active_music, active_music.volume_db, active_music.volume_db - 15.0)
+func decrease_music_vol(amount : float = 15.0):
+	music_tween = await fade(music_tween, active_music, active_music.volume_db, active_music.volume_db - amount)
 
 func play_walk_fx() -> void:
 	if !active_walk_fx:
@@ -107,36 +107,42 @@ func play_fx(fx_name: String, from: float = 0.0) -> void:
 	if !active_fx:
 		active_fx = clips.get_node("LoopFX")
 		active_fx.stream = fx[fx_name]
-		fx_tween = await fade(fx_tween, active_fx, -50.0, -15.0, 1.0)
+		fx_tween = await fade(fx_tween, active_fx, -50.0, -15.0, 0.1)
 		active_fx.play(from)
 	
 func stop_fx() -> void:
 	if active_fx:
-		fx_tween = await fade(fx_tween, active_fx, -15.0, -50.0, 1.0)
+		fx_tween = await fade(fx_tween, active_fx, -15.0, -50.0, 0.1)
 		active_fx = null
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("down"):
-		AudioManager.play_dialog("Hiii !!! i'm tired")
-
-func play_dialog(copy: String, base_pitch: float = 1.75, pitch_variance: float = .5) -> void:
-	copy = copy.to_lower()
+		AudioManager.play_dialog("I lasted as long as I could in this ruined Temple, but even my Patron Demeter could only protect me for so long.")
+	if Input.is_action_just_pressed("up"):
+		AudioManager.play_dialog("Hi")
+		
+func play_dialog(copy: String, letter_speed: float = 0.15, base_pitch: float = 1.5, pitch_variance: float = 0.25) -> void:
+	copy = copy.to_lower().substr(0, 20)
 	for c in copy:
 		var index := ord(c)-97
 		if index < 0 or index > 25:
-			var pause := 0.1 if c == " " else 0.2
-			await get_tree().create_timer(pause).timeout
+			await get_tree().create_timer(letter_speed * 1.05).timeout
 			continue
-		active_os.stream = alphabet_fx[index]
+		index = randi_range(0, index)
+
+		var dialog_audio := AudioStreamPlayer.new()
+		dialog_audio.volume_db = -10.0
+		get_tree().root.add_child(dialog_audio)
+		dialog_audio.stream = alphabet_fx[index]
 		# pitch and variance
-		active_os.pitch_scale = base_pitch + randf_range(-pitch_variance, pitch_variance)
-		active_os.play()
-		await active_os.finished
+		dialog_audio.pitch_scale = base_pitch + randf_range(-pitch_variance, pitch_variance)
+		dialog_audio.play()
+		await get_tree().create_timer(letter_speed).timeout
+		dialog_audio.queue_free() 
 
 func play_os_from_arr(arr_name: String, index : int = -1, from: float = 0.0) -> void:
 	var os_arr = get(arr_name + "_fx")
 	active_os.stream = os_arr[index] if index != -1 else os_arr.pick_random()
-	print("playing os %s" %index)
 	active_os.play(from)
 	return
 	

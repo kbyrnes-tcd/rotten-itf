@@ -51,6 +51,8 @@ func _ready() -> void:
 		if debug_scene == null:
 			load_level(level_prog[0])
 		else:
+			AudioManager.play_music(audio_prog[0].music)
+			AudioManager.play_ambience(audio_prog[0].ambience) # debug mg audio test
 			var debug_node := debug_scene.instantiate()
 			level_root.add_child(debug_node)
 			player = debug_node.find_child("Player")
@@ -81,7 +83,7 @@ static func pause(w_menu : bool):
 
 static func unload_mid_minigame():
 	#print("Tryna unload mid mg")
-	#AudioManager.decrease_music_vol()
+	AudioManager.decrease_music_vol()
 	current_mg = Minigame.NONE
 	resume(false)
 	# store mg_root child from tree into mid_mg
@@ -93,7 +95,7 @@ static func unload_mid_minigame():
 static func unload_minigame():
 	print("player has won, unloading fr")
 	AudioManager.play_os_from_arr("win")
-	#AudioManager.decrease_music_vol()
+	AudioManager.decrease_music_vol()
 	current_mg = Minigame.NONE
 	resume(false)
 	# unload mg_root child from tree
@@ -106,7 +108,7 @@ static func unload_minigame():
 	return
 	
 static func load_minigame(mg : int):
-	#AudioManager.increase_music_vol()
+	AudioManager.increase_music_vol()
 	if inv_ui.visible or letter_ui.visible:
 		inv_ui.close()
 		letter_ui.visible = false
@@ -156,11 +158,9 @@ static func load_level(level_name: String):
 		level_root.add_child(scene_node)
 		player = scene_node.find_child("Player")
 		if prog_counter != 0:
-			print("Calling next audio in load_level")
 			AudioManager.change_ambience(audio_prog[prog_counter].ambience)
 			AudioManager.change_music(audio_prog[prog_counter].music)
 		else: 
-			print("Calling FIRST amb audio in load_level")
 			AudioManager.play_ambience(audio_prog[0].ambience)
 			AudioManager.play_music(audio_prog[0].music)
 
