@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://dm46dl5evso2p" path="res://assets/images/player/daphne_animations/idle/Idle5.png" id="7_bj30b"]
 [ext_resource type="Texture2D" uid="uid://ck1ip70xegy8l" path="res://assets/images/player/daphne_animations/idle/Idle6.png" id="8_jc3p3"]
 [ext_resource type="Texture2D" uid="uid://c7l8gftu1swb" path="res://assets/images/player/daphne_animations/idle_equipped/EQ1.png" id="9_hax0n"]
-[ext_resource type="Texture2D" uid="uid://cotxrl2gpbqxr" path="res://assets/images/worms/orange_worm_1.png" id="10_d2wvv"]
 [ext_resource type="Texture2D" uid="uid://b6c5tmvgax48w" path="res://assets/images/player/daphne_animations/idle_equipped/EQ2.png" id="10_t4otl"]
 [ext_resource type="Texture2D" uid="uid://d0kn4bhtwdodw" path="res://assets/images/player/daphne_animations/idle_equipped/EQ3.png" id="11_j2b1d"]
 [ext_resource type="Texture2D" uid="uid://cfswiqjoqh4ni" path="res://assets/images/player/daphne_animations/idle_equipped/EQ4.png" id="12_cs1tg"]
@@ -32,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://c10vw6vlwunr1" path="res://assets/images/player/daphne_animations/walk_equipped/6.png" id="26_bj30b"]
 [ext_resource type="Texture2D" uid="uid://bcsxrlh4834vf" path="res://assets/images/player/daphne_animations/walk_equipped/7.png" id="27_jc3p3"]
 [ext_resource type="Shader" uid="uid://dlghb8js0x008" path="res://scripts/shaders/ray_line.gdshader" id="31_gl8cc"]
+[ext_resource type="Texture2D" uid="uid://fc8hwmpaobv8" path="res://assets/images/worms/Glowworm.png" id="32_gl8cc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_whljo"]
 size = Vector2(24.5, 79)
@@ -266,9 +266,10 @@ offset_bottom = 60.0
 [node name="WormIcon" type="TextureRect" parent="CanvasLayer/WormHUD" unique_id=1741458078]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
-texture = ExtResource("10_d2wvv")
+texture = ExtResource("32_gl8cc")
 stretch_mode = 5
 
 [node name="SegmentContainer" type="HBoxContainer" parent="CanvasLayer/WormHUD" unique_id=2011706504]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/separation = 4
