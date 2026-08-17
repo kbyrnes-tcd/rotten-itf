@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://dyfb4jh6yq53g" path="res://assets/images/rot/Rot-V2-Single.PNG" id="6_2tqn1"]
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="6_6c07b"]
 [ext_resource type="Script" uid="uid://bc1k5ojr0ocy" path="res://scripts/rot_dressing.gd" id="7_4n1ul"]
+[ext_resource type="PackedScene" uid="uid://bimatr4hej8ja" path="res://scenes/ui/interactive_carat.tscn" id="10_nqapm"]
+[ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="11_jctv3"]
 
 [sub_resource type="Curve" id="Curve_qsi71"]
 _data = [Vector2(0, 0.1), 0.0, 0.0, 0, 0, Vector2(0.7, 0.6), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -407,6 +409,14 @@ color = Color(0.7107411, 0.71074116, 0.7107411, 1)
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1276469286]
 color = Color(1, 0.7921569, 0.62352943, 0.26666668)
 energy = 0.8
+
+[node name="InteractiveCarat" parent="." unique_id=1099497837 instance=ExtResource("10_nqapm")]
+position = Vector2(630, 226)
+scale = Vector2(0.5, 0.5)
+
+[node name="DoorArea2D" parent="." unique_id=1160326856 instance=ExtResource("11_jctv3")]
+position = Vector2(631, 288)
+scale = Vector2(2.319, 4.244)
 
 [connection signal="area_shape_entered" from="RotOnWallsInFront/Vine7/Line2D2/LineArea2D" to="RotOnWallsInFront/Vine7/Line2D2" method="_on_line_area_2d_area_shape_entered"]
 [connection signal="body_entered" from="RotOnWallsInFront/Vine7/Line2D2/LineArea2D" to="RotOnWallsInFront/Vine7/Line2D2" method="_on_area_2d_body_entered"]

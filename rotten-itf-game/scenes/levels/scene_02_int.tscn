@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://dgwjnqq4radaq" path="res://assets/images/env/p2_garden_ext/RITF_Gardenbackrot.png" id="1_yrcn3"]
 [ext_resource type="Texture2D" uid="uid://1k6yhyu0d08r" path="res://assets/images/env/p2_garden_int/Firsthallwaynobackground.png" id="2_3aray"]
 [ext_resource type="PackedScene" uid="uid://di31qowjleyl4" path="res://scenes/rot_dressing_new.tscn" id="4_xgkue"]
+[ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="5_oleyw"]
+[ext_resource type="PackedScene" uid="uid://bimatr4hej8ja" path="res://scenes/ui/interactive_carat.tscn" id="6_5expv"]
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="9_mb6sg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c63m2"]
@@ -103,5 +105,13 @@ z_index = -2
 points = PackedVector2Array(847, 261, 811, 264, 771.2272, 259.8745, 677, 259, 606.12244, 248.84216, 568, 264, 452.2045, 226.7834, 412.5545, 229.36229, 372, 232, 333.39178, 229.64583, 290, 227, 238, 221, 188, 215, 138, 216, 106, 221, 70, 216, -12.744873, 207.69586)
 collidable = null
 clearable = null
+
+[node name="DoorArea2D" parent="." unique_id=1160326856 instance=ExtResource("5_oleyw")]
+position = Vector2(2339.0002, 245.00002)
+scale = Vector2(2.544, 4.656)
+
+[node name="InteractiveCarat" parent="." unique_id=1099497837 instance=ExtResource("6_5expv")]
+position = Vector2(2339, 187)
+scale = Vector2(0.5, 0.5)
 
 [editable path="Player"]

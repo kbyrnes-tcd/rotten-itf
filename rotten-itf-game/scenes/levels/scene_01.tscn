@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bqo7dghd4prj1" path="res://assets/images/env/p1_start/Building_Back.png" id="5_b3nsi"]
 [ext_resource type="Texture2D" uid="uid://75jap5nxxlg5" path="res://assets/images/env/p1_start/parallax/TreesInFront.png" id="5_c6wtd"]
 [ext_resource type="Texture2D" uid="uid://04tiqv4hnn5o" path="res://assets/images/env/p1_start/Building_Front.png" id="6_amr1b"]
+[ext_resource type="PackedScene" uid="uid://bimatr4hej8ja" path="res://scenes/ui/interactive_carat.tscn" id="8_5t0pk"]
+[ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="9_b3nsi"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8bo55"]
 load_path = "res://.godot/imported/Trees.png-61f64ec7b583c9702c4d368fac49f2b6.ctex"
@@ -14,7 +16,7 @@ load_path = "res://.godot/imported/Trees.png-61f64ec7b583c9702c4d368fac49f2b6.ct
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gxcbl"]
 shader = ExtResource("3_56i2g")
 shader_parameter/speed = 0.25
-shader_parameter/strength = 0.15
+shader_parameter/strength = 0.1
 shader_parameter/y_origin = 0.0
 shader_parameter/restrict_dir = 0
 
@@ -98,7 +100,7 @@ position = Vector2(1288, -0.5)
 shape = SubResource("RectangleShape2D_3336g")
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("4_3336g")]
-position = Vector2(79, 250)
+position = Vector2(2325, 233)
 scale = Vector2(1, 1.0076721)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=230557037]
@@ -106,3 +108,11 @@ color = Color(0.8089983, 0.8089983, 0.80899817, 1)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1230748154]
 color = Color(1, 0.7921569, 0.62352943, 0.26666668)
+
+[node name="InteractiveCarat" parent="." unique_id=1099497837 instance=ExtResource("8_5t0pk")]
+position = Vector2(2481, 190)
+scale = Vector2(0.35, 0.35)
+
+[node name="DoorArea2D" parent="." unique_id=1160326856 instance=ExtResource("9_b3nsi")]
+position = Vector2(2481.0002, 217)
+scale = Vector2(3.594, 6.575)
