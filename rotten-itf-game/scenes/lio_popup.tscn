@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cbfg68hgjmgis"]
 
 [ext_resource type="Script" uid="uid://m3aroy6008g4" path="res://scripts/lio_popup.gd" id="1_db103"]
-[ext_resource type="FontFile" uid="uid://bmj0pgvborgfq" path="res://assets/fonts/Grenze-Black.ttf" id="2_1odn8"]
+[ext_resource type="FontFile" uid="uid://3u1i6waxj8qa" path="res://assets/fonts/HyperlegibleSans-Bold.ttf" id="2_1odn8"]
 
 [node name="LioPopup" type="CanvasLayer" unique_id=1750883624]
 script = ExtResource("1_db103")
