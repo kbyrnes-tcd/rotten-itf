@@ -115,11 +115,11 @@ func stop_fx() -> void:
 		fx_tween = await fade(fx_tween, active_fx, -15.0, -50.0, 0.1)
 		active_fx = null
 
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("down"):
-		AudioManager.play_dialog("I lasted as long as I could in this ruined Temple, but even my Patron Demeter could only protect me for so long.")
-	if Input.is_action_just_pressed("up"):
-		AudioManager.play_dialog("Hi")
+#func _process(_delta: float) -> void:
+	#if Input.is_action_just_pressed("down"):
+		#AudioManager.play_dialog("I lasted as long as I could in this ruined Temple, but even my Patron Demeter could only protect me for so long.")
+	#if Input.is_action_just_pressed("up"):
+		#AudioManager.play_dialog("Hi")
 		
 func play_dialog(copy: String, letter_speed: float = 0.15, base_pitch: float = 1.5, pitch_variance: float = 0.25) -> void:
 	copy = copy.to_lower().substr(0, 20)
