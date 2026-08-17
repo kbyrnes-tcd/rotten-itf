@@ -1,202 +1,47 @@
 [gd_scene format=3 uid="uid://cwbsao03j5sj6"]
 
 [ext_resource type="Texture2D" uid="uid://dhquipa2ud4xf" path="res://assets/images/env/tower/towerv1.png" id="1_fwlui"]
+[ext_resource type="Texture2D" uid="uid://1g5yc6o5kncf" path="res://assets/images/env/tower/Part_4_Tower_Collision_Mask_v1.png" id="2_6nwso"]
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="2_coyto"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q01m8"]
-size = Vector2(363, 12)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_j0jg5"]
-size = Vector2(105, 1055)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4keky"]
-size = Vector2(94, 1080)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nbikq"]
-size = Vector2(362, 64)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_b3hyr"]
-size = Vector2(8.5, 182.25)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_oftv0"]
-size = Vector2(30, 9)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vm7e0"]
-size = Vector2(39, 9.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3k3xp"]
-size = Vector2(132, 10)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_q01m8"]
-a = Vector2(3, 37)
-b = Vector2(67, -7)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_j0jg5"]
-a = Vector2(-57, 22)
-b = Vector2(-26, 71)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_4keky"]
-a = Vector2(-1, 1)
-b = Vector2(44, 41)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_b3hyr"]
-a = Vector2(112, -3)
-b = Vector2(40, 48)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_w5vsg"]
-size = Vector2(13, 1)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_nbikq"]
-b = Vector2(-54, 1)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_oftv0"]
-a = Vector2(-1, 20)
-b = Vector2(77, 91)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_w5vsg"]
-a = Vector2(18, 58)
-b = Vector2(-2, 58)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_vm7e0"]
-a = Vector2(-40, 3)
-b = Vector2(0, 59)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_pe8d3"]
-a = Vector2(28, 1)
-b = Vector2(72, 37)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_3k3xp"]
-a = Vector2(17, 0)
-b = Vector2(39, 0)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_nfkh4"]
-a = Vector2(4, -1)
-b = Vector2(30, -1)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_t2b5v"]
-a = Vector2(1, -54)
-b = Vector2(46, 5)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_w8jq4"]
-a = Vector2(1, -56)
-b = Vector2(-97, 0)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t2b5v"]
-size = Vector2(66, 10)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w2pfo"]
+size = Vector2(20, 261.00327)
 
 [node name="Scene05" type="Node2D" unique_id=1126453650]
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1747060424]
-position = Vector2(248, -365)
 texture = ExtResource("1_fwlui")
 
-[node name="Collision" type="StaticBody2D" parent="Background" unique_id=1414209257]
+[node name="Collisions" type="StaticBody2D" parent="." unique_id=1949185230]
+visible = false
 
-[node name="FloorCollision" type="CollisionShape2D" parent="Background/Collision" unique_id=795483304]
-position = Vector2(-52.5, 632)
-shape = SubResource("RectangleShape2D_q01m8")
+[node name="Mask" type="Sprite2D" parent="Collisions" unique_id=543310808]
+visible = false
+texture = ExtResource("2_6nwso")
 
-[node name="RightWallCollisions" type="CollisionShape2D" parent="Background/Collision" unique_id=165526041]
-position = Vector2(184.5, 101.5)
-shape = SubResource("RectangleShape2D_j0jg5")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions" unique_id=645244543]
+polygon = PackedVector2Array(-215, -675, -239, 428, -127, 429, -119, 502, -112, 502, -87, 501, -82, 501, -82, 491, -113, 491, -113, 185.70001, -73, 183.79999, -69, 171, -113, 171, -113, -135.29999, 16, -139, 19, -149, -113, -149, -113, -464.1, -97, -504, -97, -506.4, -66, -549.4, -66, -550.7, -30, -581.7, 7.199997, -600, 241, -601, 240, -675)
 
-[node name="LeftWallCollision" type="CollisionShape2D" parent="Background/Collision" unique_id=938573509]
-position = Vector2(-174, -126)
-shape = SubResource("RectangleShape2D_4keky")
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Collisions" unique_id=775761420]
+polygon = PackedVector2Array(215, 675, 240, -429, 38, -429, -77, -359.8, -77, -346, -21, -346, -21, -356, -9, -356, 1.5, -376, 18, -376, 20.199997, -386, 32, -386, 34.199997, -396, 47, -396, 47, -406, 60, -406, 62.100006, -415.9, 121.899994, -414.2, 120, -149, 77, -149, 80, -139, 80, -129, 124, -129, 125, 171, 38, 171, 40, 181, 63.399994, 180, 67.399994, 180, 124, 191, 126, 618, 113, 626, -241, 626, -241, 676)
 
-[node name="TopCollision" type="CollisionShape2D" parent="Background/Collision" unique_id=601843557]
-position = Vector2(53, -639)
-shape = SubResource("RectangleShape2D_nbikq")
+[node name="LeftOOB" type="CollisionShape2D" parent="Collisions" unique_id=1343966345]
+position = Vector2(-244, 526)
+scale = Vector2(0.9961826, 0.96537626)
+shape = SubResource("RectangleShape2D_w2pfo")
 
-[node name="WallDoorCollison" type="CollisionShape2D" parent="Background/Collision" unique_id=1241600950]
-position = Vector2(236.75, -518.125)
-shape = SubResource("RectangleShape2D_b3hyr")
+[node name="RightOOB2" type="CollisionShape2D" parent="Collisions" unique_id=1596281301]
+position = Vector2(246, -532)
+scale = Vector2(0.9961826, 0.96537626)
+shape = SubResource("RectangleShape2D_w2pfo")
 
-[node name="Steps1" type="CollisionShape2D" parent="Background/Collision" unique_id=754370988]
-position = Vector2(-97, 496)
-shape = SubResource("RectangleShape2D_oftv0")
+[node name="Player" parent="." unique_id=1515659648 instance=ExtResource("2_coyto")]
+position = Vector2(-204, 592)
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Background/Collision" unique_id=489558239]
-position = Vector2(-92, 175.75)
-shape = SubResource("RectangleShape2D_vm7e0")
+[node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
+limit_left = -255
+limit_top = -671
+limit_right = 94
+limit_bottom = 664
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Background/Collision" unique_id=1743615644]
-position = Vector2(-47, -144)
-shape = SubResource("RectangleShape2D_3k3xp")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Collision" unique_id=1958148145]
-position = Vector2(49, 501)
-shape = SubResource("SegmentShape2D_q01m8")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Background/Collision" unique_id=1249018150]
-position = Vector2(40, 360)
-shape = SubResource("SegmentShape2D_j0jg5")
-
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="Background/Collision" unique_id=601630806]
-position = Vector2(-103, 309)
-shape = SubResource("SegmentShape2D_4keky")
-
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="Background/Collision" unique_id=250360220]
-position = Vector2(-59, 230)
-shape = SubResource("SegmentShape2D_b3hyr")
-
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="Background/Collision" unique_id=615021706]
-position = Vector2(-22.5, 382.5)
-shape = SubResource("RectangleShape2D_w5vsg")
-
-[node name="CollisionShape2D8" type="CollisionShape2D" parent="Background/Collision" unique_id=1474817883]
-position = Vector2(130, 178)
-shape = SubResource("SegmentShape2D_nbikq")
-
-[node name="CollisionShape2D9" type="CollisionShape2D" parent="Background/Collision" unique_id=1792556465]
-position = Vector2(13, 67)
-shape = SubResource("SegmentShape2D_oftv0")
-
-[node name="CollisionShape2D10" type="CollisionShape2D" parent="Background/Collision" unique_id=2092709416]
-position = Vector2(-6, 30)
-shape = SubResource("SegmentShape2D_w5vsg")
-
-[node name="CollisionShape2D11" type="CollisionShape2D" parent="Background/Collision" unique_id=1655134012]
-position = Vector2(-53, -23)
-shape = SubResource("SegmentShape2D_vm7e0")
-
-[node name="CollisionShape2D12" type="CollisionShape2D" parent="Background/Collision" unique_id=201969672]
-position = Vector2(12, -195)
-shape = SubResource("SegmentShape2D_pe8d3")
-
-[node name="CollisionShape2D13" type="CollisionShape2D" parent="Background/Collision" unique_id=1611864741]
-position = Vector2(85, -148)
-shape = SubResource("SegmentShape2D_3k3xp")
-
-[node name="CollisionShape2D14" type="CollisionShape2D" parent="Background/Collision" unique_id=1988107435]
-position = Vector2(7, -196)
-shape = SubResource("SegmentShape2D_nfkh4")
-
-[node name="CollisionShape2D15" type="CollisionShape2D" parent="Background/Collision" unique_id=1793671758]
-position = Vector2(-73, -276)
-shape = SubResource("SegmentShape2D_t2b5v")
-
-[node name="CollisionShape2D16" type="CollisionShape2D" parent="Background/Collision" unique_id=1200967351]
-position = Vector2(67, -370)
-shape = SubResource("SegmentShape2D_w8jq4")
-
-[node name="Player" parent="Background" unique_id=1515659648 instance=ExtResource("2_coyto")]
-position = Vector2(-193, 587)
-
-[node name="PlyrCollisionShape2D" parent="Background/Player" index="0" unique_id=66024058]
-position = Vector2(-4, -5)
-
-[node name="AnimatedSprite2D" parent="Background/Player/CharacterSprites" parent_id_path=PackedInt32Array(1515659648, 2095860029) index="0" unique_id=512896578]
-scale = Vector2(0.8, 0.8)
-
-[node name="Camera2D" parent="Background/Player" index="4" unique_id=1705181399]
-limit_left = -83
-limit_top = -1333
-limit_right = 497
-limit_bottom = 304
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Background" unique_id=1142074291]
-position = Vector2(98, -424)
-shape = SubResource("RectangleShape2D_t2b5v")
-
-[editable path="Background/Player"]
+[editable path="Player"]
