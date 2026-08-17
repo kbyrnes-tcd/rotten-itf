@@ -462,7 +462,7 @@ func build_worm_segments():
 	#create rect per number of uses
 	for i in GLOWWORM_MAX:
 		var rect = ColorRect.new()
-		rect.custom_minimum_size = Vector2(20,6)
+		rect.custom_minimum_size = Vector2(6,6)
 		segment_container.add_child(rect)
 		segments.append(rect)
 	update_worm_segments()
@@ -470,9 +470,9 @@ func build_worm_segments():
 func update_worm_segments():
 	for i in segments.size():
 		if i < glowworm_uses:
-			segments[i].color = Color("#F8C840")
+			segments[i].color = Color("#a1f6fa")
 		else:
-			segments[i].color = Color("#3A2A08")
+			segments[i].color = Color("#292929")
 
 #func _on_lantern_sfx_area_area_shape_exited(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	#if area.name == "LineArea2D":
