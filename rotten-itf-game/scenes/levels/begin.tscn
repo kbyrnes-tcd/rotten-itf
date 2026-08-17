@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dlk2h13w2xeca" path="res://scripts/game_globals_config.gd" id="1_ep3c1"]
 [ext_resource type="PackedScene" uid="uid://cpwsgbr3fr7by" path="res://scenes/ui/pause_menu.tscn" id="2_ep3c1"]
 [ext_resource type="PackedScene" uid="uid://b0xdv5nobjlkk" path="res://scenes/minigames/rot_maze.tscn" id="2_ty236"]
-[ext_resource type="PackedScene" uid="uid://b7584gf13larx" path="res://scenes/levels/scene_07_underworld.tscn" id="2_y13p6"]
+[ext_resource type="PackedScene" uid="uid://cg75k4w0pepcp" path="res://scenes/levels/scene_02_int.tscn" id="2_y13p6"]
 [ext_resource type="PackedScene" uid="uid://0hlcimiuwo6o" path="res://scenes/ui/inv_ui.tscn" id="3_ep3c1"]
 [ext_resource type="PackedScene" uid="uid://cnitmpmsmrrr6" path="res://scenes/ui/letter_ui.tscn" id="6_mn8rq"]
 [ext_resource type="PackedScene" uid="uid://cpu885nisbhmc" path="res://scenes/ui/constellation_minigame.tscn" id="7_y13p6"]

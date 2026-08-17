@@ -43,6 +43,7 @@ var tool_state = ToolState.IDLE
 var move_state = MoveState.IDLE
 
 func _ready():
+	add_to_group("player")
 	#gun starts hidden and disabled
 	gun.visible = false
 	gun_sprite.visible = false
@@ -58,11 +59,11 @@ func _ready():
 
 # Tool FSM
 func _process(delta):
-	if Input.is_action_just_pressed("debug_worm"):
-		for i in 5:
-			inv.insert(GLOWWORM)
-			print("5 worms refilled, now: " + str(inv.count(GLOWWORM)))
-			
+	#if Input.is_action_just_pressed("debug_worm"):
+		#for i in 5:
+			#inv.insert(GLOWWORM)
+			#print("5 worms refilled, now: " + str(inv.count(GLOWWORM)))
+			#
 	match tool_state:
 		ToolState.IDLE:
 			_tool_idle()
