@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://b7584gf13larx"]
+
+[ext_resource type="Texture2D" uid="uid://oxw3mtmjbnj2" path="res://assets/images/env/underworld/Underworld_Exterior.png" id="1_425tl"]
+[ext_resource type="Texture2D" uid="uid://ryabja3raxip" path="res://assets/images/env/underworld/Underworld_Interior.png" id="2_xllsq"]
+[ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="3_xllsq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q01m8"]
+size = Vector2(20, 295)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j0jg5"]
+size = Vector2(2878, 46)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4keky"]
+size = Vector2(29, 287)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nbikq"]
+size = Vector2(2913, 40)
+
+[node name="Scene07Underworld" type="Node2D" unique_id=1008943527]
+
+[node name="Environment" type="Node2D" parent="." unique_id=944691441]
+
+[node name="Backdrop" type="Parallax2D" parent="Environment" unique_id=622688306]
+scroll_scale = Vector2(0.85, 0.85)
+
+[node name="Exterior" type="Sprite2D" parent="Environment/Backdrop" unique_id=947284966]
+position = Vector2(1430, 177)
+texture = ExtResource("1_425tl")
+
+[node name="Building" type="Parallax2D" parent="Environment" unique_id=37518053]
+
+[node name="Interior" type="Sprite2D" parent="Environment/Building" unique_id=1441347079]
+position = Vector2(1429, 179)
+texture = ExtResource("2_xllsq")
+
+[node name="Player" parent="." unique_id=1515659648 instance=ExtResource("3_xllsq")]
+position = Vector2(88, 223)
+
+[node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
+limit_right = 2783
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1489060455]
+
+[node name="LeftCollision" type="CollisionShape2D" parent="StaticBody2D" unique_id=840592922]
+position = Vector2(-4, 179)
+shape = SubResource("RectangleShape2D_q01m8")
+
+[node name="BottomCollision" type="CollisionShape2D" parent="StaticBody2D" unique_id=1639525591]
+position = Vector2(1444, 289)
+shape = SubResource("RectangleShape2D_j0jg5")
+
+[node name="RightCollision" type="CollisionShape2D" parent="StaticBody2D" unique_id=346095504]
+position = Vector2(2877.5, 174)
+shape = SubResource("RectangleShape2D_4keky")
+
+[node name="TopCollision" type="CollisionShape2D" parent="StaticBody2D" unique_id=1373298897]
+position = Vector2(1439, 57)
+shape = SubResource("RectangleShape2D_nbikq")
+
+[editable path="Player"]
