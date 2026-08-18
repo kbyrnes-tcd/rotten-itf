@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://clnyyb2h5f77h"]
+
+[ext_resource type="Script" uid="uid://b0vt1mp7wu6pu" path="res://scripts/inventory_system/resource_def/inv_item.gd" id="1_r1k4f"]
+[ext_resource type="Texture2D" uid="uid://fmbvj4774uyr" path="res://assets/images/minigames/scrap.png" id="2_r1k4f"]
+
+[resource]
+script = ExtResource("1_r1k4f")
+name = "letter_scrap"
+texture = ExtResource("2_r1k4f")
+desc = "This is a letter scrap."
+metadata/_custom_type_script = "uid://b0vt1mp7wu6pu"

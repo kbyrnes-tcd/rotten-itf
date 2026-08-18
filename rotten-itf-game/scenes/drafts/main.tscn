@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="6_8mlnd"]
 [ext_resource type="PackedScene" uid="uid://w78vttqkmxaj" path="res://scenes/levels/scene_01.tscn" id="7_i8c17"]
 
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0wfyh"]
 size = Vector2(128, 145.60507)
 
