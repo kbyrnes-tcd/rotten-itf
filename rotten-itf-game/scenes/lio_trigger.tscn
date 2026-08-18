@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://0w0qv3ty350y" path="res://scripts/lio_trigger.gd" id="1_y6l5d"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_y13p6"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gsj5c"]
+size = Vector2(20, 139)
 
 [node name="LioTrigger" type="Node2D" unique_id=110257511]
 script = ExtResource("1_y6l5d")
@@ -11,4 +12,5 @@ lio_text = "High Priestess...she needs help!"
 [node name="Area2D" type="Area2D" parent="." unique_id=571236149]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=885604948]
-shape = SubResource("CircleShape2D_y13p6")
+position = Vector2(0, -59.5)
+shape = SubResource("RectangleShape2D_gsj5c")
