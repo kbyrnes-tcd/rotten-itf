@@ -116,10 +116,14 @@ func _handle_movement(delta: float):
 		AudioManager.stop_walk_fx()
 		move_state = MoveState.IDLE
 		
-	if Input.is_action_just_pressed("jump") and is_on_floor() and !$FullJumpRayCast.is_colliding():
+		# need to check that raycast isnt detecting the one-way collider platforms
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+	#and !$FullJumpRayCast.is_colliding():
 		velocity.y = FULL_JUMP_VELOCITY
 		move_state = MoveState.JUMPING
-	elif Input.is_action_just_pressed("jump") and is_on_floor() and !$MidJumpRayCast.is_colliding():
+		# need to check that raycast isnt detecting the one-way collider platforms
+	elif Input.is_action_just_pressed("jump") and is_on_floor():
+	#and !$MidJumpRayCast.is_colliding():
 		velocity.y = MID_JUMP_VELOCITY
 		move_state = MoveState.JUMPING
 		

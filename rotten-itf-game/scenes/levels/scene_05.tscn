@@ -7,22 +7,41 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w2pfo"]
 size = Vector2(20, 261.00327)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jw7t4"]
+size = Vector2(241, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_coyto"]
+size = Vector2(241, 10)
+
 [node name="Scene05" type="Node2D" unique_id=1126453650]
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1747060424]
 texture = ExtResource("1_fwlui")
 
+[node name="Player" parent="." unique_id=1515659648 instance=ExtResource("2_coyto")]
+position = Vector2(-204, 592)
+
+[node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
+limit_left = -255
+limit_top = -671
+limit_right = 94
+limit_bottom = 664
+
 [node name="Collisions" type="StaticBody2D" parent="." unique_id=1949185230]
-visible = false
 
 [node name="Mask" type="Sprite2D" parent="Collisions" unique_id=543310808]
 visible = false
 texture = ExtResource("2_6nwso")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions" unique_id=645244543]
-polygon = PackedVector2Array(-215, -675, -239, 428, -127, 429, -119, 502, -112, 502, -87, 501, -82, 501, -82, 491, -113, 491, -113, 185.70001, -73, 183.79999, -69, 171, -113, 171, -113, -135.29999, 16, -139, 19, -149, -113, -149, -113, -464.1, -97, -504, -97, -506.4, -66, -549.4, -66, -550.7, -30, -581.7, 7.199997, -600, 241, -601, 240, -675)
+[node name="LHSandCeil" type="CollisionPolygon2D" parent="Collisions" unique_id=645244543]
+polygon = PackedVector2Array(-215, -675, -239, 428, -119, 429, -113, -464.1, -97, -504, -97, -506.4, -66, -549.4, -66, -550.7, -30, -581.7, 7.199997, -600, 241, -601, 240, -675)
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Collisions" unique_id=775761420]
+[node name="RHSandFloorandTopStair" type="CollisionPolygon2D" parent="Collisions" unique_id=775761420]
+polygon = PackedVector2Array(215, 675, 240, -429, 130, -429, 127, 619, 113, 626, -241, 626, -241, 676)
+
+[node name="RHSandFloorandTopStairOG" type="CollisionPolygon2D" parent="Collisions" unique_id=1119862784]
+process_mode = 4
+visible = false
 polygon = PackedVector2Array(215, 675, 240, -429, 38, -429, -77, -359.8, -77, -346, -21, -346, -21, -356, -9, -356, 1.5, -376, 18, -376, 20.199997, -386, 32, -386, 34.199997, -396, 47, -396, 47, -406, 60, -406, 62.100006, -415.9, 121.899994, -414.2, 120, -149, 77, -149, 80, -139, 80, -129, 124, -129, 125, 171, 38, 171, 40, 181, 63.399994, 180, 67.399994, 180, 124, 191, 126, 618, 113, 626, -241, 626, -241, 676)
 
 [node name="LeftOOB" type="CollisionShape2D" parent="Collisions" unique_id=1343966345]
@@ -35,13 +54,101 @@ position = Vector2(246, -532)
 scale = Vector2(0.9961826, 0.96537626)
 shape = SubResource("RectangleShape2D_w2pfo")
 
-[node name="Player" parent="." unique_id=1515659648 instance=ExtResource("2_coyto")]
-position = Vector2(-204, 592)
+[node name="StairBits" type="StaticBody2D" parent="Collisions" unique_id=1030071046]
 
-[node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
-limit_left = -255
-limit_top = -671
-limit_right = 94
-limit_bottom = 664
+[node name="1stFloorLanding" type="CollisionShape2D" parent="Collisions/StairBits" unique_id=2031117376]
+position = Vector2(8.5, 496)
+shape = SubResource("RectangleShape2D_jw7t4")
+one_way_collision = true
+
+[node name="1stFloorLanding2" type="CollisionShape2D" parent="Collisions/StairBits" unique_id=709158399]
+position = Vector2(76, 486)
+scale = Vector2(0.28000033, 1)
+shape = SubResource("RectangleShape2D_coyto")
+one_way_collision = true
+
+[node name="1stFloorLanding3" type="CollisionShape2D" parent="Collisions/StairBits" unique_id=1373578435]
+position = Vector2(66, 477)
+scale = Vector2(0.28000033, 1)
+shape = SubResource("RectangleShape2D_coyto")
+one_way_collision = true
+
+[node name="1stFloorLanding4" type="CollisionShape2D" parent="Collisions/StairBits" unique_id=1476303707]
+position = Vector2(50, 467)
+scale = Vector2(0.28000033, 1)
+shape = SubResource("RectangleShape2D_coyto")
+one_way_collision = true
+
+[node name="1stFloorLanding5" type="CollisionShape2D" parent="Collisions/StairBits" unique_id=439118221]
+position = Vector2(38.000004, 456)
+scale = Vector2(0.28000033, 1)
+shape = SubResource("RectangleShape2D_coyto")
+one_way_collision = true
+
+[node name="1stFloorLanding6" type="CollisionShape2D" parent="Collisions/StairBits" unique_id=394277528]
+position = Vector2(31, 446)
+scale = Vector2(0.28000033, 1)
+shape = SubResource("RectangleShape2D_coyto")
+one_way_collision = true
+
+[node name="1stFloorLanding7" type="CollisionShape2D" parent="Collisions/StairBits" unique_id=1169548105]
+position = Vector2(24, 436)
+scale = Vector2(0.28000033, 1)
+shape = SubResource("RectangleShape2D_coyto")
+one_way_collision = true
+
+[node name="1stFloorLanding8" type="CollisionShape2D" parent="Collisions/StairBits" unique_id=1613575018]
+position = Vector2(14, 426)
+scale = Vector2(0.28000033, 1)
+shape = SubResource("RectangleShape2D_coyto")
+one_way_collision = true
+
+[node name="1stFloorLanding9" type="CollisionShape2D" parent="Collisions/StairBits" unique_id=1698008460]
+position = Vector2(9, 417)
+scale = Vector2(0.15999788, 1)
+shape = SubResource("RectangleShape2D_coyto")
+one_way_collision = true
+
+[node name="1stFloorLanding10" type="CollisionShape2D" parent="Collisions/StairBits" unique_id=653508346]
+position = Vector2(0, 407)
+scale = Vector2(0.15999788, 1)
+shape = SubResource("RectangleShape2D_coyto")
+one_way_collision = true
+
+[node name="1stFloorLanding11" type="CollisionShape2D" parent="Collisions/StairBits" unique_id=510280619]
+position = Vector2(-8, 397)
+scale = Vector2(0.15999788, 1)
+shape = SubResource("RectangleShape2D_coyto")
+one_way_collision = true
+
+[node name="1stFloorLanding12" type="CollisionShape2D" parent="Collisions/StairBits" unique_id=1985696591]
+position = Vector2(-14, 387)
+scale = Vector2(0.15999788, 1)
+shape = SubResource("RectangleShape2D_coyto")
+one_way_collision = true
+
+[node name="1stFloorLanding13" type="CollisionShape2D" parent="Collisions/StairBits" unique_id=1383996470]
+position = Vector2(56, 536)
+scale = Vector2(0.15999788, 1)
+shape = SubResource("RectangleShape2D_coyto")
+one_way_collision = true
+
+[node name="1stFloorLanding14" type="CollisionShape2D" parent="Collisions/StairBits" unique_id=1453628368]
+position = Vector2(68, 526)
+scale = Vector2(0.15999788, 1)
+shape = SubResource("RectangleShape2D_coyto")
+one_way_collision = true
+
+[node name="1stFloorLanding15" type="CollisionShape2D" parent="Collisions/StairBits" unique_id=1062184458]
+position = Vector2(83, 516)
+scale = Vector2(0.15999788, 1)
+shape = SubResource("RectangleShape2D_coyto")
+one_way_collision = true
+
+[node name="1stFloorLanding16" type="CollisionShape2D" parent="Collisions/StairBits" unique_id=2038762357]
+position = Vector2(101, 506)
+scale = Vector2(0.23999788, 1)
+shape = SubResource("RectangleShape2D_coyto")
+one_way_collision = true
 
 [editable path="Player"]
