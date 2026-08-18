@@ -370,7 +370,7 @@ width = 12.0
 width_curve = SubResource("Curve_410gd")
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("6_6c07b")]
-position = Vector2(78, 288)
+position = Vector2(65, 295)
 
 [node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
 limit_left = -82

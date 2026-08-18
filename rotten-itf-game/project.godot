@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 
 AudioManager="*uid://dqb247hkkmxdc"
 DebugOverlayTemp="*uid://c52t314uuliqu"
-GameAuto="*uid://cqsam3tswmb5s"
+GameGlobals="*uid://cqsam3tswmb5s"
 
 [display]
 

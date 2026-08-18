@@ -5,13 +5,13 @@
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="3_p368k"]
 [ext_resource type="PackedScene" uid="uid://coslqn83cxfcy" path="res://scenes/zoom_trigger.tscn" id="4_bork3"]
 [ext_resource type="Script" uid="uid://blst515txhg5j" path="res://scripts/zoom_trigger.gd" id="5_6m4hc"]
-[ext_resource type="PackedScene" uid="uid://c1epxp5spnua" path="res://scenes/ui/dialogue_trigger.tscn" id="5_0760f"]
+[ext_resource type="PackedScene" uid="uid://bd3r1j21a2opr" path="res://scenes/ui/dialogue_trigger.tscn" id="5_0760f"]
 [ext_resource type="Script" uid="uid://ddnjkodm10cvk" path="res://scripts/dialogue_trigger.gd" id="6_nuytq"]
 [ext_resource type="PackedScene" uid="uid://ddm8l1j51pxi2" path="res://scenes/chandelier.tscn" id="7_5i8uq"]
 [ext_resource type="PackedScene" uid="uid://qtqiun326hpr" path="res://scenes/lever.tscn" id="8_y5j78"]
 [ext_resource type="Script" uid="uid://cdxfomkkfwywg" path="res://scripts/fallen_trigger.gd" id="9_6m4hc"]
 [ext_resource type="PackedScene" uid="uid://dr3ff06oljyer" path="res://scenes/lio_trigger.tscn" id="10_y5j78"]
-[ext_resource type="PackedScene" uid="uid://b6dl3rcanud2n" path="res://scenes/amulet.tscn" id="12_co3ny"]
+[ext_resource type="PackedScene" uid="uid://yvyr0xth1r67" path="res://scenes/amulet.tscn" id="12_co3ny"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_co3ny"]
 size = Vector2(300, 20)
@@ -40,11 +40,11 @@ polygon = PackedVector2Array(-1920, 270, -1461.1, 270, -1463, 158, -1463, 155, -
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("3_p368k")]
 z_index = 1
-position = Vector2(1919, 181)
+position = Vector2(64, 244)
 
 [node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
-limit_top = -195
-limit_right = 4084
+limit_top = -206
+limit_right = 3921
 limit_bottom = 423
 
 [node name="ZoomTrigger" parent="." unique_id=1302506614 instance=ExtResource("4_bork3")]

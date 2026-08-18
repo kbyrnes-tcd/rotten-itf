@@ -120,7 +120,7 @@ scale = Vector2(3.594, 6.575)
 interact_carat = NodePath("../InteractiveCarat")
 
 [node name="LioTrigger" parent="." unique_id=110257511 instance=ExtResource("10_amr1b")]
-position = Vector2(707, 200)
+position = Vector2(707, 270)
 lio_text = "The Rot is getting stronger the closer I get to the Temple."
 
 [node name="LioTrigger2" parent="." unique_id=364959590 instance=ExtResource("10_amr1b")]
