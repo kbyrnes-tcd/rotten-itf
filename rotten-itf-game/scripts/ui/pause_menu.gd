@@ -14,7 +14,7 @@ func _ready():
 	_setup_hover(resume_btn)
 	_setup_hover(settings_btn)
 	_setup_hover(quit_btn)
-	volume_slider.value = AudioServer.get_bus_volume_db(0)
+	volume_slider.value = db_to_linear(AudioServer.get_bus_volume_db(0))
 
 func _setup_hover(btn: Button):
 	var sprite = btn.get_node("HoverSprite")
@@ -63,4 +63,4 @@ func _on_refill_pressed() -> void:
 
 
 func _on_volume_silder_value_changed(value: float) -> void:
-	AudioServer.set_bus_volume_db(0, value)
+	AudioServer.set_bus_volume_db(0, linear_to_db(value))
