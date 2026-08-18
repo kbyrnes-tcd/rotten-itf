@@ -6,7 +6,7 @@ const CHAR_READ_RATE = 0.05
 @onready var textbox_container = $DialogueAnchor
 @onready var character_name_label = $DialogueAnchor/NamePlate/HBoxContainer/CharacterName
 @onready var label = $DialogueAnchor/DialogueBox/MarginContainer/VBoxContainer/DialogueText
-@onready var continue_hint = $DialogueAnchor/DialogueBox/MarginContainer/VBoxContainer/ContinueHint
+@onready var continue_hint = $DialogueAnchor/DialogueBox/ContinueHint
 @onready var portrait = $DialogueAnchor/PortraitLeft
 @onready var portrait_right = $DialogueAnchor/PortraitRight
 

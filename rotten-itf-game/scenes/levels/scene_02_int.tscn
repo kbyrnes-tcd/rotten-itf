@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://di31qowjleyl4" path="res://scenes/rot_dressing_new.tscn" id="4_xgkue"]
 [ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="5_oleyw"]
 [ext_resource type="PackedScene" uid="uid://bimatr4hej8ja" path="res://scenes/ui/interactive_carat.tscn" id="6_5expv"]
+[ext_resource type="PackedScene" uid="uid://dr3ff06oljyer" path="res://scenes/lio_trigger.tscn" id="7_3aray"]
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="9_mb6sg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c63m2"]
@@ -113,5 +114,17 @@ scale = Vector2(2.544, 4.656)
 [node name="InteractiveCarat" parent="." unique_id=1099497837 instance=ExtResource("6_5expv")]
 position = Vector2(2339, 187)
 scale = Vector2(0.5, 0.5)
+
+[node name="LioTrigger" parent="." unique_id=110257511 instance=ExtResource("7_3aray")]
+position = Vector2(401, 280)
+lio_text = "Oh, Goddess…"
+
+[node name="LioTrigger2" parent="." unique_id=1541676621 instance=ExtResource("7_3aray")]
+position = Vector2(949, 281)
+lio_text = "The Rot has completely consumed this place. "
+
+[node name="LioTrigger3" parent="." unique_id=1993371548 instance=ExtResource("7_3aray")]
+position = Vector2(1697, 267)
+lio_text = "A wall lantern. The power is out."
 
 [editable path="Player"]

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="3_p368k"]
 [ext_resource type="PackedScene" uid="uid://coslqn83cxfcy" path="res://scenes/zoom_trigger.tscn" id="4_bork3"]
 [ext_resource type="Script" uid="uid://blst515txhg5j" path="res://scripts/zoom_trigger.gd" id="5_6m4hc"]
-[ext_resource type="PackedScene" uid="uid://bd3r1j21a2opr" path="res://scenes/ui/dialogue_trigger.tscn" id="5_0760f"]
+[ext_resource type="PackedScene" uid="uid://c1epxp5spnua" path="res://scenes/ui/dialogue_trigger.tscn" id="5_0760f"]
 [ext_resource type="Script" uid="uid://ddnjkodm10cvk" path="res://scripts/dialogue_trigger.gd" id="6_nuytq"]
 [ext_resource type="PackedScene" uid="uid://ddm8l1j51pxi2" path="res://scenes/chandelier.tscn" id="7_5i8uq"]
 [ext_resource type="PackedScene" uid="uid://qtqiun326hpr" path="res://scenes/lever.tscn" id="8_y5j78"]
@@ -35,7 +35,7 @@ visible = false
 texture = ExtResource("2_p368k")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/Collision" unique_id=411311759]
-polygon = PackedVector2Array(-1920, 270, -1461.1, 270, -1463, 158, -1463, 155, -1902, 155, -1902, -57.100006, -72, -59, -72, -258, 552, -258, 554, -61, 554, -58, 1902, -57.100006, 1902, 93, 543.19995, 93, 474.1001, 155, 26, 155, 41.45935, 156.00003, 39.5531, 156.00003, 22, 143.9, -59.400024, 93, -570.69995, 93, -642.69995, 154, -1309, 154, -1311, 270, 1920, 270, 1920, -270, -1920, -270)
+polygon = PackedVector2Array(-1920, 270, -1461.1, 270, -1463, 158, -1463, 155, -1902, 155, -1902, -57.100006, -72, -59, -72, -258, 552, -258, 554, -61, 554, -58, 1902, -57.100006, 1902, 93, 543.19995, 93, 474.1001, 155, 26, 155, 41.45935, 156.00003, 39.5531, 156.00003, 22, 143.9, -59.400024, 93, -570.69995, 93, -642.69995, 154, -1309, 154, -1311, 270, 460.9524, 267, 1920, 270, 1920, -270, -1920, -270)
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("3_p368k")]
 z_index = 1
@@ -68,8 +68,8 @@ shape = SubResource("RectangleShape2D_co3ny")
 [node name="DialogueTrigger" parent="." unique_id=413688381 instance=ExtResource("5_0760f")]
 process_mode = 3
 script = ExtResource("6_nuytq")
-dialogue_lines = Array[String](["Hey Daphne whatsup", "not much", "rot??", "girl sure"])
-speaker = Array[String](["Persephone", "Daphne", "Persephone", "Daphne"])
+dialogue_lines = Array[String](["High Priestess!", "Daphne, stay back.", "You're... Oh, Godess", "I lasted as long as I could in this ruined Temple, but even my Patron Demeter could only protect me for so long.", "It appears that the powers of this Rotten substance have only grown stronger in your absence. At times, I wondered…", "I wondered if maybe it grew because it was seeking you out.", "What do you mean?", "You were there that night when it appeared. It wasn’t just growing out of Persephone’s altarpiece, it was growing out towards you.", "No, it… it ate away at my sisters. I watched it grow in all directions to infect the Temple.", "Your sisters, yes, but not your kin. Kind girl… I was wrong. It was not your fault. I see that now.", "You were not born of this Temple. You were given to us out by the Yew tree. ", "I thought you were some Nymph’s forgotten babe, but no… I took you from a far more sordid heritage.", "High Priestess, what are you saying?", "You aren’t of our lands, Daphne. Which is why you need to be the only to save us.", "Clear the Temple of this Rot, girl, and you will be granted the power to control this infection.", "Then, go to the old living chambers, and learn of its origin. ", "Of your origin.", "Goddess, forgive me. Forgive me."])
+speaker = Array[String](["Daphne", "Persephone", "Daphne", "Persephone", "Persephone", "Persephone", "Daphne", "Persephone", "Daphne", "Persephone", "Persephone", "Persephone", "Daphne", "Persephone", "Persephone", "Persephone", "Persephone", "Persephone"])
 
 [node name="Area2D" parent="DialogueTrigger" index="0" unique_id=1114588435]
 position = Vector2(2227, 251)
@@ -123,6 +123,10 @@ shape = SubResource("RectangleShape2D_5i8uq")
 
 [node name="LioTrigger" parent="." unique_id=110257511 instance=ExtResource("10_y5j78")]
 position = Vector2(2073, 235)
+
+[node name="LioTrigger2" parent="." unique_id=117623388 instance=ExtResource("10_y5j78")]
+position = Vector2(287, 244)
+lio_text = "A chandelier...there should be a lever nearby."
 
 [editable path="Player"]
 [editable path="ZoomTrigger"]

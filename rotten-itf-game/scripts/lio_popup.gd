@@ -7,6 +7,8 @@ var current_tween = null
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	label.autowrap_mode = TextServer.AUTOWRAP_WORD
+	label.custom_minimum_size = Vector2(400, 0)
 	label.modulate.a = 0.0
 
 func _show_text(text: String, duration: float = 3.0, fade: float = 1.0):
