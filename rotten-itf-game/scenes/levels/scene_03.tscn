@@ -137,6 +137,13 @@ position = Vector2(2419, 244)
 position = Vector2(2442, 245)
 lio_text = "Press ] to shoot rot."
 
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1562990469]
+color = Color(0.7107411, 0.71074116, 0.7107411, 1)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1192174376]
+color = Color(1, 0.7921569, 0.62352943, 0.26666668)
+energy = 0.8
+
 [editable path="Player"]
 [editable path="ZoomTrigger"]
 [editable path="DialogueTrigger"]

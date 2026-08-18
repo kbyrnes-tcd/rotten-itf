@@ -205,6 +205,13 @@ position = Vector2(476, 187.5)
 scale = Vector2(1.0014814, 0.98888886)
 texture = ExtResource("5_qq6m5")
 
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1671339769]
+color = Color(0.7107411, 0.71074116, 0.7107411, 1)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=196106957]
+color = Color(1, 0.7921569, 0.62352943, 0.26666668)
+energy = 0.8
+
 [editable path="Player"]
 [editable path="RotMap"]
 [editable path="RotMap/Vine2"]

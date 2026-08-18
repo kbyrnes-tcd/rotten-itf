@@ -16,8 +16,8 @@ load_path = "res://.godot/imported/Trees.png-61f64ec7b583c9702c4d368fac49f2b6.ct
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gxcbl"]
 shader = ExtResource("3_56i2g")
-shader_parameter/speed = 0.25
-shader_parameter/strength = 0.1
+shader_parameter/speed = 1.5
+shader_parameter/strength = 0.02
 shader_parameter/y_origin = 0.0
 shader_parameter/restrict_dir = 0
 

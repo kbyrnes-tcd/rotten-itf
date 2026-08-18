@@ -77,5 +77,12 @@ visible = false
 position = Vector2(959.00006, 174)
 scale = Vector2(0.09079814, 0.08184042)
 
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1285784708]
+color = Color(0.7107411, 0.71074116, 0.7107411, 1)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=2140409704]
+color = Color(0.9882353, 0.7764706, 0.8156863, 0.38431373)
+energy = 0.8
+
 [editable path="Player"]
 [editable path="DialogueTrigger"]
