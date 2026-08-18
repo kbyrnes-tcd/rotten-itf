@@ -94,6 +94,9 @@ point_count = 3
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3336g"]
 size = Vector2(2596, 33)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_58igu"]
+size = Vector2(4640.8633, 94)
+
 [node name="Scene_02_ext" type="Node2D" unique_id=358721782]
 
 [node name="Environment" type="Node2D" parent="." unique_id=1527416479]
@@ -391,6 +394,11 @@ shape = SubResource("RectangleShape2D_3336g")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Colliders/GroundCollider" unique_id=2137021604]
 position = Vector2(1284.3754, -262)
 shape = SubResource("RectangleShape2D_3336g")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Colliders/GroundCollider" unique_id=1160718398]
+position = Vector2(405.44986, -239)
+scale = Vector2(0.17499971, 1)
+shape = SubResource("RectangleShape2D_58igu")
 
 [node name="LeftOobCollider" type="StaticBody2D" parent="Colliders" unique_id=2121097576]
 position = Vector2(-9.094947e-13, 388)
