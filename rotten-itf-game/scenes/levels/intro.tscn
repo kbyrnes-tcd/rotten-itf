@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://cl2kf7fr304tf"]
+
+[ext_resource type="Texture2D" uid="uid://dclvu8v18i6k" path="res://assets/images/env/p1_start/Backdrop.png" id="1_3kqdl"]
+[ext_resource type="PackedScene" uid="uid://cpwsgbr3fr7by" path="res://scenes/ui/pause_menu.tscn" id="2_gs2wg"]
+
+[node name="Node2D" type="Node2D" unique_id=100880776]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1073810691]
+position = Vector2(243, 134)
+texture = ExtResource("1_3kqdl")
+region_enabled = true
+region_rect = Rect2(750, 0, 480, 270)
+
+[node name="Control" type="Control" parent="." unique_id=1464861521]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 220.0
+offset_top = 110.0
+offset_right = 260.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseMenu" parent="Control" unique_id=111660448 instance=ExtResource("2_gs2wg")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
