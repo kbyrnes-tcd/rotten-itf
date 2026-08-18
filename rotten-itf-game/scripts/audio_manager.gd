@@ -95,8 +95,10 @@ func play_walk_fx() -> void:
 	if !active_walk_fx:
 		active_walk_fx = clips.get_node("WalkFX")
 		active_walk_fx.stream = fx["walk"]
+		var fx_ref = active_walk_fx 
 		walk_tween = await fade(walk_tween, active_walk_fx, -10.0, 0.0, 0.2)
-		active_walk_fx.play()
+		if fx_ref:
+			fx_ref.play()
 
 func stop_walk_fx() -> void:
 	if active_walk_fx:

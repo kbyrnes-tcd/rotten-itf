@@ -1,7 +1,7 @@
 extends Node
 class_name GameGlobals
 
-static var level_prog = ["Scene_01", "Scene_02_int", "Scene_02_ext", "Scene_03", "Scene_05"]
+static var level_prog = ["Scene_01", "Scene_02_int", "Scene_02_ext", "Scene_03", "Scene05", "Scene07Underworld"]
 static var prog_counter := 0
 # PROGRESSION: ext_path, garden_int, garden_ext, altar, quarters, tower, p-altar, underworld
 static var audio_prog := [
