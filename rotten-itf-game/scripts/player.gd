@@ -101,6 +101,20 @@ func _handle_animation():
 		else:
 			animated_sprite_2d.animation = "walk_equipped"
 
+func can_i_jump() -> Dictionary:
+	var jump_data := {
+		"can_jump": true or is_on_floor(), 
+		"ray_cast": FULL_JUMP_VELOCITY if !$FullJumpRayCast.is_colliding() else MID_JUMP_VELOCITY if !$MidJumpRayCast.is_colliding() else 0.0
+			}
+			
+	# need to check that raycast isnt detecting the one-way collider platforms
+	if jump_data["ray_cast"] == 0.0:
+		if $FullJumpRayCast.is_colliding() and $FullJumpRayCast.get_collider().is_shape_owner_one_way_collision_enabled(0):
+			jump_data["ray_cast"] = FULL_JUMP_VELOCITY
+		elif $MidJumpRayCast.is_colliding() and $MidJumpRayCast.get_collider().is_shape_owner_one_way_collision_enabled(0):
+			jump_data["ray_cast"] = MID_JUMP_VELOCITY
+	return jump_data
+
 func _handle_movement(delta: float):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -115,13 +129,15 @@ func _handle_movement(delta: float):
 	else:
 		AudioManager.stop_walk_fx()
 		move_state = MoveState.IDLE
+	
+	var jump_state := can_i_jump()
+	if jump_state["ray_cast"] == 0.0: return
+	if Input.is_action_just_pressed("jump") and jump_state["can_jump"]:
+		velocity.y = jump_state["ray_cast"]
+		move_state = MoveState.JUMPING
 		
-	if Input.is_action_just_pressed("jump") and is_on_floor() and !$FullJumpRayCast.is_colliding():
-		velocity.y = FULL_JUMP_VELOCITY
-		move_state = MoveState.JUMPING
-	elif Input.is_action_just_pressed("jump") and is_on_floor() and !$MidJumpRayCast.is_colliding():
-		velocity.y = MID_JUMP_VELOCITY
-		move_state = MoveState.JUMPING
+	if Input.is_action_just_pressed("down"):
+		position.y += 3
 		
 	var direction := Input.get_axis("left", "right")
 	if direction:
