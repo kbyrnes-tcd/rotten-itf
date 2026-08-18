@@ -49,10 +49,9 @@ func _on_back_pressed():
 	main_btns.visible = true
 
 func _on_stuck_pressed() -> void:
-	GameGlobals.resume(false)
+	GameGlobals.resume()
 	var current_level = GameGlobals.level_root.get_child(0).name
 	GameGlobals.load_level(current_level)
-	GameGlobals.resume(true)
 
 func _on_refill_pressed() -> void:
 	var player = get_tree().get_first_node_in_group("player")

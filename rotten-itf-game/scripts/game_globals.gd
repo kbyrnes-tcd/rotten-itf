@@ -1,7 +1,7 @@
 extends Node
 #class_name GameGlobals
 
-var level_prog = ["scene_01", "scene_02_int", "scene_02_ext", "scene_03", "scene05", "scene07Underworld"]
+var level_prog = ["scene_01", "scene_02_int", "scene_02_ext", "scene_03", "scene_04", "scene05", "scene07Underworld"]
 var prog_counter := 0
 # PROGRESSION: ext_path, garden_int, garden_ext, altar, quarters, tower, p-altar, underworld
 var audio_prog := [
@@ -160,6 +160,7 @@ func unload_level():
 		level_root.get_child(0).queue_free()
 
 func load_level(level_name: String):
+	level_name = level_name.to_lower()
 	unload_level()
 	var path = "res://scenes/levels/%s.tscn" % level_name
 	var n_scene : PackedScene = load(path)
