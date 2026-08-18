@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://6pxkrw3jqp6n"]
 
 [ext_resource type="Script" uid="uid://b0vt1mp7wu6pu" path="res://scripts/inventory_system/resource_def/inv_item.gd" id="1_4qllb"]
-[ext_resource type="Texture2D" uid="uid://drrgtpc3u6638" path="res://assets/images/worms/green_worm_1.png" id="2_4qllb"]
+[ext_resource type="Texture2D" uid="uid://fc8hwmpaobv8" path="res://assets/images/worms/Glowworm.png" id="2_54m3a"]
 [ext_resource type="Resource" uid="uid://b5p3nw0qirnsn" path="res://scripts/inventory_system/items/sample_letter.tres" id="3_54m3a"]
 
 [resource]
 script = ExtResource("1_4qllb")
 name = "green_worm"
-texture = ExtResource("2_4qllb")
+texture = ExtResource("2_54m3a")
 desc = "Click on me or select me via 2 & click E to read more!"
 ui_twin = ExtResource("3_54m3a")
 metadata/_custom_type_script = "uid://b0vt1mp7wu6pu"

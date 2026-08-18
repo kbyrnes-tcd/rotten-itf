@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cl2kf7fr304tf"]
+
+[ext_resource type="Texture2D" uid="uid://dclvu8v18i6k" path="res://assets/images/env/p1_start/Backdrop.png" id="1_3kqdl"]
+[ext_resource type="PackedScene" uid="uid://c1ex624uk430g" path="res://scenes/ui/main_menu.tscn" id="2_gs2wg"]
+
+[node name="Node2D" type="Node2D" unique_id=100880776]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1073810691]
+position = Vector2(243, 134)
+texture = ExtResource("1_3kqdl")
+region_enabled = true
+region_rect = Rect2(750, 0, 480, 270)
+
+[node name="Menu" parent="." unique_id=111660448 instance=ExtResource("2_gs2wg")]
+offset_right = 480.0
+offset_bottom = 270.0

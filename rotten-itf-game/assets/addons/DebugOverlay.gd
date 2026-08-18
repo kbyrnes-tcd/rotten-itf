@@ -68,9 +68,9 @@ func _process(_delta):
 		#label_text += format_label("Static Memory", String.humanize_size( OS.get_static_memory_usage()))
 		label_text += format_label("Peak Static Memory", String.humanize_size( OS.get_static_memory_peak_usage()))
 		label_text += format_label("Audio latency", AudioServer.get_output_latency())
-		label_text += format_label("Current ambience & vol", AudioManager.get_cur_ambience())
-		label_text += format_label("Current music & vol", AudioManager.get_cur_song())
-		#label_text += format_label("Object count", Performance.get_monitor(Performance.OBJECT_COUNT))
+		#label_text += format_label("Current ambience & vol", AudioManager.get_cur_ambience())
+		#label_text += format_label("Current music & vol", AudioManager.get_cur_song())
+		label_text += format_label("Object count", Performance.get_monitor(Performance.OBJECT_COUNT))
 		label_text += format_label("Leaked node count", Performance.get_monitor(Performance.OBJECT_ORPHAN_NODE_COUNT))
 
 		for id in _monitors:

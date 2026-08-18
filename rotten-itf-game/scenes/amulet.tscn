@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://yvyr0xth1r67"]
+
+[ext_resource type="Script" uid="uid://dqqcpctl3wb1f" path="res://scripts/amulet.gd" id="1_0rach"]
+[ext_resource type="Texture2D" uid="uid://cmj1a5apk3w36" path="res://assets/images/player/equipment/Amulet.png" id="2_bl70w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q01m8"]
+
+[node name="Amulet" type="Node2D" unique_id=160938005]
+script = ExtResource("1_0rach")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=631488131]
+texture = ExtResource("2_bl70w")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1077068286]
+color = Color(0.9892172, 0.9598728, 0.5348508, 1)
+texture = ExtResource("2_bl70w")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=135830654]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=821021472]
+shape = SubResource("CircleShape2D_q01m8")

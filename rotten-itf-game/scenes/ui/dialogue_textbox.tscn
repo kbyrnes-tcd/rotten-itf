@@ -24,15 +24,16 @@ corner_radius_bottom_left = 4
 script = ExtResource("1_y2pcl")
 
 [node name="DialogueAnchor" type="Control" parent="." unique_id=427589958]
-custom_minimum_size = Vector2(0, 100)
+custom_minimum_size = Vector2(0, 85)
 layout_mode = 3
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 113.0
-offset_top = -100.0
-offset_right = -107.0
+offset_left = 112.0
+offset_top = -86.0
+offset_right = -108.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -66,33 +67,38 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("2_xcyex")
+theme_override_font_sizes/normal_font_size = 8
 bbcode_enabled = true
 scroll_active = false
 
-[node name="ContinueHint" type="Label" parent="DialogueAnchor/DialogueBox/MarginContainer/VBoxContainer" unique_id=1123649260]
-layout_mode = 2
+[node name="ContinueHint" type="Label" parent="DialogueAnchor/DialogueBox" unique_id=1123649260]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 14.0
+offset_right = 251.0
+offset_bottom = 62.0
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("2_xcyex")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 6
 text = "Press Enter to continue"
 horizontal_alignment = 2
 vertical_alignment = 2
 
 [node name="NamePlate" type="Panel" parent="DialogueAnchor" unique_id=31804283]
-custom_minimum_size = Vector2(120, 40)
+custom_minimum_size = Vector2(100, 20)
 layout_mode = 0
-offset_left = 12.0
-offset_top = -9.0
-offset_right = 132.0
-offset_bottom = 33.0
+offset_left = 13.0
+offset_top = 2.0
+offset_right = 113.0
+offset_bottom = 26.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_nbikq")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="DialogueAnchor/NamePlate" unique_id=378396151]
 layout_mode = 0
-offset_left = 6.0
-offset_top = 8.0
-offset_right = 110.0
-offset_bottom = 40.0
+offset_left = 5.0
+offset_top = 1.0
+offset_right = 90.0
+offset_bottom = 28.0
 
 [node name="LeftDeco" type="TextureRect" parent="DialogueAnchor/NamePlate/HBoxContainer" unique_id=343008414]
 layout_mode = 2
@@ -100,7 +106,7 @@ layout_mode = 2
 [node name="CharacterName" type="Label" parent="DialogueAnchor/NamePlate/HBoxContainer" unique_id=1237755147]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_6ytya")
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 22
 text = "Daphne"
 horizontal_alignment = 1
 

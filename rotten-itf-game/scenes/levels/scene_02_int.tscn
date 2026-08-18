@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://di31qowjleyl4" path="res://scenes/rot_dressing_new.tscn" id="4_xgkue"]
 [ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="5_oleyw"]
 [ext_resource type="PackedScene" uid="uid://bimatr4hej8ja" path="res://scenes/ui/interactive_carat.tscn" id="6_5expv"]
+[ext_resource type="PackedScene" uid="uid://dr3ff06oljyer" path="res://scenes/lio_trigger.tscn" id="7_3aray"]
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="9_mb6sg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c63m2"]
@@ -36,7 +37,7 @@ position = Vector2(-586, 0)
 texture = ExtResource("2_3aray")
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("9_mb6sg")]
-position = Vector2(1218.0001, 205.00002)
+position = Vector2(54, 267)
 
 [node name="LntrnCollisionShape2D" parent="Player/CharacterSprites/Lantern/LanternArea2D" parent_id_path=PackedInt32Array(1515659648, 1614078195) index="0" unique_id=877712953]
 scale = Vector2(2.0710225, 2.2047858)
@@ -91,13 +92,6 @@ scale = Vector2(0.15999758, 1)
 position = Vector2(1288, -0.5)
 shape = SubResource("RectangleShape2D_3336g")
 
-[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1256881528]
-color = Color(0.7107411, 0.71074116, 0.7107411, 1)
-
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1276469286]
-color = Color(1, 0.7921569, 0.62352943, 0.26666668)
-energy = 0.8
-
 [node name="RotOnDoor" type="Node2D" parent="." unique_id=1348113335]
 z_index = -2
 
@@ -106,12 +100,34 @@ points = PackedVector2Array(847, 261, 811, 264, 771.2272, 259.8745, 677, 259, 60
 collidable = null
 clearable = null
 
-[node name="DoorArea2D" parent="." unique_id=1160326856 instance=ExtResource("5_oleyw")]
+[node name="DoorArea2D" parent="." unique_id=1160326856 node_paths=PackedStringArray("interact_carat") instance=ExtResource("5_oleyw")]
 position = Vector2(2339.0002, 245.00002)
 scale = Vector2(2.544, 4.656)
+interact_carat = NodePath("../InteractiveCarat")
 
 [node name="InteractiveCarat" parent="." unique_id=1099497837 instance=ExtResource("6_5expv")]
 position = Vector2(2339, 187)
 scale = Vector2(0.5, 0.5)
+
+[node name="LIO" type="Node" parent="." unique_id=2062746301]
+
+[node name="LioTrigger" parent="LIO" unique_id=110257511 instance=ExtResource("7_3aray")]
+position = Vector2(401, 280)
+lio_text = "Oh, Goddess…"
+
+[node name="LioTrigger2" parent="LIO" unique_id=1541676621 instance=ExtResource("7_3aray")]
+position = Vector2(949, 281)
+lio_text = "The Rot has completely consumed this place. "
+
+[node name="LioTrigger3" parent="LIO" unique_id=1993371548 instance=ExtResource("7_3aray")]
+position = Vector2(1697, 267)
+lio_text = "A wall lantern. The power is out."
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1256881528]
+color = Color(0.7107411, 0.71074116, 0.7107411, 1)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1276469286]
+color = Color(1, 0.7921569, 0.62352943, 0.26666668)
+energy = 0.8
 
 [editable path="Player"]

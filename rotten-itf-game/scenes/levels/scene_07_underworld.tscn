@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://oxw3mtmjbnj2" path="res://assets/images/env/underworld/Underworld_Exterior.png" id="1_425tl"]
 [ext_resource type="Texture2D" uid="uid://ryabja3raxip" path="res://assets/images/env/underworld/Underworld_Interior.png" id="2_xllsq"]
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="3_xllsq"]
-[ext_resource type="PackedScene" uid="uid://c1epxp5spnua" path="res://scenes/ui/dialogue_trigger.tscn" id="4_5qgul"]
+[ext_resource type="PackedScene" uid="uid://bd3r1j21a2opr" path="res://scenes/ui/dialogue_trigger.tscn" id="4_5qgul"]
 [ext_resource type="Script" uid="uid://ddnjkodm10cvk" path="res://scripts/dialogue_trigger.gd" id="5_8jksi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q01m8"]
@@ -38,10 +38,12 @@ position = Vector2(1429, 179)
 texture = ExtResource("2_xllsq")
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("3_xllsq")]
-position = Vector2(88, 223)
+position = Vector2(39.000004, 232)
 
 [node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
-limit_right = 2783
+limit_left = -91
+limit_top = 190
+limit_right = 2779
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1489060455]
 
@@ -74,6 +76,13 @@ shape = SubResource("CircleShape2D_q01m8")
 visible = false
 position = Vector2(959.00006, 174)
 scale = Vector2(0.09079814, 0.08184042)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1285784708]
+color = Color(0.7107411, 0.71074116, 0.7107411, 1)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=2140409704]
+color = Color(0.9882353, 0.7764706, 0.8156863, 0.38431373)
+energy = 0.8
 
 [editable path="Player"]
 [editable path="DialogueTrigger"]

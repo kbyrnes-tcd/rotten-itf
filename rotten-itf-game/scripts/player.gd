@@ -103,7 +103,7 @@ func _handle_animation():
 
 func can_i_jump() -> Dictionary:
 	var jump_data := {
-		"can_jump": true or is_on_floor(), 
+		"can_jump": is_on_floor(), 
 		"ray_cast": FULL_JUMP_VELOCITY if !$FullJumpRayCast.is_colliding() else MID_JUMP_VELOCITY if !$MidJumpRayCast.is_colliding() else 0.0
 			}
 			

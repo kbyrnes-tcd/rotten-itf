@@ -11,6 +11,9 @@
 [ext_resource type="Script" uid="uid://bc1k5ojr0ocy" path="res://scripts/rot_dressing.gd" id="7_4n1ul"]
 [ext_resource type="PackedScene" uid="uid://bimatr4hej8ja" path="res://scenes/ui/interactive_carat.tscn" id="10_nqapm"]
 [ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="11_jctv3"]
+[ext_resource type="Resource" uid="uid://6pxkrw3jqp6n" path="res://scripts/inventory_system/items/green_worm.tres" id="12_58igu"]
+[ext_resource type="PackedScene" uid="uid://dr3ff06oljyer" path="res://scenes/lio_trigger.tscn" id="12_gvi84"]
+[ext_resource type="PackedScene" uid="uid://ufmhebijpwbb" path="res://scenes/collectible_item.tscn" id="14_58igu"]
 
 [sub_resource type="Curve" id="Curve_qsi71"]
 _data = [Vector2(0, 0.1), 0.0, 0.0, 0, 0, Vector2(0.7, 0.6), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -90,6 +93,9 @@ point_count = 3
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3336g"]
 size = Vector2(2596, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_58igu"]
+size = Vector2(4640.8633, 94)
 
 [node name="Scene_02_ext" type="Node2D" unique_id=358721782]
 
@@ -367,7 +373,7 @@ width = 12.0
 width_curve = SubResource("Curve_410gd")
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("6_6c07b")]
-position = Vector2(78, 288)
+position = Vector2(65, 295)
 
 [node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
 limit_left = -82
@@ -385,6 +391,15 @@ scale = Vector2(1.5999995, 1)
 position = Vector2(1288, -0.5)
 shape = SubResource("RectangleShape2D_3336g")
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Colliders/GroundCollider" unique_id=2137021604]
+position = Vector2(1284.3754, -262)
+shape = SubResource("RectangleShape2D_3336g")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Colliders/GroundCollider" unique_id=1160718398]
+position = Vector2(405.44986, -239)
+scale = Vector2(0.17499971, 1)
+shape = SubResource("RectangleShape2D_58igu")
+
 [node name="LeftOobCollider" type="StaticBody2D" parent="Colliders" unique_id=2121097576]
 position = Vector2(-9.094947e-13, 388)
 rotation = -1.5707964
@@ -400,7 +415,7 @@ rotation = -1.5707964
 scale = Vector2(0.15999758, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/RightOobCollider" unique_id=2075318962]
-position = Vector2(1288, -0.5)
+position = Vector2(1256.269, -224)
 shape = SubResource("RectangleShape2D_3336g")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1256881528]
@@ -417,6 +432,28 @@ scale = Vector2(0.5, 0.5)
 [node name="DoorArea2D" parent="." unique_id=1160326856 instance=ExtResource("11_jctv3")]
 position = Vector2(631, 288)
 scale = Vector2(2.319, 4.244)
+
+[node name="CollectibleItem" parent="." unique_id=385129123 instance=ExtResource("14_58igu")]
+position = Vector2(3505, 307)
+item = ExtResource("12_58igu")
+
+[node name="LIO" type="Node" parent="." unique_id=152196213]
+
+[node name="LioTrigger3" parent="LIO" unique_id=1633611298 instance=ExtResource("12_gvi84")]
+position = Vector2(2642, 295)
+lio_text = "This fountain connects to Kyane’s spring. She was good friends with Persephone. It’s a shame how rotten it is now."
+
+[node name="LioTrigger4" parent="LIO" unique_id=1784746918 instance=ExtResource("12_gvi84")]
+position = Vector2(3078, 289)
+lio_text = "How strange… This part of the garden is clean from the Rot."
+
+[node name="LioTrigger5" parent="LIO" unique_id=1165672345 instance=ExtResource("12_gvi84")]
+position = Vector2(3295, 298)
+lio_text = "The Glowworms! They’re repelling the Rot away."
+
+[node name="LioTrigger6" parent="LIO" unique_id=1649625044 instance=ExtResource("12_gvi84")]
+position = Vector2(3801, 292)
+lio_text = "This path is blocked. I can go no further."
 
 [connection signal="area_shape_entered" from="RotOnWallsInFront/Vine7/Line2D2/LineArea2D" to="RotOnWallsInFront/Vine7/Line2D2" method="_on_line_area_2d_area_shape_entered"]
 [connection signal="body_entered" from="RotOnWallsInFront/Vine7/Line2D2/LineArea2D" to="RotOnWallsInFront/Vine7/Line2D2" method="_on_area_2d_body_entered"]

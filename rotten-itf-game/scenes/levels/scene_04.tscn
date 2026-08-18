@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://dabmux7g7fuy7"]
+
+[ext_resource type="Texture2D" uid="uid://d2vuj2g7fshoe" path="res://assets/images/env/p4_chambers/Part_4_Chambers_v1.png" id="1_tpenv"]
+[ext_resource type="Texture2D" uid="uid://ig2fc5h8bc5e" path="res://assets/images/env/p4_chambers/Part_4_Chambers_Collision_Mask.png" id="3_fc5q1"]
+[ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="3_jkm6f"]
+[ext_resource type="PackedScene" uid="uid://ufmhebijpwbb" path="res://scenes/collectible_item.tscn" id="4_vp8d7"]
+[ext_resource type="Resource" uid="uid://clnyyb2h5f77h" path="res://scripts/inventory_system/items/letter_scrap.tres" id="5_8k800"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w2pfo"]
+
+[node name="Scene_04" type="Node2D" unique_id=345651132]
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1309616939]
+position = Vector2(2002, 122)
+scale = Vector2(1.05, 1)
+texture = ExtResource("1_tpenv")
+
+[node name="Player" parent="." unique_id=1515659648 instance=ExtResource("3_jkm6f")]
+position = Vector2(-16, 249)
+
+[node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
+limit_left = -336
+limit_top = -278
+limit_right = 4183
+limit_bottom = 513
+
+[node name="Colliders" type="StaticBody2D" parent="." unique_id=32036546]
+position = Vector2(1994, 116)
+scale = Vector2(1.05, 1)
+
+[node name="MaskSprite" type="Sprite2D" parent="Colliders" unique_id=79364579]
+visible = false
+position = Vector2(0, -3)
+texture = ExtResource("3_fc5q1")
+
+[node name="RightOob" type="CollisionShape2D" parent="Colliders" unique_id=724741521]
+position = Vector2(2172.381, 16.999998)
+scale = Vector2(2.3333335, 43.502937)
+shape = SubResource("RectangleShape2D_w2pfo")
+
+[node name="LeftOob" type="CollisionShape2D" parent="Colliders" unique_id=942475298]
+position = Vector2(-2152.3806, 16.999998)
+scale = Vector2(2.3333335, 43.502937)
+shape = SubResource("RectangleShape2D_w2pfo")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Colliders" unique_id=389485365]
+position = Vector2(0, -3)
+polygon = PackedVector2Array(-2131.4287, -377, -2131.4287, -18, -1640.0001, -18, -1640.9525, -333, -760, -334, -752.381, -228, -1292.3811, -230, -1292.3811, -188, -757.14294, -188, -468.5714, -190, -463.80957, -230, -606.66675, -230, -597, -334.1, 573, -335, 885, -335, 890.4762, -229, 623.8097, -231, 624.76184, -189, 1366.3999, -178, 1484, -81.29999, 1484, 70, 1577, 70, 1577, 5, 2160.9526, 2, 2149.524, -379)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Colliders" unique_id=2026137591]
+position = Vector2(0, -3)
+polygon = PackedVector2Array(-1396.1906, -229, -1396.1906, -189, -1355.2382, -189, -1356.1906, -229)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Colliders" unique_id=170896430]
+position = Vector2(0, -3)
+polygon = PackedVector2Array(-409.5238, -230, -404.76196, -187, 571.4286, -190, 571.4286, -230)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Colliders" unique_id=1724303142]
+position = Vector2(0, -3)
+polygon = PackedVector2Array(616.19055, -36, 617.14294, 6, 679.0477, 6, 678, 152, 9, 152, 9, 17, 81.8999, 17, 114, 61.200012, 114, 69, 517.1001, 69, 548.5714, 7, 581.9049, 6, 581.9049, -35, 508.5714, -34, 482.8573, 17, 153.33337, 18, 120.95239, -35, -60, -35, -286.66663, 161, -437.14282, 161, -703.8096, -35, -1300, -35, -1299.0476, 4, -763.8096, 5, -750.4762, 159, -969.52386, 160, -967.6191, 201, -749.5238, 201, -749.5238, 356, -1381.9048, 356, -1625.7144, 173, -2129.524, 173, -2112, 378, 2194.2856, 374, 2192.3813, 347, 1612.381, 345, 1092.381, -35)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Colliders" unique_id=122151113]
+position = Vector2(0, -3)
+polygon = PackedVector2Array(-1395.2382, -35, -1396.1906, 5, -1344.762, 5, -1346.6667, -35)
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="Colliders" unique_id=1839431593]
+position = Vector2(0, -3)
+polygon = PackedVector2Array(-468.5714, -34, -467.61902, 7, -242.85718, 7, -243.80957, -35)
+
+[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="Colliders" unique_id=1057272408]
+position = Vector2(0, -3)
+polygon = PackedVector2Array(-1395.2382, 160, -1396.1906, 201, -1026.6667, 200, -1025.7144, 159)
+
+[node name="LetterScrap" parent="." unique_id=385129123 instance=ExtResource("4_vp8d7")]
+position = Vector2(579, 243)
+item = ExtResource("5_8k800")
+
+[node name="LetterScrap2" parent="." unique_id=2116854740 instance=ExtResource("4_vp8d7")]
+position = Vector2(1159, 435)
+item = ExtResource("5_8k800")
+
+[node name="LetterScrap3" parent="." unique_id=255828893 instance=ExtResource("4_vp8d7")]
+position = Vector2(1406, -158)
+item = ExtResource("5_8k800")
+
+[node name="LetterScrap4" parent="." unique_id=1829244296 instance=ExtResource("4_vp8d7")]
+position = Vector2(1154, -158)
+item = ExtResource("5_8k800")
+
+[node name="LetterScrap5" parent="." unique_id=1574850458 instance=ExtResource("4_vp8d7")]
+position = Vector2(2071, 238)
+item = ExtResource("5_8k800")
+
+[node name="LetterScrap6" parent="." unique_id=1122768699 instance=ExtResource("4_vp8d7")]
+position = Vector2(2071, 238)
+item = ExtResource("5_8k800")
+
+[node name="LetterScrap7" parent="." unique_id=823946160 instance=ExtResource("4_vp8d7")]
+position = Vector2(2889, -153)
+item = ExtResource("5_8k800")
+
+[editable path="Player"]

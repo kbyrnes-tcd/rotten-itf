@@ -6,9 +6,11 @@ const CHAR_READ_RATE = 0.05
 @onready var textbox_container = $DialogueAnchor
 @onready var character_name_label = $DialogueAnchor/NamePlate/HBoxContainer/CharacterName
 @onready var label = $DialogueAnchor/DialogueBox/MarginContainer/VBoxContainer/DialogueText
-@onready var continue_hint = $DialogueAnchor/DialogueBox/MarginContainer/VBoxContainer/ContinueHint
+@onready var continue_hint = $DialogueAnchor/DialogueBox/ContinueHint
 @onready var portrait = $DialogueAnchor/PortraitLeft
 @onready var portrait_right = $DialogueAnchor/PortraitRight
+
+signal dialogue_finished
 
 const PORTRAITS = {
 	"Daphne" : preload("res://assets/images/player/daphne_animations/portrait/daphne.png"),
@@ -63,6 +65,7 @@ func _process(_delta):
 					GameGlobals.resume()
 					AudioManager.decrease_music_vol(20.0)
 					hide_textbox()
+					emit_signal("dialogue_finished")
 					
 func queue_text(next_text: String, speaker: String = ""):
 	text_queue.push_back({"text": next_text, "speaker": speaker})

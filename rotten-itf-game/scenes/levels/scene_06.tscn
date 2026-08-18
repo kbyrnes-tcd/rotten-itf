@@ -30,7 +30,12 @@ texture = ExtResource("2_u6dhm")
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("3_u6dhm")]
 z_index = 1
-position = Vector2(66, 228.99998)
+position = Vector2(31.999992, 238)
+
+[node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
+limit_top = 252
+limit_right = 1057
+limit_bottom = 110
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=304900103]
 
@@ -39,7 +44,7 @@ position = Vector2(3, 183)
 shape = SubResource("RectangleShape2D_nbikq")
 
 [node name="BottomCollision" type="CollisionShape2D" parent="StaticBody2D" unique_id=1738080502]
-position = Vector2(573, 285)
+position = Vector2(571, 282)
 shape = SubResource("RectangleShape2D_b3hyr")
 
 [node name="RightCollision" type="CollisionShape2D" parent="StaticBody2D" unique_id=326114271]
@@ -200,6 +205,14 @@ position = Vector2(476, 187.5)
 scale = Vector2(1.0014814, 0.98888886)
 texture = ExtResource("5_qq6m5")
 
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1671339769]
+color = Color(0.7107411, 0.71074116, 0.7107411, 1)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=196106957]
+color = Color(1, 0.7921569, 0.62352943, 0.26666668)
+energy = 0.8
+
+[editable path="Player"]
 [editable path="RotMap"]
 [editable path="RotMap/Vine2"]
 [editable path="RotMap/Vine3"]

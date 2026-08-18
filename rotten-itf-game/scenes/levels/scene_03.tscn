@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://qtqiun326hpr" path="res://scenes/lever.tscn" id="8_y5j78"]
 [ext_resource type="Script" uid="uid://cdxfomkkfwywg" path="res://scripts/fallen_trigger.gd" id="9_6m4hc"]
 [ext_resource type="PackedScene" uid="uid://dr3ff06oljyer" path="res://scenes/lio_trigger.tscn" id="10_y5j78"]
+[ext_resource type="PackedScene" uid="uid://yvyr0xth1r67" path="res://scenes/amulet.tscn" id="12_co3ny"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_co3ny"]
 size = Vector2(300, 20)
@@ -35,15 +36,15 @@ visible = false
 texture = ExtResource("2_p368k")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/Collision" unique_id=411311759]
-polygon = PackedVector2Array(-1920, 270, -1461.1, 270, -1463, 158, -1463, 155, -1902, 155, -1902, -57.100006, -72, -59, -72, -258, 552, -258, 554, -61, 554, -58, 1902, -57.100006, 1902, 93, 543.19995, 93, 474.1001, 155, 26, 155, 41.45935, 156.00003, 39.5531, 156.00003, 22, 143.9, -59.400024, 93, -570.69995, 93, -642.69995, 154, -1309, 154, -1311, 270, 1920, 270, 1920, -270, -1920, -270)
+polygon = PackedVector2Array(-1920, 270, -1461.1, 270, -1463, 158, -1463, 155, -1902, 155, -1902, -57.100006, -72, -59, -72, -258, 552, -258, 554, -61, 554, -58, 1902, -57.100006, 1902, 93, 543.19995, 93, 474.1001, 155, 26, 155, 41.45935, 156.00003, 39.5531, 156.00003, 22, 143.9, -59.400024, 93, -570.69995, 93, -642.69995, 154, -1309, 154, -1311, 270, 460.9524, 267, 1920, 270, 1920, -270, -1920, -270)
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("3_p368k")]
 z_index = 1
-position = Vector2(1919, 181)
+position = Vector2(64, 244)
 
 [node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
-limit_top = -195
-limit_right = 4084
+limit_top = -206
+limit_right = 3921
 limit_bottom = 423
 
 [node name="ZoomTrigger" parent="." unique_id=1302506614 instance=ExtResource("4_bork3")]
@@ -65,11 +66,12 @@ position = Vector2(2259, 73)
 scale = Vector2(1.638516, 21.04)
 shape = SubResource("RectangleShape2D_co3ny")
 
-[node name="DialogueTrigger" parent="." unique_id=413688381 instance=ExtResource("5_0760f")]
+[node name="DialogueTrigger" parent="." unique_id=413688381 node_paths=PackedStringArray("amulet") instance=ExtResource("5_0760f")]
 process_mode = 3
 script = ExtResource("6_nuytq")
-dialogue_lines = Array[String](["Hey Daphne whatsup", "not much", "rot??", "girl sure"])
-speaker = Array[String](["Persephone", "Daphne", "Persephone", "Daphne"])
+dialogue_lines = Array[String](["High Priestess!", "Daphne, stay back.", "You're... Oh, Godess", "I lasted as long as I could in this ruined Temple, but even my Patron Demeter could only protect me for so long.", "It appears that the powers of this Rotten substance have only grown stronger in your absence. At times, I wondered…", "I wondered if maybe it grew because it was seeking you out.", "What do you mean?", "You were there that night when it appeared. It wasn’t just growing out of Persephone’s altarpiece, it was growing out towards you.", "No, it… it ate away at my sisters. I watched it grow in all directions to infect the Temple.", "Your sisters, yes, but not your kin. Kind girl… I was wrong. It was not your fault. I see that now.", "You were not born of this Temple. You were given to us out by the Yew tree. ", "I thought you were some Nymph’s forgotten babe, but no… I took you from a far more sordid heritage.", "High Priestess, what are you saying?", "You aren’t of our lands, Daphne. Which is why you need to be the only to save us.", "Clear the Temple of this Rot, girl, and you will be granted the power to control this infection.", "Then, go to the old living chambers, and learn of its origin. ", "Of your origin.", "Goddess, forgive me. Forgive me."])
+speaker = Array[String](["Daphne", "Persephone", "Daphne", "Persephone", "Persephone", "Persephone", "Daphne", "Persephone", "Daphne", "Persephone", "Persephone", "Persephone", "Daphne", "Persephone", "Persephone", "Persephone", "Persephone", "Persephone"])
+amulet = NodePath("../Amulet")
 
 [node name="Area2D" parent="DialogueTrigger" index="0" unique_id=1114588435]
 position = Vector2(2227, 251)
@@ -123,6 +125,24 @@ shape = SubResource("RectangleShape2D_5i8uq")
 
 [node name="LioTrigger" parent="." unique_id=110257511 instance=ExtResource("10_y5j78")]
 position = Vector2(2073, 235)
+
+[node name="LioTrigger2" parent="." unique_id=117623388 instance=ExtResource("10_y5j78")]
+position = Vector2(287, 244)
+lio_text = "A chandelier...there should be a lever nearby."
+
+[node name="Amulet" parent="." unique_id=160938005 instance=ExtResource("12_co3ny")]
+position = Vector2(2419, 244)
+
+[node name="LioTrigger3" parent="." unique_id=460109088 instance=ExtResource("10_y5j78")]
+position = Vector2(2442, 245)
+lio_text = "Press ] to shoot rot."
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1562990469]
+color = Color(0.7107411, 0.71074116, 0.7107411, 1)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1192174376]
+color = Color(1, 0.7921569, 0.62352943, 0.26666668)
+energy = 0.8
 
 [editable path="Player"]
 [editable path="ZoomTrigger"]

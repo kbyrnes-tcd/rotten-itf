@@ -7,9 +7,9 @@
 script = ExtResource("1_db103")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=755628547]
-offset_left = 139.0
-offset_top = 226.0
-offset_right = 369.0
+offset_left = 1.0
+offset_top = 209.0
+offset_right = 486.0
 offset_bottom = 266.0
 
 [node name="LIOLabel" type="Label" parent="CenterContainer" unique_id=483243293]

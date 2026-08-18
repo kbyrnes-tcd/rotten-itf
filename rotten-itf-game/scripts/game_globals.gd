@@ -1,10 +1,10 @@
 extends Node
-class_name GameGlobals
+#class_name GameGlobals
 
-static var level_prog = ["Scene_01", "Scene_02_int", "Scene_02_ext", "Scene_03", "Scene05", "Scene07Underworld"]
-static var prog_counter := 0
+var level_prog = ["scene_01", "scene_02_int", "scene_02_ext", "scene_03", "scene_04", "scene05", "scene07Underworld"]
+var prog_counter := 0
 # PROGRESSION: ext_path, garden_int, garden_ext, altar, quarters, tower, p-altar, underworld
-static var audio_prog := [
+var audio_prog := [
 	{"ambience": "Ext_Ambiance","music": "Temple_Music"}, #ext_path
 	{"ambience": "Int_Ambiance","music": "Temple_Music"}, #garden_int
 	{"ambience": "Garden_Ambience", "music": "Temple_Music"}, #garden_ext
@@ -13,49 +13,59 @@ static var audio_prog := [
 	#{"ambience": "", "music": ""}
 ]
 
-static var level_root: Node2D
-static var mg_root: Node2D
-static var scene
-static var tree
-static var config: Node
-# static var tween
+var level_root: Node2D
+var mg_root: Node2D
+var scene
+var tree
+var config: Node
+# var tween
 enum Minigame { NONE, MAZE, LETTER }
-static var current_mg
-static var player : Player
-static var pause_menu: Control
-static var color_rect: ColorRect
-static var letter_ui: Control
+var current_mg
+var player : Player
+var pause_menu: Control
+var color_rect: ColorRect
+var letter_ui: Control
 
-static var mid_mg : Node
-static var inv_ui : Control
+var mid_mg : Node
+var inv_ui : Control
 var running_another_scene : bool = true # for running minigames and etc.
+var pending_start := false
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	if !running_another_scene:
+		setup_game()
+
+func setup_game():
 	tree = get_tree()
 	scene = tree.current_scene
 	player = scene.find_child("Player")
-	if !running_another_scene:
-		level_root = scene.get_node("World/LevelRoot")
-		mg_root = scene.get_node("MinigameLayer/MgRoot")
-		letter_ui = scene.get_node("HUD/LetterHUD/LetterUI")
-		inv_ui = scene.get_node("HUD/InvHUD/InvUI")
-		current_mg = Minigame.NONE
-		
-		config = scene.get_node("Config")
-		pause_menu = config.pause_menu
-		var debug_scene : PackedScene = config.debug_level
-		#tween = create_tween()
-		#tween.tween_property(color_rect, "modulate:a", 0.5, 0.67)
-		
-		if debug_scene == null:
-			load_level(level_prog[0])
-		else:
-			AudioManager.play_music(audio_prog[0].music)
-			AudioManager.play_ambience(audio_prog[0].ambience) # debug mg audio test
-			var debug_node := debug_scene.instantiate()
-			level_root.add_child(debug_node)
-			player = debug_node.find_child("Player")
+	level_root = scene.get_node("World/LevelRoot")
+	mg_root = scene.get_node("MinigameLayer/MgRoot")
+	letter_ui = scene.get_node("HUD/LetterHUD/LetterUI")
+	inv_ui = scene.get_node("HUD/InvHUD/InvUI")
+	current_mg = Minigame.NONE
+	config = scene.get_node("Config")
+	pause_menu = config.pause_menu
+
+	if pending_start:
+		pending_start = false
+		start_level_or_debug()
+
+func start_level_or_debug() -> void:
+	var debug_scene: PackedScene = config.debug_level
+	if debug_scene == null:
+		load_level(level_prog[0])
+	else:
+		AudioManager.play_music(audio_prog[0].music)
+		AudioManager.play_ambience(audio_prog[0].ambience)
+		var debug_node := debug_scene.instantiate()
+		level_root.add_child(debug_node)
+		player = debug_node.find_child("Player")
+
+func start_new_game() -> void:
+	pending_start = true
+	get_tree().change_scene_to_file("res://scenes/levels/begin.tscn")
 
 func _process(_delta: float) -> void:
 	# esc button closes letter pop_ups and inventory, and exits minigames
@@ -67,7 +77,7 @@ func _process(_delta: float) -> void:
 		elif inv_ui.visible:
 			inv_ui.close()
 
-static func resume(w_menu : bool = false):
+func resume(w_menu : bool = false):
 	# only resume if currently not in minigame
 	if current_mg == Minigame.NONE:
 		tree.paused = false
@@ -75,13 +85,13 @@ static func resume(w_menu : bool = false):
 	if w_menu:
 		pause_menu.visible = false
 
-static func pause(w_menu : bool = false):
+func pause(w_menu : bool = false):
 	#tween.tween_property(color_rect, "modulate:a", 0.5, 0.67)
 	if w_menu:
 		pause_menu.visible = true
 	tree.paused = true
 
-static func unload_mid_minigame():
+func unload_mid_minigame():
 	#print("Tryna unload mid mg")
 	AudioManager.decrease_music_vol()
 	current_mg = Minigame.NONE
@@ -92,7 +102,7 @@ static func unload_mid_minigame():
 	mg_root.get_child(0).visible = false
 	return
 
-static func unload_minigame():
+func unload_minigame():
 	print("player has won, unloading fr")
 	AudioManager.play_os_from_arr("win")
 	AudioManager.decrease_music_vol()
@@ -107,7 +117,7 @@ static func unload_minigame():
 	mid_mg = null
 	return
 	
-static func load_minigame(mg : int):
+func load_minigame(mg : int):
 	AudioManager.increase_music_vol()
 	if inv_ui.visible or letter_ui.visible:
 		inv_ui.close()
@@ -141,20 +151,21 @@ static func load_minigame(mg : int):
 			main_split.position = Vector2.ZERO
 			main_split.size = viewport_size
 
-static func load_letter_ui(letter : LetterCopy):
+func load_letter_ui(letter : LetterCopy):
 	letter_ui.visible = true
 	letter_ui.set_label(letter.copy)
 
-static func unload_level():
+func unload_level():
 	if level_root.get_child_count() > 0:
-		level_root.remove_child(level_root.get_child(0))
+		level_root.get_child(0).queue_free()
 
-static func load_level(level_name: String):
+func load_level(level_name: String):
+	level_name = level_name.to_lower()
 	unload_level()
 	var path = "res://scenes/levels/%s.tscn" % level_name
-	var c_scene : PackedScene = load(path)
-	var scene_node : Node = c_scene.instantiate()
-	if (c_scene):
+	var n_scene : PackedScene = load(path)
+	var scene_node : Node = n_scene.instantiate()
+	if (n_scene):
 		level_root.add_child(scene_node)
 		player = scene_node.find_child("Player")
 		if prog_counter != 0:
@@ -164,8 +175,7 @@ static func load_level(level_name: String):
 			AudioManager.play_ambience(audio_prog[0].ambience)
 			AudioManager.play_music(audio_prog[0].music)
 
-static func next_level():
-	var curr_index : int = level_prog.find(level_root.get_child(0).name)
-	var next_scene : String = str(level_prog[curr_index+1])
+func next_level():
 	prog_counter += 1
+	var next_scene : String = str(level_prog[prog_counter])
 	load_level(next_scene)

@@ -4,34 +4,34 @@ extends Node2D
 #and correct = constellation symbol word meaning
 var gaps = [
 	{
-		"before" : "Dear Mother, I miss you",
-		"after" : "this time of year.",
-		"correct" : "PLAN",
+		"before" : "I am glad to be at peace here in my home. I am settling",
+		"after" : "in comfortably this winter, and have been enjoying the company of my husband.",
+		"correct" : "SOMETHING",
 	},
 	{
-		"before" : "The nymphs were",
-		"after" : "and lonely this summer.",
-		"correct" : "LOVE",
+		"before" : "We are quite well, and have been enjoying the good weather.",
+		"after" : "My lavender bush is thriving, ",
+		"correct" : "IS",
 	},
 	{
-		"before" : "I",
-		"after" : "it is my own doing. I hate it.",
-		"correct" : "HELP",
+		"before" : ", and I plan to",
+		"after" : "grow some more in my chambers",
+		"correct" : "WRONG",
 	},
 	{
-		"before" : "Hades has been",
-		"after" : "this time. Working so much",
-		"correct" : "WINTER",
+		"before" : "Though I miss the sun, stars, and you",
+		"after" : ", my family here is flourishing.",
+		"correct" : "WITH",
 	},
 	{
-		"before" : "I",
-		"after" : "something terrible is coming. I feel it.",
-		"correct" : "FEAR",
+		"before" : "I miss you dearly, and am ",
+		"after" : "glad to see you soon.",
+		"correct" : "HADES",
 	},
 ]
 
 #Symbols options shown to player to choose from
-var symbols = ["PLAN", "LOVE", "HELP", "WINTER", "FEAR"]
+var symbols = ["SOMETHING", "IS", "WRONG", "WITH", "HADES"]
 
 #state tracking
 var current_gap_index = 0
