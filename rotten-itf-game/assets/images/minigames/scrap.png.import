@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfh1xqnpr5g0q"
-path="res://.godot/imported/Temple_Interior_Layer.png-747cfec3fb42cf43247f342c9f417ed5.ctex"
+uid="uid://fmbvj4774uyr"
+path="res://.godot/imported/scrap.png-5c1588d98d9e65b3b17e4f2cf72aaf72.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/env/temple_int/Temple_Interior_Layer.png"
-dest_files=["res://.godot/imported/Temple_Interior_Layer.png-747cfec3fb42cf43247f342c9f417ed5.ctex"]
+source_file="res://assets/images/minigames/scrap.png"
+dest_files=["res://.godot/imported/scrap.png-5c1588d98d9e65b3b17e4f2cf72aaf72.ctex"]
 
 [params]
 
