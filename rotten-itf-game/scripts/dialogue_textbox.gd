@@ -59,6 +59,9 @@ func _process(_delta):
 			if Input.is_action_just_pressed("ui_accept"):
 				change_state(State.READY)
 				if text_queue.size() == 0:
+					#print("DIALOG FINISHED!!!!!")
+					GameGlobals.resume()
+					AudioManager.decrease_music_vol(20.0)
 					hide_textbox()
 					
 func queue_text(next_text: String, speaker: String = ""):
@@ -95,6 +98,7 @@ func display_text():
 	var entry = text_queue.pop_front()
 	var next_text = entry["text"]
 	var speaker = entry["speaker"]
+	AudioManager.play_dialog(next_text, speaker)
 	label.text = next_text
 	label.visible_ratio = 0.0
 	change_state(State.READING)

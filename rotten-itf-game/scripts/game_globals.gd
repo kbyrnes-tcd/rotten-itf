@@ -1,7 +1,18 @@
 extends Node
 class_name GameGlobals
 
-static var level_prog = ["Begin", "Scene_01", "Scene_02", "Scene_03"]
+static var level_prog = ["Scene_01", "Scene_02_int", "Scene_02_ext", "Scene_03", "Scene05", "Scene07Underworld"]
+static var prog_counter := 0
+# PROGRESSION: ext_path, garden_int, garden_ext, altar, quarters, tower, p-altar, underworld
+static var audio_prog := [
+	{"ambience": "Ext_Ambiance","music": "Temple_Music"}, #ext_path
+	{"ambience": "Int_Ambiance","music": "Temple_Music"}, #garden_int
+	{"ambience": "Garden_Ambience", "music": "Temple_Music"}, #garden_ext
+	{"ambience": "Int_Ambiance", "music": "Temple_Music"}, #test
+	{"ambience": "Int_Ambiance", "music": "Temple_Music"} #test
+	#{"ambience": "", "music": ""}
+]
+
 static var level_root: Node2D
 static var mg_root: Node2D
 static var scene
@@ -21,7 +32,6 @@ var running_another_scene : bool = true # for running minigames and etc.
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	AudioManager.play_ambience("Ambience", 0, true)
 	tree = get_tree()
 	scene = tree.current_scene
 	player = scene.find_child("Player")
@@ -39,8 +49,10 @@ func _ready() -> void:
 		#tween.tween_property(color_rect, "modulate:a", 0.5, 0.67)
 		
 		if debug_scene == null:
-			load_level(level_prog[1])
+			load_level(level_prog[0])
 		else:
+			AudioManager.play_music(audio_prog[0].music)
+			AudioManager.play_ambience(audio_prog[0].ambience) # debug mg audio test
 			var debug_node := debug_scene.instantiate()
 			level_root.add_child(debug_node)
 			player = debug_node.find_child("Player")
@@ -55,7 +67,7 @@ func _process(_delta: float) -> void:
 		elif inv_ui.visible:
 			inv_ui.close()
 
-static func resume(w_menu : bool):
+static func resume(w_menu : bool = false):
 	# only resume if currently not in minigame
 	if current_mg == Minigame.NONE:
 		tree.paused = false
@@ -63,7 +75,7 @@ static func resume(w_menu : bool):
 	if w_menu:
 		pause_menu.visible = false
 
-static func pause(w_menu : bool):
+static func pause(w_menu : bool = false):
 	#tween.tween_property(color_rect, "modulate:a", 0.5, 0.67)
 	if w_menu:
 		pause_menu.visible = true
@@ -71,7 +83,7 @@ static func pause(w_menu : bool):
 
 static func unload_mid_minigame():
 	#print("Tryna unload mid mg")
-	# resume game
+	AudioManager.decrease_music_vol()
 	current_mg = Minigame.NONE
 	resume(false)
 	# store mg_root child from tree into mid_mg
@@ -83,6 +95,7 @@ static func unload_mid_minigame():
 static func unload_minigame():
 	print("player has won, unloading fr")
 	AudioManager.play_os_from_arr("win")
+	AudioManager.decrease_music_vol()
 	current_mg = Minigame.NONE
 	resume(false)
 	# unload mg_root child from tree
@@ -95,6 +108,7 @@ static func unload_minigame():
 	return
 	
 static func load_minigame(mg : int):
+	AudioManager.increase_music_vol()
 	if inv_ui.visible or letter_ui.visible:
 		inv_ui.close()
 		letter_ui.visible = false
@@ -143,8 +157,15 @@ static func load_level(level_name: String):
 	if (c_scene):
 		level_root.add_child(scene_node)
 		player = scene_node.find_child("Player")
+		if prog_counter != 0:
+			AudioManager.change_ambience(audio_prog[prog_counter].ambience)
+			AudioManager.change_music(audio_prog[prog_counter].music)
+		else: 
+			AudioManager.play_ambience(audio_prog[0].ambience)
+			AudioManager.play_music(audio_prog[0].music)
 
 static func next_level():
 	var curr_index : int = level_prog.find(level_root.get_child(0).name)
 	var next_scene : String = str(level_prog[curr_index+1])
+	prog_counter += 1
 	load_level(next_scene)

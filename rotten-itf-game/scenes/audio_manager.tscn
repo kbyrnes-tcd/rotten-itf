@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dqb247hkkmxdc"]
 
 [ext_resource type="Script" uid="uid://cbajjw6amhf43" path="res://scripts/audio_manager.gd" id="1_8qd8g"]
-[ext_resource type="AudioStream" uid="uid://bxrnruirclmfe" path="res://assets/audio/ambience/RITF_DemeterTempleExt_Ambience_v1.mp3" id="2_liach"]
 [ext_resource type="AudioStream" uid="uid://bpkgxdoeb1c23" path="res://assets/audio/fx/RITF_Character_Walking_v2.mp3" id="2_ujhup"]
 [ext_resource type="AudioStream" uid="uid://cmtmmhntksl4d" path="res://assets/audio/fx/RITF_Door_Open_v1.mp3" id="3_064dn"]
 [ext_resource type="AudioStream" uid="uid://ngihcyaf4j56" path="res://assets/audio/fx/RITF_Glowworms_Equip_v1.mp3" id="4_ic5jq"]
@@ -10,9 +9,14 @@
 [ext_resource type="AudioStream" uid="uid://cl0i2mefa1o5c" path="res://assets/audio/fx/RITF_Rot_Shrink_v1.mp3" id="7_2y2jw"]
 [ext_resource type="AudioStream" uid="uid://csnx8f17nohhm" path="res://assets/audio/fx/RITF_Torches_Lit_v1.mp3" id="8_2y5yn"]
 [ext_resource type="AudioStream" uid="uid://2yi57fn0psjb" path="res://assets/audio/fx/RITF_Minigame_Win (1).mp3" id="9_2y2jw"]
+[ext_resource type="AudioStream" uid="uid://bfm0u7evore13" path="res://assets/audio/ambience/Ext_Ambiance.mp3" id="9_ladlq"]
 [ext_resource type="AudioStream" uid="uid://rvb11j436gjm" path="res://assets/audio/fx/RITF_Minigame_Win (2).mp3" id="10_2y5yn"]
+[ext_resource type="AudioStream" uid="uid://chafxddenbnei" path="res://assets/audio/ambience/Int_Ambiance.mp3" id="10_ku15p"]
 [ext_resource type="AudioStream" uid="uid://1p8epjr5sxul" path="res://assets/audio/fx/RITF_Minigame_Win (3).mp3" id="11_oucy0"]
+[ext_resource type="AudioStream" uid="uid://d0rjb4jisdnqr" path="res://assets/audio/ambience/Garden_Ambience.mp3" id="11_sa6p2"]
 [ext_resource type="AudioStream" uid="uid://dl2yaejaa2r4h" path="res://assets/audio/fx/RITF_Minigame_Win (4).mp3" id="12_cuol6"]
+[ext_resource type="AudioStream" uid="uid://caepxal4fyoln" path="res://assets/audio/ambience/Temple_Music.mp3" id="12_opu6i"]
+[ext_resource type="AudioStream" uid="uid://dvrff2pawsmyc" path="res://assets/audio/ambience/Altar_Music.mp3" id="13_ku15p"]
 [ext_resource type="AudioStream" uid="uid://6tadeq0h04w8" path="res://assets/audio/fx/RITF_Minigame_Win (5).mp3" id="13_m1k83"]
 [ext_resource type="AudioStream" uid="uid://dgdqmsms7tfes" path="res://assets/audio/fx/RITF_Minigame_Win (6).mp3" id="14_2y5yn"]
 [ext_resource type="AudioStream" uid="uid://ce23i7vs8skqh" path="res://assets/audio/alphabet/a.wav" id="15_2igfy"]
@@ -55,13 +59,23 @@ fx = Dictionary[String, AudioStream]({
 "torch": ExtResource("8_2y5yn"),
 "walk": ExtResource("2_ujhup")
 })
+ambiences = Dictionary[String, AudioStream]({
+"Ext_Ambiance": ExtResource("9_ladlq"),
+"Garden_Ambience": ExtResource("11_sa6p2"),
+"Int_Ambiance": ExtResource("10_ku15p")
+})
+music = Dictionary[String, AudioStream]({
+"Altar_Music": ExtResource("13_ku15p"),
+"Temple_Music": ExtResource("12_opu6i")
+})
 win_fx = Array[AudioStream]([ExtResource("9_2y2jw"), ExtResource("10_2y5yn"), ExtResource("11_oucy0"), ExtResource("12_cuol6"), ExtResource("13_m1k83"), ExtResource("14_2y5yn")])
 alphabet_fx = Array[AudioStream]([ExtResource("15_2igfy"), ExtResource("16_gi52w"), ExtResource("17_g71vj"), ExtResource("18_ladlq"), ExtResource("19_ku15p"), ExtResource("20_sa6p2"), ExtResource("21_opu6i"), ExtResource("22_t2ybr"), ExtResource("23_cewst"), ExtResource("24_g5lra"), ExtResource("25_ccetw"), ExtResource("26_bsfxv"), ExtResource("27_5n573"), ExtResource("28_550e2"), ExtResource("29_wutdd"), ExtResource("30_n4ll6"), ExtResource("31_b6biq"), ExtResource("32_7vawh"), ExtResource("33_g3h6h"), ExtResource("34_g22av"), ExtResource("35_kjqg2"), ExtResource("36_6u176"), ExtResource("37_llx4k"), ExtResource("38_k76kq"), ExtResource("39_4gnqx"), ExtResource("40_kqu28"), null])
 
 [node name="Clips" type="Node" parent="." unique_id=571957435]
 
 [node name="Ambience" type="AudioStreamPlayer" parent="Clips" unique_id=982820113]
-stream = ExtResource("2_liach")
+
+[node name="Music" type="AudioStreamPlayer" parent="Clips" unique_id=498170693]
 
 [node name="OneShotFX" type="AudioStreamPlayer" parent="Clips" unique_id=1126395305]
 volume_db = -15.0
@@ -70,5 +84,3 @@ volume_db = -15.0
 volume_db = -15.0
 
 [node name="WalkFX" type="AudioStreamPlayer" parent="Clips" unique_id=671642168]
-
-[node name="WalkFX2" type="AudioStreamPlayer" parent="Clips" unique_id=1799273754]
