@@ -1,7 +1,7 @@
 extends Node
 #class_name GameGlobals
 
-var level_prog = ["Scene_01", "Scene_02_int", "Scene_02_ext", "Scene_03", "Scene05", "Scene07Underworld"]
+var level_prog = ["scene_01", "scene_02_int", "scene_02_ext", "scene_03", "scene05", "scene07Underworld"]
 var prog_counter := 0
 # PROGRESSION: ext_path, garden_int, garden_ext, altar, quarters, tower, p-altar, underworld
 var audio_prog := [
@@ -157,14 +157,14 @@ func load_letter_ui(letter : LetterCopy):
 
 func unload_level():
 	if level_root.get_child_count() > 0:
-		level_root.remove_child(level_root.get_child(0))
+		level_root.get_child(0).queue_free()
 
 func load_level(level_name: String):
 	unload_level()
 	var path = "res://scenes/levels/%s.tscn" % level_name
-	var c_scene : PackedScene = load(path)
-	var scene_node : Node = c_scene.instantiate()
-	if (c_scene):
+	var n_scene : PackedScene = load(path)
+	var scene_node : Node = n_scene.instantiate()
+	if (n_scene):
 		level_root.add_child(scene_node)
 		player = scene_node.find_child("Player")
 		if prog_counter != 0:
@@ -175,7 +175,6 @@ func load_level(level_name: String):
 			AudioManager.play_music(audio_prog[0].music)
 
 func next_level():
-	var curr_index : int = level_prog.find(level_root.get_child(0).name)
-	var next_scene : String = str(level_prog[curr_index+1])
 	prog_counter += 1
+	var next_scene : String = str(level_prog[prog_counter])
 	load_level(next_scene)
