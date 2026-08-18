@@ -11,8 +11,9 @@
 [ext_resource type="Script" uid="uid://bc1k5ojr0ocy" path="res://scripts/rot_dressing.gd" id="7_4n1ul"]
 [ext_resource type="PackedScene" uid="uid://bimatr4hej8ja" path="res://scenes/ui/interactive_carat.tscn" id="10_nqapm"]
 [ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="11_jctv3"]
+[ext_resource type="Resource" uid="uid://6pxkrw3jqp6n" path="res://scripts/inventory_system/items/green_worm.tres" id="12_58igu"]
 [ext_resource type="PackedScene" uid="uid://dr3ff06oljyer" path="res://scenes/lio_trigger.tscn" id="12_gvi84"]
-[ext_resource type="Texture2D" uid="uid://fc8hwmpaobv8" path="res://assets/images/worms/Glowworm.png" id="13_osntu"]
+[ext_resource type="PackedScene" uid="uid://ufmhebijpwbb" path="res://scenes/collectible_item.tscn" id="14_58igu"]
 
 [sub_resource type="Curve" id="Curve_qsi71"]
 _data = [Vector2(0, 0.1), 0.0, 0.0, 0, 0, Vector2(0.7, 0.6), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -416,9 +417,11 @@ energy = 0.8
 position = Vector2(630, 226)
 scale = Vector2(0.5, 0.5)
 
-[node name="DoorArea2D" parent="." unique_id=1160326856 instance=ExtResource("11_jctv3")]
+[node name="DoorArea2D" parent="." unique_id=1160326856 node_paths=PackedStringArray("interact_carat") instance=ExtResource("11_jctv3")]
 position = Vector2(631, 288)
 scale = Vector2(2.319, 4.244)
+required_item = ExtResource("12_58igu")
+interact_carat = NodePath("../InteractiveCarat")
 
 [node name="LioTrigger3" parent="." unique_id=1633611298 instance=ExtResource("12_gvi84")]
 position = Vector2(2642, 295)
@@ -432,14 +435,13 @@ lio_text = "How strange… This part of the garden is clean from the Rot."
 position = Vector2(3295, 298)
 lio_text = "The Glowworms! They’re repelling the Rot away."
 
-[node name="GlowPlaceholder" type="Sprite2D" parent="." unique_id=1179922566]
-position = Vector2(3510.9998, 313.00003)
-scale = Vector2(1.5428579, 1.99)
-texture = ExtResource("13_osntu")
-
 [node name="LioTrigger6" parent="." unique_id=1649625044 instance=ExtResource("12_gvi84")]
 position = Vector2(3801, 292)
 lio_text = "This path is blocked. I can go no further."
+
+[node name="CollectibleItem" parent="." unique_id=385129123 instance=ExtResource("14_58igu")]
+position = Vector2(3505, 307)
+item = ExtResource("12_58igu")
 
 [connection signal="area_shape_entered" from="RotOnWallsInFront/Vine7/Line2D2/LineArea2D" to="RotOnWallsInFront/Vine7/Line2D2" method="_on_line_area_2d_area_shape_entered"]
 [connection signal="body_entered" from="RotOnWallsInFront/Vine7/Line2D2/LineArea2D" to="RotOnWallsInFront/Vine7/Line2D2" method="_on_area_2d_body_entered"]

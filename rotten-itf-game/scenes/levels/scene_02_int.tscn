@@ -107,9 +107,10 @@ points = PackedVector2Array(847, 261, 811, 264, 771.2272, 259.8745, 677, 259, 60
 collidable = null
 clearable = null
 
-[node name="DoorArea2D" parent="." unique_id=1160326856 instance=ExtResource("5_oleyw")]
+[node name="DoorArea2D" parent="." unique_id=1160326856 node_paths=PackedStringArray("interact_carat") instance=ExtResource("5_oleyw")]
 position = Vector2(2339.0002, 245.00002)
 scale = Vector2(2.544, 4.656)
+interact_carat = NodePath("../InteractiveCarat")
 
 [node name="InteractiveCarat" parent="." unique_id=1099497837 instance=ExtResource("6_5expv")]
 position = Vector2(2339, 187)

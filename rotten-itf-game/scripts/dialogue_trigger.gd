@@ -3,6 +3,7 @@ extends Node2D
 @export var dialogue_lines: Array[String] = []
 @export var speaker: Array[String] = []
 @export var one_shot: bool = true
+@export var amulet: Node2D
 @onready var hint = $Interact
 
 var player_in_area = false
@@ -29,6 +30,9 @@ func trigger_dialogue():
 		for i in dialogue_lines.size():
 			var speak = speaker[i] if i < speaker.size() else ""
 			dialogue_manager.queue_text(dialogue_lines[i], speak)
+		if amulet:
+			await dialogue_manager.dialogue_finished
+			amulet.show_amulet()
 	else:
 		print("dialogue manager not found")
 

@@ -114,9 +114,10 @@ color = Color(1, 0.7921569, 0.62352943, 0.26666668)
 position = Vector2(2481, 190)
 scale = Vector2(0.35, 0.35)
 
-[node name="DoorArea2D" parent="." unique_id=1160326856 instance=ExtResource("9_b3nsi")]
+[node name="DoorArea2D" parent="." unique_id=1160326856 node_paths=PackedStringArray("interact_carat") instance=ExtResource("9_b3nsi")]
 position = Vector2(2481.0002, 217)
 scale = Vector2(3.594, 6.575)
+interact_carat = NodePath("../InteractiveCarat")
 
 [node name="LioTrigger" parent="." unique_id=110257511 instance=ExtResource("10_amr1b")]
 position = Vector2(707, 200)
