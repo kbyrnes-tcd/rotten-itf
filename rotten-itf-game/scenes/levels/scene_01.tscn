@@ -78,6 +78,10 @@ position = Vector2(0, 301)
 position = Vector2(1444, 5)
 shape = SubResource("RectangleShape2D_3336g")
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Colliders/GroundCollider" unique_id=371306220]
+position = Vector2(1445, -268)
+shape = SubResource("RectangleShape2D_3336g")
+
 [node name="Ramp" type="CollisionPolygon2D" parent="Colliders/GroundCollider" unique_id=1718664119]
 position = Vector2(1675, -17)
 polygon = PackedVector2Array(-3, 6, 36, -8, 1500, -8, 1506, 13)
@@ -104,12 +108,6 @@ shape = SubResource("RectangleShape2D_3336g")
 position = Vector2(112, 243)
 scale = Vector2(1, 1.0076721)
 
-[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=230557037]
-color = Color(0.8089983, 0.8089983, 0.80899817, 1)
-
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1230748154]
-color = Color(1, 0.7921569, 0.62352943, 0.26666668)
-
 [node name="InteractiveCarat" parent="." unique_id=1099497837 instance=ExtResource("8_5t0pk")]
 position = Vector2(2481, 190)
 scale = Vector2(0.35, 0.35)
@@ -119,22 +117,30 @@ position = Vector2(2481.0002, 217)
 scale = Vector2(3.594, 6.575)
 interact_carat = NodePath("../InteractiveCarat")
 
-[node name="LioTrigger" parent="." unique_id=110257511 instance=ExtResource("10_amr1b")]
+[node name="LIOTriggers" type="Node" parent="." unique_id=482749486]
+
+[node name="LioTrigger" parent="LIOTriggers" unique_id=110257511 instance=ExtResource("10_amr1b")]
 position = Vector2(707, 270)
 lio_text = "The Rot is getting stronger the closer I get to the Temple."
 
-[node name="LioTrigger2" parent="." unique_id=364959590 instance=ExtResource("10_amr1b")]
+[node name="LioTrigger2" parent="LIOTriggers" unique_id=364959590 instance=ExtResource("10_amr1b")]
 position = Vector2(910, 265)
 lio_text = "How many years has it been since I’ve seen these forests? They don’t look the same."
 
-[node name="LioTrigger3" parent="." unique_id=1611548779 instance=ExtResource("10_amr1b")]
+[node name="LioTrigger3" parent="LIOTriggers" unique_id=1611548779 instance=ExtResource("10_amr1b")]
 position = Vector2(1255, 261)
 lio_text = "The entrance looks covered by that Rot. Even though it doesn’t burn my skin, I can’t get through it."
 
-[node name="LioTrigger4" parent="." unique_id=2062920157 instance=ExtResource("10_amr1b")]
+[node name="LioTrigger4" parent="LIOTriggers" unique_id=2062920157 instance=ExtResource("10_amr1b")]
 position = Vector2(1656, 279)
 lio_text = "It’s blocked off by regrowth."
 
-[node name="LioTrigger5" parent="." unique_id=2018923890 instance=ExtResource("10_amr1b")]
+[node name="LioTrigger5" parent="LIOTriggers" unique_id=2018923890 instance=ExtResource("10_amr1b")]
 position = Vector2(2319, 255)
 lio_text = "A crack in the wall… I wonder if I can get in there…"
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=230557037]
+color = Color(0.8089983, 0.8089983, 0.80899817, 1)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1230748154]
+color = Color(1, 0.7921569, 0.62352943, 0.26666668)

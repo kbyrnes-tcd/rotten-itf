@@ -21,7 +21,3 @@ func _show_text(text: String, duration: float = 3.0, fade: float = 1.0):
 	current_tween = create_tween()
 	current_tween.tween_interval(duration)
 	current_tween.tween_property(label, "modulate:a", 0.0, fade)
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

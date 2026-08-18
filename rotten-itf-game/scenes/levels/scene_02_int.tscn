@@ -92,13 +92,6 @@ scale = Vector2(0.15999758, 1)
 position = Vector2(1288, -0.5)
 shape = SubResource("RectangleShape2D_3336g")
 
-[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1256881528]
-color = Color(0.7107411, 0.71074116, 0.7107411, 1)
-
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1276469286]
-color = Color(1, 0.7921569, 0.62352943, 0.26666668)
-energy = 0.8
-
 [node name="RotOnDoor" type="Node2D" parent="." unique_id=1348113335]
 z_index = -2
 
@@ -116,16 +109,25 @@ interact_carat = NodePath("../InteractiveCarat")
 position = Vector2(2339, 187)
 scale = Vector2(0.5, 0.5)
 
-[node name="LioTrigger" parent="." unique_id=110257511 instance=ExtResource("7_3aray")]
+[node name="LIO" type="Node" parent="." unique_id=2062746301]
+
+[node name="LioTrigger" parent="LIO" unique_id=110257511 instance=ExtResource("7_3aray")]
 position = Vector2(401, 280)
 lio_text = "Oh, Goddess…"
 
-[node name="LioTrigger2" parent="." unique_id=1541676621 instance=ExtResource("7_3aray")]
+[node name="LioTrigger2" parent="LIO" unique_id=1541676621 instance=ExtResource("7_3aray")]
 position = Vector2(949, 281)
 lio_text = "The Rot has completely consumed this place. "
 
-[node name="LioTrigger3" parent="." unique_id=1993371548 instance=ExtResource("7_3aray")]
+[node name="LioTrigger3" parent="LIO" unique_id=1993371548 instance=ExtResource("7_3aray")]
 position = Vector2(1697, 267)
 lio_text = "A wall lantern. The power is out."
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1256881528]
+color = Color(0.7107411, 0.71074116, 0.7107411, 1)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1276469286]
+color = Color(1, 0.7921569, 0.62352943, 0.26666668)
+energy = 0.8
 
 [editable path="Player"]
