@@ -36,6 +36,7 @@ var segments: Array = []
 @export var SPEED = 150.0
 @export var FULL_JUMP_VELOCITY = -650.0
 @export var MID_JUMP_VELOCITY = -500.0
+var STEP_JUMP_VELOCITY := -250
 
 # Enums and state variables
 enum ToolState { IDLE, LANTERN_ON, LANTERN_EQUIPPED, GUN_EQUIPPED, GUN_ON }
@@ -100,15 +101,14 @@ func _handle_animation():
 func can_i_jump() -> Dictionary:
 	var jump_data := {
 		"can_jump": is_on_floor(), 
-		"ray_cast": FULL_JUMP_VELOCITY if !$FullJumpRayCast.is_colliding() else MID_JUMP_VELOCITY if !$MidJumpRayCast.is_colliding() else 0.0
+		"jump_velocity": FULL_JUMP_VELOCITY if !$FullJumpRayCast.is_colliding() else MID_JUMP_VELOCITY if !$MidJumpRayCast.is_colliding() else 0.0
 			}
 			
-	# need to check that raycast isnt detecting the one-way collider platforms
-	if jump_data["ray_cast"] == 0.0:
-		if $FullJumpRayCast.is_colliding() and $FullJumpRayCast.get_collider().is_shape_owner_one_way_collision_enabled(0):
-			jump_data["ray_cast"] = FULL_JUMP_VELOCITY
-		elif $MidJumpRayCast.is_colliding() and $MidJumpRayCast.get_collider().is_shape_owner_one_way_collision_enabled(0):
-			jump_data["ray_cast"] = MID_JUMP_VELOCITY
+	# need to check that raycast isnt detecting the one-way collider platforms/steps
+	if jump_data["jump_velocity"] == 0.0:
+		if $StepJumpRayCastL.is_colliding() and $StepJumpRayCastL.get_collider().is_shape_owner_one_way_collision_enabled(0) \
+			or $StepJumpRayCastR.is_colliding() and $StepJumpRayCastR.get_collider().is_shape_owner_one_way_collision_enabled(0):
+			jump_data["jump_velocity"] = STEP_JUMP_VELOCITY
 	return jump_data
 
 func _handle_movement(delta: float):
@@ -127,9 +127,9 @@ func _handle_movement(delta: float):
 		move_state = MoveState.IDLE
 	
 	var jump_state := can_i_jump()
-	if jump_state["ray_cast"] == 0.0: return
+	if jump_state["jump_velocity"] == 0.0: return
 	if Input.is_action_just_pressed("jump") and jump_state["can_jump"]:
-		velocity.y = jump_state["ray_cast"]
+		velocity.y = jump_state["jump_velocity"]
 		move_state = MoveState.JUMPING
 		
 	if Input.is_action_just_pressed("down"):

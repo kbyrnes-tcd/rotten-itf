@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cpwsgbr3fr7by" path="res://scenes/ui/pause_menu.tscn" id="2_ep3c1"]
 [ext_resource type="PackedScene" uid="uid://b0xdv5nobjlkk" path="res://scenes/minigames/rot_maze.tscn" id="2_ty236"]
 [ext_resource type="PackedScene" uid="uid://0hlcimiuwo6o" path="res://scenes/ui/inv_ui.tscn" id="3_ep3c1"]
-[ext_resource type="PackedScene" uid="uid://bfd835hclty4v" path="res://scenes/levels/scene_03.tscn" id="3_eujl3"]
+[ext_resource type="PackedScene" uid="uid://cwbsao03j5sj6" path="res://scenes/levels/scene_05.tscn" id="3_eujl3"]
 [ext_resource type="PackedScene" uid="uid://cnitmpmsmrrr6" path="res://scenes/ui/letter_ui.tscn" id="6_mn8rq"]
 [ext_resource type="PackedScene" uid="uid://cpu885nisbhmc" path="res://scenes/ui/constellation_minigame.tscn" id="7_y13p6"]
 [ext_resource type="PackedScene" uid="uid://cbfg68hgjmgis" path="res://scenes/lio_popup.tscn" id="8_68t1h"]

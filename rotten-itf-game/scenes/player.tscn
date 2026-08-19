@@ -255,6 +255,16 @@ target_position = Vector2(0, -120)
 scale = Vector2(0.99999976, 0.99999976)
 target_position = Vector2(0, -80)
 
+[node name="StepJumpRayCastL" type="RayCast2D" parent="." unique_id=1858831446]
+position = Vector2(-15, 40)
+scale = Vector2(0.99999976, 0.99999976)
+target_position = Vector2(0, -13)
+
+[node name="StepJumpRayCastR" type="RayCast2D" parent="." unique_id=1453672499]
+position = Vector2(11, 40)
+scale = Vector2(0.99999976, 0.99999976)
+target_position = Vector2(0, -13)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=381364680]
 
 [node name="WormHUD" type="HBoxContainer" parent="CanvasLayer" unique_id=22575049]

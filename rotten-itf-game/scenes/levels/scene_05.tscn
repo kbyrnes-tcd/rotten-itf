@@ -19,7 +19,7 @@ size = Vector2(241, 10)
 texture = ExtResource("1_fwlui")
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("2_coyto")]
-position = Vector2(-204, 592)
+position = Vector2(-50.999992, 438)
 
 [node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
 limit_left = -255
@@ -28,6 +28,7 @@ limit_right = 94
 limit_bottom = 664
 
 [node name="Collisions" type="StaticBody2D" parent="." unique_id=1949185230]
+visible = false
 
 [node name="Mask" type="Sprite2D" parent="Collisions" unique_id=543310808]
 visible = false
