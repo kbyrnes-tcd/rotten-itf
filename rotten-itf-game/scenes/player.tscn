@@ -34,7 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://fc8hwmpaobv8" path="res://assets/images/worms/Glowworm.png" id="32_gl8cc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_whljo"]
-size = Vector2(24.5, 79)
+size = Vector2(31.250027, 85.00015)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6adnx"]
 animations = [{
@@ -166,13 +166,14 @@ shader_parameter/color2 = Color(0.3137255, 0.21960784, 0.2901961, 0.50980395)
 shader_parameter/opacity = 1.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1515659648]
-position = Vector2(32.999996, 233.99998)
 scale = Vector2(0.8, 0.8)
+safe_margin = 1.5
 script = ExtResource("1_qlg0r")
 inv = ExtResource("2_gl8cc")
 
 [node name="PlyrCollisionShape2D" type="CollisionShape2D" parent="." unique_id=66024058]
-position = Vector2(-3.25, 2.5)
+position = Vector2(-1.8749962, -1.249939)
+scale = Vector2(0.9999989, 0.9999989)
 shape = SubResource("RectangleShape2D_whljo")
 
 [node name="CharacterSprites" type="Node2D" parent="." unique_id=2095860029]
@@ -181,8 +182,6 @@ shape = SubResource("RectangleShape2D_whljo")
 sprite_frames = SubResource("SpriteFrames_6adnx")
 animation = &"walk_equipped"
 autoplay = "idle"
-frame = 4
-frame_progress = 0.1119532
 
 [node name="Lantern" type="Node2D" parent="CharacterSprites" unique_id=964616978]
 process_mode = 4
