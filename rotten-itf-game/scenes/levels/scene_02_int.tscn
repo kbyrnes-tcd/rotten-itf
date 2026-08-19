@@ -96,9 +96,10 @@ shape = SubResource("RectangleShape2D_3336g")
 z_index = -2
 
 [node name="Line2D2" parent="RotOnDoor" unique_id=1110441175 instance=ExtResource("4_xgkue")]
-points = PackedVector2Array(847, 261, 811, 264, 771.2272, 259.8745, 677, 259, 606.12244, 248.84216, 568, 264, 452.2045, 226.7834, 412.5545, 229.36229, 372, 232, 333.39178, 229.64583, 290, 227, 238, 221, 188, 215, 138, 216, 106, 221, 70, 216, -12.744873, 207.69586)
+position = Vector2(422.77432, -9)
+scale = Vector2(0.5834024, 1)
+points = PackedVector2Array(847, 261, 811, 264, 771.2272, 259.8745, 677, 259, 606.12244, 248.84216, 568, 264, 452.2045, 226.7834, 412.5545, 229.36229, 372, 232, 333.39178, 229.64583, 290, 227, 238, 221, 188, 215, 138, 216, 106, 221, 70, 216, -83.60327, 252)
 collidable = null
-clearable = null
 
 [node name="DoorArea2D" parent="." unique_id=1160326856 node_paths=PackedStringArray("interact_carat") instance=ExtResource("5_oleyw")]
 position = Vector2(2339.0002, 245.00002)
@@ -112,15 +113,15 @@ scale = Vector2(0.5, 0.5)
 [node name="LIO" type="Node" parent="." unique_id=2062746301]
 
 [node name="LioTrigger" parent="LIO" unique_id=110257511 instance=ExtResource("7_3aray")]
-position = Vector2(401, 280)
+position = Vector2(803, 296)
 lio_text = "Oh, Goddess…"
 
 [node name="LioTrigger2" parent="LIO" unique_id=1541676621 instance=ExtResource("7_3aray")]
-position = Vector2(949, 281)
+position = Vector2(1617, 227)
 lio_text = "The Rot has completely consumed this place. "
 
 [node name="LioTrigger3" parent="LIO" unique_id=1993371548 instance=ExtResource("7_3aray")]
-position = Vector2(1697, 267)
+position = Vector2(180, 278)
 lio_text = "A wall lantern. The power is out."
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1256881528]
