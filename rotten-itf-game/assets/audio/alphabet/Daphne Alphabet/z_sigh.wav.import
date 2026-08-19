@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b8shttqv7u7dj"
+path="res://.godot/imported/z_sigh.wav-73261bc1b5fe653359567ab4a4d4b44d.sample"
+
+[deps]
+
+source_file="res://assets/audio/alphabet/Daphne Alphabet/z_sigh.wav"
+dest_files=["res://.godot/imported/z_sigh.wav-73261bc1b5fe653359567ab4a4d4b44d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -21,8 +21,9 @@ func _setup_hovers():
 func _setup_hover(btn: Button):
 	var sprite = btn.get_node("HoverSprite")
 	sprite.visible = false
-	btn.mouse_entered.connect(func(): sprite.visible = true)
-	btn.mouse_exited.connect(func(): sprite.visible = false)
+	btn.mouse_entered.connect(func(): sprite.visible = true; AudioManager.play_os("ui_select"))
+	btn.mouse_exited.connect(func(): sprite.visible = false; AudioManager.play_os("ui_select"))
+	btn.pressed.connect(func(): AudioManager.play_os("ui_confirm"))
 
 func _process(_delta):
 	if Input.is_action_just_pressed("pause"):
@@ -31,7 +32,7 @@ func _process(_delta):
 	# for bringing up the pause menu in the first place
 	if Input.is_action_just_pressed("pause") and !get_tree().paused:
 		GameGlobals.pause(true)
-	elif Input.is_action_just_pressed("pause") and get_tree().paused:
+	elif Input.is_action_just_pressed("pause") and !GameGlobals.inv_ui.visible and get_tree().paused:
 		GameGlobals.resume(true)
 
 func _on_resume_pressed() -> void:

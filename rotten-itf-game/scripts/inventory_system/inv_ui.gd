@@ -9,7 +9,6 @@ extends Control
 func _ready() -> void:
 	# whenever inventory.gd emits the update signal, we must call update_slots in here for ui
 	inv.update.connect(update_slots)
-	close()
 	update_slots()
 	label.text = ""
 	
@@ -23,12 +22,14 @@ func close():
 		visible = false;
 		get_tree().paused = false
 		clear_selection()
+		AudioManager.play_os("ui_close")
 	
 func open():
 	if !visible and !get_tree().paused:
 		# dont open inv while paused...
-		get_tree().paused = true
+		GameGlobals.pause()
 		visible = true;
+		AudioManager.play_os("ui_open")
 
 func set_label(desc : String):
 	label.text = desc
@@ -51,6 +52,7 @@ func activate_slot(slot : InvSlot):
 	if slot.item.ui_twin:
 		render_ui_twin = true
 		ui_twin = slot.item.ui_twin
+	AudioManager.play_os("ui_select")
 	update_slots()
 
 func _process(_delta):
@@ -59,6 +61,7 @@ func _process(_delta):
 
 	if render_ui_twin and (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("click")):
 		GameGlobals.load_letter_ui(ui_twin)
+		AudioManager.play_os("ui_open")
 
 	if visible:
 		for i in range(0, 6):

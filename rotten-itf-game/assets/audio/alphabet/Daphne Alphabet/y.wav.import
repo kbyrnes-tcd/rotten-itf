@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bxtd157gx67h6"
+path="res://.godot/imported/y.wav-7677f4e16aab0df2e8c61e5b71674f1f.sample"
+
+[deps]
+
+source_file="res://assets/audio/alphabet/Daphne Alphabet/y.wav"
+dest_files=["res://.godot/imported/y.wav-7677f4e16aab0df2e8c61e5b71674f1f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
