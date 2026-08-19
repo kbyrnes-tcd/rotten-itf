@@ -119,17 +119,32 @@ func stop_fx() -> void:
 		fx_tween = await fade(fx_tween, active_fx, -15.0, -50.0, 0.1)
 		active_fx = null
 
+var skip := false
+var dialog_id := 0
+
+func skip_dialog():
+	if active_os:
+		active_os.stop()
+	active_os = null
+	skip = true
+
 func play_dialog(copy: String, speaker: String = "", letter_speed: float = 0.15, base_pitch: float = 1.0, pitch_variance: float = 0.15) -> void:
 	stop_walk_fx()
-	copy = copy.to_lower().substr(0, 30)
-
+	dialog_id += 1 # incr per dialog line
+	#copy = copy.to_lower().substr(0, 30)
+	skip = false
+	active_os = null
+	var cur_id := dialog_id
+	
 	for c in copy:
+		if skip or cur_id != dialog_id: return # if new line, skip
 		var index := ord(c)-97
 		if index < 0 or index > 25:
 			await get_tree().create_timer(letter_speed * 1.05).timeout
 			#index = 26
 			continue
-		#else: index = randi_range(0, index)
+		else: index = randi_range(0, index)
+		if skip: return
 
 		if !active_os: active_os = clips.get_node("OneShotFX")
 		var speaker_alphabet = get(speaker.to_lower() + "_alpha")
@@ -138,7 +153,7 @@ func play_dialog(copy: String, speaker: String = "", letter_speed: float = 0.15,
 		# pitch and variance
 		active_os.pitch_scale = base_pitch + randf_range(-pitch_variance, pitch_variance)
 		active_os.play()
-		await get_tree().create_timer(letter_speed).timeout
+		#await get_tree().create_timer(letter_speed).timeout
 		#await active_os.finished
 		active_os = null
 	

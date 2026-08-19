@@ -55,6 +55,7 @@ func _process(_delta):
 				label.visible_ratio = 1.0
 				if current_tween:
 					current_tween.kill()
+				AudioManager.skip_dialog()
 				continue_hint.visible = true
 				change_state(State.FINISHED)
 		State.FINISHED:
@@ -63,6 +64,7 @@ func _process(_delta):
 				if text_queue.size() == 0:
 					#print("DIALOG FINISHED!!!!!")
 					GameGlobals.resume()
+					AudioManager.skip_dialog()
 					AudioManager.decrease_music_vol(20.0)
 					hide_textbox()
 					emit_signal("dialogue_finished")
