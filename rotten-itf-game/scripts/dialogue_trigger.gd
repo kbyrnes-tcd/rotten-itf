@@ -32,7 +32,7 @@ func trigger_dialogue():
 			dialogue_manager.queue_text(dialogue_lines[i], speak)
 		if amulet:
 			await dialogue_manager.dialogue_finished
-			amulet.show_amulet()
+			amulet.glow_animation()
 	else:
 		print("dialogue manager not found")
 

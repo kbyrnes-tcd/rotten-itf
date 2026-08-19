@@ -4,6 +4,7 @@ extends Node2D
 @export var display_duration: float = 3.0
 @export var fade_duration: float = 1.0
 @export var show_once: bool = true
+@export var requires_dialogue_done: bool = false
 
 
 var triggered = false
@@ -15,6 +16,8 @@ func _ready() -> void:
 func _on_body_entered(body: Node2D):
 	if body.has_method("collect"):
 		if show_once and triggered:
+			return
+		if requires_dialogue_done and not GameGlobals.dialogue_done:
 			return
 		triggered = true
 		_show_lio_text()

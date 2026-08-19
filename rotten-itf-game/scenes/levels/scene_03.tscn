@@ -1,17 +1,18 @@
 [gd_scene format=3 uid="uid://bfd835hclty4v"]
 
-[ext_resource type="Texture2D" uid="uid://4a7xa1q6mql2" path="res://assets/images/env/altar/Altarv2.png" id="1_5i8uq"]
+[ext_resource type="Texture2D" uid="uid://faq2j7c8soki" path="res://assets/images/env/altar/altarRot.png" id="1_co3ny"]
 [ext_resource type="Texture2D" uid="uid://xetnkgsgwjn2" path="res://assets/images/env/altar/Altar_Collision_Mask.png" id="2_p368k"]
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="3_p368k"]
 [ext_resource type="PackedScene" uid="uid://coslqn83cxfcy" path="res://scenes/zoom_trigger.tscn" id="4_bork3"]
 [ext_resource type="Script" uid="uid://blst515txhg5j" path="res://scripts/zoom_trigger.gd" id="5_6m4hc"]
-[ext_resource type="PackedScene" uid="uid://bd3r1j21a2opr" path="res://scenes/ui/dialogue_trigger.tscn" id="5_0760f"]
+[ext_resource type="PackedScene" uid="uid://c1epxp5spnua" path="res://scenes/ui/dialogue_trigger.tscn" id="5_0760f"]
 [ext_resource type="Script" uid="uid://ddnjkodm10cvk" path="res://scripts/dialogue_trigger.gd" id="6_nuytq"]
 [ext_resource type="PackedScene" uid="uid://ddm8l1j51pxi2" path="res://scenes/chandelier.tscn" id="7_5i8uq"]
 [ext_resource type="PackedScene" uid="uid://qtqiun326hpr" path="res://scenes/lever.tscn" id="8_y5j78"]
 [ext_resource type="Script" uid="uid://cdxfomkkfwywg" path="res://scripts/fallen_trigger.gd" id="9_6m4hc"]
 [ext_resource type="PackedScene" uid="uid://dr3ff06oljyer" path="res://scenes/lio_trigger.tscn" id="10_y5j78"]
 [ext_resource type="PackedScene" uid="uid://yvyr0xth1r67" path="res://scenes/amulet.tscn" id="12_co3ny"]
+[ext_resource type="PackedScene" uid="uid://di31qowjleyl4" path="res://scenes/rot_dressing_new.tscn" id="13_5fc4h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_co3ny"]
 size = Vector2(300, 20)
@@ -27,7 +28,7 @@ position = Vector2(-1, -13)
 [node name="Background" type="Sprite2D" parent="." unique_id=1309616939]
 position = Vector2(2002, 122)
 scale = Vector2(1.05, 1)
-texture = ExtResource("1_5i8uq")
+texture = ExtResource("1_co3ny")
 
 [node name="Collision" type="StaticBody2D" parent="Background" unique_id=32036546]
 
@@ -53,15 +54,18 @@ limit_bottom = 423
 zoom_out_level = Vector2(0.75, 0.75)
 
 [node name="CollisionShape2D" parent="ZoomTrigger/ZoomTrigger" index="0" unique_id=955197067]
+visible = false
 position = Vector2(2259, 73)
 scale = Vector2(1.9185061, 21.04)
 
 [node name="OffsetTrigger" type="Area2D" parent="ZoomTrigger" unique_id=1201720430]
+visible = false
 script = ExtResource("5_6m4hc")
 zoom = false
 offset = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZoomTrigger/OffsetTrigger" unique_id=1506603705]
+visible = false
 position = Vector2(2259, 73)
 scale = Vector2(1.638516, 21.04)
 shape = SubResource("RectangleShape2D_co3ny")
@@ -74,7 +78,7 @@ speaker = Array[String](["Daphne", "Persephone", "Daphne", "Persephone", "Persep
 amulet = NodePath("../Amulet")
 
 [node name="Area2D" parent="DialogueTrigger" index="0" unique_id=1114588435]
-position = Vector2(2227, 251)
+position = Vector2(2158, 248)
 
 [node name="CollisionShape2D" parent="DialogueTrigger/Area2D" index="0" unique_id=1913681013]
 position = Vector2(0, 1)
@@ -82,7 +86,7 @@ shape = SubResource("CircleShape2D_o7blk")
 
 [node name="Interact" parent="DialogueTrigger" index="1" unique_id=125428239]
 visible = false
-position = Vector2(2223, 197)
+position = Vector2(2158, 202)
 scale = Vector2(0.118892506, 0.13843648)
 
 [node name="Chandelier" parent="." unique_id=813450568 instance=ExtResource("7_5i8uq")]
@@ -124,17 +128,18 @@ position = Vector2(55, -37)
 shape = SubResource("RectangleShape2D_5i8uq")
 
 [node name="LioTrigger" parent="." unique_id=110257511 instance=ExtResource("10_y5j78")]
-position = Vector2(2073, 235)
+position = Vector2(2049, 237)
 
 [node name="LioTrigger2" parent="." unique_id=117623388 instance=ExtResource("10_y5j78")]
 position = Vector2(287, 244)
 lio_text = "A chandelier...there should be a lever nearby."
 
-[node name="Amulet" parent="." unique_id=160938005 instance=ExtResource("12_co3ny")]
-position = Vector2(2419, 244)
+[node name="Amulet" parent="." unique_id=160938005 node_paths=PackedStringArray("blocking_rot") instance=ExtResource("12_co3ny")]
+position = Vector2(2278, 201)
+blocking_rot = [NodePath("../Line2D"), NodePath("../Line2D2")]
 
 [node name="LioTrigger3" parent="." unique_id=460109088 instance=ExtResource("10_y5j78")]
-position = Vector2(2442, 245)
+position = Vector2(2343, 247)
 lio_text = "Press ] to shoot rot."
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1562990469]
@@ -143,6 +148,20 @@ color = Color(0.7107411, 0.71074116, 0.7107411, 1)
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1192174376]
 color = Color(1, 0.7921569, 0.62352943, 0.26666668)
 energy = 0.8
+
+[node name="Line2D" parent="." unique_id=1590463200 instance=ExtResource("13_5fc4h")]
+position = Vector2(2295, 207)
+points = PackedVector2Array(-36, -13, -25, -8, -17, -5, -5, -3, -1, 2)
+collidable = true
+
+[node name="LioTrigger4" parent="." unique_id=292972852 instance=ExtResource("10_y5j78")]
+position = Vector2(2196, 245)
+lio_text = "Press [ to clear the rot and reach the amulet."
+requires_dialogue_done = true
+
+[node name="Line2D2" parent="." unique_id=278142075 instance=ExtResource("13_5fc4h")]
+position = Vector2(2255, 209)
+points = PackedVector2Array(26, -18, 18, -14, 10, 2)
 
 [editable path="Player"]
 [editable path="ZoomTrigger"]
