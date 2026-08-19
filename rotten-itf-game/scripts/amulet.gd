@@ -5,6 +5,7 @@ extends Node2D
 @onready var area = $Area2D
 
 @export var blocking_rot: Array[Node2D] = []
+@export var inv_amulet: InvItem
 
 static var dialogue_done: bool = false
 
@@ -33,6 +34,7 @@ func _on_body_entered(body: Node2D):
 		if not all_cleared:
 			return
 		emit_signal("amulet_collected")
+		body.collect(inv_amulet)
 		queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
