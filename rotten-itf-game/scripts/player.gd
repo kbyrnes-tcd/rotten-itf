@@ -65,7 +65,7 @@ func _process(delta):
 		ToolState.IDLE:
 			_tool_idle()
 		ToolState.LANTERN_EQUIPPED:
-			_tool_lantern_equipped()
+			if self.has(LANTERN): _tool_lantern_equipped()
 		ToolState.LANTERN_ON:
 			_tool_lantern_on(delta)
 		ToolState.GUN_EQUIPPED:
@@ -267,14 +267,15 @@ func change_tool_state(new_state: ToolState):
 		ToolState.IDLE:
 			pass
 		ToolState.LANTERN_EQUIPPED:
-			lantern.visible = true
-			lantern.process_mode = Node.PROCESS_MODE_INHERIT
-			#worm_in_use = true
-			var area = lantern.get_node_or_null("LanternArea2D")
-			if area:
-				area.monitoring = false
-				area.monitorable = false
-			update_lantern_visuals()
+			if self.has(LANTERN):
+				lantern.visible = true
+				lantern.process_mode = Node.PROCESS_MODE_INHERIT
+				#worm_in_use = true
+				var area = lantern.get_node_or_null("LanternArea2D")
+				if area:
+					area.monitoring = false
+					area.monitorable = false
+				update_lantern_visuals()
 			#lantern.modulate.a = 0.3
 		ToolState.LANTERN_ON:
 			lantern.visible = true
@@ -299,7 +300,7 @@ func change_tool_state(new_state: ToolState):
 
 # TOOL FSM functions
 func _tool_idle():
-	if Input.is_action_just_pressed("rot_cut"):
+	if Input.is_action_just_pressed("rot_cut") and self.has(LANTERN):
 		AudioManager.play_os("equip")
 		change_tool_state(ToolState.LANTERN_EQUIPPED)
 	if Input.is_action_just_pressed("equip_rot") and self.has(AMULET):
@@ -307,6 +308,9 @@ func _tool_idle():
 		change_tool_state(ToolState.GUN_EQUIPPED)
 
 func _tool_lantern_equipped(): 
+	if !self.has(LANTERN):
+		change_tool_state(ToolState.IDLE)
+		return
 	if Input.is_action_just_pressed("rot_cut"):
 		change_tool_state(ToolState.IDLE)
 		return
@@ -354,7 +358,7 @@ func _tool_gun_equipped():
 	if Input.is_action_just_pressed("equip_rot"):
 		change_tool_state(ToolState.IDLE)
 		return
-	if Input.is_action_just_pressed("rot_cut"):
+	if Input.is_action_just_pressed("rot_cut") and self.has(LANTERN):
 		change_tool_state(ToolState.LANTERN_EQUIPPED)
 		return
 	if Input.is_action_just_pressed("rot_extend") and not is_growing:
