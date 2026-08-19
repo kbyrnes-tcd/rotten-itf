@@ -10,11 +10,15 @@
 [ext_resource type="AudioStream" uid="uid://csnx8f17nohhm" path="res://assets/audio/fx/RITF_Torches_Lit_v1.mp3" id="8_2y5yn"]
 [ext_resource type="AudioStream" uid="uid://2yi57fn0psjb" path="res://assets/audio/fx/RITF_Minigame_Win (1).mp3" id="9_2y2jw"]
 [ext_resource type="AudioStream" uid="uid://bfm0u7evore13" path="res://assets/audio/ambience/Ext_Ambiance.mp3" id="9_ladlq"]
+[ext_resource type="AudioStream" uid="uid://caxal3il11x3q" path="res://assets/audio/ui-fx/RITF_UI_Menu_Open_v1.mp3" id="9_po4tp"]
 [ext_resource type="AudioStream" uid="uid://rvb11j436gjm" path="res://assets/audio/fx/RITF_Minigame_Win (2).mp3" id="10_2y5yn"]
 [ext_resource type="AudioStream" uid="uid://chafxddenbnei" path="res://assets/audio/ambience/Int_Ambiance.mp3" id="10_ku15p"]
+[ext_resource type="AudioStream" uid="uid://cy16uqsth0j8u" path="res://assets/audio/ui-fx/RITF_UI_Menu_Close_v1.mp3" id="10_ypd68"]
 [ext_resource type="AudioStream" uid="uid://1p8epjr5sxul" path="res://assets/audio/fx/RITF_Minigame_Win (3).mp3" id="11_oucy0"]
 [ext_resource type="AudioStream" uid="uid://d0rjb4jisdnqr" path="res://assets/audio/ambience/Garden_Ambience.mp3" id="11_sa6p2"]
+[ext_resource type="AudioStream" uid="uid://dhdapfflv16f7" path="res://assets/audio/ui-fx/RITF_UI_Nav_Selection_v1.mp3" id="11_st500"]
 [ext_resource type="AudioStream" uid="uid://dl2yaejaa2r4h" path="res://assets/audio/fx/RITF_Minigame_Win (4).mp3" id="12_cuol6"]
+[ext_resource type="AudioStream" uid="uid://dlq32wjm88aj" path="res://assets/audio/ui-fx/RITF_UI_Selection_Confirm_v1.mp3" id="12_hk38w"]
 [ext_resource type="AudioStream" uid="uid://caepxal4fyoln" path="res://assets/audio/ambience/Temple_Music.mp3" id="12_opu6i"]
 [ext_resource type="AudioStream" uid="uid://dvrff2pawsmyc" path="res://assets/audio/ambience/Altar_Music.mp3" id="13_ku15p"]
 [ext_resource type="AudioStream" uid="uid://6tadeq0h04w8" path="res://assets/audio/fx/RITF_Minigame_Win (5).mp3" id="13_m1k83"]
@@ -85,6 +89,10 @@ fx = Dictionary[String, AudioStream]({
 "place": ExtResource("5_if78k"),
 "shrink": ExtResource("7_2y2jw"),
 "torch": ExtResource("8_2y5yn"),
+"ui_close": ExtResource("10_ypd68"),
+"ui_confirm": ExtResource("12_hk38w"),
+"ui_open": ExtResource("9_po4tp"),
+"ui_select": ExtResource("11_st500"),
 "walk": ExtResource("2_ujhup")
 })
 ambiences = Dictionary[String, AudioStream]({

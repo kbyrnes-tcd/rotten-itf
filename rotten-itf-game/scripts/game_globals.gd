@@ -28,8 +28,8 @@ var letter_ui: Control
 
 var mid_mg : Node
 var inv_ui : Control
-var running_another_scene : bool = true # for running minigames and etc.
-var pending_start := false
+var running_another_scene : bool = false # for running minigames and etc.
+var pending_start := true # for setting up begin/debug scene.
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -72,9 +72,12 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("esc"):
 		if letter_ui.visible:
 			letter_ui.visible = false
+			AudioManager.play_os("ui_close")
 		elif current_mg != Minigame.NONE:
 			unload_mid_minigame()
+			AudioManager.play_os("ui_close")
 		elif inv_ui.visible:
+			AudioManager.play_os("ui_close")
 			inv_ui.close()
 
 func resume(w_menu : bool = false):
@@ -84,11 +87,14 @@ func resume(w_menu : bool = false):
 	#tween.tween_property(color_rect, "modulate:a", 0.0, 0.67)
 	if w_menu:
 		pause_menu.visible = false
+		AudioManager.play_os("ui_close")
 
 func pause(w_menu : bool = false):
+	AudioManager.stop_walk_fx()
 	#tween.tween_property(color_rect, "modulate:a", 0.5, 0.67)
 	if w_menu:
 		pause_menu.visible = true
+		AudioManager.play_os("ui_open")
 	tree.paused = true
 
 func unload_mid_minigame():
