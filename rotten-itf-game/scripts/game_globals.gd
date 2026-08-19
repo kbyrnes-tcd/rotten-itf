@@ -30,6 +30,7 @@ var mid_mg : Node
 var inv_ui : Control
 var running_another_scene : bool = true # for running minigames and etc.
 var pending_start := false
+static var dialogue_done: bool = false
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
