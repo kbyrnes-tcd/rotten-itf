@@ -19,7 +19,7 @@ var scene
 func _ready():
 	scene = get_tree().current_scene
 	# random width, curve, and wave param.s
-	width = randi_range(10,20)
+	if width == 7.0: width = randi_range(10,20)
 	wave_strength  = randf_range(1.5, 3.0)
 	wave_speed = randf_range(1.0, 2.0)
 	wave_frequency  = randf_range(0.3, 0.8)
@@ -69,7 +69,8 @@ func inst_collisions():
 			new_shape_static.shape = segment
 
 func _on_line_area_2d_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
-	if GameGlobals.player.get_tool_state() == 1 and clearable and area.name == "LanternArea2D":
+	#if GameGlobals.player.get_tool_state() == 1 and clearable and area.name == "LanternArea2D":
+	if clearable and area.name == "LanternArea2D":
 		AudioManager.play_fx("shrink")
 		var space_state = get_world_2d().direct_space_state
 		var indices = [] # to store points within lantern-area; to later split at
@@ -115,7 +116,8 @@ func _on_line_area_2d_area_shape_entered(_area_rid: RID, area: Area2D, _area_sha
 
 func add_vine(pts_slice: PackedVector2Array):
 	#print("inst along" + str(pts_slice[0]) + " & " + str(pts_slice[pts_slice.size()-1]))
-	var vine = ROT_DRESSING.instantiate()
+	var vine := ROT_DRESSING.instantiate()
+	vine.collidable = collidable
 	vine.points = pts_slice
 	scene.add_child(vine)
 	#print("inst: %s w/ points: %s and in scene: %s" %[vine, pts_slice, scene])
