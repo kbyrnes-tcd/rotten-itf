@@ -15,14 +15,6 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8fwbo"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7yca1"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lrbnh"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6qnem"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ynwdf"]
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2rlsb"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_coo1x"]
@@ -31,17 +23,25 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ht4ye"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jm4ic"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7yca1"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iocrw"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lrbnh"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s4ab0"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6qnem"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ynwdf"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l5i3s"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_reqkp"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o6imd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jm4ic"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iocrw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s4ab0"]
 
 [node name="PauseMenu" type="Control" unique_id=111660448]
 process_mode = 3
@@ -85,23 +85,24 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -40.0
-offset_top = -31.999998
+offset_top = -32.0
 offset_right = 20.0
-offset_bottom = 28.000002
+offset_bottom = 28.0
 grow_horizontal = 2
-scale = Vector2(1.19, 1.19)
+scale = Vector2(1.21, 1.21)
 texture = ExtResource("2_f6eus")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="BorderBox" unique_id=2103730184]
 layout_mode = 0
-offset_left = 115.0
-offset_top = 35.0
-offset_right = 204.0
-offset_bottom = 220.0
+offset_left = 23.0
+offset_top = 9.0
+offset_right = 313.0
+offset_bottom = 179.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+alignment = 1
 
 [node name="Paused" type="Label" parent="BorderBox/VBoxContainer" unique_id=1691008236]
 layout_mode = 2
@@ -109,7 +110,6 @@ theme_override_fonts/font = ExtResource("3_0bnpd")
 theme_override_font_sizes/font_size = 37
 text = "Paused"
 horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="MainButtons" type="VBoxContainer" parent="BorderBox/VBoxContainer" unique_id=1352851221]
 layout_mode = 2
@@ -135,34 +135,6 @@ offset_left = -17.0
 offset_top = -5.0
 offset_right = 18.0
 offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("4_8uki6")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Quit" type="Button" parent="BorderBox/VBoxContainer/MainButtons" unique_id=1081397096 groups=["buttons"]]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_8fwbo")
-theme_override_font_sizes/font_size = 13
-theme_override_styles/normal = SubResource("StyleBoxEmpty_7yca1")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_lrbnh")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_6qnem")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_ynwdf")
-text = "Exit"
-
-[node name="HoverSprite" type="TextureRect" parent="BorderBox/VBoxContainer/MainButtons/Quit" unique_id=1243181694]
-visible = false
-z_index = -1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -17.0
-offset_top = -6.0
-offset_right = 18.0
-offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -198,7 +170,64 @@ texture = ExtResource("4_8uki6")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="Help" type="Button" parent="BorderBox/VBoxContainer/MainButtons" unique_id=39375293 groups=["buttons"]]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_8fwbo")
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2rlsb")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_coo1x")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_2jkta")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ht4ye")
+text = "Help"
+
+[node name="HoverSprite" type="TextureRect" parent="BorderBox/VBoxContainer/MainButtons/Help" unique_id=2082144614]
+visible = false
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -17.0
+offset_top = -5.0
+offset_right = 18.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_8uki6")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Quit" type="Button" parent="BorderBox/VBoxContainer/MainButtons" unique_id=1081397096 groups=["buttons"]]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_8fwbo")
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7yca1")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_lrbnh")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_6qnem")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ynwdf")
+text = "Quit"
+
+[node name="HoverSprite" type="TextureRect" parent="BorderBox/VBoxContainer/MainButtons/Quit" unique_id=1243181694]
+visible = false
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -17.0
+offset_top = -6.0
+offset_right = 18.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_8uki6")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="SettingsPanel" type="VBoxContainer" parent="BorderBox/VBoxContainer" unique_id=2126366751]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -208,77 +237,47 @@ layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
 
-[node name="Volume" type="Label" parent="BorderBox/VBoxContainer/SettingsPanel/HBoxContainer" unique_id=1480882695]
+[node name="GeneralVolume" type="Label" parent="BorderBox/VBoxContainer/SettingsPanel/HBoxContainer" unique_id=1480882695]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_8fwbo")
 theme_override_font_sizes/font_size = 12
-text = "Volume"
+text = "General Volume"
 
 [node name="VolumeSilder" type="HSlider" parent="BorderBox/VBoxContainer/SettingsPanel/HBoxContainer" unique_id=1699783961]
 custom_minimum_size = Vector2(40, 20)
 layout_mode = 2
 
-[node name="Stuck" type="Button" parent="BorderBox/VBoxContainer/SettingsPanel" unique_id=1089812231 groups=["buttons"]]
+[node name="HBoxContainer2" type="HBoxContainer" parent="BorderBox/VBoxContainer/SettingsPanel" unique_id=185321936]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.99215686, 0.99215686, 0.99607843, 1)
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="SFXVolume" type="Label" parent="BorderBox/VBoxContainer/SettingsPanel/HBoxContainer2" unique_id=297172472]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("4_8fwbo")
 theme_override_font_sizes/font_size = 12
-theme_override_styles/normal = SubResource("StyleBoxEmpty_jm4ic")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_iocrw")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_s4ab0")
-text = "I'm Stuck"
-autowrap_mode = 2
-icon_alignment = 1
+text = "SFX Volume"
 
-[node name="HoverSprite" type="TextureRect" parent="BorderBox/VBoxContainer/SettingsPanel/Stuck" unique_id=530949678]
-z_index = -1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -34.0
-offset_top = -5.0
-offset_right = 2.0
-offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.24, 1)
-mouse_filter = 2
-texture = ExtResource("4_8uki6")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Refill" type="Button" parent="BorderBox/VBoxContainer/SettingsPanel" unique_id=1574938797 groups=["buttons"]]
+[node name="VolumeSilder" type="HSlider" parent="BorderBox/VBoxContainer/SettingsPanel/HBoxContainer2" unique_id=1540795757]
+custom_minimum_size = Vector2(40, 20)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.99215686, 0.99215686, 0.99607843, 1)
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="BorderBox/VBoxContainer/SettingsPanel" unique_id=167398736]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="MusicVolume" type="Label" parent="BorderBox/VBoxContainer/SettingsPanel/HBoxContainer3" unique_id=460609143]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("4_8fwbo")
 theme_override_font_sizes/font_size = 12
-theme_override_styles/normal = SubResource("StyleBoxEmpty_jm4ic")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_iocrw")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_s4ab0")
-text = "Refill Worm"
-autowrap_mode = 2
-icon_alignment = 1
+text = "Music Volume"
 
-[node name="HoverSprite" type="TextureRect" parent="BorderBox/VBoxContainer/SettingsPanel/Refill" unique_id=1249189891]
-z_index = -1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -34.0
-offset_top = -5.0
-offset_right = 2.0
-offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.24, 1)
-mouse_filter = 2
-texture = ExtResource("4_8uki6")
-expand_mode = 1
-stretch_mode = 5
+[node name="VolumeSilder" type="HSlider" parent="BorderBox/VBoxContainer/SettingsPanel/HBoxContainer3" unique_id=1535847988]
+custom_minimum_size = Vector2(40, 20)
+layout_mode = 2
 
-[node name="Back" type="Button" parent="BorderBox/VBoxContainer/SettingsPanel" unique_id=1232216212 groups=["buttons"]]
+[node name="Back" type="Button" parent="BorderBox/VBoxContainer/SettingsPanel" unique_id=1363245559 groups=["buttons"]]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.99215686, 0.99215686, 0.99607843, 1)
 theme_override_fonts/font = ExtResource("4_8fwbo")
@@ -290,15 +289,112 @@ text = "Back"
 autowrap_mode = 2
 icon_alignment = 1
 
-[node name="HoverSprite" type="TextureRect" parent="BorderBox/VBoxContainer/SettingsPanel/Back" unique_id=1291995573]
+[node name="HoverSprite" type="TextureRect" parent="BorderBox/VBoxContainer/SettingsPanel/Back" unique_id=607258771]
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -34.0
+offset_left = -39.0
 offset_top = -5.0
-offset_right = 2.0
+offset_right = -3.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.24, 1)
+mouse_filter = 2
+texture = ExtResource("4_8uki6")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HelpPanel" type="VBoxContainer" parent="BorderBox/VBoxContainer" unique_id=917942683]
+visible = false
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Stuck" type="Button" parent="BorderBox/VBoxContainer/HelpPanel" unique_id=1556559142 groups=["buttons"]]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.99215686, 0.99215686, 0.99607843, 1)
+theme_override_fonts/font = ExtResource("4_8fwbo")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jm4ic")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_iocrw")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_s4ab0")
+text = "I'm Stuck"
+autowrap_mode = 2
+icon_alignment = 1
+
+[node name="HoverSprite" type="TextureRect" parent="BorderBox/VBoxContainer/HelpPanel/Stuck" unique_id=2068126489]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -41.0
+offset_top = -5.0
+offset_right = -5.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.24, 1)
+mouse_filter = 2
+texture = ExtResource("4_8uki6")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Refill" type="Button" parent="BorderBox/VBoxContainer/HelpPanel" unique_id=2061551385 groups=["buttons"]]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.99215686, 0.99215686, 0.99607843, 1)
+theme_override_fonts/font = ExtResource("4_8fwbo")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jm4ic")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_iocrw")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_s4ab0")
+text = "Refill Worm"
+autowrap_mode = 2
+icon_alignment = 1
+
+[node name="HoverSprite" type="TextureRect" parent="BorderBox/VBoxContainer/HelpPanel/Refill" unique_id=412480837]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -41.0
+offset_top = -5.0
+offset_right = -5.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.24, 1)
+mouse_filter = 2
+texture = ExtResource("4_8uki6")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Back" type="Button" parent="BorderBox/VBoxContainer/HelpPanel" unique_id=1934235957 groups=["buttons"]]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.99215686, 0.99215686, 0.99607843, 1)
+theme_override_fonts/font = ExtResource("4_8fwbo")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_l5i3s")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_reqkp")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_o6imd")
+text = "Back"
+autowrap_mode = 2
+icon_alignment = 1
+
+[node name="HoverSprite" type="TextureRect" parent="BorderBox/VBoxContainer/HelpPanel/Back" unique_id=1785873836]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -41.0
+offset_top = -5.0
+offset_right = -5.0
 offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -309,9 +405,13 @@ expand_mode = 1
 stretch_mode = 5
 
 [connection signal="pressed" from="BorderBox/VBoxContainer/MainButtons/Resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="BorderBox/VBoxContainer/MainButtons/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="BorderBox/VBoxContainer/MainButtons/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="BorderBox/VBoxContainer/MainButtons/Help" to="." method="_on_help_pressed"]
+[connection signal="pressed" from="BorderBox/VBoxContainer/MainButtons/Quit" to="." method="_on_quit_pressed"]
 [connection signal="value_changed" from="BorderBox/VBoxContainer/SettingsPanel/HBoxContainer/VolumeSilder" to="." method="_on_volume_silder_value_changed"]
-[connection signal="pressed" from="BorderBox/VBoxContainer/SettingsPanel/Stuck" to="." method="_on_stuck_pressed"]
-[connection signal="pressed" from="BorderBox/VBoxContainer/SettingsPanel/Refill" to="." method="_on_refill_pressed"]
+[connection signal="value_changed" from="BorderBox/VBoxContainer/SettingsPanel/HBoxContainer2/VolumeSilder" to="." method="_on_volume_silder_value_changed"]
+[connection signal="value_changed" from="BorderBox/VBoxContainer/SettingsPanel/HBoxContainer3/VolumeSilder" to="." method="_on_volume_silder_value_changed"]
 [connection signal="pressed" from="BorderBox/VBoxContainer/SettingsPanel/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="BorderBox/VBoxContainer/HelpPanel/Stuck" to="." method="_on_stuck_pressed"]
+[connection signal="pressed" from="BorderBox/VBoxContainer/HelpPanel/Refill" to="." method="_on_refill_pressed"]
+[connection signal="pressed" from="BorderBox/VBoxContainer/HelpPanel/Back" to="." method="_on_back_pressed"]

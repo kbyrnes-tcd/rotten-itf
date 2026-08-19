@@ -5,36 +5,16 @@
 [ext_resource type="PackedScene" uid="uid://cpwsgbr3fr7by" path="res://scenes/ui/pause_menu.tscn" id="2_ep3c1"]
 [ext_resource type="PackedScene" uid="uid://b0xdv5nobjlkk" path="res://scenes/minigames/rot_maze.tscn" id="2_ty236"]
 [ext_resource type="PackedScene" uid="uid://0hlcimiuwo6o" path="res://scenes/ui/inv_ui.tscn" id="3_ep3c1"]
-[ext_resource type="PackedScene" uid="uid://bfd835hclty4v" path="res://scenes/levels/scene_03.tscn" id="3_eujl3"]
 [ext_resource type="PackedScene" uid="uid://cnitmpmsmrrr6" path="res://scenes/ui/letter_ui.tscn" id="6_mn8rq"]
 [ext_resource type="PackedScene" uid="uid://cpu885nisbhmc" path="res://scenes/ui/constellation_minigame.tscn" id="7_y13p6"]
 [ext_resource type="PackedScene" uid="uid://cbfg68hgjmgis" path="res://scenes/lio_popup.tscn" id="8_68t1h"]
 [ext_resource type="PackedScene" uid="uid://dtf7n0o1f301e" path="res://scenes/ui/dialogue_textbox.tscn" id="9_y13p6"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y13p6"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eujl3"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q10y1"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p4b6u"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3fvc3"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kk5q1"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jm4ic"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iocrw"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s4ab0"]
 
 [node name="Essentials" type="Node2D" unique_id=1446151240]
 script = ExtResource("1_y13p6")
 
 [node name="Config" type="Node" parent="." unique_id=550139588 node_paths=PackedStringArray("pause_menu", "hud")]
 script = ExtResource("1_ep3c1")
-debug_level = ExtResource("3_eujl3")
 maze_mg = ExtResource("2_ty236")
 letter_mg = ExtResource("7_y13p6")
 pause_menu = NodePath("../UI/PauseMenu")
@@ -107,22 +87,6 @@ process_mode = 3
 
 [node name="PauseMenu" parent="UI" unique_id=111660448 instance=ExtResource("2_ep3c1")]
 visible = false
-
-[node name="Stuck" parent="UI/PauseMenu/BorderBox/VBoxContainer/SettingsPanel" parent_id_path=PackedInt32Array(111660448, 2126366751) index="1" unique_id=1089812231]
-theme_override_styles/normal = SubResource("StyleBoxEmpty_y13p6")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_eujl3")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_q10y1")
-
-[node name="Refill" parent="UI/PauseMenu/BorderBox/VBoxContainer/SettingsPanel" parent_id_path=PackedInt32Array(111660448, 2126366751) index="2" unique_id=1574938797]
-theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
-theme_override_styles/normal = SubResource("StyleBoxEmpty_p4b6u")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_3fvc3")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_kk5q1")
-
-[node name="Back" parent="UI/PauseMenu/BorderBox/VBoxContainer/SettingsPanel" parent_id_path=PackedInt32Array(111660448, 2126366751) index="3" unique_id=1232216212]
-theme_override_styles/normal = SubResource("StyleBoxEmpty_jm4ic")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_iocrw")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_s4ab0")
 
 [node name="LioPopup" parent="UI" unique_id=1750883624 groups=["lio_manager"] instance=ExtResource("8_68t1h")]
 
