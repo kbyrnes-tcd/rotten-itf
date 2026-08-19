@@ -142,8 +142,8 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_y4r1p"]
-radius = 35.19535
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8k800"]
+size = Vector2(94.13229, 116.59009)
 
 [sub_resource type="Gradient" id="Gradient_j0jg5"]
 offsets = PackedFloat32Array(0, 0.6796116)
@@ -199,8 +199,8 @@ position = Vector2(24.725266, 5.494503)
 scale = Vector2(1.2257706, 1.0789826)
 
 [node name="LntrnCollisionShape2D" type="CollisionShape2D" parent="CharacterSprites/Lantern/LanternArea2D" unique_id=877712953]
-position = Vector2(10.256411, -2.197803)
-shape = SubResource("CircleShape2D_y4r1p")
+position = Vector2(11.206245, 46.09723)
+shape = SubResource("RectangleShape2D_8k800")
 
 [node name="PointLight2D" type="PointLight2D" parent="CharacterSprites/Lantern" unique_id=1223419189]
 position = Vector2(2.7472482, 2.7472513)
