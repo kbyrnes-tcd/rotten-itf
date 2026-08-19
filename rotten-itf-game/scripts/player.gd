@@ -18,6 +18,8 @@ class_name Player
 const ROT_VINE = preload("uid://kicj2478es6o")
 const GROWTH_SPEED = 120.0
 const GLOWWORM = preload("res://scripts/inventory_system/items/orange_worm.tres")
+const LANTERN = preload("uid://gpvtv23ln3ds")
+const AMULET = preload("uid://bcvemp5c8igqs")
 const GLOWWORM_MAX = 5
 const USE_INTERVAL = 2.0
 var active_vine = null
@@ -59,24 +61,18 @@ func _ready():
 
 # Tool FSM
 func _process(delta):
-	#if Input.is_action_just_pressed("debug_worm"):
-		#for i in 5:
-			#inv.insert(GLOWWORM)
-			#print("5 worms refilled, now: " + str(inv.count(GLOWWORM)))
-			#
 	match tool_state:
 		ToolState.IDLE:
 			_tool_idle()
 		ToolState.LANTERN_EQUIPPED:
-			#animated_sprite_2d.animation = "idle_equipped"
-			_tool_lantern_equipped()
+			if self.has(LANTERN): _tool_lantern_equipped()
 		ToolState.LANTERN_ON:
 			_tool_lantern_on(delta)
 		ToolState.GUN_EQUIPPED:
-			#animated_sprite_2d.animation = "idle_equipped"
-			_tool_gun_equipped()
+			if self.has(AMULET): _tool_gun_equipped()
 		ToolState.GUN_ON:
 			_tool_gun_on()
+			
 func get_tool_state():
 	return tool_state
 	
@@ -271,14 +267,15 @@ func change_tool_state(new_state: ToolState):
 		ToolState.IDLE:
 			pass
 		ToolState.LANTERN_EQUIPPED:
-			lantern.visible = true
-			lantern.process_mode = Node.PROCESS_MODE_INHERIT
-			#worm_in_use = true
-			var area = lantern.get_node_or_null("LanternArea2D")
-			if area:
-				area.monitoring = false
-				area.monitorable = false
-			update_lantern_visuals()
+			if self.has(LANTERN):
+				lantern.visible = true
+				lantern.process_mode = Node.PROCESS_MODE_INHERIT
+				#worm_in_use = true
+				var area = lantern.get_node_or_null("LanternArea2D")
+				if area:
+					area.monitoring = false
+					area.monitorable = false
+				update_lantern_visuals()
 			#lantern.modulate.a = 0.3
 		ToolState.LANTERN_ON:
 			lantern.visible = true
@@ -294,30 +291,30 @@ func change_tool_state(new_state: ToolState):
 			#else: 
 				#lantern.modulate.a = 0.3
 		ToolState.GUN_EQUIPPED:
-			gun.visible = true
-			gun_sprite.visible = true
-			gun.process_mode = Node.PROCESS_MODE_INHERIT
+			if self.has(AMULET):
+				gun.visible = true
+				gun_sprite.visible = true
+				gun.process_mode = Node.PROCESS_MODE_INHERIT
 		ToolState.GUN_ON:
 			pass
 
 # TOOL FSM functions
 func _tool_idle():
-	if Input.is_action_just_pressed("rot_cut"):
+	if Input.is_action_just_pressed("rot_cut") and self.has(LANTERN):
 		AudioManager.play_os("equip")
 		change_tool_state(ToolState.LANTERN_EQUIPPED)
-		#if inv.has(GLOWWORM):
-			#change_tool_state(ToolState.LANTERN_EQUIPPED)
-		#else:
-			#print("no glowworms! WOMP WOMP")
-	if Input.is_action_just_pressed("equip_rot"):
+	if Input.is_action_just_pressed("equip_rot") and self.has(AMULET):
 		AudioManager.play_os("equip")
 		change_tool_state(ToolState.GUN_EQUIPPED)
 
 func _tool_lantern_equipped(): 
+	if !self.has(LANTERN):
+		change_tool_state(ToolState.IDLE)
+		return
 	if Input.is_action_just_pressed("rot_cut"):
 		change_tool_state(ToolState.IDLE)
 		return
-	if Input.is_action_just_pressed("equip_rot"):
+	if Input.is_action_just_pressed("equip_rot") and self.has(AMULET):
 		change_tool_state(ToolState.GUN_EQUIPPED)
 		return
 	if Input.is_action_pressed("lantern_toggle"):
@@ -355,10 +352,13 @@ func _tool_lantern_on(delta: float):
 				change_tool_state(ToolState.LANTERN_EQUIPPED)
 
 func _tool_gun_equipped():
+	if !self.has(AMULET):
+		change_tool_state(ToolState.IDLE)
+		return
 	if Input.is_action_just_pressed("equip_rot"):
 		change_tool_state(ToolState.IDLE)
 		return
-	if Input.is_action_just_pressed("rot_cut"):
+	if Input.is_action_just_pressed("rot_cut") and self.has(LANTERN):
 		change_tool_state(ToolState.LANTERN_EQUIPPED)
 		return
 	if Input.is_action_just_pressed("rot_extend") and not is_growing:
