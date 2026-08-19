@@ -170,6 +170,34 @@ texture = ExtResource("4_8uki6")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="Controls" type="Button" parent="BorderBox/VBoxContainer/MainButtons" unique_id=560782509 groups=["buttons"]]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_8fwbo")
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2rlsb")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_coo1x")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_2jkta")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ht4ye")
+text = "Controls"
+
+[node name="HoverSprite" type="TextureRect" parent="BorderBox/VBoxContainer/MainButtons/Controls" unique_id=1782910364]
+visible = false
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -17.0
+offset_top = -5.0
+offset_right = 18.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_8uki6")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="Help" type="Button" parent="BorderBox/VBoxContainer/MainButtons" unique_id=39375293 groups=["buttons"]]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_8fwbo")
@@ -404,8 +432,57 @@ texture = ExtResource("4_8uki6")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="ControlsPanel" type="VBoxContainer" parent="BorderBox/VBoxContainer" unique_id=515606433]
+visible = false
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="BorderBox/VBoxContainer/ControlsPanel" unique_id=1651711371]
+layout_mode = 2
+theme_override_constants/line_spacing = -1
+theme_override_font_sizes/font_size = 7
+text = "BRUH IS ................................................... BRUH
+BRUH IS ................................................... BRUH
+BRUH IS ................................................... BRUH
+BRUH IS ................................................... BRUH
+BRUH IS ................................................... BRUH
+BRUH IS ................................................... BRUH"
+
+[node name="Back" type="Button" parent="BorderBox/VBoxContainer/ControlsPanel" unique_id=894197352 groups=["buttons"]]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.99215686, 0.99215686, 0.99607843, 1)
+theme_override_fonts/font = ExtResource("4_8fwbo")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_l5i3s")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_reqkp")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_o6imd")
+text = "Back"
+autowrap_mode = 2
+icon_alignment = 1
+
+[node name="HoverSprite" type="TextureRect" parent="BorderBox/VBoxContainer/ControlsPanel/Back" unique_id=779010325]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -41.0
+offset_top = -5.0
+offset_right = -5.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.24, 1)
+mouse_filter = 2
+texture = ExtResource("4_8uki6")
+expand_mode = 1
+stretch_mode = 5
+
 [connection signal="pressed" from="BorderBox/VBoxContainer/MainButtons/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="BorderBox/VBoxContainer/MainButtons/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="BorderBox/VBoxContainer/MainButtons/Controls" to="." method="_on_controls_pressed"]
 [connection signal="pressed" from="BorderBox/VBoxContainer/MainButtons/Help" to="." method="_on_help_pressed"]
 [connection signal="pressed" from="BorderBox/VBoxContainer/MainButtons/Quit" to="." method="_on_quit_pressed"]
 [connection signal="value_changed" from="BorderBox/VBoxContainer/SettingsPanel/HBoxContainer/VolumeSilder" to="." method="_on_volume_silder_value_changed"]
@@ -415,3 +492,4 @@ stretch_mode = 5
 [connection signal="pressed" from="BorderBox/VBoxContainer/HelpPanel/Stuck" to="." method="_on_stuck_pressed"]
 [connection signal="pressed" from="BorderBox/VBoxContainer/HelpPanel/Refill" to="." method="_on_refill_pressed"]
 [connection signal="pressed" from="BorderBox/VBoxContainer/HelpPanel/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="BorderBox/VBoxContainer/ControlsPanel/Back" to="." method="_on_back_pressed"]

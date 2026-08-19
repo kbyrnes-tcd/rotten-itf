@@ -9,6 +9,7 @@ extends Control
 @onready var settings_panel = $BorderBox/VBoxContainer/SettingsPanel
 @onready var volume_slider = $BorderBox/VBoxContainer/SettingsPanel/HBoxContainer/VolumeSilder
 @onready var help_panel: VBoxContainer = $BorderBox/VBoxContainer/HelpPanel
+@onready var controls_panel: VBoxContainer = $BorderBox/VBoxContainer/ControlsPanel
 
 func _ready():
 	settings_panel.visible = false 
@@ -38,16 +39,23 @@ func _process(_delta):
 		reset()
 
 func reset():
-	settings_panel.visible = false
-	help_panel.visible = false
 	main_btns.visible = true
 	
+	settings_panel.visible = false
+	help_panel.visible = false
+	controls_panel.visible = false
+
+# MAIN BUTTONS
 func _on_resume_pressed() -> void:
 	GameGlobals.resume(true)
 
 func _on_settings_pressed() -> void:
 	main_btns.visible = false
 	settings_panel.visible = true
+
+func _on_controls_pressed() -> void:
+	main_btns.visible = false
+	controls_panel.visible = true
 
 func _on_help_pressed() -> void:
 	main_btns.visible = false
@@ -56,11 +64,15 @@ func _on_help_pressed() -> void:
 func _on_quit_pressed() -> void:
 	get_tree().quit()
 
+# PANELS
 func _on_back_pressed():
-	settings_panel.visible = false
-	help_panel.visible = false
-	main_btns.visible = true
+	reset()
 
+# SETTINGS
+func _on_volume_silder_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(0, linear_to_db(value))
+
+# HELP
 func _on_stuck_pressed() -> void:
 	GameGlobals.resume()
 	var current_level = GameGlobals.level_root.get_child(0).name
@@ -71,6 +83,3 @@ func _on_refill_pressed() -> void:
 	if player:
 		for i in 5:
 			player.inv.insert(player.GLOWWORM)
-
-func _on_volume_silder_value_changed(value: float) -> void:
-	AudioServer.set_bus_volume_db(0, linear_to_db(value))
