@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ba6ajagav8mkt"
+path="res://.godot/imported/a.wav-0f06d885a7a4d687b854a48ebd5bf054.sample"
+
+[deps]
+
+source_file="res://assets/audio/alphabet/Persephone Alphabet/a.wav"
+dest_files=["res://.godot/imported/a.wav-0f06d885a7a4d687b854a48ebd5bf054.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
