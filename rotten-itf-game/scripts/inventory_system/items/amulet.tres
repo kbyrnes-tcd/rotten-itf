@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://bcvemp5c8igqs"]
+
+[ext_resource type="Script" uid="uid://b0vt1mp7wu6pu" path="res://scripts/inventory_system/resource_def/inv_item.gd" id="1_exl1k"]
+[ext_resource type="Texture2D" uid="uid://cmj1a5apk3w36" path="res://assets/images/player/equipment/Amulet.png" id="2_eam4q"]
+
+[resource]
+script = ExtResource("1_exl1k")
+name = "amulet"
+texture = ExtResource("2_eam4q")
+desc = "This amulet will help you grow the rot that brews within you. Press ] to equip it and then click to extend the rot up until that point."
+metadata/_custom_type_script = "uid://b0vt1mp7wu6pu"
