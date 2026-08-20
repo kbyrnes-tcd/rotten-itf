@@ -169,5 +169,10 @@ func play_os_from_arr(arr_name: String, index : int = -1, from: float = 0.0) -> 
 	
 # one shot - only played once no loop
 func play_os(os_name: String, from: float = 0.0) -> void:
+	if !active_os:
+		active_os = clips.get_node("OneShotFX")
+	if !fx.has(os_name):
+		print("fx key not found: " + os_name)
+		return
 	active_os.stream = fx[os_name]
 	active_os.play(from)
