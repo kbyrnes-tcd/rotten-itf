@@ -101,6 +101,7 @@ func _handle_animation():
 			animated_sprite_2d.animation = "walk_equipped"
 
 var step_target_y := 0.0
+var on_step := false
 func can_step_up() -> bool:
 	var shape_index; var owner_id; var shape_node;
 	var step_raycasts : Array[RayCast2D]= [$StepJumpRayCastL, $StepJumpRayCastR]
@@ -111,14 +112,15 @@ func can_step_up() -> bool:
 			shape_index = foot.get_collider_shape()
 			owner_id = collider.shape_find_owner(shape_index)
 			shape_node = collider.shape_owner_get_owner(owner_id)
-
 		if foot.is_colliding() and foot.get_collider():
-			if shape_node is CollisionShape2D:
-				print("%s foot is colliding with %s" %[lorr, shape_node.one_way_collision])
-				step_target_y = foot.get_collision_point().y
-				if step_target_y < foot_marker.global_position.y:  
-					return true
-
+			if shape_node is CollisionShape2D or shape_node is CollisionPolygon2D:
+				if shape_node.one_way_collision:
+					on_step = true
+					#print("%s foot is colliding with %s" %[lorr, shape_node.one_way_collision])
+					step_target_y = foot.get_collision_point().y
+					if step_target_y < foot_marker.global_position.y:  
+						return true
+				else: on_step = false
 	return false
 
 func can_i_jump() -> Dictionary:
@@ -157,7 +159,10 @@ func _handle_movement(delta: float):
 	if jump_state["jump_velocity"] == 0.0: return
 	
 	# STEP UP TAKES PRIORITY
-	if Input.is_action_just_pressed("jump") and can_step_up():
+	if can_step_up() and Input.is_action_just_pressed("jump"):
+		velocity.y = STEP_JUMP_VELOCITY
+		move_state = MoveState.JUMPING
+	elif can_step_up() and Input.is_action_pressed("jump") and on_step:
 		velocity.y = STEP_JUMP_VELOCITY
 		move_state = MoveState.JUMPING
 	elif Input.is_action_just_pressed("jump") and jump_state["can_jump"]:
@@ -165,7 +170,9 @@ func _handle_movement(delta: float):
 		move_state = MoveState.JUMPING
 		
 	# STEPPING DOWN
-	if Input.is_action_just_pressed("down") and not on_vine:
+	if not on_vine and Input.is_action_just_pressed("down"):
+		position.y += 5
+	elif not on_vine and Input.is_action_pressed("down") and on_step:
 		position.y += 5
 		
 	var direction := Input.get_axis("left", "right")
