@@ -62,19 +62,12 @@ grow_vertical = 2
 scale = Vector2(2.5, 2.5)
 
 [node name="InvUI" parent="HUD/InvHUD" unique_id=959144703 instance=ExtResource("3_ep3c1")]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -33.0
-offset_top = -22.0
-offset_right = 33.0
-offset_bottom = 22.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 0
+offset_left = -57.600006
+offset_top = -34.799995
+offset_right = 272.4
+offset_bottom = 165.20001
+scale = Vector2(0.35, 0.35)
 
 [node name="LetterHUD" type="Control" parent="HUD" unique_id=200915129]
 layout_mode = 3

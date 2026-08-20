@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_oj7hd")
-name = "lantern"
+name = "Lantern"
 texture = ExtResource("2_oj7hd")
-desc = "This lantern will help you clear the rot around you. Press [ to equip it and then hold shift to clear the rot around you."
+desc = "This amulet will help you grow the rot that brews within you. Press ] to equip it and then click to extend the rot up until that point."
 metadata/_custom_type_script = "uid://b0vt1mp7wu6pu"

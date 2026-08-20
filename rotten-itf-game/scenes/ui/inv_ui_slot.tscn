@@ -1,32 +1,41 @@
 [gd_scene format=3 uid="uid://cl6df2qdvgr0"]
 
-[ext_resource type="Texture2D" uid="uid://dvjljkkkuelcb" path="res://assets/images/ui/inventory-slot.png" id="1_jeme5"]
 [ext_resource type="Script" uid="uid://ycyv8338ayuy" path="res://scripts/inventory_system/inv_ui_slot.gd" id="1_xk2dx"]
+[ext_resource type="Shader" uid="uid://cn052c16hcrux" path="res://scripts/shaders/grayscale.gdshader" id="2_csgc5"]
+[ext_resource type="Texture2D" uid="uid://jlhqads7iutp" path="res://assets/images/ui/inv/inv-slot.png" id="2_xk2dx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xk2dx"]
+shader = ExtResource("2_csgc5")
+shader_parameter/gray = false
 
 [node name="Inv_Ui_Slot" type="Panel" unique_id=1590680367]
 self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(16, 16)
+custom_minimum_size = Vector2(33, 33)
 offset_right = 16.0
 offset_bottom = 16.0
 script = ExtResource("1_xk2dx")
 
 [node name="SlotSprite" type="Sprite2D" parent="." unique_id=537074285]
-modulate = Color(1, 1, 1, 0.53333336)
-texture = ExtResource("1_jeme5")
+material = SubResource("ShaderMaterial_xk2dx")
+texture = ExtResource("2_xk2dx")
 centered = false
 
 [node name="ItemSprite" type="Sprite2D" parent="." unique_id=695584406]
-scale = Vector2(0.73, 0.73)
+scale = Vector2(0.5, 0.5)
 centered = false
 offset = Vector2(2.5, 0)
 
 [node name="Label" type="Label" parent="." unique_id=340007729]
 custom_minimum_size = Vector2(19, 23)
-layout_mode = 0
-offset_left = 7.0000005
-offset_top = 7.0
-offset_right = 26.0
-offset_bottom = 30.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -8.999998
+offset_top = 22.0
+offset_right = 10.0
+offset_bottom = 45.0
+grow_horizontal = 0
 scale = Vector2(0.4, 0.4)
 text = "99"
 horizontal_alignment = 2

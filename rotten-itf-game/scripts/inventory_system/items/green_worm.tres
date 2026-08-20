@@ -6,8 +6,7 @@
 
 [resource]
 script = ExtResource("1_4qllb")
-name = "green_worm"
+name = "TempWorm"
 texture = ExtResource("2_54m3a")
-desc = "Click on me or select me via 2 & click E to read more!"
 ui_twin = ExtResource("3_54m3a")
 metadata/_custom_type_script = "uid://b0vt1mp7wu6pu"

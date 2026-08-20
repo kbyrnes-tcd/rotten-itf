@@ -3,7 +3,9 @@ extends Control
 @onready var inv: Inventory = preload("uid://bbfb2yem3oxv0")
 @onready var slots: Array = $NinePatchRect/GridContainer.get_children()
 
-@onready var label: Label = $NinePatchRect/Label
+@onready var label: Label = $NinePatchRect/RHS/ActiveItemLabel
+@onready var desc: Label = $NinePatchRect/RHS/ScrollContainer/Box/ActiveItemDesc
+@onready var scroll_container: ScrollContainer = $NinePatchRect/RHS/ScrollContainer
 
 # onload: inventory is closed, load up images
 func _ready() -> void:
@@ -11,6 +13,14 @@ func _ready() -> void:
 	inv.update.connect(update_slots)
 	update_slots()
 	label.text = ""
+	var vbar := scroll_container.get_v_scroll_bar()
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color(0.5, 0.5, 0.5)
+	style.content_margin_left = 1.0
+	style.content_margin_right = 1.0  #^ both for width
+
+	vbar.add_theme_stylebox_override("grabber", style)
+	vbar.add_theme_stylebox_override("scroll", style)
 	
 # update item visuals via inv_ui_slot.gd>update func
 func update_slots():
@@ -31,11 +41,15 @@ func open():
 		visible = true;
 		AudioManager.play_os("ui_open")
 
-func set_label(desc : String):
-	label.text = desc
+func set_label(txt : String):
+	label.text = txt
+
+func set_desc(txt : String):
+	desc.text = txt
 
 func clear_selection():
 	label.text = ""
+	desc.text = ""
 	render_ui_twin = false
 	ui_twin = null
 	for i in range(inv.slots.size()):
@@ -47,7 +61,8 @@ var ui_twin
 
 func activate_slot(slot : InvSlot):
 	slot.set_active()
-	set_label(slot.item.desc)
+	set_label(slot.item.name)
+	set_desc(slot.item.desc)
 	# if the selected inv item has a ui_twin to render, call it on the GameManager
 	if slot.item.ui_twin:
 		render_ui_twin = true
@@ -64,7 +79,7 @@ func _process(_delta):
 		AudioManager.play_os("ui_open")
 
 	if visible:
-		for i in range(0, 6):
+		for i in range(0, 8):
 			if inv.slots[i].has_item() and Input.is_action_just_pressed("inv_%d" % (i + 1)):
 				clear_selection()
 				activate_slot(inv.slots[i])
