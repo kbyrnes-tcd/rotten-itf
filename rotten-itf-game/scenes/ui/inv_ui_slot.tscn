@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ycyv8338ayuy" path="res://scripts/inventory_system/inv_ui_slot.gd" id="1_xk2dx"]
 [ext_resource type="Shader" uid="uid://cn052c16hcrux" path="res://scripts/shaders/grayscale.gdshader" id="2_csgc5"]
-[ext_resource type="Texture2D" uid="uid://jlhqads7iutp" path="res://assets/images/ui/inv/inv-slot.png" id="2_xk2dx"]
+[ext_resource type="Texture2D" uid="uid://jlhqads7iutp" path="res://assets/images/ui/inv/inventory-slot.png" id="2_xk2dx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xk2dx"]
 shader = ExtResource("2_csgc5")
