@@ -10,22 +10,22 @@ extends Control
 @onready var volume_slider = $BorderBox/VBoxContainer/SettingsPanel/HBoxContainer/VolumeSilder
 @onready var help_panel: VBoxContainer = $BorderBox/VBoxContainer/HelpPanel
 @onready var controls_panel: VBoxContainer = $BorderBox/VBoxContainer/ControlsPanel
+var buttons
 
 func _ready():
+	buttons = get_tree().get_nodes_in_group("buttons")
 	settings_panel.visible = false 
-	_setup_hovers()
+	setup_fx()
+	setup_back_buttons()
 	volume_slider.value = db_to_linear(AudioServer.get_bus_volume_db(0))
 
-func _setup_hovers():
-	var buttons := get_tree().get_nodes_in_group("buttons")
-	buttons.map(func(b): _setup_hover(b))
+func setup_back_buttons():
+	for btn in buttons:
+		if btn.name.contains("Back"):
+			btn.pressed.connect(func(): reset())
 
-func _setup_hover(btn: Button):
-	var sprite = btn.get_node("HoverSprite")
-	sprite.visible = false
-	btn.mouse_entered.connect(func(): sprite.visible = true; AudioManager.play_os("ui_select"))
-	btn.mouse_exited.connect(func(): sprite.visible = false; AudioManager.play_os("ui_select"))
-	btn.pressed.connect(func(): AudioManager.play_os("ui_confirm"))
+func setup_fx():
+	buttons.map(func(b): b.pressed.connect(func(): AudioManager.play_os("ui_confirm")))
 
 func _process(_delta):
 	if Input.is_action_just_pressed("pause"):
@@ -63,10 +63,6 @@ func _on_help_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
-
-# PANELS
-func _on_back_pressed():
-	reset()
 
 # SETTINGS
 func _on_volume_silder_value_changed(value: float) -> void:
