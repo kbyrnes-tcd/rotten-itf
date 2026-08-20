@@ -24,7 +24,7 @@ script = ExtResource("1_6tw0m")
 layout_mode = 0
 offset_right = 480.0
 offset_bottom = 270.0
-color = Color(0, 0, 0, 0.3372549)
+color = Color(0, 0, 0, 0.53333336)
 
 [node name="BorderBox" type="NinePatchRect" parent="." unique_id=1565737539]
 layout_mode = 1

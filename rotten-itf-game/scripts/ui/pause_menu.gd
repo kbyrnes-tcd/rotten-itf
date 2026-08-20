@@ -26,6 +26,7 @@ func setup_back_buttons():
 
 func setup_fx():
 	buttons.map(func(b): b.pressed.connect(func(): AudioManager.play_os("ui_confirm")))
+	#buttons.map(func(b): b.hover.connect(func(): AudioManager.play_os("ui_select"))) WHY NOT WORK:(((((((((
 
 func _process(_delta):
 	if Input.is_action_just_pressed("pause"):
