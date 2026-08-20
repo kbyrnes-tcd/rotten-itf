@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://diylf22dcoha0"]
+
+[ext_resource type="Script" uid="uid://chjka2jhyreb3" path="res://scripts/lantern_pickup.gd" id="1_qacmo"]
+[ext_resource type="Texture2D" uid="uid://bg2xv2dit48xi" path="res://assets/images/worms/lantern.png" id="1_xj2pg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q01m8"]
+size = Vector2(24, 109)
+
+[node name="LanternPickup" type="Node2D" unique_id=1242243690]
+script = ExtResource("1_qacmo")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=221766478]
+position = Vector2(3.8146973e-06, 0.9999981)
+rotation = 1.4503686
+scale = Vector2(0.3902439, 0.47402596)
+texture = ExtResource("1_xj2pg")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1869681995]
+position = Vector2(1.4365746, 0.61119545)
+rotation = 1.4503686
+scale = Vector2(0.56152326, 0.5427804)
+color = Color(0.771865, 0.9621505, 0.9877576, 1)
+texture = ExtResource("1_xj2pg")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1365538603]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2144867441]
+position = Vector2(-1, -2)
+shape = SubResource("RectangleShape2D_q01m8")
