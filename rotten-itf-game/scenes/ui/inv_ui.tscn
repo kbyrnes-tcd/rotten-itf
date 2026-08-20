@@ -82,6 +82,7 @@ offset_top = -68.0
 offset_right = -48.0
 offset_bottom = -13.0
 grow_horizontal = 2
+scale = Vector2(1.0032772, 1)
 expand_mode = 3
 
 [node name="ActiveItemLabel" type="Label" parent="NinePatchRect/RHS" unique_id=142410260]
@@ -99,7 +100,6 @@ grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_shghf")
 theme_override_font_sizes/font_size = 4
-text = "This item is awesum."
 vertical_alignment = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="NinePatchRect/RHS" unique_id=1428215792]
@@ -119,11 +119,11 @@ grow_vertical = 0
 size_flags_vertical = 4
 draw_focus_border = true
 horizontal_scroll_mode = 3
-vertical_scroll_mode = 2
+vertical_scroll_mode = 4
 
 [node name="Box" type="VBoxContainer" parent="NinePatchRect/RHS/ScrollContainer" unique_id=1868517898]
-custom_minimum_size = Vector2(108, 55)
-custom_maximum_size = Vector2(108, 55)
+custom_minimum_size = Vector2(100, 50)
+custom_maximum_size = Vector2(108, 50)
 layout_mode = 2
 alignment = 1
 
@@ -134,6 +134,4 @@ size_flags_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_shghf")
 theme_override_font_sizes/font_size = 5
-text = "qsadsadasdasdasd
-brjhshjab saisjalksj saojsalasjlsa sa;ljsalkjsal salksajl salkjslksn sakjshkjas khsakjshkjashsa kjashkjsahkassdadasdasdasdasdasdsdsaadasdasdasdasdasdsadasdsad sjdakjsj kjashkjsahkassdadasdasdasdasdasdsdsaadasdasdasdasdasdsadasdsad sjdakjsjz zzzz"
 autowrap_mode = 3

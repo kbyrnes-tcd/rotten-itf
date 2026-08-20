@@ -6,6 +6,8 @@ extends Control
 @onready var label: Label = $NinePatchRect/RHS/ActiveItemLabel
 @onready var desc: Label = $NinePatchRect/RHS/ScrollContainer/Box/ActiveItemDesc
 @onready var scroll_container: ScrollContainer = $NinePatchRect/RHS/ScrollContainer
+var vbar
+@onready var img_texture: TextureRect = $NinePatchRect/RHS/ActiveItemTexture
 
 # onload: inventory is closed, load up images
 func _ready() -> void:
@@ -13,14 +15,17 @@ func _ready() -> void:
 	inv.update.connect(update_slots)
 	update_slots()
 	label.text = ""
-	var vbar := scroll_container.get_v_scroll_bar()
+	vbar = scroll_container.get_v_scroll_bar()
 	var style := StyleBoxFlat.new()
-	style.bg_color = Color(0.5, 0.5, 0.5)
+	style.bg_color = Color(0.502, 0.502, 0.502, 0.0)
 	style.content_margin_left = 1.0
 	style.content_margin_right = 1.0  #^ both for width
 
 	vbar.add_theme_stylebox_override("grabber", style)
 	vbar.add_theme_stylebox_override("scroll", style)
+	
+	if inv.slots[0].has_item(): 
+		activate_slot(inv.slots[0])
 	
 # update item visuals via inv_ui_slot.gd>update func
 func update_slots():
@@ -47,6 +52,9 @@ func set_label(txt : String):
 func set_desc(txt : String):
 	desc.text = txt
 
+func set_img(txt : Texture2D):
+	img_texture.texture = txt
+
 func clear_selection():
 	label.text = ""
 	desc.text = ""
@@ -63,6 +71,7 @@ func activate_slot(slot : InvSlot):
 	slot.set_active()
 	set_label(slot.item.name)
 	set_desc(slot.item.desc)
+	set_img(slot.item.texture)
 	# if the selected inv item has a ui_twin to render, call it on the GameManager
 	if slot.item.ui_twin:
 		render_ui_twin = true
