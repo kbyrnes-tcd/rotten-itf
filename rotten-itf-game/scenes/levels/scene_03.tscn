@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="3_p368k"]
 [ext_resource type="PackedScene" uid="uid://coslqn83cxfcy" path="res://scenes/zoom_trigger.tscn" id="4_bork3"]
 [ext_resource type="Script" uid="uid://blst515txhg5j" path="res://scripts/zoom_trigger.gd" id="5_6m4hc"]
-[ext_resource type="PackedScene" uid="uid://bd3r1j21a2opr" path="res://scenes/ui/dialogue_trigger.tscn" id="5_0760f"]
+[ext_resource type="PackedScene" uid="uid://c1epxp5spnua" path="res://scenes/ui/dialogue_trigger.tscn" id="5_0760f"]
 [ext_resource type="Script" uid="uid://ddnjkodm10cvk" path="res://scripts/dialogue_trigger.gd" id="6_nuytq"]
 [ext_resource type="PackedScene" uid="uid://ddm8l1j51pxi2" path="res://scenes/chandelier.tscn" id="7_5i8uq"]
 [ext_resource type="PackedScene" uid="uid://qtqiun326hpr" path="res://scenes/lever.tscn" id="8_y5j78"]
@@ -135,13 +135,15 @@ position = Vector2(2049, 237)
 position = Vector2(287, 244)
 lio_text = "A chandelier...there should be a lever nearby."
 
-[node name="Amulet" parent="." unique_id=160938005 instance=ExtResource("12_co3ny")]
+[node name="Amulet" parent="." unique_id=160938005 node_paths=PackedStringArray("blocking_rot") instance=ExtResource("12_co3ny")]
 position = Vector2(2278, 201)
+blocking_rot = [NodePath("../Line2D")]
 inv_amulet = ExtResource("13_e0ngt")
 
 [node name="LioTrigger3" parent="." unique_id=460109088 instance=ExtResource("10_y5j78")]
 position = Vector2(2343, 247)
-lio_text = "Press ] to shoot rot."
+lio_text = "Press ] to equip amulet."
+requires_dialogue_done = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1562990469]
 color = Color(0.7107411, 0.71074116, 0.7107411, 1)
@@ -158,10 +160,7 @@ collidable = true
 [node name="LioTrigger4" parent="." unique_id=292972852 instance=ExtResource("10_y5j78")]
 position = Vector2(2196, 245)
 lio_text = "Press [ to clear the rot and reach the amulet."
-
-[node name="Line2D2" parent="." unique_id=278142075 instance=ExtResource("13_5fc4h")]
-position = Vector2(2255, 209)
-points = PackedVector2Array(26, -18, 18, -14, 10, 2)
+requires_dialogue_done = true
 
 [editable path="Player"]
 [editable path="ZoomTrigger"]

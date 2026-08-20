@@ -6,7 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="5_oleyw"]
 [ext_resource type="PackedScene" uid="uid://bimatr4hej8ja" path="res://scenes/ui/interactive_carat.tscn" id="6_5expv"]
 [ext_resource type="PackedScene" uid="uid://dr3ff06oljyer" path="res://scenes/lio_trigger.tscn" id="7_3aray"]
+[ext_resource type="PackedScene" uid="uid://diylf22dcoha0" path="res://scenes/lantern_pickup.tscn" id="8_c63m2"]
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="9_mb6sg"]
+[ext_resource type="Resource" uid="uid://gpvtv23ln3ds" path="res://scripts/inventory_system/items/lantern.tres" id="9_yrcn3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c63m2"]
 size = Vector2(2596, 43.25)
@@ -98,8 +100,8 @@ z_index = -2
 [node name="Line2D2" parent="RotOnDoor" unique_id=1110441175 instance=ExtResource("4_xgkue")]
 position = Vector2(422.77432, -9)
 scale = Vector2(0.5834024, 1)
-points = PackedVector2Array(847, 261, 811, 264, 771.2272, 259.8745, 677, 259, 606.12244, 248.84216, 568, 264, 452.2045, 226.7834, 412.5545, 229.36229, 372, 232, 333.39178, 229.64583, 290, 227, 238, 221, 188, 215, 138, 216, 106, 221, 70, 216, -83.60327, 252)
-collidable = null
+points = PackedVector2Array(250.64288, 285, 190.65002, 274, 106.65997, 268, 34.668457, 291, -57.89203, 262)
+collidable = true
 
 [node name="DoorArea2D" parent="." unique_id=1160326856 node_paths=PackedStringArray("interact_carat") instance=ExtResource("5_oleyw")]
 position = Vector2(2339.0002, 245.00002)
@@ -122,7 +124,11 @@ lio_text = "The Rot has completely consumed this place. "
 
 [node name="LioTrigger3" parent="LIO" unique_id=1993371548 instance=ExtResource("7_3aray")]
 position = Vector2(180, 278)
-lio_text = "A wall lantern. The power is out."
+lio_text = "A wall lantern...I can store glowworms in here."
+
+[node name="LioTrigger4" parent="LIO" unique_id=1163488396 instance=ExtResource("7_3aray")]
+position = Vector2(360, 292)
+lio_text = "Press [ to equip lantern and hold SHIFT to clear."
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1256881528]
 color = Color(0.7107411, 0.71074116, 0.7107411, 1)
@@ -130,5 +136,9 @@ color = Color(0.7107411, 0.71074116, 0.7107411, 1)
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1276469286]
 color = Color(1, 0.7921569, 0.62352943, 0.26666668)
 energy = 0.8
+
+[node name="LanternPickup" parent="." unique_id=1242243690 instance=ExtResource("8_c63m2")]
+position = Vector2(277, 290)
+inv_lantern = ExtResource("9_yrcn3")
 
 [editable path="Player"]
