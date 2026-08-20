@@ -164,12 +164,23 @@ position = Vector2(2196, 245)
 lio_text = "Press [ to clear the rot and reach the amulet."
 requires_dialogue_done = true
 
-[node name="DoorArea2D" parent="." unique_id=1160326856 node_paths=PackedStringArray("interact_carat") instance=ExtResource("15_6d0e5")]
-position = Vector2(2817, 65.00001)
+[node name="DoorMaze" parent="." unique_id=1160326856 node_paths=PackedStringArray("interact_carat") instance=ExtResource("15_6d0e5")]
+position = Vector2(3928.9998, 153.99998)
 interact_carat = NodePath("../InteractiveCarat")
+has_minigame = true
 
 [node name="InteractiveCarat" parent="." unique_id=1099497837 instance=ExtResource("16_a3hc7")]
-position = Vector2(2817, 95)
+position = Vector2(3926, 104)
+
+[node name="DoorGarden" parent="." unique_id=811292301 node_paths=PackedStringArray("interact_carat") instance=ExtResource("15_6d0e5")]
+position = Vector2(2811.9998, 61.999996)
+interact_carat = NodePath("../InteractiveCarat2")
+
+[node name="InteractiveCarat2" parent="." unique_id=731416256 instance=ExtResource("16_a3hc7")]
+position = Vector2(2819, 79)
+
+[node name="GardenReturnPoint" type="Marker2D" parent="." unique_id=1083821957]
+position = Vector2(2903, 196)
 
 [editable path="Player"]
 [editable path="ZoomTrigger"]

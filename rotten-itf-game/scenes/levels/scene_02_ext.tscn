@@ -429,9 +429,10 @@ energy = 0.8
 position = Vector2(630, 226)
 scale = Vector2(0.5, 0.5)
 
-[node name="DoorArea2D" parent="." unique_id=1160326856 instance=ExtResource("11_jctv3")]
+[node name="DoorArea2D" parent="." unique_id=1160326856 node_paths=PackedStringArray("interact_carat") instance=ExtResource("11_jctv3")]
 position = Vector2(631, 288)
 scale = Vector2(2.319, 4.244)
+interact_carat = NodePath("../InteractiveCarat")
 
 [node name="CollectibleItem" parent="." unique_id=385129123 instance=ExtResource("14_58igu")]
 position = Vector2(3505, 307)

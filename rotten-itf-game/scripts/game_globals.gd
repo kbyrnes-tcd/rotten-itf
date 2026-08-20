@@ -31,6 +31,10 @@ var inv_ui : Control
 var running_another_scene : bool = true # for running minigames and etc.
 var pending_start := false
 static var dialogue_done: bool = false
+var previous_level: String = ""
+static var return_position: Vector2 = Vector2.ZERO
+
+signal minigame_completed
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -117,11 +121,13 @@ func unload_minigame():
 	resume(false)
 	# unload mg_root child from tree
 	var c_mg := mg_root.get_child(0)
-	var mg_spawner : ItemConsumer = level_root.get_child(0).get_child(0)
-	# set minigame as complete: deactivate on item_consumer...
-	mg_spawner.satisfied()
+	var mg_spawner = get_tree().get_nodes_in_group("mg_spawner")
+	if mg_spawner.size() > 0:
+		mg_spawner[0].satisfied()
 	c_mg.queue_free()
+	# set minigame as complete: deactivate on item_consumer...
 	mid_mg = null
+	emit_signal("minigame_completed")
 	return
 	
 func load_minigame(mg : int):
@@ -167,6 +173,9 @@ func unload_level():
 		level_root.get_child(0).queue_free()
 
 func load_level(level_name: String):
+	var came_from= level_root.get_child(0).name if level_root.get_child_count() > 0 else ""
+	print("came_from: " + str(came_from))
+	previous_level = came_from
 	level_name = level_name.to_lower()
 	unload_level()
 	var path = "res://scenes/levels/%s.tscn" % level_name
@@ -175,6 +184,11 @@ func load_level(level_name: String):
 	if (n_scene):
 		level_root.add_child(scene_node)
 		player = scene_node.find_child("Player")
+		var return_marker = scene_node.find_child("GardenReturnPoint")
+		print("return_marker: " + str(return_marker))
+		if return_marker and came_from.to_lower() == "scene_03_garden":
+			print("setting position: " + str(return_marker.global_position))
+			player.global_position = return_marker.global_position
 		if prog_counter != 0:
 			AudioManager.change_ambience(audio_prog[prog_counter].ambience)
 			AudioManager.change_music(audio_prog[prog_counter].music)
@@ -183,6 +197,16 @@ func load_level(level_name: String):
 			AudioManager.play_music(audio_prog[0].music)
 
 func next_level():
+	if prog_counter + 1 >= level_prog.size():
+		print("no next level")
+		return
 	prog_counter += 1
 	var next_scene : String = str(level_prog[prog_counter])
+	print("loading: ", next_scene)
 	load_level(next_scene)
+	
+func prev_level():
+	if previous_level != "":
+		prog_counter -= 1
+		load_level(previous_level)
+	
