@@ -27,6 +27,7 @@ metadata/_custom_type_script = "uid://dsv6t02gawlnl"
 [sub_resource type="Resource" id="Resource_5ev5f"]
 script = ExtResource("2_bqrqy")
 item = ExtResource("5_pkkfy")
+amount = 1
 metadata/_custom_type_script = "uid://dsv6t02gawlnl"
 
 [sub_resource type="Resource" id="Resource_koxa7"]
