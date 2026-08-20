@@ -37,6 +37,7 @@ var segments: Array = []
 @export var FULL_JUMP_VELOCITY = -650.0
 @export var MID_JUMP_VELOCITY = -500.0
 var STEP_JUMP_VELOCITY := -250
+@export var foot_marker : Marker2D
 
 # Enums and state variables
 enum ToolState { IDLE, LANTERN_ON, LANTERN_EQUIPPED, GUN_EQUIPPED, GUN_ON }
@@ -81,8 +82,9 @@ func get_tool_state():
 func _physics_process(delta: float):
 	_handle_animation()
 	_handle_vine_growth(delta)
-	_handle_movement(delta)
 	move_and_slide()
+	#step_logic()
+	_handle_movement(delta)
 	_handle_sprite_direction()
 	
 func _handle_animation():
@@ -98,18 +100,43 @@ func _handle_animation():
 		else:
 			animated_sprite_2d.animation = "walk_equipped"
 
+var step_target_y := 0.0
+func can_step_up() -> bool:
+	var shape_index; var owner_id; var shape_node;
+	var step_raycasts : Array[RayCast2D]= [$StepJumpRayCastL, $StepJumpRayCastR]
+	for foot in step_raycasts:
+		var lorr := foot.name.substr(foot.name.length() - 1, 1)
+		var collider = foot.get_collider()
+		if collider:
+			shape_index = foot.get_collider_shape()
+			owner_id = collider.shape_find_owner(shape_index)
+			shape_node = collider.shape_owner_get_owner(owner_id)
+
+		if foot.is_colliding() and foot.get_collider():
+			if shape_node is CollisionShape2D:
+				print("%s foot is colliding with %s" %[lorr, shape_node.one_way_collision])
+				step_target_y = foot.get_collision_point().y
+				if step_target_y < foot_marker.global_position.y:  
+					return true
+
+	return false
+
 func can_i_jump() -> Dictionary:
 	var jump_data := {
 		"can_jump": is_on_floor(), 
 		"jump_velocity": FULL_JUMP_VELOCITY if !$FullJumpRayCast.is_colliding() else MID_JUMP_VELOCITY if !$MidJumpRayCast.is_colliding() else 0.0
 			}
-			
-	# need to check that raycast isnt detecting the one-way collider platforms/steps
+
+	$FullJumpRayCast.force_raycast_update()
+	$MidJumpRayCast.force_raycast_update()
+	# need to check that raycast isnt rejecting the one-way collider platforms
 	if jump_data["jump_velocity"] == 0.0:
-		if $StepJumpRayCastL.is_colliding() and $StepJumpRayCastL.get_collider().is_shape_owner_one_way_collision_enabled(0) \
-			or $StepJumpRayCastR.is_colliding() and $StepJumpRayCastR.get_collider().is_shape_owner_one_way_collision_enabled(0):
-			jump_data["jump_velocity"] = STEP_JUMP_VELOCITY
+		if $FullJumpRayCast.is_colliding() and $FullJumpRayCast.get_collider().is_shape_owner_one_way_collision_enabled(0):
+			jump_data["jump_velocity"] = FULL_JUMP_VELOCITY
+		elif $MidJumpRayCast.is_colliding() and $MidJumpRayCast.get_collider().is_shape_owner_one_way_collision_enabled(0):
+			jump_data["jump_velocity"] = MID_JUMP_VELOCITY
 	return jump_data
+
 
 func _handle_movement(delta: float):
 	if not is_on_floor():
@@ -128,12 +155,18 @@ func _handle_movement(delta: float):
 	
 	var jump_state := can_i_jump()
 	if jump_state["jump_velocity"] == 0.0: return
-	if Input.is_action_just_pressed("jump") and jump_state["can_jump"]:
+	
+	# STEP UP TAKES PRIORITY
+	if Input.is_action_just_pressed("jump") and can_step_up():
+		velocity.y = STEP_JUMP_VELOCITY
+		move_state = MoveState.JUMPING
+	elif Input.is_action_just_pressed("jump") and jump_state["can_jump"]:
 		velocity.y = jump_state["jump_velocity"]
 		move_state = MoveState.JUMPING
 		
-	if Input.is_action_just_pressed("down"):
-		position.y += 3
+	# STEPPING DOWN
+	if Input.is_action_just_pressed("down") and not on_vine:
+		position.y += 5
 		
 	var direction := Input.get_axis("left", "right")
 	if direction:
@@ -499,6 +532,9 @@ func update_worm_segments():
 		else:
 			segments[i].color = Color("#292929")
 
-#func _on_lantern_sfx_area_area_shape_exited(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	#if area.name == "LineArea2D":
-		#AudioManager.stop_fx()
+var on_vine := false
+func _feet_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
+	if area.name == "LineArea2D": on_vine = true
+
+func _on_feet_area_shape_exited(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
+	if area.name == "LineArea2D": on_vine = false
