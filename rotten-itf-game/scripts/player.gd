@@ -167,16 +167,20 @@ func can_take_item(item: InvItem) -> bool:
 # ROT GROWTH AND MOUSE-INTERACTION
 func get_snapped_direction() -> Vector2:
 	var mouse_pos = get_global_mouse_position()
-	var diff = mouse_pos - global_position
-	var angle = diff.angle()
-	var snapped_angle = snappedf(angle, PI / 2.0)
-	return Vector2(cos(snapped_angle), sin(snapped_angle)).round()
+	if mouse_pos.x >= global_position.x:
+		return Vector2.RIGHT
+	else:
+		return Vector2.LEFT
+	#var diff = mouse_pos - global_position
+	#var angle = diff.angle()
+	#var snapped_angle = snappedf(angle, PI / 2.0)
+	#return Vector2(cos(snapped_angle), sin(snapped_angle)).round()
 
 func start_vine():
 	if is_growing:
 		return
 	var dir = get_snapped_direction()
-	var src = gun_sprite.global_position + dir * 10.0
+	var src = gun_sprite.global_position + dir * 20.0
 	var mouse_pos = get_global_mouse_position()
 	var diff = mouse_pos - gun_sprite.global_position
 	var projected_length = diff.dot(dir)
