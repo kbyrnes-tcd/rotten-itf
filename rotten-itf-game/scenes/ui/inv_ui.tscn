@@ -1,59 +1,34 @@
 [gd_scene format=3 uid="uid://0hlcimiuwo6o"]
 
 [ext_resource type="Script" uid="uid://dp0kpvbw6a0av" path="res://scripts/inventory_system/inv_ui.gd" id="1_ef5jc"]
-[ext_resource type="Texture2D" uid="uid://bnlv7tnlhch04" path="res://assets/images/ui/inventory-background.png" id="2_htl50"]
+[ext_resource type="Texture2D" uid="uid://xuhn8sdd1j1r" path="res://assets/images/ui/inv/inv-bg.png" id="2_htl50"]
 [ext_resource type="PackedScene" uid="uid://cl6df2qdvgr0" path="res://scenes/ui/inv_ui_slot.tscn" id="3_shghf"]
+[ext_resource type="Texture2D" uid="uid://cqml1toxisbxh" path="res://assets/images/ui/inv/inv-rhs.png" id="4_shghf"]
+[ext_resource type="FontFile" uid="uid://3u1i6waxj8qa" path="res://assets/fonts/HyperlegibleSans-Bold.ttf" id="5_shghf"]
 
 [node name="InvUI" type="Control" unique_id=959144703]
 process_mode = 3
-custom_minimum_size = Vector2(66, 56.5)
+custom_minimum_size = Vector2(330, 200)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 66.0
 offset_bottom = 44.0
 script = ExtResource("1_ef5jc")
+metadata/_edit_use_anchors_ = true
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=441654564]
 layout_mode = 0
-offset_right = 66.0
-offset_bottom = 44.0
-scale = Vector2(1, 1.2819903)
+offset_right = 330.0
+offset_bottom = 200.0
 texture = ExtResource("2_htl50")
-patch_margin_left = 6
-patch_margin_top = 6
-patch_margin_right = 6
-patch_margin_bottom = 6
-
-[node name="Label" type="Label" parent="NinePatchRect" unique_id=1718326604]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -23.0
-offset_right = 20.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 4
-text = "This item is awesum."
-vertical_alignment = 2
+region_rect = Rect2(76.333, 36.667, 330, 200)
 
 [node name="GridContainer" type="GridContainer" parent="NinePatchRect" unique_id=125647624]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -29.0
-offset_top = -18.0
-offset_right = 29.0
-offset_bottom = 18.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1, 0.71918666)
+offset_left = 30.0
+offset_top = 25.0
+offset_right = 130.0
+offset_bottom = 175.0
 columns = 3
 
 [node name="Inv_Ui_Slot1" parent="NinePatchRect/GridContainer" unique_id=1590680367 instance=ExtResource("3_shghf")]
@@ -73,3 +48,90 @@ layout_mode = 2
 
 [node name="Inv_Ui_Slot6" parent="NinePatchRect/GridContainer" unique_id=1687060262 instance=ExtResource("3_shghf")]
 layout_mode = 2
+
+[node name="Inv_Ui_Slot7" parent="NinePatchRect/GridContainer" unique_id=1406495372 instance=ExtResource("3_shghf")]
+layout_mode = 2
+
+[node name="Inv_Ui_Slot8" parent="NinePatchRect/GridContainer" unique_id=690049888 instance=ExtResource("3_shghf")]
+layout_mode = 2
+
+[node name="Inv_Ui_Slot9" parent="NinePatchRect/GridContainer" unique_id=1950428585 instance=ExtResource("3_shghf")]
+layout_mode = 2
+
+[node name="Inv_Ui_Slot10" parent="NinePatchRect/GridContainer" unique_id=1817796178 instance=ExtResource("3_shghf")]
+layout_mode = 2
+
+[node name="Inv_Ui_Slot11" parent="NinePatchRect/GridContainer" unique_id=1196187156 instance=ExtResource("3_shghf")]
+layout_mode = 2
+
+[node name="Inv_Ui_Slot12" parent="NinePatchRect/GridContainer" unique_id=1395880782 instance=ExtResource("3_shghf")]
+layout_mode = 2
+
+[node name="RHS" type="Sprite2D" parent="NinePatchRect" unique_id=796051584]
+position = Vector2(230, 97)
+texture = ExtResource("4_shghf")
+
+[node name="ActiveItemTexture" type="TextureRect" parent="NinePatchRect/RHS" unique_id=1787148557]
+custom_minimum_size = Vector2(55, 55)
+propagate_maximum_size = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -103.0
+offset_top = -68.0
+offset_right = -48.0
+offset_bottom = -13.0
+grow_horizontal = 2
+scale = Vector2(1.0032772, 1)
+expand_mode = 3
+
+[node name="ActiveItemLabel" type="Label" parent="NinePatchRect/RHS" unique_id=142410260]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -138.5
+offset_top = -159.0
+offset_right = -14.5
+offset_bottom = -154.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_shghf")
+theme_override_font_sizes/font_size = 4
+vertical_alignment = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="NinePatchRect/RHS" unique_id=1428215792]
+custom_minimum_size = Vector2(125, 55)
+custom_maximum_size = Vector2(125, 55)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -139.0
+offset_top = -147.0
+offset_right = -14.0
+offset_bottom = -92.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 4
+draw_focus_border = true
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 4
+
+[node name="Box" type="VBoxContainer" parent="NinePatchRect/RHS/ScrollContainer" unique_id=1868517898]
+custom_minimum_size = Vector2(100, 50)
+custom_maximum_size = Vector2(108, 50)
+layout_mode = 2
+alignment = 1
+
+[node name="ActiveItemDesc" type="Label" parent="NinePatchRect/RHS/ScrollContainer/Box" unique_id=1450719597]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_shghf")
+theme_override_font_sizes/font_size = 5
+autowrap_mode = 3
