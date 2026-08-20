@@ -33,7 +33,10 @@ var segments: Array = []
 
 # Drag and drop player inv, set player speed/jump params
 @export var inv: Inventory
-@export var SPEED = 150.0
+var target_speed:=-1
+const NORMAL_SPEED := 150.0
+const STEP_SPEED := 80.0
+const ACCELERATION := 800.0
 @export var FULL_JUMP_VELOCITY = -650.0
 @export var MID_JUMP_VELOCITY = -500.0
 var STEP_JUMP_VELOCITY := -250
@@ -77,13 +80,13 @@ func _process(delta):
 			
 func get_tool_state():
 	return tool_state
-	
-# MOVEMENT
+
+var can_step := false
 func _physics_process(delta: float):
 	_handle_animation()
 	_handle_vine_growth(delta)
 	move_and_slide()
-	#step_logic()
+	can_step = can_step_up() # for changing speeds correctly
 	_handle_movement(delta)
 	_handle_sprite_direction()
 	
@@ -103,24 +106,21 @@ func _handle_animation():
 var step_target_y := 0.0
 var on_step := false
 func can_step_up() -> bool:
-	var shape_index; var owner_id; var shape_node;
-	var step_raycasts : Array[RayCast2D]= [$StepJumpRayCastL, $StepJumpRayCastR]
-	for foot in step_raycasts:
-		var lorr := foot.name.substr(foot.name.length() - 1, 1)
-		var collider = foot.get_collider()
-		if collider:
+	on_step = false
+	var collider; var shape_index; var owner_id; var shape_node;
+	for foot in [$StepJumpRayCastL, $StepJumpRayCastR]:
+		#var lorr := foot.name.substr(foot.name.length() - 1, 1)
+		if foot.is_colliding():
+			collider = foot.get_collider()
 			shape_index = foot.get_collider_shape()
 			owner_id = collider.shape_find_owner(shape_index)
 			shape_node = collider.shape_owner_get_owner(owner_id)
-		if foot.is_colliding() and foot.get_collider():
-			if shape_node is CollisionShape2D or shape_node is CollisionPolygon2D:
-				if shape_node.one_way_collision:
-					on_step = true
-					#print("%s foot is colliding with %s" %[lorr, shape_node.one_way_collision])
+			if (shape_node is CollisionShape2D or shape_node is CollisionPolygon2D) and shape_node.one_way_collision:
+				on_step = true
+				#print("%s foot is colliding with %s" %[lorr, shape_node.one_way_collision])
+				if step_target_y < foot_marker.global_position.y:
 					step_target_y = foot.get_collision_point().y
-					if step_target_y < foot_marker.global_position.y:  
-						return true
-				else: on_step = false
+					return true
 	return false
 
 func can_i_jump() -> Dictionary:
@@ -139,11 +139,10 @@ func can_i_jump() -> Dictionary:
 			jump_data["jump_velocity"] = MID_JUMP_VELOCITY
 	return jump_data
 
-
 func _handle_movement(delta: float):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-		animated_sprite_2d.animation = "jump" # keeping jump anim call here as it is a single sprite render
+		#animated_sprite_2d.animation = "jump" # keeping jump anim call here as it is a single sprite render
 		move_state = MoveState.FALLING
 	else:
 		move_state = MoveState.IDLE
@@ -159,13 +158,14 @@ func _handle_movement(delta: float):
 	if jump_state["jump_velocity"] == 0.0: return
 	
 	# STEP UP TAKES PRIORITY
-	if can_step_up() and Input.is_action_just_pressed("jump"):
+	if can_step and Input.is_action_just_pressed("jump"):
 		velocity.y = STEP_JUMP_VELOCITY
 		move_state = MoveState.JUMPING
-	elif can_step_up() and Input.is_action_pressed("jump") and on_step:
+	elif can_step and Input.is_action_pressed("jump") and on_step:
 		velocity.y = STEP_JUMP_VELOCITY
 		move_state = MoveState.JUMPING
-	elif Input.is_action_just_pressed("jump") and jump_state["can_jump"]:
+	
+	if Input.is_action_just_pressed("jump") and jump_state["can_jump"]:
 		velocity.y = jump_state["jump_velocity"]
 		move_state = MoveState.JUMPING
 		
@@ -174,12 +174,26 @@ func _handle_movement(delta: float):
 		position.y += 5
 	elif not on_vine and Input.is_action_pressed("down") and on_step:
 		position.y += 5
+	
+	# OG MOVEMENT
+	#if direction:
+		#velocity.x = direction * NORMAL_SPEED
+	#else:
+		#velocity.x = move_toward(velocity.x, 0, NORMAL_SPEED)
 		
+	# SPEED CONTROLLED STEPPINGGG
 	var direction := Input.get_axis("left", "right")
-	if direction:
-		velocity.x = direction * SPEED
+	# literal smooth stepping, lerp speed down
+	if on_step:
+		var remaining: float = abs(step_target_y - foot_marker.global_position.y)
+		var step_heigh := 10.0
+		var t: float = clamp(remaining / step_heigh, 0.0, 1.0)  # 1 = just started, 0 = arrived
+		var stepping_speed: float = lerp(NORMAL_SPEED, STEP_SPEED, t)
+		target_speed = stepping_speed
+		velocity.x = move_toward(velocity.x, direction * stepping_speed, ACCELERATION * delta)
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		target_speed = NORMAL_SPEED
+		velocity.x = move_toward(velocity.x, direction * NORMAL_SPEED, ACCELERATION * delta)
 
 func _handle_sprite_direction():
 	var direction = Input.get_axis("left", "right")
