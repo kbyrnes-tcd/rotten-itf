@@ -17,6 +17,9 @@
 [ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="15_6d0e5"]
 [ext_resource type="PackedScene" uid="uid://bimatr4hej8ja" path="res://scenes/ui/interactive_carat.tscn" id="16_a3hc7"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_y4r1p"]
+radius = 35.19535
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_co3ny"]
 size = Vector2(300, 20)
 
@@ -44,12 +47,26 @@ polygon = PackedVector2Array(-1920, 270, -1461.1, 270, -1463, 158, -1463, 155, -
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("3_p368k")]
 z_index = 1
-position = Vector2(178, 244)
+position = Vector2(160, 241)
+safe_margin = 0.08
+
+[node name="PlyrCollisionShape2D" parent="Player" index="0" unique_id=66024058]
+position = Vector2(-3.25, 2.5)
+scale = Vector2(1, 1)
+
+[node name="AnimatedSprite2D" parent="Player/CharacterSprites" parent_id_path=PackedInt32Array(1515659648, 2095860029) index="0" unique_id=512896578]
+frame = 4
+frame_progress = 0.1119532
+
+[node name="LntrnCollisionShape2D" parent="Player/CharacterSprites/Lantern/LanternArea2D" parent_id_path=PackedInt32Array(1515659648, 1614078195) index="0" unique_id=877712953]
+position = Vector2(10.256411, -2.197803)
+shape = SubResource("CircleShape2D_y4r1p")
 
 [node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
+limit_left = -94
 limit_top = -206
 limit_right = 3921
-limit_bottom = 423
+limit_bottom = 374
 
 [node name="ZoomTrigger" parent="." unique_id=1302506614 instance=ExtResource("4_bork3")]
 
