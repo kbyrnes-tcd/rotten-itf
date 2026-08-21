@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://32h27chxiffi" path="res://scenes/glowworm_cluster.tscn" id="7_2jge0"]
 [ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="8_33ufd"]
 [ext_resource type="PackedScene" uid="uid://bimatr4hej8ja" path="res://scenes/ui/interactive_carat.tscn" id="9_4mtit"]
+[ext_resource type="PackedScene" uid="uid://b7584gf13larx" path="res://scenes/levels/scene_07_underworld.tscn" id="9_33ufd"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q01m8"]
 size = Vector2(1371, 39)
@@ -111,11 +113,11 @@ scale = Vector2(0.9, 0.94)
 position = Vector2(-4, 0)
 
 [node name="DoorArea2D" parent="." unique_id=1160326856 node_paths=PackedStringArray("interact_carat") instance=ExtResource("8_33ufd")]
-position = Vector2(369.0001, 106.99999)
+position = Vector2(361, 209)
+next_scene = ExtResource("9_33ufd")
 interact_carat = NodePath("../InteractiveCarat")
-go_back = true
 
 [node name="InteractiveCarat" parent="." unique_id=1099497837 instance=ExtResource("9_4mtit")]
-position = Vector2(360, 148)
+position = Vector2(362, 109)
 
 [editable path="GlowwormCluster"]

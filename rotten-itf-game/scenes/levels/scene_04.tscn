@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://ufmhebijpwbb" path="res://scenes/collectible_item.tscn" id="4_vp8d7"]
 [ext_resource type="Resource" uid="uid://clnyyb2h5f77h" path="res://scripts/inventory_system/items/letter_scrap.tres" id="5_8k800"]
 [ext_resource type="PackedScene" uid="uid://di31qowjleyl4" path="res://scenes/rot_dressing_new.tscn" id="6_8k800"]
+[ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="7_oo6cp"]
+[ext_resource type="PackedScene" uid="uid://cwbsao03j5sj6" path="res://scenes/levels/scene_05.tscn" id="8_f732m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w2pfo"]
 
@@ -151,5 +153,12 @@ limit_left = -343
 limit_top = -280
 limit_right = 4171
 limit_bottom = 519
+
+[node name="DoorBackToAltar" parent="." unique_id=1160326856 instance=ExtResource("7_oo6cp")]
+position = Vector2(-63, 227)
+
+[node name="DoorToTower" parent="." unique_id=1616901176 instance=ExtResource("7_oo6cp")]
+position = Vector2(4132, 409.00003)
+next_scene = ExtResource("8_f732m")
 
 [editable path="Player"]

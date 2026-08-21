@@ -172,10 +172,18 @@ func unload_level():
 	if level_root.get_child_count() > 0:
 		level_root.get_child(0).queue_free()
 
+func play_level_music(scene_name : String):
+	var scene_index = level_prog.find(scene_name)
+	print("curr scene is %s and its index would be %s" %[scene_name, scene_index])
+	if prog_counter == 0:
+		AudioManager.play_ambience(audio_prog[0].ambience)
+		AudioManager.play_music(audio_prog[0].music)
+	else:
+		AudioManager.change_ambience(audio_prog[scene_index].ambience)
+		AudioManager.change_music(audio_prog[scene_index].music)
+
 func load_level(level_name: String):
-	var came_from= level_root.get_child(0).name if level_root.get_child_count() > 0 else ""
-	print("came_from: " + str(came_from))
-	previous_level = came_from
+	# if last used door is in this scene, spawn player next to it
 	level_name = level_name.to_lower()
 	unload_level()
 	var path = "res://scenes/levels/%s.tscn" % level_name
@@ -184,26 +192,25 @@ func load_level(level_name: String):
 	if (n_scene):
 		level_root.add_child(scene_node)
 		player = scene_node.find_child("Player")
-		var return_marker = scene_node.find_child("GardenReturnPoint")
-		print("return_marker: " + str(return_marker))
-		if return_marker and came_from.to_lower() == "scene_03_garden":
-			print("setting position: " + str(return_marker.global_position))
-			player.global_position = return_marker.global_position
-		if prog_counter != 0:
-			AudioManager.change_ambience(audio_prog[prog_counter].ambience)
-			AudioManager.change_music(audio_prog[prog_counter].music)
-		else: 
-			AudioManager.play_ambience(audio_prog[0].ambience)
-			AudioManager.play_music(audio_prog[0].music)
+		play_level_music(level_name)
 
-func next_level():
-	if prog_counter + 1 >= level_prog.size():
-		print("no next level")
-		return
-	prog_counter += 1
-	var next_scene : String = str(level_prog[prog_counter])
-	print("loading: ", next_scene)
-	load_level(next_scene)
+func load_scene(n_scene : PackedScene):
+	prog_counter+=1
+	var scene_node : Node = n_scene.instantiate()
+	if (n_scene):
+		unload_level()
+		level_root.add_child(scene_node)
+		player = scene_node.find_child("Player")
+		play_level_music(n_scene.resource_path.get_file().get_basename())
+
+#func next_level():
+	#if prog_counter + 1 >= level_prog.size():
+		#print("no next level")
+		#return
+	#prog_counter += 1
+	#var next_scene : String = str(level_prog[prog_counter])
+	#print("loading: ", next_scene)
+	#load_level(next_scene)
 	
 func prev_level():
 	if previous_level != "":

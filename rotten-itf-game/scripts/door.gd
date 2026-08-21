@@ -1,17 +1,15 @@
 extends Area2D
 
-@export var next_scene = preload("uid://h1dqndhb88on")
+@export var next_scene : PackedScene
 @export var required_item: InvItem = null
-@export var required_amount: int = 1
+@export var required_amount: int = 0
 @export var interact_carat: Node2D
 @export var has_minigame: bool = false
 @export var minigame: GameGlobals.Minigame = GameGlobals.Minigame.MAZE
-@export var go_back: bool = false
 var minigame_solved: bool = false
 
 var near_door = false
 var player = null
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -25,16 +23,13 @@ func _process(_delta: float) -> void:
 		if can_pass and Input.is_action_just_pressed("interact"):
 			print("interact pressed")
 			AudioManager.play_os("open_door")
-			if go_back:
-				print("going back")
-				GameGlobals.prev_level()
-			elif has_minigame and not minigame_solved:
+			if has_minigame and not minigame_solved:
 				GameGlobals.load_minigame(minigame)
 				await GameGlobals.minigame_completed
 				minigame_solved = true
-				GameGlobals.next_level()
+				GameGlobals.load_scene(next_scene)
 			else:
-				GameGlobals.next_level()
+				GameGlobals.load_scene(next_scene)
 
 func _check_condtion() -> bool:
 	if required_item == null:

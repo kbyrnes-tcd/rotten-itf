@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cbfg68hgjmgis" path="res://scenes/lio_popup.tscn" id="8_68t1h"]
 [ext_resource type="PackedScene" uid="uid://dtf7n0o1f301e" path="res://scenes/ui/dialogue_textbox.tscn" id="9_y13p6"]
 
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y13p6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eujl3"]

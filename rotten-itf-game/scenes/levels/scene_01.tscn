@@ -9,7 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://04tiqv4hnn5o" path="res://assets/images/env/p1_start/Building_Front.png" id="6_amr1b"]
 [ext_resource type="PackedScene" uid="uid://bimatr4hej8ja" path="res://scenes/ui/interactive_carat.tscn" id="8_5t0pk"]
 [ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="9_b3nsi"]
+[ext_resource type="PackedScene" uid="uid://b7584gf13larx" path="res://scenes/levels/scene_07_underworld.tscn" id="10_2b8q8"]
 [ext_resource type="PackedScene" uid="uid://dr3ff06oljyer" path="res://scenes/lio_trigger.tscn" id="10_amr1b"]
+
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8bo55"]
 load_path = "res://.godot/imported/Trees.png-61f64ec7b583c9702c4d368fac49f2b6.ctex"
@@ -112,9 +114,10 @@ scale = Vector2(1, 1.0076721)
 position = Vector2(2481, 190)
 scale = Vector2(0.35, 0.35)
 
-[node name="DoorArea2D" parent="." unique_id=1160326856 node_paths=PackedStringArray("interact_carat") instance=ExtResource("9_b3nsi")]
+[node name="DoorToGardenInt" parent="." unique_id=1160326856 node_paths=PackedStringArray("interact_carat") instance=ExtResource("9_b3nsi")]
 position = Vector2(2481.0002, 217)
 scale = Vector2(3.594, 6.575)
+next_scene = ExtResource("10_2b8q8")
 interact_carat = NodePath("../InteractiveCarat")
 
 [node name="LIOTriggers" type="Node" parent="." unique_id=482749486]
