@@ -39,7 +39,7 @@ position = Vector2(-586, 0)
 texture = ExtResource("2_3aray")
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("9_mb6sg")]
-position = Vector2(149, 266)
+position = Vector2(122, 266)
 
 [node name="LntrnCollisionShape2D" parent="Player/CharacterSprites/Lantern/LanternArea2D" parent_id_path=PackedInt32Array(1515659648, 1614078195) index="0" unique_id=877712953]
 scale = Vector2(2.0710225, 2.2047858)
@@ -140,6 +140,8 @@ inv_lantern = ExtResource("9_yrcn3")
 position = Vector2(95.99999, 239.00002)
 scale = Vector2(3.364, 6.156)
 next_scene_path = "scene_01"
+door_id = "DoorCrackBackToExt"
+twin_id = "DoorToGardenInt"
 
 [node name="DoorToGardenExt" parent="." unique_id=1160326856 node_paths=PackedStringArray("interact_carat") instance=ExtResource("5_oleyw")]
 position = Vector2(2339.0002, 245.00002)

@@ -13,6 +13,9 @@ var audio_prog := [
 	#{"ambience": "", "music": ""}
 ]
 
+var prev_scene : String
+var pending_spawn_door_id: String = ""
+
 var level_root: Node2D
 var mg_root: Node2D
 var scene
@@ -170,16 +173,16 @@ func load_letter_ui(letter : LetterCopy):
 
 func unload_level():
 	if level_root.get_child_count() > 0:
+		# detach door node to keep it
 		level_root.get_child(0).queue_free()
 
 func play_level_music(scene_name : String):
-	print("playing level music")
 	var scene_index = level_prog.find(scene_name)
 	AudioManager.change_ambience(audio_prog[scene_index].ambience)
-	AudioManager.change_music(audio_prog[scene_index].music)
+	AudioManager.change_music(audio_prog[scene_index].music)	
 
+var target_door
 func load_level(level_name: String):
-	# TODO: if last used door is in this scene, spawn player next to it
 	level_name = level_name.to_lower()
 	unload_level()
 	var path = "res://scenes/levels/%s.tscn" % level_name
@@ -188,26 +191,23 @@ func load_level(level_name: String):
 	if (n_scene):
 		level_root.add_child(scene_node)
 		player = scene_node.find_child("Player")
-		play_level_music(level_name)
+		if pending_spawn_door_id != "":
+			target_door = scene_node.find_child(pending_spawn_door_id)
+		if target_door:
+			player.global_position = target_door.global_position + Vector2(50, 0)
+		print("pending spawn door is is %s" %pending_spawn_door_id)
+		pending_spawn_door_id = ""
+		play_level_music(level_name)	
 
-func load_scene(n_scene : PackedScene):
-	prog_counter+=1
-	var scene_node : Node = n_scene.instantiate()
-	if (n_scene):
-		unload_level()
-		level_root.add_child(scene_node)
-		player = scene_node.find_child("Player")
-		play_level_music(n_scene.resource_path.get_file().get_basename())
+#func load_scene(n_scene : PackedScene):
+	#prog_counter+=1
+	#var scene_node : Node = n_scene.instantiate()
+	#if (n_scene):
+		#unload_level()
+		#level_root.add_child(scene_node)
+		#player = scene_node.find_child("Player")
+		#play_level_music(n_scene.resource_path.get_file().get_basename())
 
-#func next_level():
-	#if prog_counter + 1 >= level_prog.size():
-		#print("no next level")
-		#return
-	#prog_counter += 1
-	#var next_scene : String = str(level_prog[prog_counter])
-	#print("loading: ", next_scene)
-	#load_level(next_scene)
-	
 func prev_level():
 	if previous_level != "":
 		prog_counter -= 1

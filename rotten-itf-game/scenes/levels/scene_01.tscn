@@ -116,6 +116,8 @@ scale = Vector2(0.35, 0.35)
 position = Vector2(2481.0002, 217)
 scale = Vector2(3.594, 6.575)
 next_scene_path = "scene_02_int"
+door_id = "DoorToGardenInt"
+twin_id = "DoorCrackBackToExt"
 interact_carat = NodePath("../InteractiveCarat")
 
 [node name="LIOTriggers" type="Node" parent="." unique_id=482749486]

@@ -160,5 +160,6 @@ next_scene_path = "scene_03"
 [node name="DoorToTower" parent="." unique_id=1616901176 instance=ExtResource("7_oo6cp")]
 position = Vector2(4132, 409.00003)
 next_scene_path = "scene_05"
+spawn_to_the_left = true
 
 [editable path="Player"]
