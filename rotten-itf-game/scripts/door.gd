@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var next_scene : PackedScene
+@export var next_scene_path : String
 @export var required_item: InvItem = null
 @export var required_amount: int = 0
 @export var interact_carat: Node2D
@@ -27,9 +27,9 @@ func _process(_delta: float) -> void:
 				GameGlobals.load_minigame(minigame)
 				await GameGlobals.minigame_completed
 				minigame_solved = true
-				GameGlobals.load_scene(next_scene)
+				GameGlobals.load_level(next_scene_path)
 			else:
-				GameGlobals.load_scene(next_scene)
+				GameGlobals.load_level(next_scene_path)
 
 func _check_condtion() -> bool:
 	if required_item == null:

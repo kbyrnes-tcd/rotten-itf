@@ -173,17 +173,13 @@ func unload_level():
 		level_root.get_child(0).queue_free()
 
 func play_level_music(scene_name : String):
+	print("playing level music")
 	var scene_index = level_prog.find(scene_name)
-	print("curr scene is %s and its index would be %s" %[scene_name, scene_index])
-	if prog_counter == 0:
-		AudioManager.play_ambience(audio_prog[0].ambience)
-		AudioManager.play_music(audio_prog[0].music)
-	else:
-		AudioManager.change_ambience(audio_prog[scene_index].ambience)
-		AudioManager.change_music(audio_prog[scene_index].music)
+	AudioManager.change_ambience(audio_prog[scene_index].ambience)
+	AudioManager.change_music(audio_prog[scene_index].music)
 
 func load_level(level_name: String):
-	# if last used door is in this scene, spawn player next to it
+	# TODO: if last used door is in this scene, spawn player next to it
 	level_name = level_name.to_lower()
 	unload_level()
 	var path = "res://scenes/levels/%s.tscn" % level_name

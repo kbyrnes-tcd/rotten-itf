@@ -12,10 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://bimatr4hej8ja" path="res://scenes/ui/interactive_carat.tscn" id="10_nqapm"]
 [ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="11_jctv3"]
 [ext_resource type="Resource" uid="uid://6pxkrw3jqp6n" path="res://scripts/inventory_system/items/green_worm.tres" id="12_58igu"]
-[ext_resource type="PackedScene" uid="uid://b7584gf13larx" path="res://scenes/levels/scene_07_underworld.tscn" id="12_e87vj"]
 [ext_resource type="PackedScene" uid="uid://dr3ff06oljyer" path="res://scenes/lio_trigger.tscn" id="12_gvi84"]
 [ext_resource type="PackedScene" uid="uid://ufmhebijpwbb" path="res://scenes/collectible_item.tscn" id="14_58igu"]
-
 
 [sub_resource type="Curve" id="Curve_qsi71"]
 _data = [Vector2(0, 0.1), 0.0, 0.0, 0, 0, Vector2(0.7, 0.6), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -434,7 +432,7 @@ scale = Vector2(0.5, 0.5)
 [node name="DoorBackToGardenInt" parent="." unique_id=1160326856 node_paths=PackedStringArray("interact_carat") instance=ExtResource("11_jctv3")]
 position = Vector2(631, 288)
 scale = Vector2(2.319, 4.244)
-next_scene = ExtResource("12_e87vj")
+next_scene_path = "scene_02_int"
 interact_carat = NodePath("../InteractiveCarat")
 
 [node name="CollectibleItem" parent="." unique_id=385129123 instance=ExtResource("14_58igu")]

@@ -16,10 +16,6 @@
 [ext_resource type="Resource" uid="uid://bcvemp5c8igqs" path="res://scripts/inventory_system/items/amulet.tres" id="13_e0ngt"]
 [ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="15_6d0e5"]
 [ext_resource type="PackedScene" uid="uid://bimatr4hej8ja" path="res://scenes/ui/interactive_carat.tscn" id="16_a3hc7"]
-[ext_resource type="PackedScene" uid="uid://b7584gf13larx" path="res://scenes/levels/scene_07_underworld.tscn" id="17_5qqcl"]
-[ext_resource type="PackedScene" uid="uid://ctd6mmvny4tuh" path="res://scenes/levels/scene_03_garden.tscn" id="18_cqx5b"]
-[ext_resource type="PackedScene" uid="uid://dabmux7g7fuy7" path="res://scenes/levels/scene_04.tscn" id="19_5qqcl"]
-
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_co3ny"]
 size = Vector2(300, 20)
@@ -173,17 +169,17 @@ position = Vector2(3926, 104)
 
 [node name="DoorBack" parent="." unique_id=1160326856 node_paths=PackedStringArray("interact_carat") instance=ExtResource("15_6d0e5")]
 position = Vector2(121, 220)
-next_scene = ExtResource("17_5qqcl")
+next_scene_path = "scene_02_int"
 interact_carat = NodePath("../InteractiveCarat2")
 
 [node name="DoorToMiniGarden" parent="." unique_id=811292301 node_paths=PackedStringArray("interact_carat") instance=ExtResource("15_6d0e5")]
 position = Vector2(2817, 159)
-next_scene = ExtResource("18_cqx5b")
+next_scene_path = "scene_03_garden"
 interact_carat = NodePath("../InteractiveCarat2")
 
 [node name="DoorMaze" parent="." unique_id=25365531 node_paths=PackedStringArray("interact_carat") instance=ExtResource("15_6d0e5")]
 position = Vector2(3922, 158)
-next_scene = ExtResource("19_5qqcl")
+next_scene_path = "scene_04"
 interact_carat = NodePath("../InteractiveCarat")
 has_minigame = true
 
