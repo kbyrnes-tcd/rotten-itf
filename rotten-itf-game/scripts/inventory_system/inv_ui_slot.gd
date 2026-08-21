@@ -32,4 +32,3 @@ func _on_mouse_exited() -> void:
 	if inv_slot:
 		inv_ui.activate_slot(inv_slot)
 		inv_slot.set_unactive()
-		inv_ui.clear_selection()
