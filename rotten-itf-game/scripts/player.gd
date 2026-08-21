@@ -179,8 +179,19 @@ func get_snapped_direction() -> Vector2:
 func start_vine():
 	if is_growing:
 		return
+	
 	var dir = get_snapped_direction()
-	var src = gun_sprite.global_position + dir * 20.0
+	var src = gun_sprite.global_position + dir * 10.0
+
+	var space_state = get_world_2d().direct_space_state
+	var params = PhysicsPointQueryParameters2D.new()
+	params.position = src
+	params.collide_with_bodies = true
+	params.collide_with_areas = false
+	var result = space_state.intersect_point(params, 32)
+	for r in result:
+		if r.collider == self: return # BLOCKEDD do not grow towards player
+
 	var mouse_pos = get_global_mouse_position()
 	var diff = mouse_pos - gun_sprite.global_position
 	var projected_length = diff.dot(dir)
@@ -188,8 +199,6 @@ func start_vine():
 	var vine_instance = ROT_VINE.instantiate()
 	scene.add_child(vine_instance)
 	active_vine = vine_instance.get_child(0)
-	#print(active_vine.position)
-	#print(active_vine.gun_sprite.global_position)
 	active_vine.points = PackedVector2Array([
 		active_vine.to_local(src),
 		active_vine.to_local(src)
@@ -198,8 +207,6 @@ func start_vine():
 	active_vine.set_meta("dir", dir)
 	active_vine.set_meta("src", src)
 	active_vine.set_meta("target", target)
-	#print("vine started from " + str(src) + " toward " + str(target))
-	#print("dir: " + str(dir) + " mouse: " + str(get_global_mouse_position()) + " player: " + str(global_position))
 
 func stop_vine():
 	if is_growing and active_vine:
@@ -399,12 +406,7 @@ func _handle_vine_growth(delta: float):
 	var pts = active_vine.points
 	if pts.size() < 2:
 		return
-	#var curve = Curve.new()
-	#curve.add_point(Vector2(0,1))
-	#curve.add_point(Vector2(0.8,1))
-	#curve.add_point(Vector2(1,0))
-	
-	#active_vine.width_curve = curve
+
 	var dir: Vector2 = active_vine.get_meta("dir")
 	var target: Vector2 = active_vine.get_meta("target")
 	var tip_local = pts[pts.size() - 1]
@@ -416,24 +418,31 @@ func _handle_vine_growth(delta: float):
 		active_vine.points = pts
 		stop_vine()
 		return
+		
 	var space_state = get_world_2d().direct_space_state
 	var params = PhysicsPointQueryParameters2D.new()
 	params.position = next_global
 	params.collide_with_bodies = true
 	params.collide_with_areas = false
-	params.exclude = [get_rid()]
+	
 	var result = space_state.intersect_point(params, 32)
 	var hit_wall = false
 	for r in result:
-		#print(r.collider)
+		print(r)
+		# ignore hitting the vine itself extending
 		if active_vine.get_parent().has_node("LineStaticBody2D"):
 			if r.collider == active_vine.get_parent().get_node("LineStaticBody2D"):
 				continue
+		# prevent growing the vine inwards the player's collider
+		if r.collider == self:
+			#print("hit player!!")
+			hit_wall = true
+			break
 		hit_wall = true
 		break
-	#print(result)
 	if hit_wall:
 		stop_vine()
+		
 	else:
 		var new_pts: PackedVector2Array = PackedVector2Array(active_vine.points)
 		var last_fixed = active_vine.to_global(new_pts[new_pts.size() - 2])
