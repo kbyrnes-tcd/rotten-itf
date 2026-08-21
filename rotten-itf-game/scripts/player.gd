@@ -564,7 +564,9 @@ func update_worm_segments():
 
 var on_vine := false
 func _feet_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
-	if area.name == "LineArea2D": on_vine = true
+	if area:
+		if area.name == "LineArea2D": on_vine = true
 
 func _on_feet_area_shape_exited(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
-	if area.name == "LineArea2D": on_vine = false
+	if area:
+		if area.name == "LineArea2D": on_vine = false

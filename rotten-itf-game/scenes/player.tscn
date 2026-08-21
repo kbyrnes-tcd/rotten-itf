@@ -174,7 +174,6 @@ scale = Vector2(0.8, 0.8)
 safe_margin = 1.5
 script = ExtResource("1_qlg0r")
 inv = ExtResource("2_gl8cc")
-SPEED = 700.0
 foot_marker = NodePath("FootMarker")
 
 [node name="PlyrCollisionShape2D" type="CollisionShape2D" parent="." unique_id=66024058]

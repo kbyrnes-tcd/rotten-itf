@@ -147,12 +147,16 @@ twin_id = "DoorToGardenInt"
 position = Vector2(2339.0002, 245.00002)
 scale = Vector2(2.544, 4.656)
 next_scene_path = "scene_02_ext"
+door_id = "DoorToGardenExt"
+twin_id = "DoorBackToGardenInt"
 interact_carat = NodePath("../InteractiveCarat")
 
 [node name="DoorToTemple" parent="." unique_id=763266512 node_paths=PackedStringArray("interact_carat") instance=ExtResource("5_oleyw")]
 position = Vector2(849.00006, 245)
 scale = Vector2(2.544, 4.656)
 next_scene_path = "scene_03"
+door_id = "DoorToTemple"
+twin_id = "DoorToTemple"
 interact_carat = NodePath("../InteractiveCarat")
 
 [editable path="Player"]

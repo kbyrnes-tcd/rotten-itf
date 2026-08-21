@@ -156,6 +156,8 @@ limit_bottom = 519
 [node name="DoorBackToAltar" parent="." unique_id=1160326856 instance=ExtResource("7_oo6cp")]
 position = Vector2(-63, 227)
 next_scene_path = "scene_03"
+door_id = "DoorBackToAltar"
+twin_id = "DoorMaze"
 
 [node name="DoorToTower" parent="." unique_id=1616901176 instance=ExtResource("7_oo6cp")]
 position = Vector2(4132, 409.00003)

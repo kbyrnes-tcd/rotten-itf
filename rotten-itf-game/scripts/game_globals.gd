@@ -32,7 +32,7 @@ var letter_ui: Control
 var mid_mg : Node
 var inv_ui : Control
 var running_another_scene : bool = true # for running minigames and etc.
-var pending_start := false
+var pending_start := true
 static var dialogue_done: bool = false
 var previous_level: String = ""
 static var return_position: Vector2 = Vector2.ZERO
@@ -65,11 +65,11 @@ func start_level_or_debug() -> void:
 	if debug_scene == null:
 		load_level(level_prog[0])
 	else:
-		AudioManager.play_music(audio_prog[0].music)
-		AudioManager.play_ambience(audio_prog[0].ambience)
 		var debug_node := debug_scene.instantiate()
 		level_root.add_child(debug_node)
 		player = debug_node.find_child("Player")
+	AudioManager.play_music(audio_prog[0].music)
+	AudioManager.play_ambience(audio_prog[0].ambience)
 
 func start_new_game() -> void:
 	pending_start = true
@@ -197,7 +197,7 @@ func load_level(level_name: String):
 			player.global_position = target_door.global_position + Vector2(50, 0)
 		print("pending spawn door is is %s" %pending_spawn_door_id)
 		pending_spawn_door_id = ""
-		play_level_music(level_name)	
+		play_level_music(level_name)
 
 #func load_scene(n_scene : PackedScene):
 	#prog_counter+=1
