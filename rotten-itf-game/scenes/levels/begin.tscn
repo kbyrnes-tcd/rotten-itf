@@ -60,6 +60,7 @@ grow_vertical = 2
 scale = Vector2(2.5, 2.5)
 
 [node name="InvUI" parent="HUD/InvHUD" unique_id=1822479878 instance=ExtResource("3_ep3c1")]
+visible = false
 custom_maximum_size = Vector2(330, 200)
 layout_mode = 1
 anchors_preset = 8

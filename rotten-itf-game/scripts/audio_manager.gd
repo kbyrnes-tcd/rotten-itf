@@ -84,7 +84,7 @@ func play_music(song: String) -> void:
 	if !active_music:
 		active_music = clips.get_node("Music")
 		active_music.stream = music[song]
-		music_tween = await fade(music_tween, active_music, -50.0, -30, 1.0)
+		music_tween = await fade(music_tween, active_music, -50.0, -10, 1.0)
 		active_music.play()
 
 func increase_music_vol(amount: float = 15.0, dur: float = 1.5):
