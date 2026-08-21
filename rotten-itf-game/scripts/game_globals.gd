@@ -5,7 +5,7 @@ var level_prog = ["lore_scene","scene_01", "scene_02_int", "scene_02_ext", "scen
 var prog_counter := 0
 # PROGRESSION: ext_path, garden_int, garden_ext, altar, quarters, tower, p-altar, underworld
 var audio_prog := [
-	{"ambience": "Ext_Ambiance","music": "Temple_Music"}, #lore_scene
+	{"ambience": "n/a","music": "Title_Song"}, #lore_scene
 	{"ambience": "Ext_Ambiance","music": "Temple_Music"}, #ext_path
 	{"ambience": "Int_Ambiance","music": "Temple_Music"}, #garden_int
 	{"ambience": "Garden_Ambience", "music": "Temple_Music"}, #garden_ext
@@ -42,6 +42,7 @@ signal minigame_completed
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	AudioManager.play_music(audio_prog[0].music)
 	if !running_another_scene:
 		setup_game()
 
@@ -69,8 +70,6 @@ func start_level_or_debug() -> void:
 		var debug_node := debug_scene.instantiate()
 		level_root.add_child(debug_node)
 		player = debug_node.find_child("Player")
-	AudioManager.play_music(audio_prog[0].music)
-	AudioManager.play_ambience(audio_prog[0].ambience)
 
 func start_new_game() -> void:
 	pending_start = true
@@ -179,8 +178,10 @@ func unload_level():
 
 func play_level_music(scene_name : String):
 	var scene_index = level_prog.find(scene_name)
+	if scene_index == 1: AudioManager.play_ambience(audio_prog[1].ambience)
 	AudioManager.change_ambience(audio_prog[scene_index].ambience)
 	AudioManager.change_music(audio_prog[scene_index].music)
+	if scene_index == 2: AudioManager.decrease_music_vol(30)
 
 var target_door
 func load_level(level_name: String):

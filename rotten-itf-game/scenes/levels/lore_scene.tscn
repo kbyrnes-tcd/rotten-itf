@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dclvu8v18i6k" path="res://assets/images/env/p1_start/Backdrop.png" id="3_gb14e"]
 [ext_resource type="FontFile" uid="uid://3u1i6waxj8qa" path="res://assets/fonts/HyperlegibleSans-Bold.ttf" id="6_6jll0"]
 
-[node name="LoreScene" type="Node2D" unique_id=147676473]
+[node name="Lore_Scene" type="Node2D" unique_id=147676473]
 script = ExtResource("1_6bukj")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2007797454]
