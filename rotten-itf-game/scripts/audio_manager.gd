@@ -88,10 +88,16 @@ func play_music(song: String) -> void:
 		active_music.play()
 
 func increase_music_vol(amount: float = 15.0, dur: float = 1.5):
-	music_tween = await fade(music_tween, active_music, active_music.volume_db, active_music.volume_db + amount, dur)
+	if music_tween:
+		music_tween = await fade(music_tween, active_music, active_music.volume_db, active_music.volume_db + amount, dur)
+	else: 
+		music_tween = create_tween()
 
 func decrease_music_vol(amount: float = 15.0, dur: float = 1.5):
-	music_tween = await fade(music_tween, active_music, active_music.volume_db, active_music.volume_db - amount, dur)
+	if music_tween:
+		music_tween = await fade(music_tween, active_music, active_music.volume_db, active_music.volume_db - amount, dur)
+	else: 
+		music_tween = create_tween()
 
 func play_walk_fx() -> void:
 	if !active_walk_fx:

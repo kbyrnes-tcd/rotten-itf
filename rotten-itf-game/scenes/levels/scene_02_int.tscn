@@ -39,7 +39,7 @@ position = Vector2(-586, 0)
 texture = ExtResource("2_3aray")
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("9_mb6sg")]
-position = Vector2(54, 267)
+position = Vector2(122, 266)
 
 [node name="LntrnCollisionShape2D" parent="Player/CharacterSprites/Lantern/LanternArea2D" parent_id_path=PackedInt32Array(1515659648, 1614078195) index="0" unique_id=877712953]
 scale = Vector2(2.0710225, 2.2047858)
@@ -103,11 +103,6 @@ scale = Vector2(0.5834024, 1)
 points = PackedVector2Array(250.64288, 285, 190.65002, 274, 106.65997, 268, 34.668457, 291, -57.89203, 262)
 collidable = true
 
-[node name="DoorArea2D" parent="." unique_id=1160326856 node_paths=PackedStringArray("interact_carat") instance=ExtResource("5_oleyw")]
-position = Vector2(2339.0002, 245.00002)
-scale = Vector2(2.544, 4.656)
-interact_carat = NodePath("../InteractiveCarat")
-
 [node name="InteractiveCarat" parent="." unique_id=1099497837 instance=ExtResource("6_5expv")]
 position = Vector2(2339, 187)
 scale = Vector2(0.5, 0.5)
@@ -140,5 +135,28 @@ energy = 0.8
 [node name="LanternPickup" parent="." unique_id=1242243690 instance=ExtResource("8_c63m2")]
 position = Vector2(277, 290)
 inv_lantern = ExtResource("9_yrcn3")
+
+[node name="DoorCrackBackToExt" parent="." unique_id=624771835 instance=ExtResource("5_oleyw")]
+position = Vector2(95.99999, 239.00002)
+scale = Vector2(3.364, 6.156)
+next_scene_path = "scene_01"
+door_id = "DoorCrackBackToExt"
+twin_id = "DoorToGardenInt"
+
+[node name="DoorToGardenExt" parent="." unique_id=1160326856 node_paths=PackedStringArray("interact_carat") instance=ExtResource("5_oleyw")]
+position = Vector2(2339.0002, 245.00002)
+scale = Vector2(2.544, 4.656)
+next_scene_path = "scene_02_ext"
+door_id = "DoorToGardenExt"
+twin_id = "DoorBackToGardenInt"
+interact_carat = NodePath("../InteractiveCarat")
+
+[node name="DoorToTemple" parent="." unique_id=763266512 node_paths=PackedStringArray("interact_carat") instance=ExtResource("5_oleyw")]
+position = Vector2(849.00006, 245)
+scale = Vector2(2.544, 4.656)
+next_scene_path = "scene_03"
+door_id = "DoorToTemple"
+twin_id = "DoorToTemple"
+interact_carat = NodePath("../InteractiveCarat")
 
 [editable path="Player"]

@@ -44,7 +44,7 @@ polygon = PackedVector2Array(-1920, 270, -1461.1, 270, -1463, 158, -1463, 155, -
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("3_p368k")]
 z_index = 1
-position = Vector2(64, 244)
+position = Vector2(178, 244)
 
 [node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
 limit_top = -206
@@ -164,12 +164,37 @@ position = Vector2(2196, 245)
 lio_text = "Press [ to clear the rot and reach the amulet."
 requires_dialogue_done = true
 
-[node name="DoorArea2D" parent="." unique_id=1160326856 node_paths=PackedStringArray("interact_carat") instance=ExtResource("15_6d0e5")]
-position = Vector2(2817, 65.00001)
-interact_carat = NodePath("../InteractiveCarat")
-
 [node name="InteractiveCarat" parent="." unique_id=1099497837 instance=ExtResource("16_a3hc7")]
-position = Vector2(2817, 95)
+position = Vector2(3926, 104)
+
+[node name="DoorBack" parent="." unique_id=1160326856 node_paths=PackedStringArray("interact_carat") instance=ExtResource("15_6d0e5")]
+position = Vector2(121, 220)
+next_scene_path = "scene_02_int"
+door_id = "DoorBack"
+twin_id = "DoorToTemple"
+interact_carat = NodePath("../InteractiveCarat2")
+
+[node name="DoorToMiniGarden" parent="." unique_id=811292301 node_paths=PackedStringArray("interact_carat") instance=ExtResource("15_6d0e5")]
+position = Vector2(2817, 159)
+next_scene_path = "scene_03_garden"
+door_id = "DoorToMiniGarden"
+twin_id = "GardenDoor"
+interact_carat = NodePath("../InteractiveCarat2")
+
+[node name="DoorMaze" parent="." unique_id=25365531 node_paths=PackedStringArray("interact_carat") instance=ExtResource("15_6d0e5")]
+position = Vector2(3922, 158)
+next_scene_path = "scene_04"
+door_id = "DoorMaze"
+twin_id = "DoorBackToAltar"
+spawn_to_the_left = true
+interact_carat = NodePath("../InteractiveCarat")
+has_minigame = true
+
+[node name="InteractiveCarat2" parent="." unique_id=731416256 instance=ExtResource("16_a3hc7")]
+position = Vector2(2819, 79)
+
+[node name="GardenReturnPoint" type="Marker2D" parent="." unique_id=1083821957]
+position = Vector2(2903, 196)
 
 [editable path="Player"]
 [editable path="ZoomTrigger"]
