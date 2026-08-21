@@ -33,7 +33,10 @@ var segments: Array = []
 
 # Drag and drop player inv, set player speed/jump params
 @export var inv: Inventory
-@export var SPEED = 150.0
+var target_speed:=-1
+const NORMAL_SPEED := 150.0
+const STEP_SPEED := 80.0
+const ACCELERATION := 800.0
 @export var FULL_JUMP_VELOCITY = -650.0
 @export var MID_JUMP_VELOCITY = -500.0
 var STEP_JUMP_VELOCITY := -250
@@ -77,13 +80,13 @@ func _process(delta):
 			
 func get_tool_state():
 	return tool_state
-	
-# MOVEMENT
+
+var can_step := false
 func _physics_process(delta: float):
 	_handle_animation()
 	_handle_vine_growth(delta)
 	move_and_slide()
-	#step_logic()
+	can_step = can_step_up() # for changing speeds correctly
 	_handle_movement(delta)
 	_handle_sprite_direction()
 	
@@ -103,24 +106,21 @@ func _handle_animation():
 var step_target_y := 0.0
 var on_step := false
 func can_step_up() -> bool:
-	var shape_index; var owner_id; var shape_node;
-	var step_raycasts : Array[RayCast2D]= [$StepJumpRayCastL, $StepJumpRayCastR]
-	for foot in step_raycasts:
-		var lorr := foot.name.substr(foot.name.length() - 1, 1)
-		var collider = foot.get_collider()
-		if collider:
+	on_step = false
+	var collider; var shape_index; var owner_id; var shape_node;
+	for foot in [$StepJumpRayCastL, $StepJumpRayCastR]:
+		#var lorr := foot.name.substr(foot.name.length() - 1, 1)
+		if foot.is_colliding():
+			collider = foot.get_collider()
 			shape_index = foot.get_collider_shape()
 			owner_id = collider.shape_find_owner(shape_index)
 			shape_node = collider.shape_owner_get_owner(owner_id)
-		if foot.is_colliding() and foot.get_collider():
-			if shape_node is CollisionShape2D or shape_node is CollisionPolygon2D:
-				if shape_node.one_way_collision:
-					on_step = true
-					#print("%s foot is colliding with %s" %[lorr, shape_node.one_way_collision])
+			if (shape_node is CollisionShape2D or shape_node is CollisionPolygon2D) and shape_node.one_way_collision:
+				on_step = true
+				#print("%s foot is colliding with %s" %[lorr, shape_node.one_way_collision])
+				if step_target_y < foot_marker.global_position.y:
 					step_target_y = foot.get_collision_point().y
-					if step_target_y < foot_marker.global_position.y:  
-						return true
-				else: on_step = false
+					return true
 	return false
 
 func can_i_jump() -> Dictionary:
@@ -139,11 +139,10 @@ func can_i_jump() -> Dictionary:
 			jump_data["jump_velocity"] = MID_JUMP_VELOCITY
 	return jump_data
 
-
 func _handle_movement(delta: float):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-		animated_sprite_2d.animation = "jump" # keeping jump anim call here as it is a single sprite render
+		#animated_sprite_2d.animation = "jump" # keeping jump anim call here as it is a single sprite render
 		move_state = MoveState.FALLING
 	else:
 		move_state = MoveState.IDLE
@@ -159,13 +158,14 @@ func _handle_movement(delta: float):
 	if jump_state["jump_velocity"] == 0.0: return
 	
 	# STEP UP TAKES PRIORITY
-	if can_step_up() and Input.is_action_just_pressed("jump"):
+	if can_step and Input.is_action_just_pressed("jump"):
 		velocity.y = STEP_JUMP_VELOCITY
 		move_state = MoveState.JUMPING
-	elif can_step_up() and Input.is_action_pressed("jump") and on_step:
+	elif can_step and Input.is_action_pressed("jump") and on_step:
 		velocity.y = STEP_JUMP_VELOCITY
 		move_state = MoveState.JUMPING
-	elif Input.is_action_just_pressed("jump") and jump_state["can_jump"]:
+	
+	if Input.is_action_just_pressed("jump") and jump_state["can_jump"]:
 		velocity.y = jump_state["jump_velocity"]
 		move_state = MoveState.JUMPING
 		
@@ -174,12 +174,26 @@ func _handle_movement(delta: float):
 		position.y += 5
 	elif not on_vine and Input.is_action_pressed("down") and on_step:
 		position.y += 5
+	
+	# OG MOVEMENT
+	#if direction:
+		#velocity.x = direction * NORMAL_SPEED
+	#else:
+		#velocity.x = move_toward(velocity.x, 0, NORMAL_SPEED)
 		
+	# SPEED CONTROLLED STEPPINGGG
 	var direction := Input.get_axis("left", "right")
-	if direction:
-		velocity.x = direction * SPEED
+	# literal smooth stepping, lerp speed down
+	if on_step:
+		var remaining: float = abs(step_target_y - foot_marker.global_position.y)
+		var step_heigh := 10.0
+		var t: float = clamp(remaining / step_heigh, 0.0, 1.0)  # 1 = just started, 0 = arrived
+		var stepping_speed: float = lerp(NORMAL_SPEED, STEP_SPEED, t)
+		target_speed = stepping_speed
+		velocity.x = move_toward(velocity.x, direction * stepping_speed, ACCELERATION * delta)
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		target_speed = NORMAL_SPEED
+		velocity.x = move_toward(velocity.x, direction * NORMAL_SPEED, ACCELERATION * delta)
 
 func _handle_sprite_direction():
 	var direction = Input.get_axis("left", "right")
@@ -219,8 +233,19 @@ func get_snapped_direction() -> Vector2:
 func start_vine():
 	if is_growing:
 		return
+	
 	var dir = get_snapped_direction()
-	var src = gun_sprite.global_position + dir * 20.0
+	var src = gun_sprite.global_position + dir * 10.0
+
+	var space_state = get_world_2d().direct_space_state
+	var params = PhysicsPointQueryParameters2D.new()
+	params.position = src
+	params.collide_with_bodies = true
+	params.collide_with_areas = false
+	var result = space_state.intersect_point(params, 32)
+	for r in result:
+		if r.collider == self: return # BLOCKEDD do not grow towards player
+
 	var mouse_pos = get_global_mouse_position()
 	var diff = mouse_pos - gun_sprite.global_position
 	var projected_length = diff.dot(dir)
@@ -228,8 +253,6 @@ func start_vine():
 	var vine_instance = ROT_VINE.instantiate()
 	scene.add_child(vine_instance)
 	active_vine = vine_instance.get_child(0)
-	#print(active_vine.position)
-	#print(active_vine.gun_sprite.global_position)
 	active_vine.points = PackedVector2Array([
 		active_vine.to_local(src),
 		active_vine.to_local(src)
@@ -238,8 +261,6 @@ func start_vine():
 	active_vine.set_meta("dir", dir)
 	active_vine.set_meta("src", src)
 	active_vine.set_meta("target", target)
-	#print("vine started from " + str(src) + " toward " + str(target))
-	#print("dir: " + str(dir) + " mouse: " + str(get_global_mouse_position()) + " player: " + str(global_position))
 
 func stop_vine():
 	if is_growing and active_vine:
@@ -439,12 +460,7 @@ func _handle_vine_growth(delta: float):
 	var pts = active_vine.points
 	if pts.size() < 2:
 		return
-	#var curve = Curve.new()
-	#curve.add_point(Vector2(0,1))
-	#curve.add_point(Vector2(0.8,1))
-	#curve.add_point(Vector2(1,0))
-	
-	#active_vine.width_curve = curve
+
 	var dir: Vector2 = active_vine.get_meta("dir")
 	var target: Vector2 = active_vine.get_meta("target")
 	var tip_local = pts[pts.size() - 1]
@@ -456,24 +472,31 @@ func _handle_vine_growth(delta: float):
 		active_vine.points = pts
 		stop_vine()
 		return
+		
 	var space_state = get_world_2d().direct_space_state
 	var params = PhysicsPointQueryParameters2D.new()
 	params.position = next_global
 	params.collide_with_bodies = true
 	params.collide_with_areas = false
-	params.exclude = [get_rid()]
+	
 	var result = space_state.intersect_point(params, 32)
 	var hit_wall = false
 	for r in result:
-		#print(r.collider)
+		print(r)
+		# ignore hitting the vine itself extending
 		if active_vine.get_parent().has_node("LineStaticBody2D"):
 			if r.collider == active_vine.get_parent().get_node("LineStaticBody2D"):
 				continue
+		# prevent growing the vine inwards the player's collider
+		if r.collider == self:
+			#print("hit player!!")
+			hit_wall = true
+			break
 		hit_wall = true
 		break
-	#print(result)
 	if hit_wall:
 		stop_vine()
+		
 	else:
 		var new_pts: PackedVector2Array = PackedVector2Array(active_vine.points)
 		var last_fixed = active_vine.to_global(new_pts[new_pts.size() - 2])
@@ -541,7 +564,9 @@ func update_worm_segments():
 
 var on_vine := false
 func _feet_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
-	if area.name == "LineArea2D": on_vine = true
+	if area:
+		if area.name == "LineArea2D": on_vine = true
 
 func _on_feet_area_shape_exited(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
-	if area.name == "LineArea2D": on_vine = false
+	if area:
+		if area.name == "LineArea2D": on_vine = false

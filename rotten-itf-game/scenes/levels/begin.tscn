@@ -34,7 +34,6 @@ script = ExtResource("1_y13p6")
 
 [node name="Config" type="Node" parent="." unique_id=550139588 node_paths=PackedStringArray("pause_menu", "hud")]
 script = ExtResource("1_ep3c1")
-debug_level = ExtResource("3_eujl3")
 maze_mg = ExtResource("2_ty236")
 letter_mg = ExtResource("7_y13p6")
 pause_menu = NodePath("../UI/PauseMenu")

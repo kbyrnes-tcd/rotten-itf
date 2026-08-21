@@ -13,6 +13,9 @@ var audio_prog := [
 	#{"ambience": "", "music": ""}
 ]
 
+var prev_scene : String
+var pending_spawn_door_id: String = ""
+
 var level_root: Node2D
 var mg_root: Node2D
 var scene
@@ -29,8 +32,12 @@ var letter_ui: Control
 var mid_mg : Node
 var inv_ui : Control
 var running_another_scene : bool = true # for running minigames and etc.
-var pending_start := false
+var pending_start := true
 static var dialogue_done: bool = false
+var previous_level: String = ""
+static var return_position: Vector2 = Vector2.ZERO
+
+signal minigame_completed
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -58,11 +65,11 @@ func start_level_or_debug() -> void:
 	if debug_scene == null:
 		load_level(level_prog[0])
 	else:
-		AudioManager.play_music(audio_prog[0].music)
-		AudioManager.play_ambience(audio_prog[0].ambience)
 		var debug_node := debug_scene.instantiate()
 		level_root.add_child(debug_node)
 		player = debug_node.find_child("Player")
+	AudioManager.play_music(audio_prog[0].music)
+	AudioManager.play_ambience(audio_prog[0].ambience)
 
 func start_new_game() -> void:
 	pending_start = true
@@ -117,11 +124,13 @@ func unload_minigame():
 	resume(false)
 	# unload mg_root child from tree
 	var c_mg := mg_root.get_child(0)
-	var mg_spawner : ItemConsumer = level_root.get_child(0).get_child(0)
-	# set minigame as complete: deactivate on item_consumer...
-	mg_spawner.satisfied()
+	var mg_spawner = get_tree().get_nodes_in_group("mg_spawner")
+	if mg_spawner.size() > 0:
+		mg_spawner[0].satisfied()
 	c_mg.queue_free()
+	# set minigame as complete: deactivate on item_consumer...
 	mid_mg = null
+	emit_signal("minigame_completed")
 	return
 	
 func load_minigame(mg : int):
@@ -164,8 +173,15 @@ func load_letter_ui(letter : LetterCopy):
 
 func unload_level():
 	if level_root.get_child_count() > 0:
+		# detach door node to keep it
 		level_root.get_child(0).queue_free()
 
+func play_level_music(scene_name : String):
+	var scene_index = level_prog.find(scene_name)
+	AudioManager.change_ambience(audio_prog[scene_index].ambience)
+	AudioManager.change_music(audio_prog[scene_index].music)	
+
+var target_door
 func load_level(level_name: String):
 	level_name = level_name.to_lower()
 	unload_level()
@@ -175,14 +191,25 @@ func load_level(level_name: String):
 	if (n_scene):
 		level_root.add_child(scene_node)
 		player = scene_node.find_child("Player")
-		if prog_counter != 0:
-			AudioManager.change_ambience(audio_prog[prog_counter].ambience)
-			AudioManager.change_music(audio_prog[prog_counter].music)
-		else: 
-			AudioManager.play_ambience(audio_prog[0].ambience)
-			AudioManager.play_music(audio_prog[0].music)
+		if pending_spawn_door_id != "":
+			target_door = scene_node.find_child(pending_spawn_door_id)
+		if target_door:
+			player.global_position = target_door.global_position + Vector2(50, 0)
+		print("pending spawn door is is %s" %pending_spawn_door_id)
+		pending_spawn_door_id = ""
+		play_level_music(level_name)
 
-func next_level():
-	prog_counter += 1
-	var next_scene : String = str(level_prog[prog_counter])
-	load_level(next_scene)
+#func load_scene(n_scene : PackedScene):
+	#prog_counter+=1
+	#var scene_node : Node = n_scene.instantiate()
+	#if (n_scene):
+		#unload_level()
+		#level_root.add_child(scene_node)
+		#player = scene_node.find_child("Player")
+		#play_level_music(n_scene.resource_path.get_file().get_basename())
+
+func prev_level():
+	if previous_level != "":
+		prog_counter -= 1
+		load_level(previous_level)
+	

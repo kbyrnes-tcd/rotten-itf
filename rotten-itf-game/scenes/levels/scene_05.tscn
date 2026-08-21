@@ -9,13 +9,16 @@
 size = Vector2(20, 261.00327)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jw7t4"]
-size = Vector2(29, 10)
+size = Vector2(36, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6nwso"]
-size = Vector2(26.5, 10)
+size = Vector2(34.5, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwol2"]
-size = Vector2(24.625, 10)
+size = Vector2(43, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cimb1"]
+size = Vector2(44, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_upk17"]
 size = Vector2(52.999996, 8.071213)
@@ -88,28 +91,24 @@ position = Vector2(0, 550)
 
 [node name="1" type="StaticBody2D" parent="Collisions/Stairs" unique_id=1224981905]
 
-[node name="Step" type="CollisionPolygon2D" parent="Collisions/Stairs/1" unique_id=200007260]
-polygon = PackedVector2Array(125, -49, 89, -49, 40, -9, 72, -9, 101, -39, 125, -39)
-one_way_collision = true
-
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="Collisions/Stairs/1" unique_id=1232659785]
-position = Vector2(67.5, -14)
+position = Vector2(64, -14)
 shape = SubResource("RectangleShape2D_jw7t4")
 one_way_collision = true
 
 [node name="CollisionPolygon2D2" type="CollisionShape2D" parent="Collisions/Stairs/1" unique_id=1354926863]
-position = Vector2(78.25, -24)
+position = Vector2(74.25, -24)
 shape = SubResource("RectangleShape2D_6nwso")
 one_way_collision = true
 
 [node name="CollisionPolygon2D3" type="CollisionShape2D" parent="Collisions/Stairs/1" unique_id=1656260934]
-position = Vector2(91, -34)
-shape = SubResource("RectangleShape2D_6nwso")
+position = Vector2(89.5, -34)
+shape = SubResource("RectangleShape2D_iwol2")
 one_way_collision = true
 
 [node name="CollisionPolygon2D4" type="CollisionShape2D" parent="Collisions/Stairs/1" unique_id=1150983380]
-position = Vector2(107.375, -44)
-shape = SubResource("RectangleShape2D_iwol2")
+position = Vector2(101, -44)
+shape = SubResource("RectangleShape2D_cimb1")
 one_way_collision = true
 
 [node name="2" type="StaticBody2D" parent="Collisions/Stairs" unique_id=1346921479]

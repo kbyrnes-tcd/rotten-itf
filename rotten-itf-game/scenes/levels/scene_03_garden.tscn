@@ -1,12 +1,12 @@
-[gd_scene format=3 uid="uid://dwg50qrw03hrn"]
+[gd_scene format=3 uid="uid://ctd6mmvny4tuh"]
 
-[ext_resource type="Texture2D" path="res://assets/images/env/altar/Back.png" id="1_472ey"]
-[ext_resource type="Texture2D" path="res://assets/images/env/altar/Temple back.png" id="2_0ntcn"]
-[ext_resource type="Texture2D" path="res://assets/images/env/altar/Temple front.png" id="3_tc8a2"]
-[ext_resource type="Texture2D" path="res://assets/images/env/altar/Trees front .png" id="4_qh11w"]
-[ext_resource type="Texture2D" path="res://assets/images/env/altar/Trees.png" id="5_2jge0"]
+[ext_resource type="Texture2D" uid="uid://c1c20isq68myp" path="res://assets/images/env/altar/Back.png" id="1_472ey"]
+[ext_resource type="Texture2D" uid="uid://beqbl5geno7i7" path="res://assets/images/env/altar/Temple back.png" id="2_0ntcn"]
+[ext_resource type="Texture2D" uid="uid://lftejww5pj8v" path="res://assets/images/env/altar/Temple front.png" id="3_tc8a2"]
+[ext_resource type="Texture2D" uid="uid://23jheaaqxi77" path="res://assets/images/env/altar/Trees front .png" id="4_qh11w"]
+[ext_resource type="Texture2D" uid="uid://h34qfq2wab4l" path="res://assets/images/env/altar/Trees.png" id="5_2jge0"]
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="6_0ntcn"]
-[ext_resource type="PackedScene" path="res://scenes/glowworm_cluster.tscn" id="7_2jge0"]
+[ext_resource type="PackedScene" uid="uid://32h27chxiffi" path="res://scenes/glowworm_cluster.tscn" id="7_2jge0"]
 [ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="8_33ufd"]
 [ext_resource type="PackedScene" uid="uid://bimatr4hej8ja" path="res://scenes/ui/interactive_carat.tscn" id="9_4mtit"]
 
@@ -110,11 +110,14 @@ scale = Vector2(0.9, 0.94)
 [node name="CollisionShape2D" parent="GlowwormCluster" index="6" unique_id=430435419]
 position = Vector2(-4, 0)
 
-[node name="DoorArea2D" parent="." unique_id=1160326856 node_paths=PackedStringArray("interact_carat") instance=ExtResource("8_33ufd")]
-position = Vector2(369.0001, 106.99999)
+[node name="GardenDoor" parent="." unique_id=1160326856 node_paths=PackedStringArray("interact_carat") instance=ExtResource("8_33ufd")]
+position = Vector2(361, 209)
+next_scene_path = "scene_03"
+door_id = "GardenDoor"
+twin_id = "DoorToMiniGarden"
 interact_carat = NodePath("../InteractiveCarat")
 
 [node name="InteractiveCarat" parent="." unique_id=1099497837 instance=ExtResource("9_4mtit")]
-position = Vector2(360, 148)
+position = Vector2(362, 109)
 
 [editable path="GlowwormCluster"]

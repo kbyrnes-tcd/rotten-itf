@@ -5,11 +5,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jmjgo"]
 
 [node name="DoorArea2D" type="Area2D" unique_id=1160326856]
-scale = Vector2(8.213845, 15.028815)
+scale = Vector2(2, 5)
 script = ExtResource("1_hpvv5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=574708219]
 shape = SubResource("RectangleShape2D_jmjgo")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1250745865]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
