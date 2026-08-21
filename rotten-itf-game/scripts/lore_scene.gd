@@ -44,13 +44,13 @@ func _process(_delta):
 				current_line += 1
 				if current_line >= lore_lines.size():
 					# all lines done — go to next scene
-					GameGlobals.next_level()
+					GameGlobals.load_level("scene_01")
 				else:
 					change_state(State.READY)
 
 func display_next_line():
 	if current_line >= lore_lines.size():
-		GameGlobals.next_level()
+		GameGlobals.load_level("scene_01")
 		return
 	var line = lore_lines[current_line]
 	lore_text.text = line
