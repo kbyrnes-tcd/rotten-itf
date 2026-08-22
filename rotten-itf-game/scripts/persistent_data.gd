@@ -29,13 +29,14 @@ func save_state() -> Dictionary:
 	return data
 
 func load_state(data: Dictionary) -> void:
-	print("IN LOAD STATE")
 	for i in objects.size():
 		var obj := objects[i]
 		var obj_name := obj.name
 		if !data.has(obj_name):
 			continue
 		var entry: Dictionary = data[obj_name]
+		
+		# if object
 		
 		# if obj has been free'd in save state, persist that
 		if entry.get("freed", false):

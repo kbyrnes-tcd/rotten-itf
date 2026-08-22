@@ -16,7 +16,7 @@ func _ready() -> void:
 func _on_body_entered(body: Node2D):
 	if body.has_method("collect"):
 		if show_once and triggered:
-			return
+			queue_free()
 		if requires_dialogue_done and not GameGlobals.dialogue_done:
 			return
 		triggered = true

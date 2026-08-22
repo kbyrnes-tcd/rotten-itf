@@ -187,19 +187,18 @@ func load_letter_ui(letter : LetterCopy):
 	letter_ui.visible = true
 	letter_ui.set_label(letter.copy)
 
-
 var game_audio_has_begun := false
 func play_level_music(scene_name : String):
 	var scene_index = level_prog.find(scene_name)
 	print(scene_index, game_audio_has_begun)
 	if scene_index == 1 and !game_audio_has_begun:
 		game_audio_has_begun = true
-		print("beginning game now w/ scene %s so gonna play ambi and decrease music vol." %scene_name)
+		#print("beginning game now w/ scene %s so gonna play ambi and decrease music vol." %scene_name)
 		AudioManager.play_ambience(audio_prog[scene_name].ambience)
 		AudioManager.decrease_music_vol(30)
 		AudioManager.change_music(audio_prog[scene_name].music)
 	elif scene_index > 1 and game_audio_has_begun:
-		print("keep continue henceforth changing music n ambi")
+		#print("keep continue henceforth changing music n ambi")
 		AudioManager.change_ambience(audio_prog[scene_name].ambience)
 		AudioManager.change_music(audio_prog[scene_name].music)
 

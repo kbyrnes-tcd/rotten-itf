@@ -23,7 +23,7 @@ size = Vector2(2596, 55.5)
 [node name="Scene_02_int" type="Node2D" unique_id=358721782]
 
 [node name="PersistentData" parent="." unique_id=1117547414 node_paths=PackedStringArray("objects") instance=ExtResource("1_4muw5")]
-objects = [NodePath("../LanternPickup")]
+objects = [NodePath("../LanternPickup"), NodePath("../LioTrigger"), NodePath("../LioTrigger2"), NodePath("../LioTrigger3"), NodePath("../LioTrigger4")]
 track_freed = true
 
 [node name="Environment" type="Node2D" parent="." unique_id=1527416479]
@@ -112,24 +112,6 @@ collidable = true
 position = Vector2(2339, 187)
 scale = Vector2(0.5, 0.5)
 
-[node name="LIO" type="Node" parent="." unique_id=2062746301]
-
-[node name="LioTrigger" parent="LIO" unique_id=110257511 instance=ExtResource("7_3aray")]
-position = Vector2(803, 296)
-lio_text = "Oh, Goddess…"
-
-[node name="LioTrigger2" parent="LIO" unique_id=1541676621 instance=ExtResource("7_3aray")]
-position = Vector2(1617, 227)
-lio_text = "The Rot has completely consumed this place. "
-
-[node name="LioTrigger3" parent="LIO" unique_id=1993371548 instance=ExtResource("7_3aray")]
-position = Vector2(180, 278)
-lio_text = "A wall lantern...I can store glowworms in here."
-
-[node name="LioTrigger4" parent="LIO" unique_id=1163488396 instance=ExtResource("7_3aray")]
-position = Vector2(360, 292)
-lio_text = "Press [ to equip lantern and hold SHIFT to clear."
-
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1256881528]
 color = Color(0.7107411, 0.71074116, 0.7107411, 1)
 
@@ -163,5 +145,21 @@ next_scene_path = "scene_03"
 door_id = "DoorToTemple"
 twin_id = "DoorToTemple"
 interact_carat = NodePath("../InteractiveCarat")
+
+[node name="LioTrigger" parent="." unique_id=110257511 instance=ExtResource("7_3aray")]
+position = Vector2(803, 296)
+lio_text = "Oh, Goddess…"
+
+[node name="LioTrigger2" parent="." unique_id=1541676621 instance=ExtResource("7_3aray")]
+position = Vector2(1617, 227)
+lio_text = "The Rot has completely consumed this place. "
+
+[node name="LioTrigger3" parent="." unique_id=1993371548 instance=ExtResource("7_3aray")]
+position = Vector2(180, 278)
+lio_text = "A wall lantern...I can store glowworms in here."
+
+[node name="LioTrigger4" parent="." unique_id=1163488396 instance=ExtResource("7_3aray")]
+position = Vector2(360, 292)
+lio_text = "Press [ to equip lantern and hold SHIFT to clear."
 
 [editable path="Player"]
