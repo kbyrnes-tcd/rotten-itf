@@ -16,6 +16,7 @@
 [ext_resource type="Resource" uid="uid://bcvemp5c8igqs" path="res://scripts/inventory_system/items/amulet.tres" id="13_e0ngt"]
 [ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="15_6d0e5"]
 [ext_resource type="PackedScene" uid="uid://bimatr4hej8ja" path="res://scenes/ui/interactive_carat.tscn" id="16_a3hc7"]
+[ext_resource type="PackedScene" uid="uid://dagsvgdwskmcw" path="res://scenes/high_priestess.tscn" id="17_a3hc7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_co3ny"]
 size = Vector2(300, 20)
@@ -73,23 +74,24 @@ position = Vector2(2259, 73)
 scale = Vector2(1.638516, 21.04)
 shape = SubResource("RectangleShape2D_co3ny")
 
-[node name="DialogueTrigger" parent="." unique_id=413688381 node_paths=PackedStringArray("amulet") instance=ExtResource("5_0760f")]
+[node name="DialogueTrigger" parent="." unique_id=413688381 node_paths=PackedStringArray("amulet", "high_priestess") instance=ExtResource("5_0760f")]
 process_mode = 3
 script = ExtResource("6_nuytq")
 dialogue_lines = Array[String](["High Priestess!", "Daphne, stay back.", "You're... Oh, Godess", "I lasted as long as I could in this ruined Temple, but even my Patron Demeter could only protect me for so long.", "It appears that the powers of this Rotten substance have only grown stronger in your absence. At times, I wondered…", "I wondered if maybe it grew because it was seeking you out.", "What do you mean?", "You were there that night when it appeared. It wasn’t just growing out of Persephone’s altarpiece, it was growing out towards you.", "No, it… it ate away at my sisters. I watched it grow in all directions to infect the Temple.", "Your sisters, yes, but not your kin. Kind girl… I was wrong. It was not your fault. I see that now.", "You were not born of this Temple. You were given to us out by the Yew tree. ", "I thought you were some Nymph’s forgotten babe, but no… I took you from a far more sordid heritage.", "High Priestess, what are you saying?", "You aren’t of our lands, Daphne. Which is why you need to be the only to save us.", "Clear the Temple of this Rot, girl, and you will be granted the power to control this infection.", "Then, go to the old living chambers, and learn of its origin. ", "Of your origin.", "Goddess, forgive me. Forgive me."])
 speaker = Array[String](["Daphne", "Persephone", "Daphne", "Persephone", "Persephone", "Persephone", "Daphne", "Persephone", "Daphne", "Persephone", "Persephone", "Persephone", "Daphne", "Persephone", "Persephone", "Persephone", "Persephone", "Persephone"])
 amulet = NodePath("../Amulet")
+high_priestess = NodePath("../HighPriestess")
 
 [node name="Area2D" parent="DialogueTrigger" index="0" unique_id=1114588435]
-position = Vector2(2158, 248)
+position = Vector2(2157, 246)
 
 [node name="CollisionShape2D" parent="DialogueTrigger/Area2D" index="0" unique_id=1913681013]
-position = Vector2(0, 1)
+position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_o7blk")
 
 [node name="Interact" parent="DialogueTrigger" index="1" unique_id=125428239]
 visible = false
-position = Vector2(2158, 202)
+position = Vector2(2158, 204)
 scale = Vector2(0.118892506, 0.13843648)
 
 [node name="Chandelier" parent="." unique_id=813450568 instance=ExtResource("7_5i8uq")]
@@ -138,7 +140,7 @@ position = Vector2(287, 244)
 lio_text = "A chandelier...there should be a lever nearby."
 
 [node name="Amulet" parent="." unique_id=160938005 node_paths=PackedStringArray("blocking_rot") instance=ExtResource("12_co3ny")]
-position = Vector2(2278, 201)
+position = Vector2(2288, 186)
 blocking_rot = [NodePath("../Line2D")]
 inv_amulet = ExtResource("13_e0ngt")
 
@@ -155,12 +157,12 @@ color = Color(1, 0.7921569, 0.62352943, 0.26666668)
 energy = 0.8
 
 [node name="Line2D" parent="." unique_id=1590463200 instance=ExtResource("13_5fc4h")]
-position = Vector2(2295, 207)
+position = Vector2(2302, 193)
 points = PackedVector2Array(-36, -13, -25, -8, -17, -5, -5, -3, -1, 2)
 collidable = true
 
 [node name="LioTrigger4" parent="." unique_id=292972852 instance=ExtResource("10_y5j78")]
-position = Vector2(2196, 245)
+position = Vector2(2247, 252)
 lio_text = "Press [ to clear the rot and reach the amulet."
 requires_dialogue_done = true
 
@@ -195,6 +197,9 @@ position = Vector2(2819, 79)
 
 [node name="GardenReturnPoint" type="Marker2D" parent="." unique_id=1083821957]
 position = Vector2(2903, 196)
+
+[node name="HighPriestess" parent="." unique_id=493119463 instance=ExtResource("17_a3hc7")]
+position = Vector2(2251, 218)
 
 [editable path="Player"]
 [editable path="ZoomTrigger"]
