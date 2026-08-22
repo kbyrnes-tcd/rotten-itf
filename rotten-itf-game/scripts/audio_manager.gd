@@ -77,8 +77,11 @@ func change_music(song: String) -> void:
 	if active_music:
 		var c_song := active_music.stream.resource_path.get_file().get_basename()
 		# if it's the same track, keep continue
+		print(c_song.get_basename())
 		if c_song == song: return
 		else: 
+			if song.get_basename() == "Title_Song": music_vol = 5.0
+			else: music_vol = -15.0
 			music_tween = await fade(music_tween, active_music, music_vol, music_vol-20, 1.0) # fadeOUT current track b4 changing
 			active_music = null
 			play_music(song)
@@ -87,6 +90,8 @@ func play_music(song: String) -> void:
 	if !active_music:
 		active_music = clips.get_node("Music")
 		active_music.stream = music[song]
+		if song.get_basename() == "Title_Song": music_vol = 5.0
+		else: music_vol = -15.0
 		music_tween = await fade(music_tween, active_music, music_vol-20, music_vol, 1.0) # fadeIN new track
 		active_music.play()
 

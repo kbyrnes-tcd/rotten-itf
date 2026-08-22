@@ -102,6 +102,7 @@ ambiences = Dictionary[String, AudioStream]({
 "Int_Ambiance": ExtResource("10_ku15p")
 })
 music = Dictionary[String, AudioStream]({
+"": null,
 "Altar_Music": ExtResource("13_ku15p"),
 "Temple_Music": ExtResource("12_opu6i"),
 "Title_Song": ExtResource("18_ypd68")
@@ -115,7 +116,6 @@ persephone_alpha = Array[AudioStream]([ExtResource("47_yhs0o"), ExtResource("48_
 [node name="Ambience" type="AudioStreamPlayer" parent="Clips" unique_id=982820113]
 
 [node name="Music" type="AudioStreamPlayer" parent="Clips" unique_id=498170693]
-volume_db = 10.0
 
 [node name="OneShotFX" type="AudioStreamPlayer" parent="Clips" unique_id=1126395305]
 volume_db = -15.0
