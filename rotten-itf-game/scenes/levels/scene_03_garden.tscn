@@ -1,0 +1,123 @@
+[gd_scene format=3 uid="uid://ctd6mmvny4tuh"]
+
+[ext_resource type="Texture2D" uid="uid://c1c20isq68myp" path="res://assets/images/env/altar/Back.png" id="1_472ey"]
+[ext_resource type="Texture2D" uid="uid://beqbl5geno7i7" path="res://assets/images/env/altar/Temple back.png" id="2_0ntcn"]
+[ext_resource type="Texture2D" uid="uid://lftejww5pj8v" path="res://assets/images/env/altar/Temple front.png" id="3_tc8a2"]
+[ext_resource type="Texture2D" uid="uid://23jheaaqxi77" path="res://assets/images/env/altar/Trees front .png" id="4_qh11w"]
+[ext_resource type="Texture2D" uid="uid://h34qfq2wab4l" path="res://assets/images/env/altar/Trees.png" id="5_2jge0"]
+[ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="6_0ntcn"]
+[ext_resource type="PackedScene" uid="uid://32h27chxiffi" path="res://scenes/glowworm_cluster.tscn" id="7_2jge0"]
+[ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="8_33ufd"]
+[ext_resource type="PackedScene" uid="uid://bimatr4hej8ja" path="res://scenes/ui/interactive_carat.tscn" id="9_4mtit"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q01m8"]
+size = Vector2(1371, 39)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w5vsg"]
+size = Vector2(203, 16.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j0jg5"]
+size = Vector2(31, 357)
+
+[node name="Scene_03_Garden" type="Node2D" unique_id=1701588268]
+
+[node name="Environment" type="Node2D" parent="." unique_id=1612004735]
+
+[node name="Background" type="Parallax2D" parent="Environment" unique_id=1709604091]
+
+[node name="Backdrop" type="Sprite2D" parent="Environment/Background" unique_id=1239235487]
+position = Vector2(675, 175)
+texture = ExtResource("1_472ey")
+
+[node name="Treesback" type="Parallax2D" parent="Environment" unique_id=892940186]
+
+[node name="TreesBack" type="Sprite2D" parent="Environment/Treesback" unique_id=304780984]
+position = Vector2(681, 177)
+texture = ExtResource("5_2jge0")
+
+[node name="Behind" type="Parallax2D" parent="Environment" unique_id=858874953]
+
+[node name="Sprite2D" type="Sprite2D" parent="Environment/Behind" unique_id=828058068]
+position = Vector2(679, 180)
+texture = ExtResource("2_0ntcn")
+
+[node name="Infront" type="Parallax2D" parent="Environment" unique_id=984742412]
+scroll_offset = Vector2(133, 145)
+
+[node name="Sprite2D" type="Sprite2D" parent="Environment/Infront" unique_id=359521530]
+position = Vector2(534, 31)
+texture = ExtResource("3_tc8a2")
+
+[node name="Treesfront" type="Parallax2D" parent="Environment" unique_id=2038027954]
+scroll_offset = Vector2(-6, 42)
+
+[node name="TreeFront" type="Sprite2D" parent="Environment/Treesfront" unique_id=588754394]
+z_index = 1
+position = Vector2(689, 134)
+texture = ExtResource("4_qh11w")
+
+[node name="Colliders" type="Node2D" parent="." unique_id=1713837450]
+
+[node name="GroundColliders" type="StaticBody2D" parent="Colliders" unique_id=2015624421]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/GroundColliders" unique_id=951573501]
+position = Vector2(687, 316)
+shape = SubResource("RectangleShape2D_q01m8")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Colliders/GroundColliders" unique_id=1407095151]
+position = Vector2(178, 260.25)
+shape = SubResource("RectangleShape2D_w5vsg")
+
+[node name="WallColliders" type="StaticBody2D" parent="Colliders" unique_id=2061319989]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/WallColliders" unique_id=1982341987]
+position = Vector2(1275, 169)
+shape = SubResource("RectangleShape2D_j0jg5")
+
+[node name="StairsColliders" type="StaticBody2D" parent="Colliders" unique_id=2082173877]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Colliders/StairsColliders" unique_id=1096321662]
+position = Vector2(381, 224.99998)
+scale = Vector2(3.4807694, 3.0781248)
+polygon = PackedVector2Array(32.176796, 23.715744, -17.237564, 22.416245, -17.524864, 9.746201)
+
+[node name="Player" parent="." unique_id=1515659648 instance=ExtResource("6_0ntcn")]
+position = Vector2(498, 259)
+
+[node name="GlowwormCluster" parent="." unique_id=1112046846 instance=ExtResource("7_2jge0")]
+position = Vector2(969, 276)
+
+[node name="Sprite2D" parent="GlowwormCluster" index="0" unique_id=2015362664]
+position = Vector2(2.75, -1.25)
+scale = Vector2(0.87142855, 0.86)
+
+[node name="Sprite2D2" parent="GlowwormCluster" index="1" unique_id=1971483086]
+position = Vector2(2.25, 4.75)
+scale = Vector2(0.87142855, 0.98)
+
+[node name="Sprite2D3" parent="GlowwormCluster" index="2" unique_id=1098208500]
+position = Vector2(-3.75, -2.75)
+scale = Vector2(0.8142857, 0.82)
+
+[node name="Sprite2D4" parent="GlowwormCluster" index="3" unique_id=439673418]
+position = Vector2(-12.25, 5.75)
+scale = Vector2(0.9, 0.9)
+
+[node name="Sprite2D5" parent="GlowwormCluster" index="4" unique_id=2036570260]
+position = Vector2(-15.25, -0.25)
+scale = Vector2(0.9, 0.94)
+
+[node name="CollisionShape2D" parent="GlowwormCluster" index="6" unique_id=430435419]
+position = Vector2(-4, 0)
+
+[node name="GardenDoor" parent="." unique_id=1160326856 node_paths=PackedStringArray("interact_carat") instance=ExtResource("8_33ufd")]
+position = Vector2(361, 209)
+next_scene_path = "scene_03"
+door_id = "GardenDoor"
+twin_id = "DoorToMiniGarden"
+interact_carat = NodePath("../InteractiveCarat")
+
+[node name="InteractiveCarat" parent="." unique_id=1099497837 instance=ExtResource("9_4mtit")]
+position = Vector2(362, 109)
+
+[editable path="GlowwormCluster"]

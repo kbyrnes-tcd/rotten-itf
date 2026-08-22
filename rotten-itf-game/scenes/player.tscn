@@ -34,7 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://fc8hwmpaobv8" path="res://assets/images/worms/Glowworm.png" id="32_gl8cc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_whljo"]
-size = Vector2(24.5, 79)
+size = Vector2(31.250027, 85.00015)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6adnx"]
 animations = [{
@@ -142,8 +142,8 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_y4r1p"]
-radius = 35.19535
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8k800"]
+size = Vector2(94.13229, 116.59009)
 
 [sub_resource type="Gradient" id="Gradient_j0jg5"]
 offsets = PackedFloat32Array(0, 0.6796116)
@@ -165,14 +165,20 @@ shader_parameter/color1 = Color(0.39215687, 0.15294118, 0.03137255, 0.50980395)
 shader_parameter/color2 = Color(0.3137255, 0.21960784, 0.2901961, 0.50980395)
 shader_parameter/opacity = 1.0
 
-[node name="Player" type="CharacterBody2D" unique_id=1515659648]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w2pfo"]
+size = Vector2(44.999992, 23.75)
+
+[node name="Player" type="CharacterBody2D" unique_id=1515659648 node_paths=PackedStringArray("foot_marker")]
 position = Vector2(32.999996, 233.99998)
 scale = Vector2(0.8, 0.8)
+safe_margin = 1.5
 script = ExtResource("1_qlg0r")
 inv = ExtResource("2_gl8cc")
+foot_marker = NodePath("FootMarker")
 
 [node name="PlyrCollisionShape2D" type="CollisionShape2D" parent="." unique_id=66024058]
-position = Vector2(-3.25, 2.5)
+position = Vector2(-1.8749962, -1.249939)
+scale = Vector2(0.9999989, 0.9999989)
 shape = SubResource("RectangleShape2D_whljo")
 
 [node name="CharacterSprites" type="Node2D" parent="." unique_id=2095860029]
@@ -181,8 +187,6 @@ shape = SubResource("RectangleShape2D_whljo")
 sprite_frames = SubResource("SpriteFrames_6adnx")
 animation = &"walk_equipped"
 autoplay = "idle"
-frame = 4
-frame_progress = 0.1119532
 
 [node name="Lantern" type="Node2D" parent="CharacterSprites" unique_id=964616978]
 process_mode = 4
@@ -199,8 +203,8 @@ position = Vector2(24.725266, 5.494503)
 scale = Vector2(1.2257706, 1.0789826)
 
 [node name="LntrnCollisionShape2D" type="CollisionShape2D" parent="CharacterSprites/Lantern/LanternArea2D" unique_id=877712953]
-position = Vector2(10.256411, -2.197803)
-shape = SubResource("CircleShape2D_y4r1p")
+position = Vector2(11.206245, 46.09723)
+shape = SubResource("RectangleShape2D_8k800")
 
 [node name="PointLight2D" type="PointLight2D" parent="CharacterSprites/Lantern" unique_id=1223419189]
 position = Vector2(2.7472482, 2.7472513)
@@ -255,6 +259,18 @@ target_position = Vector2(0, -120)
 scale = Vector2(0.99999976, 0.99999976)
 target_position = Vector2(0, -80)
 
+[node name="StepJumpRayCastL" type="RayCast2D" parent="." unique_id=1858831446]
+position = Vector2(-15, 40)
+target_position = Vector2(0, -15)
+
+[node name="StepJumpRayCastR" type="RayCast2D" parent="." unique_id=1453672499]
+position = Vector2(11, 40)
+target_position = Vector2(0, -15)
+
+[node name="FootMarker" type="Marker2D" parent="." unique_id=2095810202]
+position = Vector2(-2.4999962, 40.00003)
+scale = Vector2(0.99999994, 0.99999994)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=381364680]
 
 [node name="WormHUD" type="HBoxContainer" parent="CanvasLayer" unique_id=22575049]
@@ -274,3 +290,13 @@ stretch_mode = 5
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 4
+
+[node name="FeetOnVine" type="Area2D" parent="." unique_id=236296925]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FeetOnVine" unique_id=915096]
+position = Vector2(-2.5, 38.12503)
+scale = Vector2(0.9999998, 0.9999998)
+shape = SubResource("RectangleShape2D_w2pfo")
+
+[connection signal="area_shape_entered" from="FeetOnVine" to="." method="_feet_area_shape_entered"]
+[connection signal="area_shape_exited" from="FeetOnVine" to="." method="_on_feet_area_shape_exited"]

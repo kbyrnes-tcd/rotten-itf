@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://32h27chxiffi"]
+
+[ext_resource type="Script" uid="uid://bcn8t07dwujcm" path="res://scripts/glowworm_cluster.gd" id="1_vrba8"]
+[ext_resource type="Texture2D" uid="uid://fc8hwmpaobv8" path="res://assets/images/worms/Glowworm.png" id="2_l6vgk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q01m8"]
+radius = 26.0
+
+[node name="GlowwormCluster" type="Area2D" unique_id=1112046846]
+script = ExtResource("1_vrba8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2015362664]
+position = Vector2(5, -3)
+texture = ExtResource("2_l6vgk")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1971483086]
+position = Vector2(0, 5)
+texture = ExtResource("2_l6vgk")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=1098208500]
+position = Vector2(-7, -5)
+texture = ExtResource("2_l6vgk")
+
+[node name="Sprite2D4" type="Sprite2D" parent="." unique_id=439673418]
+position = Vector2(-14, 7)
+texture = ExtResource("2_l6vgk")
+
+[node name="Sprite2D5" type="Sprite2D" parent="." unique_id=2036570260]
+position = Vector2(-17, -1)
+texture = ExtResource("2_l6vgk")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1943386926]
+position = Vector2(-1, 0)
+color = Color(0.7667546, 0.89002085, 0.579511, 1)
+texture = ExtResource("2_l6vgk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=430435419]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_q01m8")

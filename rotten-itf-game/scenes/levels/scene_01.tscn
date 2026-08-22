@@ -112,9 +112,12 @@ scale = Vector2(1, 1.0076721)
 position = Vector2(2481, 190)
 scale = Vector2(0.35, 0.35)
 
-[node name="DoorArea2D" parent="." unique_id=1160326856 node_paths=PackedStringArray("interact_carat") instance=ExtResource("9_b3nsi")]
+[node name="DoorToGardenInt" parent="." unique_id=1160326856 node_paths=PackedStringArray("interact_carat") instance=ExtResource("9_b3nsi")]
 position = Vector2(2481.0002, 217)
 scale = Vector2(3.594, 6.575)
+next_scene_path = "scene_02_int"
+door_id = "DoorToGardenInt"
+twin_id = "DoorCrackBackToExt"
 interact_carat = NodePath("../InteractiveCarat")
 
 [node name="LIOTriggers" type="Node" parent="." unique_id=482749486]

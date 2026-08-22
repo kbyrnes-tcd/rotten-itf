@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://bl5t8m3nmx3iu"]
+
+[ext_resource type="Texture2D" uid="uid://dxl432f7bjonh" path="res://assets/images/ui/intro/UI-pause-border-only.png" id="1_5efmg"]
+[ext_resource type="Script" uid="uid://cfuflkxlkv306" path="res://scripts/lore_scene.gd" id="1_6bukj"]
+[ext_resource type="Texture2D" uid="uid://cpx1f10ix7aq8" path="res://assets/images/ui/intro/RITF_Logo_white.png" id="2_gb14e"]
+[ext_resource type="Texture2D" uid="uid://dclvu8v18i6k" path="res://assets/images/env/p1_start/Backdrop.png" id="3_gb14e"]
+[ext_resource type="FontFile" uid="uid://3u1i6waxj8qa" path="res://assets/fonts/HyperlegibleSans-Bold.ttf" id="6_6jll0"]
+
+[node name="Lore_Scene" type="Node2D" unique_id=147676473]
+script = ExtResource("1_6bukj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2007797454]
+
+[node name="Background" type="TextureRect" parent="CanvasLayer" unique_id=1703570053]
+offset_left = -46.0
+offset_top = -36.0
+offset_right = 534.0
+offset_bottom = 287.0
+texture = ExtResource("1_5efmg")
+expand_mode = 1
+
+[node name="Logo" type="TextureRect" parent="CanvasLayer" unique_id=1023546907]
+offset_left = 211.0
+offset_top = 3.0
+offset_right = 276.0
+offset_bottom = 75.0
+texture = ExtResource("2_gb14e")
+expand_mode = 1
+
+[node name="LoreText" type="RichTextLabel" parent="CanvasLayer" unique_id=1702753164]
+offset_left = 74.0
+offset_top = 43.0
+offset_right = 410.0
+offset_bottom = 226.0
+theme_override_fonts/normal_font = ExtResource("6_6jll0")
+theme_override_font_sizes/normal_font_size = 14
+scroll_active = false
+autowrap_mode = 2
+vertical_alignment = 1
+
+[node name="Back" type="Sprite2D" parent="CanvasLayer" unique_id=1803944351]
+z_index = -1
+position = Vector2(1012.00006, 137)
+scale = Vector2(0.8027778, 1)
+texture = ExtResource("3_gb14e")
+
+[node name="ContinueHint" type="Label" parent="CanvasLayer" unique_id=2134530915]
+offset_left = 223.0
+offset_top = 222.0
+offset_right = 423.0
+offset_bottom = 245.0
+theme_override_fonts/font = ExtResource("6_6jll0")
+theme_override_font_sizes/font_size = 8
+text = "Press Enter to continue"
+horizontal_alignment = 2
+vertical_alignment = 2
