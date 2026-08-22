@@ -1,18 +1,32 @@
 extends Node
-#class_name GameGlobals
 
-var level_prog = ["lore_scene","scene_01", "scene_02_int", "scene_02_ext", "scene_03", "scene_04", "scene05", "scene07Underworld"]
+# just for audio prog now + starting off in-game audio (after start game&lore)
+var level_prog = [
+	"lore_scene",
+	"scene_01", # Start path
+	"scene_02_int", # Garden int
+	"scene_02_ext", # Garden ext
+	"scene_03", # Altar room,
+	"scene_03_garden", # Mini garden
+	"scene_04", # Chambers
+	"scene05", # Tower
+	"scene06", # P's altar room
+	"scene07Underworld"
+]
 var prog_counter := 0
 # PROGRESSION: ext_path, garden_int, garden_ext, altar, quarters, tower, p-altar, underworld
-var audio_prog := [
-	{"ambience": "n/a","music": "Title_Song"}, #lore_scene
-	{"ambience": "Ext_Ambiance","music": "Temple_Music"}, #ext_path
-	{"ambience": "Int_Ambiance","music": "Temple_Music"}, #garden_int
-	{"ambience": "Garden_Ambience", "music": "Temple_Music"}, #garden_ext
-	{"ambience": "Int_Ambiance", "music": "Temple_Music"}, #test
-	{"ambience": "Int_Ambiance", "music": "Temple_Music"} #test
-	#{"ambience": "", "music": ""}
-]
+var audio_prog := {
+	level_prog[0]: {"music": "Title_Song"},
+	level_prog[1]: {"ambience": "Ext_Ambiance", "music": "Temple_Music"}, # Start path
+	level_prog[2]: {"ambience": "Int_Ambiance", "music": "Temple_Music"}, # Garden int
+	level_prog[3]: {"ambience": "Garden_Ambience", "music": "Temple_Music"}, # Garden ext
+	level_prog[4]: {"ambience": "Int_Ambiance", "music": "Altar_Music"}, # Altar room
+	level_prog[5]: {"ambience": "Garden_Ambience", "music": "Temple_Music"}, # Mini garden
+	level_prog[6]: {"ambience": "Int_Ambiance", "music": "Temple_Music"}, # Chambers
+	level_prog[7]: {"ambience": "Int_Ambiance", "music": "Temple_Music"}, # Tower
+	level_prog[8]: {"ambience": "Int_Ambiance", "music": "Temple_Music"}, # P's altar room
+	level_prog[9]: {"ambience": "Underworld_Ambience", "music": "Underworld_Music"} # Underworld
+}
 
 var prev_scene : String
 var pending_spawn_door_id: String = ""
@@ -42,7 +56,7 @@ signal minigame_completed
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	AudioManager.play_music(audio_prog[0].music)
+	AudioManager.play_music(audio_prog["lore_scene"].music)
 	if !running_another_scene:
 		setup_game()
 
@@ -70,6 +84,8 @@ func start_level_or_debug() -> void:
 		var debug_node := debug_scene.instantiate()
 		level_root.add_child(debug_node)
 		player = debug_node.find_child("Player")
+		var debug_scene_name := debug_scene.resource_path.get_file().get_basename()
+		AudioManager.change_music(audio_prog[debug_scene_name].music)
 
 func start_new_game() -> void:
 	pending_start = true
@@ -176,12 +192,20 @@ func unload_level():
 		# detach door node to keep it
 		level_root.get_child(0).queue_free()
 
+var game_audio_has_begun := false
 func play_level_music(scene_name : String):
 	var scene_index = level_prog.find(scene_name)
-	if scene_index == 1: AudioManager.play_ambience(audio_prog[1].ambience)
-	AudioManager.change_ambience(audio_prog[scene_index].ambience)
-	AudioManager.change_music(audio_prog[scene_index].music)
-	if scene_index == 2: AudioManager.decrease_music_vol(30)
+	print(scene_index, game_audio_has_begun)
+	if scene_index == 1 and !game_audio_has_begun:
+		game_audio_has_begun = true
+		print("beginning game now w/ scene %s so gonna play ambi and decrease music vol." %scene_name)
+		AudioManager.play_ambience(audio_prog[scene_name].ambience)
+		AudioManager.decrease_music_vol(30)
+		AudioManager.change_music(audio_prog[scene_name].music)
+	elif scene_index > 1 and game_audio_has_begun:
+		print("keep continue henceforth changing music n ambi")
+		AudioManager.change_ambience(audio_prog[scene_name].ambience)
+		AudioManager.change_music(audio_prog[scene_name].music)
 
 var target_door
 func load_level(level_name: String):
@@ -197,7 +221,6 @@ func load_level(level_name: String):
 			target_door = scene_node.find_child(pending_spawn_door_id)
 		if target_door:
 			player.global_position = target_door.global_position + Vector2(50, 0)
-		print("pending spawn door is is %s" %pending_spawn_door_id)
 		pending_spawn_door_id = ""
 		play_level_music(level_name)
 
