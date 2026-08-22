@@ -95,9 +95,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_nbikq")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="DialogueAnchor/NamePlate" unique_id=378396151]
 layout_mode = 0
-offset_left = 5.0
+offset_left = -1.0
 offset_top = 1.0
-offset_right = 90.0
+offset_right = 96.0
 offset_bottom = 28.0
 
 [node name="LeftDeco" type="TextureRect" parent="DialogueAnchor/NamePlate/HBoxContainer" unique_id=343008414]

@@ -16,13 +16,15 @@ const PORTRAITS = {
 	"Daphne" : preload("res://assets/images/player/daphne_animations/portrait/daphne.png"),
 	"Persephone" : preload("res://assets/images/player/persephone/Persephone_HUD.png"),
 	"Hades" : preload("res://assets/images/player/zeus_hades/darkenedPortrait.png"),
-	"Zeus" : preload("res://assets/images/player/zeus_hades/darkenedPortrait.png")
+	"Zeus" : preload("res://assets/images/player/zeus_hades/darkenedPortrait.png"),
+	"High Priestess" : preload("res://assets/images/player/persephone/Persephone_HUD.png"),
+	
 }
 
 const SPEAKER_SIDE = {
 	"Daphne": "left",
 	"Persephone": "right",
-	"HighPriestess": "right",
+	"High Priestess": "right",
 	"Hades" : "right",
 	"Zeus" : "left"
 }

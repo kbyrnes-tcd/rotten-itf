@@ -153,7 +153,9 @@ func play_dialog(copy: String, speaker: String = "", letter_speed: float = 0.15,
 		if skip: return
 
 		if !active_os: active_os = clips.get_node("OneShotFX")
-		var speaker_alphabet = get(speaker.to_lower() + "_alpha")
+		var speaker_alphabet = get(speaker.to_lower().replace(" ", "") + "_alpha")
+		if not speaker_alphabet or speaker_alphabet.size() == 0:
+			speaker_alphabet = daphne_alpha
 		active_os.volume_db = -20.0
 		active_os.stream = speaker_alphabet[index]
 		# pitch and variance
