@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://cs0ki84qae7lo" path="res://scripts/minigames/maze/mg_build_maze_data.gd" id="3_f424p"]
 [ext_resource type="Texture2D" uid="uid://tlbdgm8e0k33" path="res://assets/images/rot/tile-rot/Rot1of1.SINGLE.png" id="3_gjyw5"]
 [ext_resource type="Script" uid="uid://cwicyq0sd6krn" path="res://scripts/minigames/maze/mg_rot_visual.gd" id="4_wqrwn"]
-[ext_resource type="Texture2D" uid="uid://c5fldkni2g4ht" path="res://assets/images/minigames/maze-pieces/Maze-Shape.png" id="7_hff37"]
+[ext_resource type="Texture2D" uid="uid://c88jkel1vtveh" path="res://assets/images/minigames/maze-pieces/Minigame_MazeN.png" id="8_hff37"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4d02b"]
 shader = ExtResource("2_gsbbd")
@@ -1514,13 +1514,13 @@ position = Vector2(113, 111)
 
 [node name="MazeShape" type="Sprite2D" parent="." unique_id=837615859]
 position = Vector2(113, 51)
-texture = ExtResource("7_hff37")
+texture = ExtResource("8_hff37")
 
 [node name="fin_vine" type="Line2D" parent="." unique_id=1487766107]
 texture_repeat = 2
 position = Vector2(113, 111)
 scale = Vector2(0.3, 0.3)
-points = PackedVector2Array(-226.66663, 6.666687, -153.33759, 7.5176015, -70.10739, 10.778043, -30.371134, 9.298772, 29.378363, 6.4665565, 75.33998, 7.1133714, 189.86761, 6.9776764)
+points = PackedVector2Array(-226.66663, 6.666687, -153.36667, 4.382355, -70.34177, 6.589147, -32.78406, 7.6928067, 26.236652, 10.995328, 67.11135, 18.78745, 185.26, 26.771524)
 width = 20.0
 width_curve = SubResource("Curve_hff37")
 texture = ExtResource("3_gjyw5")

@@ -1,16 +1,9 @@
 [gd_scene format=3 uid="uid://dtf7n0o1f301e"]
 
 [ext_resource type="Script" uid="uid://tt771uf6rtw8" path="res://scripts/dialogue_textbox.gd" id="1_y2pcl"]
+[ext_resource type="Texture2D" uid="uid://hucgnag6uv0s" path="res://assets/images/ui/dialogue/ui_dialogu.png" id="2_6ytya"]
 [ext_resource type="FontFile" uid="uid://3u1i6waxj8qa" path="res://assets/fonts/HyperlegibleSans-Bold.ttf" id="2_xcyex"]
 [ext_resource type="FontFile" uid="uid://b6i7rpldejb8" path="res://assets/fonts/FaytePixel-Soft.ttf" id="3_6ytya"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4keky"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nbikq"]
 bg_color = Color(0.16470589, 0.039215688, 0.039215688, 1)
@@ -37,22 +30,36 @@ offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="DialogueBox" type="Panel" parent="DialogueAnchor" unique_id=551013381]
+[node name="DialogueBox" type="NinePatchRect" parent="DialogueAnchor" unique_id=1772838458]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 21.0
+offset_left = -19.0
+offset_top = 22.0
+offset_right = 13.0
+offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_4keky")
+texture = ExtResource("2_6ytya")
+
+[node name="ColorRect" type="ColorRect" parent="DialogueAnchor/DialogueBox" unique_id=1924023213]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 8.0
+offset_right = 283.0
+offset_bottom = 62.0
+color = Color(0, 0, 0, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="DialogueAnchor/DialogueBox" unique_id=333941734]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -9.0
+offset_left = 5.0
+offset_top = -14.0
+offset_right = -3.0
+offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 10
@@ -73,10 +80,10 @@ scroll_active = false
 
 [node name="ContinueHint" type="Label" parent="DialogueAnchor/DialogueBox" unique_id=1123649260]
 layout_mode = 0
-offset_left = 11.0
-offset_top = 14.0
-offset_right = 251.0
-offset_bottom = 62.0
+offset_left = 30.0
+offset_top = 12.0
+offset_right = 270.0
+offset_bottom = 60.0
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("2_xcyex")
 theme_override_font_sizes/font_size = 6
@@ -87,10 +94,10 @@ vertical_alignment = 2
 [node name="NamePlate" type="Panel" parent="DialogueAnchor" unique_id=31804283]
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 0
-offset_left = 13.0
-offset_top = 2.0
-offset_right = 113.0
-offset_bottom = 26.0
+offset_left = 12.0
+offset_top = 6.0
+offset_right = 112.0
+offset_bottom = 30.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_nbikq")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="DialogueAnchor/NamePlate" unique_id=378396151]

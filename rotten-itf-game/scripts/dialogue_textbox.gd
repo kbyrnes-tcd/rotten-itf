@@ -17,7 +17,7 @@ const PORTRAITS = {
 	"Persephone" : preload("res://assets/images/player/persephone/Persephone_HUD.png"),
 	"Hades" : preload("res://assets/images/player/zeus_hades/darkenedPortrait.png"),
 	"Zeus" : preload("res://assets/images/player/zeus_hades/darkenedPortrait.png"),
-	"High Priestess" : preload("res://assets/images/player/persephone/Persephone_HUD.png"),
+	"High Priestess" : preload("res://assets/images/player/high_priestess/highpriestess_HUD.png"),
 	
 }
 
