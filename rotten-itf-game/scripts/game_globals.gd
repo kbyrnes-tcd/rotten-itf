@@ -171,10 +171,6 @@ func load_letter_ui(letter : LetterCopy):
 	letter_ui.visible = true
 	letter_ui.set_label(letter.copy)
 
-func unload_level():
-	if level_root.get_child_count() > 0:
-		# detach door node to keep it
-		level_root.get_child(0).queue_free()
 
 func play_level_music(scene_name : String):
 	var scene_index = level_prog.find(scene_name)
@@ -182,22 +178,49 @@ func play_level_music(scene_name : String):
 	AudioManager.change_ambience(audio_prog[scene_index].ambience)
 	AudioManager.change_music(audio_prog[scene_index].music)
 	if scene_index == 2: AudioManager.decrease_music_vol(30)
+	
+
+# persistent LOAD AND UNLOADDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+var persistent_scenes : Dictionary = {}
+
+func unload_level():
+	print("UNLOADING")
+	if level_root.get_child_count() > 0:
+		# TODO: SAVE PERS. PARAM DATA FOR SCENE TO BE UNLOADED
+		var c_scene :Node= level_root.get_child(0)
+		var c_scene_name := c_scene.name.to_lower()
+		var pers_data := c_scene.find_child("PersistentData")
+		if pers_data and c_scene_name != "":
+			print("found data to be persisted in the unladed scene!")
+			print(pers_data.object_names)
+			persistent_scenes[c_scene_name] = pers_data.save_state()
+			print("updated persistent_scenes dict w/ persistent-ified scene")
+			print(persistent_scenes)
+		c_scene.queue_free()
 
 var target_door
 func load_level(level_name: String):
 	level_name = level_name.to_lower()
 	unload_level()
+	print("LOADING")
 	var path = "res://scenes/levels/%s.tscn" % level_name
 	var n_scene : PackedScene = load(path)
 	var scene_node : Node = n_scene.instantiate()
 	if (n_scene):
+		# TODO: LOAD PERS. PARAM DATA FOR SCENE
+		if persistent_scenes.has(level_name):
+			print("the scene being loaded has been persisted into dict")
+			var pers_data := scene_node.find_child("PersistentData")
+			if pers_data:
+				pers_data.load_state(persistent_scenes[level_name])
+				print("applied persistent state to %s" % level_name)
+				
 		level_root.add_child(scene_node)
 		player = scene_node.find_child("Player")
 		if pending_spawn_door_id != "":
 			target_door = scene_node.find_child(pending_spawn_door_id)
 		if target_door:
 			player.global_position = target_door.global_position + Vector2(50, 0)
-		print("pending spawn door is is %s" %pending_spawn_door_id)
 		pending_spawn_door_id = ""
 		play_level_music(level_name)
 

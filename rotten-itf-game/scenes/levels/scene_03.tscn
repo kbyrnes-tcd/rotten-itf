@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bfd835hclty4v"]
 
+[ext_resource type="PackedScene" uid="uid://cfukrntau5ufh" path="res://scenes/levels/persistent_data.tscn" id="1_a3hc7"]
 [ext_resource type="Texture2D" uid="uid://faq2j7c8soki" path="res://assets/images/env/altar/altarRot.png" id="1_co3ny"]
 [ext_resource type="Texture2D" uid="uid://xetnkgsgwjn2" path="res://assets/images/env/altar/Altar_Collision_Mask.png" id="2_p368k"]
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="3_p368k"]
@@ -27,6 +28,10 @@ size = Vector2(150, 100)
 
 [node name="Scene_03" type="Node2D" unique_id=345651132]
 position = Vector2(-1, -13)
+
+[node name="PersistentData" parent="." unique_id=1117547414 node_paths=PackedStringArray("objects") instance=ExtResource("1_a3hc7")]
+objects = [NodePath("../Chandelier")]
+track_position = true
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1309616939]
 position = Vector2(2002, 122)

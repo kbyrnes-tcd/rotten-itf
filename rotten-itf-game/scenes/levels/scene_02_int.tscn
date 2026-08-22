@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cg75k4w0pepcp"]
 
+[ext_resource type="PackedScene" uid="uid://cfukrntau5ufh" path="res://scenes/levels/persistent_data.tscn" id="1_4muw5"]
 [ext_resource type="Texture2D" uid="uid://dgwjnqq4radaq" path="res://assets/images/env/p2_garden_ext/RITF_Gardenbackrot.png" id="1_yrcn3"]
 [ext_resource type="Texture2D" uid="uid://1k6yhyu0d08r" path="res://assets/images/env/p2_garden_int/Firsthallwaynobackground.png" id="2_3aray"]
 [ext_resource type="PackedScene" uid="uid://di31qowjleyl4" path="res://scenes/rot_dressing_new.tscn" id="4_xgkue"]
@@ -20,6 +21,10 @@ size = Vector2(2565.0068, 61)
 size = Vector2(2596, 55.5)
 
 [node name="Scene_02_int" type="Node2D" unique_id=358721782]
+
+[node name="PersistentData" parent="." unique_id=1117547414 node_paths=PackedStringArray("objects") instance=ExtResource("1_4muw5")]
+objects = [NodePath("../LanternPickup")]
+track_freed = true
 
 [node name="Environment" type="Node2D" parent="." unique_id=1527416479]
 position = Vector2(2025, 215)
