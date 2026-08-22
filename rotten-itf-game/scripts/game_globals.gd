@@ -191,9 +191,7 @@ func load_letter_ui(letter : LetterCopy):
 var game_audio_has_begun := false
 func play_level_music(scene_name : String):
 	var scene_index = level_prog.find(scene_name)
-	if scene_index == 1: AudioManager.play_ambience(audio_prog[1].ambience)
-	AudioManager.change_ambience(audio_prog[scene_index].ambience)
-	AudioManager.change_music(audio_prog[scene_index].music)
+	print(scene_index, game_audio_has_begun)
 	if scene_index == 1 and !game_audio_has_begun:
 		game_audio_has_begun = true
 		print("beginning game now w/ scene %s so gonna play ambi and decrease music vol." %scene_name)
@@ -209,7 +207,7 @@ func play_level_music(scene_name : String):
 var persistent_scenes : Dictionary = {}
 
 func unload_level():
-	print("UNLOADING")
+	#print("UNLOADING")
 	if level_root.get_child_count() > 0:
 		# TODO: SAVE PERS. PARAM DATA FOR SCENE TO BE UNLOADED
 		var c_scene :Node= level_root.get_child(0)
@@ -219,22 +217,22 @@ func unload_level():
 			print("found data to be persisted in the unladed scene!")
 			print(pers_data.object_names)
 			persistent_scenes[c_scene_name] = pers_data.save_state()
-			print("updated persistent_scenes dict w/ persistent-ified scene")
-			print(persistent_scenes)
+			#print("updated persistent_scenes dict w/ persistent-ified scene")
+			#print(persistent_scenes)
 		c_scene.queue_free()
 
 var target_door
 func load_level(level_name: String):
 	level_name = level_name.to_lower()
 	unload_level()
-	print("LOADING")
+	#print("LOADING")
 	var path = "res://scenes/levels/%s.tscn" % level_name
 	var n_scene : PackedScene = load(path)
 	var scene_node : Node = n_scene.instantiate()
 	if (n_scene):
 		# TODO: LOAD PERS. PARAM DATA FOR SCENE
 		if persistent_scenes.has(level_name):
-			print("the scene being loaded has been persisted into dict")
+			#print("the scene being loaded has been persisted into dict")
 			var pers_data := scene_node.find_child("PersistentData")
 			if pers_data:
 				pers_data.load_state(persistent_scenes[level_name])
