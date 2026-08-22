@@ -233,7 +233,17 @@ func get_snapped_direction() -> Vector2:
 func start_vine():
 	if is_growing:
 		return
-	
+	if not GameGlobals.first_rot_shot:
+		GameGlobals.first_rot_shot = true
+		var lio = get_tree().get_first_node_in_group("lio_manager")
+		if lio:
+			lio.show_sequence([
+				"Oh, Goddess… the rot is growing…",
+				"The High Priestess said I must use this rot, but… why?",
+				"This rotten substance… I too shall honor my deal with you, High Priestess. ",
+				"This power to grow the rot, I must be careful with it. I don’t know what affects it’ll have on this place.",
+				"Or on me."
+			])
 	var dir = get_snapped_direction()
 	var src = gun_sprite.global_position + dir * 10.0
 

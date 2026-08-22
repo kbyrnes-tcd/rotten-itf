@@ -37,6 +37,7 @@ var pending_start := true
 static var dialogue_done: bool = false
 var previous_level: String = ""
 static var return_position: Vector2 = Vector2.ZERO
+static var first_rot_shot: bool = false
 
 signal minigame_completed
 

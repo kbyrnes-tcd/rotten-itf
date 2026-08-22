@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bimatr4hej8ja"]
 
 [ext_resource type="Script" uid="uid://b1kcip586q27h" path="res://scripts/interactive_carat.gd" id="1_xk45g"]
-[ext_resource type="Texture2D" uid="uid://cd4cbrmm0xm5a" path="res://assets/images/ui/carat.png" id="2_i8hah"]
+[ext_resource type="Texture2D" uid="uid://mkybm634l4wq" path="res://assets/images/ui/Caret.png" id="2_xk45g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xk45g"]
 size = Vector2(20, 36.794254)
@@ -10,8 +10,9 @@ size = Vector2(20, 36.794254)
 script = ExtResource("1_xk45g")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=398849491]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_i8hah")
+position = Vector2(0.49999905, 17.999996)
+scale = Vector2(4.1400003, 2.7058823)
+texture = ExtResource("2_xk45g")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1489179703]
 

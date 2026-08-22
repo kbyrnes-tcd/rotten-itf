@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c1epxp5spnua" path="res://scenes/ui/dialogue_trigger.tscn" id="5_0760f"]
 [ext_resource type="Script" uid="uid://ddnjkodm10cvk" path="res://scripts/dialogue_trigger.gd" id="6_nuytq"]
 [ext_resource type="PackedScene" uid="uid://ddm8l1j51pxi2" path="res://scenes/chandelier.tscn" id="7_5i8uq"]
+[ext_resource type="Texture2D" uid="uid://mkybm634l4wq" path="res://assets/images/ui/Caret.png" id="8_cqx5b"]
 [ext_resource type="PackedScene" uid="uid://qtqiun326hpr" path="res://scenes/lever.tscn" id="8_y5j78"]
 [ext_resource type="Script" uid="uid://cdxfomkkfwywg" path="res://scripts/fallen_trigger.gd" id="9_6m4hc"]
 [ext_resource type="PackedScene" uid="uid://dr3ff06oljyer" path="res://scenes/lio_trigger.tscn" id="10_y5j78"]
@@ -90,9 +91,9 @@ position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_o7blk")
 
 [node name="Interact" parent="DialogueTrigger" index="1" unique_id=125428239]
-visible = false
-position = Vector2(2158, 204)
-scale = Vector2(0.118892506, 0.13843648)
+position = Vector2(2171, 209)
+scale = Vector2(1.9600003, 1.482353)
+texture = ExtResource("8_cqx5b")
 
 [node name="Chandelier" parent="." unique_id=813450568 instance=ExtResource("7_5i8uq")]
 
@@ -120,8 +121,9 @@ position = Vector2(369, 244)
 
 [node name="InteractHint" parent="Lever" index="2" unique_id=106943939]
 visible = false
-position = Vector2(365.99997, 202)
-scale = Vector2(0.0692182, 0.090390876)
+position = Vector2(371, 214.99998)
+scale = Vector2(1.36, 1.1999999)
+texture = ExtResource("8_cqx5b")
 
 [node name="FallenTrigger" type="Area2D" parent="." unique_id=831523694 node_paths=PackedStringArray("chandelier")]
 position = Vector2(672, 261)
@@ -145,7 +147,7 @@ blocking_rot = [NodePath("../Line2D")]
 inv_amulet = ExtResource("13_e0ngt")
 
 [node name="LioTrigger3" parent="." unique_id=460109088 instance=ExtResource("10_y5j78")]
-position = Vector2(2343, 247)
+position = Vector2(2582, 201)
 lio_text = "Press ] to equip amulet."
 requires_dialogue_done = true
 

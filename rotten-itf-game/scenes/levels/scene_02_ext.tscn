@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="6_6c07b"]
 [ext_resource type="PackedScene" uid="uid://bimatr4hej8ja" path="res://scenes/ui/interactive_carat.tscn" id="10_nqapm"]
 [ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="11_jctv3"]
-[ext_resource type="Resource" uid="uid://6pxkrw3jqp6n" path="res://scripts/inventory_system/items/green_worm.tres" id="12_58igu"]
+[ext_resource type="Texture2D" uid="uid://fc8hwmpaobv8" path="res://assets/images/worms/Glowworm.png" id="11_osntu"]
 [ext_resource type="PackedScene" uid="uid://dr3ff06oljyer" path="res://scenes/lio_trigger.tscn" id="12_gvi84"]
 [ext_resource type="PackedScene" uid="uid://di31qowjleyl4" path="res://scenes/rot_dressing_new.tscn" id="12_osntu"]
 [ext_resource type="PackedScene" uid="uid://ufmhebijpwbb" path="res://scenes/collectible_item.tscn" id="14_58igu"]
@@ -124,8 +124,28 @@ twin_id = "DoorToGardenExt"
 interact_carat = NodePath("../InteractiveCarat")
 
 [node name="CollectibleItem" parent="." unique_id=385129123 instance=ExtResource("14_58igu")]
-position = Vector2(3505, 307)
-item = ExtResource("12_58igu")
+position = Vector2(3525.0002, 317)
+
+[node name="PointLight2D" type="PointLight2D" parent="CollectibleItem" unique_id=2125629270]
+position = Vector2(-2.0001423, 0.50000036)
+scale = Vector2(0.17142954, 0.1733339)
+color = Color(0.26550028, 0.9937225, 0.9999997, 1)
+texture = ExtResource("11_osntu")
+
+[node name="PointLight2D2" type="PointLight2D" parent="CollectibleItem" unique_id=1360859745]
+position = Vector2(-2.5000415, 1.9999921)
+scale = Vector2(0.21905096, 0.34666702)
+texture = ExtResource("11_osntu")
+
+[node name="PointLight2D3" type="PointLight2D" parent="CollectibleItem" unique_id=1077586436]
+position = Vector2(-0.00012040138, 1.1666679)
+scale = Vector2(0.19047587, 0.28)
+texture = ExtResource("11_osntu")
+
+[node name="PointLight2D4" type="PointLight2D" parent="CollectibleItem" unique_id=1778018131]
+position = Vector2(-0.8333866, 2.4999971)
+scale = Vector2(0.16190277, 0.14666654)
+texture = ExtResource("11_osntu")
 
 [node name="LIO" type="Node" parent="." unique_id=152196213]
 
