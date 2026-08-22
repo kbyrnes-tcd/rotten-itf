@@ -8,22 +8,26 @@ extends Control
 @onready var main_btns = $BorderBox/VBoxContainer/MainButtons
 @onready var settings_panel = $BorderBox/VBoxContainer/SettingsPanel
 @onready var volume_slider = $BorderBox/VBoxContainer/SettingsPanel/HBoxContainer/VolumeSilder
+@onready var help_panel: VBoxContainer = $BorderBox/VBoxContainer/HelpPanel
+@onready var controls_panel: VBoxContainer = $BorderBox/VBoxContainer/ControlsPanel
+var buttons
 
 func _ready():
+	buttons = get_tree().get_nodes_in_group("buttons")
 	settings_panel.visible = false 
-	_setup_hovers()
+	setup_fx()
+	setup_back_buttons()
 	volume_slider.value = db_to_linear(AudioServer.get_bus_volume_db(0))
 
-func _setup_hovers():
-	var buttons := get_tree().get_nodes_in_group("buttons")
-	buttons.map(func(b): _setup_hover(b))
+func setup_back_buttons():
+	for btn in buttons:
+		if btn.name.contains("Back"):
+			btn.pressed.connect(func(): reset())
 
-func _setup_hover(btn: Button):
-	var sprite = btn.get_node("HoverSprite")
-	sprite.visible = false
-	btn.mouse_entered.connect(func(): sprite.visible = true; AudioManager.play_os("ui_select"))
-	btn.mouse_exited.connect(func(): sprite.visible = false; AudioManager.play_os("ui_select"))
-	btn.pressed.connect(func(): AudioManager.play_os("ui_confirm"))
+func setup_fx():
+	for b in buttons:
+		b.pressed.connect(func(): AudioManager.play_os("ui_confirm"))
+		b.mouse_entered.connect(func(): AudioManager.play_os("ui_select"))
 
 func _process(_delta):
 	if Input.is_action_just_pressed("pause"):
@@ -34,7 +38,16 @@ func _process(_delta):
 		GameGlobals.pause(true)
 	elif Input.is_action_just_pressed("pause") and !GameGlobals.inv_ui.visible and get_tree().paused:
 		GameGlobals.resume(true)
+		reset()
 
+func reset():
+	main_btns.visible = true
+	
+	settings_panel.visible = false
+	help_panel.visible = false
+	controls_panel.visible = false
+
+# MAIN BUTTONS
 func _on_resume_pressed() -> void:
 	GameGlobals.resume(true)
 
@@ -42,13 +55,22 @@ func _on_settings_pressed() -> void:
 	main_btns.visible = false
 	settings_panel.visible = true
 
+func _on_controls_pressed() -> void:
+	main_btns.visible = false
+	controls_panel.visible = true
+
+func _on_help_pressed() -> void:
+	main_btns.visible = false
+	help_panel.visible = true
+
 func _on_quit_pressed() -> void:
 	get_tree().quit()
 
-func _on_back_pressed():
-	settings_panel.visible = false
-	main_btns.visible = true
+# SETTINGS
+func _on_volume_silder_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(0, linear_to_db(value))
 
+# HELP
 func _on_stuck_pressed() -> void:
 	GameGlobals.resume()
 	var current_level = GameGlobals.level_root.get_child(0).name
@@ -59,6 +81,3 @@ func _on_refill_pressed() -> void:
 	if player:
 		for i in 5:
 			player.inv.insert(player.GLOWWORM)
-
-func _on_volume_silder_value_changed(value: float) -> void:
-	AudioServer.set_bus_volume_db(0, linear_to_db(value))
