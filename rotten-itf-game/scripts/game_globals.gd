@@ -176,12 +176,18 @@ func unload_level():
 		# detach door node to keep it
 		level_root.get_child(0).queue_free()
 
+var game_audio_has_begun := false
 func play_level_music(scene_name : String):
+	print("playing scene %s" %scene_name)
 	var scene_index = level_prog.find(scene_name)
-	if scene_index == 1: AudioManager.play_ambience(audio_prog[1].ambience)
+	print("scene_index: %s" %scene_index)
+	if scene_index == 1 and !game_audio_has_begun:
+		game_audio_has_begun = true
+		print("beginning game now so gonna play ambi and decrease music vol.")
+		AudioManager.play_ambience(audio_prog[1].ambience)
+		AudioManager.decrease_music_vol(30)
 	AudioManager.change_ambience(audio_prog[scene_index].ambience)
 	AudioManager.change_music(audio_prog[scene_index].music)
-	if scene_index == 2: AudioManager.decrease_music_vol(30)
 
 var target_door
 func load_level(level_name: String):
@@ -197,7 +203,6 @@ func load_level(level_name: String):
 			target_door = scene_node.find_child(pending_spawn_door_id)
 		if target_door:
 			player.global_position = target_door.global_position + Vector2(50, 0)
-		print("pending spawn door is is %s" %pending_spawn_door_id)
 		pending_spawn_door_id = ""
 		play_level_music(level_name)
 

@@ -6,6 +6,7 @@ var active_music : AudioStreamPlayer
 var active_fx : AudioStreamPlayer # looping fx that only one of can play at a time e.g. grow/shrink
 var active_walk_fx : AudioStreamPlayer # walking fx should be able to be layered
 @onready var active_os: AudioStreamPlayer = $Clips/OneShotFX
+@onready var dialog_os: AudioStreamPlayer = $Clips/DialogOneShotFX
 
 # fade in/out tweens
 var walk_tween : Tween
@@ -17,6 +18,8 @@ var music_tween : Tween
 @export var clips: Node
 @export_group("Source")
 @export var fx: Dictionary[String, AudioStream] = {}
+@export var ambi_vol : float = 0.0
+@export var music_vol : float = -15.0
 @export_group("Music")
 @export var ambiences : Dictionary[String, AudioStream] = {}
 @export var music : Dictionary[String, AudioStream] = {}
@@ -57,7 +60,7 @@ func change_ambience(am_name: String) -> void:
 		if c_am == am_name: return
 		else: 
 			#print("not the same am so changing TO %s from %s" %[am_name, c_am])
-			am_tween = await fade(am_tween, active_ambience, -10.0, -30.0, 1.0) # _tween = await fadeout current track b4 changing
+			am_tween = await fade(am_tween, active_ambience, ambi_vol, ambi_vol-20, 1.0) # fadeOUT current track b4 changing
 			active_ambience = null
 			play_ambience(am_name)
 
@@ -66,7 +69,7 @@ func play_ambience(am_name: String) -> void:
 		active_ambience = clips.get_node("Ambience")
 		active_ambience.stream = ambiences[am_name]
 		#print("fading in %s" %am_name)
-		am_tween = await fade(am_tween, active_ambience, -25.0, -10.0, 1.0)
+		am_tween = await fade(am_tween, active_ambience, ambi_vol-20, ambi_vol, 1.0) # fadeIN new track
 		#print("calling play")
 		active_ambience.play()
 
@@ -76,7 +79,7 @@ func change_music(song: String) -> void:
 		# if it's the same track, keep continue
 		if c_song == song: return
 		else: 
-			music_tween = await fade(music_tween, active_music, -30.0, -50.0, 1.0) # fade current track b4 changing
+			music_tween = await fade(music_tween, active_music, music_vol, music_vol-20, 1.0) # fadeOUT current track b4 changing
 			active_music = null
 			play_music(song)
 
@@ -84,7 +87,7 @@ func play_music(song: String) -> void:
 	if !active_music:
 		active_music = clips.get_node("Music")
 		active_music.stream = music[song]
-		music_tween = await fade(music_tween, active_music, -50.0, -10, 1.0)
+		music_tween = await fade(music_tween, active_music, music_vol-20, music_vol, 1.0) # fadeIN new track
 		active_music.play()
 
 func increase_music_vol(amount: float = 15.0, dur: float = 1.5):
@@ -129,9 +132,9 @@ var skip := false
 var dialog_id := 0
 
 func skip_dialog():
-	if active_os:
-		active_os.stop()
-	active_os = null
+	if dialog_os:
+		dialog_os.stop()
+	dialog_os = null
 	skip = true
 
 func play_dialog(copy: String, speaker: String = "", letter_speed: float = 0.15, base_pitch: float = 1.0, pitch_variance: float = 0.15) -> void:
@@ -139,7 +142,7 @@ func play_dialog(copy: String, speaker: String = "", letter_speed: float = 0.15,
 	dialog_id += 1 # incr per dialog line
 	#copy = copy.to_lower().substr(0, 30)
 	skip = false
-	active_os = null
+	dialog_os = null
 	var cur_id := dialog_id
 	
 	for c in copy:
@@ -152,20 +155,20 @@ func play_dialog(copy: String, speaker: String = "", letter_speed: float = 0.15,
 		else: index = randi_range(0, index)
 		if skip: return
 
-		if !active_os: active_os = clips.get_node("OneShotFX")
+		if !dialog_os: dialog_os = clips.get_node("OneShotFX")
 		var speaker_alphabet = get(speaker.to_lower() + "_alpha")
-		active_os.volume_db = -20.0
-		active_os.stream = speaker_alphabet[index]
+		dialog_os.volume_db = -20.0
+		dialog_os.stream = speaker_alphabet[index]
 		# pitch and variance
-		active_os.pitch_scale = base_pitch + randf_range(-pitch_variance, pitch_variance)
-		active_os.play()
+		dialog_os.pitch_scale = base_pitch + randf_range(-pitch_variance, pitch_variance)
+		dialog_os.play()
 		#await get_tree().create_timer(letter_speed).timeout
-		#await active_os.finished
-		active_os = null
+		#await dialog_os.finished
+		dialog_os = null
 	
-	# return active_os to original state
-	active_os = clips.get_node("OneShotFX")
-	active_os.volume_db = -20.0
+	# return dialog_os to original state
+	dialog_os = clips.get_node("OneShotFX")
+	dialog_os.volume_db = -20.0
 
 func play_os_from_arr(arr_name: String, index : int = -1, from: float = 0.0) -> void:
 	var os_arr = get(arr_name + "_fx")
