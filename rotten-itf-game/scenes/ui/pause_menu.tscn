@@ -1,47 +1,12 @@
 [gd_scene format=3 uid="uid://cpwsgbr3fr7by"]
 
 [ext_resource type="Script" uid="uid://4onlwwqhsoyt" path="res://scripts/ui/pause_menu.gd" id="1_6tw0m"]
+[ext_resource type="Texture2D" uid="uid://3gxmmsnntm05" path="res://scenes/ui/UI-pause-border-only.png" id="2_4inpj"]
 [ext_resource type="Texture2D" uid="uid://bpqoeakbjv032" path="res://assets/images/ui/RITF_Logo.png" id="2_f6eus"]
 [ext_resource type="FontFile" uid="uid://b6i7rpldejb8" path="res://assets/fonts/FaytePixel-Soft.ttf" id="3_0bnpd"]
-[ext_resource type="Texture2D" uid="uid://dx7m8rnod5a7w" path="res://assets/images/ui/border_gs.png" id="3_4inpj"]
 [ext_resource type="FontFile" uid="uid://3u1i6waxj8qa" path="res://assets/fonts/HyperlegibleSans-Bold.ttf" id="4_8fwbo"]
-[ext_resource type="Texture2D" uid="uid://c6ehn2smktrnw" path="res://assets/images/ui/button_pause.png" id="4_8uki6"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8uki6"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0bnpd"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4inpj"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8fwbo"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7yca1"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lrbnh"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6qnem"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ynwdf"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2rlsb"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_coo1x"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2jkta"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ht4ye"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jm4ic"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iocrw"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s4ab0"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l5i3s"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_reqkp"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o6imd"]
 
 [node name="PauseMenu" type="Control" unique_id=111660448]
 process_mode = 3
@@ -59,7 +24,7 @@ script = ExtResource("1_6tw0m")
 layout_mode = 0
 offset_right = 480.0
 offset_bottom = 270.0
-color = Color(0, 0, 0, 0.3372549)
+color = Color(0, 0, 0, 0.53333336)
 
 [node name="BorderBox" type="NinePatchRect" parent="." unique_id=1565737539]
 layout_mode = 1
@@ -68,137 +33,115 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -159.0
-offset_top = -91.0
-offset_right = 171.0
-offset_bottom = 99.0
+offset_left = -90.0
+offset_top = -95.0
+offset_right = 90.0
+offset_bottom = 95.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_4inpj")
-region_rect = Rect2(-5.5517387, 10.224319, 339.0606, 171.94267)
+texture = ExtResource("2_4inpj")
+region_rect = Rect2(149.6, 102.73293, 701.06665, 411.21695)
 
 [node name="Logo" type="TextureRect" parent="BorderBox" unique_id=990357678]
 custom_minimum_size = Vector2(60, 60)
 custom_maximum_size = Vector2(60, 60)
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -40.0
-offset_top = -31.999998
-offset_right = 20.0
-offset_bottom = 28.000002
-grow_horizontal = 2
-scale = Vector2(1.19, 1.19)
+layout_mode = 0
+offset_left = 60.0
+offset_top = -29.5
+offset_right = 120.0
+offset_bottom = 30.5
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource("2_f6eus")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="BorderBox" unique_id=2103730184]
-layout_mode = 0
-offset_left = 115.0
-offset_top = 35.0
-offset_right = 204.0
-offset_bottom = 220.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Paused" type="Label" parent="BorderBox/VBoxContainer" unique_id=1691008236]
-layout_mode = 2
+[node name="Paused" type="Label" parent="BorderBox" unique_id=1691008236]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -75.0
+offset_top = 28.0
+offset_right = 75.0
+offset_bottom = 58.0
+grow_horizontal = 2
 theme_override_fonts/font = ExtResource("3_0bnpd")
-theme_override_font_sizes/font_size = 37
+theme_override_font_sizes/font_size = 30
 text = "Paused"
 horizontal_alignment = 1
-vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BorderBox" unique_id=2103730184]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -49.0
+offset_right = 75.0
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
 
 [node name="MainButtons" type="VBoxContainer" parent="BorderBox/VBoxContainer" unique_id=1352851221]
 layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
 
 [node name="Resume" type="Button" parent="BorderBox/VBoxContainer/MainButtons" unique_id=622553379 groups=["buttons"]]
+custom_minimum_size = Vector2(70, 0)
+custom_maximum_size = Vector2(70, -1)
 layout_mode = 2
+theme_override_colors/icon_normal_color = Color(0.3118496, 0.31184962, 0.3118496, 1)
+theme_override_colors/icon_hover_color = Color(0.5246087, 0.19588739, 0.3256104, 1)
 theme_override_fonts/font = ExtResource("4_8fwbo")
-theme_override_font_sizes/font_size = 13
-theme_override_styles/normal = SubResource("StyleBoxEmpty_8uki6")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_0bnpd")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_4inpj")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_8fwbo")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4inpj")
 text = "Resume"
 
-[node name="HoverSprite" type="TextureRect" parent="BorderBox/VBoxContainer/MainButtons/Resume" unique_id=75543109]
-visible = false
-z_index = -1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -17.0
-offset_top = -5.0
-offset_right = 18.0
-offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("4_8uki6")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Quit" type="Button" parent="BorderBox/VBoxContainer/MainButtons" unique_id=1081397096 groups=["buttons"]]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_8fwbo")
-theme_override_font_sizes/font_size = 13
-theme_override_styles/normal = SubResource("StyleBoxEmpty_7yca1")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_lrbnh")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_6qnem")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_ynwdf")
-text = "Exit"
-
-[node name="HoverSprite" type="TextureRect" parent="BorderBox/VBoxContainer/MainButtons/Quit" unique_id=1243181694]
-visible = false
-z_index = -1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -17.0
-offset_top = -6.0
-offset_right = 18.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("4_8uki6")
-expand_mode = 1
-stretch_mode = 5
-
 [node name="Settings" type="Button" parent="BorderBox/VBoxContainer/MainButtons" unique_id=2009873380 groups=["buttons"]]
+custom_minimum_size = Vector2(70, 0)
+custom_maximum_size = Vector2(70, -1)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_8fwbo")
-theme_override_font_sizes/font_size = 13
-theme_override_styles/normal = SubResource("StyleBoxEmpty_2rlsb")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_coo1x")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_2jkta")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_ht4ye")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4inpj")
 text = "Settings"
 
-[node name="HoverSprite" type="TextureRect" parent="BorderBox/VBoxContainer/MainButtons/Settings" unique_id=950770259]
-visible = false
-z_index = -1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -17.0
-offset_top = -5.0
-offset_right = 18.0
-offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("4_8uki6")
-expand_mode = 1
-stretch_mode = 5
+[node name="Controls" type="Button" parent="BorderBox/VBoxContainer/MainButtons" unique_id=560782509 groups=["buttons"]]
+custom_minimum_size = Vector2(70, 0)
+custom_maximum_size = Vector2(70, -1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_8fwbo")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4inpj")
+text = "Controls"
+
+[node name="Help" type="Button" parent="BorderBox/VBoxContainer/MainButtons" unique_id=39375293 groups=["buttons"]]
+custom_minimum_size = Vector2(70, 0)
+custom_maximum_size = Vector2(70, -1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_8fwbo")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4inpj")
+text = "Help"
+
+[node name="Quit" type="Button" parent="BorderBox/VBoxContainer/MainButtons" unique_id=1081397096 groups=["buttons"]]
+custom_minimum_size = Vector2(70, 0)
+custom_maximum_size = Vector2(70, -1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_8fwbo")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4inpj")
+text = "Quit"
 
 [node name="SettingsPanel" type="VBoxContainer" parent="BorderBox/VBoxContainer" unique_id=2126366751]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -208,110 +151,143 @@ layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
 
-[node name="Volume" type="Label" parent="BorderBox/VBoxContainer/SettingsPanel/HBoxContainer" unique_id=1480882695]
+[node name="GeneralVolume" type="Label" parent="BorderBox/VBoxContainer/SettingsPanel/HBoxContainer" unique_id=1480882695]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_8fwbo")
-theme_override_font_sizes/font_size = 12
-text = "Volume"
+theme_override_font_sizes/font_size = 7
+text = "General Volume"
 
 [node name="VolumeSilder" type="HSlider" parent="BorderBox/VBoxContainer/SettingsPanel/HBoxContainer" unique_id=1699783961]
 custom_minimum_size = Vector2(40, 20)
 layout_mode = 2
 
-[node name="Stuck" type="Button" parent="BorderBox/VBoxContainer/SettingsPanel" unique_id=1089812231 groups=["buttons"]]
+[node name="HBoxContainer2" type="HBoxContainer" parent="BorderBox/VBoxContainer/SettingsPanel" unique_id=185321936]
+visible = false
 layout_mode = 2
-theme_override_colors/font_color = Color(0.99215686, 0.99215686, 0.99607843, 1)
-theme_override_fonts/font = ExtResource("4_8fwbo")
-theme_override_font_sizes/font_size = 12
-theme_override_styles/normal = SubResource("StyleBoxEmpty_jm4ic")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_iocrw")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_s4ab0")
-text = "I'm Stuck"
-autowrap_mode = 2
-icon_alignment = 1
+size_flags_horizontal = 4
+alignment = 1
 
-[node name="HoverSprite" type="TextureRect" parent="BorderBox/VBoxContainer/SettingsPanel/Stuck" unique_id=530949678]
-z_index = -1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -34.0
-offset_top = -5.0
-offset_right = 2.0
-offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.24, 1)
-mouse_filter = 2
-texture = ExtResource("4_8uki6")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Refill" type="Button" parent="BorderBox/VBoxContainer/SettingsPanel" unique_id=1574938797 groups=["buttons"]]
+[node name="SFXVolume" type="Label" parent="BorderBox/VBoxContainer/SettingsPanel/HBoxContainer2" unique_id=297172472]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.99215686, 0.99215686, 0.99607843, 1)
 theme_override_fonts/font = ExtResource("4_8fwbo")
-theme_override_font_sizes/font_size = 12
-theme_override_styles/normal = SubResource("StyleBoxEmpty_jm4ic")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_iocrw")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_s4ab0")
-text = "Refill Worm"
-autowrap_mode = 2
-icon_alignment = 1
+theme_override_font_sizes/font_size = 7
+text = "SFX Volume"
 
-[node name="HoverSprite" type="TextureRect" parent="BorderBox/VBoxContainer/SettingsPanel/Refill" unique_id=1249189891]
-z_index = -1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -34.0
-offset_top = -5.0
-offset_right = 2.0
-offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.24, 1)
-mouse_filter = 2
-texture = ExtResource("4_8uki6")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Back" type="Button" parent="BorderBox/VBoxContainer/SettingsPanel" unique_id=1232216212 groups=["buttons"]]
+[node name="VolumeSilder" type="HSlider" parent="BorderBox/VBoxContainer/SettingsPanel/HBoxContainer2" unique_id=1540795757]
+custom_minimum_size = Vector2(40, 20)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.99215686, 0.99215686, 0.99607843, 1)
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="BorderBox/VBoxContainer/SettingsPanel" unique_id=167398736]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="MusicVolume" type="Label" parent="BorderBox/VBoxContainer/SettingsPanel/HBoxContainer3" unique_id=460609143]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("4_8fwbo")
-theme_override_font_sizes/font_size = 12
-theme_override_styles/normal = SubResource("StyleBoxEmpty_l5i3s")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_reqkp")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_o6imd")
+theme_override_font_sizes/font_size = 7
+text = "Music Volume"
+
+[node name="VolumeSilder" type="HSlider" parent="BorderBox/VBoxContainer/SettingsPanel/HBoxContainer3" unique_id=1535847988]
+custom_minimum_size = Vector2(40, 20)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="BorderBox/VBoxContainer/SettingsPanel" unique_id=419801403]
+layout_mode = 2
+theme_override_constants/margin_bottom = 10
+
+[node name="Back2" type="Button" parent="BorderBox/VBoxContainer/SettingsPanel" unique_id=1060240049 groups=["buttons"]]
+custom_minimum_size = Vector2(70, 0)
+custom_maximum_size = Vector2(70, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("4_8fwbo")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4inpj")
 text = "Back"
-autowrap_mode = 2
-icon_alignment = 1
 
-[node name="HoverSprite" type="TextureRect" parent="BorderBox/VBoxContainer/SettingsPanel/Back" unique_id=1291995573]
-z_index = -1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -34.0
-offset_top = -5.0
-offset_right = 2.0
-offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.24, 1)
-mouse_filter = 2
-texture = ExtResource("4_8uki6")
-expand_mode = 1
-stretch_mode = 5
+[node name="HelpPanel" type="VBoxContainer" parent="BorderBox/VBoxContainer" unique_id=917942683]
+visible = false
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Stuck" type="Button" parent="BorderBox/VBoxContainer/HelpPanel" unique_id=2065154398 groups=["buttons"]]
+custom_minimum_size = Vector2(70, 0)
+custom_maximum_size = Vector2(70, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("4_8fwbo")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4inpj")
+text = "I'm Stuck"
+
+[node name="Refill" type="Button" parent="BorderBox/VBoxContainer/HelpPanel" unique_id=1690069137 groups=["buttons"]]
+custom_minimum_size = Vector2(70, 0)
+custom_maximum_size = Vector2(70, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("4_8fwbo")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4inpj")
+text = "Add Worms"
+
+[node name="MarginContainer" type="MarginContainer" parent="BorderBox/VBoxContainer/HelpPanel" unique_id=990324052]
+layout_mode = 2
+theme_override_constants/margin_bottom = 10
+
+[node name="Back" type="Button" parent="BorderBox/VBoxContainer/HelpPanel" unique_id=1155928316 groups=["buttons"]]
+custom_minimum_size = Vector2(70, 0)
+custom_maximum_size = Vector2(70, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("4_8fwbo")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4inpj")
+text = "Back"
+
+[node name="ControlsPanel" type="VBoxContainer" parent="BorderBox/VBoxContainer" unique_id=515606433]
+visible = false
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="BorderBox/VBoxContainer/ControlsPanel" unique_id=1651711371]
+layout_mode = 2
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 6
+text = "Move ................................................ WASD/Arrow keys
+Jump ............................................... Space/W/Up-arrow
+Pause ............................................................................ P
+Inventory ....................................................................... I
+Interact ......................................................................... E
+Equip lantern ................................................................ ]
+Activate l........................................... (Hold Down) Shift
+Equip amulet ................................................................. [
+Shoot rot  ......................................  Left-Mouse-Button
+Inventory item ................................................. Keys 1-9"
+vertical_alignment = 2
+
+[node name="Back" type="Button" parent="BorderBox/VBoxContainer/ControlsPanel" unique_id=420554016 groups=["buttons"]]
+custom_minimum_size = Vector2(70, 0)
+custom_maximum_size = Vector2(70, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("4_8fwbo")
+theme_override_font_sizes/font_size = 7
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4inpj")
+text = "Back"
 
 [connection signal="pressed" from="BorderBox/VBoxContainer/MainButtons/Resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="BorderBox/VBoxContainer/MainButtons/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="BorderBox/VBoxContainer/MainButtons/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="BorderBox/VBoxContainer/MainButtons/Controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="BorderBox/VBoxContainer/MainButtons/Help" to="." method="_on_help_pressed"]
+[connection signal="pressed" from="BorderBox/VBoxContainer/MainButtons/Quit" to="." method="_on_quit_pressed"]
 [connection signal="value_changed" from="BorderBox/VBoxContainer/SettingsPanel/HBoxContainer/VolumeSilder" to="." method="_on_volume_silder_value_changed"]
-[connection signal="pressed" from="BorderBox/VBoxContainer/SettingsPanel/Stuck" to="." method="_on_stuck_pressed"]
-[connection signal="pressed" from="BorderBox/VBoxContainer/SettingsPanel/Refill" to="." method="_on_refill_pressed"]
-[connection signal="pressed" from="BorderBox/VBoxContainer/SettingsPanel/Back" to="." method="_on_back_pressed"]
+[connection signal="value_changed" from="BorderBox/VBoxContainer/SettingsPanel/HBoxContainer2/VolumeSilder" to="." method="_on_volume_silder_value_changed"]
+[connection signal="value_changed" from="BorderBox/VBoxContainer/SettingsPanel/HBoxContainer3/VolumeSilder" to="." method="_on_volume_silder_value_changed"]
+[connection signal="pressed" from="BorderBox/VBoxContainer/HelpPanel/Stuck" to="." method="_on_stuck_pressed"]
+[connection signal="pressed" from="BorderBox/VBoxContainer/HelpPanel/Refill" to="." method="_on_refill_pressed"]

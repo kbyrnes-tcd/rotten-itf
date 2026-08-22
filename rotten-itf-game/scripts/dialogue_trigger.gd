@@ -27,7 +27,7 @@ func trigger_dialogue():
 	var dialogue_manager = get_tree().get_first_node_in_group("dialogue_manager")
 	if dialogue_manager:
 		GameGlobals.pause()
-		AudioManager.increase_music_vol(20.0)
+		AudioManager.increase_music_vol()
 		if high_priestess:
 			high_priestess.start_talking()
 		for i in dialogue_lines.size():

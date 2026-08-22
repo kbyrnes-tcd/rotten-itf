@@ -67,7 +67,7 @@ func _process(_delta):
 					#print("DIALOG FINISHED!!!!!")
 					GameGlobals.resume()
 					AudioManager.skip_dialog()
-					AudioManager.decrease_music_vol(20.0)
+					AudioManager.decrease_music_vol()
 					hide_textbox()
 					emit_signal("dialogue_finished")
 					
