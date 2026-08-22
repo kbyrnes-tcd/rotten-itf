@@ -255,14 +255,19 @@ size_flags_vertical = 4
 
 [node name="Label" type="Label" parent="BorderBox/VBoxContainer/ControlsPanel" unique_id=1651711371]
 layout_mode = 2
-theme_override_constants/line_spacing = -4
-theme_override_font_sizes/font_size = 7
-text = "BRUH IS ................................................... BRUH
-BRUH IS ................................................... BRUH
-BRUH IS ................................................... BRUH
-BRUH IS ................................................... BRUH
-BRUH IS ................................................... BRUH
-BRUH IS ................................................... BRUH"
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 6
+text = "Move ................................................ WASD/Arrow keys
+Jump ............................................... Space/W/Up-arrow
+Pause ............................................................................ P
+Inventory ....................................................................... I
+Interact ......................................................................... E
+Equip lantern ................................................................ ]
+Activate l........................................... (Hold Down) Shift
+Equip amulet ................................................................. [
+Shoot rot  ......................................  Left-Mouse-Button
+Inventory item ................................................. Keys 1-9"
+vertical_alignment = 2
 
 [node name="Back" type="Button" parent="BorderBox/VBoxContainer/ControlsPanel" unique_id=420554016 groups=["buttons"]]
 custom_minimum_size = Vector2(70, 0)
