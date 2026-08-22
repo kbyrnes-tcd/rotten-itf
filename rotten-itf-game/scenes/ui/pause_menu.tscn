@@ -162,6 +162,7 @@ custom_minimum_size = Vector2(40, 20)
 layout_mode = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="BorderBox/VBoxContainer/SettingsPanel" unique_id=185321936]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
@@ -177,6 +178,7 @@ custom_minimum_size = Vector2(40, 20)
 layout_mode = 2
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="BorderBox/VBoxContainer/SettingsPanel" unique_id=167398736]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
