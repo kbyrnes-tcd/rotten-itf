@@ -19,7 +19,7 @@ var music_tween : Tween
 @export_group("Source")
 @export var fx: Dictionary[String, AudioStream] = {}
 @export var ambi_vol : float = 0.0
-@export var music_vol : float = -15.0
+@export var music_vol : float = -8.0
 @export_group("Music")
 @export var ambiences : Dictionary[String, AudioStream] = {}
 @export var music : Dictionary[String, AudioStream] = {}
@@ -36,7 +36,7 @@ func get_cur_song():
 func get_cur_ambience():
 	return "%s & %s" %[active_ambience.stream.resource_path.get_file().get_basename(), active_ambience.volume_db] if active_ambience!=null else "n/a"
 
-func fade(c_tween:Tween, stream:AudioStreamPlayer, start_vol := 0.0, end_vol := 0.0, dur := 0.5):
+func fade(c_tween:Tween, stream:AudioStreamPlayer, start_vol := 0.0, end_vol := 0.0, dur := 0.5, stop_on_end := false):
 	if c_tween:
 		c_tween.kill()
 	c_tween = create_tween()
@@ -46,7 +46,7 @@ func fade(c_tween:Tween, stream:AudioStreamPlayer, start_vol := 0.0, end_vol := 
 	c_tween.stop()
 	
 	# if fading out
-	if end_vol < start_vol:
+	if end_vol < start_vol and stop_on_end:
 		stream.stop()
 		#print("fading out: %s" % stream.stream.resource_path.get_file().get_basename())
 	#else:
@@ -60,7 +60,7 @@ func change_ambience(am_name: String) -> void:
 		if c_am == am_name: return
 		else: 
 			#print("not the same am so changing TO %s from %s" %[am_name, c_am])
-			am_tween = await fade(am_tween, active_ambience, ambi_vol, ambi_vol-20, 1.0) # fadeOUT current track b4 changing
+			am_tween = await fade(am_tween, active_ambience, ambi_vol, ambi_vol-20, 1.0, true) # fadeOUT current track b4 changing
 			active_ambience = null
 			play_ambience(am_name)
 
@@ -81,8 +81,8 @@ func change_music(song: String) -> void:
 		if c_song == song: return
 		else: 
 			if song.get_basename() == "Title_Song": music_vol = 5.0
-			else: music_vol = -15.0
-			music_tween = await fade(music_tween, active_music, music_vol, music_vol-20, 1.0) # fadeOUT current track b4 changing
+			else: music_vol = -8.0
+			music_tween = await fade(music_tween, active_music, music_vol, music_vol-20, 1.0, true) # fadeOUT current track b4 changing
 			active_music = null
 			play_music(song)
 
@@ -91,7 +91,7 @@ func play_music(song: String) -> void:
 		active_music = clips.get_node("Music")
 		active_music.stream = music[song]
 		if song.get_basename() == "Title_Song": music_vol = 5.0
-		else: music_vol = -15.0
+		else: music_vol = -8.0
 		music_tween = await fade(music_tween, active_music, music_vol-20, music_vol, 1.0) # fadeIN new track
 		active_music.play()
 
