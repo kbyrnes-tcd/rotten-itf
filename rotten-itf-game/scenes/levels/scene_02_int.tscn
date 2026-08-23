@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cg75k4w0pepcp"]
 
+[ext_resource type="PackedScene" uid="uid://cmf6u7sxq43iy" path="res://scenes/lighting/interior_lighting.tscn" id="1_21y6y"]
 [ext_resource type="Texture2D" uid="uid://dgwjnqq4radaq" path="res://assets/images/env/p2_garden_ext/RITF_Gardenbackrot.png" id="1_yrcn3"]
 [ext_resource type="Texture2D" uid="uid://82nd5g871vsq" path="res://assets/images/env/p2_garden_int/Part_2_Interior_Final.png" id="2_4muw5"]
 [ext_resource type="PackedScene" uid="uid://di31qowjleyl4" path="res://scenes/rot_dressing_new.tscn" id="4_xgkue"]
@@ -144,13 +145,6 @@ lio_text = "A wall lantern...I can store glowworms in here."
 position = Vector2(360, 292)
 lio_text = "Press [ to equip lantern and hold SHIFT to clear."
 
-[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1256881528]
-color = Color(0.7107411, 0.71074116, 0.7107411, 1)
-
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1276469286]
-color = Color(1, 0.7921569, 0.62352943, 0.26666668)
-energy = 0.8
-
 [node name="LanternPickup" parent="." unique_id=1242243690 instance=ExtResource("8_c63m2")]
 position = Vector2(277, 290)
 inv_lantern = ExtResource("9_yrcn3")
@@ -183,5 +177,7 @@ interact_carat = NodePath("../InteractiveCarat2")
 
 [node name="InteractiveCarat2" parent="." unique_id=610572506 instance=ExtResource("6_5expv")]
 position = Vector2(852, 163)
+
+[node name="InteriorLighting" parent="." unique_id=1496110895 instance=ExtResource("1_21y6y")]
 
 [editable path="Player"]

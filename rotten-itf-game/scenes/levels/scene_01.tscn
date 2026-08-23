@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bimatr4hej8ja" path="res://scenes/ui/interactive_carat.tscn" id="8_5t0pk"]
 [ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="9_b3nsi"]
 [ext_resource type="PackedScene" uid="uid://dr3ff06oljyer" path="res://scenes/lio_trigger.tscn" id="10_amr1b"]
+[ext_resource type="PackedScene" uid="uid://dxagx7pjis8m5" path="res://scenes/lighting/exterior_lighting.tscn" id="11_2b8q8"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8bo55"]
 load_path = "res://.godot/imported/Trees.png-61f64ec7b583c9702c4d368fac49f2b6.ctex"
@@ -147,10 +148,6 @@ lio_text = "It’s blocked off by regrowth."
 position = Vector2(2319, 255)
 lio_text = "A crack in the wall… I wonder if I can get in there…"
 
-[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=230557037]
-color = Color(0.8089983, 0.8089983, 0.80899817, 1)
-
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1230748154]
-color = Color(1, 0.7921569, 0.62352943, 0.26666668)
+[node name="ExteriorLighting" parent="." unique_id=2039980485 instance=ExtResource("11_2b8q8")]
 
 [editable path="Player"]

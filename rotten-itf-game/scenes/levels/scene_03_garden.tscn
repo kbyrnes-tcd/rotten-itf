@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="8_33ufd"]
 [ext_resource type="PackedScene" uid="uid://bimatr4hej8ja" path="res://scenes/ui/interactive_carat.tscn" id="9_4mtit"]
 [ext_resource type="PackedScene" uid="uid://dr3ff06oljyer" path="res://scenes/lio_trigger.tscn" id="10_33ufd"]
+[ext_resource type="PackedScene" uid="uid://dxagx7pjis8m5" path="res://scenes/lighting/exterior_lighting.tscn" id="11_4mtit"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q01m8"]
 size = Vector2(1371, 39)
@@ -120,6 +121,8 @@ position = Vector2(364, 138)
 [node name="LioTrigger" parent="." unique_id=110257511 instance=ExtResource("10_33ufd")]
 position = Vector2(818, 284)
 lio_text = "More glowworms...I will need them."
+
+[node name="ExteriorLighting" parent="." unique_id=2039980485 instance=ExtResource("11_4mtit")]
 
 [editable path="Player"]
 [editable path="GlowwormCluster"]

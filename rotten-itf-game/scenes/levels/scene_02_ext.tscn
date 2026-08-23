@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://db00qg8xwqve6"]
 
 [ext_resource type="Texture2D" uid="uid://dgwjnqq4radaq" path="res://assets/images/env/p2_garden_ext/RITF_Gardenbackrot.png" id="1_4n1ul"]
+[ext_resource type="PackedScene" uid="uid://dxagx7pjis8m5" path="res://scenes/lighting/exterior_lighting.tscn" id="1_osntu"]
 [ext_resource type="Texture2D" uid="uid://deocyng7rlpbi" path="res://assets/images/env/p2_garden_ext/RITF_Gardenmediumrot.png" id="2_4n1ul"]
 [ext_resource type="Texture2D" uid="uid://cr6nmb6vkj1yh" path="res://assets/images/env/p2_garden_ext/RITF_Gardenfrontrot.png" id="3_qsi71"]
 [ext_resource type="Texture2D" uid="uid://3t3q6orpnxyr" path="res://assets/images/env/p2_garden_ext/Rotmap.png" id="4_0svnh"]
@@ -104,13 +105,6 @@ scale = Vector2(0.15999758, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/RightOobCollider" unique_id=2075318962]
 position = Vector2(1256.269, -224)
 shape = SubResource("RectangleShape2D_3336g")
-
-[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1256881528]
-color = Color(0.7107411, 0.71074116, 0.7107411, 1)
-
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1276469286]
-color = Color(1, 0.7921569, 0.62352943, 0.26666668)
-energy = 0.8
 
 [node name="InteractiveCarat" parent="." unique_id=1099497837 instance=ExtResource("10_nqapm")]
 position = Vector2(630, 226)
@@ -248,5 +242,7 @@ points = PackedVector2Array(2.2655604, -8.177147, 0, 18, -30, 10, -50, 16)
 [node name="Line2D20" parent="RotMap" unique_id=519802276 instance=ExtResource("12_osntu")]
 position = Vector2(2917, 314)
 points = PackedVector2Array(2, -7, 27, -6, 55, -8, 75, -5, 90, -9, 120, -5)
+
+[node name="ExteriorLighting" parent="." unique_id=2039980485 instance=ExtResource("1_osntu")]
 
 [editable path="Player"]

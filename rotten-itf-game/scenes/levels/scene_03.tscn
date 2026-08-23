@@ -27,7 +27,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eryr6"]
 shader = ExtResource("2_43shx")
-shader_parameter/pixelate_amount = 180
+shader_parameter/pixelate_amount = 120
 shader_parameter/darken_amount = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_co3ny"]
@@ -40,8 +40,6 @@ size = Vector2(150, 100)
 
 [node name="Scene_03" type="Node2D" unique_id=345651132]
 position = Vector2(-1, -13)
-
-[node name="InteriorLighting" parent="." unique_id=1496110895 instance=ExtResource("1_dtm5t")]
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1309616939]
 position = Vector2(2002, 122)
@@ -58,6 +56,7 @@ scale = Vector2(0.265, 0.265)
 texture = ExtResource("3_eryr6")
 
 [node name="PointLight2D" type="PointLight2D" parent="Background/StanedGlass/DemeterStainedglass02" unique_id=1654499304]
+scale = Vector2(1.21, 1.21)
 energy = 0.15
 texture = ExtResource("3_eryr6")
 
@@ -70,7 +69,7 @@ texture = ExtResource("4_43shx")
 
 [node name="PointLight2D2" type="PointLight2D" parent="Background/StanedGlass/DemeterStainedglass01" unique_id=1156464208]
 position = Vector2(5.875122, -0.75476074)
-scale = Vector2(0.99999994, 0.99999994)
+scale = Vector2(1.21, 1.21)
 energy = 0.15
 texture = ExtResource("4_43shx")
 
@@ -83,11 +82,12 @@ texture = ExtResource("5_dtm5t")
 
 [node name="PointLight2D3" type="PointLight2D" parent="Background/StanedGlass/DemeterStainedglass04" unique_id=1830917466]
 position = Vector2(-3.5947266, 0)
-scale = Vector2(0.9999998, 0.9999998)
+scale = Vector2(1.21, 1.21)
 energy = 0.15
 texture = ExtResource("5_dtm5t")
 
 [node name="DemeterStainedglassMaintemple03" type="Sprite2D" parent="Background/StanedGlass" unique_id=1625731460]
+visible = false
 self_modulate = Color(1, 1, 1, 0.6039216)
 material = SubResource("ShaderMaterial_eryr6")
 position = Vector2(240.9524, -67)
@@ -255,6 +255,8 @@ position = Vector2(2903, 196)
 
 [node name="HighPriestess" parent="." unique_id=493119463 instance=ExtResource("17_a3hc7")]
 position = Vector2(2251, 218)
+
+[node name="InteriorLighting" parent="." unique_id=1496110895 instance=ExtResource("1_dtm5t")]
 
 [editable path="Player"]
 [editable path="ZoomTrigger"]

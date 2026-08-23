@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dxagx7pjis8m5"]
+
+[node name="ExteriorLighting" type="Node2D" unique_id=2039980485]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1265799442]
+color = Color(0.7107411, 0.71074116, 0.7107411, 1)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1226995230]
+color = Color(1, 0.6417363, 0.30429605, 0.26666668)
+energy = 1.35
