@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://23jheaaqxi77" path="res://assets/images/env/altar/Trees front .png" id="4_qh11w"]
 [ext_resource type="Texture2D" uid="uid://h34qfq2wab4l" path="res://assets/images/env/altar/Trees.png" id="5_2jge0"]
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="6_0ntcn"]
-[ext_resource type="PackedScene" uid="uid://32h27chxiffi" path="res://scenes/glowworm_cluster.tscn" id="7_2jge0"]
+[ext_resource type="PackedScene" uid="uid://ccvrijgg5lyos" path="res://scenes/glowworm_cluster.tscn" id="7_2jge0"]
 [ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="8_33ufd"]
 [ext_resource type="PackedScene" uid="uid://bimatr4hej8ja" path="res://scenes/ui/interactive_carat.tscn" id="9_4mtit"]
 [ext_resource type="PackedScene" uid="uid://dr3ff06oljyer" path="res://scenes/lio_trigger.tscn" id="10_33ufd"]
@@ -116,7 +116,7 @@ twin_id = "DoorToMiniGarden"
 interact_carat = NodePath("../InteractiveCarat")
 
 [node name="InteractiveCarat" parent="." unique_id=1099497837 instance=ExtResource("9_4mtit")]
-position = Vector2(364, 138)
+position = Vector2(360, 128)
 
 [node name="LioTrigger" parent="." unique_id=110257511 instance=ExtResource("10_33ufd")]
 position = Vector2(818, 284)

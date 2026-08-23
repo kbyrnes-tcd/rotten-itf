@@ -106,10 +106,6 @@ scale = Vector2(0.15999758, 1)
 position = Vector2(1256.269, -224)
 shape = SubResource("RectangleShape2D_3336g")
 
-[node name="InteractiveCarat" parent="." unique_id=1099497837 instance=ExtResource("10_nqapm")]
-position = Vector2(630, 226)
-scale = Vector2(0.5, 0.5)
-
 [node name="DoorBackToGardenInt" parent="." unique_id=1160326856 node_paths=PackedStringArray("interact_carat") instance=ExtResource("11_jctv3")]
 position = Vector2(631, 288)
 scale = Vector2(2.319, 4.244)
@@ -248,5 +244,8 @@ position = Vector2(2917, 314)
 points = PackedVector2Array(2, -7, 27, -6, 55, -8, 75, -5, 90, -9, 120, -5)
 
 [node name="ExteriorLighting" parent="." unique_id=2039980485 instance=ExtResource("1_osntu")]
+
+[node name="InteractiveCarat" parent="." unique_id=1099497837 instance=ExtResource("10_nqapm")]
+position = Vector2(630, 198)
 
 [editable path="Player"]

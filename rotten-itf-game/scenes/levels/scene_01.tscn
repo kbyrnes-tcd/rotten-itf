@@ -113,10 +113,6 @@ safe_margin = 0.08
 [node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
 limit_right = 2758
 
-[node name="InteractiveCarat" parent="." unique_id=1099497837 instance=ExtResource("8_5t0pk")]
-position = Vector2(2481, 179)
-scale = Vector2(0.35, 0.35)
-
 [node name="DoorToGardenInt" parent="." unique_id=1160326856 node_paths=PackedStringArray("interact_carat") instance=ExtResource("9_b3nsi")]
 position = Vector2(2481, 225.00003)
 scale = Vector2(3.594, 6.575)
@@ -149,5 +145,8 @@ position = Vector2(2319, 255)
 lio_text = "A crack in the wall… I wonder if I can get in there…"
 
 [node name="ExteriorLighting" parent="." unique_id=2039980485 instance=ExtResource("11_2b8q8")]
+
+[node name="InteractiveCarat" parent="." unique_id=1099497837 instance=ExtResource("8_5t0pk")]
+position = Vector2(2479, 154)
 
 [editable path="Player"]

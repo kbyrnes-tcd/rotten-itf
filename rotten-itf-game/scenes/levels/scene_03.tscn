@@ -156,8 +156,8 @@ shape = SubResource("CircleShape2D_o7blk")
 
 [node name="Interact" parent="DialogueTrigger" index="1" unique_id=125428239]
 visible = false
-position = Vector2(2171, 209)
-scale = Vector2(1.9600003, 1.482353)
+position = Vector2(2177, 201.00002)
+scale = Vector2(1.4, 1.059)
 texture = ExtResource("8_cqx5b")
 
 [node name="Chandelier" parent="." unique_id=813450568 instance=ExtResource("7_5i8uq")]
@@ -222,14 +222,14 @@ lio_text = "Press [ to clear the rot and reach the amulet."
 requires_dialogue_done = true
 
 [node name="InteractiveCarat" parent="." unique_id=1099497837 instance=ExtResource("16_a3hc7")]
-position = Vector2(3926, 104)
+position = Vector2(3922, 77)
 
 [node name="DoorBack" parent="." unique_id=1160326856 node_paths=PackedStringArray("interact_carat") instance=ExtResource("15_6d0e5")]
 position = Vector2(121, 220)
 next_scene_path = "scene_02_int"
 door_id = "DoorBack"
 twin_id = "DoorToTemple"
-interact_carat = NodePath("../InteractiveCarat2")
+interact_carat = NodePath("../InteractiveCarat3")
 
 [node name="DoorToMiniGarden" parent="." unique_id=811292301 node_paths=PackedStringArray("interact_carat") instance=ExtResource("15_6d0e5")]
 position = Vector2(2817, 159)
@@ -248,7 +248,7 @@ interact_carat = NodePath("../InteractiveCarat")
 has_minigame = true
 
 [node name="InteractiveCarat2" parent="." unique_id=731416256 instance=ExtResource("16_a3hc7")]
-position = Vector2(2819, 79)
+position = Vector2(2815, 78)
 
 [node name="GardenReturnPoint" type="Marker2D" parent="." unique_id=1083821957]
 position = Vector2(2903, 196)
@@ -257,6 +257,9 @@ position = Vector2(2903, 196)
 position = Vector2(2251, 218)
 
 [node name="InteriorLighting" parent="." unique_id=1496110895 instance=ExtResource("1_dtm5t")]
+
+[node name="InteractiveCarat3" parent="." unique_id=595983094 instance=ExtResource("16_a3hc7")]
+position = Vector2(119, 132)
 
 [editable path="Player"]
 [editable path="ZoomTrigger"]
