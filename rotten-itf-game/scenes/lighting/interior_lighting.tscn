@@ -4,7 +4,7 @@
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=70834206]
 position = Vector2(-1, -13)
-color = Color(0.6255971, 0.6255971, 0.62559694, 1)
+color = Color(0.71629643, 0.71629614, 0.7162962, 1)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=124934630]
 position = Vector2(-1, -13)

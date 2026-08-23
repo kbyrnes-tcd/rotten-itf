@@ -152,7 +152,6 @@ next_scene_path = "scene_01"
 door_id = "DoorCrackBackToExt"
 twin_id = "DoorToGardenInt"
 interact_carat = NodePath("../InteractiveCarets/InteractiveCarat")
-crack = true
 
 [node name="DoorToGardenExt" parent="." unique_id=1160326856 node_paths=PackedStringArray("interact_carat") instance=ExtResource("5_oleyw")]
 position = Vector2(2339.0002, 245.00002)
@@ -162,7 +161,7 @@ door_id = "DoorToGardenExt"
 twin_id = "DoorBackToGardenInt"
 interact_carat = NodePath("../InteractiveCarets/InteractiveCarat2")
 
-[node name="DoorToTemple" parent="." unique_id=763266512 node_paths=PackedStringArray("interact_carat", "blocking_rot") instance=ExtResource("5_oleyw")]
+[node name="DoorToTemple" parent="." unique_id=763266512 node_paths=PackedStringArray("interact_carat") instance=ExtResource("5_oleyw")]
 position = Vector2(849.00006, 245)
 scale = Vector2(2.544, 4.656)
 next_scene_path = "scene_03"
@@ -171,7 +170,6 @@ twin_id = "DoorToTemple"
 required_item = ExtResource("10_4muw5")
 required_amount = 1
 interact_carat = NodePath("../InteractiveCarets/InteractiveCarat3")
-blocking_rot = [NodePath("../RotOnDoor/Line2D2"), NodePath("../RotOnDoor/Line2D"), NodePath("../RotOnDoor/Line2D3"), NodePath("../RotOnDoor/Line2D4"), NodePath("../RotOnDoor/Line2D5")]
 
 [node name="InteriorLighting" parent="." unique_id=1496110895 instance=ExtResource("1_21y6y")]
 

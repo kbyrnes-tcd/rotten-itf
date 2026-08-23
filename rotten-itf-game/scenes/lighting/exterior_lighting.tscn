@@ -6,5 +6,5 @@
 color = Color(0.7107411, 0.71074116, 0.7107411, 1)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1226995230]
-color = Color(1, 0.6417363, 0.30429605, 0.26666668)
+color = Color(1, 0.7712112, 0.57881534, 0.26666668)
 energy = 1.35

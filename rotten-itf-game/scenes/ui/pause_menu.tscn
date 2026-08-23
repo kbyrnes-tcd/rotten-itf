@@ -132,6 +132,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_4inpj")
 text = "Help"
 
 [node name="Quit" type="Button" parent="BorderBox/VBoxContainer/MainButtons" unique_id=1081397096 groups=["buttons"]]
+visible = false
 custom_minimum_size = Vector2(70, 0)
 custom_maximum_size = Vector2(70, -1)
 layout_mode = 2
@@ -257,8 +258,8 @@ size_flags_vertical = 4
 
 [node name="Label" type="Label" parent="BorderBox/VBoxContainer/ControlsPanel" unique_id=1651711371]
 layout_mode = 2
-theme_override_constants/line_spacing = 2
-theme_override_font_sizes/font_size = 6
+theme_override_constants/line_spacing = -3
+theme_override_font_sizes/font_size = 5
 text = "Move ................................................ WASD/Arrow keys
 Jump ............................................... Space/W/Up-arrow
 Pause ............................................................................ P
@@ -268,7 +269,12 @@ Equip lantern ................................................................ ]
 Activate l........................................... (Hold Down) Shift
 Equip amulet ................................................................. [
 Shoot rot  ......................................  Left-Mouse-Button"
+horizontal_alignment = 1
 vertical_alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="BorderBox/VBoxContainer/ControlsPanel" unique_id=1514887597]
+layout_mode = 2
+theme_override_constants/margin_bottom = 3
 
 [node name="Back" type="Button" parent="BorderBox/VBoxContainer/ControlsPanel" unique_id=684782283 groups=["buttons"]]
 custom_minimum_size = Vector2(70, 0)
