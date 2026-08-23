@@ -49,9 +49,9 @@ text = "Thank you for playing!!"
 
 [node name="SubLabel" type="Label" parent="CanvasLayer" unique_id=1277957745]
 offset_left = 122.0
-offset_top = 134.0
+offset_top = 114.0
 offset_right = 356.0
-offset_bottom = 162.0
+offset_bottom = 142.0
 theme_override_fonts/font = ExtResource("3_o77of")
 theme_override_font_sizes/font_size = 27
 text = "Rotten Is The Fruit - Test Build"
@@ -59,15 +59,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="QuitButton" type="Button" parent="CanvasLayer" unique_id=2030603215]
-visible = false
 offset_left = 210.0
-offset_top = 188.0
+offset_top = 141.0
 offset_right = 260.0
-offset_bottom = 218.0
+offset_bottom = 171.0
 theme_override_fonts/font = ExtResource("2_a2sau")
 theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxEmpty_q01m8")
-text = "Exit"
+text = "Quit"
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer" unique_id=1924045675]
 offset_left = 63.0

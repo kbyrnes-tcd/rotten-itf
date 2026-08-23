@@ -132,7 +132,6 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_4inpj")
 text = "Help"
 
 [node name="Quit" type="Button" parent="BorderBox/VBoxContainer/MainButtons" unique_id=1081397096 groups=["buttons"]]
-visible = false
 custom_minimum_size = Vector2(70, 0)
 custom_maximum_size = Vector2(70, -1)
 layout_mode = 2

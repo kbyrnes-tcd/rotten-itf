@@ -183,7 +183,6 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Quit" type="Button" parent="BorderBox/VBoxContainer/MainButtons" unique_id=1081397096 groups=["buttons"]]
-visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_8g5eo")
 theme_override_font_sizes/font_size = 13
@@ -191,7 +190,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_7yca1")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_lrbnh")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_6qnem")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ynwdf")
-text = "Exit"
+text = "Quit"
 
 [node name="HoverSprite" type="TextureRect" parent="BorderBox/VBoxContainer/MainButtons/Quit" unique_id=1243181694]
 visible = false
