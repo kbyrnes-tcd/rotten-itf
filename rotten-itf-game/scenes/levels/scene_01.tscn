@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://w78vttqkmxaj"]
 
+[ext_resource type="PackedScene" uid="uid://cfukrntau5ufh" path="res://scenes/levels/persistent_data.tscn" id="1_2b8q8"]
 [ext_resource type="Texture2D" uid="uid://dclvu8v18i6k" path="res://assets/images/env/p1_start/Backdrop.png" id="1_5t0pk"]
 [ext_resource type="Texture2D" uid="uid://dj3brv73c322l" path="res://assets/images/env/p1_start/parallax/Bushes.png" id="3_5t0pk"]
 [ext_resource type="Shader" uid="uid://pv5hmh5jce1m" path="res://scripts/shaders/pixel_sway.gdshader" id="3_56i2g"]
@@ -32,6 +33,8 @@ shader_parameter/restrict_dir = 0
 size = Vector2(2915, 33)
 
 [node name="Scene_01" type="Node2D" unique_id=358721782]
+
+[node name="PersistentData" parent="." unique_id=1117547414 instance=ExtResource("1_2b8q8")]
 
 [node name="Environment" type="Node2D" parent="." unique_id=1199873399]
 position = Vector2(1444, 179)

@@ -190,7 +190,7 @@ func load_letter_ui(letter : LetterCopy):
 var game_audio_has_begun := false
 func play_level_music(scene_name : String):
 	var scene_index = level_prog.find(scene_name)
-	print(scene_index, game_audio_has_begun)
+	#print(scene_index, game_audio_has_begun)
 	if scene_index == 1 and !game_audio_has_begun:
 		game_audio_has_begun = true
 		#print("beginning game now w/ scene %s so gonna play ambi and decrease music vol." %scene_name)
@@ -203,41 +203,32 @@ func play_level_music(scene_name : String):
 		AudioManager.change_music(audio_prog[scene_name].music)
 
 # persistent LOAD AND UNLOADDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
-var persistent_scenes : Dictionary = {}
-
+# dict for storing persisted versions of scenes, i.e. if a scene has been manipulated by player, 
+# it will be added here and loaded with the saved state next time it gets added to the tree
+var persistent_scenes : Dictionary = {} 
 func unload_level():
-	#print("UNLOADING")
 	if level_root.get_child_count() > 0:
-		# TODO: SAVE PERS. PARAM DATA FOR SCENE TO BE UNLOADED
-		var c_scene :Node= level_root.get_child(0)
+		var c_scene : Node = level_root.get_child(0)
 		var c_scene_name := c_scene.name.to_lower()
-		var pers_data := c_scene.find_child("PersistentData")
+		var pers_data := c_scene.find_child("PersistentData", true, false)
 		if pers_data and c_scene_name != "":
-			print("found data to be persisted in the unladed scene!")
-			print(pers_data.object_names)
 			persistent_scenes[c_scene_name] = pers_data.save_state()
-			#print("updated persistent_scenes dict w/ persistent-ified scene")
-			#print(persistent_scenes)
+		level_root.remove_child(c_scene)
 		c_scene.queue_free()
 
 var target_door
 func load_level(level_name: String):
 	level_name = level_name.to_lower()
 	unload_level()
-	#print("LOADING")
 	var path = "res://scenes/levels/%s.tscn" % level_name
 	var n_scene : PackedScene = load(path)
 	var scene_node : Node = n_scene.instantiate()
 	if (n_scene):
-		# TODO: LOAD PERS. PARAM DATA FOR SCENE
+		level_root.add_child(scene_node) 
 		if persistent_scenes.has(level_name):
-			#print("the scene being loaded has been persisted into dict")
-			var pers_data := scene_node.find_child("PersistentData")
-			if pers_data:
-				pers_data.load_state(persistent_scenes[level_name])
-				print("applied persistent state to %s" % level_name)
-				
-		level_root.add_child(scene_node)
+			var pers_data : PersistentData = scene_node.find_child("PersistentData", true, false)
+			if pers_data: pers_data.load_state.call_deferred(persistent_scenes[level_name])
+
 		player = scene_node.find_child("Player")
 		if pending_spawn_door_id != "":
 			target_door = scene_node.find_child(pending_spawn_door_id)
@@ -245,6 +236,20 @@ func load_level(level_name: String):
 			player.global_position = target_door.global_position + Vector2(50, 0)
 		pending_spawn_door_id = ""
 		play_level_music(level_name)
+
+func get_current_level_tree():
+	if level_root.get_child_count() > 0:
+		return level_root.get_child(0)
+
+const PERSISTENT_DATA = preload("uid://cfukrntau5ufh")
+func get_current_tree_p_data() -> Node:
+	if level_root.get_child_count() == 0:
+		return null
+	var c_tree := level_root.get_child(0)
+	var p_node := c_tree.find_child("PersistentData", true, false)
+	if not p_node:
+		push_warning("scene %s has no persistent node node inst!" % c_tree.name)
+	return p_node
 
 #func load_scene(n_scene : PackedScene):
 	#prog_counter+=1
