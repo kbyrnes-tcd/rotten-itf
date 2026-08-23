@@ -158,6 +158,7 @@ scale = Vector2(3.364, 6.156)
 next_scene_path = "scene_01"
 door_id = "DoorCrackBackToExt"
 twin_id = "DoorToGardenInt"
+crack = true
 
 [node name="DoorToGardenExt" parent="." unique_id=1160326856 node_paths=PackedStringArray("interact_carat") instance=ExtResource("5_oleyw")]
 position = Vector2(2339.0002, 245.00002)
