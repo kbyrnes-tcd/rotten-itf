@@ -17,7 +17,7 @@ class_name Player
 # Rot and Glowworm data
 const ROT_VINE = preload("uid://kicj2478es6o")
 const GROWTH_SPEED = 120.0
-const GLOWWORM = preload("res://scripts/inventory_system/items/orange_worm.tres")
+const GLOWWORM = preload("res://scripts/inventory_system/items/glow_worm.tres")
 const LANTERN = preload("uid://gpvtv23ln3ds")
 const AMULET = preload("uid://bcvemp5c8igqs")
 const GLOWWORM_MAX = 5

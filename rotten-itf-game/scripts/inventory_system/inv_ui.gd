@@ -1,6 +1,6 @@
 extends Control
 
-@onready var inv: Inventory = preload("uid://bbfb2yem3oxv0")
+@onready var inv: Inventory = preload("uid://dn6dlym7a3lhe")
 @onready var slots: Array = $NinePatchRect/GridContainer.get_children()
 
 @onready var label: Label = $NinePatchRect/RHS/ActiveItemLabel

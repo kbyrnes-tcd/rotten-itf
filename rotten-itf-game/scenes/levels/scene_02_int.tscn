@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://diylf22dcoha0" path="res://scenes/lantern_pickup.tscn" id="8_c63m2"]
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="9_mb6sg"]
 [ext_resource type="Resource" uid="uid://gpvtv23ln3ds" path="res://scripts/inventory_system/items/lantern.tres" id="9_yrcn3"]
-[ext_resource type="Resource" uid="uid://dt677afg3p4f0" path="res://scripts/inventory_system/items/orange_worm.tres" id="10_4muw5"]
+[ext_resource type="Resource" uid="uid://dt677afg3p4f0" path="res://scripts/inventory_system/items/glow_worm.tres" id="10_4muw5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c63m2"]
 size = Vector2(2596, 43.25)

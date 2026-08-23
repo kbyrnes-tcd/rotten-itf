@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://04yyftmutrku"]
 
 [ext_resource type="Script" uid="uid://csgyemaib401c" path="res://scripts/item_consumer.gd" id="1_1l00k"]
-[ext_resource type="Resource" uid="uid://dt677afg3p4f0" path="res://scripts/inventory_system/items/orange_worm.tres" id="2_ilaey"]
+[ext_resource type="Resource" uid="uid://dt677afg3p4f0" path="res://scripts/inventory_system/items/glow_worm.tres" id="2_ilaey"]
 [ext_resource type="Texture2D" uid="uid://jlhqads7iutp" path="res://assets/images/ui/inv/inventory-slot.png" id="3_4wg0v"]
 [ext_resource type="Texture2D" uid="uid://cotxrl2gpbqxr" path="res://assets/images/worms/orange_worm_1.png" id="4_ilaey"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i8c17"]
 size = Vector2(16, 16)
