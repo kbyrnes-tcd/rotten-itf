@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://b7584gf13larx"]
 
 [ext_resource type="Texture2D" uid="uid://oxw3mtmjbnj2" path="res://assets/images/env/underworld/Underworld_Exterior.png" id="1_425tl"]
-[ext_resource type="Texture2D" uid="uid://ryabja3raxip" path="res://assets/images/env/underworld/Underworld_Interior.png" id="2_xllsq"]
+[ext_resource type="Texture2D" uid="uid://83efoi2kt8r4" path="res://assets/images/env/underworld/Underworld_Interior 3.png" id="2_tjxil"]
+[ext_resource type="Texture2D" uid="uid://bgmdhqpn82skd" path="res://assets/images/env/underworld/Underworld_Office.png" id="3_f8xjl"]
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="3_xllsq"]
-[ext_resource type="PackedScene" uid="uid://bd3r1j21a2opr" path="res://scenes/ui/dialogue_trigger.tscn" id="4_5qgul"]
+[ext_resource type="PackedScene" uid="uid://c1epxp5spnua" path="res://scenes/ui/dialogue_trigger.tscn" id="4_5qgul"]
 [ext_resource type="Script" uid="uid://ddnjkodm10cvk" path="res://scripts/dialogue_trigger.gd" id="5_8jksi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q01m8"]
@@ -35,7 +36,11 @@ texture = ExtResource("1_425tl")
 
 [node name="Interior" type="Sprite2D" parent="Environment/Building" unique_id=1441347079]
 position = Vector2(1429, 179)
-texture = ExtResource("2_xllsq")
+texture = ExtResource("2_tjxil")
+
+[node name="Office" type="Sprite2D" parent="Environment/Building" unique_id=443545405]
+position = Vector2(1429, 179)
+texture = ExtResource("3_f8xjl")
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("3_xllsq")]
 position = Vector2(39.000004, 232)
