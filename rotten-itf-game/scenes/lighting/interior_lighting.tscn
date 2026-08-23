@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cmf6u7sxq43iy"]
+
+[node name="InteriorLighting" type="Node2D" unique_id=1496110895]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=70834206]
+position = Vector2(-1, -13)
+color = Color(0.6255971, 0.6255971, 0.62559694, 1)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=124934630]
+position = Vector2(-1, -13)
+color = Color(1, 0.7921569, 0.62352943, 0.26666668)
+energy = 0.67
