@@ -1,6 +1,18 @@
 extends Node
 
 # just for audio prog now + starting off in-game audio (after start game&lore)
+#var level_prog = [
+	#"lore_scene",
+	#"scene_01", # Start path
+	#"scene_02_int", # Garden int
+	#"scene_02_ext", # Garden ext
+	#"scene_03", # Altar room,
+	#"scene_03_garden", # Mini garden
+	#"scene_04", # Chambers
+	#"scene05", # Tower
+	#"scene06", # P's altar room
+	#"scene07Underworld"
+#]
 var level_prog = [
 	"lore_scene",
 	"scene_01", # Start path
@@ -8,10 +20,10 @@ var level_prog = [
 	"scene_02_ext", # Garden ext
 	"scene_03", # Altar room,
 	"scene_03_garden", # Mini garden
+	"scene_testend",
 	"scene_04", # Chambers
 	"scene05", # Tower
 	"scene06", # P's altar room
-	"scene07Underworld"
 ]
 var prog_counter := 0
 # PROGRESSION: ext_path, garden_int, garden_ext, altar, quarters, tower, p-altar, underworld
