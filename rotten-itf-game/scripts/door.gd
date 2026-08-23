@@ -10,6 +10,7 @@ extends Area2D
 @export var has_minigame: bool = false
 @export var crack := false
 @export var minigame: GameGlobals.Minigame = GameGlobals.Minigame.MAZE
+@export var blocking_rot: Array[Node2D] = []
 var minigame_solved: bool = false
 
 var near_door = false
@@ -45,9 +46,13 @@ func _check_condtion() -> bool:
 	if required_item == null:
 		return true
 	
-	if player and player.inv.count(required_item) >= required_amount:
-		return true
-	return false
+	if player and player.inv.count(required_item) < required_amount:
+		return false
+	
+	for rot in blocking_rot:
+		if is_instance_valid(rot):
+			return false
+	return true
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player":

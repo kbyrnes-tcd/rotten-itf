@@ -130,7 +130,7 @@ scale = Vector2(0.5, 0.5)
 [node name="LIO" type="Node" parent="." unique_id=2062746301]
 
 [node name="LioTrigger" parent="LIO" unique_id=110257511 instance=ExtResource("7_3aray")]
-position = Vector2(803, 296)
+position = Vector2(1182, 222)
 lio_text = "Oh, Goddess…"
 
 [node name="LioTrigger2" parent="LIO" unique_id=1541676621 instance=ExtResource("7_3aray")]
@@ -138,12 +138,12 @@ position = Vector2(1617, 227)
 lio_text = "The Rot has completely consumed this place. "
 
 [node name="LioTrigger3" parent="LIO" unique_id=1993371548 instance=ExtResource("7_3aray")]
-position = Vector2(180, 278)
-lio_text = "A wall lantern...I can store glowworms in here."
+position = Vector2(163, 284)
+lio_text = "A wall lantern...I might need this."
 
 [node name="LioTrigger4" parent="LIO" unique_id=1163488396 instance=ExtResource("7_3aray")]
-position = Vector2(360, 292)
-lio_text = "Press [ to equip lantern and hold SHIFT to clear."
+position = Vector2(759, 296)
+lio_text = "I have to find a way to clear that rot..."
 
 [node name="LanternPickup" parent="." unique_id=1242243690 instance=ExtResource("8_c63m2")]
 position = Vector2(277, 290)
@@ -165,7 +165,7 @@ door_id = "DoorToGardenExt"
 twin_id = "DoorBackToGardenInt"
 interact_carat = NodePath("../InteractiveCarat")
 
-[node name="DoorToTemple" parent="." unique_id=763266512 node_paths=PackedStringArray("interact_carat") instance=ExtResource("5_oleyw")]
+[node name="DoorToTemple" parent="." unique_id=763266512 node_paths=PackedStringArray("interact_carat", "blocking_rot") instance=ExtResource("5_oleyw")]
 position = Vector2(849.00006, 245)
 scale = Vector2(2.544, 4.656)
 next_scene_path = "scene_03"
@@ -174,6 +174,7 @@ twin_id = "DoorToTemple"
 required_item = ExtResource("10_4muw5")
 required_amount = 1
 interact_carat = NodePath("../InteractiveCarat2")
+blocking_rot = [NodePath("../RotOnDoor/Line2D2"), NodePath("../RotOnDoor/Line2D"), NodePath("../RotOnDoor/Line2D3"), NodePath("../RotOnDoor/Line2D4"), NodePath("../RotOnDoor/Line2D5")]
 
 [node name="InteractiveCarat2" parent="." unique_id=610572506 instance=ExtResource("6_5expv")]
 position = Vector2(852, 163)

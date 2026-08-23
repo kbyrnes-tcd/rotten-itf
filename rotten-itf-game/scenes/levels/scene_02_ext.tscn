@@ -153,12 +153,16 @@ position = Vector2(3078, 289)
 lio_text = "How strange… This part of the garden is clean from the Rot."
 
 [node name="LioTrigger5" parent="LIO" unique_id=1165672345 instance=ExtResource("12_gvi84")]
-position = Vector2(3295, 298)
+position = Vector2(3295, 317)
 lio_text = "The Glowworms! They’re repelling the Rot away."
 
 [node name="LioTrigger6" parent="LIO" unique_id=1649625044 instance=ExtResource("12_gvi84")]
 position = Vector2(3801, 292)
 lio_text = "This path is blocked. I can go no further."
+
+[node name="LioTrigger" parent="LIO" unique_id=110257511 instance=ExtResource("12_gvi84")]
+position = Vector2(3531, 319)
+lio_text = "Glowworms collected. Press [ to equip lantern and hold down SHIFT to clear rot."
 
 [node name="RotMap" type="Node2D" parent="." unique_id=428511259]
 z_index = -1
