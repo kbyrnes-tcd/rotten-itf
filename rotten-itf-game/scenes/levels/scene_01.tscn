@@ -110,11 +110,11 @@ scale = Vector2(1, 1.0076721)
 safe_margin = 0.08
 
 [node name="InteractiveCarat" parent="." unique_id=1099497837 instance=ExtResource("8_5t0pk")]
-position = Vector2(2481, 190)
+position = Vector2(2481, 179)
 scale = Vector2(0.35, 0.35)
 
 [node name="DoorToGardenInt" parent="." unique_id=1160326856 node_paths=PackedStringArray("interact_carat") instance=ExtResource("9_b3nsi")]
-position = Vector2(2481.0002, 217)
+position = Vector2(2481, 225.00003)
 scale = Vector2(3.594, 6.575)
 next_scene_path = "scene_02_int"
 door_id = "DoorToGardenInt"

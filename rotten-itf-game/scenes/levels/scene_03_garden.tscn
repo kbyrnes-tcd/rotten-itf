@@ -99,7 +99,7 @@ twin_id = "DoorToMiniGarden"
 interact_carat = NodePath("../InteractiveCarat")
 
 [node name="InteractiveCarat" parent="." unique_id=1099497837 instance=ExtResource("9_4mtit")]
-position = Vector2(359, 149)
+position = Vector2(364, 138)
 
 [node name="LioTrigger" parent="." unique_id=110257511 instance=ExtResource("10_33ufd")]
 position = Vector2(818, 284)

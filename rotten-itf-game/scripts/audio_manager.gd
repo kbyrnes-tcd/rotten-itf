@@ -160,12 +160,12 @@ func play_dialog(copy: String, speaker: String = "", letter_speed: float = 0.15,
 		else: index = randi_range(0, index)
 		if skip: return
 
-		if !active_os: active_os = clips.get_node("OneShotFX")
+		if !dialog_os: dialog_os = clips.get_node("DialogOneShotFX")
 		var speaker_alphabet = get(speaker.to_lower().replace(" ", "") + "_alpha")
 		if not speaker_alphabet or speaker_alphabet.size() == 0:
 			speaker_alphabet = daphne_alpha
-		active_os.volume_db = -20.0
-		active_os.stream = speaker_alphabet[index]
+		dialog_os.volume_db = -20.0
+		dialog_os.stream = speaker_alphabet[index]
 		# pitch and variance
 		dialog_os.pitch_scale = base_pitch + randf_range(-pitch_variance, pitch_variance)
 		dialog_os.play()
@@ -174,7 +174,7 @@ func play_dialog(copy: String, speaker: String = "", letter_speed: float = 0.15,
 		dialog_os = null
 	
 	# return dialog_os to original state
-	dialog_os = clips.get_node("OneShotFX")
+	dialog_os = clips.get_node("DialogOneShotFX")
 	dialog_os.volume_db = -20.0
 
 func play_os_from_arr(arr_name: String, index : int = -1, from: float = 0.0) -> void:

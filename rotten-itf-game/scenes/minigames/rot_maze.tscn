@@ -1513,14 +1513,14 @@ position = Vector2(152, 111)
 position = Vector2(113, 111)
 
 [node name="MazeShape" type="Sprite2D" parent="." unique_id=837615859]
-position = Vector2(113, 51)
+position = Vector2(113, 55)
 texture = ExtResource("8_hff37")
 
 [node name="fin_vine" type="Line2D" parent="." unique_id=1487766107]
 texture_repeat = 2
 position = Vector2(113, 111)
 scale = Vector2(0.3, 0.3)
-points = PackedVector2Array(-226.66663, 6.666687, -153.36667, 4.382355, -70.34177, 6.589147, -32.78406, 7.6928067, 26.236652, 10.995328, 67.11135, 18.78745, 185.26, 26.771524)
+points = PackedVector2Array(-226.66663, 6.666687, -153.3508, 4.949294, -70.386925, 7.6913614, -32.903805, 8.891828, 26.100496, 11.597043, 66.98195, 18.08387, 185.27008, 24.444761)
 width = 20.0
 width_curve = SubResource("Curve_hff37")
 texture = ExtResource("3_gjyw5")

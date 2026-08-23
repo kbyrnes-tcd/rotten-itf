@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://diylf22dcoha0" path="res://scenes/lantern_pickup.tscn" id="8_c63m2"]
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="9_mb6sg"]
 [ext_resource type="Resource" uid="uid://gpvtv23ln3ds" path="res://scripts/inventory_system/items/lantern.tres" id="9_yrcn3"]
+[ext_resource type="Resource" uid="uid://dt677afg3p4f0" path="res://scripts/inventory_system/items/orange_worm.tres" id="10_4muw5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c63m2"]
 size = Vector2(2596, 43.25)
@@ -98,13 +99,28 @@ shape = SubResource("RectangleShape2D_3336g")
 z_index = -2
 
 [node name="Line2D2" parent="RotOnDoor" unique_id=1110441175 instance=ExtResource("4_xgkue")]
-position = Vector2(422.77432, -9)
+position = Vector2(859, -50)
 scale = Vector2(0.5834024, 1)
-points = PackedVector2Array(250.64288, 285, 190.65002, 274, 106.65997, 268, 34.668457, 291, -57.89203, 262)
-collidable = true
+points = PackedVector2Array(-54.850708, 337, -41.13806, 320, -47.994385, 310, -39.42395, 293, -51.422485, 271, -42.852173, 256, -56.56482, 240)
+
+[node name="Line2D" parent="RotOnDoor" unique_id=1590463200 instance=ExtResource("4_xgkue")]
+position = Vector2(838, 203)
+points = PackedVector2Array(12, -12, 12, 10, 5, 34, 13, 50, 11, 68, 17, 88)
+
+[node name="Line2D3" parent="RotOnDoor" unique_id=239329446 instance=ExtResource("4_xgkue")]
+position = Vector2(869, 204)
+points = PackedVector2Array(-2, -15, -1, 4, -8, 26, -13, 50, -4, 69, 8, 72, 11, 87)
+
+[node name="Line2D4" parent="RotOnDoor" unique_id=1677802517 instance=ExtResource("4_xgkue")]
+position = Vector2(822, 223)
+points = PackedVector2Array(8, -9, 27, 16, 43, 28, 56, 25)
+
+[node name="Line2D5" parent="RotOnDoor" unique_id=1178474927 instance=ExtResource("4_xgkue")]
+position = Vector2(822, 279)
+points = PackedVector2Array(-2, -18, 9, -26, 19, -24, 44, -43, 60, -48)
 
 [node name="InteractiveCarat" parent="." unique_id=1099497837 instance=ExtResource("6_5expv")]
-position = Vector2(2339, 187)
+position = Vector2(2339, 182)
 scale = Vector2(0.5, 0.5)
 
 [node name="LIO" type="Node" parent="." unique_id=2062746301]
@@ -157,6 +173,11 @@ scale = Vector2(2.544, 4.656)
 next_scene_path = "scene_03"
 door_id = "DoorToTemple"
 twin_id = "DoorToTemple"
-interact_carat = NodePath("../InteractiveCarat")
+required_item = ExtResource("10_4muw5")
+required_amount = 1
+interact_carat = NodePath("../InteractiveCarat2")
+
+[node name="InteractiveCarat2" parent="." unique_id=610572506 instance=ExtResource("6_5expv")]
+position = Vector2(852, 163)
 
 [editable path="Player"]

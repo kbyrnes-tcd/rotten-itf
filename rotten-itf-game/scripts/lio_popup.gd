@@ -12,7 +12,7 @@ func _ready() -> void:
 	label.custom_minimum_size = Vector2(400, 0)
 	dark_frame.visible = false
 	label.modulate.a = 0.0
-	dark_frame.modulate.a = 0.7
+	dark_frame.modulate.a = 0.5
 
 func _show_text(text: String, duration: float = 3.0, fade: float = 1.0):
 	dark_frame.visible = true
