@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cg75k4w0pepcp"]
 
 [ext_resource type="Texture2D" uid="uid://dgwjnqq4radaq" path="res://assets/images/env/p2_garden_ext/RITF_Gardenbackrot.png" id="1_yrcn3"]
-[ext_resource type="Texture2D" uid="uid://1k6yhyu0d08r" path="res://assets/images/env/p2_garden_int/Firsthallwaynobackground.png" id="2_3aray"]
+[ext_resource type="Texture2D" uid="uid://82nd5g871vsq" path="res://assets/images/env/p2_garden_int/Part_2_Interior_Final.png" id="2_4muw5"]
 [ext_resource type="PackedScene" uid="uid://di31qowjleyl4" path="res://scenes/rot_dressing_new.tscn" id="4_xgkue"]
 [ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="5_oleyw"]
 [ext_resource type="PackedScene" uid="uid://bimatr4hej8ja" path="res://scenes/ui/interactive_carat.tscn" id="6_5expv"]
@@ -37,7 +37,7 @@ z_index = -2
 
 [node name="RitfGardenInterior" type="Sprite2D" parent="Environment/Building" unique_id=1598557972]
 position = Vector2(-586, 0)
-texture = ExtResource("2_3aray")
+texture = ExtResource("2_4muw5")
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("9_mb6sg")]
 position = Vector2(122, 266)
