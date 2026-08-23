@@ -51,6 +51,7 @@ z_index = 1
 texture = ExtResource("4_4n1ul")
 
 [node name="Rotmap" type="Sprite2D" parent="." unique_id=386733338]
+visible = false
 modulate = Color(1, 1, 1, 0.2)
 position = Vector2(2025, 215)
 texture = ExtResource("4_0svnh")
