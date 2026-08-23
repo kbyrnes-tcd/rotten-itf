@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://hucgnag6uv0s" path="res://assets/images/ui/dialogue/ui_dialogu.png" id="2_6ytya"]
 [ext_resource type="FontFile" uid="uid://3u1i6waxj8qa" path="res://assets/fonts/HyperlegibleSans-Bold.ttf" id="2_xcyex"]
 [ext_resource type="FontFile" uid="uid://b6i7rpldejb8" path="res://assets/fonts/FaytePixel-Soft.ttf" id="3_6ytya"]
+[ext_resource type="Shader" uid="uid://cv8gg3r3c6md3" path="res://scripts/shaders/pixelate.gdshader" id="5_nnern"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nbikq"]
 bg_color = Color(0.16470589, 0.039215688, 0.039215688, 1)
@@ -12,6 +13,11 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jw7t4"]
+shader = ExtResource("5_nnern")
+shader_parameter/pixelate_amount = 200
+shader_parameter/darken_amount = 1.0
 
 [node name="Textbox" type="CanvasLayer" unique_id=424906784]
 script = ExtResource("1_y2pcl")
@@ -121,6 +127,8 @@ horizontal_alignment = 1
 layout_mode = 2
 
 [node name="PortraitLeft" type="TextureRect" parent="DialogueAnchor" unique_id=1720300129]
+z_index = 2
+material = SubResource("ShaderMaterial_jw7t4")
 custom_minimum_size = Vector2(90, 100)
 custom_maximum_size = Vector2(120, 150)
 layout_mode = 0
@@ -132,12 +140,15 @@ expand_mode = 2
 stretch_mode = 5
 
 [node name="PortraitRight" type="TextureRect" parent="DialogueAnchor" unique_id=1129125853]
+z_index = 2
+material = SubResource("ShaderMaterial_jw7t4")
 custom_minimum_size = Vector2(90, 100)
 custom_maximum_size = Vector2(120, 150)
 layout_mode = 0
-offset_left = 257.0
-offset_top = -68.0
-offset_right = 377.0
-offset_bottom = 82.0
+offset_left = 242.0
+offset_top = -84.0
+offset_right = 362.0
+offset_bottom = 66.0
+scale = Vector2(1.155, 1.155)
 expand_mode = 2
 stretch_mode = 5
