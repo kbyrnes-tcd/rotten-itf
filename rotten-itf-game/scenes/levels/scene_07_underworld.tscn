@@ -21,6 +21,16 @@ size = Vector2(2913, 40)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q01m8"]
 
+[sub_resource type="Gradient" id="Gradient_j0jg5"]
+offsets = PackedFloat32Array(0, 0.69554454, 0.8787129)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tjxil"]
+gradient = SubResource("Gradient_j0jg5")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
 [node name="Scene07Underworld" type="Node2D" unique_id=1008943527]
 
 [node name="Environment" type="Node2D" parent="." unique_id=944691441]
@@ -82,12 +92,35 @@ visible = false
 position = Vector2(959.00006, 174)
 scale = Vector2(0.09079814, 0.08184042)
 
-[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1285784708]
-color = Color(0.7107411, 0.71074116, 0.7107411, 1)
+[node name="UWLighting" type="Node2D" parent="." unique_id=1010128644]
 
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=2140409704]
-color = Color(0.9882353, 0.7764706, 0.8156863, 0.38431373)
+[node name="CanvasModulate" type="CanvasModulate" parent="UWLighting" unique_id=1285784708]
+color = Color(0.5264226, 0.5264226, 0.5264226, 1)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="UWLighting" unique_id=2140409704]
+color = Color(0.775091, 0.64611197, 0.5197793, 0.38431373)
 energy = 0.8
+
+[node name="RedAlarmLight" type="PointLight2D" parent="UWLighting" unique_id=1938314636]
+position = Vector2(218, 125)
+color = Color(1, 0.46666667, 0.4745098, 1)
+energy = 0.5
+range_z_max = 0
+texture = SubResource("GradientTexture2D_tjxil")
+
+[node name="RedAlarmLight2" type="PointLight2D" parent="UWLighting" unique_id=1648052732]
+position = Vector2(1182, 125)
+color = Color(1, 0.46666667, 0.4745098, 1)
+energy = 0.5
+range_z_max = 0
+texture = SubResource("GradientTexture2D_tjxil")
+
+[node name="RedAlarmLight3" type="PointLight2D" parent="UWLighting" unique_id=814066868]
+position = Vector2(2332, 115)
+color = Color(1, 0.46666667, 0.4745098, 1)
+energy = 0.5
+range_z_max = 0
+texture = SubResource("GradientTexture2D_tjxil")
 
 [editable path="Player"]
 [editable path="DialogueTrigger"]
