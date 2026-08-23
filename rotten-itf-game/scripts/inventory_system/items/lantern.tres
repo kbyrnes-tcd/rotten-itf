@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://gpvtv23ln3ds"]
 
 [ext_resource type="Script" uid="uid://b0vt1mp7wu6pu" path="res://scripts/inventory_system/resource_def/inv_item.gd" id="1_oj7hd"]
-[ext_resource type="Texture2D" uid="uid://bg2xv2dit48xi" path="res://assets/images/worms/lantern.png" id="2_oj7hd"]
+[ext_resource type="Texture2D" uid="uid://bbrd1kqxg4s55" path="res://assets/images/player/equipment/Lantern_inv.png" id="2_oj7hd"]
 
 [resource]
 script = ExtResource("1_oj7hd")
 name = "Lantern"
 texture = ExtResource("2_oj7hd")
-desc = "This amulet will help you to repel rot from your surroundings. Press [ to equip it and then hold Shift to activate the lantern."
+desc = "This amulet will help you expel rot from your surroundings. Press [ to equip it and then hold Shift to activate the lantern. You will need a glowworm to activate the lantern."
 metadata/_custom_type_script = "uid://b0vt1mp7wu6pu"

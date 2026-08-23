@@ -26,11 +26,15 @@ func _ready() -> void:
 	
 	if inv.slots[0].has_item(): 
 		activate_slot(inv.slots[0])
-	
+
+
 # update item visuals via inv_ui_slot.gd>update func
 func update_slots():
 	for i in range(min(inv.slots.size(), slots.size())):
 		slots[i].update(inv.slots[i])
+
+func update_slot(i :int):
+	slots[i].update(inv.slots[i])
 
 func close():
 	if visible:
@@ -77,19 +81,13 @@ func activate_slot(slot : InvSlot):
 		render_ui_twin = true
 		ui_twin = slot.item.ui_twin
 	AudioManager.play_os("ui_select")
-	update_slots()
+	var index := inv.slots.find(slot)
+	update_slot(index)
 
-func _process(_delta):
-	if Input.is_action_just_pressed(("inv")):
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("inv"):
 		var _foo = close() if visible else open()
 
-	if render_ui_twin and (Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("click")):
+	if render_ui_twin and (event.is_action_pressed("interact") or event.is_action_pressed("click")):
 		GameGlobals.load_letter_ui(ui_twin)
 		AudioManager.play_os("ui_open")
-
-	if visible:
-		for i in range(0, 8):
-			if inv.slots[i].has_item() and Input.is_action_just_pressed("inv_%d" % (i + 1)):
-				clear_selection()
-				activate_slot(inv.slots[i])
-				update_slots()

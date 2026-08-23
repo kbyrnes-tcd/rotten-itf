@@ -1,7 +1,8 @@
 extends Panel
 
 @onready var inv_ui: Control = $"../../.."
-@onready var item_sprite: Sprite2D = $ItemSprite
+@onready var item_img: TextureRect = $ItemImg
+
 @onready var amount_text: Label = $Label
 var inv_slot : InvSlot
 
@@ -9,12 +10,12 @@ var inv_slot : InvSlot
 func update(slot: InvSlot):
 	if !slot.item:
 		inv_slot = null
-		item_sprite.visible = false;
+		item_img.visible = false;
 		amount_text.visible = false;
 	else:
 		inv_slot = slot
-		item_sprite.visible = true;
-		item_sprite.texture = slot.item.texture;
+		item_img.visible = true;
+		item_img.texture = slot.item.texture;
 		amount_text.visible = true;
 		amount_text.text = str(slot.amount);
 	if slot.get_active():

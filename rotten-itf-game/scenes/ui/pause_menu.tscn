@@ -257,7 +257,7 @@ size_flags_vertical = 4
 
 [node name="Label" type="Label" parent="BorderBox/VBoxContainer/ControlsPanel" unique_id=1651711371]
 layout_mode = 2
-theme_override_constants/line_spacing = -4
+theme_override_constants/line_spacing = 2
 theme_override_font_sizes/font_size = 6
 text = "Move ................................................ WASD/Arrow keys
 Jump ............................................... Space/W/Up-arrow
@@ -267,11 +267,10 @@ Interact .......................................................................
 Equip lantern ................................................................ ]
 Activate l........................................... (Hold Down) Shift
 Equip amulet ................................................................. [
-Shoot rot  ......................................  Left-Mouse-Button
-Inventory item ................................................. Keys 1-9"
+Shoot rot  ......................................  Left-Mouse-Button"
 vertical_alignment = 2
 
-[node name="Back2" type="Button" parent="BorderBox/VBoxContainer/ControlsPanel" unique_id=684782283 groups=["buttons"]]
+[node name="Back" type="Button" parent="BorderBox/VBoxContainer/ControlsPanel" unique_id=684782283 groups=["buttons"]]
 custom_minimum_size = Vector2(70, 0)
 custom_maximum_size = Vector2(70, -1)
 layout_mode = 2
@@ -291,3 +290,4 @@ text = "Back"
 [connection signal="value_changed" from="BorderBox/VBoxContainer/SettingsPanel/HBoxContainer3/VolumeSilder" to="." method="_on_volume_silder_value_changed"]
 [connection signal="pressed" from="BorderBox/VBoxContainer/HelpPanel/Stuck" to="." method="_on_stuck_pressed"]
 [connection signal="pressed" from="BorderBox/VBoxContainer/HelpPanel/Refill" to="." method="_on_refill_pressed"]
+[connection signal="pressed" from="BorderBox/VBoxContainer/ControlsPanel/Back" to="." method="_on_back_pressed"]

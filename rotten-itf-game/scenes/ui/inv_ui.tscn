@@ -83,7 +83,8 @@ offset_right = -48.0
 offset_bottom = -13.0
 grow_horizontal = 2
 scale = Vector2(1.0032772, 1)
-expand_mode = 3
+expand_mode = 1
+stretch_mode = 5
 
 [node name="ActiveItemLabel" type="Label" parent="NinePatchRect/RHS" unique_id=142410260]
 anchors_preset = 7
