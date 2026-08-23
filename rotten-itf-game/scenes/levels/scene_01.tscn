@@ -101,13 +101,16 @@ rotation = -1.5707964
 scale = Vector2(0.15999758, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/RightOobCollider" unique_id=2075318962]
-position = Vector2(1288, -0.5)
+position = Vector2(1287.5195, -134)
 shape = SubResource("RectangleShape2D_3336g")
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("4_3336g")]
 position = Vector2(112, 247)
 scale = Vector2(1, 1.0076721)
 safe_margin = 0.08
+
+[node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
+limit_right = 2758
 
 [node name="InteractiveCarat" parent="." unique_id=1099497837 instance=ExtResource("8_5t0pk")]
 position = Vector2(2481, 179)
@@ -149,3 +152,5 @@ color = Color(0.8089983, 0.8089983, 0.80899817, 1)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1230748154]
 color = Color(1, 0.7921569, 0.62352943, 0.26666668)
+
+[editable path="Player"]
