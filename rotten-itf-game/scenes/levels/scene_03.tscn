@@ -49,9 +49,10 @@ z_index = 1
 position = Vector2(178, 244)
 
 [node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
-limit_top = -206
-limit_right = 3921
-limit_bottom = 423
+limit_left = -77
+limit_top = -247
+limit_right = 3924
+limit_bottom = 382
 
 [node name="ZoomTrigger" parent="." unique_id=1302506614 instance=ExtResource("4_bork3")]
 
