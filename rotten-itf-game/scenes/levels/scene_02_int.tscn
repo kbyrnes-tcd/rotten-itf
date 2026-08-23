@@ -17,6 +17,9 @@ size = Vector2(2596, 43.25)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3aray"]
 size = Vector2(2565.0068, 61)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4muw5"]
+size = Vector2(2596, 55.5)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3336g"]
 size = Vector2(2596, 55.5)
 
@@ -68,7 +71,7 @@ shape = SubResource("RectangleShape2D_3aray")
 
 [node name="Ceil" type="CollisionShape2D" parent="Colliders/Ground&CeilingCollider" unique_id=1275661467]
 position = Vector2(1288.3936, -234.75)
-shape = SubResource("RectangleShape2D_3336g")
+shape = SubResource("RectangleShape2D_4muw5")
 
 [node name="StairsL" type="CollisionPolygon2D" parent="Colliders/Ground&CeilingCollider" unique_id=1518057120]
 polygon = PackedVector2Array(1015.1791, -78, 953.5719, -16, 1015.1791, -16)

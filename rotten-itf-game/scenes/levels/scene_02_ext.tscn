@@ -57,7 +57,7 @@ position = Vector2(2025, 215)
 texture = ExtResource("4_0svnh")
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("6_6c07b")]
-position = Vector2(678, 295)
+position = Vector2(663, 293)
 
 [node name="AnimatedSprite2D" parent="Player/CharacterSprites" parent_id_path=PackedInt32Array(1515659648, 2095860029) index="0" unique_id=512896578]
 z_index = 1

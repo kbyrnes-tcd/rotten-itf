@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dwg50qrw03hrn"]
+[gd_scene format=3 uid="uid://ctd6mmvny4tuh"]
 
 [ext_resource type="Texture2D" uid="uid://c1c20isq68myp" path="res://assets/images/env/altar/Back.png" id="1_472ey"]
 [ext_resource type="Texture2D" uid="uid://beqbl5geno7i7" path="res://assets/images/env/altar/Temple back.png" id="2_0ntcn"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://23jheaaqxi77" path="res://assets/images/env/altar/Trees front .png" id="4_qh11w"]
 [ext_resource type="Texture2D" uid="uid://h34qfq2wab4l" path="res://assets/images/env/altar/Trees.png" id="5_2jge0"]
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="6_0ntcn"]
-[ext_resource type="PackedScene" uid="uid://ccvrijgg5lyos" path="res://scenes/glowworm_cluster.tscn" id="7_2jge0"]
+[ext_resource type="PackedScene" uid="uid://32h27chxiffi" path="res://scenes/glowworm_cluster.tscn" id="7_2jge0"]
 [ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="8_33ufd"]
 [ext_resource type="PackedScene" uid="uid://bimatr4hej8ja" path="res://scenes/ui/interactive_carat.tscn" id="9_4mtit"]
 [ext_resource type="PackedScene" uid="uid://dr3ff06oljyer" path="res://scenes/lio_trigger.tscn" id="10_33ufd"]
@@ -14,8 +14,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q01m8"]
 size = Vector2(1371, 39)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_33ufd"]
+size = Vector2(1371, 39)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w5vsg"]
-size = Vector2(203, 16.5)
+size = Vector2(283, 16.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j0jg5"]
 size = Vector2(31, 357)
@@ -65,14 +68,22 @@ texture = ExtResource("4_qh11w")
 position = Vector2(687, 316)
 shape = SubResource("RectangleShape2D_q01m8")
 
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Colliders/GroundColliders" unique_id=1209407995]
+position = Vector2(687, 53)
+shape = SubResource("RectangleShape2D_33ufd")
+
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Colliders/GroundColliders" unique_id=1407095151]
-position = Vector2(178, 260.25)
+position = Vector2(138.5, 260.25)
 shape = SubResource("RectangleShape2D_w5vsg")
 
 [node name="WallColliders" type="StaticBody2D" parent="Colliders" unique_id=2061319989]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/WallColliders" unique_id=1982341987]
+[node name="RHS" type="CollisionShape2D" parent="Colliders/WallColliders" unique_id=1982341987]
 position = Vector2(1275, 169)
+shape = SubResource("RectangleShape2D_j0jg5")
+
+[node name="LHS" type="CollisionShape2D" parent="Colliders/WallColliders" unique_id=1220492282]
+position = Vector2(1, 196)
 shape = SubResource("RectangleShape2D_j0jg5")
 
 [node name="StairsColliders" type="StaticBody2D" parent="Colliders" unique_id=2082173877]
@@ -80,10 +91,15 @@ shape = SubResource("RectangleShape2D_j0jg5")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Colliders/StairsColliders" unique_id=1096321662]
 position = Vector2(381, 224.99998)
 scale = Vector2(3.4807694, 3.0781248)
-polygon = PackedVector2Array(32.176796, 23.715744, -17.237564, 22.416245, -17.524864, 9.746201)
+polygon = PackedVector2Array(31.314919, 23.066002, -29.016571, 23.066002, -29.016571, 8.771584, -10.629837, 8.771584)
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("6_0ntcn")]
-position = Vector2(498, 259)
+position = Vector2(330, 218)
+
+[node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
+limit_top = 44
+limit_right = 1266
+limit_bottom = 308
 
 [node name="GlowwormCluster" parent="." unique_id=1112046846 instance=ExtResource("7_2jge0")]
 position = Vector2(969, 276)
@@ -105,4 +121,5 @@ position = Vector2(364, 138)
 position = Vector2(818, 284)
 lio_text = "More glowworms...I will need them."
 
+[editable path="Player"]
 [editable path="GlowwormCluster"]

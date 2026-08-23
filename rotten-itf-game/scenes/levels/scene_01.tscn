@@ -105,7 +105,7 @@ position = Vector2(1288, -0.5)
 shape = SubResource("RectangleShape2D_3336g")
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("4_3336g")]
-position = Vector2(112, 243)
+position = Vector2(112, 247)
 scale = Vector2(1, 1.0076721)
 safe_margin = 0.08
 
