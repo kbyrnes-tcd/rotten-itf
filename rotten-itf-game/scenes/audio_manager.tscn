@@ -20,9 +20,9 @@
 [ext_resource type="AudioStream" uid="uid://dl2yaejaa2r4h" path="res://assets/audio/fx/RITF_Minigame_Win (4).mp3" id="12_cuol6"]
 [ext_resource type="AudioStream" uid="uid://dlq32wjm88aj" path="res://assets/audio/ui-fx/RITF_UI_Selection_Confirm_v1.mp3" id="12_hk38w"]
 [ext_resource type="AudioStream" uid="uid://caepxal4fyoln" path="res://assets/audio/ambience/Temple_Music.mp3" id="12_opu6i"]
-[ext_resource type="AudioStream" uid="uid://dvrff2pawsmyc" path="res://assets/audio/ambience/Altar_Music.mp3" id="13_ku15p"]
 [ext_resource type="AudioStream" uid="uid://6tadeq0h04w8" path="res://assets/audio/fx/RITF_Minigame_Win (5).mp3" id="13_m1k83"]
 [ext_resource type="AudioStream" uid="uid://dgdqmsms7tfes" path="res://assets/audio/fx/RITF_Minigame_Win (6).mp3" id="14_2y5yn"]
+[ext_resource type="AudioStream" uid="uid://1fax1ov54mry" path="res://assets/audio/ambience/Altar_Music_2.mp3" id="18_st500"]
 [ext_resource type="AudioStream" uid="uid://rvtw7indd10s" path="res://assets/audio/ambience/Title_Song.wav" id="18_ypd68"]
 [ext_resource type="AudioStream" uid="uid://032y4navgxdq" path="res://assets/audio/alphabet/Daphne Alphabet/a.wav" id="20_sa6p2"]
 [ext_resource type="AudioStream" uid="uid://cc1ytfoa15lp1" path="res://assets/audio/alphabet/Daphne Alphabet/b.wav" id="21_opu6i"]
@@ -103,7 +103,7 @@ ambiences = Dictionary[String, AudioStream]({
 })
 music = Dictionary[String, AudioStream]({
 "": null,
-"Altar_Music": ExtResource("13_ku15p"),
+"Altar_Music": ExtResource("18_st500"),
 "Temple_Music": ExtResource("12_opu6i"),
 "Title_Song": ExtResource("18_ypd68")
 })
