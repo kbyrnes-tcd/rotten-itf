@@ -7,5 +7,5 @@
 script = ExtResource("1_exl1k")
 name = "Amulet"
 texture = ExtResource("2_eam4q")
-desc = "This amulet will help you grow the rot that brews within you. Press ] to equip it and then click to extend the rot up until that point."
+desc = "This amulet will help you grow rot. Press ] to equip it and then Click to extend the rot up until that point."
 metadata/_custom_type_script = "uid://b0vt1mp7wu6pu"

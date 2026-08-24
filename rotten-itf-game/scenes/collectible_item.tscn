@@ -1,20 +1,25 @@
 [gd_scene format=3 uid="uid://ufmhebijpwbb"]
 
 [ext_resource type="Script" uid="uid://deenwpb4no5r5" path="res://scripts/inventory_system/collectible_item.gd" id="1_ueyh1"]
-[ext_resource type="Resource" uid="uid://dt677afg3p4f0" path="res://scripts/inventory_system/items/orange_worm.tres" id="2_ukttb"]
-[ext_resource type="Texture2D" uid="uid://cjfpxpgmucw6b" path="res://assets/images/worms/placeholder_worm.png" id="3_ueyh1"]
+[ext_resource type="Resource" uid="uid://dt677afg3p4f0" path="res://scripts/inventory_system/items/glow_worm.tres" id="2_ukttb"]
+[ext_resource type="Texture2D" uid="uid://fc8hwmpaobv8" path="res://assets/images/worms/Glowworm.png" id="3_2t1da"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s7xyy"]
 size = Vector2(20.360611, 9)
 
 [node name="CollectibleItem" type="Node2D" unique_id=385129123]
+position = Vector2(2, 0)
 scale = Vector2(3, 3)
 script = ExtResource("1_ueyh1")
 item = ExtResource("2_ukttb")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1696524264]
-texture = ExtResource("3_ueyh1")
+z_index = -3
+position = Vector2(-0.5000001, 1.3333324)
+scale = Vector2(0.10476191, 0.13333327)
+texture = ExtResource("3_2t1da")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1364256593]
 

@@ -4,10 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://ufmhebijpwbb" path="res://scenes/collectible_item.tscn" id="2_ettca"]
 [ext_resource type="Resource" uid="uid://6pxkrw3jqp6n" path="res://scripts/inventory_system/items/green_worm.tres" id="3_6eduv"]
 [ext_resource type="Script" uid="uid://csgyemaib401c" path="res://scripts/item_consumer.gd" id="5_48s3s"]
-[ext_resource type="Resource" uid="uid://dt677afg3p4f0" path="res://scripts/inventory_system/items/orange_worm.tres" id="6_w70n4"]
+[ext_resource type="Resource" uid="uid://dt677afg3p4f0" path="res://scripts/inventory_system/items/glow_worm.tres" id="6_w70n4"]
 [ext_resource type="Texture2D" uid="uid://cotxrl2gpbqxr" path="res://assets/images/worms/orange_worm_1.png" id="7_ar0vr"]
-[ext_resource type="Texture2D" uid="uid://dvjljkkkuelcb" path="res://assets/images/ui/inventory-slot.png" id="8_ggxwh"]
+[ext_resource type="Texture2D" path="res://assets/images/ui/inventory-slot.png" id="8_ggxwh"]
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="9_uvlx8"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q01m8"]
 size = Vector2(100, 50)

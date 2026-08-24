@@ -73,17 +73,17 @@ horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="BorderBox" unique_id=2103730184]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = -49.0
-offset_right = 75.0
-offset_bottom = 91.0
+anchor_bottom = 1.0
+offset_left = -82.5
+offset_top = -129.0
+offset_right = 82.5
+offset_bottom = -9.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 alignment = 1
@@ -257,27 +257,31 @@ size_flags_vertical = 4
 
 [node name="Label" type="Label" parent="BorderBox/VBoxContainer/ControlsPanel" unique_id=1651711371]
 layout_mode = 2
-theme_override_constants/line_spacing = 0
-theme_override_font_sizes/font_size = 6
+theme_override_constants/line_spacing = -3
+theme_override_font_sizes/font_size = 5
 text = "Move ................................................ WASD/Arrow keys
 Jump ............................................... Space/W/Up-arrow
 Pause ............................................................................ P
 Inventory ....................................................................... I
 Interact ......................................................................... E
 Equip lantern ................................................................ ]
-Activate l........................................... (Hold Down) Shift
+Activate lantern ............................... (Hold Down) Shift
 Equip amulet ................................................................. [
-Shoot rot  ......................................  Left-Mouse-Button
-Inventory item ................................................. Keys 1-9"
+Shoot rot  ......................................  Left-Mouse-Button"
+horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="Back" type="Button" parent="BorderBox/VBoxContainer/ControlsPanel" unique_id=420554016 groups=["buttons"]]
+[node name="MarginContainer" type="MarginContainer" parent="BorderBox/VBoxContainer/ControlsPanel" unique_id=1514887597]
+layout_mode = 2
+theme_override_constants/margin_bottom = 3
+
+[node name="Back" type="Button" parent="BorderBox/VBoxContainer/ControlsPanel" unique_id=684782283 groups=["buttons"]]
 custom_minimum_size = Vector2(70, 0)
 custom_maximum_size = Vector2(70, -1)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("4_8fwbo")
-theme_override_font_sizes/font_size = 7
+theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxEmpty_4inpj")
 text = "Back"
 
@@ -291,3 +295,4 @@ text = "Back"
 [connection signal="value_changed" from="BorderBox/VBoxContainer/SettingsPanel/HBoxContainer3/VolumeSilder" to="." method="_on_volume_silder_value_changed"]
 [connection signal="pressed" from="BorderBox/VBoxContainer/HelpPanel/Stuck" to="." method="_on_stuck_pressed"]
 [connection signal="pressed" from="BorderBox/VBoxContainer/HelpPanel/Refill" to="." method="_on_refill_pressed"]
+[connection signal="pressed" from="BorderBox/VBoxContainer/ControlsPanel/Back" to="." method="_on_back_pressed"]

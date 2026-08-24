@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://dagsvgdwskmcw"]
+
+[ext_resource type="Script" uid="uid://bqn3ivrjkektg" path="res://scripts/high_priestess.gd" id="1_7dfnw"]
+[ext_resource type="Texture2D" uid="uid://qvom0pmksqkk" path="res://assets/images/player/high_priestess/1 (1).png" id="2_k1lrj"]
+[ext_resource type="Texture2D" uid="uid://did24b4k6e3h1" path="res://assets/images/player/high_priestess/2 (1).png" id="3_7n07n"]
+[ext_resource type="Texture2D" uid="uid://x3w8g5mjjdln" path="res://assets/images/player/high_priestess/3 (1).png" id="4_wos6o"]
+[ext_resource type="Texture2D" uid="uid://d0iid8d6w7025" path="res://assets/images/player/high_priestess/4 (1).png" id="5_3avva"]
+[ext_resource type="Texture2D" uid="uid://t620bl6r0kyd" path="res://assets/images/player/high_priestess/5 (1).png" id="6_pm31o"]
+[ext_resource type="Texture2D" uid="uid://dm4qlnx230isl" path="res://assets/images/player/high_priestess/6 (1).png" id="7_5i6wt"]
+[ext_resource type="Texture2D" uid="uid://dgv4ut1weoy07" path="res://assets/images/player/high_priestess/1.png" id="8_fnhq7"]
+[ext_resource type="Texture2D" uid="uid://dyb28pedmm81g" path="res://assets/images/player/high_priestess/2.png" id="9_68pf4"]
+[ext_resource type="Texture2D" uid="uid://dmgy1di2o3o47" path="res://assets/images/player/high_priestess/3.png" id="10_vw5ac"]
+[ext_resource type="Texture2D" uid="uid://bibx03o1yw65b" path="res://assets/images/player/high_priestess/4.png" id="11_vs8vx"]
+[ext_resource type="Texture2D" uid="uid://bhu6rlywvyrx6" path="res://assets/images/player/high_priestess/5.png" id="12_f52ib"]
+[ext_resource type="Texture2D" uid="uid://cyyh5ona0ei0f" path="res://assets/images/player/high_priestess/6.png" id="13_2h4mc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5nhnx"]
+animations = [{
+"frames": [],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_k1lrj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7n07n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wos6o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3avva")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_pm31o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5i6wt")
+}],
+"loop": 0,
+"name": &"dying",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_fnhq7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_68pf4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_vw5ac")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_vs8vx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_f52ib")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_2h4mc")
+}],
+"loop": 1,
+"name": &"talking",
+"speed": 3.0
+}]
+
+[node name="HighPriestess" type="Node2D" unique_id=493119463]
+script = ExtResource("1_7dfnw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1407838953]
+position = Vector2(1, -2.0000038)
+scale = Vector2(0.48305085, 0.39320388)
+sprite_frames = SubResource("SpriteFrames_5nhnx")
+animation = &"talking"

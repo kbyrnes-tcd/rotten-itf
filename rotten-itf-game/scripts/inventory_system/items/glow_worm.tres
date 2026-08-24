@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://dt677afg3p4f0"]
+
+[ext_resource type="Script" uid="uid://b0vt1mp7wu6pu" path="res://scripts/inventory_system/resource_def/inv_item.gd" id="1_5fxv3"]
+[ext_resource type="Texture2D" uid="uid://fc8hwmpaobv8" path="res://assets/images/worms/Glowworm.png" id="2_ao1n6"]
+
+[resource]
+script = ExtResource("1_5fxv3")
+name = "Glowworm"
+texture = ExtResource("2_ao1n6")
+desc = "Activate your lantern with a glowworm by holding down Shift for it to expel the rot from your surroundings."
+metadata/_custom_type_script = "uid://b0vt1mp7wu6pu"
