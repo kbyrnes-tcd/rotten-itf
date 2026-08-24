@@ -156,6 +156,7 @@ next_scene_path = "scene_01"
 door_id = "DoorCrackBackToExt"
 twin_id = "DoorToGardenInt"
 interact_carat = NodePath("../InteractiveCarets/InteractiveCarat")
+crack = true
 
 [node name="DoorToGardenExt" parent="." unique_id=1160326856 node_paths=PackedStringArray("interact_carat") instance=ExtResource("5_oleyw")]
 position = Vector2(2339.0002, 245.00002)
@@ -188,19 +189,19 @@ position = Vector2(2336, 157)
 [node name="InteractiveCarat3" parent="InteractiveCarets" unique_id=2010505656 instance=ExtResource("6_5expv")]
 position = Vector2(848, 153)
 
-[node name="LioTrigger" parent="." unique_id=110257511 instance=ExtResource("7_3aray")]
+[node name="LioTrigger" parent="." unique_id=406987748 instance=ExtResource("7_3aray")]
 position = Vector2(803, 296)
 lio_text = "Oh, Goddess…"
 
-[node name="LioTrigger2" parent="." unique_id=1541676621 instance=ExtResource("7_3aray")]
+[node name="LioTrigger2" parent="." unique_id=354651510 instance=ExtResource("7_3aray")]
 position = Vector2(1617, 227)
 lio_text = "The Rot has completely consumed this place. "
 
-[node name="LioTrigger3" parent="." unique_id=1993371548 instance=ExtResource("7_3aray")]
+[node name="LioTrigger3" parent="." unique_id=1598788917 instance=ExtResource("7_3aray")]
 position = Vector2(180, 278)
 lio_text = "A wall lantern...I can store glowworms in here."
 
-[node name="LioTrigger4" parent="." unique_id=1163488396 instance=ExtResource("7_3aray")]
+[node name="LioTrigger4" parent="." unique_id=30029576 instance=ExtResource("7_3aray")]
 position = Vector2(360, 292)
 lio_text = "Press [ to equip lantern and hold SHIFT to clear."
 
