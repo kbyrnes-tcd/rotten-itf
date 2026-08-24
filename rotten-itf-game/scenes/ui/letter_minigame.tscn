@@ -1,116 +1,395 @@
 [gd_scene format=3 uid="uid://pbmlqvda64ij"]
 
 [ext_resource type="Texture2D" uid="uid://necrl1diw74g" path="res://assets/images/minigames/constellation/Decoder_Background.png" id="1_8bdwt"]
-[ext_resource type="Script" uid="uid://6pd1srbarc4x" path="res://scripts/letter_minigame.gd" id="1_s7fbq"]
-[ext_resource type="Texture2D" uid="uid://ertioryfears" path="res://assets/images/minigames/constellation/Decoder_text_sq.png" id="2_s7fbq"]
-[ext_resource type="Texture2D" uid="uid://bhybmxvu50t8d" path="res://assets/images/minigames/constellation/Decoder_sq1.png" id="3_oqtvg"]
-[ext_resource type="Texture2D" uid="uid://djfqx25ntwdu2" path="res://assets/images/minigames/constellation/Decoder_sq2.png" id="4_26h4h"]
-[ext_resource type="Texture2D" uid="uid://d4luwby2kwvd" path="res://assets/images/minigames/constellation/Decoder_sq3.png" id="5_h8ign"]
-[ext_resource type="Texture2D" uid="uid://dwjrp7pwbjc72" path="res://assets/images/minigames/constellation/Decoder_sq4.png" id="6_x2mgb"]
-[ext_resource type="Texture2D" uid="uid://bc4j25ojlkac8" path="res://assets/images/minigames/constellation/Decoder_sq5.png" id="7_ebn50"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q01m8"]
+[sub_resource type="GDScript" id="GDScript_0n18g"]
+script/source = "extends Node2D
+
+signal minigame_complete
+
+
+# ============================================================
+# PUZZLE DATA
+# ============================================================
+
+var gaps = [
+	{
+		\"before\": \"I am glad to be at peace here in my home. I am settling\",
+		\"after\": \"in comfortably this winter, and have been enjoying the company of my husband.\",
+		\"correct\": \"SOMETHING\"
+	},
+	{
+		\"before\": \"We are quite well, and have been enjoying the good weather.\",
+		\"after\": \"My lavender bush is thriving,\",
+		\"correct\": \"IS\"
+	},
+	{
+		\"before\": \", and I plan to\",
+		\"after\": \"grow some more in my chambers.\",
+		\"correct\": \"WRONG\"
+	},
+	{
+		\"before\": \"Though I miss the sun, stars, and you\",
+		\"after\": \", my family here is flourishing.\",
+		\"correct\": \"WITH\"
+	},
+	{
+		\"before\": \"I miss you dearly, and am\",
+		\"after\": \"glad to see you soon.\",
+		\"correct\": \"HADES\"
+	}
+]
+
+var symbols = [
+	\"SOMETHING\",
+	\"IS\",
+	\"WRONG\",
+	\"WITH\",
+	\"HADES\"
+]
+
+
+# ============================================================
+# STATE
+# ============================================================
+
+var current_gap := 0
+var solved_words := {}
+
+var letter_finished := false
+var reading_final_letter := false
+
+
+# ============================================================
+# NODES
+# ============================================================
+
+@onready var letter_text: RichTextLabel = $Letter/LetterText
+@onready var gap_box: TextureRect = $Letter/GapBox
+@onready var gap_label: Label = $Letter/GapBox/GapLabel
+
+@onready var symbol_grid: GridContainer = $SymbolPanel/SymbolGrid
+
+@onready var feedback: Label = $Feedback
+@onready var continue_button: Button = $Continue
+
+
+# ============================================================
+# READY
+# ============================================================
+
+func _ready():
+
+	# Allows the minigame to work while the main game is paused.
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
+	feedback.visible = false
+	continue_button.visible = false
+
+	continue_button.pressed.connect(_on_continue_pressed)
+
+	build_symbol_buttons()
+
+	show_gap()
+
+
+# ============================================================
+# CREATE SYMBOL BUTTONS
+# ============================================================
+
+func build_symbol_buttons():
+
+	# Remove existing buttons.
+	for child in symbol_grid.get_children():
+		child.queue_free()
+
+	for symbol in symbols:
+
+		var button := Button.new()
+
+		button.text = symbol
+
+		button.custom_minimum_size = Vector2(150, 80)
+
+		button.focus_mode = Control.FOCUS_NONE
+
+		var selected_symbol = symbol
+
+		button.pressed.connect(
+			func():
+				select_symbol(selected_symbol)
+		)
+
+		symbol_grid.add_child(button)
+
+
+# ============================================================
+# SHOW CURRENT GAP
+# ============================================================
+
+func show_gap():
+
+	if current_gap >= gaps.size():
+		finish_puzzle()
+		return
+
+	var gap = gaps[current_gap]
+
+	# Show the constellation placeholder.
+	gap_box.visible = true
+
+	gap_label.text = \"?\"
+
+	feedback.visible = false
+
+
+# ============================================================
+# PLAYER SELECTS SYMBOL
+# ============================================================
+
+func select_symbol(symbol: String):
+
+	var gap = gaps[current_gap]
+
+	if symbol == gap[\"correct\"]:
+
+		correct_answer(symbol)
+
+	else:
+
+		wrong_answer()
+
+
+# ============================================================
+# CORRECT ANSWER
+# ============================================================
+
+func correct_answer(symbol: String):
+
+	solved_words[current_gap] = symbol
+
+	# Replace the constellation with the word.
+	gap_label.text = symbol
+
+	feedback.text = \"That feels right.\"
+	feedback.visible = true
+
+	# Small pause before moving to next gap.
+	await get_tree().create_timer(0.6).timeout
+
+	current_gap += 1
+
+	show_gap()
+
+
+# ============================================================
+# WRONG ANSWER
+# ============================================================
+
+func wrong_answer():
+
+	feedback.text = \"Hmm... that doesn't feel right.\"
+	feedback.visible = true
+
+	shake_gap()
+
+	await get_tree().create_timer(1.2).timeout
+
+	feedback.visible = false
+
+
+# ============================================================
+# SHAKE CONSTELLATION BOX
+# ============================================================
+
+func shake_gap():
+
+	var original_position := gap_box.position
+
+	var tween := create_tween()
+
+	tween.tween_property(
+		gap_box,
+		\"position\",
+		original_position + Vector2(8, 0),
+		0.05
+	)
+
+	tween.tween_property(
+		gap_box,
+		\"position\",
+		original_position + Vector2(-8, 0),
+		0.05
+	)
+
+	tween.tween_property(
+		gap_box,
+		\"position\",
+		original_position + Vector2(8, 0),
+		0.05
+	)
+
+	tween.tween_property(
+		gap_box,
+		\"position\",
+		original_position,
+		0.05
+	)
+
+
+# ============================================================
+# PUZZLE COMPLETE
+# ============================================================
+
+func finish_puzzle():
+
+	letter_finished = true
+
+	# Hide constellation.
+	gap_box.visible = false
+
+	# Hide choices.
+	$SymbolPanel.visible = false
+
+	# Build the final letter.
+	letter_text.text = build_complete_letter()
+
+	feedback.text = \"The letter is complete.\"
+	feedback.visible = true
+
+	continue_button.visible = true
+
+	continue_button.text = \"Continue\"
+
+
+# ============================================================
+# BUILD FINAL LETTER
+# ============================================================
+
+func build_complete_letter() -> String:
+
+	var full_letter := \"\"
+
+	for i in gaps.size():
+
+		var gap = gaps[i]
+
+		var word = solved_words.get(
+			i,
+			gap[\"correct\"]
+		)
+
+		full_letter += gap[\"before\"]
+		full_letter += \" \"
+		full_letter += word
+		full_letter += \" \"
+		full_letter += gap[\"after\"]
+
+		full_letter += \"\\n\\n\"
+
+	return full_letter
+
+
+# ============================================================
+# CONTINUE
+# ============================================================
+
+func _on_continue_pressed():
+
+	if not reading_final_letter:
+
+		reading_final_letter = true
+
+		continue_button.text = \"POV shift\"
+
+		feedback.text = \"She sealed the letter...\"
+		feedback.visible = true
+
+		$Letter.visible = false
+
+	else:
+
+		minigame_complete.emit()
+
+		GameGlobals.unload_minigame()
+"
+
+[node name="LetterMinigame" type="Node2D" unique_id=864041180]
+script = SubResource("GDScript_0n18g")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1561989628]
+offset_right = 482.0
+offset_bottom = 267.0
+color = Color(0.06666667, 0.06666667, 0.06666667, 0.4509804)
+
+[node name="Title" type="Label" parent="." unique_id=133176322]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Letter" type="TextureRect" parent="." unique_id=1600803206]
+offset_left = -8.0
+offset_top = -13.0
+offset_right = 290.0
+offset_bottom = 257.0
 texture = ExtResource("1_8bdwt")
+expand_mode = 1
+stretch_mode = 5
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j0jg5"]
-texture = ExtResource("2_s7fbq")
-
-[node name="LetterMinigame" type="Node2D" unique_id=1842997471]
-script = ExtResource("1_s7fbq")
-
-[node name="Background" type="TextureRect" parent="." unique_id=491921539]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MainSplit" type="HBoxContainer" parent="." unique_id=498302940]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="LetterPanel" type="Panel" parent="MainSplit" unique_id=748720200]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxTexture_q01m8")
-
-[node name="LetterMargin" type="MarginContainer" parent="MainSplit/LetterPanel" unique_id=307530867]
+[node name="LetterText" type="RichTextLabel" parent="Letter" unique_id=460317531]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="LetterContent" type="VBoxContainer" parent="MainSplit/LetterPanel/LetterMargin" unique_id=601837764]
-layout_mode = 2
-
-[node name="LetterBody" type="Label" parent="MainSplit/LetterPanel/LetterMargin/LetterContent" unique_id=403142086]
-layout_mode = 2
-
-[node name="GapRow" type="HBoxContainer" parent="MainSplit/LetterPanel/LetterMargin/LetterContent" unique_id=2053315355]
-layout_mode = 2
-
-[node name="GapBefore" type="Label" parent="MainSplit/LetterPanel/LetterMargin/LetterContent/GapRow" unique_id=10223524]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-autowrap_mode = 2
-
-[node name="GapSlot" type="Panel" parent="MainSplit/LetterPanel/LetterMargin/LetterContent/GapRow" unique_id=290412045]
-custom_minimum_size = Vector2(100, 30)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_j0jg5")
-
-[node name="GapLabel" type="Label" parent="MainSplit/LetterPanel/LetterMargin/LetterContent/GapRow/GapSlot" unique_id=884471935]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="GapAfter" type="Label" parent="MainSplit/LetterPanel/LetterMargin/LetterContent/GapRow" unique_id=1763567852]
-layout_mode = 2
-size_flags_horizontal = 3
-autowrap_mode = 2
-
-[node name="StarPanel" type="Panel" parent="MainSplit" unique_id=53225605]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="StarContent" type="VBoxContainer" parent="MainSplit/StarPanel" unique_id=1077910114]
+[node name="GapBox" type="TextureRect" parent="Letter" unique_id=960100918]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Btn_some" type="TextureButton" parent="MainSplit/StarPanel/StarContent" unique_id=1140319703]
-layout_mode = 2
-texture_normal = ExtResource("3_oqtvg")
-ignore_texture_size = true
-
-[node name="Btn_is" type="TextureButton" parent="MainSplit/StarPanel/StarContent" unique_id=437868338]
-layout_mode = 2
-texture_normal = ExtResource("4_26h4h")
-ignore_texture_size = true
-
-[node name="Btn_wrong" type="TextureButton" parent="MainSplit/StarPanel/StarContent" unique_id=152518116]
-layout_mode = 2
-texture_normal = ExtResource("5_h8ign")
-ignore_texture_size = true
-
-[node name="Btn_with" type="TextureButton" parent="MainSplit/StarPanel/StarContent" unique_id=1040496150]
-layout_mode = 2
-texture_normal = ExtResource("6_x2mgb")
-ignore_texture_size = true
-
-[node name="Btn_hades" type="TextureButton" parent="MainSplit/StarPanel/StarContent" unique_id=289908539]
-layout_mode = 2
-texture_normal = ExtResource("7_ebn50")
-ignore_texture_size = true
-
-[node name="FeedbackLabel" type="Label" parent="." unique_id=983820719]
+[node name="GapLabel" type="Label" parent="Letter/GapBox" unique_id=115150024]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="ContinueBtn" type="Button" parent="." unique_id=1354533629]
+[node name="SymbolPanel" type="Control" parent="." unique_id=109753921]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Instructions" type="Label" parent="SymbolPanel" unique_id=423799946]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="SymbolGrid" type="GridContainer" parent="SymbolPanel" unique_id=2030600496]
+layout_mode = 0
+offset_left = 270.0
+offset_top = 24.0
+offset_right = 462.0
+offset_bottom = 238.0
+columns = 2
+
+[node name="Button" type="Button" parent="SymbolPanel/SymbolGrid" unique_id=1027182452]
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="SymbolPanel/SymbolGrid" unique_id=1161481416]
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="SymbolPanel/SymbolGrid" unique_id=698444350]
+layout_mode = 2
+
+[node name="Button4" type="Button" parent="SymbolPanel/SymbolGrid" unique_id=345458484]
+layout_mode = 2
+
+[node name="Button5" type="Button" parent="SymbolPanel/SymbolGrid" unique_id=1325077190]
+layout_mode = 2
+
+[node name="Feedback" type="Label" parent="." unique_id=752858054]
+offset_left = 47.0
+offset_top = 44.0
+offset_right = 231.0
+offset_bottom = 226.0
+
+[node name="Continue" type="Button" parent="." unique_id=2097927221]
 offset_right = 8.0
 offset_bottom = 8.0

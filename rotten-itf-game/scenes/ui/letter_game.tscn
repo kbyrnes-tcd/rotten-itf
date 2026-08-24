@@ -1,0 +1,240 @@
+[gd_scene format=3 uid="uid://cs0s5b1ik6b30"]
+
+[ext_resource type="Texture2D" uid="uid://necrl1diw74g" path="res://assets/images/minigames/constellation/Decoder_Background.png" id="1_llmq1"]
+[ext_resource type="Texture2D" uid="uid://ertioryfears" path="res://assets/images/minigames/constellation/Decoder_text_sq.png" id="2_lllet"]
+
+[sub_resource type="GDScript" id="GDScript_lllet"]
+script/source = "extends Node2D
+
+var gaps = [
+	{
+		\"before\": \"I am glad to be at peace here in my home. I am settling\",
+		\"after\": \"in comfortably this winter, and have been enjoying the company of my husband.\",
+		\"correct\": \"SOMETHING\",
+	},
+	{
+		\"before\": \"We are quite well, and have been enjoying the good weather.\",
+		\"after\": \"My lavender bush is thriving,\",
+		\"correct\": \"IS\",
+	},
+	{
+		\"before\": \", and I plan to\",
+		\"after\": \"grow some more in my chambers\",
+		\"correct\": \"WRONG\",
+	},
+	{
+		\"before\": \"Though I miss the sun, stars, and you\",
+		\"after\": \", my family here is flourishing.\",
+		\"correct\": \"WITH\",
+	},
+	{
+		\"before\": \"I miss you dearly, and am\",
+		\"after\": \"glad to see you soon.\",
+		\"correct\": \"HADES\",
+	},
+]
+
+const CONSTELLATION_IMAGES = {
+	\"SOMETHING\": preload(\"res://assets/images/minigames/constellation/Decoder_sq2.png\"),
+	\"IS\": preload(\"res://assets/images/minigames/constellation/Decoder_sq1.png\"),
+	\"WRONG\": preload(\"res://assets/images/minigames/constellation/Decoder_sq5.png\"),
+	\"WITH\": preload(\"res://assets/images/minigames/constellation/Decoder_sq7.png\"),
+	\"HADES\": preload(\"res://assets/images/minigames/constellation/Decoder_sq6.png\"),
+}
+
+var current_gap_index = 0
+var letter_read = false
+var placed_symbols = {}
+
+# left side
+@onready var gap_before = $HBoxContainer/LetterSide/GapRow/GapBefore
+@onready var gap_after = $HBoxContainer/LetterSide/GapRow/GapAfter
+@onready var gap_image = $HBoxContainer/LetterSide/GapRow/GapSlot/GapImage
+@onready var gap_slot = $HBoxContainer/LetterSide/GapRow/GapSlot
+
+# right side — your 5 buttons placed manually in scene
+@onready var btn_something = $HBoxContainer/OptionsSide/Btn_SOMETHING
+@onready var btn_is = $HBoxContainer/OptionsSide/Btn_IS
+@onready var btn_wrong = $HBoxContainer/OptionsSide/Btn_WRONG
+@onready var btn_with = $HBoxContainer/OptionsSide/Btn_WITH
+@onready var btn_hades = $HBoxContainer/OptionsSide/Btn_HADES
+
+@onready var feedback_label = $FeedbackLabel
+@onready var continue_button = $ContinueButton
+@onready var letter_body = $HBoxContainer/LetterSide/LetterBody
+
+signal minigame_complete
+
+func _ready():
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	continue_button.visible = false
+	feedback_label.visible = false
+	continue_button.pressed.connect(_on_continue_button_pressed)
+	btn_something.pressed.connect(func(): _on_symbol_selected(\"SOMETHING\"))
+	btn_is.pressed.connect(func(): _on_symbol_selected(\"IS\"))
+	btn_wrong.pressed.connect(func(): _on_symbol_selected(\"WRONG\"))
+	btn_with.pressed.connect(func(): _on_symbol_selected(\"WITH\"))
+	btn_hades.pressed.connect(func(): _on_symbol_selected(\"HADES\"))
+	show_current_gap()
+
+func show_current_gap():
+	if current_gap_index >= gaps.size():
+		all_gaps_filled()
+		return
+	var gap = gaps[current_gap_index]
+	gap_slot.visible = true
+	gap_before.text = gap[\"before\"]
+	gap_after.text = gap[\"after\"]
+	gap_image.texture = CONSTELLATION_IMAGES[gap[\"correct\"]]
+	feedback_label.visible = false
+
+func _on_symbol_selected(symbol: String):
+	var gap = gaps[current_gap_index]
+	if symbol == gap[\"correct\"]:
+		correct_placement(symbol)
+	else:
+		wrong_placement(symbol)
+
+func correct_placement(symbol: String):
+	placed_symbols[current_gap_index] = symbol
+	feedback_label.visible = false
+	await get_tree().create_timer(0.6).timeout
+	current_gap_index += 1
+	show_current_gap()
+
+func wrong_placement(_symbol: String):
+	feedback_label.text = \"Hmm... that doesn't feel right.\"
+	feedback_label.visible = true
+	var original_pos = gap_slot.position
+	var tween = create_tween()
+	tween.tween_property(gap_slot, \"position\", original_pos + Vector2(8, 0), 0.05)
+	tween.tween_property(gap_slot, \"position\", original_pos + Vector2(-8, 0), 0.05)
+	tween.tween_property(gap_slot, \"position\", original_pos + Vector2(8, 0), 0.05)
+	tween.tween_property(gap_slot, \"position\", original_pos, 0.05)
+	await get_tree().create_timer(1.5).timeout
+	feedback_label.visible = false
+
+func all_gaps_filled():
+	$LetterSide/GapRow.visible = false
+	$OptionsSide.visible = false
+	letter_body.visible = true
+	letter_body.text = build_complete_letter()
+	continue_button.visible = true
+	feedback_label.text = \"The letter is complete.\"
+	feedback_label.visible = true
+
+func build_complete_letter() -> String:
+	var full = \"\"
+	for i in gaps.size():
+		var gap = gaps[i]
+		var word = placed_symbols.get(i, \"[\" + gap[\"correct\"] + \"]\")
+		full += gap[\"before\"] + \" \" + word + \" \" + gap[\"after\"] + \"\\n\\n\"
+	return full
+
+func _on_continue_button_pressed():
+	if not letter_read:
+		letter_read = true
+		continue_button.text = \"POV shift\"
+		feedback_label.text = \"She sealed the letter...\"
+		$LetterSide.visible = false
+	else:
+		emit_signal(\"minigame_complete\")
+		GameGlobals.unload_minigame()
+"
+
+[node name="LetterGame" type="Node2D" unique_id=1941749740]
+script = SubResource("GDScript_lllet")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1920922156]
+offset_right = 482.0
+offset_bottom = 269.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1928306192]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
+
+[node name="LetterSide" type="NinePatchRect" parent="HBoxContainer" unique_id=2144310950]
+custom_minimum_size = Vector2(270, 250)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("1_llmq1")
+
+[node name="GapRow" type="HBoxContainer" parent="HBoxContainer/LetterSide" unique_id=1450797682]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GapBefore" type="Label" parent="HBoxContainer/LetterSide/GapRow" unique_id=2072303475]
+layout_mode = 2
+
+[node name="GapSlot" type="Control" parent="HBoxContainer/LetterSide/GapRow" unique_id=1730092338]
+layout_mode = 2
+
+[node name="GapImage" type="TextureRect" parent="HBoxContainer/LetterSide/GapRow/GapSlot" unique_id=1731992493]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GapAfter" type="Label" parent="HBoxContainer/LetterSide/GapRow" unique_id=565252702]
+layout_mode = 2
+
+[node name="LetterBody" type="Label" parent="HBoxContainer/LetterSide" unique_id=1778025884]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="OptionsSide" type="GridContainer" parent="HBoxContainer" unique_id=1963884143]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.4
+columns = 2
+
+[node name="Btn_SOMETHING" type="TextureButton" parent="HBoxContainer/OptionsSide" unique_id=9657412]
+custom_minimum_size = Vector2(95, 80)
+layout_mode = 2
+texture_normal = ExtResource("2_lllet")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Btn_IS" type="TextureButton" parent="HBoxContainer/OptionsSide" unique_id=2013699319]
+custom_minimum_size = Vector2(95, 80)
+layout_mode = 2
+texture_normal = ExtResource("2_lllet")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Btn_WRONG" type="TextureButton" parent="HBoxContainer/OptionsSide" unique_id=1907846631]
+custom_minimum_size = Vector2(95, 80)
+layout_mode = 2
+texture_normal = ExtResource("2_lllet")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Btn_WITH" type="TextureButton" parent="HBoxContainer/OptionsSide" unique_id=1829579352]
+custom_minimum_size = Vector2(95, 80)
+layout_mode = 2
+texture_normal = ExtResource("2_lllet")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Btn_HADES" type="TextureButton" parent="HBoxContainer/OptionsSide" unique_id=1965412706]
+custom_minimum_size = Vector2(95, 80)
+layout_mode = 2
+texture_normal = ExtResource("2_lllet")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="FeedbackLabel" type="Label" parent="." unique_id=793912433]
+offset_left = 233.0
+offset_top = 244.0
+offset_right = 277.0
+offset_bottom = 267.0
+text = "Test"
+
+[node name="ContinueButton" type="Button" parent="." unique_id=1757379787]
+offset_left = 217.0
+offset_top = 238.0
+offset_right = 296.0
+offset_bottom = 269.0
+text = "Continue"

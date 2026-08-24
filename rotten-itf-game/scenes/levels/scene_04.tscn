@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://clnyyb2h5f77h" path="res://scripts/inventory_system/items/letter_scrap.tres" id="5_8k800"]
 [ext_resource type="PackedScene" uid="uid://di31qowjleyl4" path="res://scenes/rot_dressing_new.tscn" id="6_8k800"]
 [ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="7_oo6cp"]
+[ext_resource type="PackedScene" uid="uid://bimatr4hej8ja" path="res://scenes/ui/interactive_carat.tscn" id="8_f732m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w2pfo"]
 
@@ -163,5 +164,18 @@ twin_id = "DoorMaze"
 position = Vector2(4132, 409.00003)
 next_scene_path = "scene_05"
 spawn_to_the_left = true
+
+[node name="DoorLetter" parent="." unique_id=929734346 node_paths=PackedStringArray("interact_carat") instance=ExtResource("7_oo6cp")]
+position = Vector2(3993, 408)
+next_scene_path = "scene_04"
+door_id = "DoorLetter"
+twin_id = "DoorLetter"
+required_item = ExtResource("5_8k800")
+required_amount = 7
+interact_carat = NodePath("../InteractiveCarat")
+has_minigame = true
+minigame = 2
+
+[node name="InteractiveCarat" parent="." unique_id=1099497837 instance=ExtResource("8_f732m")]
 
 [editable path="Player"]

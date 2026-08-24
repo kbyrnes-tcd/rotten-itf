@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://6pxkrw3jqp6n" path="res://scripts/inventory_system/items/green_worm.tres" id="4_gsj5c"]
 [ext_resource type="Resource" uid="uid://gpvtv23ln3ds" path="res://scripts/inventory_system/items/lantern.tres" id="5_pkkfy"]
 [ext_resource type="Resource" uid="uid://bcvemp5c8igqs" path="res://scripts/inventory_system/items/amulet.tres" id="6_fgicr"]
+[ext_resource type="Resource" uid="uid://clnyyb2h5f77h" path="res://scripts/inventory_system/items/letter_scrap.tres" id="7_xfvsv"]
 
 [sub_resource type="Resource" id="Resource_mjrco"]
 script = ExtResource("2_bqrqy")
@@ -33,6 +34,8 @@ metadata/_custom_type_script = "uid://dsv6t02gawlnl"
 
 [sub_resource type="Resource" id="Resource_xfvsv"]
 script = ExtResource("2_bqrqy")
+item = ExtResource("7_xfvsv")
+amount = 7
 metadata/_custom_type_script = "uid://dsv6t02gawlnl"
 
 [sub_resource type="Resource" id="Resource_exapd"]

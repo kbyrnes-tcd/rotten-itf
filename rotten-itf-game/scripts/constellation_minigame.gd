@@ -39,6 +39,7 @@ var letter_read = false
 var placed_symbols = {}
 var current_tween = null
 
+
 #node references
 @onready var gap_before = $MainSplit/LetterPanel/LetterMargin/LetterContent/GapRow/GapBefore
 @onready var gap_after = $MainSplit/LetterPanel/LetterMargin/LetterContent/GapRow/GapAfter
@@ -47,7 +48,6 @@ var current_tween = null
 @onready var feedback_label = $FeedbackLabel
 @onready var continue_button = $ContinueButton
 @onready var letter_body = $MainSplit/LetterPanel/LetterMargin/LetterContent/LetterBody
-
 
 #signals when player completed the minigame -- pressed continue
 signal minigame_complete
