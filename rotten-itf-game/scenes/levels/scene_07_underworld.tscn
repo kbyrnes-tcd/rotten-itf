@@ -1,66 +1,100 @@
 [gd_scene format=3 uid="uid://b7584gf13larx"]
 
 [ext_resource type="Texture2D" uid="uid://oxw3mtmjbnj2" path="res://assets/images/env/underworld/Underworld_Exterior.png" id="1_425tl"]
-[ext_resource type="Texture2D" uid="uid://ryabja3raxip" path="res://assets/images/env/underworld/Underworld_Interior.png" id="2_xllsq"]
+[ext_resource type="Texture2D" uid="uid://cq3vwtcx5wjii" path="res://assets/images/env/underworld/Underworld_Interiorupdated.png" id="2_fsx4r"]
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="3_xllsq"]
-[ext_resource type="PackedScene" uid="uid://bd3r1j21a2opr" path="res://scenes/ui/dialogue_trigger.tscn" id="4_5qgul"]
+[ext_resource type="Texture2D" uid="uid://cbr4krilgs10f" path="res://assets/images/env/underworld/Hades1.png" id="4_0as34"]
+[ext_resource type="PackedScene" uid="uid://c1epxp5spnua" path="res://scenes/ui/dialogue_trigger.tscn" id="4_5qgul"]
 [ext_resource type="Script" uid="uid://ddnjkodm10cvk" path="res://scripts/dialogue_trigger.gd" id="5_8jksi"]
+[ext_resource type="Texture2D" uid="uid://ccs5lagcbm4dh" path="res://assets/images/env/underworld/Hades2.png" id="5_q6yyf"]
+[ext_resource type="Texture2D" uid="uid://r73l5k436dgh" path="res://assets/images/env/underworld/Hades3.png" id="6_wx6i3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w2pfo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_0as34")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_q6yyf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wx6i3")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 4.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q01m8"]
 size = Vector2(20, 295)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j0jg5"]
-size = Vector2(2878, 46)
+size = Vector2(3880, 46)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4keky"]
 size = Vector2(29, 287)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nbikq"]
-size = Vector2(2913, 40)
+size = Vector2(3891, 40)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q01m8"]
 
-[node name="Scene07Underworld" type="Node2D" unique_id=1008943527]
+[sub_resource type="Gradient" id="Gradient_j0jg5"]
+offsets = PackedFloat32Array(0, 0.69554454, 0.8787129)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tjxil"]
+gradient = SubResource("Gradient_j0jg5")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[node name="Scene_07_Underworld" type="Node2D" unique_id=1008943527]
 
 [node name="Environment" type="Node2D" parent="." unique_id=944691441]
+position = Vector2(1437, 179)
 
 [node name="Backdrop" type="Parallax2D" parent="Environment" unique_id=622688306]
 scroll_scale = Vector2(0.85, 0.85)
 
 [node name="Exterior" type="Sprite2D" parent="Environment/Backdrop" unique_id=947284966]
-position = Vector2(1430, 177)
 texture = ExtResource("1_425tl")
 
 [node name="Building" type="Parallax2D" parent="Environment" unique_id=37518053]
 
 [node name="Interior" type="Sprite2D" parent="Environment/Building" unique_id=1441347079]
-position = Vector2(1429, 179)
-texture = ExtResource("2_xllsq")
+texture = ExtResource("2_fsx4r")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Environment/Building/Interior" unique_id=2142002937]
+z_index = 3
+sprite_frames = SubResource("SpriteFrames_w2pfo")
+frame_progress = 0.8658221
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("3_xllsq")]
-position = Vector2(39.000004, 232)
+position = Vector2(-285, 226)
 
 [node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
-limit_left = -91
-limit_top = 190
-limit_right = 2779
+limit_left = -441
+limit_top = 194
+limit_right = 3353
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1489060455]
 
 [node name="LeftCollision" type="CollisionShape2D" parent="StaticBody2D" unique_id=840592922]
-position = Vector2(-4, 179)
+position = Vector2(-356, 179)
 shape = SubResource("RectangleShape2D_q01m8")
 
 [node name="BottomCollision" type="CollisionShape2D" parent="StaticBody2D" unique_id=1639525591]
-position = Vector2(1444, 289)
+position = Vector2(1576, 289)
 shape = SubResource("RectangleShape2D_j0jg5")
 
 [node name="RightCollision" type="CollisionShape2D" parent="StaticBody2D" unique_id=346095504]
-position = Vector2(2877.5, 174)
+position = Vector2(3449, 174)
 shape = SubResource("RectangleShape2D_4keky")
 
 [node name="TopCollision" type="CollisionShape2D" parent="StaticBody2D" unique_id=1373298897]
-position = Vector2(1439, 57)
+position = Vector2(1589.5, 57)
 shape = SubResource("RectangleShape2D_nbikq")
 
 [node name="DialogueTrigger" parent="." unique_id=413688381 instance=ExtResource("4_5qgul")]
@@ -77,12 +111,42 @@ visible = false
 position = Vector2(959.00006, 174)
 scale = Vector2(0.09079814, 0.08184042)
 
-[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1285784708]
-color = Color(0.7107411, 0.71074116, 0.7107411, 1)
+[node name="UWLighting" type="Node2D" parent="." unique_id=1010128644]
 
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=2140409704]
-color = Color(0.9882353, 0.7764706, 0.8156863, 0.38431373)
+[node name="CanvasModulate" type="CanvasModulate" parent="UWLighting" unique_id=1285784708]
+color = Color(0.5264226, 0.5264226, 0.5264226, 1)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="UWLighting" unique_id=2140409704]
+color = Color(0.775091, 0.64611197, 0.5197793, 0.38431373)
 energy = 0.8
+
+[node name="RedAlarmLight" type="PointLight2D" parent="UWLighting" unique_id=1938314636]
+position = Vector2(-120, 125)
+color = Color(1, 0.46666667, 0.4745098, 1)
+energy = 0.5
+range_z_max = 0
+texture = SubResource("GradientTexture2D_tjxil")
+
+[node name="RedAlarmLight2" type="PointLight2D" parent="UWLighting" unique_id=1648052732]
+position = Vector2(380, 119)
+color = Color(1, 0.46666667, 0.4745098, 1)
+energy = 0.5
+range_z_max = 0
+texture = SubResource("GradientTexture2D_tjxil")
+
+[node name="RedAlarmLight3" type="PointLight2D" parent="UWLighting" unique_id=814066868]
+position = Vector2(1776, 125)
+color = Color(1, 0.46666667, 0.4745098, 1)
+energy = 0.5
+range_z_max = 0
+texture = SubResource("GradientTexture2D_tjxil")
+
+[node name="RedAlarmLight4" type="PointLight2D" parent="UWLighting" unique_id=687600508]
+position = Vector2(2925, 115)
+color = Color(1, 0.46666667, 0.4745098, 1)
+energy = 0.5
+range_z_max = 0
+texture = SubResource("GradientTexture2D_tjxil")
 
 [editable path="Player"]
 [editable path="DialogueTrigger"]
