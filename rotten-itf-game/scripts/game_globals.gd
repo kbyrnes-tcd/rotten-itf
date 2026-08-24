@@ -88,7 +88,7 @@ func start_level_or_debug() -> void:
 		player = debug_node.find_child("Player")
 		var debug_scene_name := debug_scene.resource_path.get_file().get_basename()
 		AudioManager.change_music(audio_prog[debug_scene_name].music)
-		#AudioManager.play_ambience(audio_prog[debug_scene_name].ambience)
+		AudioManager.play_ambience(audio_prog[debug_scene_name].ambience)
 
 func start_new_game() -> void:
 	pending_start = true
