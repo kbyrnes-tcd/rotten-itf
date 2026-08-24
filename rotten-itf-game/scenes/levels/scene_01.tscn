@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bimatr4hej8ja" path="res://scenes/ui/interactive_carat.tscn" id="8_5t0pk"]
 [ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="9_b3nsi"]
 [ext_resource type="PackedScene" uid="uid://dr3ff06oljyer" path="res://scenes/lio_trigger.tscn" id="10_amr1b"]
+[ext_resource type="PackedScene" uid="uid://dxagx7pjis8m5" path="res://scenes/lighting/exterior_lighting.tscn" id="11_2b8q8"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8bo55"]
 load_path = "res://.godot/imported/Trees.png-61f64ec7b583c9702c4d368fac49f2b6.ctex"
@@ -101,20 +102,23 @@ rotation = -1.5707964
 scale = Vector2(0.15999758, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/RightOobCollider" unique_id=2075318962]
-position = Vector2(1288, -0.5)
+position = Vector2(1287.5195, -134)
 shape = SubResource("RectangleShape2D_3336g")
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("4_3336g")]
-position = Vector2(112, 243)
+position = Vector2(112, 247)
 scale = Vector2(1, 1.0076721)
+safe_margin = 0.08
 
-[node name="InteractiveCarat" parent="." unique_id=1099497837 instance=ExtResource("8_5t0pk")]
-position = Vector2(2481, 190)
-scale = Vector2(0.35, 0.35)
+[node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
+limit_right = 2758
 
-[node name="DoorArea2D" parent="." unique_id=1160326856 node_paths=PackedStringArray("interact_carat") instance=ExtResource("9_b3nsi")]
-position = Vector2(2481.0002, 217)
+[node name="DoorToGardenInt" parent="." unique_id=1160326856 node_paths=PackedStringArray("interact_carat") instance=ExtResource("9_b3nsi")]
+position = Vector2(2481, 225.00003)
 scale = Vector2(3.594, 6.575)
+next_scene_path = "scene_02_int"
+door_id = "DoorToGardenInt"
+twin_id = "DoorCrackBackToExt"
 interact_carat = NodePath("../InteractiveCarat")
 
 [node name="LIOTriggers" type="Node" parent="." unique_id=482749486]
@@ -139,8 +143,9 @@ lio_text = "It’s blocked off by regrowth."
 position = Vector2(2319, 255)
 lio_text = "A crack in the wall… I wonder if I can get in there…"
 
-[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=230557037]
-color = Color(0.8089983, 0.8089983, 0.80899817, 1)
+[node name="ExteriorLighting" parent="." unique_id=2039980485 instance=ExtResource("11_2b8q8")]
 
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1230748154]
-color = Color(1, 0.7921569, 0.62352943, 0.26666668)
+[node name="InteractiveCarat" parent="." unique_id=1099497837 instance=ExtResource("8_5t0pk")]
+position = Vector2(2479, 154)
+
+[editable path="Player"]

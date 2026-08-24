@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://cg75k4w0pepcp"]
 
+[ext_resource type="PackedScene" uid="uid://cmf6u7sxq43iy" path="res://scenes/lighting/interior_lighting.tscn" id="1_21y6y"]
 [ext_resource type="Texture2D" uid="uid://dgwjnqq4radaq" path="res://assets/images/env/p2_garden_ext/RITF_Gardenbackrot.png" id="1_yrcn3"]
-[ext_resource type="Texture2D" uid="uid://1k6yhyu0d08r" path="res://assets/images/env/p2_garden_int/Firsthallwaynobackground.png" id="2_3aray"]
+[ext_resource type="Texture2D" uid="uid://82nd5g871vsq" path="res://assets/images/env/p2_garden_int/Part_2_Interior_Final.png" id="2_4muw5"]
 [ext_resource type="PackedScene" uid="uid://di31qowjleyl4" path="res://scenes/rot_dressing_new.tscn" id="4_xgkue"]
 [ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="5_oleyw"]
 [ext_resource type="PackedScene" uid="uid://bimatr4hej8ja" path="res://scenes/ui/interactive_carat.tscn" id="6_5expv"]
@@ -9,12 +10,16 @@
 [ext_resource type="PackedScene" uid="uid://diylf22dcoha0" path="res://scenes/lantern_pickup.tscn" id="8_c63m2"]
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="9_mb6sg"]
 [ext_resource type="Resource" uid="uid://gpvtv23ln3ds" path="res://scripts/inventory_system/items/lantern.tres" id="9_yrcn3"]
+[ext_resource type="Resource" uid="uid://dt677afg3p4f0" path="res://scripts/inventory_system/items/glow_worm.tres" id="10_4muw5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c63m2"]
 size = Vector2(2596, 43.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3aray"]
 size = Vector2(2565.0068, 61)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4muw5"]
+size = Vector2(2596, 55.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3336g"]
 size = Vector2(2596, 55.5)
@@ -36,10 +41,10 @@ z_index = -2
 
 [node name="RitfGardenInterior" type="Sprite2D" parent="Environment/Building" unique_id=1598557972]
 position = Vector2(-586, 0)
-texture = ExtResource("2_3aray")
+texture = ExtResource("2_4muw5")
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("9_mb6sg")]
-position = Vector2(54, 267)
+position = Vector2(122, 266)
 
 [node name="LntrnCollisionShape2D" parent="Player/CharacterSprites/Lantern/LanternArea2D" parent_id_path=PackedInt32Array(1515659648, 1614078195) index="0" unique_id=877712953]
 scale = Vector2(2.0710225, 2.2047858)
@@ -67,7 +72,7 @@ shape = SubResource("RectangleShape2D_3aray")
 
 [node name="Ceil" type="CollisionShape2D" parent="Colliders/Ground&CeilingCollider" unique_id=1275661467]
 position = Vector2(1288.3936, -234.75)
-shape = SubResource("RectangleShape2D_3336g")
+shape = SubResource("RectangleShape2D_4muw5")
 
 [node name="StairsL" type="CollisionPolygon2D" parent="Colliders/Ground&CeilingCollider" unique_id=1518057120]
 polygon = PackedVector2Array(1015.1791, -78, 953.5719, -16, 1015.1791, -16)
@@ -98,24 +103,30 @@ shape = SubResource("RectangleShape2D_3336g")
 z_index = -2
 
 [node name="Line2D2" parent="RotOnDoor" unique_id=1110441175 instance=ExtResource("4_xgkue")]
-position = Vector2(422.77432, -9)
+position = Vector2(859, -50)
 scale = Vector2(0.5834024, 1)
-points = PackedVector2Array(250.64288, 285, 190.65002, 274, 106.65997, 268, 34.668457, 291, -57.89203, 262)
-collidable = true
+points = PackedVector2Array(-54.850708, 337, -41.13806, 320, -47.994385, 310, -39.42395, 293, -51.422485, 271, -42.852173, 256, -56.56482, 240)
 
-[node name="DoorArea2D" parent="." unique_id=1160326856 node_paths=PackedStringArray("interact_carat") instance=ExtResource("5_oleyw")]
-position = Vector2(2339.0002, 245.00002)
-scale = Vector2(2.544, 4.656)
-interact_carat = NodePath("../InteractiveCarat")
+[node name="Line2D" parent="RotOnDoor" unique_id=1590463200 instance=ExtResource("4_xgkue")]
+position = Vector2(838, 203)
+points = PackedVector2Array(12, -12, 12, 10, 5, 34, 13, 50, 11, 68, 17, 88)
 
-[node name="InteractiveCarat" parent="." unique_id=1099497837 instance=ExtResource("6_5expv")]
-position = Vector2(2339, 187)
-scale = Vector2(0.5, 0.5)
+[node name="Line2D3" parent="RotOnDoor" unique_id=239329446 instance=ExtResource("4_xgkue")]
+position = Vector2(869, 204)
+points = PackedVector2Array(-2, -15, -1, 4, -8, 26, -13, 50, -4, 69, 8, 72, 11, 87)
+
+[node name="Line2D4" parent="RotOnDoor" unique_id=1677802517 instance=ExtResource("4_xgkue")]
+position = Vector2(822, 223)
+points = PackedVector2Array(8, -9, 27, 16, 43, 28, 56, 25)
+
+[node name="Line2D5" parent="RotOnDoor" unique_id=1178474927 instance=ExtResource("4_xgkue")]
+position = Vector2(822, 279)
+points = PackedVector2Array(-2, -18, 9, -26, 19, -24, 44, -43, 60, -48)
 
 [node name="LIO" type="Node" parent="." unique_id=2062746301]
 
 [node name="LioTrigger" parent="LIO" unique_id=110257511 instance=ExtResource("7_3aray")]
-position = Vector2(803, 296)
+position = Vector2(1182, 222)
 lio_text = "Oh, Goddess…"
 
 [node name="LioTrigger2" parent="LIO" unique_id=1541676621 instance=ExtResource("7_3aray")]
@@ -123,22 +134,54 @@ position = Vector2(1617, 227)
 lio_text = "The Rot has completely consumed this place. "
 
 [node name="LioTrigger3" parent="LIO" unique_id=1993371548 instance=ExtResource("7_3aray")]
-position = Vector2(180, 278)
-lio_text = "A wall lantern...I can store glowworms in here."
+position = Vector2(163, 284)
+lio_text = "A wall lantern...I might need this."
 
 [node name="LioTrigger4" parent="LIO" unique_id=1163488396 instance=ExtResource("7_3aray")]
-position = Vector2(360, 292)
-lio_text = "Press [ to equip lantern and hold SHIFT to clear."
-
-[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1256881528]
-color = Color(0.7107411, 0.71074116, 0.7107411, 1)
-
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1276469286]
-color = Color(1, 0.7921569, 0.62352943, 0.26666668)
-energy = 0.8
+position = Vector2(759, 296)
+lio_text = "I have to find a way to clear that rot..."
 
 [node name="LanternPickup" parent="." unique_id=1242243690 instance=ExtResource("8_c63m2")]
 position = Vector2(277, 290)
 inv_lantern = ExtResource("9_yrcn3")
+
+[node name="DoorCrackBackToExt" parent="." unique_id=624771835 node_paths=PackedStringArray("interact_carat") instance=ExtResource("5_oleyw")]
+position = Vector2(95.99999, 239.00002)
+scale = Vector2(3.364, 6.156)
+next_scene_path = "scene_01"
+door_id = "DoorCrackBackToExt"
+twin_id = "DoorToGardenInt"
+interact_carat = NodePath("../InteractiveCarets/InteractiveCarat")
+
+[node name="DoorToGardenExt" parent="." unique_id=1160326856 node_paths=PackedStringArray("interact_carat") instance=ExtResource("5_oleyw")]
+position = Vector2(2339.0002, 245.00002)
+scale = Vector2(2.544, 4.656)
+next_scene_path = "scene_02_ext"
+door_id = "DoorToGardenExt"
+twin_id = "DoorBackToGardenInt"
+interact_carat = NodePath("../InteractiveCarets/InteractiveCarat2")
+
+[node name="DoorToTemple" parent="." unique_id=763266512 node_paths=PackedStringArray("interact_carat") instance=ExtResource("5_oleyw")]
+position = Vector2(849.00006, 245)
+scale = Vector2(2.544, 4.656)
+next_scene_path = "scene_03"
+door_id = "DoorToTemple"
+twin_id = "DoorToTemple"
+required_item = ExtResource("10_4muw5")
+required_amount = 1
+interact_carat = NodePath("../InteractiveCarets/InteractiveCarat3")
+
+[node name="InteriorLighting" parent="." unique_id=1496110895 instance=ExtResource("1_21y6y")]
+
+[node name="InteractiveCarets" type="Node" parent="." unique_id=719125246]
+
+[node name="InteractiveCarat" parent="InteractiveCarets" unique_id=1099497837 instance=ExtResource("6_5expv")]
+position = Vector2(95, 176)
+
+[node name="InteractiveCarat2" parent="InteractiveCarets" unique_id=1943200334 instance=ExtResource("6_5expv")]
+position = Vector2(2336, 157)
+
+[node name="InteractiveCarat3" parent="InteractiveCarets" unique_id=2010505656 instance=ExtResource("6_5expv")]
+position = Vector2(848, 153)
 
 [editable path="Player"]
