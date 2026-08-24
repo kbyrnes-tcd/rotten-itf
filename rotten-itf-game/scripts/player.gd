@@ -35,6 +35,7 @@ var segments: Array = []
 @export var inv: Inventory
 var target_speed:=-1
 const NORMAL_SPEED := 150.0
+#const NORMAL_SPEED := 850.0
 const STEP_SPEED := 80.0
 const ACCELERATION := 800.0
 @export var FULL_JUMP_VELOCITY = -650.0
@@ -258,7 +259,15 @@ func start_vine():
 	var projected_length = diff.dot(dir)
 	var target = gun_sprite.global_position + dir * max(projected_length, 40.0)
 	var vine_instance = ROT_VINE.instantiate()
+	vine_instance.name = "Vine_%d" % Time.get_ticks_usec()
 	scene.add_child(vine_instance)
+	
+	#print("since i am adding rot to this scene i should add this to the persist node")
+	var p_data : PersistentData = GameGlobals.get_current_tree_p_data()
+	if p_data:
+		p_data.add_spawned_obj(vine_instance, ROT_VINE)
+	#print(p_data.object_names)
+
 	active_vine = vine_instance.get_child(0)
 	active_vine.points = PackedVector2Array([
 		active_vine.to_local(src),
@@ -280,22 +289,22 @@ func stop_vine():
 func midpoint(src: Vector2, dest: Vector2) -> Vector2:
 	return Vector2(src.x + dest.x, src.y + dest.y) / 2
 
-func add_vine(src: Vector2, dest: Vector2):
-	var dist_scale = roundf(src.distance_to(dest) / 70)
-	var vine = ROT_VINE.instantiate()
-	var vine_points: PackedVector2Array = PackedVector2Array([src, dest])
-	var counter = 0
-	while counter < dist_scale:
-		var vine_points_acc: PackedVector2Array = PackedVector2Array([vine_points[0]])
-		for i in range(vine_points.size() - 1):
-			var source = vine_points[i]
-			var desti = vine_points[i + 1]
-			vine_points_acc.append(midpoint(source, desti))
-			vine_points_acc.append(desti)
-		vine_points = vine_points_acc
-		counter += 1
-	vine.get_child(0).points = vine_points
-	scene.add_child(vine)
+#func add_vine(src: Vector2, dest: Vector2):
+	#var dist_scale = roundf(src.distance_to(dest) / 70)
+	#var vine = ROT_VINE.instantiate()
+	#var vine_points: PackedVector2Array = PackedVector2Array([src, dest])
+	#var counter = 0
+	#while counter < dist_scale:
+		#var vine_points_acc: PackedVector2Array = PackedVector2Array([vine_points[0]])
+		#for i in range(vine_points.size() - 1):
+			#var source = vine_points[i]
+			#var desti = vine_points[i + 1]
+			#vine_points_acc.append(midpoint(source, desti))
+			#vine_points_acc.append(desti)
+		#vine_points = vine_points_acc
+		#counter += 1
+	#vine.get_child(0).points = vine_points
+	#scene.add_child(vine)
 
 # CHANGING TOOL STATE, visuals
 func change_tool_state(new_state: ToolState):

@@ -16,9 +16,8 @@ var minigame_solved: bool = false
 var near_door = false
 var player = null
 
-#func _ready() -> void:
-	#current_scene = GameGlobals.level_root.get_child(0).name.to_lower()
-
+enum Minigame { NONE, MAZE, LETTER }
+#var minigame_completion
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if near_door:
@@ -30,7 +29,8 @@ func _process(_delta: float) -> void:
 				interact_carat.hide_carat()
 		if can_pass and Input.is_action_just_pressed("interact"):
 			if !crack: AudioManager.play_os("open_door")
-			if has_minigame and not minigame_solved:
+			# if the door has a minigame, load it if it hasn't been attempted or completed yet.
+			if has_minigame and !minigame_solved and !GameGlobals.minigame_completion[minigame]:
 				GameGlobals.load_minigame(minigame)
 				await GameGlobals.minigame_completed
 				minigame_solved = true

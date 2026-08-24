@@ -16,15 +16,16 @@ func _ready() -> void:
 
 func _show_text(text: String, duration: float = 3.0, fade: float = 1.0, seq := false):
 	dark_frame.visible = true
-	var in_tween = create_tween()
-	await in_tween.tween_property(dark_frame, "modulate:a", 0.5, 0.5).finished
-	
+
+	if !seq:
+		var in_tween = create_tween()
+		await in_tween.tween_property(dark_frame, "modulate:a", 0.5, 0.5).finished
+
 	if current_tween:
 		current_tween.kill()
 
 	label.text = text
 	label.modulate.a = 1.0
-
 	current_tween = create_tween()
 	current_tween.tween_interval(duration)
 	current_tween.tween_property(label, "modulate:a", 0.0, fade)
@@ -42,7 +43,7 @@ func show_sequence(lines: Array, duration: float = 3.0):
 	await in_tween.tween_property(dark_frame, "modulate:a", 0.5, 0.5).finished
 
 	for line in lines:
-		_show_text(line, duration, 1.0, true)
+		await _show_text(line, duration, 1.0, true)
 		await current_tween.finished
 
 	var out_tween = create_tween()
