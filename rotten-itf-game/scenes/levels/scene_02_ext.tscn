@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://db00qg8xwqve6"]
 
 [ext_resource type="Texture2D" uid="uid://dgwjnqq4radaq" path="res://assets/images/env/p2_garden_ext/RITF_Gardenbackrot.png" id="1_4n1ul"]
+[ext_resource type="PackedScene" uid="uid://dxagx7pjis8m5" path="res://scenes/lighting/exterior_lighting.tscn" id="1_osntu"]
 [ext_resource type="Texture2D" uid="uid://deocyng7rlpbi" path="res://assets/images/env/p2_garden_ext/RITF_Gardenmediumrot.png" id="2_4n1ul"]
 [ext_resource type="Texture2D" uid="uid://cr6nmb6vkj1yh" path="res://assets/images/env/p2_garden_ext/RITF_Gardenfrontrot.png" id="3_qsi71"]
 [ext_resource type="Texture2D" uid="uid://3t3q6orpnxyr" path="res://assets/images/env/p2_garden_ext/Rotmap.png" id="4_0svnh"]
@@ -8,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="6_6c07b"]
 [ext_resource type="PackedScene" uid="uid://bimatr4hej8ja" path="res://scenes/ui/interactive_carat.tscn" id="10_nqapm"]
 [ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="11_jctv3"]
-[ext_resource type="Resource" uid="uid://6pxkrw3jqp6n" path="res://scripts/inventory_system/items/green_worm.tres" id="12_58igu"]
+[ext_resource type="Texture2D" uid="uid://fc8hwmpaobv8" path="res://assets/images/worms/Glowworm.png" id="11_osntu"]
 [ext_resource type="PackedScene" uid="uid://dr3ff06oljyer" path="res://scenes/lio_trigger.tscn" id="12_gvi84"]
 [ext_resource type="PackedScene" uid="uid://di31qowjleyl4" path="res://scenes/rot_dressing_new.tscn" id="12_osntu"]
 [ext_resource type="PackedScene" uid="uid://ufmhebijpwbb" path="res://scenes/collectible_item.tscn" id="14_58igu"]
@@ -51,12 +52,13 @@ z_index = 1
 texture = ExtResource("4_4n1ul")
 
 [node name="Rotmap" type="Sprite2D" parent="." unique_id=386733338]
+visible = false
 modulate = Color(1, 1, 1, 0.2)
 position = Vector2(2025, 215)
 texture = ExtResource("4_0svnh")
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("6_6c07b")]
-position = Vector2(678, 295)
+position = Vector2(663, 293)
 
 [node name="AnimatedSprite2D" parent="Player/CharacterSprites" parent_id_path=PackedInt32Array(1515659648, 2095860029) index="0" unique_id=512896578]
 z_index = 1
@@ -104,17 +106,6 @@ scale = Vector2(0.15999758, 1)
 position = Vector2(1256.269, -224)
 shape = SubResource("RectangleShape2D_3336g")
 
-[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1256881528]
-color = Color(0.7107411, 0.71074116, 0.7107411, 1)
-
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1276469286]
-color = Color(1, 0.7921569, 0.62352943, 0.26666668)
-energy = 0.8
-
-[node name="InteractiveCarat" parent="." unique_id=1099497837 instance=ExtResource("10_nqapm")]
-position = Vector2(630, 226)
-scale = Vector2(0.5, 0.5)
-
 [node name="DoorBackToGardenInt" parent="." unique_id=1160326856 node_paths=PackedStringArray("interact_carat") instance=ExtResource("11_jctv3")]
 position = Vector2(631, 288)
 scale = Vector2(2.319, 4.244)
@@ -124,8 +115,28 @@ twin_id = "DoorToGardenExt"
 interact_carat = NodePath("../InteractiveCarat")
 
 [node name="CollectibleItem" parent="." unique_id=385129123 instance=ExtResource("14_58igu")]
-position = Vector2(3505, 307)
-item = ExtResource("12_58igu")
+position = Vector2(3525.0002, 317)
+
+[node name="PointLight2D" type="PointLight2D" parent="CollectibleItem" unique_id=2125629270]
+position = Vector2(-2.0001423, 0.50000036)
+scale = Vector2(0.17142954, 0.1733339)
+color = Color(0.26550028, 0.9937225, 0.9999997, 1)
+texture = ExtResource("11_osntu")
+
+[node name="PointLight2D2" type="PointLight2D" parent="CollectibleItem" unique_id=1360859745]
+position = Vector2(-2.5000415, 1.9999921)
+scale = Vector2(0.21905096, 0.34666702)
+texture = ExtResource("11_osntu")
+
+[node name="PointLight2D3" type="PointLight2D" parent="CollectibleItem" unique_id=1077586436]
+position = Vector2(-0.00012040138, 1.1666679)
+scale = Vector2(0.19047587, 0.28)
+texture = ExtResource("11_osntu")
+
+[node name="PointLight2D4" type="PointLight2D" parent="CollectibleItem" unique_id=1778018131]
+position = Vector2(-0.8333866, 2.4999971)
+scale = Vector2(0.16190277, 0.14666654)
+texture = ExtResource("11_osntu")
 
 [node name="LIO" type="Node" parent="." unique_id=152196213]
 
@@ -138,12 +149,16 @@ position = Vector2(3078, 289)
 lio_text = "How strange… This part of the garden is clean from the Rot."
 
 [node name="LioTrigger5" parent="LIO" unique_id=1165672345 instance=ExtResource("12_gvi84")]
-position = Vector2(3295, 298)
+position = Vector2(3295, 317)
 lio_text = "The Glowworms! They’re repelling the Rot away."
 
 [node name="LioTrigger6" parent="LIO" unique_id=1649625044 instance=ExtResource("12_gvi84")]
 position = Vector2(3801, 292)
 lio_text = "This path is blocked. I can go no further."
+
+[node name="LioTrigger" parent="LIO" unique_id=110257511 instance=ExtResource("12_gvi84")]
+position = Vector2(3531, 319)
+lio_text = "Glowworms collected. Press [ to equip lantern and hold down SHIFT to clear rot."
 
 [node name="RotMap" type="Node2D" parent="." unique_id=428511259]
 z_index = -1
@@ -227,5 +242,10 @@ points = PackedVector2Array(2.2655604, -8.177147, 0, 18, -30, 10, -50, 16)
 [node name="Line2D20" parent="RotMap" unique_id=519802276 instance=ExtResource("12_osntu")]
 position = Vector2(2917, 314)
 points = PackedVector2Array(2, -7, 27, -6, 55, -8, 75, -5, 90, -9, 120, -5)
+
+[node name="ExteriorLighting" parent="." unique_id=2039980485 instance=ExtResource("1_osntu")]
+
+[node name="InteractiveCarat" parent="." unique_id=1099497837 instance=ExtResource("10_nqapm")]
+position = Vector2(630, 198)
 
 [editable path="Player"]

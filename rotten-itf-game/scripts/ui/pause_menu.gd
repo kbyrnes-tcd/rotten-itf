@@ -81,3 +81,6 @@ func _on_refill_pressed() -> void:
 	if player:
 		for i in 5:
 			player.inv.insert(player.GLOWWORM)
+
+func _on_back_pressed() -> void:
+	reset()

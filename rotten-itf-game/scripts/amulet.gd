@@ -35,6 +35,15 @@ func _on_body_entered(body: Node2D):
 			return
 		emit_signal("amulet_collected")
 		body.collect(inv_amulet)
+		var lio = get_tree().get_first_node_in_group("lio_manager")
+		if lio:
+			lio.show_sequence([
+				"An amulet. It’s a deep pomegranate red.",
+				"Is it Demeter’s? Somehow, I doubt that.",
+				"There’s something inscribed at the back.",
+				"“I shall honor my deal, always.”",
+				"Strange… It’s almost… glowing…",
+				"Press ] to shoot rot. "])
 		queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
