@@ -223,7 +223,7 @@ func unload_level():
 		var pers_data := c_scene.find_child("PersistentData", true, false)
 		if pers_data and c_scene_name != "":
 			persistent_scenes[c_scene_name] = pers_data.save_state()
-		level_root.remove_child(c_scene)
+		level_root.call_deferred("remove_child", c_scene)
 		c_scene.queue_free()
 
 var target_door
@@ -234,7 +234,7 @@ func load_level(level_name: String):
 	var n_scene : PackedScene = load(path)
 	var scene_node : Node = n_scene.instantiate()
 	if (n_scene):
-		level_root.add_child(scene_node) 
+		level_root.call_deferred("add_child", scene_node) 
 		if persistent_scenes.has(level_name):
 			var pers_data : PersistentData = scene_node.find_child("PersistentData", true, false)
 			if pers_data: pers_data.load_state.call_deferred(persistent_scenes[level_name])

@@ -24,6 +24,7 @@
 [ext_resource type="Resource" uid="uid://bcvemp5c8igqs" path="res://scripts/inventory_system/items/amulet.tres" id="13_e0ngt"]
 [ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="15_6d0e5"]
 [ext_resource type="PackedScene" uid="uid://bimatr4hej8ja" path="res://scenes/ui/interactive_carat.tscn" id="16_a3hc7"]
+[ext_resource type="Script" uid="uid://82kujb2eytv4" path="res://scripts/player_respawn_pit.gd" id="17_1guhu"]
 [ext_resource type="PackedScene" uid="uid://dagsvgdwskmcw" path="res://scenes/high_priestess.tscn" id="17_a3hc7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eryr6"]
@@ -35,6 +36,9 @@ shader_parameter/darken_amount = 1.0
 size = Vector2(300, 20)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o7blk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w2pfo"]
+size = Vector2(70, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5i8uq"]
 size = Vector2(150, 100)
@@ -195,6 +199,15 @@ position = Vector2(371, 214.99998)
 scale = Vector2(1.36, 1.1999999)
 texture = ExtResource("8_cqx5b")
 
+[node name="PlayerRespawnPit" type="Area2D" parent="." unique_id=661624010]
+position = Vector2(539, 322)
+script = ExtResource("17_1guhu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerRespawnPit" unique_id=1662976385]
+position = Vector2(5.000002, 49)
+scale = Vector2(2.2328703, -2.2038572)
+shape = SubResource("RectangleShape2D_w2pfo")
+
 [node name="FallenTrigger" type="Area2D" parent="." unique_id=831523694 node_paths=PackedStringArray("chandelier")]
 position = Vector2(672, 261)
 script = ExtResource("9_6m4hc")
@@ -265,6 +278,8 @@ position = Vector2(2251, 218)
 
 [node name="InteractiveCarat3" parent="." unique_id=595983094 instance=ExtResource("16_a3hc7")]
 position = Vector2(119, 132)
+
+[connection signal="body_entered" from="PlayerRespawnPit" to="PlayerRespawnPit" method="_on_body_entered"]
 
 [editable path="Player"]
 [editable path="ZoomTrigger"]
