@@ -20,10 +20,21 @@ material = SubResource("ShaderMaterial_xk2dx")
 texture = ExtResource("2_xk2dx")
 centered = false
 
-[node name="ItemSprite" type="Sprite2D" parent="." unique_id=695584406]
-scale = Vector2(0.5, 0.5)
-centered = false
-offset = Vector2(2.5, 0)
+[node name="ItemImg" type="TextureRect" parent="." unique_id=1977325718]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.5
+offset_top = -12.5
+offset_right = 13.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="." unique_id=340007729]
 custom_minimum_size = Vector2(19, 23)

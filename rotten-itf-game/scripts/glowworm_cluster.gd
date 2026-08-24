@@ -1,6 +1,6 @@
 extends Area2D
 
-const GLOWWORM = preload("res://scripts/inventory_system/items/green_worm.tres")
+const GLOWWORM = preload("res://scripts/inventory_system/items/glow_worm.tres")
 
 @export var amount: int = 5
 

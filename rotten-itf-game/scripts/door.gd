@@ -8,7 +8,9 @@ extends Area2D
 @export var required_amount: int = 0
 @export var interact_carat: Node2D
 @export var has_minigame: bool = false
+@export var crack := false
 @export var minigame: GameGlobals.Minigame = GameGlobals.Minigame.MAZE
+@export var blocking_rot: Array[Node2D] = []
 var minigame_solved: bool = false
 
 var near_door = false
@@ -27,7 +29,7 @@ func _process(_delta: float) -> void:
 			else:
 				interact_carat.hide_carat()
 		if can_pass and Input.is_action_just_pressed("interact"):
-			AudioManager.play_os("open_door")
+			if !crack: AudioManager.play_os("open_door")
 			if has_minigame and not minigame_solved:
 				GameGlobals.load_minigame(minigame)
 				await GameGlobals.minigame_completed
@@ -44,9 +46,13 @@ func _check_condtion() -> bool:
 	if required_item == null:
 		return true
 	
-	if player and player.inv.count(required_item) >= required_amount:
-		return true
-	return false
+	if player and player.inv.count(required_item) < required_amount:
+		return false
+	
+	for rot in blocking_rot:
+		if is_instance_valid(rot):
+			return false
+	return true
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
