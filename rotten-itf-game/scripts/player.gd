@@ -64,6 +64,7 @@ func _ready():
 	if light:
 		light.enabled = false
 	build_worm_segments()
+	set_collision_mask_value(2, true)  #setting here so all instances of player are config to have steps/one-way col.s in mask layer
 
 # Tool FSM
 func _process(delta):
@@ -111,14 +112,14 @@ func can_step_up() -> bool:
 	$StepJumpRayCastL.force_raycast_update()
 	$StepJumpRayCastR.force_raycast_update()
 	for foot in [$StepJumpRayCastL, $StepJumpRayCastR]:
-		#var lorr := foot.name.substr(foot.name.length() - 1, 1)
+		#var lorr = foot.name.substr(foot.name.length() - 1, 1)
 		if foot.is_colliding():
 			collider = foot.get_collider()
 			shape_index = foot.get_collider_shape()
 			owner_id = collider.shape_find_owner(shape_index)
 			shape_node = collider.shape_owner_get_owner(owner_id)
 			if (shape_node is CollisionShape2D or shape_node is CollisionPolygon2D) and shape_node.one_way_collision:
-				#print("%s foot is colliding with %s" %[lorr, shape_node.one_way_collision])
+				#print("%s foot is colliding with %s" %[lorr, shape_node.name])
 				if step_target_y < foot_marker.global_position.y:
 					step_target_y = foot.get_collision_point().y
 					return true
@@ -504,7 +505,6 @@ func _handle_vine_growth(delta: float):
 	var result = space_state.intersect_point(params, 32)
 	var hit_wall = false
 	for r in result:
-		print(r)
 		# ignore hitting the vine itself extending
 		if active_vine.get_parent().has_node("LineStaticBody2D"):
 			if r.collider == active_vine.get_parent().get_node("LineStaticBody2D"):
@@ -586,10 +586,18 @@ func update_worm_segments():
 
 # FOR DETECTING WHETHER PLAYER IS ACTIVELY ON A STEP--FOR GOING DOWN
 var on_step := false
-func _feet_area_shape_entered(_area_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
-	var shape_node = body.shape_owner_get_owner(body.shape_find_owner(_body_shape_index))
-	if shape_node.one_way_collision: on_step = true
-	
-func _feet_area_shape_exited(_area_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
-	var shape_node = body.shape_owner_get_owner(body.shape_find_owner(_body_shape_index))
-	if shape_node.one_way_collision: on_step = false
+func _feet_area_shape_entered(_area_rid: RID, body: Node2D, body_shape_index: int, _local_shape_index: int) -> void:
+	if !body is PhysicsBody2D: return
+	var owner_id = body.shape_find_owner(body_shape_index)
+	if owner_id == -1: return
+	var shape_node = body.shape_owner_get_owner(owner_id)
+	if shape_node and shape_node.one_way_collision:
+		on_step = true
+
+func _feet_area_shape_exited(_area_rid: RID, body: Node2D, body_shape_index: int, _local_shape_index: int) -> void:
+	if !body is PhysicsBody2D: return
+	var owner_id = body.shape_find_owner(body_shape_index)
+	if owner_id == -1: return
+	var shape_node = body.shape_owner_get_owner(owner_id)
+	if shape_node and shape_node.one_way_collision:
+		on_step = false

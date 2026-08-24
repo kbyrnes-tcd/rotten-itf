@@ -1,30 +1,33 @@
 [gd_scene format=3 uid="uid://cwbsao03j5sj6"]
 
 [ext_resource type="Texture2D" uid="uid://cqhk6qby34t7h" path="res://assets/images/env/tower/Part_4_Tower_Draft_v2.png" id="1_coyto"]
+[ext_resource type="PackedScene" uid="uid://cfukrntau5ufh" path="res://scenes/levels/persistent_data.tscn" id="1_h5llc"]
 [ext_resource type="Texture2D" uid="uid://1g5yc6o5kncf" path="res://assets/images/env/tower/Part_4_Tower_Collision_Mask_v1.png" id="2_6nwso"]
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="2_coyto"]
 [ext_resource type="Texture2D" uid="uid://cbjeayxkfo08n" path="res://assets/images/env/tower/Part_4_Tower_Draft_v2front.png" id="2_iwol2"]
+[ext_resource type="Resource" uid="uid://bbfb2yem3oxv0" path="res://scripts/inventory_system/player_inventory.tres" id="4_504hx"]
+[ext_resource type="PackedScene" uid="uid://di31qowjleyl4" path="res://scenes/rot_dressing_new.tscn" id="6_h5llc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w2pfo"]
 size = Vector2(20, 261.00327)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jw7t4"]
-size = Vector2(15, 9)
+size = Vector2(20.5, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6nwso"]
-size = Vector2(21.25, 10)
+size = Vector2(26.375, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwol2"]
-size = Vector2(24, 11)
+size = Vector2(26.5, 11)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cimb1"]
-size = Vector2(25, 11)
+size = Vector2(36.5, 11)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_upk17"]
 size = Vector2(52.999996, 8.071213)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_504hx"]
-size = Vector2(34, 10)
+size = Vector2(51, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h5llc"]
 size = Vector2(49.999985, 10)
@@ -72,7 +75,7 @@ size = Vector2(40.5, 10.5)
 size = Vector2(46.5, 3)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c24xq"]
-size = Vector2(135.75, 10)
+size = Vector2(144.625, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tfvxq"]
 size = Vector2(49.75, 10)
@@ -190,6 +193,8 @@ size = Vector2(38.194313, 10.75)
 
 [node name="Scene_05" type="Node2D" unique_id=1126453650]
 
+[node name="PersistentData" parent="." unique_id=1117547414 instance=ExtResource("1_h5llc")]
+
 [node name="Background" type="Sprite2D" parent="." unique_id=1747060424]
 texture = ExtResource("1_coyto")
 
@@ -198,7 +203,8 @@ z_index = 1
 texture = ExtResource("2_iwol2")
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("2_coyto")]
-position = Vector2(-193, 592)
+position = Vector2(27.999985, 338)
+inv = ExtResource("4_504hx")
 
 [node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
 limit_left = -223
@@ -206,8 +212,19 @@ limit_top = -668
 limit_right = 55
 limit_bottom = 647
 
+[node name="FullJumpRayCast" parent="Player" index="5" unique_id=1638252249]
+collision_mask = 1
+
+[node name="MidJumpRayCast" parent="Player" index="6" unique_id=1895618936]
+collision_mask = 1
+
+[node name="StepJumpRayCastL" parent="Player" index="7" unique_id=1858831446]
+collision_mask = 1
+
+[node name="StepJumpRayCastR" parent="Player" index="8" unique_id=1453672499]
+collision_mask = 1
+
 [node name="Collisions" type="StaticBody2D" parent="." unique_id=1949185230]
-visible = false
 
 [node name="Mask" type="Sprite2D" parent="Collisions" unique_id=543310808]
 visible = false
@@ -221,7 +238,7 @@ polygon = PackedVector2Array(215, 675, 240, -429, 130, -429, 127, 619, 113, 626,
 
 [node name="RHSandFloorandTopStairOG" type="CollisionPolygon2D" parent="Collisions" unique_id=1119862784]
 process_mode = 4
-polygon = PackedVector2Array(215, 675, 240, -429, 126, -429, 125, -150, 125, -128, 125, 171, 38, 171, 40, 181, 63.399994, 180, 67.399994, 180, 124, 191, 126, 618, 113, 626, -241, 626, -241, 676)
+polygon = PackedVector2Array(215, 675, 240, -429, 126, -429, 125, -150, 125, -128, 125, 171, 124, 191, 126, 618, 113, 626, -241, 626, -241, 676)
 
 [node name="LeftOOB" type="CollisionShape2D" parent="Collisions" unique_id=1343966345]
 position = Vector2(-244, 526)
@@ -238,31 +255,32 @@ z_index = 1
 position = Vector2(0, 550)
 
 [node name="1" type="StaticBody2D" parent="Collisions/Stairs" unique_id=1224981905]
+position = Vector2(0, 1)
 collision_layer = 2
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="Collisions/Stairs/1" unique_id=1232659785]
-position = Vector2(64, -14)
+position = Vector2(61.25, -14)
 shape = SubResource("RectangleShape2D_jw7t4")
 one_way_collision = true
 one_way_collision_margin = 2.0
 
 [node name="CollisionPolygon2D2" type="CollisionShape2D" parent="Collisions/Stairs/1" unique_id=1354926863]
-position = Vector2(74.25, -24)
+position = Vector2(76.8125, -24)
 shape = SubResource("RectangleShape2D_6nwso")
 one_way_collision = true
 
 [node name="CollisionPolygon2D3" type="CollisionShape2D" parent="Collisions/Stairs/1" unique_id=1656260934]
-position = Vector2(89.5, -34)
+position = Vector2(90.75, -34)
 shape = SubResource("RectangleShape2D_iwol2")
 one_way_collision = true
 
 [node name="CollisionPolygon2D4" type="CollisionShape2D" parent="Collisions/Stairs/1" unique_id=1150983380]
-position = Vector2(101, -44)
+position = Vector2(106.75, -44)
 shape = SubResource("RectangleShape2D_cimb1")
 one_way_collision = true
 
 [node name="2" type="StaticBody2D" parent="Collisions/Stairs" unique_id=1346921479]
-position = Vector2(147, -50)
+position = Vector2(147, -49)
 scale = Vector2(-1, 1)
 collision_layer = 2
 
@@ -274,7 +292,7 @@ one_way_collision = true
 one_way_collision_margin = 5.0
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="Collisions/Stairs/2" unique_id=543046279]
-position = Vector2(86, -14)
+position = Vector2(77.5, -14)
 shape = SubResource("RectangleShape2D_504hx")
 one_way_collision = true
 one_way_collision_margin = 5.0
@@ -340,7 +358,7 @@ one_way_collision = true
 one_way_collision_margin = 5.0
 
 [node name="3" type="StaticBody2D" parent="Collisions/Stairs" unique_id=995666426]
-position = Vector2(-133, -173)
+position = Vector2(-133, -172)
 collision_layer = 2
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="Collisions/Stairs/3" unique_id=230419907]
@@ -374,7 +392,7 @@ one_way_collision = true
 one_way_collision_margin = 5.0
 
 [node name="4" type="StaticBody2D" parent="Collisions/Stairs" unique_id=1228694774]
-position = Vector2(-93, -203)
+position = Vector2(-93, -202)
 collision_layer = 2
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="Collisions/Stairs/4" unique_id=803681839]
@@ -426,11 +444,11 @@ one_way_collision = true
 one_way_collision_margin = 5.0
 
 [node name="5" type="StaticBody2D" parent="Collisions/Stairs" unique_id=1536526948]
-position = Vector2(-93, -203)
+position = Vector2(-93, -202)
 collision_layer = 2
 
 [node name="Land" type="CollisionShape2D" parent="Collisions/Stairs/5" unique_id=1242077539]
-position = Vector2(143.25, -171)
+position = Vector2(147.6875, -171)
 shape = SubResource("RectangleShape2D_c24xq")
 one_way_collision = true
 one_way_collision_margin = 5.0
@@ -496,7 +514,7 @@ one_way_collision = true
 one_way_collision_margin = 5.0
 
 [node name="6" type="StaticBody2D" parent="Collisions/Stairs" unique_id=740988877]
-position = Vector2(-186, -524)
+position = Vector2(-186, -523)
 collision_layer = 2
 
 [node name="Land" type="CollisionShape2D" parent="Collisions/Stairs/6" unique_id=598617762]
@@ -626,7 +644,7 @@ one_way_collision = true
 one_way_collision_margin = 5.0
 
 [node name="7" type="StaticBody2D" parent="Collisions/Stairs" unique_id=2122648496]
-position = Vector2(-88, -513)
+position = Vector2(-88, -512)
 collision_layer = 2
 
 [node name="CollisionPolygon2D4" type="CollisionShape2D" parent="Collisions/Stairs/7" unique_id=932748612]
@@ -770,5 +788,53 @@ position = Vector2(70, -290)
 shape = SubResource("RectangleShape2D_fc7jp")
 one_way_collision = true
 one_way_collision_margin = 5.0
+
+[node name="Node2D" type="Node2D" parent="." unique_id=989126867]
+
+[node name="Line2D" parent="Node2D" unique_id=1590463200 instance=ExtResource("6_h5llc")]
+points = PackedVector2Array(-240, 425, -211, 426, -196, 432, -178, 431, -150, 427, -122, 426)
+collidable = true
+
+[node name="Line2D2" parent="Node2D" unique_id=387412896 instance=ExtResource("6_h5llc")]
+points = PackedVector2Array(72, 634, 72, 624, 66, 609, 61, 595, 68, 583, 69, 565, 61, 550, 72, 532)
+width = 10.0
+collidable = true
+
+[node name="Line2D10" parent="Node2D" unique_id=1301301700 instance=ExtResource("6_h5llc")]
+points = PackedVector2Array(80, 634, 80, 619, 79, 608, 80, 586, 84, 570, 80, 559, 76, 552, 79, 540, 88, 535, 98, 530, 107, 528, 112, 520, 116, 510, 117, 503)
+width = 10.0
+collidable = true
+
+[node name="Line2D5" parent="Node2D/Line2D10" unique_id=1578399210 instance=ExtResource("6_h5llc")]
+points = PackedVector2Array(-60, 626, -49, 626, -39, 623, -29, 622, -18, 625, 6, 624, 24, 630, 46, 630, 58, 627, 75, 626, 101, 623, 122, 624)
+collidable = true
+
+[node name="Line2D3" parent="Node2D" unique_id=1334231314 instance=ExtResource("6_h5llc")]
+points = PackedVector2Array(88, 634, 88, 620, 83, 608, 86, 593, 95, 587, 95, 573, 89, 553, 98, 543, 93, 528, 93, 517, 99, 506, 93, 490)
+width = 10.0
+collidable = true
+
+[node name="Line2D4" parent="Node2D" unique_id=1001815451 instance=ExtResource("6_h5llc")]
+points = PackedVector2Array(-112, 490, -98, 490, -89, 490, -80, 497, -75, 504, -65, 506, -51, 503, -45, 498, -35, 494, -28, 490, -14, 489, -7, 495, -7, 501)
+collidable = true
+
+[node name="Line2D6" parent="Node2D" unique_id=704794718 instance=ExtResource("6_h5llc")]
+points = PackedVector2Array()
+collidable = true
+
+[node name="Line2D7" parent="Node2D" unique_id=769170824 instance=ExtResource("6_h5llc")]
+points = PackedVector2Array()
+collidable = true
+
+[node name="Line2D8" parent="Node2D" unique_id=1668534035 instance=ExtResource("6_h5llc")]
+points = PackedVector2Array()
+collidable = true
+
+[node name="Line2D9" parent="Node2D" unique_id=1007255596 instance=ExtResource("6_h5llc")]
+points = PackedVector2Array()
+collidable = true
+
+[connection signal="area_shape_entered" from="Player/FeetOnVine" to="Player" method="_feet_area_shape_entered"]
+[connection signal="area_shape_exited" from="Player/FeetOnVine" to="Player" method="_on_feet_area_shape_exited"]
 
 [editable path="Player"]
