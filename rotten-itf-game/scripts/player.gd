@@ -33,7 +33,7 @@ var segments: Array = []
 
 # Drag and drop player inv, set player speed/jump params
 @export var inv: Inventory
-var target_speed:=-1
+var target_speed:= -1.0
 const NORMAL_SPEED := 150.0
 #const NORMAL_SPEED := 850.0
 const STEP_SPEED := 80.0
@@ -173,13 +173,10 @@ func _handle_movement(delta: float):
 		
 	# STEPPING DOWN
 	if on_step and Input.is_action_just_pressed("down") and not is_dropping:
-		print("dropping, mask before: ", collision_mask)
 		is_dropping = true
 		set_collision_mask_value(2, false)
-		print("mask after: ", collision_mask)
 		await get_tree().create_timer(0.2).timeout
 		set_collision_mask_value(2, true)
-		print("mask restored: ", collision_mask)
 		is_dropping = false
 
 	# OG MOVEMENT
@@ -587,6 +584,7 @@ func update_worm_segments():
 		else:
 			segments[i].color = Color("#292929")
 
+# FOR DETECTING WHETHER PLAYER IS ACTIVELY ON A STEP--FOR GOING DOWN
 var on_step := false
 func _feet_area_shape_entered(_area_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
 	var shape_node = body.shape_owner_get_owner(body.shape_find_owner(_body_shape_index))
@@ -595,4 +593,3 @@ func _feet_area_shape_entered(_area_rid: RID, body: Node2D, _body_shape_index: i
 func _feet_area_shape_exited(_area_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
 	var shape_node = body.shape_owner_get_owner(body.shape_find_owner(_body_shape_index))
 	if shape_node.one_way_collision: on_step = false
-	
