@@ -240,7 +240,7 @@ interact_carat = NodePath("../InteractiveCarat2")
 
 [node name="DoorMaze" parent="." unique_id=25365531 node_paths=PackedStringArray("interact_carat") instance=ExtResource("15_6d0e5")]
 position = Vector2(3922, 158)
-next_scene_path = "scene_testend"
+next_scene_path = "scene_04"
 door_id = "DoorMaze"
 twin_id = "DoorBackToAltar"
 spawn_to_the_left = true
