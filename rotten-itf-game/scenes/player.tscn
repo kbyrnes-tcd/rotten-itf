@@ -143,7 +143,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8k800"]
-size = Vector2(94.13229, 116.59009)
+size = Vector2(94.13229, 157.86139)
 
 [sub_resource type="Gradient" id="Gradient_j0jg5"]
 offsets = PackedFloat32Array(0, 0.6796116)
@@ -169,8 +169,9 @@ shader_parameter/opacity = 1.0
 size = Vector2(44.999992, 23.75)
 
 [node name="Player" type="CharacterBody2D" unique_id=1515659648 node_paths=PackedStringArray("foot_marker")]
-position = Vector2(32.999996, 233.99998)
+position = Vector2(33, 233.99998)
 scale = Vector2(0.8, 0.8)
+collision_mask = 3
 safe_margin = 1.5
 script = ExtResource("1_qlg0r")
 inv = ExtResource("2_gl8cc")
@@ -203,17 +204,19 @@ position = Vector2(24.725266, 5.494503)
 scale = Vector2(1.2257706, 1.0789826)
 
 [node name="LntrnCollisionShape2D" type="CollisionShape2D" parent="CharacterSprites/Lantern/LanternArea2D" unique_id=877712953]
-position = Vector2(11.206245, 46.09723)
+position = Vector2(11.206245, 25.46167)
 shape = SubResource("RectangleShape2D_8k800")
 
 [node name="PointLight2D" type="PointLight2D" parent="CharacterSprites/Lantern" unique_id=1223419189]
-position = Vector2(2.7472482, 2.7472513)
-color = Color(0.5803922, 1, 0.92941177, 1)
-energy = 1.5
+position = Vector2(-4.2915344e-06, 5.494546)
+scale = Vector2(2.5, 2.5)
+color = Color(0.1764706, 0.8862745, 0.9490196, 1)
+energy = 0.6
 range_z_max = 0
 texture = SubResource("GradientTexture2D_q01m8")
 
 [node name="GunSprite2D" type="Sprite2D" parent="CharacterSprites" unique_id=1835702057]
+visible = false
 position = Vector2(18.75, 1.2499996)
 texture = ExtResource("23_ke2ow")
 
@@ -254,18 +257,22 @@ drag_bottom_margin = 0.0
 [node name="FullJumpRayCast" type="RayCast2D" parent="." unique_id=1638252249]
 scale = Vector2(0.99999976, 0.99999976)
 target_position = Vector2(0, -120)
+collision_mask = 3
 
 [node name="MidJumpRayCast" type="RayCast2D" parent="." unique_id=1895618936]
 scale = Vector2(0.99999976, 0.99999976)
 target_position = Vector2(0, -80)
+collision_mask = 3
 
 [node name="StepJumpRayCastL" type="RayCast2D" parent="." unique_id=1858831446]
 position = Vector2(-15, 40)
 target_position = Vector2(0, -15)
+collision_mask = 3
 
 [node name="StepJumpRayCastR" type="RayCast2D" parent="." unique_id=1453672499]
 position = Vector2(11, 40)
 target_position = Vector2(0, -15)
+collision_mask = 3
 
 [node name="FootMarker" type="Marker2D" parent="." unique_id=2095810202]
 position = Vector2(-2.4999962, 40.00003)
@@ -292,11 +299,12 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 4
 
 [node name="FeetOnVine" type="Area2D" parent="." unique_id=236296925]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FeetOnVine" unique_id=915096]
 position = Vector2(-2.5, 38.12503)
 scale = Vector2(0.9999998, 0.9999998)
 shape = SubResource("RectangleShape2D_w2pfo")
 
-[connection signal="area_shape_entered" from="FeetOnVine" to="." method="_feet_area_shape_entered"]
-[connection signal="area_shape_exited" from="FeetOnVine" to="." method="_on_feet_area_shape_exited"]
+[connection signal="body_shape_entered" from="FeetOnVine" to="." method="_feet_area_shape_entered"]
+[connection signal="body_shape_exited" from="FeetOnVine" to="." method="_feet_area_shape_exited"]

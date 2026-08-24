@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dr3ff06oljyer" path="res://scenes/lio_trigger.tscn" id="12_gvi84"]
 [ext_resource type="PackedScene" uid="uid://di31qowjleyl4" path="res://scenes/rot_dressing_new.tscn" id="12_osntu"]
 [ext_resource type="PackedScene" uid="uid://ufmhebijpwbb" path="res://scenes/collectible_item.tscn" id="14_58igu"]
+[ext_resource type="PackedScene" uid="uid://cfukrntau5ufh" path="res://scenes/levels/persistent_data.tscn" id="14_e87vj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3336g"]
 size = Vector2(2596, 33)
@@ -247,5 +248,7 @@ points = PackedVector2Array(2, -7, 27, -6, 55, -8, 75, -5, 90, -9, 120, -5)
 
 [node name="InteractiveCarat" parent="." unique_id=1099497837 instance=ExtResource("10_nqapm")]
 position = Vector2(630, 198)
+
+[node name="PersistentData" parent="." unique_id=1117547414 instance=ExtResource("14_e87vj")]
 
 [editable path="Player"]

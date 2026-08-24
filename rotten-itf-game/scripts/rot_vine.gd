@@ -28,8 +28,20 @@ func _ready():
 	pts = points # assign points var (PackedVector2Arr)
 	call_deferred("inst_collisions") # instantiate collision shape from inspector defined curve
 
-# line2D collision: https://kidscancode.org/godot_recipes/4.x/2d/line_collision/index.html
+# FOR PERSISTING VINESSSS
+func get_persist_data() -> Dictionary:
+	return {
+		"points": points,
+	}
 
+func apply_persist_data(data: Dictionary) -> void:
+	if data.has("points"):
+		points = data["points"]
+		rest_points = points.duplicate()
+		pts = points
+		call_deferred("update_collisions")
+
+# line2D collision: https://kidscancode.org/godot_recipes/4.x/2d/line_collision/index.html
 func inst_collisions():
 	for i in points.size() - 1:
 		# need 2 define ST_BODY for 'solid' collisions and AREA for overlap detection 
@@ -161,6 +173,11 @@ func add_vine(pts_slice: PackedVector2Array):
 	var vine = ROT_VINE.instantiate()
 	vine.get_child(0).points = pts_slice
 	scene.add_child(vine)
+	#print("since i am adding rot to this scene i should add this to the persist node")
+	var p_data : PersistentData = GameGlobals.get_current_tree_p_data()
+	if p_data:
+		p_data.add_spawned_obj(vine, ROT_VINE)
+	#print(p_data.object_names)
 	#call_deferred("queue_free")
 	
 func time_out_collision():
