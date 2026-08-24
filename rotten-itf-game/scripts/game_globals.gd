@@ -135,10 +135,17 @@ func unload_mid_minigame():
 	mg_root.get_child(0).visible = false
 	return
 
+#enum Minigame { NONE, MAZE, LETTER }
+var minigame_completion := {
+	Minigame.MAZE: false,
+	Minigame.LETTER: false,
+	}
+
 func unload_minigame():
 	print("player has won, unloading fr")
 	AudioManager.play_os_from_arr("win")
 	AudioManager.decrease_music_vol()
+	minigame_completion[current_mg] = true
 	current_mg = Minigame.NONE
 	resume(false)
 	# unload mg_root child from tree
