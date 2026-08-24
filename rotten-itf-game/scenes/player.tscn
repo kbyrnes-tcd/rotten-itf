@@ -143,7 +143,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8k800"]
-size = Vector2(94.13229, 116.59009)
+size = Vector2(94.13229, 157.86139)
 
 [sub_resource type="Gradient" id="Gradient_j0jg5"]
 offsets = PackedFloat32Array(0, 0.6796116)
@@ -204,17 +204,19 @@ position = Vector2(24.725266, 5.494503)
 scale = Vector2(1.2257706, 1.0789826)
 
 [node name="LntrnCollisionShape2D" type="CollisionShape2D" parent="CharacterSprites/Lantern/LanternArea2D" unique_id=877712953]
-position = Vector2(11.206245, 46.09723)
+position = Vector2(11.206245, 25.46167)
 shape = SubResource("RectangleShape2D_8k800")
 
 [node name="PointLight2D" type="PointLight2D" parent="CharacterSprites/Lantern" unique_id=1223419189]
-position = Vector2(2.7472482, 2.7472513)
-color = Color(0.5803922, 1, 0.92941177, 1)
-energy = 1.5
+position = Vector2(-4.2915344e-06, 5.494546)
+scale = Vector2(2.5, 2.5)
+color = Color(0.1764706, 0.8862745, 0.9490196, 1)
+energy = 0.6
 range_z_max = 0
 texture = SubResource("GradientTexture2D_q01m8")
 
 [node name="GunSprite2D" type="Sprite2D" parent="CharacterSprites" unique_id=1835702057]
+visible = false
 position = Vector2(18.75, 1.2499996)
 texture = ExtResource("23_ke2ow")
 

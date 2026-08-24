@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cqhk6qby34t7h" path="res://assets/images/env/tower/Part_4_Tower_Draft_v2.png" id="1_coyto"]
 [ext_resource type="PackedScene" uid="uid://cfukrntau5ufh" path="res://scenes/levels/persistent_data.tscn" id="1_h5llc"]
+[ext_resource type="PackedScene" uid="uid://cmf6u7sxq43iy" path="res://scenes/lighting/interior_lighting.tscn" id="1_vch4m"]
 [ext_resource type="Texture2D" uid="uid://1g5yc6o5kncf" path="res://assets/images/env/tower/Part_4_Tower_Collision_Mask_v1.png" id="2_6nwso"]
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="2_coyto"]
 [ext_resource type="Texture2D" uid="uid://cbjeayxkfo08n" path="res://assets/images/env/tower/Part_4_Tower_Draft_v2front.png" id="2_iwol2"]
@@ -193,6 +194,9 @@ size = Vector2(38.194313, 10.75)
 
 [node name="Scene_05" type="Node2D" unique_id=1126453650]
 
+[node name="InteriorLighting" parent="." unique_id=1496110895 instance=ExtResource("1_vch4m")]
+position = Vector2(63.568092, 253.47995)
+
 [node name="PersistentData" parent="." unique_id=1117547414 instance=ExtResource("1_h5llc")]
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1747060424]
@@ -203,7 +207,7 @@ z_index = 1
 texture = ExtResource("2_iwol2")
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("2_coyto")]
-position = Vector2(27.999985, 338)
+position = Vector2(-94, -45)
 inv = ExtResource("4_504hx")
 
 [node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
@@ -225,6 +229,7 @@ collision_mask = 1
 collision_mask = 1
 
 [node name="Collisions" type="StaticBody2D" parent="." unique_id=1949185230]
+visible = false
 
 [node name="Mask" type="Sprite2D" parent="Collisions" unique_id=543310808]
 visible = false
@@ -789,49 +794,149 @@ shape = SubResource("RectangleShape2D_fc7jp")
 one_way_collision = true
 one_way_collision_margin = 5.0
 
-[node name="Node2D" type="Node2D" parent="." unique_id=989126867]
+[node name="Rot" type="Node2D" parent="." unique_id=989126867]
 
-[node name="Line2D" parent="Node2D" unique_id=1590463200 instance=ExtResource("6_h5llc")]
+[node name="1" type="Node2D" parent="Rot" unique_id=797474264]
+
+[node name="Line2D" parent="Rot/1" unique_id=1590463200 instance=ExtResource("6_h5llc")]
 points = PackedVector2Array(-240, 425, -211, 426, -196, 432, -178, 431, -150, 427, -122, 426)
 collidable = true
 
-[node name="Line2D2" parent="Node2D" unique_id=387412896 instance=ExtResource("6_h5llc")]
+[node name="Line2D2" parent="Rot/1" unique_id=387412896 instance=ExtResource("6_h5llc")]
 points = PackedVector2Array(72, 634, 72, 624, 66, 609, 61, 595, 68, 583, 69, 565, 61, 550, 72, 532)
 width = 10.0
 collidable = true
 
-[node name="Line2D10" parent="Node2D" unique_id=1301301700 instance=ExtResource("6_h5llc")]
+[node name="Line2D10" parent="Rot/1" unique_id=1301301700 instance=ExtResource("6_h5llc")]
 points = PackedVector2Array(80, 634, 80, 619, 79, 608, 80, 586, 84, 570, 80, 559, 76, 552, 79, 540, 88, 535, 98, 530, 107, 528, 112, 520, 116, 510, 117, 503)
 width = 10.0
 collidable = true
 
-[node name="Line2D5" parent="Node2D/Line2D10" unique_id=1578399210 instance=ExtResource("6_h5llc")]
-points = PackedVector2Array(-60, 626, -49, 626, -39, 623, -29, 622, -18, 625, 6, 624, 24, 630, 46, 630, 58, 627, 75, 626, 101, 623, 122, 624)
+[node name="Line2D5" parent="Rot/1" unique_id=1578399210 instance=ExtResource("6_h5llc")]
+points = PackedVector2Array(-60, 626, -49, 626, -39, 623, -29, 622, -18, 625, 6, 624, 24, 630, 46, 630, 63, 631, 81, 629, 90, 629, 108, 629, 122, 624)
+width = 10.0
 collidable = true
 
-[node name="Line2D3" parent="Node2D" unique_id=1334231314 instance=ExtResource("6_h5llc")]
+[node name="Line2D3" parent="Rot/1" unique_id=1334231314 instance=ExtResource("6_h5llc")]
 points = PackedVector2Array(88, 634, 88, 620, 83, 608, 86, 593, 95, 587, 95, 573, 89, 553, 98, 543, 93, 528, 93, 517, 99, 506, 93, 490)
 width = 10.0
 collidable = true
 
-[node name="Line2D4" parent="Node2D" unique_id=1001815451 instance=ExtResource("6_h5llc")]
+[node name="Line2D4" parent="Rot/1" unique_id=1001815451 instance=ExtResource("6_h5llc")]
 points = PackedVector2Array(-112, 490, -98, 490, -89, 490, -80, 497, -75, 504, -65, 506, -51, 503, -45, 498, -35, 494, -28, 490, -14, 489, -7, 495, -7, 501)
 collidable = true
 
-[node name="Line2D6" parent="Node2D" unique_id=704794718 instance=ExtResource("6_h5llc")]
+[node name="Line2D6" parent="Rot/1" unique_id=704794718 instance=ExtResource("6_h5llc")]
 points = PackedVector2Array()
 collidable = true
 
-[node name="Line2D7" parent="Node2D" unique_id=769170824 instance=ExtResource("6_h5llc")]
+[node name="Line2D7" parent="Rot/1" unique_id=769170824 instance=ExtResource("6_h5llc")]
 points = PackedVector2Array()
 collidable = true
 
-[node name="Line2D8" parent="Node2D" unique_id=1668534035 instance=ExtResource("6_h5llc")]
+[node name="Line2D8" parent="Rot/1" unique_id=1668534035 instance=ExtResource("6_h5llc")]
 points = PackedVector2Array()
 collidable = true
 
-[node name="Line2D9" parent="Node2D" unique_id=1007255596 instance=ExtResource("6_h5llc")]
+[node name="Line2D9" parent="Rot/1" unique_id=1007255596 instance=ExtResource("6_h5llc")]
 points = PackedVector2Array()
+collidable = true
+
+[node name="2" type="Node2D" parent="Rot" unique_id=931196817]
+
+[node name="Line2D" parent="Rot/2" unique_id=605531021 instance=ExtResource("6_h5llc")]
+points = PackedVector2Array(-112, 280, -112, 298, -110, 307, -107, 318, -107, 326, -110, 333, -112, 341, -111, 360, -111, 373, -113, 380)
+collidable = true
+
+[node name="Line2D2" parent="Rot/2" unique_id=2082565762 instance=ExtResource("6_h5llc")]
+points = PackedVector2Array(-110, 312, -101, 312, -93, 311, -89, 316, -85, 319, -78, 325, -76, 333, -68, 337, -64, 338, -58, 345, -56, 354, -54, 357, -51, 360, -40, 359, -36, 359, -30, 366, -22, 372, -12, 379, -8, 379, 0, 381)
+collidable = true
+
+[node name="Line2D3" parent="Rot/2" unique_id=430131495 instance=ExtResource("6_h5llc")]
+points = PackedVector2Array(-110, 350, -104, 344, -98, 341, -96, 342, -89, 344, -85, 345, -78, 345, -75, 343, -69, 338, -64, 333, -55, 326, -53, 324, -42, 322, -34, 322)
+collidable = true
+
+[node name="Line2D4" parent="Rot/2" unique_id=1077386526 instance=ExtResource("6_h5llc")]
+points = PackedVector2Array(-107, 307, -93, 305, -85, 304, -74, 304, -67, 307, -63, 307, -43, 308, -31, 303, -19, 300, -10, 303, 1, 305)
+collidable = true
+
+[node name="Line2D6" parent="Rot/2" unique_id=667605326 instance=ExtResource("6_h5llc")]
+points = PackedVector2Array(127, 494, 125, 483, 120, 459, 123, 442, 127, 423, 125, 401, 118, 385)
+collidable = true
+
+[node name="Line2D7" parent="Rot/2" unique_id=538251275 instance=ExtResource("6_h5llc")]
+points = PackedVector2Array(106, 375, 100, 389, 106, 402, 105, 415, 100, 421, 98, 436, 100, 445, 105, 461, 111, 474, 110, 487, 104, 490)
+collidable = true
+
+[node name="Line2D8" parent="Rot/2" unique_id=1426894517 instance=ExtResource("6_h5llc")]
+points = PackedVector2Array(97, 491, 97, 478, 96, 469, 95, 457, 95, 447, 95, 434, 90, 420, 90, 408, 96, 395, 114, 380, 116, 370)
+collidable = true
+
+[node name="3" type="Node2D" parent="Rot" unique_id=171571898]
+
+[node name="Line2D" parent="Rot/3" unique_id=1011710983 instance=ExtResource("6_h5llc")]
+points = PackedVector2Array(137, 307, 132, 307, 125, 295, 121, 278, 107, 268, 103, 254, 92, 241, 82, 230, 69, 217, 54, 208, 45, 200, 39, 183, 25, 172, 14, 172)
+width = 12.0
+collidable = true
+
+[node name="Line2D2" parent="Rot/3" unique_id=1219325734 instance=ExtResource("6_h5llc")]
+points = PackedVector2Array(105, 255, 94, 261, 80, 255, 59, 259, 50, 253, 47, 246, 39, 240, 22, 242, 2, 245, -6, 238, -16, 235)
+collidable = true
+
+[node name="Line2D3" parent="Rot/3" unique_id=1891946281 instance=ExtResource("6_h5llc")]
+points = PackedVector2Array(76, 256, 73, 246, 70, 237, 59, 231, 47, 229, 36, 220, 27, 210, 8, 210, -5, 220, -25, 221)
+collidable = true
+
+[node name="Line2D4" parent="Rot/3" unique_id=1234543144 instance=ExtResource("6_h5llc")]
+points = PackedVector2Array(-107, 181, -106, 171, -94, 168, -83, 167, -74, 173, -59, 181)
+collidable = true
+
+[node name="4" type="Node2D" parent="Rot" unique_id=739374827]
+
+[node name="Line2D5" parent="Rot/4" unique_id=70850084 instance=ExtResource("6_h5llc")]
+points = PackedVector2Array(-112, 31, -98, 30, -81, 30, -69, 37, -54, 41, -41, 38, -26, 27, -9, 19, 2, 17, 14, 20)
+collidable = true
+
+[node name="Line2D" parent="Rot/4" unique_id=2102396213 instance=ExtResource("6_h5llc")]
+points = PackedVector2Array(-83, -139, -83, -122, -72, -112, -59, -99, -42, -85, -28, -81, 2, -80, 24, -86, 49, -87, 73, -93, 95, -105, 113, -106, 128, -106)
+width = 12.0
+collidable = true
+
+[node name="Line2D2" parent="Rot/4" unique_id=824418174 instance=ExtResource("6_h5llc")]
+points = PackedVector2Array(129, -190, 119.034935, -190.08734, 113, -200, 112, -209, 116, -221, 119, -237, 114, -251, 113, -272, 119, -286, 115, -309)
+width = 12.0
+collidable = true
+
+[node name="Line2D3" parent="Rot/4" unique_id=306516932 instance=ExtResource("6_h5llc")]
+points = PackedVector2Array(129, -295, 124, -295, 122, -307, 118, -319, 103, -327, 97, -346, 97, -366, 92, -385)
+collidable = true
+
+[node name="Line2D4" parent="Rot/4" unique_id=1881291388 instance=ExtResource("6_h5llc")]
+points = PackedVector2Array(-112, -259, -98, -259, -88, -268, -71, -277, -55, -280, -41, -273, -22, -274, -12, -280, -2, -295, 3, -312, 11, -318, 24, -315)
+width = 12.0
+collidable = true
+
+[node name="Line2D6" parent="Rot/4" unique_id=678798443 instance=ExtResource("6_h5llc")]
+points = PackedVector2Array(-113, -251, -104, -250, -89, -248, -80, -253, -70, -257, -60, -255)
+collidable = true
+
+[node name="5" type="Node2D" parent="Rot" unique_id=567317437]
+
+[node name="Line2D" parent="Rot/5" unique_id=662851640 instance=ExtResource("6_h5llc")]
+points = PackedVector2Array(-112, -428, -101, -428, -91, -430, -71, -430, -62, -429, -40, -422, -21, -424, -4, -427)
+collidable = true
+
+[node name="Line2D2" parent="Rot/5" unique_id=1743896669 instance=ExtResource("6_h5llc")]
+points = PackedVector2Array(-110, -476, -100, -503, -90, -520, -79, -534, -67, -537, -58, -536, -39, -533, -23, -538, -10, -547, 12, -557, 30, -557)
+width = 12.0
+collidable = true
+
+[node name="Line2D3" parent="Rot/5" unique_id=583451800 instance=ExtResource("6_h5llc")]
+points = PackedVector2Array(-18, -545, -13, -562, -4, -574, 13, -582, 32, -582, 48, -576, 63, -569, 87, -574, 98, -585, 115, -588)
+collidable = true
+
+[node name="Line2D4" parent="Rot/5" unique_id=296343922 instance=ExtResource("6_h5llc")]
+points = PackedVector2Array(-5, -549, 6, -542, 23, -537, 26, -522, 40, -509, 56, -503, 71, -508, 85, -499, 95, -488, 106, -486)
 collidable = true
 
 [connection signal="area_shape_entered" from="Player/FeetOnVine" to="Player" method="_feet_area_shape_entered"]

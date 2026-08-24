@@ -543,7 +543,7 @@ func update_lantern_visuals():
 	var light = lantern.get_node_or_null("PointLight2D")
 	if light:
 		light.texture_scale = lerp(0.3, 1.0, life_ratio)
-		light.energy = lerp(0.3, 1.5, life_ratio)
+		light.energy = lerp(0.3, 0.9, life_ratio)
 
 func activate_light():
 	worm_in_use = true
@@ -588,6 +588,8 @@ func update_worm_segments():
 var on_step := false
 func _feet_area_shape_entered(_area_rid: RID, body: Node2D, body_shape_index: int, _local_shape_index: int) -> void:
 	if !body is PhysicsBody2D: return
+	if !is_instance_valid(body): return
+	if body.get_shape_owners().is_empty(): return
 	var owner_id = body.shape_find_owner(body_shape_index)
 	if owner_id == -1: return
 	var shape_node = body.shape_owner_get_owner(owner_id)
@@ -596,6 +598,8 @@ func _feet_area_shape_entered(_area_rid: RID, body: Node2D, body_shape_index: in
 
 func _feet_area_shape_exited(_area_rid: RID, body: Node2D, body_shape_index: int, _local_shape_index: int) -> void:
 	if !body is PhysicsBody2D: return
+	if !is_instance_valid(body): return
+	if body.get_shape_owners().is_empty(): return
 	var owner_id = body.shape_find_owner(body_shape_index)
 	if owner_id == -1: return
 	var shape_node = body.shape_owner_get_owner(owner_id)
