@@ -106,7 +106,10 @@ func _handle_animation():
 
 var step_target_y := 0.0
 func can_step_up() -> bool:
+	step_target_y = 0.0
 	var collider; var shape_index; var owner_id; var shape_node;
+	$StepJumpRayCastL.force_raycast_update()
+	$StepJumpRayCastR.force_raycast_update()
 	for foot in [$StepJumpRayCastL, $StepJumpRayCastR]:
 		#var lorr := foot.name.substr(foot.name.length() - 1, 1)
 		if foot.is_colliding():
@@ -137,6 +140,7 @@ func can_i_jump() -> Dictionary:
 			jump_data["jump_velocity"] = MID_JUMP_VELOCITY
 	return jump_data
 
+var is_dropping := false
 func _handle_movement(delta: float):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -153,7 +157,7 @@ func _handle_movement(delta: float):
 		move_state = MoveState.IDLE
 	
 	var jump_state := can_i_jump()
-	if jump_state["jump_velocity"] == 0.0: return
+	#if jump_state["jump_velocity"] == 0.0: return
 	
 	# STEP UP TAKES PRIORITY
 	if can_step and Input.is_action_just_pressed("jump"):
@@ -168,11 +172,16 @@ func _handle_movement(delta: float):
 		move_state = MoveState.JUMPING
 		
 	# STEPPING DOWN
-	if on_step and Input.is_action_just_pressed("down"):
-		position.y += 5
-	elif on_step and Input.is_action_pressed("down"):
-		position.y += 5
-	
+	if on_step and Input.is_action_just_pressed("down") and not is_dropping:
+		print("dropping, mask before: ", collision_mask)
+		is_dropping = true
+		set_collision_mask_value(2, false)
+		print("mask after: ", collision_mask)
+		await get_tree().create_timer(0.2).timeout
+		set_collision_mask_value(2, true)
+		print("mask restored: ", collision_mask)
+		is_dropping = false
+
 	# OG MOVEMENT
 	#if direction:
 		#velocity.x = direction * NORMAL_SPEED

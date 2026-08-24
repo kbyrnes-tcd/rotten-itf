@@ -108,7 +108,7 @@ z_index = 1
 texture = ExtResource("2_iwol2")
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("2_coyto")]
-position = Vector2(-199, 593)
+position = Vector2(-64.000015, 414)
 
 [node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
 limit_left = -223
@@ -146,11 +146,13 @@ z_index = 1
 position = Vector2(0, 550)
 
 [node name="1" type="StaticBody2D" parent="Collisions/Stairs" unique_id=1224981905]
+collision_layer = 2
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="Collisions/Stairs/1" unique_id=1232659785]
 position = Vector2(64, -14)
 shape = SubResource("RectangleShape2D_jw7t4")
 one_way_collision = true
+one_way_collision_margin = 2.0
 
 [node name="CollisionPolygon2D2" type="CollisionShape2D" parent="Collisions/Stairs/1" unique_id=1354926863]
 position = Vector2(74.25, -24)
@@ -170,195 +172,235 @@ one_way_collision = true
 [node name="2" type="StaticBody2D" parent="Collisions/Stairs" unique_id=1346921479]
 position = Vector2(147, -50)
 scale = Vector2(-1, 1)
+collision_layer = 2
 
 [node name="Land" type="CollisionShape2D" parent="Collisions/Stairs/2" unique_id=344785586]
 position = Vector2(145, -4.0000305)
 scale = Vector2(4.6926537, 1.2389731)
 shape = SubResource("RectangleShape2D_upk17")
 one_way_collision = true
+one_way_collision_margin = 5.0
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="Collisions/Stairs/2" unique_id=543046279]
 position = Vector2(86, -14)
 shape = SubResource("RectangleShape2D_504hx")
 one_way_collision = true
+one_way_collision_margin = 5.0
 
 [node name="CollisionPolygon2D2" type="CollisionShape2D" parent="Collisions/Stairs/2" unique_id=1605833339]
 position = Vector2(85.999985, -24)
 shape = SubResource("RectangleShape2D_h5llc")
 one_way_collision = true
+one_way_collision_margin = 5.0
 
 [node name="CollisionPolygon2D3" type="CollisionShape2D" parent="Collisions/Stairs/2" unique_id=171593202]
 position = Vector2(99.5, -34)
 shape = SubResource("RectangleShape2D_vch4m")
 one_way_collision = true
+one_way_collision_margin = 5.0
 
 [node name="CollisionPolygon2D4" type="CollisionShape2D" parent="Collisions/Stairs/2" unique_id=1228104483]
 position = Vector2(110.49999, -44)
 shape = SubResource("RectangleShape2D_71lf2")
 one_way_collision = true
+one_way_collision_margin = 5.0
 
 [node name="CollisionPolygon2D5" type="CollisionShape2D" parent="Collisions/Stairs/2" unique_id=1560431554]
 position = Vector2(119.74999, -54)
 shape = SubResource("RectangleShape2D_58gdg")
 one_way_collision = true
+one_way_collision_margin = 5.0
 
 [node name="CollisionPolygon2D6" type="CollisionShape2D" parent="Collisions/Stairs/2" unique_id=1782257642]
 position = Vector2(128.99998, -64)
 shape = SubResource("RectangleShape2D_58gdg")
 one_way_collision = true
+one_way_collision_margin = 5.0
 
 [node name="CollisionPolygon2D7" type="CollisionShape2D" parent="Collisions/Stairs/2" unique_id=72256771]
 position = Vector2(134.99998, -74)
 shape = SubResource("RectangleShape2D_58gdg")
 one_way_collision = true
+one_way_collision_margin = 5.0
 
 [node name="CollisionPolygon2D8" type="CollisionShape2D" parent="Collisions/Stairs/2" unique_id=384283335]
 position = Vector2(141.87498, -83.5)
 shape = SubResource("RectangleShape2D_c1r6f")
 one_way_collision = true
+one_way_collision_margin = 5.0
 
 [node name="CollisionPolygon2D9" type="CollisionShape2D" parent="Collisions/Stairs/2" unique_id=795871117]
 position = Vector2(151.43748, -93)
 shape = SubResource("RectangleShape2D_u2by7")
 one_way_collision = true
+one_way_collision_margin = 5.0
 
 [node name="CollisionPolygon2D10" type="CollisionShape2D" parent="Collisions/Stairs/2" unique_id=571480399]
 position = Vector2(158.99998, -103)
 shape = SubResource("RectangleShape2D_u2by7")
 one_way_collision = true
+one_way_collision_margin = 5.0
 
 [node name="CollisionPolygon2D11" type="CollisionShape2D" parent="Collisions/Stairs/2" unique_id=1243409459]
 position = Vector2(164.99998, -113)
 shape = SubResource("RectangleShape2D_u2by7")
 one_way_collision = true
+one_way_collision_margin = 5.0
 
 [node name="3" type="StaticBody2D" parent="Collisions/Stairs" unique_id=995666426]
 position = Vector2(-133, -173)
+collision_layer = 2
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="Collisions/Stairs/3" unique_id=230419907]
 position = Vector2(68.5, -29.5)
 shape = SubResource("RectangleShape2D_jw7t4")
 one_way_collision = true
+one_way_collision_margin = 5.0
 
 [node name="CollisionPolygon2D5" type="CollisionShape2D" parent="Collisions/Stairs/3" unique_id=946941865]
 position = Vector2(85, -20)
 shape = SubResource("RectangleShape2D_cb0hu")
 one_way_collision = true
+one_way_collision_margin = 5.0
 
 [node name="CollisionPolygon2D2" type="CollisionShape2D" parent="Collisions/Stairs/3" unique_id=1863130913]
 position = Vector2(59.375, -39)
 shape = SubResource("RectangleShape2D_6nwso")
 one_way_collision = true
+one_way_collision_margin = 5.0
 
 [node name="CollisionPolygon2D3" type="CollisionShape2D" parent="Collisions/Stairs/3" unique_id=53226293]
 position = Vector2(48, -48.5)
 shape = SubResource("RectangleShape2D_iwol2")
 one_way_collision = true
+one_way_collision_margin = 5.0
 
 [node name="CollisionPolygon2D4" type="CollisionShape2D" parent="Collisions/Stairs/3" unique_id=585598540]
 position = Vector2(33.5, -59.5)
 shape = SubResource("RectangleShape2D_cimb1")
 one_way_collision = true
+one_way_collision_margin = 5.0
 
 [node name="4" type="StaticBody2D" parent="Collisions/Stairs" unique_id=1228694774]
 position = Vector2(-93, -203)
+collision_layer = 2
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="Collisions/Stairs/4" unique_id=803681839]
 position = Vector2(143.5, -121)
 shape = SubResource("RectangleShape2D_3i4g3")
 one_way_collision = true
+one_way_collision_margin = 5.0
 
 [node name="CollisionPolygon2D2" type="CollisionShape2D" parent="Collisions/Stairs/4" unique_id=1296855695]
 position = Vector2(127, -111)
 shape = SubResource("RectangleShape2D_v3ap6")
 one_way_collision = true
+one_way_collision_margin = 5.0
 
 [node name="CollisionPolygon2D3" type="CollisionShape2D" parent="Collisions/Stairs/4" unique_id=932903412]
 position = Vector2(113, -101)
 shape = SubResource("RectangleShape2D_8yj68")
 one_way_collision = true
+one_way_collision_margin = 5.0
 
 [node name="CollisionPolygon2D4" type="CollisionShape2D" parent="Collisions/Stairs/4" unique_id=347544791]
 position = Vector2(98, -90.5)
 shape = SubResource("RectangleShape2D_5svrm")
 one_way_collision = true
+one_way_collision_margin = 5.0
 
 [node name="CollisionPolygon2D5" type="CollisionShape2D" parent="Collisions/Stairs/4" unique_id=1370255053]
 position = Vector2(81, -81)
 shape = SubResource("RectangleShape2D_bg72w")
 one_way_collision = true
+one_way_collision_margin = 5.0
 
 [node name="CollisionPolygon2D6" type="CollisionShape2D" parent="Collisions/Stairs/4" unique_id=1370099907]
 position = Vector2(67, -71)
 shape = SubResource("RectangleShape2D_18y6c")
 one_way_collision = true
+one_way_collision_margin = 5.0
 
 [node name="CollisionPolygon2D7" type="CollisionShape2D" parent="Collisions/Stairs/4" unique_id=264952739]
 position = Vector2(51.25, -60.25)
 shape = SubResource("RectangleShape2D_h2qgb")
 one_way_collision = true
+one_way_collision_margin = 5.0
 
 [node name="CollisionPolygon2D8" type="CollisionShape2D" parent="Collisions/Stairs/4" unique_id=1896531561]
 position = Vector2(37, -54)
 shape = SubResource("RectangleShape2D_k8b4m")
 one_way_collision = true
+one_way_collision_margin = 5.0
 
 [node name="5" type="StaticBody2D" parent="Collisions/Stairs" unique_id=1536526948]
 position = Vector2(-93, -203)
+collision_layer = 2
 
-[node name="CollisionPolygon2D" type="CollisionShape2D" parent="Collisions/Stairs/5" unique_id=1242077539]
+[node name="Land" type="CollisionShape2D" parent="Collisions/Stairs/5" unique_id=1242077539]
 position = Vector2(143.25, -171)
 shape = SubResource("RectangleShape2D_c24xq")
 one_way_collision = true
+one_way_collision_margin = 5.0
 
-[node name="CollisionPolygon2D2" type="CollisionShape2D" parent="Collisions/Stairs/5" unique_id=1595272078]
+[node name="Land2" type="CollisionShape2D" parent="Collisions/Stairs/5" unique_id=1595272078]
 position = Vector2(1.125, -171)
 shape = SubResource("RectangleShape2D_tfvxq")
 one_way_collision = true
+one_way_collision_margin = 5.0
 
 [node name="CollisionPolygon2D3" type="CollisionShape2D" parent="Collisions/Stairs/5" unique_id=616321084]
 position = Vector2(161, -181)
 shape = SubResource("RectangleShape2D_0ak7w")
 one_way_collision = true
+one_way_collision_margin = 5.0
 
 [node name="CollisionPolygon2D4" type="CollisionShape2D" parent="Collisions/Stairs/5" unique_id=1855586248]
 position = Vector2(154, -191)
 shape = SubResource("RectangleShape2D_0ak7w")
 one_way_collision = true
+one_way_collision_margin = 5.0
 
 [node name="CollisionPolygon2D5" type="CollisionShape2D" parent="Collisions/Stairs/5" unique_id=47673364]
 position = Vector2(141.0625, -201)
 shape = SubResource("RectangleShape2D_yhbe0")
 one_way_collision = true
+one_way_collision_margin = 5.0
 
 [node name="CollisionPolygon2D6" type="CollisionShape2D" parent="Collisions/Stairs/5" unique_id=896141427]
 position = Vector2(130.03125, -211)
 shape = SubResource("RectangleShape2D_gar2i")
 one_way_collision = true
+one_way_collision_margin = 5.0
 
 [node name="CollisionPolygon2D7" type="CollisionShape2D" parent="Collisions/Stairs/5" unique_id=1983689270]
 position = Vector2(120.515625, -221)
 shape = SubResource("RectangleShape2D_iq2fu")
 one_way_collision = true
+one_way_collision_margin = 5.0
 
 [node name="CollisionPolygon2D8" type="CollisionShape2D" parent="Collisions/Stairs/5" unique_id=473411950]
 position = Vector2(111.25781, -231)
 shape = SubResource("RectangleShape2D_1crxg")
 one_way_collision = true
+one_way_collision_margin = 5.0
 
 [node name="CollisionPolygon2D9" type="CollisionShape2D" parent="Collisions/Stairs/5" unique_id=144677165]
 position = Vector2(105.62891, -241)
 shape = SubResource("RectangleShape2D_4qimt")
 one_way_collision = true
+one_way_collision_margin = 5.0
 
 [node name="CollisionPolygon2D10" type="CollisionShape2D" parent="Collisions/Stairs/5" unique_id=230226933]
 position = Vector2(97.81445, -250)
 shape = SubResource("RectangleShape2D_fc7jp")
 one_way_collision = true
+one_way_collision_margin = 5.0
 
 [node name="CollisionPolygon2D11" type="CollisionShape2D" parent="Collisions/Stairs/5" unique_id=244156678]
 position = Vector2(90, -260)
 shape = SubResource("RectangleShape2D_fc7jp")
 one_way_collision = true
+one_way_collision_margin = 5.0
 
 [editable path="Player"]
