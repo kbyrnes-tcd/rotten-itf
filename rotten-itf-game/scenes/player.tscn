@@ -298,5 +298,5 @@ position = Vector2(-2.5, 38.12503)
 scale = Vector2(0.9999998, 0.9999998)
 shape = SubResource("RectangleShape2D_w2pfo")
 
-[connection signal="area_shape_entered" from="FeetOnVine" to="." method="_feet_area_shape_entered"]
-[connection signal="area_shape_exited" from="FeetOnVine" to="." method="_on_feet_area_shape_exited"]
+[connection signal="body_shape_entered" from="FeetOnVine" to="." method="_feet_area_shape_entered"]
+[connection signal="body_shape_exited" from="FeetOnVine" to="." method="_feet_area_shape_exited"]

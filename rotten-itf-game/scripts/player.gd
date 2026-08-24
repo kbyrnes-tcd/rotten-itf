@@ -104,9 +104,7 @@ func _handle_animation():
 			animated_sprite_2d.animation = "walk_equipped"
 
 var step_target_y := 0.0
-var on_step := false
 func can_step_up() -> bool:
-	on_step = false
 	var collider; var shape_index; var owner_id; var shape_node;
 	for foot in [$StepJumpRayCastL, $StepJumpRayCastR]:
 		#var lorr := foot.name.substr(foot.name.length() - 1, 1)
@@ -116,7 +114,6 @@ func can_step_up() -> bool:
 			owner_id = collider.shape_find_owner(shape_index)
 			shape_node = collider.shape_owner_get_owner(owner_id)
 			if (shape_node is CollisionShape2D or shape_node is CollisionPolygon2D) and shape_node.one_way_collision:
-				on_step = true
 				#print("%s foot is colliding with %s" %[lorr, shape_node.one_way_collision])
 				if step_target_y < foot_marker.global_position.y:
 					step_target_y = foot.get_collision_point().y
@@ -170,9 +167,9 @@ func _handle_movement(delta: float):
 		move_state = MoveState.JUMPING
 		
 	# STEPPING DOWN
-	if not on_vine and Input.is_action_just_pressed("down"):
+	if on_step and Input.is_action_just_pressed("down"):
 		position.y += 5
-	elif not on_vine and Input.is_action_pressed("down") and on_step:
+	elif on_step and Input.is_action_pressed("down"):
 		position.y += 5
 	
 	# OG MOVEMENT
@@ -553,9 +550,12 @@ func update_worm_segments():
 		else:
 			segments[i].color = Color("#292929")
 
-var on_vine := false
-func _feet_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
-	if area.name == "LineArea2D": on_vine = true
-
-func _on_feet_area_shape_exited(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
-	if area.name == "LineArea2D": on_vine = false
+var on_step := false
+func _feet_area_shape_entered(_area_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
+	var shape_node = body.shape_owner_get_owner(body.shape_find_owner(_body_shape_index))
+	if shape_node.one_way_collision: on_step = true
+	
+func _feet_area_shape_exited(_area_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
+	var shape_node = body.shape_owner_get_owner(body.shape_find_owner(_body_shape_index))
+	if shape_node.one_way_collision: on_step = false
+	
