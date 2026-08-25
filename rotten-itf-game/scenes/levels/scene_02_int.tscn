@@ -202,8 +202,4 @@ lio_text = "The Rot has completely consumed this place. "
 position = Vector2(180, 278)
 lio_text = "A wall lantern...I can store glowworms in here."
 
-[node name="LioTrigger4" parent="." unique_id=30029576 instance=ExtResource("7_3aray")]
-position = Vector2(360, 292)
-lio_text = "Press [ to equip lantern and hold SHIFT to clear."
-
 [editable path="Player"]

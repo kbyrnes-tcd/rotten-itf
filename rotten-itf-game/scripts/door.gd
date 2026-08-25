@@ -88,7 +88,6 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		near_door = true
 		player = body
-
 func _on_body_exited(_body: Node2D) -> void:
 	near_door = false
 	player = null

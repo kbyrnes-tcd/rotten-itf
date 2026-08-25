@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cbjeayxkfo08n" path="res://assets/images/env/tower/Part_4_Tower_Draft_v2front.png" id="2_iwol2"]
 [ext_resource type="Resource" uid="uid://bbfb2yem3oxv0" path="res://scripts/inventory_system/player_inventory.tres" id="4_504hx"]
 [ext_resource type="PackedScene" uid="uid://di31qowjleyl4" path="res://scenes/rot_dressing_new.tscn" id="6_h5llc"]
+[ext_resource type="PackedScene" uid="uid://dr3ff06oljyer" path="res://scenes/lio_trigger.tscn" id="9_71lf2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w2pfo"]
 size = Vector2(20, 261.00327)
@@ -938,6 +939,10 @@ collidable = true
 [node name="Line2D4" parent="Rot/5" unique_id=296343922 instance=ExtResource("6_h5llc")]
 points = PackedVector2Array(-5, -549, 6, -542, 23, -537, 26, -522, 40, -509, 56, -503, 71, -508, 85, -499, 95, -488, 106, -486)
 collidable = true
+
+[node name="LioTrigger" parent="." unique_id=110257511 instance=ExtResource("9_71lf2")]
+position = Vector2(-157, 613)
+lio_text = "The path to Persephone’s Alter has been chewed by rot. I will have to forge my own path."
 
 [connection signal="area_shape_entered" from="Player/FeetOnVine" to="Player" method="_feet_area_shape_entered"]
 [connection signal="area_shape_exited" from="Player/FeetOnVine" to="Player" method="_on_feet_area_shape_exited"]

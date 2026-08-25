@@ -54,6 +54,8 @@ var previous_level: String = ""
 static var return_position: Vector2 = Vector2.ZERO
 static var first_rot_shot: bool = false
 static var letter_minigame_complete: bool = false
+static var first_lantern: bool = false
+static var first_worm: bool = false
 
 signal minigame_completed
 var rotten_door = false

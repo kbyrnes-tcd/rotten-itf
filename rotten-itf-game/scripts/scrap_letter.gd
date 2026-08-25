@@ -19,5 +19,5 @@ func _on_body_entered(body: Node2D):
 		if lio:
 			var count = body.inv.count(LETTER_SCRAP)
 			var total = 7  # your total number of scraps
-			lio._show_text(str(count) + "/" + str(total) + " letter scraps collected.", 2.0, 0.5)
+			lio._show_text("A letter scrap. " + str(count) + "/" + str(total) + " letter scraps collected.", 2.0, 0.5)
 		queue_free()
