@@ -18,7 +18,6 @@ var wave_frequency := 0.8
 const ROT_DRESSING = preload("uid://di31qowjleyl4")
 var scene
 func _ready():
-	print(self.get_parent().name)
 	if !cutscene: scene =  GameGlobals.get_current_level_tree()
 
 	# random width, curve, and wave param.s
