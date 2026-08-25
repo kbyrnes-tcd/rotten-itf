@@ -14,7 +14,7 @@ var wave_speed:= 2.0
 var wave_frequency := 0.8
 
 const ROT_DRESSING = preload("uid://di31qowjleyl4")
-@onready var scene =  $"../.."
+@onready var scene =  GameGlobals.get_current_level_tree()
 
 func _ready():
 	# random width, curve, and wave param.s

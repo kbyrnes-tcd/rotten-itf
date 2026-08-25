@@ -9,8 +9,8 @@ var level_prog = [
 	"scene_03", # Altar room,
 	"scene_03_garden", # Mini garden
 	"scene_04", # Chambers
-	"scene05", # Tower
-	"scene06", # P's altar room
+	"scene_05", # Tower
+	"scene_06", # P's altar room
 	"scene_07_underworld"
 ]
 
