@@ -86,7 +86,7 @@ scale = Vector2(5.6987634, 2.1080432)
 shape = SubResource("RectangleShape2D_w2pfo")
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("3_xllsq")]
-position = Vector2(1989.9999, 157)
+position = Vector2(379.99997, 225)
 NORMAL_SPEED = 150.0
 STEP_SPEED = 80.0
 
