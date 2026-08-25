@@ -48,7 +48,7 @@ var letter_ui: Control
 var mid_mg : Node
 var inv_ui : Control
 var running_another_scene : bool = true # for running minigames and etc.
-var pending_start := true
+var pending_start := false
 static var dialogue_done: bool = false
 var previous_level: String = ""
 static var return_position: Vector2 = Vector2.ZERO
@@ -255,18 +255,21 @@ func load_level(level_name: String):
 		play_level_music(level_name)
 
 func get_current_level_tree():
-	if level_root.get_child_count() > 0:
-		return level_root.get_child(0)
+	if level_root:
+		if level_root.get_child_count() > 0:
+			return level_root.get_child(0)
 
 const PERSISTENT_DATA = preload("uid://cfukrntau5ufh")
 func get_current_tree_p_data() -> Node:
-	if level_root.get_child_count() == 0:
-		return null
-	var c_tree := level_root.get_child(0)
-	var p_node := c_tree.find_child("PersistentData", true, false)
-	if not p_node:
-		push_warning("scene %s has no persistent node node inst!" % c_tree.name)
-	return p_node
+	if level_root:
+		if level_root and level_root.get_child_count() == 0:
+			return null
+		var c_tree := level_root.get_child(0)
+		var p_node := c_tree.find_child("PersistentData", true, false)
+		if not p_node:
+			push_warning("scene %s has no persistent node node inst!" % c_tree.name)
+		return p_node
+	return null
 
 #func load_scene(n_scene : PackedScene):
 	#prog_counter+=1

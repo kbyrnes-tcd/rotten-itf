@@ -1,7 +1,9 @@
+#@tool
 extends Line2D
 @onready var line_2d: Line2D = $"."
 @export var collidable := false
 @export var clearable := true
+@export var cutscene := false
 
 var pts = []
 var segments_in_area
@@ -14,9 +16,11 @@ var wave_speed:= 2.0
 var wave_frequency := 0.8
 
 const ROT_DRESSING = preload("uid://di31qowjleyl4")
-@onready var scene =  GameGlobals.get_current_level_tree()
-
+var scene
 func _ready():
+	if !cutscene:
+		scene =  GameGlobals.get_current_level_tree()
+
 	# random width, curve, and wave param.s
 	if width == 7.0: width = randi_range(10,20)
 	wave_strength  = randf_range(1.5, 3.0)
