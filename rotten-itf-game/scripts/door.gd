@@ -12,19 +12,27 @@ extends Area2D
 @export var minigame: GameGlobals.Minigame = GameGlobals.Minigame.MAZE
 @export var blocking_rot: Array[Node2D] = []
 var minigame_solved: bool = false
+var can_def_pass = false
 
 var near_door = false
 var player = null
+
+func _ready() -> void:
+	if GameGlobals.rotten_door == true:
+		can_def_pass = true
 
 enum Minigame { NONE, MAZE, LETTER }
 #var minigame_completion
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	#print(blocking_rot.size())
+
 	if near_door:
-		var can_pass = _check_condtion()
+		var can_pass = _check_condtion() or can_def_pass # if can def pass, will pass...
 		if interact_carat:
 			if can_pass:
 				interact_carat.show_carat()
+			if can_pass and self.name == "DoorToTemple": GameGlobals.rotten_door = true
 			else:
 				interact_carat.hide_carat()
 		if can_pass and Input.is_action_just_pressed("interact"):

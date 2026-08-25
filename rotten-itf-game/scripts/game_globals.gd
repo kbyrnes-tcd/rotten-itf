@@ -55,6 +55,7 @@ static var return_position: Vector2 = Vector2.ZERO
 static var first_rot_shot: bool = false
 
 signal minigame_completed
+var rotten_door = false
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
