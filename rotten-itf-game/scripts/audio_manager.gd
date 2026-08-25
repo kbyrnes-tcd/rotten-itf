@@ -36,6 +36,19 @@ func get_cur_song():
 func get_cur_ambience():
 	return "%s & %s" %[active_ambience.stream.resource_path.get_file().get_basename(), active_ambience.volume_db] if active_ambience!=null else "n/a"
 
+# AUDIO SETTINGS
+func set_master_volume(value: float) -> void:
+	var index := AudioServer.get_bus_index("Master")
+	AudioServer.set_bus_volume_db(index, linear_to_db(value))
+
+func set_music_volume(value: float) -> void:
+	var index := AudioServer.get_bus_index("Music")
+	AudioServer.set_bus_volume_db(index, linear_to_db(value))
+
+func set_sfx_volume(value: float) -> void:
+	var index := AudioServer.get_bus_index("SFX")
+	AudioServer.set_bus_volume_db(index, linear_to_db(value))
+
 func fade(c_tween:Tween, stream:AudioStreamPlayer, start_vol := 0.0, end_vol := 0.0, dur := 0.5, stop_on_end := false):
 	if c_tween:
 		c_tween.kill()
@@ -111,18 +124,23 @@ func decrease_music_vol(amount: float = 15.0, dur: float = 1.5):
 		music_tween = create_tween()
 
 func play_walk_fx() -> void:
-	if !active_walk_fx:
-		active_walk_fx = clips.get_node("WalkFX")
-		active_walk_fx.stream = fx["walk"]
-		var fx_ref = active_walk_fx 
-		walk_tween = await fade(walk_tween, active_walk_fx, -10.0, 0.0, 0.2)
-		if fx_ref:
-			fx_ref.play()
+	if active_walk_fx: return
+	active_walk_fx = clips.get_node("WalkFX")
+	active_walk_fx.stream = fx["walk"]
+	if walk_tween: walk_tween.kill()
+	walk_tween = create_tween()
+	active_walk_fx.volume_db = -10.0
+	active_walk_fx.play()
+	walk_tween.tween_property(active_walk_fx, "volume_db", 0.0, 0.2)
 
 func stop_walk_fx() -> void:
-	if active_walk_fx:
-		walk_tween = await fade(walk_tween, active_walk_fx, 0.0, -10.0, 0.2)
-		active_walk_fx = null
+	if not active_walk_fx: return
+	var fx_ref = active_walk_fx
+	active_walk_fx = null
+	if walk_tween: walk_tween.kill()
+	walk_tween = create_tween()
+	walk_tween.tween_property(fx_ref, "volume_db", -10.0, 0.2)
+	walk_tween.tween_callback(fx_ref.stop)
 
 func play_fx(fx_name: String, from: float = 0.0) -> void:
 	if !active_fx:

@@ -68,7 +68,13 @@ func _on_quit_pressed() -> void:
 
 # SETTINGS
 func _on_volume_silder_value_changed(value: float) -> void:
-	AudioServer.set_bus_volume_db(0, linear_to_db(value))
+	AudioManager.set_master_volume(value)
+
+func _on_music_slider_value_changed(value: float) -> void:
+	AudioManager.set_music_volume(value)
+
+func _on_sfx_slider_value_changed(value: float) -> void:
+	AudioManager.set_sfx_volume(value)
 
 # HELP
 func _on_stuck_pressed() -> void:

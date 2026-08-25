@@ -124,16 +124,22 @@ persephone_alpha = Array[AudioStream]([ExtResource("47_yhs0o"), ExtResource("48_
 [node name="Clips" type="Node" parent="." unique_id=571957435]
 
 [node name="Ambience" type="AudioStreamPlayer" parent="Clips" unique_id=982820113]
+bus = &"Music"
 
 [node name="Music" type="AudioStreamPlayer" parent="Clips" unique_id=498170693]
+bus = &"Music"
 
 [node name="OneShotFX" type="AudioStreamPlayer" parent="Clips" unique_id=1126395305]
 volume_db = -15.0
+bus = &"SFX"
 
 [node name="DialogOneShotFX" type="AudioStreamPlayer" parent="Clips" unique_id=2143466581]
 volume_db = -40.0
+bus = &"SFX"
 
 [node name="LoopFX" type="AudioStreamPlayer" parent="Clips" unique_id=674846746]
 volume_db = -15.0
+bus = &"SFX"
 
 [node name="WalkFX" type="AudioStreamPlayer" parent="Clips" unique_id=671642168]
+bus = &"SFX"

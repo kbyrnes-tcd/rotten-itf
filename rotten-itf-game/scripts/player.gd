@@ -176,6 +176,8 @@ func can_i_jump() -> Dictionary:
 	return jump_data
 
 var is_dropping := false
+var was_walking := false
+
 func _handle_movement(delta: float):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -186,9 +188,13 @@ func _handle_movement(delta: float):
 		
 	if velocity.x > 1 or velocity.x < -1:
 		move_state = MoveState.WALKING
-		AudioManager.play_walk_fx()
+		if not was_walking:
+			AudioManager.play_walk_fx()
+		was_walking = true
 	else:
-		AudioManager.stop_walk_fx()
+		if was_walking:
+			AudioManager.stop_walk_fx()
+		was_walking = false
 		move_state = MoveState.IDLE
 	
 	var jump_state := can_i_jump()
