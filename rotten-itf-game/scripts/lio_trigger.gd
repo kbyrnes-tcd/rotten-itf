@@ -9,6 +9,7 @@ extends Node2D
 @export var seq := false
 @export var seq_text : Array[String]
 @export var hades := false
+@export var fin_lio := false
 var triggered = false
 var body_in_range := false
 var seq_active := false
@@ -17,7 +18,15 @@ var seq_active := false
 func _ready() -> void:
 	$Area2D.body_entered.connect(_on_body_entered)
 	$Area2D.body_exited.connect(_on_body_exited)
-	
+
+	# IF IT'S THE FIN LIO IN MINI ALTAR ROOM, PAUSE, DISPLAY TEXT, AND CUE FIN LEVEL
+	if fin_lio: 
+		var lio = get_tree().get_first_node_in_group("lio_manager")
+		if lio:
+			GameGlobals.pause()
+			await lio.show_sequence(seq_text, display_duration, hades)
+			GameGlobals.load_level("fin")
+
 	# add LIO obj to persistence tracker of c_tree
 	var p_data : PersistentData = GameGlobals.get_current_tree_p_data()
 	if p_data:
@@ -40,6 +49,7 @@ func _process(_delta: float) -> void:
 			#print("pausing game and showing seq...")
 			seq_active = true
 			triggered = true
+			
 			# PAUSE for hades dialog
 			# cue decision AFTER HADES dialog lio is done
 			if hades: GameGlobals.pause()

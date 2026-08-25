@@ -11,7 +11,9 @@ var level_prog = [
 	"scene_04", # Chambers
 	"scene_05", # Tower
 	"scene_06", # P's altar room
-	"scene_07_underworld"
+	"scene_07_underworld",
+	"scene_06_post_switch",
+	"fin"
 ]
 
 var prog_counter := 0
@@ -28,7 +30,8 @@ var audio_prog := {
 	level_prog[8]: {"ambience": "Int_Ambiance", "music": "Temple_Music"}, # P's altar room
 	level_prog[9]: {"ambience": "Underworld_Ambience", "music": "Underworld_Music"}, # Underworld
 	"scene_06_post_switch": {"ambience": "Cutscene_ambi", "music": "Cutscene_music"},
-	"cutscene": {"ambience": "Cutscene_ambi", "music": "Cutscene_music"}
+	"cutscene": {"ambience": "Cutscene_ambi", "music": "Cutscene_music"},
+	"fin": {"ambience": "null", "music": "Outro"}
 }
 
 var cue_decision := false
@@ -51,7 +54,7 @@ var letter_ui: Control
 var mid_mg : Node
 var inv_ui : Control
 var running_another_scene : bool = true # for running minigames and etc.
-var pending_start := false
+var pending_start := true
 static var dialogue_done: bool = false
 var previous_level: String = ""
 static var return_position: Vector2 = Vector2.ZERO
@@ -210,7 +213,6 @@ func load_letter_ui(letter : LetterCopy):
 var game_audio_has_begun := false
 func play_level_music(scene_name : String):
 	var scene_index = level_prog.find(scene_name)
-	#print(scene_index, game_audio_has_begun)
 	if scene_index == 1 and !game_audio_has_begun:
 		game_audio_has_begun = true
 		#print("beginning game now w/ scene %s so gonna play ambi and decrease music vol." %scene_name)
@@ -233,7 +235,7 @@ func unload_level():
 		var pers_data := c_scene.find_child("PersistentData", true, false)
 		if pers_data and c_scene_name != "":
 			persistent_scenes[c_scene_name] = pers_data.save_state()
-		level_root.call_deferred("remove_child", c_scene)
+		level_root.remove_child(c_scene)
 		c_scene.queue_free()
 
 var target_door

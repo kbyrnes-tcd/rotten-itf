@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://cu7rqmvei35it"]
 
 [ext_resource type="Texture2D" uid="uid://ej8ln4a8vxv4" path="res://assets/images/env/tower/Alterback.png" id="1_nho37"]
+[ext_resource type="PackedScene" uid="uid://cfukrntau5ufh" path="res://scenes/levels/persistent_data.tscn" id="1_yngdd"]
 [ext_resource type="Texture2D" uid="uid://u3r1a2e4n302" path="res://assets/images/env/tower/Alterfront.png" id="2_coox1"]
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="3_yngdd"]
 [ext_resource type="PackedScene" uid="uid://dismh7ltsr7nx" path="res://scenes/rot_dressing.tscn" id="4_eujvt"]
 [ext_resource type="Texture2D" uid="uid://oq2dwufi0cro" path="res://assets/images/env/tower/Rotmappng.png" id="5_1awfp"]
+[ext_resource type="PackedScene" uid="uid://dr3ff06oljyer" path="res://scenes/lio_trigger.tscn" id="6_coox1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nbikq"]
 size = Vector2(20, 265.5)
@@ -21,7 +23,9 @@ size = Vector2(1161, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nho37"]
 size = Vector2(20, 71)
 
-[node name="Scene06" type="Node2D" unique_id=311908995]
+[node name="Scene06_post_switch" type="Node2D" unique_id=311908995]
+
+[node name="PersistentData" parent="." unique_id=1117547414 instance=ExtResource("1_yngdd")]
 
 [node name="Background" type="Sprite2D" parent="." unique_id=306356458]
 position = Vector2(473, 187)
@@ -223,6 +227,15 @@ scale = Vector2(0.8, 0.8)
 position = Vector2(0, 25.5)
 scale = Vector2(5.6987634, 2.1080432)
 shape = SubResource("RectangleShape2D_nho37")
+
+[node name="LioSeqTrigger" parent="." unique_id=110257511 instance=ExtResource("6_coox1")]
+position = Vector2(695, 260)
+scale = Vector2(12.2562895, 1.3600024)
+lio_text = ""
+display_duration = 0.1
+seq = true
+seq_text = Array[String](["My Goddess Persephone. It was you. You’ve done this to the world.", "My… my skin. My hands. They’re… rotting.", "No. Never mind that. I need to keep going. I need to stop this, at whatever cost.", "The Yew Tree… Not just a Yew tree. A gate. To the Underworld.", "My Goddess. My sisters. My temple. They must be saved. Avenged. Stopped."])
+fin_lio = true
 
 [connection signal="body_entered" from="TransformToD" to="Player" method="_on_transform_to_d_body_entered"]
 

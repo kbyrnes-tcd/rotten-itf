@@ -31,6 +31,7 @@
 [ext_resource type="AudioStream" uid="uid://cc1ytfoa15lp1" path="res://assets/audio/alphabet/Daphne Alphabet/b.wav" id="21_opu6i"]
 [ext_resource type="AudioStream" uid="uid://dfudextxwouwh" path="res://assets/audio/ambience/Cutscene_music.mp3" id="22_3r3kj"]
 [ext_resource type="AudioStream" uid="uid://ban0fc2du6522" path="res://assets/audio/alphabet/Daphne Alphabet/c.wav" id="22_t2ybr"]
+[ext_resource type="AudioStream" uid="uid://dxov4x5suy61x" path="res://assets/audio/ambience/Outro_Song.wav" id="23_3r3kj"]
 [ext_resource type="AudioStream" uid="uid://ckd87t32q13ct" path="res://assets/audio/alphabet/Daphne Alphabet/d.wav" id="23_cewst"]
 [ext_resource type="AudioStream" uid="uid://daadhgf8syywt" path="res://assets/audio/alphabet/Daphne Alphabet/e.wav" id="24_g5lra"]
 [ext_resource type="AudioStream" uid="uid://dx46omhhtbjcb" path="res://assets/audio/alphabet/Daphne Alphabet/f.wav" id="25_ccetw"]
@@ -111,6 +112,7 @@ music = Dictionary[String, AudioStream]({
 "": null,
 "Altar_Music": ExtResource("18_st500"),
 "Cutscene_music": ExtResource("22_3r3kj"),
+"Outro": ExtResource("23_3r3kj"),
 "Temple_Music": ExtResource("12_opu6i"),
 "Title_Song": ExtResource("18_ypd68"),
 "Underworld_Music": ExtResource("19_st500")
