@@ -124,6 +124,12 @@ func pause(w_menu : bool = false):
 		AudioManager.play_os("ui_open")
 	tree.paused = true
 
+func slow_player():
+	player.NORMAL_SPEED = 125.0
+	
+func speed_player():
+	player.NORMAL_SPEED = 165.0
+
 func unload_mid_minigame():
 	#print("Tryna unload mid mg")
 	AudioManager.decrease_music_vol()
