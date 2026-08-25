@@ -91,19 +91,36 @@ func _physics_process(delta: float):
 	can_step = can_step_up() # for changing speeds correctly
 	_handle_movement(delta)
 	_handle_sprite_direction()
-	
+
+var persephone := false
+var transformed := false
+var transforming := false
 func _handle_animation():
-	if move_state == MoveState.IDLE:
-		if tool_state == ToolState.IDLE:
-			animated_sprite_2d.animation = "idle"
-		else:
-			animated_sprite_2d.animation = "idle_equipped"
-		
-	if move_state == MoveState.WALKING:
-		if tool_state == ToolState.IDLE:
-			animated_sprite_2d.animation = "walk"
-		else:
-			animated_sprite_2d.animation = "walk_equipped"
+	if persephone and !transformed:
+		if transforming: return
+		transforming = true
+		var target_anim := "p_walk" if move_state == MoveState.WALKING else "p_idle"
+		var fade_char := create_tween()
+		fade_char.tween_property(animated_sprite_2d, "modulate:a", 0.0, 1.0) # fade out daphne
+		fade_char.tween_callback(func(): animated_sprite_2d.animation = target_anim) # change to P
+		fade_char.tween_property(animated_sprite_2d, "modulate:a", 1.0, 1.0) # fade in P
+		await fade_char.finished
+		transformed = true; transforming = false
+		return
+	if transformed:
+		animated_sprite_2d.animation = "p_walk" if move_state == MoveState.WALKING else "p_idle"
+	else:
+		if move_state == MoveState.IDLE:
+			if tool_state == ToolState.IDLE:
+				animated_sprite_2d.animation = "idle"
+			else:
+				animated_sprite_2d.animation = "idle_equipped"
+			
+		if move_state == MoveState.WALKING:
+			if tool_state == ToolState.IDLE:
+				animated_sprite_2d.animation = "walk"
+			else:
+				animated_sprite_2d.animation = "walk_equipped"
 
 var step_target_y := 0.0
 func can_step_up() -> bool:
@@ -605,3 +622,8 @@ func _feet_area_shape_exited(_area_rid: RID, body: Node2D, body_shape_index: int
 	var shape_node = body.shape_owner_get_owner(owner_id)
 	if shape_node and shape_node.one_way_collision:
 		on_step = false
+
+func _on_transform_to_p_body_entered(body: Node2D) -> void:
+	# when player enters transform to Persephone area in underworld scene
+	if body.name == "Player" and !persephone:
+		persephone = true

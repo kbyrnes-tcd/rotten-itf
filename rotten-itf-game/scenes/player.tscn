@@ -16,9 +16,12 @@
 [ext_resource type="Texture2D" uid="uid://wep2bsh4p35l" path="res://assets/images/player/daphne_animations/idle_equipped/EQ5.png" id="13_2dvfe"]
 [ext_resource type="Texture2D" uid="uid://cilx16rhw60ob" path="res://assets/images/player/daphne_animations/idle_equipped/EQ6.png" id="14_giy8y"]
 [ext_resource type="Texture2D" uid="uid://cudb3q783nbxo" path="res://assets/images/player/daphne_animations/walk/1.png" id="15_hax0n"]
+[ext_resource type="Texture2D" uid="uid://bo3i4vhwi6d67" path="res://assets/images/player/persephone/Standing.png" id="16_bj30b"]
 [ext_resource type="Texture2D" uid="uid://2n6fas4itnh1" path="res://assets/images/player/daphne_animations/walk/2.png" id="16_t4otl"]
 [ext_resource type="Texture2D" uid="uid://bug3m02g3od5q" path="res://assets/images/player/daphne_animations/walk/3.png" id="17_j2b1d"]
+[ext_resource type="Texture2D" uid="uid://b2kagv2dpy1ac" path="res://assets/images/player/persephone/Pwalk1.png" id="17_jc3p3"]
 [ext_resource type="Texture2D" uid="uid://p3q56gns4gre" path="res://assets/images/player/daphne_animations/walk/4.png" id="18_cs1tg"]
+[ext_resource type="Texture2D" uid="uid://duwn84onuvavq" path="res://assets/images/player/persephone/Pwalk2.png" id="18_hax0n"]
 [ext_resource type="Texture2D" uid="uid://d368i2i7y0gf8" path="res://assets/images/player/daphne_animations/walk/5.png" id="19_2dvfe"]
 [ext_resource type="Texture2D" uid="uid://cumkiail4jkws" path="res://assets/images/player/daphne_animations/walk/6.png" id="20_giy8y"]
 [ext_resource type="Texture2D" uid="uid://dtb51xdfxpbet" path="res://assets/images/player/daphne_animations/walk/7.png" id="21_fdfoy"]
@@ -91,6 +94,25 @@ animations = [{
 "loop": 1,
 "name": &"jump",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_bj30b")
+}],
+"loop": 1,
+"name": &"p_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_jc3p3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_hax0n")
+}],
+"loop": 1,
+"name": &"p_walk",
+"speed": 4.5
 }, {
 "frames": [{
 "duration": 1.0,
@@ -186,7 +208,7 @@ shape = SubResource("RectangleShape2D_whljo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterSprites" unique_id=512896578]
 sprite_frames = SubResource("SpriteFrames_6adnx")
-animation = &"walk_equipped"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="Lantern" type="Node2D" parent="CharacterSprites" unique_id=964616978]
