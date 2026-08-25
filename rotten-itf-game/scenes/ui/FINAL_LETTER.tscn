@@ -1,0 +1,200 @@
+[gd_scene format=3 uid="uid://dodlr2dpiwmek"]
+
+[ext_resource type="Script" uid="uid://bbxrywubuc2iq" path="res://scripts/final_letter.gd" id="1_2gbn3"]
+[ext_resource type="Texture2D" uid="uid://necrl1diw74g" path="res://assets/images/minigames/constellation/Decoder_Background.png" id="1_iaw2m"]
+[ext_resource type="Texture2D" uid="uid://ertioryfears" path="res://assets/images/minigames/constellation/Decoder_text_sq.png" id="2_11aph"]
+[ext_resource type="FontFile" uid="uid://3u1i6waxj8qa" path="res://assets/fonts/HyperlegibleSans-Bold.ttf" id="3_5h2n7"]
+[ext_resource type="FontFile" uid="uid://k624ytk385ty" path="res://assets/fonts/HomemadeApple-Regular.ttf" id="3_6i1t4"]
+
+[node name="FinalLetter" type="Control" unique_id=833408083]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2gbn3")
+
+[node name="Background" type="ColorRect" parent="." unique_id=299904539]
+layout_mode = 0
+offset_right = 481.0
+offset_bottom = 272.0
+color = Color(0.06666667, 0.06666667, 0.06666667, 0.6862745)
+
+[node name="LetterSide" type="TextureRect" parent="." unique_id=623510625]
+layout_mode = 0
+offset_top = -4.0
+offset_right = 278.0
+offset_bottom = 268.0
+texture = ExtResource("1_iaw2m")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="GapBefore" type="Label" parent="LetterSide" unique_id=1412102220]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 48.0
+offset_right = 214.0
+offset_bottom = 87.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_6i1t4")
+theme_override_font_sizes/font_size = 10
+autowrap_mode = 2
+
+[node name="GapImage" type="TextureRect" parent="LetterSide" unique_id=846600037]
+layout_mode = 0
+offset_left = 114.0
+offset_top = 99.0
+offset_right = 160.0
+offset_bottom = 144.0
+stretch_mode = 5
+
+[node name="GapAfter" type="Label" parent="LetterSide" unique_id=801638267]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 167.0
+offset_right = 241.0
+offset_bottom = 222.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_6i1t4")
+theme_override_font_sizes/font_size = 9
+autowrap_mode = 2
+
+[node name="CompletedLetter" type="RichTextLabel" parent="LetterSide" unique_id=1096008897]
+layout_mode = 1
+offset_left = 40.0
+offset_top = 41.0
+offset_right = 237.0
+offset_bottom = 240.0
+theme_override_fonts/normal_font = ExtResource("3_6i1t4")
+theme_override_font_sizes/normal_font_size = 6
+bbcode_enabled = true
+autowrap_mode = 2
+
+[node name="OptionsSide" type="GridContainer" parent="." unique_id=2004580034]
+layout_mode = 0
+offset_left = 257.0
+offset_top = -6.0
+offset_right = 457.0
+offset_bottom = 281.0
+columns = 2
+
+[node name="Btn_0" type="TextureButton" parent="OptionsSide" unique_id=1384144294]
+layout_mode = 2
+texture_normal = ExtResource("2_11aph")
+ignore_texture_size = true
+
+[node name="Something" type="Label" parent="OptionsSide/Btn_0" unique_id=1722913380]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_5h2n7")
+theme_override_font_sizes/font_size = 8
+text = "SOMETHING"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Btn_1" type="TextureButton" parent="OptionsSide" unique_id=681191856]
+layout_mode = 2
+texture_normal = ExtResource("2_11aph")
+
+[node name="is" type="Label" parent="OptionsSide/Btn_1" unique_id=635468827]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_5h2n7")
+theme_override_font_sizes/font_size = 11
+text = "IS"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Btn_2" type="TextureButton" parent="OptionsSide" unique_id=1429998751]
+layout_mode = 2
+texture_normal = ExtResource("2_11aph")
+
+[node name="wrong" type="Label" parent="OptionsSide/Btn_2" unique_id=1500362410]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_5h2n7")
+theme_override_font_sizes/font_size = 11
+text = "WRONG"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Btn_3" type="TextureButton" parent="OptionsSide" unique_id=336875012]
+layout_mode = 2
+texture_normal = ExtResource("2_11aph")
+
+[node name="with" type="Label" parent="OptionsSide/Btn_3" unique_id=2037460945]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_5h2n7")
+theme_override_font_sizes/font_size = 12
+text = "WITH"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Btn_4" type="TextureButton" parent="OptionsSide" unique_id=39004455]
+layout_mode = 2
+texture_normal = ExtResource("2_11aph")
+
+[node name="Hades" type="Label" parent="OptionsSide/Btn_4" unique_id=951827831]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_5h2n7")
+theme_override_font_sizes/font_size = 11
+text = "HADES"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="FeedbackLabel" type="Label" parent="." unique_id=1552213719]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 245.0
+offset_right = 168.0
+offset_bottom = 268.0
+theme_override_font_sizes/font_size = 10
+
+[node name="ContinueButton" type="Button" parent="." unique_id=230650208]
+layout_mode = 0
+offset_left = 377.0
+offset_top = 179.0
+offset_right = 426.0
+offset_bottom = 196.0
+theme_override_fonts/font = ExtResource("3_5h2n7")
+theme_override_font_sizes/font_size = 7
+text = "Continue"
+
+[node name="Instructions" type="Label" parent="." unique_id=289679985]
+layout_mode = 0
+offset_left = 377.0
+offset_top = 201.0
+offset_right = 460.0
+offset_bottom = 255.0
+theme_override_fonts/font = ExtResource("3_5h2n7")
+theme_override_font_sizes/font_size = 6
+text = "*Decode the letter by matching each constellation to its meaning."
+autowrap_mode = 2
