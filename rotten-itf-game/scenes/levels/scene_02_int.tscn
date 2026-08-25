@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cg75k4w0pepcp"]
 
+[ext_resource type="PackedScene" uid="uid://cfukrntau5ufh" path="res://scenes/levels/persistent_data.tscn" id="1_4muw5"]
 [ext_resource type="PackedScene" uid="uid://cmf6u7sxq43iy" path="res://scenes/lighting/interior_lighting.tscn" id="1_21y6y"]
 [ext_resource type="Texture2D" uid="uid://dgwjnqq4radaq" path="res://assets/images/env/p2_garden_ext/RITF_Gardenbackrot.png" id="1_yrcn3"]
 [ext_resource type="Texture2D" uid="uid://82nd5g871vsq" path="res://assets/images/env/p2_garden_int/Part_2_Interior_Final.png" id="2_4muw5"]
@@ -25,6 +26,9 @@ size = Vector2(2596, 55.5)
 size = Vector2(2596, 55.5)
 
 [node name="Scene_02_int" type="Node2D" unique_id=358721782]
+
+[node name="PersistentData" parent="." unique_id=1117547414 node_paths=PackedStringArray("objects") instance=ExtResource("1_4muw5")]
+objects = [NodePath("../LanternPickup")]
 
 [node name="Environment" type="Node2D" parent="." unique_id=1527416479]
 position = Vector2(2025, 215)
@@ -152,6 +156,7 @@ next_scene_path = "scene_01"
 door_id = "DoorCrackBackToExt"
 twin_id = "DoorToGardenInt"
 interact_carat = NodePath("../InteractiveCarets/InteractiveCarat")
+crack = true
 
 [node name="DoorToGardenExt" parent="." unique_id=1160326856 node_paths=PackedStringArray("interact_carat") instance=ExtResource("5_oleyw")]
 position = Vector2(2339.0002, 245.00002)
@@ -161,7 +166,7 @@ door_id = "DoorToGardenExt"
 twin_id = "DoorBackToGardenInt"
 interact_carat = NodePath("../InteractiveCarets/InteractiveCarat2")
 
-[node name="DoorToTemple" parent="." unique_id=763266512 node_paths=PackedStringArray("interact_carat") instance=ExtResource("5_oleyw")]
+[node name="DoorToTemple" parent="." unique_id=763266512 node_paths=PackedStringArray("interact_carat", "blocking_rot") instance=ExtResource("5_oleyw")]
 position = Vector2(849.00006, 245)
 scale = Vector2(2.544, 4.656)
 next_scene_path = "scene_03"
@@ -170,6 +175,7 @@ twin_id = "DoorToTemple"
 required_item = ExtResource("10_4muw5")
 required_amount = 1
 interact_carat = NodePath("../InteractiveCarets/InteractiveCarat3")
+blocking_rot = [NodePath("../RotOnDoor/Line2D2"), NodePath("../RotOnDoor/Line2D"), NodePath("../RotOnDoor/Line2D3"), NodePath("../RotOnDoor/Line2D4"), NodePath("../RotOnDoor/Line2D5")]
 
 [node name="InteriorLighting" parent="." unique_id=1496110895 instance=ExtResource("1_21y6y")]
 
@@ -183,5 +189,21 @@ position = Vector2(2336, 157)
 
 [node name="InteractiveCarat3" parent="InteractiveCarets" unique_id=2010505656 instance=ExtResource("6_5expv")]
 position = Vector2(848, 153)
+
+[node name="LioTrigger" parent="." unique_id=406987748 instance=ExtResource("7_3aray")]
+position = Vector2(803, 296)
+lio_text = "Oh, Goddess…"
+
+[node name="LioTrigger2" parent="." unique_id=354651510 instance=ExtResource("7_3aray")]
+position = Vector2(1617, 227)
+lio_text = "The Rot has completely consumed this place. "
+
+[node name="LioTrigger3" parent="." unique_id=1598788917 instance=ExtResource("7_3aray")]
+position = Vector2(180, 278)
+lio_text = "A wall lantern...I can store glowworms in here."
+
+[node name="LioTrigger4" parent="." unique_id=30029576 instance=ExtResource("7_3aray")]
+position = Vector2(360, 292)
+lio_text = "Press [ to equip lantern and hold SHIFT to clear."
 
 [editable path="Player"]

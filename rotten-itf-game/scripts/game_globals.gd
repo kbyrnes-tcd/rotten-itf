@@ -55,6 +55,7 @@ static var return_position: Vector2 = Vector2.ZERO
 static var first_rot_shot: bool = false
 
 signal minigame_completed
+var rotten_door = false
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -135,10 +136,17 @@ func unload_mid_minigame():
 	mg_root.get_child(0).visible = false
 	return
 
+#enum Minigame { NONE, MAZE, LETTER }
+var minigame_completion := {
+	Minigame.MAZE: false,
+	Minigame.LETTER: false,
+	}
+
 func unload_minigame():
 	print("player has won, unloading fr")
 	AudioManager.play_os_from_arr("win")
 	AudioManager.decrease_music_vol()
+	minigame_completion[current_mg] = true
 	current_mg = Minigame.NONE
 	resume(false)
 	# unload mg_root child from tree
@@ -190,25 +198,34 @@ func load_letter_ui(letter : LetterCopy):
 	letter_ui.visible = true
 	letter_ui.set_label(letter.copy)
 
-func unload_level():
-	if level_root.get_child_count() > 0:
-		# detach door node to keep it
-		level_root.get_child(0).queue_free()
-
 var game_audio_has_begun := false
 func play_level_music(scene_name : String):
 	var scene_index = level_prog.find(scene_name)
-	print(scene_index, game_audio_has_begun)
+	#print(scene_index, game_audio_has_begun)
 	if scene_index == 1 and !game_audio_has_begun:
 		game_audio_has_begun = true
-		print("beginning game now w/ scene %s so gonna play ambi and decrease music vol." %scene_name)
+		#print("beginning game now w/ scene %s so gonna play ambi and decrease music vol." %scene_name)
 		AudioManager.play_ambience(audio_prog[scene_name].ambience)
 		AudioManager.decrease_music_vol(30)
 		AudioManager.change_music(audio_prog[scene_name].music)
 	elif scene_index > 1 and game_audio_has_begun:
-		print("keep continue henceforth changing music n ambi")
+		#print("keep continue henceforth changing music n ambi")
 		AudioManager.change_ambience(audio_prog[scene_name].ambience)
 		AudioManager.change_music(audio_prog[scene_name].music)
+
+# persistent LOAD AND UNLOADDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+# dict for storing persisted versions of scenes, i.e. if a scene has been manipulated by player, 
+# it will be added here and loaded with the saved state next time it gets added to the tree
+var persistent_scenes : Dictionary = {} 
+func unload_level():
+	if level_root.get_child_count() > 0:
+		var c_scene : Node = level_root.get_child(0)
+		var c_scene_name := c_scene.name.to_lower()
+		var pers_data := c_scene.find_child("PersistentData", true, false)
+		if pers_data and c_scene_name != "":
+			persistent_scenes[c_scene_name] = pers_data.save_state()
+		level_root.call_deferred("remove_child", c_scene)
+		c_scene.queue_free()
 
 var target_door
 func load_level(level_name: String):
@@ -218,7 +235,11 @@ func load_level(level_name: String):
 	var n_scene : PackedScene = load(path)
 	var scene_node : Node = n_scene.instantiate()
 	if (n_scene):
-		level_root.add_child(scene_node)
+		level_root.call_deferred("add_child", scene_node) 
+		if persistent_scenes.has(level_name):
+			var pers_data : PersistentData = scene_node.find_child("PersistentData", true, false)
+			if pers_data: pers_data.load_state.call_deferred(persistent_scenes[level_name])
+
 		player = scene_node.find_child("Player")
 		if pending_spawn_door_id != "":
 			target_door = scene_node.find_child(pending_spawn_door_id)
@@ -226,6 +247,20 @@ func load_level(level_name: String):
 			player.global_position = target_door.global_position + Vector2(50, 0)
 		pending_spawn_door_id = ""
 		play_level_music(level_name)
+
+func get_current_level_tree():
+	if level_root.get_child_count() > 0:
+		return level_root.get_child(0)
+
+const PERSISTENT_DATA = preload("uid://cfukrntau5ufh")
+func get_current_tree_p_data() -> Node:
+	if level_root.get_child_count() == 0:
+		return null
+	var c_tree := level_root.get_child(0)
+	var p_node := c_tree.find_child("PersistentData", true, false)
+	if not p_node:
+		push_warning("scene %s has no persistent node node inst!" % c_tree.name)
+	return p_node
 
 #func load_scene(n_scene : PackedScene):
 	#prog_counter+=1
