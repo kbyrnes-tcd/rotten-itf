@@ -25,7 +25,7 @@ func _show_text(text: String, duration: float = 3.5, fade: float = 1.0, seq := f
 		current_tween.kill()
 
 	label.text = text
-	if hades: label.set("theme_override_colors/font_color", Color("959c6cff"))
+	if hades: label.set("theme_override_colors/font_color", Color("bbc294ff"))
 	else:  label.set("theme_override_colors/font_color", Color("ffffffff"))
 	label.modulate.a = 1.0
 	current_tween = create_tween()
