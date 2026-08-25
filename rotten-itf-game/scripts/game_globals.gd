@@ -26,9 +26,11 @@ var audio_prog := {
 	level_prog[6]: {"ambience": "Int_Ambiance", "music": "Temple_Music"}, # Chambers
 	level_prog[7]: {"ambience": "Int_Ambiance", "music": "Temple_Music"}, # Tower
 	level_prog[8]: {"ambience": "Int_Ambiance", "music": "Temple_Music"}, # P's altar room
-	level_prog[9]: {"ambience": "Underworld_Ambience", "music": "Underworld_Music"} # Underworld
+	level_prog[9]: {"ambience": "Underworld_Ambience", "music": "Underworld_Music"}, # Underworld
+	"cutscene": {"ambience": "Cutscene_ambi", "music": "Cutscene_music"}
 }
 
+var cue_decision := false
 var prev_scene : String
 var pending_spawn_door_id: String = ""
 

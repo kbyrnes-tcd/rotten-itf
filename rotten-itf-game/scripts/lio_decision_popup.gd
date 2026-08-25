@@ -25,10 +25,19 @@ func show_buttons():
 
 func _on_button_pressed() -> void:
 	decision_made = true
-	print("cue cutscene")
+	cutscene()
 	clear()
+
+func cutscene():
+	var transition_manager = get_tree().get_first_node_in_group("transition_manager")
+	if transition_manager and transition_manager.get_child(0):
+		await transition_manager.play_rot_cutscene()
+		print("change back to above ground!")
 
 func clear():
 	var out_tween = create_tween()
-	await out_tween.tween_property(dark_frame, "modulate:a", 0.0, 1.0).finished
+	out_tween.tween_property(dark_frame, "modulate:a", 0.0, 0.5)
+	out_tween.tween_property(button, "modulate:a", 0.0, 0.5)
+	out_tween.tween_property(button_2, "modulate:a", 0.0, 0.5)
+	await out_tween.finished
 	self.visible = false

@@ -23,11 +23,13 @@
 [ext_resource type="AudioStream" uid="uid://6tadeq0h04w8" path="res://assets/audio/fx/RITF_Minigame_Win (5).mp3" id="13_m1k83"]
 [ext_resource type="AudioStream" uid="uid://dgdqmsms7tfes" path="res://assets/audio/fx/RITF_Minigame_Win (6).mp3" id="14_2y5yn"]
 [ext_resource type="AudioStream" uid="uid://frxt7n6wwrup" path="res://assets/audio/ambience/Underworld_Ambience.mp3" id="16_hk38w"]
+[ext_resource type="AudioStream" uid="uid://dkjm0h35vftu" path="res://assets/audio/ambience/Cutscene_ambi.mp3" id="17_qswim"]
 [ext_resource type="AudioStream" uid="uid://1fax1ov54mry" path="res://assets/audio/ambience/Altar_Music_2.mp3" id="18_st500"]
 [ext_resource type="AudioStream" uid="uid://rvtw7indd10s" path="res://assets/audio/ambience/Title_Song.wav" id="18_ypd68"]
 [ext_resource type="AudioStream" uid="uid://buqurf5do3yh7" path="res://assets/audio/ambience/Underworld_Music.mp3" id="19_st500"]
 [ext_resource type="AudioStream" uid="uid://032y4navgxdq" path="res://assets/audio/alphabet/Daphne Alphabet/a.wav" id="20_sa6p2"]
 [ext_resource type="AudioStream" uid="uid://cc1ytfoa15lp1" path="res://assets/audio/alphabet/Daphne Alphabet/b.wav" id="21_opu6i"]
+[ext_resource type="AudioStream" uid="uid://dfudextxwouwh" path="res://assets/audio/ambience/Cutscene_music.mp3" id="22_3r3kj"]
 [ext_resource type="AudioStream" uid="uid://ban0fc2du6522" path="res://assets/audio/alphabet/Daphne Alphabet/c.wav" id="22_t2ybr"]
 [ext_resource type="AudioStream" uid="uid://ckd87t32q13ct" path="res://assets/audio/alphabet/Daphne Alphabet/d.wav" id="23_cewst"]
 [ext_resource type="AudioStream" uid="uid://daadhgf8syywt" path="res://assets/audio/alphabet/Daphne Alphabet/e.wav" id="24_g5lra"]
@@ -99,6 +101,7 @@ fx = Dictionary[String, AudioStream]({
 "walk": ExtResource("2_ujhup")
 })
 ambiences = Dictionary[String, AudioStream]({
+"Cutscene_ambi": ExtResource("17_qswim"),
 "Ext_Ambiance": ExtResource("9_ladlq"),
 "Garden_Ambience": ExtResource("11_sa6p2"),
 "Int_Ambiance": ExtResource("10_ku15p"),
@@ -107,6 +110,7 @@ ambiences = Dictionary[String, AudioStream]({
 music = Dictionary[String, AudioStream]({
 "": null,
 "Altar_Music": ExtResource("18_st500"),
+"Cutscene_music": ExtResource("22_3r3kj"),
 "Temple_Music": ExtResource("12_opu6i"),
 "Title_Song": ExtResource("18_ypd68"),
 "Underworld_Music": ExtResource("19_st500")

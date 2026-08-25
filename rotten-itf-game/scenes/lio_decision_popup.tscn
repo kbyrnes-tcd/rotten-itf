@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://3u1i6waxj8qa" path="res://assets/fonts/HyperlegibleSans-Bold.ttf" id="3_4oc3g"]
 
 [node name="LioDecisionPopup" type="CanvasLayer" unique_id=1750883624]
+layer = 5
 script = ExtResource("1_ujegf")
 
 [node name="DarkFrame" type="TextureRect" parent="." unique_id=882128781]

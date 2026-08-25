@@ -25,7 +25,9 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if seq and body_in_range and not seq_active and Input.is_action_just_pressed("interact"):
-		#print("in seq and pressed E!")
+		if hades:
+			AudioManager.change_ambience(GameGlobals.audio_prog["cutscene"].ambience)
+			AudioManager.change_music(GameGlobals.audio_prog["cutscene"].music)
 		if show_once and triggered:
 			#print("already showed one_shot lio")
 			queue_free()
@@ -40,6 +42,7 @@ func _process(_delta: float) -> void:
 			triggered = true
 			GameGlobals.slow_player()
 			await lio.show_sequence(seq_text, display_duration, hades)
+			if hades: GameGlobals.cue_decision = true # cue dec AFTER HADES dialog lio is done
 			GameGlobals.speed_player()
 			queue_free()
 

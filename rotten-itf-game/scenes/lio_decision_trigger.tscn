@@ -2,14 +2,5 @@
 
 [ext_resource type="Script" uid="uid://itiqivtdwr8j" path="res://scripts/lio_decision_trigger.gd" id="1_tlej1"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gsj5c"]
-size = Vector2(20, 139)
-
 [node name="LioDECTrigger" type="Node2D" unique_id=110257511]
 script = ExtResource("1_tlej1")
-
-[node name="Area2D" type="Area2D" parent="." unique_id=571236149]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=885604948]
-position = Vector2(0, -59.5)
-shape = SubResource("RectangleShape2D_gsj5c")

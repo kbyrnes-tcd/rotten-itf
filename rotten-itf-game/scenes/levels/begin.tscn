@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cbfg68hgjmgis" path="res://scenes/lio_popup.tscn" id="8_68t1h"]
 [ext_resource type="PackedScene" uid="uid://dtf7n0o1f301e" path="res://scenes/ui/dialogue_textbox.tscn" id="9_y13p6"]
 [ext_resource type="PackedScene" uid="uid://c7rxunihwtiiw" path="res://scenes/lio_decision_popup.tscn" id="10_q10y1"]
+[ext_resource type="Script" uid="uid://dpdxlmsug81a7" path="res://scripts/transition_mgr.gd" id="12_iocrw"]
 [ext_resource type="PackedScene" uid="uid://bf03ldxkkby4m" path="res://scenes/levels/rot_cutscene.tscn" id="12_jm4ic"]
 
 [node name="Essentials" type="Node2D" unique_id=1446151240]
@@ -100,11 +101,16 @@ visible = false
 
 [node name="Textbox" parent="UI" unique_id=424906784 groups=["dialogue_manager"] instance=ExtResource("9_y13p6")]
 
-[node name="RotCutscene" parent="." unique_id=2043824587 instance=ExtResource("12_jm4ic")]
-visible = false
-
 [node name="World" type="Node2D" parent="." unique_id=1061914356]
 
 [node name="LevelRoot" type="Node2D" parent="World" unique_id=676028835]
 
+[node name="Transition" type="CanvasLayer" parent="." unique_id=723422040 groups=["transition_manager"]]
+process_mode = 3
+script = ExtResource("12_iocrw")
+
+[node name="RotCutscene" parent="Transition" unique_id=1926023861 instance=ExtResource("12_jm4ic")]
+visible = false
+
 [editable path="UI/PauseMenu"]
+[editable path="Transition/RotCutscene"]

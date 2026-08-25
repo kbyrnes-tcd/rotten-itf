@@ -224,6 +224,102 @@ tracks/17/keys = {
 "update": 0,
 "values": [Color(0.101960786, 0.0627451, 0.09411765, 0), Color(0.10365266, 0.062903, 0.095919825, 1)]
 }
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Line2D:default_color")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0, 8.0964),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.93333334, 1, 0.93333334, 0), Color(0.93333334, 1, 0.93333334, 0.7176471)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Line2D2:default_color")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0, 8.0964),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.93333334, 1, 0.93333334, 0), Color(0.93333334, 1, 0.93333334, 0.7176471)]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Line2D3:default_color")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0, 8.0964),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.93333334, 1, 0.93333334, 0), Color(0.93333334, 1, 0.93333334, 0.7176471)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Line2D4:default_color")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0, 8.0964),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.93333334, 1, 0.93333334, 0), Color(0.93333334, 1, 0.93333334, 0.7176471)]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("Line2D5:default_color")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0, 8.0964),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.93333334, 1, 0.93333334, 0), Color(0.93333334, 1, 0.93333334, 0.7176471)]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("Line2D6:default_color")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0, 8.0964),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.93333334, 1, 0.93333334, 0), Color(0.93333334, 1, 0.93333334, 0.7176471)]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("Line2D7:default_color")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0, 8.0964),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.93333334, 1, 0.93333334, 0), Color(0.93333334, 1, 0.93333334, 0.7176471)]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("Line2D8:default_color")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0, 8.0964),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.93333334, 1, 0.93333334, 0), Color(0.93333334, 1, 0.93333334, 0.7176471)]
+}
 
 [sub_resource type="Animation" id="Animation_s4ab0"]
 resource_name = "rot_cutscene"
@@ -236,11 +332,14 @@ _data = {
 &"rot_cutscene": SubResource("Animation_s4ab0")
 }
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_62mml"]
+load_path = "res://.godot/imported/Rot-V2-Single.PNG-abae580316bb24344593e6a82f5d4743.ctex"
+
 [node name="RotCutscene" type="CanvasLayer" unique_id=1926023861]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1407291180]
 libraries/ = SubResource("AnimationLibrary_l5i3s")
-speed_scale = 4.0
+speed_scale = 2.5
 
 [node name="Line2D" parent="." unique_id=1590463200 instance=ExtResource("1_62mml")]
 position = Vector2(13.000008, 270.00003)
@@ -248,6 +347,8 @@ rotation = -1.8325958
 points = PackedVector2Array(2.2655604, -8.177147, 33.929363, 3.2084224, 58.04458, 19.94156)
 width = 18.0
 width_curve = SubResource("Curve_62mml")
+default_color = Color(0.93333334, 1, 0.93333334, 0)
+texture = SubResource("CompressedTexture2D_62mml")
 cutscene = true
 
 [node name="Line2D2" parent="." unique_id=1560338529 instance=ExtResource("1_62mml")]
@@ -257,6 +358,8 @@ scale = Vector2(1, -1.820503)
 points = PackedVector2Array(2.2655604, -8.177147, 33.929363, 3.2084224, 58.04458, 19.94156)
 width = 18.0
 width_curve = SubResource("Curve_62mml")
+default_color = Color(0.93333334, 1, 0.93333334, 0)
+texture = SubResource("CompressedTexture2D_62mml")
 cutscene = true
 
 [node name="Line2D3" parent="." unique_id=1521949185 instance=ExtResource("1_62mml")]
@@ -266,6 +369,8 @@ scale = Vector2(0.99999994, -1.820503)
 points = PackedVector2Array(2.2655604, -8.177147, 33.929363, 3.2084224, 58.04458, 19.94156)
 width = 18.0
 width_curve = SubResource("Curve_62mml")
+default_color = Color(0.93333334, 1, 0.93333334, 0)
+texture = SubResource("CompressedTexture2D_62mml")
 cutscene = true
 
 [node name="Line2D4" parent="." unique_id=167246391 instance=ExtResource("1_62mml")]
@@ -275,6 +380,8 @@ scale = Vector2(0.99999994, -1.820503)
 points = PackedVector2Array(2.2655604, -8.177147, 33.929363, 3.2084224, 58.04458, 19.94156)
 width = 18.0
 width_curve = SubResource("Curve_62mml")
+default_color = Color(0.93333334, 1, 0.93333334, 0)
+texture = SubResource("CompressedTexture2D_62mml")
 cutscene = true
 
 [node name="Line2D5" parent="." unique_id=676279896 instance=ExtResource("1_62mml")]
@@ -284,6 +391,8 @@ scale = Vector2(0.99999994, -1.820503)
 points = PackedVector2Array(2.2655604, -8.177147, 33.929363, 3.2084224, 58.04458, 19.94156)
 width = 18.0
 width_curve = SubResource("Curve_62mml")
+default_color = Color(0.93333334, 1, 0.93333334, 0)
+texture = SubResource("CompressedTexture2D_62mml")
 cutscene = true
 
 [node name="Line2D6" parent="." unique_id=719171257 instance=ExtResource("1_62mml")]
@@ -293,6 +402,8 @@ scale = Vector2(0.99999994, 1.9794968)
 points = PackedVector2Array(2.2655604, -8.177147, 53.64357, 12.3032, 75.6604, 17.50357)
 width = 15.0
 width_curve = SubResource("Curve_62mml")
+default_color = Color(0.93333334, 1, 0.93333334, 0)
+texture = SubResource("CompressedTexture2D_62mml")
 cutscene = true
 
 [node name="Line2D7" parent="." unique_id=859321804 instance=ExtResource("1_62mml")]
@@ -302,6 +413,8 @@ scale = Vector2(0.99999994, 1.9794968)
 points = PackedVector2Array()
 width = 15.0
 width_curve = SubResource("Curve_62mml")
+default_color = Color(0.93333334, 1, 0.93333334, 0)
+texture = SubResource("CompressedTexture2D_62mml")
 cutscene = true
 
 [node name="Line2D8" parent="." unique_id=1627745167 instance=ExtResource("1_62mml")]
@@ -311,6 +424,8 @@ scale = Vector2(0.99999994, -1.9400513)
 points = PackedVector2Array()
 width = 15.0
 width_curve = SubResource("Curve_62mml")
+default_color = Color(0.93333334, 1, 0.93333334, 0)
+texture = SubResource("CompressedTexture2D_62mml")
 cutscene = true
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1798368155]

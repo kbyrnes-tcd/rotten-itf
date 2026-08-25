@@ -86,7 +86,7 @@ scale = Vector2(5.6987634, 2.1080432)
 shape = SubResource("RectangleShape2D_w2pfo")
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("3_xllsq")]
-position = Vector2(2595, 157)
+position = Vector2(1989.9999, 157)
 NORMAL_SPEED = 150.0
 STEP_SPEED = 80.0
 
@@ -212,13 +212,13 @@ unlocked_carat = true
 scale = Vector2(1.9600098, 1.6)
 
 [node name="LioPreOffice" parent="LIOs" unique_id=1477949584 instance=ExtResource("9_0as34")]
-position = Vector2(1829, 260)
+position = Vector2(1819, 261)
 scale = Vector2(2.3600197, 1)
 lio_text = "His office. Quiet. "
 seq_text = Array[String]([""])
 
 [node name="LioPreOffice2" parent="LIOs" unique_id=1617503641 instance=ExtResource("9_0as34")]
-position = Vector2(1916, 260)
+position = Vector2(1953.9999, 259)
 scale = Vector2(2.3600197, 1)
 lio_text = "No… I can hear him in there. He is speaking with someone so quietly I can hardly make it out."
 
@@ -242,9 +242,9 @@ scale = Vector2(2.1364217, 0.7193657)
 [node name="CollisionShape2D" parent="LIOs/LIOOFFICE/InteractiveCarat4/Area2D" index="0" unique_id=1877122585]
 scale = Vector2(5.1619253, 8.434657)
 
-[node name="LioDECTrigger" parent="." unique_id=437255919 instance=ExtResource("10_q6yyf")]
-position = Vector2(2385, 255)
-scale = Vector2(-12.35798, 1.2025933)
+[node name="LioDECTrigger2" parent="." unique_id=1389638389 instance=ExtResource("10_q6yyf")]
+position = Vector2(1967, 260)
+scale = Vector2(251.24002, 1)
 
 [connection signal="body_entered" from="TransformToP" to="Player" method="_on_transform_to_p_body_entered"]
 
