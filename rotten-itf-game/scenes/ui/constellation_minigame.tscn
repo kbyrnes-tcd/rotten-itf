@@ -49,6 +49,11 @@ layout_mode = 2
 custom_minimum_size = Vector2(100, 30)
 layout_mode = 2
 
+[node name="GapImage" type="TextureRect" parent="MainSplit/LetterPanel/LetterMargin/LetterContent/GapRow/GapSlot" unique_id=1236028255]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="GapLabel" type="Label" parent="MainSplit/LetterPanel/LetterMargin/LetterContent/GapRow/GapSlot" unique_id=1960765902]
 layout_mode = 0
 offset_right = 40.0

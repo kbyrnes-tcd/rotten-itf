@@ -3,11 +3,11 @@
 [ext_resource type="Script" uid="uid://dlk2h13w2xeca" path="res://scripts/game_globals_config.gd" id="1_ep3c1"]
 [ext_resource type="Script" uid="uid://i8kkhbebavhr" path="res://scripts/begin.gd" id="1_y13p6"]
 [ext_resource type="PackedScene" uid="uid://cpwsgbr3fr7by" path="res://scenes/ui/pause_menu.tscn" id="2_ep3c1"]
-[ext_resource type="PackedScene" uid="uid://b0xdv5nobjlkk" path="res://scenes/minigames/rot_maze.tscn" id="2_ty236"]
 [ext_resource type="PackedScene" uid="uid://0hlcimiuwo6o" path="res://scenes/ui/inv_ui.tscn" id="3_ep3c1"]
-[ext_resource type="PackedScene" uid="uid://b7584gf13larx" path="res://scenes/levels/scene_07_underworld.tscn" id="3_eujl3"]
+[ext_resource type="PackedScene" uid="uid://dabmux7g7fuy7" path="res://scenes/levels/scene_04.tscn" id="3_eujl3"]
+[ext_resource type="PackedScene" uid="uid://b0xdv5nobjlkk" path="res://scenes/minigames/rot_maze.tscn" id="4_y13p6"]
+[ext_resource type="PackedScene" uid="uid://dodlr2dpiwmek" path="res://scenes/ui/FINAL_LETTER.tscn" id="5_eujl3"]
 [ext_resource type="PackedScene" uid="uid://cnitmpmsmrrr6" path="res://scenes/ui/letter_ui.tscn" id="6_mn8rq"]
-[ext_resource type="PackedScene" uid="uid://cpu885nisbhmc" path="res://scenes/ui/constellation_minigame.tscn" id="7_y13p6"]
 [ext_resource type="PackedScene" uid="uid://cbfg68hgjmgis" path="res://scenes/lio_popup.tscn" id="8_68t1h"]
 [ext_resource type="PackedScene" uid="uid://dtf7n0o1f301e" path="res://scenes/ui/dialogue_textbox.tscn" id="9_y13p6"]
 [ext_resource type="PackedScene" uid="uid://c7rxunihwtiiw" path="res://scenes/lio_decision_popup.tscn" id="10_q10y1"]
@@ -20,12 +20,13 @@ script = ExtResource("1_y13p6")
 [node name="Config" type="Node" parent="." unique_id=550139588 node_paths=PackedStringArray("pause_menu", "hud")]
 script = ExtResource("1_ep3c1")
 debug_level = ExtResource("3_eujl3")
-maze_mg = ExtResource("2_ty236")
-letter_mg = ExtResource("7_y13p6")
+maze_mg = ExtResource("4_y13p6")
+letter_mg = ExtResource("5_eujl3")
 pause_menu = NodePath("../UI/PauseMenu")
 hud = NodePath("../HUD")
 
 [node name="MinigameLayer" type="CanvasLayer" parent="." unique_id=1910232469]
+layer = 20
 
 [node name="MgRoot" type="Node2D" parent="MinigameLayer" unique_id=95021917]
 
