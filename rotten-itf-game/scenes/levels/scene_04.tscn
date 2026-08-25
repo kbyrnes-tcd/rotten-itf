@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://dabmux7g7fuy7"]
 
-[ext_resource type="Texture2D" uid="uid://c7oxo48wfu0e3" path="res://assets/images/env/p4_chambers/Part_4_Chambers_v2.png" id="1_vp8d7"]
+[ext_resource type="Texture2D" uid="uid://dps5b2kvqqiw3" path="res://assets/images/env/p4_chambers/Part_4_Chambers_v3.png" id="1_f732m"]
+[ext_resource type="PackedScene" uid="uid://ckqadahrf8par" path="res://scenes/ui/scrap_letter.tscn" id="3_2yw38"]
 [ext_resource type="Texture2D" uid="uid://ig2fc5h8bc5e" path="res://assets/images/env/p4_chambers/Part_4_Chambers_Collision_Mask.png" id="3_fc5q1"]
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="3_jkm6f"]
-[ext_resource type="PackedScene" uid="uid://ufmhebijpwbb" path="res://scenes/collectible_item.tscn" id="4_vp8d7"]
 [ext_resource type="Resource" uid="uid://clnyyb2h5f77h" path="res://scripts/inventory_system/items/letter_scrap.tres" id="5_8k800"]
 [ext_resource type="PackedScene" uid="uid://di31qowjleyl4" path="res://scenes/rot_dressing_new.tscn" id="6_8k800"]
 [ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="7_oo6cp"]
 [ext_resource type="PackedScene" uid="uid://bimatr4hej8ja" path="res://scenes/ui/interactive_carat.tscn" id="8_f732m"]
+[ext_resource type="PackedScene" uid="uid://dr3ff06oljyer" path="res://scenes/lio_trigger.tscn" id="9_2yw38"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w2pfo"]
 
@@ -16,7 +17,7 @@
 [node name="Background" type="Sprite2D" parent="." unique_id=1309616939]
 position = Vector2(2002, 122)
 scale = Vector2(1.05, 1)
-texture = ExtResource("1_vp8d7")
+texture = ExtResource("1_f732m")
 
 [node name="Colliders" type="StaticBody2D" parent="." unique_id=32036546]
 position = Vector2(1994, 116)
@@ -66,35 +67,27 @@ position = Vector2(0, -3)
 polygon = PackedVector2Array(-1395.2382, 160, -1396.1906, 201, -1026.6667, 200, -1025.7144, 159)
 
 [node name="Letters" type="Node2D" parent="." unique_id=1583956314]
-visible = false
 
-[node name="LetterScrap" parent="Letters" unique_id=385129123 instance=ExtResource("4_vp8d7")]
-position = Vector2(579, 243)
-item = ExtResource("5_8k800")
+[node name="ScrapLetter" parent="Letters" unique_id=885537599 instance=ExtResource("3_2yw38")]
+position = Vector2(578, 262)
 
-[node name="LetterScrap2" parent="Letters" unique_id=2116854740 instance=ExtResource("4_vp8d7")]
-position = Vector2(1188, 435)
-item = ExtResource("5_8k800")
+[node name="ScrapLetter2" parent="Letters" unique_id=713627077 instance=ExtResource("3_2yw38")]
+position = Vector2(1159, -127)
 
-[node name="LetterScrap3" parent="Letters" unique_id=255828893 instance=ExtResource("4_vp8d7")]
-position = Vector2(1406, -158)
-item = ExtResource("5_8k800")
+[node name="ScrapLetter3" parent="Letters" unique_id=551860810 instance=ExtResource("3_2yw38")]
+position = Vector2(1146, 220)
 
-[node name="LetterScrap4" parent="Letters" unique_id=1829244296 instance=ExtResource("4_vp8d7")]
-position = Vector2(1166, -158)
-item = ExtResource("5_8k800")
+[node name="ScrapLetter4" parent="Letters" unique_id=1071903796 instance=ExtResource("3_2yw38")]
+position = Vector2(1170, 457)
 
-[node name="LetterScrap5" parent="Letters" unique_id=1574850458 instance=ExtResource("4_vp8d7")]
-position = Vector2(2071, 238)
-item = ExtResource("5_8k800")
+[node name="ScrapLetter5" parent="Letters" unique_id=876898497 instance=ExtResource("3_2yw38")]
+position = Vector2(2149, 222)
 
-[node name="LetterScrap6" parent="Letters" unique_id=1122768699 instance=ExtResource("4_vp8d7")]
-position = Vector2(2071, 238)
-item = ExtResource("5_8k800")
+[node name="ScrapLetter6" parent="Letters" unique_id=1838320524 instance=ExtResource("3_2yw38")]
+position = Vector2(1398, -125)
 
-[node name="LetterScrap7" parent="Letters" unique_id=823946160 instance=ExtResource("4_vp8d7")]
-position = Vector2(2889, -153)
-item = ExtResource("5_8k800")
+[node name="ScrapLetter7" parent="Letters" unique_id=1292919356 instance=ExtResource("3_2yw38")]
+position = Vector2(2844, -158)
 
 [node name="RotBlockingLGLetter" type="Node2D" parent="." unique_id=349474142]
 
@@ -164,6 +157,8 @@ twin_id = "DoorMaze"
 position = Vector2(4132, 409.00003)
 next_scene_path = "scene_05"
 spawn_to_the_left = true
+requires_minigame_complete = true
+blocked_lio_text = "The tower to Persephone’s altar. I remember this well. The High Priestess told me I needed to read the letter first. I must know."
 
 [node name="DoorLetter" parent="." unique_id=929734346 node_paths=PackedStringArray("interact_carat") instance=ExtResource("7_oo6cp")]
 position = Vector2(3993, 408)
@@ -178,5 +173,19 @@ minigame = 2
 
 [node name="InteractiveCarat" parent="." unique_id=1099497837 instance=ExtResource("8_f732m")]
 position = Vector2(3996, 336)
+
+[node name="LIO" type="Node" parent="." unique_id=529551838]
+
+[node name="LioTrigger" parent="LIO" unique_id=110257511 instance=ExtResource("9_2yw38")]
+position = Vector2(-95, 274)
+lio_text = "These were our living chambers. So many memories of this place…"
+
+[node name="LioTrigger2" parent="LIO" unique_id=896752909 instance=ExtResource("9_2yw38")]
+position = Vector2(100, 268)
+lio_text = "The rot has made its way through here and destroyed my old home."
+
+[node name="LioTrigger3" parent="LIO" unique_id=532517862 instance=ExtResource("9_2yw38")]
+position = Vector2(282, 272)
+lio_text = "Forgive me, for I will need to dirty you even more in order to continue on."
 
 [editable path="Player"]

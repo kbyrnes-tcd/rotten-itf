@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://ckqadahrf8par"]
+
+[ext_resource type="Script" uid="uid://bx2giy7c8i672" path="res://scripts/scrap_letter.gd" id="1_e35n8"]
+[ext_resource type="Texture2D" uid="uid://ddhrwehk3iqmk" path="res://assets/images/minigames/maze-pieces/LetterScrap_Large.png" id="1_vx1ws"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q01m8"]
+size = Vector2(37.75, 35.25)
+
+[node name="ScrapLetter" type="Area2D" unique_id=885537599]
+script = ExtResource("1_e35n8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1627756182]
+position = Vector2(1.999999, -1.9999995)
+scale = Vector2(0.65725803, 0.71739113)
+texture = ExtResource("1_vx1ws")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1472764208]
+position = Vector2(1.9999962, -2)
+scale = Vector2(0.61290324, 0.6086957)
+color = Color(0.9948152, 1, 0.8319753, 1)
+texture = ExtResource("1_vx1ws")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1410161852]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_q01m8")
