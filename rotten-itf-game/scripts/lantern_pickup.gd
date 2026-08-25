@@ -24,6 +24,14 @@ func _on_body_entered(body: Node2D):
 	if body.has_method("collect"):
 		emit_signal("lantern_collected")
 		body.collect(inv_lantern)
+		var lio = get_tree().get_first_node_in_group("lio_manager")
+		if lio and not GameGlobals.first_lantern:
+			GameGlobals.first_lantern = true
+			lio.show_sequence([
+				"A lantern. ",
+				"Press I to open your inventory and see what you're carrying.",
+				"Press [ to equip the lantern."
+			], 3.0)
 		queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

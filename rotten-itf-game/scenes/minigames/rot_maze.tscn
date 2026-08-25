@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://tlbdgm8e0k33" path="res://assets/images/rot/tile-rot/Rot1of1.SINGLE.png" id="3_gjyw5"]
 [ext_resource type="Script" uid="uid://cwicyq0sd6krn" path="res://scripts/minigames/maze/mg_rot_visual.gd" id="4_wqrwn"]
 [ext_resource type="Texture2D" uid="uid://c88jkel1vtveh" path="res://assets/images/minigames/maze-pieces/Minigame_MazeN.png" id="8_hff37"]
+[ext_resource type="FontFile" uid="uid://3u1i6waxj8qa" path="res://assets/fonts/HyperlegibleSans-Bold.ttf" id="9_02ys2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4d02b"]
 shader = ExtResource("2_gsbbd")
@@ -1516,24 +1517,6 @@ position = Vector2(113, 111)
 position = Vector2(113, 55)
 texture = ExtResource("8_hff37")
 
-[node name="fin_vine" type="Line2D" parent="." unique_id=1487766107]
-texture_repeat = 2
-position = Vector2(113, 111)
-scale = Vector2(0.3, 0.3)
-points = PackedVector2Array(-226.66663, 6.666687, -153.3508, 4.949294, -70.386925, 7.6913614, -32.903805, 8.891828, 26.100496, 11.597043, 66.98195, 18.08387, 185.27008, 24.444761)
-width = 20.0
-width_curve = SubResource("Curve_hff37")
-texture = ExtResource("3_gjyw5")
-texture_mode = 1
-script = ExtResource("4_wqrwn")
-wave_strength = 0.01
-wave_speed = 0.5
-wave_frequency = 0.5
-
-[node name="StaticBody2D" type="StaticBody2D" parent="fin_vine" unique_id=1371840764]
-
-[node name="Area2D" type="Area2D" parent="fin_vine" unique_id=874943178]
-
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=887680724]
 position = Vector2(-25, -23)
 scale = Vector2(1.445, 1.445)
@@ -1692,5 +1675,15 @@ polygon = PackedVector2Array(-57, 20, -57, 23, -27, 23, -27, 57, -20, 57, -20, 2
 position = Vector2(95.50173, 51.211067)
 scale = Vector2(0.6920415, 0.6920415)
 polygon = PackedVector2Array(64, 20, 64, 54, 44, 54, 44, 36, 49, 36, 49, 49, 59, 49, 59, 27, 34, 27, 34, 57, 36, 57, 36, 29, 57, 29, 57, 44, 52, 44, 52, 34, 41, 34, 41, 56, 66, 56, 66, 20)
+
+[node name="Label" type="Label" parent="." unique_id=587198881]
+offset_left = 202.0
+offset_top = -24.0
+offset_right = 257.0
+offset_bottom = 20.0
+theme_override_fonts/font = ExtResource("9_02ys2")
+theme_override_font_sizes/font_size = 5
+text = "*Guide the rot through the maze using your arrow keys. Reach the centre to unlock the door."
+autowrap_mode = 2
 
 [connection signal="active_node_changed" from="PlayerRot" to="PlayerRot/dir_arrows" method="_on_player_rot_active_node_changed"]

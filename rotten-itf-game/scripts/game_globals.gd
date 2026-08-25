@@ -59,6 +59,9 @@ static var dialogue_done: bool = false
 var previous_level: String = ""
 static var return_position: Vector2 = Vector2.ZERO
 static var first_rot_shot: bool = false
+static var letter_minigame_complete: bool = false
+static var first_lantern: bool = false
+static var first_worm: bool = false
 
 signal minigame_completed
 var rotten_door = false
@@ -107,7 +110,7 @@ func _process(_delta: float) -> void:
 		if letter_ui.visible:
 			letter_ui.visible = false
 			AudioManager.play_os("ui_close")
-		elif current_mg != Minigame.NONE:
+		elif current_mg == Minigame.MAZE:
 			unload_mid_minigame()
 			AudioManager.play_os("ui_close")
 		elif inv_ui.visible:
