@@ -110,7 +110,7 @@ func _process(_delta: float) -> void:
 		if letter_ui.visible:
 			letter_ui.visible = false
 			AudioManager.play_os("ui_close")
-		elif current_mg != Minigame.NONE:
+		elif current_mg == Minigame.MAZE:
 			unload_mid_minigame()
 			AudioManager.play_os("ui_close")
 		elif inv_ui.visible:
