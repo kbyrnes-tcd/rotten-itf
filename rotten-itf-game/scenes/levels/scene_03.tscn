@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://bfd835hclty4v"]
 
 [ext_resource type="PackedScene" uid="uid://cfukrntau5ufh" path="res://scenes/levels/persistent_data.tscn" id="1_a3hc7"]
-[ext_resource type="Texture2D" uid="uid://faq2j7c8soki" path="res://assets/images/env/altar/altarRot.png" id="1_co3ny"]
 [ext_resource type="PackedScene" uid="uid://cmf6u7sxq43iy" path="res://scenes/lighting/interior_lighting.tscn" id="1_dtm5t"]
 [ext_resource type="Texture2D" uid="uid://b44knn5hf2ug3" path="res://assets/images/env/altar/st_glass/demeter_stainedglass__maintemple_03.png" id="2_5qqcl"]
 [ext_resource type="Shader" uid="uid://cv8gg3r3c6md3" path="res://scripts/shaders/pixelate.gdshader" id="2_43shx"]
+[ext_resource type="Texture2D" uid="uid://bkpdnehdqied2" path="res://assets/images/env/altar/Part_3_Altar_Final.png" id="2_ijjax"]
 [ext_resource type="Texture2D" uid="uid://xetnkgsgwjn2" path="res://assets/images/env/altar/Altar_Collision_Mask.png" id="2_p368k"]
 [ext_resource type="Texture2D" uid="uid://du8nywgeh1kyp" path="res://assets/images/env/altar/st_glass/demeter_stainedglass_02.png" id="3_eryr6"]
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="3_p368k"]
@@ -16,8 +16,10 @@
 [ext_resource type="Script" uid="uid://ddnjkodm10cvk" path="res://scripts/dialogue_trigger.gd" id="6_nuytq"]
 [ext_resource type="PackedScene" uid="uid://ddm8l1j51pxi2" path="res://scenes/chandelier.tscn" id="7_5i8uq"]
 [ext_resource type="Texture2D" uid="uid://mkybm634l4wq" path="res://assets/images/ui/Caret.png" id="8_cqx5b"]
+[ext_resource type="Texture2D" uid="uid://6ha6schp4uuh" path="res://assets/images/env/altar/st_glass/stained-glass-tall-right.png" id="8_ebb5g"]
 [ext_resource type="PackedScene" uid="uid://qtqiun326hpr" path="res://scenes/lever.tscn" id="8_y5j78"]
 [ext_resource type="Script" uid="uid://cdxfomkkfwywg" path="res://scripts/fallen_trigger.gd" id="9_6m4hc"]
+[ext_resource type="Texture2D" uid="uid://b8k6uom0cf1k2" path="res://assets/images/env/altar/st_glass/stained-glass_tall_left.png" id="9_ovl8v"]
 [ext_resource type="PackedScene" uid="uid://dr3ff06oljyer" path="res://scenes/lio_trigger.tscn" id="10_y5j78"]
 [ext_resource type="PackedScene" uid="uid://yvyr0xth1r67" path="res://scenes/amulet.tscn" id="12_co3ny"]
 [ext_resource type="PackedScene" uid="uid://di31qowjleyl4" path="res://scenes/rot_dressing_new.tscn" id="13_5fc4h"]
@@ -28,6 +30,16 @@
 [ext_resource type="PackedScene" uid="uid://dagsvgdwskmcw" path="res://scenes/high_priestess.tscn" id="17_a3hc7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eryr6"]
+shader = ExtResource("2_43shx")
+shader_parameter/pixelate_amount = 120
+shader_parameter/darken_amount = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q01m8"]
+shader = ExtResource("2_43shx")
+shader_parameter/pixelate_amount = 120
+shader_parameter/darken_amount = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j0jg5"]
 shader = ExtResource("2_43shx")
 shader_parameter/pixelate_amount = 120
 shader_parameter/darken_amount = 1.0
@@ -53,7 +65,7 @@ track_position = true
 [node name="Background" type="Sprite2D" parent="." unique_id=1309616939]
 position = Vector2(2002, 122)
 scale = Vector2(1.05, 1)
-texture = ExtResource("1_co3ny")
+texture = ExtResource("2_ijjax")
 
 [node name="StanedGlass" type="Node2D" parent="Background" unique_id=1257229646]
 
@@ -96,15 +108,37 @@ energy = 0.15
 texture = ExtResource("5_dtm5t")
 
 [node name="DemeterStainedglassMaintemple03" type="Sprite2D" parent="Background/StanedGlass" unique_id=1625731460]
-visible = false
 self_modulate = Color(1, 1, 1, 0.6039216)
+z_index = -1
 material = SubResource("ShaderMaterial_eryr6")
 position = Vector2(240.9524, -67)
 texture = ExtResource("2_5qqcl")
 
 [node name="PointLight2D" type="PointLight2D" parent="Background/StanedGlass/DemeterStainedglassMaintemple03" unique_id=1506454958]
-energy = 0.15
+energy = 0.3
 texture = ExtResource("2_5qqcl")
+
+[node name="StainedRight" type="Sprite2D" parent="Background/StanedGlass" unique_id=1504075339]
+self_modulate = Color(1, 1, 1, 0.6039216)
+z_index = -1
+material = SubResource("ShaderMaterial_q01m8")
+position = Vector2(374.28574, -62)
+texture = ExtResource("8_ebb5g")
+
+[node name="PointLight2D" type="PointLight2D" parent="Background/StanedGlass/StainedRight" unique_id=548372882]
+energy = 0.3
+texture = ExtResource("8_ebb5g")
+
+[node name="StainedLeft" type="Sprite2D" parent="Background/StanedGlass" unique_id=2019462662]
+self_modulate = Color(1, 1, 1, 0.6039216)
+z_index = -1
+material = SubResource("ShaderMaterial_j0jg5")
+position = Vector2(98.095245, -61)
+texture = ExtResource("9_ovl8v")
+
+[node name="PointLight2D" type="PointLight2D" parent="Background/StanedGlass/StainedLeft" unique_id=1025852680]
+energy = 0.3
+texture = ExtResource("9_ovl8v")
 
 [node name="Collision" type="StaticBody2D" parent="Background" unique_id=32036546]
 visible = false
@@ -221,7 +255,7 @@ shape = SubResource("RectangleShape2D_5i8uq")
 position = Vector2(2049, 237)
 
 [node name="LioTrigger2" parent="." unique_id=117623388 instance=ExtResource("10_y5j78")]
-position = Vector2(287, 244)
+position = Vector2(316, 271)
 lio_text = "A chandelier...there should be a lever nearby."
 
 [node name="Amulet" parent="." unique_id=160938005 node_paths=PackedStringArray("blocking_rot") instance=ExtResource("12_co3ny")]
@@ -283,6 +317,10 @@ position = Vector2(119, 132)
 position = Vector2(2185, 256)
 lio_text = "She’s entirely consumed by Rot. She’s gone."
 requires_dialogue_done = true
+
+[node name="LioTrigger5" parent="." unique_id=1015987477 instance=ExtResource("10_y5j78")]
+position = Vector2(202, 267)
+lio_text = "The entrance to the chambers is here somewhere, but it’s covered in rot. I can’t see where."
 
 [connection signal="body_entered" from="PlayerRespawnPit" to="PlayerRespawnPit" method="_on_body_entered"]
 
