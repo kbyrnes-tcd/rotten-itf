@@ -5,7 +5,6 @@
 [node name="DebugOverlay" type="CanvasLayer" unique_id=941069553]
 process_mode = 3
 layer = 10
-visible = false
 script = ExtResource("1_ii0vc")
 
 [node name="Label" type="Label" parent="." unique_id=1382128055]

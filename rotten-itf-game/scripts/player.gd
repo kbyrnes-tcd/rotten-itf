@@ -34,9 +34,9 @@ var segments: Array = []
 # Drag and drop player inv, set player speed/jump params
 @export var inv: Inventory
 var target_speed:= -1.0
-const NORMAL_SPEED := 150.0
-#const NORMAL_SPEED := 850.0
-const STEP_SPEED := 80.0
+@export var NORMAL_SPEED := 165.0
+#@export var NORMAL_SPEED := 850.0
+@export var STEP_SPEED := 100.0
 const ACCELERATION := 800.0
 @export var FULL_JUMP_VELOCITY = -650.0
 @export var MID_JUMP_VELOCITY = -500.0
@@ -91,19 +91,53 @@ func _physics_process(delta: float):
 	can_step = can_step_up() # for changing speeds correctly
 	_handle_movement(delta)
 	_handle_sprite_direction()
-	
+
+var persephone := false
+var transformed := false
+var transforming := false
 func _handle_animation():
-	if move_state == MoveState.IDLE:
-		if tool_state == ToolState.IDLE:
-			animated_sprite_2d.animation = "idle"
+	if transforming: return
+	# fade and transforn INTO P
+	if persephone and !transformed:
+		transforming = true
+		await transform_self(true)
+		transformed = true
+		transforming = false
+		return
+	# fade and transforn INTO !P AKA Daphne
+	if !persephone and transformed:
+		transforming = true
+		await transform_self(false)
+		transformed = false
+		transforming = false
+		return
+	animated_sprite_2d.animation = get_anim_for(transformed)
+
+func transform_self(to_persephone: bool) -> void:
+	var target_anim := get_anim_for(to_persephone)
+	var fade_char := create_tween()
+	fade_char.tween_property(animated_sprite_2d, "modulate:a", 0.0, 1.0)
+	fade_char.tween_callback(func(): animated_sprite_2d.animation = target_anim)
+	fade_char.tween_property(animated_sprite_2d, "modulate:a", 1.0, 1.0)
+	await fade_char.finished
+
+func get_anim_for(is_persephone: bool) -> String:
+	if is_persephone: return "p_walk" if move_state == MoveState.WALKING else "p_idle"
+	else:
+		if move_state == MoveState.IDLE:
+			return "idle" if tool_state == ToolState.IDLE else "idle_equipped"
 		else:
-			animated_sprite_2d.animation = "idle_equipped"
-		
-	if move_state == MoveState.WALKING:
-		if tool_state == ToolState.IDLE:
-			animated_sprite_2d.animation = "walk"
-		else:
-			animated_sprite_2d.animation = "walk_equipped"
+			return "walk" if tool_state == ToolState.IDLE else "walk_equipped"
+
+func _on_transform_to_p_body_entered(body: Node2D) -> void:
+	# when player enters transform to Persephone area in underworld scene
+	if body.name == "Player" and !persephone:
+		persephone = true
+
+func _on_transform_to_d_body_entered(body: Node2D) -> void:
+	# when player enters transform to Daphne area in scene_06_copy scene
+	if body.name == "Player" and persephone:
+		persephone = false
 
 var step_target_y := 0.0
 func can_step_up() -> bool:

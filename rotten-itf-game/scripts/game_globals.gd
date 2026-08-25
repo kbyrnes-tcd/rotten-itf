@@ -11,7 +11,9 @@ var level_prog = [
 	"scene_04", # Chambers
 	"scene_05", # Tower
 	"scene_06", # P's altar room
-	"scene_07_underworld"
+	"scene_07_underworld",
+	"scene_06_post_switch",
+	"fin"
 ]
 
 var prog_counter := 0
@@ -26,9 +28,13 @@ var audio_prog := {
 	level_prog[6]: {"ambience": "Int_Ambiance", "music": "Temple_Music"}, # Chambers
 	level_prog[7]: {"ambience": "Int_Ambiance", "music": "Temple_Music"}, # Tower
 	level_prog[8]: {"ambience": "Int_Ambiance", "music": "Temple_Music"}, # P's altar room
-	level_prog[9]: {"ambience": "Underworld_Ambience", "music": "Underworld_Music"} # Underworld
+	level_prog[9]: {"ambience": "Underworld_Ambience", "music": "Underworld_Music"}, # Underworld
+	"scene_06_post_switch": {"ambience": "Cutscene_ambi", "music": "Cutscene_music"},
+	"cutscene": {"ambience": "Cutscene_ambi", "music": "Cutscene_music"},
+	"fin": {"ambience": "null", "music": "Outro"}
 }
 
+var cue_decision := false
 var prev_scene : String
 var pending_spawn_door_id: String = ""
 
@@ -89,7 +95,7 @@ func start_level_or_debug() -> void:
 		player = debug_node.find_child("Player")
 		var debug_scene_name := debug_scene.resource_path.get_file().get_basename()
 		AudioManager.change_music(audio_prog[debug_scene_name].music)
-		#AudioManager.play_ambience(audio_prog[debug_scene_name].ambience)
+		AudioManager.play_ambience(audio_prog[debug_scene_name].ambience)
 
 func start_new_game() -> void:
 	pending_start = true
@@ -124,6 +130,12 @@ func pause(w_menu : bool = false):
 		pause_menu.visible = true
 		AudioManager.play_os("ui_open")
 	tree.paused = true
+
+func slow_player():
+	player.NORMAL_SPEED = 125.0
+	
+func speed_player():
+	player.NORMAL_SPEED = 165.0
 
 func unload_mid_minigame():
 	#print("Tryna unload mid mg")
@@ -201,7 +213,6 @@ func load_letter_ui(letter : LetterCopy):
 var game_audio_has_begun := false
 func play_level_music(scene_name : String):
 	var scene_index = level_prog.find(scene_name)
-	#print(scene_index, game_audio_has_begun)
 	if scene_index == 1 and !game_audio_has_begun:
 		game_audio_has_begun = true
 		#print("beginning game now w/ scene %s so gonna play ambi and decrease music vol." %scene_name)
@@ -224,7 +235,7 @@ func unload_level():
 		var pers_data := c_scene.find_child("PersistentData", true, false)
 		if pers_data and c_scene_name != "":
 			persistent_scenes[c_scene_name] = pers_data.save_state()
-		level_root.call_deferred("remove_child", c_scene)
+		level_root.remove_child(c_scene)
 		c_scene.queue_free()
 
 var target_door
@@ -249,18 +260,21 @@ func load_level(level_name: String):
 		play_level_music(level_name)
 
 func get_current_level_tree():
-	if level_root.get_child_count() > 0:
-		return level_root.get_child(0)
+	if level_root:
+		if level_root.get_child_count() > 0:
+			return level_root.get_child(0)
 
 const PERSISTENT_DATA = preload("uid://cfukrntau5ufh")
 func get_current_tree_p_data() -> Node:
-	if level_root.get_child_count() == 0:
-		return null
-	var c_tree := level_root.get_child(0)
-	var p_node := c_tree.find_child("PersistentData", true, false)
-	if not p_node:
-		push_warning("scene %s has no persistent node node inst!" % c_tree.name)
-	return p_node
+	if level_root:
+		if level_root and level_root.get_child_count() == 0:
+			return null
+		var c_tree := level_root.get_child(0)
+		var p_node := c_tree.find_child("PersistentData", true, false)
+		if not p_node:
+			push_warning("scene %s has no persistent node node inst!" % c_tree.name)
+		return p_node
+	return null
 
 #func load_scene(n_scene : PackedScene):
 	#prog_counter+=1

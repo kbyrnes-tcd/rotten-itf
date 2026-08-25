@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bbu6xy3g5bxwc"]
+
+[ext_resource type="Script" uid="uid://itiqivtdwr8j" path="res://scripts/lio_decision_trigger.gd" id="1_tlej1"]
+
+[node name="LioDECTrigger" type="Node2D" unique_id=110257511]
+script = ExtResource("1_tlej1")

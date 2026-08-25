@@ -1,0 +1,439 @@
+[gd_scene format=3 uid="uid://bf03ldxkkby4m"]
+
+[ext_resource type="PackedScene" uid="uid://di31qowjleyl4" path="res://scenes/rot_dressing_new.tscn" id="1_62mml"]
+
+[sub_resource type="Curve" id="Curve_62mml"]
+_data = [Vector2(0, 0.067692086), 0.0, 0.0, 0, 0, Vector2(0.4311447, 0.70535046), 0.0, 0.0, 0, 0, Vector2(1, 0.027617386), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Animation" id="Animation_iocrw"]
+length = 30.533333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Vines/Line2D:points")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 30.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [PackedVector2Array(2.2655604, -8.177147, 33.929363, 3.2084224, 58.04458, 19.94156), PackedVector2Array(2.2655604, -8.177147, 53.64357, 12.3032, 112.99477, 45.806, 181.17798, 73.393135, 250.08687, 86.68085)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Vines/Line2D:width")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 30.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [18.0, 30.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Vines/Line2D2:points")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 30.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [PackedVector2Array(2.2655604, -8.177147, 33.929363, 3.2084224, 58.04458, 19.94156), PackedVector2Array(2.2655604, -8.177147, 53.64357, 12.3032, 112.99477, 45.806, 181.17798, 73.393135, 250.08687, 86.68085)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Vines/Line2D2:width")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 30.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [18.0, 30.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Vines/Line2D3:points")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 30.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [PackedVector2Array(2.2655604, -8.177147, 33.929363, 3.2084224, 58.04458, 19.94156), PackedVector2Array(2.2655604, -8.177147, 53.64357, 12.3032, 112.99477, 45.806, 181.17798, 73.393135, 250.08687, 86.68085)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Vines/Line2D3:width")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 30.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [18.0, 30.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Vines/Line2D4:points")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 30.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [PackedVector2Array(2.2655604, -8.177147, 33.929363, 3.2084224, 58.04458, 19.94156), PackedVector2Array(2.2655604, -8.177147, 53.64357, 12.3032, 112.99477, 45.806, 181.17798, 73.393135, 250.08687, 86.68085)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Vines/Line2D4:width")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 30.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [18.0, 30.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Vines/Line2D5:points")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 30.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [PackedVector2Array(2.2655604, -8.177147, 33.929363, 3.2084224, 58.04458, 19.94156), PackedVector2Array(2.2655604, -8.177147, 33.929363, 3.2084224, 74.96152, 5.4035645, 126.11216, 26.604012, 186.18137, 31.021996, 219.4397, 48.382645, 265.84866, 50.790047, 301.13327, 57.993958)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = false
+tracks/9/path = NodePath("Vines/Line2D5:width_curve")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("Curve_62mml")]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Vines/Line2D5:width")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 30.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [18.0, 30.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Vines/Line2D6:points")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 30.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [PackedVector2Array(2.2655604, -8.177147, 53.64357, 12.3032, 75.6604, 17.50357), PackedVector2Array(2.2655604, -8.177147, 53.64357, 12.3032, 112.99477, 45.806, 181.17798, 73.393135, 250.08688, 86.68085)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Vines/Line2D6:width")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 30.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [15.0, 30.0]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Vines/Line2D7:points")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 14.041796, 30.533333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [PackedVector2Array(), PackedVector2Array(2.2655604, -8.177147, 53.64357, 12.3032, 92.82988, 30.51941, 124.186264, 43.206295, 155.87637, 49.3171), PackedVector2Array(2.2655604, -8.177147, 53.64357, 12.3032, 142.83559, 39.293686, 226.27422, 45.723557, 311.12704, 62.15547, 369.1098, 66.44206, 419.3144, 65.37041, 481.5398, 68.942566, 557.90735, 79.65901)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Vines/Line2D7:width")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 14.041796, 30.533333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [15.0, 21.898262, 42.29]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Vines/Line2D8:points")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 14.041796, 30.533333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [PackedVector2Array(), PackedVector2Array(2.2655604, -8.177147, 53.64357, 12.3032, 92.82988, 30.51941, 124.186264, 43.206295, 155.87637, 49.3171), PackedVector2Array(2.2655604, -8.177147, 53.64357, 12.3032, 142.83559, 39.293686, 226.27422, 45.723557, 311.12704, 62.15547, 369.1098, 66.44206, 419.3144, 65.37041, 481.5398, 68.942566, 557.90735, 79.65901)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Vines/Line2D8:width")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 14.041796, 30.533333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [15.0, 21.898262, 42.29]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("ColorRect:color")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(14.166667, 30.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.101960786, 0.0627451, 0.09411765, 0), Color(0.10365266, 0.062903, 0.095919825, 1)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Vines/Line2D:default_color")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0, 8.0964),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.93333334, 1, 0.93333334, 0), Color(0.93333334, 1, 0.93333334, 0.7176471)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Vines/Line2D2:default_color")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0, 8.0964),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.93333334, 1, 0.93333334, 0), Color(0.93333334, 1, 0.93333334, 0.7176471)]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Vines/Line2D3:default_color")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0, 8.0964),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.93333334, 1, 0.93333334, 0), Color(0.93333334, 1, 0.93333334, 0.7176471)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Vines/Line2D4:default_color")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0, 8.0964),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.93333334, 1, 0.93333334, 0), Color(0.93333334, 1, 0.93333334, 0.7176471)]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("Vines/Line2D5:default_color")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0, 8.0964),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.93333334, 1, 0.93333334, 0), Color(0.93333334, 1, 0.93333334, 0.7176471)]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("Vines/Line2D6:default_color")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0, 8.0964),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.93333334, 1, 0.93333334, 0), Color(0.93333334, 1, 0.93333334, 0.7176471)]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("Vines/Line2D7:default_color")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0, 8.0964),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.93333334, 1, 0.93333334, 0), Color(0.93333334, 1, 0.93333334, 0.7176471)]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("Vines/Line2D8:default_color")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0, 8.0964),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.93333334, 1, 0.93333334, 0), Color(0.93333334, 1, 0.93333334, 0.7176471)]
+}
+
+[sub_resource type="Animation" id="Animation_s4ab0"]
+resource_name = "rot_cutscene"
+length = 36.727272
+step = 0.03
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l5i3s"]
+_data = {
+&"RESET": SubResource("Animation_iocrw"),
+&"rot_cutscene": SubResource("Animation_s4ab0")
+}
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_62mml"]
+load_path = "res://.godot/imported/Rot-V2-Single.PNG-abae580316bb24344593e6a82f5d4743.ctex"
+
+[node name="RotCutscene" type="CanvasLayer" unique_id=1926023861]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1407291180]
+libraries/ = SubResource("AnimationLibrary_l5i3s")
+speed_scale = 5.0
+
+[node name="Vines" type="Node2D" parent="." unique_id=2047306366]
+
+[node name="Line2D" parent="Vines" unique_id=1590463200 instance=ExtResource("1_62mml")]
+position = Vector2(13.000008, 270.00003)
+rotation = -1.8325958
+points = PackedVector2Array(2.2655604, -8.177147, 33.929363, 3.2084224, 58.04458, 19.94156)
+width = 18.0
+width_curve = SubResource("Curve_62mml")
+default_color = Color(0.93333334, 1, 0.93333334, 0)
+texture = SubResource("CompressedTexture2D_62mml")
+cutscene = true
+
+[node name="Line2D2" parent="Vines" unique_id=1560338529 instance=ExtResource("1_62mml")]
+position = Vector2(471.00006, 288)
+rotation = -1.3089969
+scale = Vector2(1, -1.820503)
+points = PackedVector2Array(2.2655604, -8.177147, 33.929363, 3.2084224, 58.04458, 19.94156)
+width = 18.0
+width_curve = SubResource("Curve_62mml")
+default_color = Color(0.93333334, 1, 0.93333334, 0)
+texture = SubResource("CompressedTexture2D_62mml")
+cutscene = true
+
+[node name="Line2D3" parent="Vines" unique_id=1521949185 instance=ExtResource("1_62mml")]
+position = Vector2(5, 257)
+rotation = -0.26179937
+scale = Vector2(0.9999999, -1.820503)
+points = PackedVector2Array(2.2655604, -8.177147, 33.929363, 3.2084224, 58.04458, 19.94156)
+width = 18.0
+width_curve = SubResource("Curve_62mml")
+default_color = Color(0.93333334, 1, 0.93333334, 0)
+texture = SubResource("CompressedTexture2D_62mml")
+cutscene = true
+
+[node name="Line2D4" parent="Vines" unique_id=167246391 instance=ExtResource("1_62mml")]
+position = Vector2(229, 276)
+rotation = -1.0471976
+scale = Vector2(0.99999994, -1.8205031)
+points = PackedVector2Array(2.2655604, -8.177147, 33.929363, 3.2084224, 58.04458, 19.94156)
+width = 18.0
+width_curve = SubResource("Curve_62mml")
+default_color = Color(0.93333334, 1, 0.93333334, 0)
+texture = SubResource("CompressedTexture2D_62mml")
+cutscene = true
+
+[node name="Line2D5" parent="Vines" unique_id=676279896 instance=ExtResource("1_62mml")]
+position = Vector2(84.000015, 269)
+rotation = -0.5235988
+scale = Vector2(0.99999994, -1.820503)
+points = PackedVector2Array(2.2655604, -8.177147, 33.929363, 3.2084224, 58.04458, 19.94156)
+width = 18.0
+width_curve = SubResource("Curve_62mml")
+default_color = Color(0.93333334, 1, 0.93333334, 0)
+texture = SubResource("CompressedTexture2D_62mml")
+cutscene = true
+
+[node name="Line2D6" parent="Vines" unique_id=719171257 instance=ExtResource("1_62mml")]
+position = Vector2(351.99997, 295)
+rotation = -2.3561945
+scale = Vector2(0.9999999, 1.9794968)
+points = PackedVector2Array(2.2655604, -8.177147, 53.64357, 12.3032, 75.6604, 17.50357)
+width = 15.0
+width_curve = SubResource("Curve_62mml")
+default_color = Color(0.93333334, 1, 0.93333334, 0)
+texture = SubResource("CompressedTexture2D_62mml")
+cutscene = true
+
+[node name="Line2D7" parent="Vines" unique_id=859321804 instance=ExtResource("1_62mml")]
+position = Vector2(-23, 284.00003)
+rotation = -0.7853982
+scale = Vector2(0.9999999, 1.9794968)
+points = PackedVector2Array()
+width = 15.0
+width_curve = SubResource("Curve_62mml")
+default_color = Color(0.93333334, 1, 0.93333334, 0)
+texture = SubResource("CompressedTexture2D_62mml")
+cutscene = true
+
+[node name="Line2D8" parent="Vines" unique_id=1627745167 instance=ExtResource("1_62mml")]
+position = Vector2(508.99997, 218.00003)
+rotation = -2.8797934
+scale = Vector2(0.99999994, -1.9400513)
+points = PackedVector2Array()
+width = 15.0
+width_curve = SubResource("Curve_62mml")
+default_color = Color(0.93333334, 1, 0.93333334, 0)
+texture = SubResource("CompressedTexture2D_62mml")
+cutscene = true
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1798368155]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.101960786, 0.0627451, 0.09411765, 0)
