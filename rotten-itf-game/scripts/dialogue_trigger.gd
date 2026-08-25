@@ -4,6 +4,7 @@ extends Node2D
 @export var speaker: Array[String] = []
 @export var one_shot: bool = true
 @export var amulet: Node2D
+@export var high_priestess: Node2D
 @onready var hint = $Interact
 
 var player_in_area = false
@@ -27,11 +28,15 @@ func trigger_dialogue():
 	if dialogue_manager:
 		GameGlobals.pause()
 		AudioManager.increase_music_vol()
+		if high_priestess:
+			high_priestess.start_talking()
 		for i in dialogue_lines.size():
 			var speak = speaker[i] if i < speaker.size() else ""
 			dialogue_manager.queue_text(dialogue_lines[i], speak)
+		await dialogue_manager.dialogue_finished
+		if high_priestess:
+			high_priestess.die()
 		if amulet:
-			await dialogue_manager.dialogue_finished
 			amulet.glow_animation()
 	else:
 		print("dialogue manager not found")

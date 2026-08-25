@@ -2,9 +2,16 @@
 
 [ext_resource type="Script" uid="uid://m3aroy6008g4" path="res://scripts/lio_popup.gd" id="1_db103"]
 [ext_resource type="FontFile" uid="uid://3u1i6waxj8qa" path="res://assets/fonts/HyperlegibleSans-Bold.ttf" id="2_1odn8"]
+[ext_resource type="Texture2D" uid="uid://r11vets3hii5" path="res://assets/images/ui/RITF_DialogFrame.png" id="2_bhnbx"]
 
 [node name="LioPopup" type="CanvasLayer" unique_id=1750883624]
 script = ExtResource("1_db103")
+
+[node name="DarkFrame" type="TextureRect" parent="." unique_id=882128781]
+visible = false
+offset_right = 480.0
+offset_bottom = 270.0
+texture = ExtResource("2_bhnbx")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=755628547]
 offset_left = 1.0

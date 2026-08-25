@@ -113,8 +113,18 @@ text = "Rotten is the Fruit"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="RITF2" type="Label" parent="BorderBox/VBoxContainer" unique_id=57318454]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("4_q85j6")
+theme_override_font_sizes/font_size = 30
+text = "(Play-Test)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="MainButtons" type="VBoxContainer" parent="BorderBox/VBoxContainer" unique_id=1352851221]
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="Begin" type="Button" parent="BorderBox/VBoxContainer/MainButtons" unique_id=622553379 groups=["buttons"]]
 layout_mode = 2
@@ -180,7 +190,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_7yca1")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_lrbnh")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_6qnem")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ynwdf")
-text = "Exit"
+text = "Quit"
 
 [node name="HoverSprite" type="TextureRect" parent="BorderBox/VBoxContainer/MainButtons/Quit" unique_id=1243181694]
 visible = false
@@ -201,6 +211,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="SettingsPanel" type="VBoxContainer" parent="BorderBox/VBoxContainer" unique_id=2126366751]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4

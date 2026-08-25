@@ -11,8 +11,9 @@ var level_prog = [
 	"scene_04", # Chambers
 	"scene05", # Tower
 	"scene06", # P's altar room
-	"scene07Underworld"
+	"scene_07_underworld"
 ]
+
 var prog_counter := 0
 # PROGRESSION: ext_path, garden_int, garden_ext, altar, quarters, tower, p-altar, underworld
 var audio_prog := {
@@ -51,6 +52,7 @@ var pending_start := true
 static var dialogue_done: bool = false
 var previous_level: String = ""
 static var return_position: Vector2 = Vector2.ZERO
+static var first_rot_shot: bool = false
 
 signal minigame_completed
 
@@ -86,6 +88,7 @@ func start_level_or_debug() -> void:
 		player = debug_node.find_child("Player")
 		var debug_scene_name := debug_scene.resource_path.get_file().get_basename()
 		AudioManager.change_music(audio_prog[debug_scene_name].music)
+		#AudioManager.play_ambience(audio_prog[debug_scene_name].ambience)
 
 func start_new_game() -> void:
 	pending_start = true

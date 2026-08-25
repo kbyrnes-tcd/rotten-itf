@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://32h27chxiffi"]
+[gd_scene format=3 uid="uid://ccvrijgg5lyos"]
 
 [ext_resource type="Script" uid="uid://bcn8t07dwujcm" path="res://scripts/glowworm_cluster.gd" id="1_vrba8"]
 [ext_resource type="Texture2D" uid="uid://fc8hwmpaobv8" path="res://assets/images/worms/Glowworm.png" id="2_l6vgk"]
@@ -9,29 +9,30 @@ radius = 26.0
 [node name="GlowwormCluster" type="Area2D" unique_id=1112046846]
 script = ExtResource("1_vrba8")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2015362664]
-position = Vector2(5, -3)
-texture = ExtResource("2_l6vgk")
-
-[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1971483086]
-position = Vector2(0, 5)
-texture = ExtResource("2_l6vgk")
-
-[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=1098208500]
-position = Vector2(-7, -5)
-texture = ExtResource("2_l6vgk")
-
-[node name="Sprite2D4" type="Sprite2D" parent="." unique_id=439673418]
-position = Vector2(-14, 7)
-texture = ExtResource("2_l6vgk")
-
-[node name="Sprite2D5" type="Sprite2D" parent="." unique_id=2036570260]
-position = Vector2(-17, -1)
-texture = ExtResource("2_l6vgk")
-
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1943386926]
-position = Vector2(-1, 0)
+position = Vector2(-2.25, 0.25)
+scale = Vector2(0.9285714, 0.98)
 color = Color(0.7667546, 0.89002085, 0.579511, 1)
+texture = ExtResource("2_l6vgk")
+
+[node name="PointLight2D2" type="PointLight2D" parent="." unique_id=444327141]
+position = Vector2(-4.75, 2.75)
+scale = Vector2(0.7285714, 0.78)
+texture = ExtResource("2_l6vgk")
+
+[node name="PointLight2D3" type="PointLight2D" parent="." unique_id=916296487]
+position = Vector2(2.75, 3.25)
+scale = Vector2(0.8428571, 0.74)
+texture = ExtResource("2_l6vgk")
+
+[node name="PointLight2D4" type="PointLight2D" parent="." unique_id=780926317]
+position = Vector2(-1.0000004, 7)
+scale = Vector2(0.5714286, 0.48)
+texture = ExtResource("2_l6vgk")
+
+[node name="PointLight2D5" type="PointLight2D" parent="." unique_id=1696849777]
+position = Vector2(7, 0.50000024)
+scale = Vector2(0.45714286, 0.76)
 texture = ExtResource("2_l6vgk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=430435419]

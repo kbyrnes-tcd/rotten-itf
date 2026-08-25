@@ -1,13 +1,20 @@
 [gd_scene format=3 uid="uid://bfd835hclty4v"]
 
 [ext_resource type="Texture2D" uid="uid://faq2j7c8soki" path="res://assets/images/env/altar/altarRot.png" id="1_co3ny"]
+[ext_resource type="PackedScene" uid="uid://cmf6u7sxq43iy" path="res://scenes/lighting/interior_lighting.tscn" id="1_dtm5t"]
+[ext_resource type="Texture2D" uid="uid://b44knn5hf2ug3" path="res://assets/images/env/altar/st_glass/demeter_stainedglass__maintemple_03.png" id="2_5qqcl"]
+[ext_resource type="Shader" uid="uid://cv8gg3r3c6md3" path="res://scripts/shaders/pixelate.gdshader" id="2_43shx"]
 [ext_resource type="Texture2D" uid="uid://xetnkgsgwjn2" path="res://assets/images/env/altar/Altar_Collision_Mask.png" id="2_p368k"]
+[ext_resource type="Texture2D" uid="uid://du8nywgeh1kyp" path="res://assets/images/env/altar/st_glass/demeter_stainedglass_02.png" id="3_eryr6"]
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="3_p368k"]
+[ext_resource type="Texture2D" uid="uid://cy1ibjb8fk55y" path="res://assets/images/env/altar/st_glass/demeter_stainedglass_01.png" id="4_43shx"]
 [ext_resource type="PackedScene" uid="uid://coslqn83cxfcy" path="res://scenes/zoom_trigger.tscn" id="4_bork3"]
 [ext_resource type="Script" uid="uid://blst515txhg5j" path="res://scripts/zoom_trigger.gd" id="5_6m4hc"]
 [ext_resource type="PackedScene" uid="uid://c1epxp5spnua" path="res://scenes/ui/dialogue_trigger.tscn" id="5_0760f"]
+[ext_resource type="Texture2D" uid="uid://skeqlnwve85k" path="res://assets/images/env/altar/st_glass/demeter_stainedglass_04.png" id="5_dtm5t"]
 [ext_resource type="Script" uid="uid://ddnjkodm10cvk" path="res://scripts/dialogue_trigger.gd" id="6_nuytq"]
 [ext_resource type="PackedScene" uid="uid://ddm8l1j51pxi2" path="res://scenes/chandelier.tscn" id="7_5i8uq"]
+[ext_resource type="Texture2D" uid="uid://mkybm634l4wq" path="res://assets/images/ui/Caret.png" id="8_cqx5b"]
 [ext_resource type="PackedScene" uid="uid://qtqiun326hpr" path="res://scenes/lever.tscn" id="8_y5j78"]
 [ext_resource type="Script" uid="uid://cdxfomkkfwywg" path="res://scripts/fallen_trigger.gd" id="9_6m4hc"]
 [ext_resource type="PackedScene" uid="uid://dr3ff06oljyer" path="res://scenes/lio_trigger.tscn" id="10_y5j78"]
@@ -16,6 +23,12 @@
 [ext_resource type="Resource" uid="uid://bcvemp5c8igqs" path="res://scripts/inventory_system/items/amulet.tres" id="13_e0ngt"]
 [ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="15_6d0e5"]
 [ext_resource type="PackedScene" uid="uid://bimatr4hej8ja" path="res://scenes/ui/interactive_carat.tscn" id="16_a3hc7"]
+[ext_resource type="PackedScene" uid="uid://dagsvgdwskmcw" path="res://scenes/high_priestess.tscn" id="17_a3hc7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eryr6"]
+shader = ExtResource("2_43shx")
+shader_parameter/pixelate_amount = 120
+shader_parameter/darken_amount = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_co3ny"]
 size = Vector2(300, 20)
@@ -33,7 +46,59 @@ position = Vector2(2002, 122)
 scale = Vector2(1.05, 1)
 texture = ExtResource("1_co3ny")
 
+[node name="StanedGlass" type="Node2D" parent="Background" unique_id=1257229646]
+
+[node name="DemeterStainedglass02" type="Sprite2D" parent="Background/StanedGlass" unique_id=892659862]
+self_modulate = Color(1, 1, 1, 0.6039216)
+material = SubResource("ShaderMaterial_eryr6")
+position = Vector2(-1072.3809, 51)
+scale = Vector2(0.265, 0.265)
+texture = ExtResource("3_eryr6")
+
+[node name="PointLight2D" type="PointLight2D" parent="Background/StanedGlass/DemeterStainedglass02" unique_id=1654499304]
+scale = Vector2(1.21, 1.21)
+energy = 0.15
+texture = ExtResource("3_eryr6")
+
+[node name="DemeterStainedglass01" type="Sprite2D" parent="Background/StanedGlass" unique_id=2053216055]
+self_modulate = Color(1, 1, 1, 0.6039216)
+material = SubResource("ShaderMaterial_eryr6")
+position = Vector2(-912.03314, 51.200012)
+scale = Vector2(0.265, 0.265)
+texture = ExtResource("4_43shx")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Background/StanedGlass/DemeterStainedglass01" unique_id=1156464208]
+position = Vector2(5.875122, -0.75476074)
+scale = Vector2(1.21, 1.21)
+energy = 0.15
+texture = ExtResource("4_43shx")
+
+[node name="DemeterStainedglass04" type="Sprite2D" parent="Background/StanedGlass" unique_id=961003540]
+self_modulate = Color(1, 1, 1, 0.6039216)
+material = SubResource("ShaderMaterial_eryr6")
+position = Vector2(-750.47595, 51)
+scale = Vector2(0.265, 0.265)
+texture = ExtResource("5_dtm5t")
+
+[node name="PointLight2D3" type="PointLight2D" parent="Background/StanedGlass/DemeterStainedglass04" unique_id=1830917466]
+position = Vector2(-3.5947266, 0)
+scale = Vector2(1.21, 1.21)
+energy = 0.15
+texture = ExtResource("5_dtm5t")
+
+[node name="DemeterStainedglassMaintemple03" type="Sprite2D" parent="Background/StanedGlass" unique_id=1625731460]
+visible = false
+self_modulate = Color(1, 1, 1, 0.6039216)
+material = SubResource("ShaderMaterial_eryr6")
+position = Vector2(240.9524, -67)
+texture = ExtResource("2_5qqcl")
+
+[node name="PointLight2D" type="PointLight2D" parent="Background/StanedGlass/DemeterStainedglassMaintemple03" unique_id=1506454958]
+energy = 0.15
+texture = ExtResource("2_5qqcl")
+
 [node name="Collision" type="StaticBody2D" parent="Background" unique_id=32036546]
+visible = false
 
 [node name="MaskSprite" type="Sprite2D" parent="Background/Collision" unique_id=79364579]
 visible = false
@@ -47,9 +112,10 @@ z_index = 1
 position = Vector2(178, 244)
 
 [node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
-limit_top = -206
-limit_right = 3921
-limit_bottom = 423
+limit_left = -77
+limit_top = -247
+limit_right = 3924
+limit_bottom = 382
 
 [node name="ZoomTrigger" parent="." unique_id=1302506614 instance=ExtResource("4_bork3")]
 
@@ -73,24 +139,26 @@ position = Vector2(2259, 73)
 scale = Vector2(1.638516, 21.04)
 shape = SubResource("RectangleShape2D_co3ny")
 
-[node name="DialogueTrigger" parent="." unique_id=413688381 node_paths=PackedStringArray("amulet") instance=ExtResource("5_0760f")]
+[node name="DialogueTrigger" parent="." unique_id=413688381 node_paths=PackedStringArray("amulet", "high_priestess") instance=ExtResource("5_0760f")]
 process_mode = 3
 script = ExtResource("6_nuytq")
-dialogue_lines = Array[String](["High Priestess!", "Daphne, stay back.", "You're... Oh, Godess", "I lasted as long as I could in this ruined Temple, but even my Patron Demeter could only protect me for so long.", "It appears that the powers of this Rotten substance have only grown stronger in your absence. At times, I wondered…", "I wondered if maybe it grew because it was seeking you out.", "What do you mean?", "You were there that night when it appeared. It wasn’t just growing out of Persephone’s altarpiece, it was growing out towards you.", "No, it… it ate away at my sisters. I watched it grow in all directions to infect the Temple.", "Your sisters, yes, but not your kin. Kind girl… I was wrong. It was not your fault. I see that now.", "You were not born of this Temple. You were given to us out by the Yew tree. ", "I thought you were some Nymph’s forgotten babe, but no… I took you from a far more sordid heritage.", "High Priestess, what are you saying?", "You aren’t of our lands, Daphne. Which is why you need to be the only to save us.", "Clear the Temple of this Rot, girl, and you will be granted the power to control this infection.", "Then, go to the old living chambers, and learn of its origin. ", "Of your origin.", "Goddess, forgive me. Forgive me."])
-speaker = Array[String](["Daphne", "Persephone", "Daphne", "Persephone", "Persephone", "Persephone", "Daphne", "Persephone", "Daphne", "Persephone", "Persephone", "Persephone", "Daphne", "Persephone", "Persephone", "Persephone", "Persephone", "Persephone"])
+dialogue_lines = Array[String](["High Priestess!", "Daphne, stay back.", "You're... Oh, Godess", "I lasted as long as I could in this ruined Temple, but even my Patron Demeter could only protect me for so long.", "It appears that the powers of this Rotten substance have only grown stronger in your absence. At times, I wondered…", "I wondered if maybe it grew because it was seeking you out.", "What do you mean?", "You were there that night when it appeared. It wasn’t just growing out of Persephone’s altarpiece, it was growing out towards you.", "No, it… it ate away at my sisters. I watched it grow in all directions to infect the Temple.", "Your sisters, yes, but not your kin. Kind girl… I was wrong. It was not your fault. I see that now.", "You were not born of this Temple. You were given to us out by the Yew tree. ", "I thought you were some Nymph’s forgotten babe, but no… I took you from a far more sordid heritage.", "High Priestess, what are you saying?", "You aren’t of our lands, Daphne. Which is why you need to be the only to save us.", "Purify the Rot from this place, girl, and you will be granted the power to control this infection.", "Then, go to the old living chambers, and learn of its origin. ", "Of your origin.", "There are letters. She… she wrote of it… Please. You must know.", "Goddess, forgive me. Forgive me."])
+speaker = Array[String](["Daphne", "High Priestess", "Daphne", "High Priestess", "High Priestess", "High Priestess", "Daphne", "High Priestess", "Daphne", "High Priestess", "High Priestess", "High Priestess", "Daphne", "High Priestess", "High Priestess", "High Priestess", "High Priestess", "High Priestess", "High Priestess"])
 amulet = NodePath("../Amulet")
+high_priestess = NodePath("../HighPriestess")
 
 [node name="Area2D" parent="DialogueTrigger" index="0" unique_id=1114588435]
-position = Vector2(2158, 248)
+position = Vector2(2157, 246)
 
 [node name="CollisionShape2D" parent="DialogueTrigger/Area2D" index="0" unique_id=1913681013]
-position = Vector2(0, 1)
+position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_o7blk")
 
 [node name="Interact" parent="DialogueTrigger" index="1" unique_id=125428239]
 visible = false
-position = Vector2(2158, 202)
-scale = Vector2(0.118892506, 0.13843648)
+position = Vector2(2177, 201.00002)
+scale = Vector2(1.4, 1.059)
+texture = ExtResource("8_cqx5b")
 
 [node name="Chandelier" parent="." unique_id=813450568 instance=ExtResource("7_5i8uq")]
 
@@ -118,8 +186,9 @@ position = Vector2(369, 244)
 
 [node name="InteractHint" parent="Lever" index="2" unique_id=106943939]
 visible = false
-position = Vector2(365.99997, 202)
-scale = Vector2(0.0692182, 0.090390876)
+position = Vector2(371, 214.99998)
+scale = Vector2(1.36, 1.1999999)
+texture = ExtResource("8_cqx5b")
 
 [node name="FallenTrigger" type="Area2D" parent="." unique_id=831523694 node_paths=PackedStringArray("chandelier")]
 position = Vector2(672, 261)
@@ -138,41 +207,29 @@ position = Vector2(287, 244)
 lio_text = "A chandelier...there should be a lever nearby."
 
 [node name="Amulet" parent="." unique_id=160938005 node_paths=PackedStringArray("blocking_rot") instance=ExtResource("12_co3ny")]
-position = Vector2(2278, 201)
+position = Vector2(2288, 186)
 blocking_rot = [NodePath("../Line2D")]
 inv_amulet = ExtResource("13_e0ngt")
 
-[node name="LioTrigger3" parent="." unique_id=460109088 instance=ExtResource("10_y5j78")]
-position = Vector2(2343, 247)
-lio_text = "Press ] to equip amulet."
-requires_dialogue_done = true
-
-[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1562990469]
-color = Color(0.7107411, 0.71074116, 0.7107411, 1)
-
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1192174376]
-color = Color(1, 0.7921569, 0.62352943, 0.26666668)
-energy = 0.8
-
 [node name="Line2D" parent="." unique_id=1590463200 instance=ExtResource("13_5fc4h")]
-position = Vector2(2295, 207)
+position = Vector2(2302, 193)
 points = PackedVector2Array(-36, -13, -25, -8, -17, -5, -5, -3, -1, 2)
 collidable = true
 
 [node name="LioTrigger4" parent="." unique_id=292972852 instance=ExtResource("10_y5j78")]
-position = Vector2(2196, 245)
+position = Vector2(2247, 252)
 lio_text = "Press [ to clear the rot and reach the amulet."
 requires_dialogue_done = true
 
 [node name="InteractiveCarat" parent="." unique_id=1099497837 instance=ExtResource("16_a3hc7")]
-position = Vector2(3926, 104)
+position = Vector2(3922, 77)
 
 [node name="DoorBack" parent="." unique_id=1160326856 node_paths=PackedStringArray("interact_carat") instance=ExtResource("15_6d0e5")]
 position = Vector2(121, 220)
 next_scene_path = "scene_02_int"
 door_id = "DoorBack"
 twin_id = "DoorToTemple"
-interact_carat = NodePath("../InteractiveCarat2")
+interact_carat = NodePath("../InteractiveCarat3")
 
 [node name="DoorToMiniGarden" parent="." unique_id=811292301 node_paths=PackedStringArray("interact_carat") instance=ExtResource("15_6d0e5")]
 position = Vector2(2817, 159)
@@ -191,10 +248,18 @@ interact_carat = NodePath("../InteractiveCarat")
 has_minigame = true
 
 [node name="InteractiveCarat2" parent="." unique_id=731416256 instance=ExtResource("16_a3hc7")]
-position = Vector2(2819, 79)
+position = Vector2(2815, 78)
 
 [node name="GardenReturnPoint" type="Marker2D" parent="." unique_id=1083821957]
 position = Vector2(2903, 196)
+
+[node name="HighPriestess" parent="." unique_id=493119463 instance=ExtResource("17_a3hc7")]
+position = Vector2(2251, 218)
+
+[node name="InteriorLighting" parent="." unique_id=1496110895 instance=ExtResource("1_dtm5t")]
+
+[node name="InteractiveCarat3" parent="." unique_id=595983094 instance=ExtResource("16_a3hc7")]
+position = Vector2(119, 132)
 
 [editable path="Player"]
 [editable path="ZoomTrigger"]
