@@ -115,5 +115,11 @@ func build_complete_letter() -> String:
 
 func _on_continue_button_pressed():
 		print("CONTUNYE PRESSED")
+		var lio = get_tree().get_first_node_in_group("lio_manager")
+		if lio:
+			lio.show_sequence([
+			"I understand now. Persephone was trying to warn her mother. This was a cry for help.",
+			"My Goddess. I am starting to understand. I think I am ready to face your altar once more."], 4.0)
+		GameGlobals.letter_minigame_complete = true
 		emit_signal("minigame_complete")
 		GameGlobals.unload_minigame()

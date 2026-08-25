@@ -11,6 +11,8 @@ extends Area2D
 @export var crack := false
 @export var minigame: GameGlobals.Minigame = GameGlobals.Minigame.MAZE
 @export var blocking_rot: Array[Node2D] = []
+@export var requires_minigame_complete: bool = false
+@export var blocked_lio_text: String = ""
 var minigame_solved: bool = false
 var can_def_pass = false
 
@@ -35,7 +37,27 @@ func _process(_delta: float) -> void:
 			if can_pass and self.name == "DoorToTemple": GameGlobals.rotten_door = true
 			else:
 				interact_carat.hide_carat()
-		if can_pass and Input.is_action_just_pressed("interact"):
+				
+		if Input.is_action_just_pressed("interact"):
+			var lio = get_tree().get_first_node_in_group("lio_manager")
+			
+			if has_minigame and minigame == GameGlobals.Minigame.LETTER and not minigame_solved and not GameGlobals.minigame_completion[minigame]:
+				if required_item != null and player.inv.count(required_item) < required_amount:
+					if lio:
+						lio._show_text("Damn. I’m still missing pieces. I can’t make the writing out.", 3.0, 1.0)
+					return
+				else:
+					#has all SCRAPS!!!
+					if lio and not minigame_solved:
+						lio._show_text("They’re all here. I can see her message. \nThere’s something strange about this letter… I have all the scraps, yet there’s still pieces missing.", 4.0, 1.0)
+						await get_tree().create_timer(4.5).timeout
+					
+			if requires_minigame_complete and not GameGlobals.letter_minigame_complete:
+				if lio and blocked_lio_text != "":
+					lio._show_text(blocked_lio_text, 4.0, 1.0)
+				return
+			if not can_pass:
+				return
 			if !crack: AudioManager.play_os("open_door")
 			# if the door has a minigame, load it if it hasn't been attempted or completed yet.
 			if has_minigame and !minigame_solved and !GameGlobals.minigame_completion[minigame]:
@@ -66,7 +88,6 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		near_door = true
 		player = body
-
 func _on_body_exited(_body: Node2D) -> void:
 	near_door = false
 	player = null

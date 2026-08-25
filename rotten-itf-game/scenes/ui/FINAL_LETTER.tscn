@@ -196,5 +196,5 @@ offset_right = 460.0
 offset_bottom = 255.0
 theme_override_fonts/font = ExtResource("3_5h2n7")
 theme_override_font_sizes/font_size = 6
-text = "*Decode the letter by matching each constellation to its meaning."
+text = "*Decode the secret message by matching each constellation to its meaning."
 autowrap_mode = 2

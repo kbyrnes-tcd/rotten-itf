@@ -279,6 +279,11 @@ position = Vector2(2251, 218)
 [node name="InteractiveCarat3" parent="." unique_id=595983094 instance=ExtResource("16_a3hc7")]
 position = Vector2(119, 132)
 
+[node name="LioTrigger3" parent="." unique_id=1444468892 instance=ExtResource("10_y5j78")]
+position = Vector2(2185, 256)
+lio_text = "She’s entirely consumed by Rot. She’s gone."
+requires_dialogue_done = true
+
 [connection signal="body_entered" from="PlayerRespawnPit" to="PlayerRespawnPit" method="_on_body_entered"]
 
 [editable path="Player"]
