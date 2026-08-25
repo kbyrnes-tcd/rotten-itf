@@ -177,5 +177,6 @@ has_minigame = true
 minigame = 2
 
 [node name="InteractiveCarat" parent="." unique_id=1099497837 instance=ExtResource("8_f732m")]
+position = Vector2(3996, 336)
 
 [editable path="Player"]

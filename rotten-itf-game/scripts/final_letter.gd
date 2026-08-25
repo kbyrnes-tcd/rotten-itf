@@ -76,6 +76,9 @@ func _on_symbol_selected(symbol: String):
 		wrong_placement(symbol)
 
 func correct_placement(symbol: String):
+	var tween = create_tween()
+	tween.tween_property(gap_image, "modulate", Color(2,2,2), 0.2)
+	tween.tween_property(gap_image, "modulate", Color.WHITE, 0.3)
 	placed_symbols[current_gap_index] = symbol
 	feedback_label.visible = false
 	await get_tree().create_timer(0.6).timeout

@@ -23,6 +23,7 @@ pause_menu = NodePath("../UI/PauseMenu")
 hud = NodePath("../HUD")
 
 [node name="MinigameLayer" type="CanvasLayer" parent="." unique_id=1910232469]
+layer = 20
 
 [node name="MgRoot" type="Node2D" parent="MinigameLayer" unique_id=95021917]
 
