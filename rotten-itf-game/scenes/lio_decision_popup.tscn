@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://c7rxunihwtiiw"]
+
+[ext_resource type="Script" uid="uid://b5i05qykhkdnv" path="res://scripts/lio_decision_popup.gd" id="1_ujegf"]
+[ext_resource type="Texture2D" uid="uid://r11vets3hii5" path="res://assets/images/ui/RITF_DialogFrame.png" id="2_eu1dh"]
+[ext_resource type="FontFile" uid="uid://3u1i6waxj8qa" path="res://assets/fonts/HyperlegibleSans-Bold.ttf" id="3_4oc3g"]
+
+[node name="LioDecisionPopup" type="CanvasLayer" unique_id=1750883624]
+script = ExtResource("1_ujegf")
+
+[node name="DarkFrame" type="TextureRect" parent="." unique_id=882128781]
+visible = false
+offset_right = 480.0
+offset_bottom = 270.0
+texture = ExtResource("2_eu1dh")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=755628547]
+offset_left = 1.0
+offset_top = 209.0
+offset_right = 486.0
+offset_bottom = 266.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer" unique_id=1207331619]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="CenterContainer/HBoxContainer" unique_id=551696434]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4oc3g")
+text = "Defend yourself"
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/HBoxContainer" unique_id=683874624]
+layout_mode = 2
+theme_override_constants/margin_right = 20
+
+[node name="Button2" type="Button" parent="CenterContainer/HBoxContainer" unique_id=592549326]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4oc3g")
+text = "Defend your future"
+
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Button2" to="." method="_on_button_pressed"]

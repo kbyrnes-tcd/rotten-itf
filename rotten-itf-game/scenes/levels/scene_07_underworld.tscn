@@ -5,12 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://cq3vwtcx5wjii" path="res://assets/images/env/underworld/Underworld_Interiorupdated.png" id="2_fsx4r"]
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="3_xllsq"]
 [ext_resource type="Texture2D" uid="uid://cbr4krilgs10f" path="res://assets/images/env/underworld/Hades1.png" id="4_0as34"]
-[ext_resource type="PackedScene" uid="uid://c1epxp5spnua" path="res://scenes/ui/dialogue_trigger.tscn" id="4_5qgul"]
-[ext_resource type="Script" uid="uid://ddnjkodm10cvk" path="res://scripts/dialogue_trigger.gd" id="5_8jksi"]
 [ext_resource type="Texture2D" uid="uid://ccs5lagcbm4dh" path="res://assets/images/env/underworld/Hades2.png" id="5_q6yyf"]
 [ext_resource type="Texture2D" uid="uid://r73l5k436dgh" path="res://assets/images/env/underworld/Hades3.png" id="6_wx6i3"]
 [ext_resource type="PackedScene" uid="uid://dr3ff06oljyer" path="res://scenes/lio_trigger.tscn" id="9_0as34"]
 [ext_resource type="PackedScene" uid="uid://bimatr4hej8ja" path="res://scenes/ui/interactive_carat.tscn" id="9_wx6i3"]
+[ext_resource type="PackedScene" uid="uid://bbu6xy3g5bxwc" path="res://scenes/lio_decision_trigger.tscn" id="10_q6yyf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w2pfo"]
 animations = [{
@@ -54,8 +53,6 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 metadata/_snap_enabled = true
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_q01m8"]
-
 [node name="Scene_07_Underworld" type="Node2D" unique_id=1008943527]
 
 [node name="PersistentData" parent="." unique_id=1117547414 instance=ExtResource("1_q6yyf")]
@@ -89,7 +86,7 @@ scale = Vector2(5.6987634, 2.1080432)
 shape = SubResource("RectangleShape2D_w2pfo")
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("3_xllsq")]
-position = Vector2(380, 230)
+position = Vector2(2595, 157)
 NORMAL_SPEED = 150.0
 STEP_SPEED = 80.0
 
@@ -245,42 +242,9 @@ scale = Vector2(2.1364217, 0.7193657)
 [node name="CollisionShape2D" parent="LIOs/LIOOFFICE/InteractiveCarat4/Area2D" index="0" unique_id=1877122585]
 scale = Vector2(5.1619253, 8.434657)
 
-[node name="TheDecision" parent="LIOs" unique_id=1375906023 instance=ExtResource("9_0as34")]
-position = Vector2(2254, 260)
-scale = Vector2(10.7292385, 1)
-lio_text = ""
-seq = true
-seq_text = Array[String](["“Yes, brother. I know.” ", "“Too many years have passed now and I’m growing impatient.”", "“Our deal must end.”", "“Persephone must not leave again. I will not allow it.”", "...", "No.", "He… he can’t do this. He can’t.", "He can’t."])
-hades = true
-
-[node name="InteractiveCarat4" parent="LIOs/TheDecision" unique_id=337905213 instance=ExtResource("9_wx6i3")]
-position = Vector2(0, -172.99997)
-scale = Vector2(0.09337288, 0.99999994)
-unlocked_carat = true
-
-[node name="Area2D" parent="LIOs/TheDecision/InteractiveCarat4" index="1" unique_id=1489179703]
-position = Vector2(0, 19.99997)
-scale = Vector2(0.97850955, 0.7193657)
-
-[node name="CollisionShape2D" parent="LIOs/TheDecision/InteractiveCarat4/Area2D" index="0" unique_id=1877122585]
-scale = Vector2(5.1619253, 8.434657)
-
-[node name="DialogueTrigger" parent="." unique_id=413688381 instance=ExtResource("4_5qgul")]
-process_mode = 4
-visible = false
-position = Vector2(1126, -6)
-script = ExtResource("5_8jksi")
-dialogue_lines = Array[String](["Hades...yes hmm", "Zeus...no hmm"])
-speaker = Array[String](["Zeus", "Hades"])
-
-[node name="CollisionShape2D" parent="DialogueTrigger/Area2D" parent_id_path=PackedInt32Array(413688381, 1114588435) index="0" unique_id=1913681013]
-position = Vector2(959, 222)
-shape = SubResource("CircleShape2D_q01m8")
-
-[node name="Interact" parent="DialogueTrigger" index="1" unique_id=125428239]
-visible = false
-position = Vector2(959.00006, 174)
-scale = Vector2(0.09079814, 0.08184042)
+[node name="LioDECTrigger" parent="." unique_id=437255919 instance=ExtResource("10_q6yyf")]
+position = Vector2(2385, 255)
+scale = Vector2(-12.35798, 1.2025933)
 
 [connection signal="body_entered" from="TransformToP" to="Player" method="_on_transform_to_p_body_entered"]
 
@@ -289,5 +253,3 @@ scale = Vector2(0.09079814, 0.08184042)
 [editable path="LIOs/LioSeqTriggerx/InteractiveCarat2"]
 [editable path="LIOs/LioSeqTriggerx2/InteractiveCarat3"]
 [editable path="LIOs/LIOOFFICE/InteractiveCarat4"]
-[editable path="LIOs/TheDecision/InteractiveCarat4"]
-[editable path="DialogueTrigger"]
