@@ -33,8 +33,9 @@ var segments: Array = []
 
 # Drag and drop player inv, set player speed/jump params
 @export var inv: Inventory
-var target_speed:=-1
+var target_speed:= -1.0
 const NORMAL_SPEED := 150.0
+#const NORMAL_SPEED := 850.0
 const STEP_SPEED := 80.0
 const ACCELERATION := 800.0
 @export var FULL_JUMP_VELOCITY = -650.0
@@ -63,6 +64,7 @@ func _ready():
 	if light:
 		light.enabled = false
 	build_worm_segments()
+	set_collision_mask_value(2, true)  #setting here so all instances of player are config to have steps/one-way col.s in mask layer
 
 # Tool FSM
 func _process(delta):
@@ -104,20 +106,20 @@ func _handle_animation():
 			animated_sprite_2d.animation = "walk_equipped"
 
 var step_target_y := 0.0
-var on_step := false
 func can_step_up() -> bool:
-	on_step = false
+	step_target_y = 0.0
 	var collider; var shape_index; var owner_id; var shape_node;
+	$StepJumpRayCastL.force_raycast_update()
+	$StepJumpRayCastR.force_raycast_update()
 	for foot in [$StepJumpRayCastL, $StepJumpRayCastR]:
-		#var lorr := foot.name.substr(foot.name.length() - 1, 1)
+		#var lorr = foot.name.substr(foot.name.length() - 1, 1)
 		if foot.is_colliding():
 			collider = foot.get_collider()
 			shape_index = foot.get_collider_shape()
 			owner_id = collider.shape_find_owner(shape_index)
 			shape_node = collider.shape_owner_get_owner(owner_id)
 			if (shape_node is CollisionShape2D or shape_node is CollisionPolygon2D) and shape_node.one_way_collision:
-				on_step = true
-				#print("%s foot is colliding with %s" %[lorr, shape_node.one_way_collision])
+				#print("%s foot is colliding with %s" %[lorr, shape_node.name])
 				if step_target_y < foot_marker.global_position.y:
 					step_target_y = foot.get_collision_point().y
 					return true
@@ -139,6 +141,7 @@ func can_i_jump() -> Dictionary:
 			jump_data["jump_velocity"] = MID_JUMP_VELOCITY
 	return jump_data
 
+var is_dropping := false
 func _handle_movement(delta: float):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -155,7 +158,7 @@ func _handle_movement(delta: float):
 		move_state = MoveState.IDLE
 	
 	var jump_state := can_i_jump()
-	if jump_state["jump_velocity"] == 0.0: return
+	#if jump_state["jump_velocity"] == 0.0: return
 	
 	# STEP UP TAKES PRIORITY
 	if can_step and Input.is_action_just_pressed("jump"):
@@ -170,11 +173,13 @@ func _handle_movement(delta: float):
 		move_state = MoveState.JUMPING
 		
 	# STEPPING DOWN
-	if not on_vine and Input.is_action_just_pressed("down"):
-		position.y += 5
-	elif not on_vine and Input.is_action_pressed("down") and on_step:
-		position.y += 5
-	
+	if on_step and Input.is_action_just_pressed("down") and not is_dropping:
+		is_dropping = true
+		set_collision_mask_value(2, false)
+		await get_tree().create_timer(0.2).timeout
+		set_collision_mask_value(2, true)
+		is_dropping = false
+
 	# OG MOVEMENT
 	#if direction:
 		#velocity.x = direction * NORMAL_SPEED
@@ -261,7 +266,15 @@ func start_vine():
 	var projected_length = diff.dot(dir)
 	var target = gun_sprite.global_position + dir * max(projected_length, 40.0)
 	var vine_instance = ROT_VINE.instantiate()
+	vine_instance.name = "Vine_%d" % Time.get_ticks_usec()
 	scene.add_child(vine_instance)
+	
+	#print("since i am adding rot to this scene i should add this to the persist node")
+	var p_data : PersistentData = GameGlobals.get_current_tree_p_data()
+	if p_data:
+		p_data.add_spawned_obj(vine_instance, ROT_VINE)
+	#print(p_data.object_names)
+
 	active_vine = vine_instance.get_child(0)
 	active_vine.points = PackedVector2Array([
 		active_vine.to_local(src),
@@ -283,22 +296,22 @@ func stop_vine():
 func midpoint(src: Vector2, dest: Vector2) -> Vector2:
 	return Vector2(src.x + dest.x, src.y + dest.y) / 2
 
-func add_vine(src: Vector2, dest: Vector2):
-	var dist_scale = roundf(src.distance_to(dest) / 70)
-	var vine = ROT_VINE.instantiate()
-	var vine_points: PackedVector2Array = PackedVector2Array([src, dest])
-	var counter = 0
-	while counter < dist_scale:
-		var vine_points_acc: PackedVector2Array = PackedVector2Array([vine_points[0]])
-		for i in range(vine_points.size() - 1):
-			var source = vine_points[i]
-			var desti = vine_points[i + 1]
-			vine_points_acc.append(midpoint(source, desti))
-			vine_points_acc.append(desti)
-		vine_points = vine_points_acc
-		counter += 1
-	vine.get_child(0).points = vine_points
-	scene.add_child(vine)
+#func add_vine(src: Vector2, dest: Vector2):
+	#var dist_scale = roundf(src.distance_to(dest) / 70)
+	#var vine = ROT_VINE.instantiate()
+	#var vine_points: PackedVector2Array = PackedVector2Array([src, dest])
+	#var counter = 0
+	#while counter < dist_scale:
+		#var vine_points_acc: PackedVector2Array = PackedVector2Array([vine_points[0]])
+		#for i in range(vine_points.size() - 1):
+			#var source = vine_points[i]
+			#var desti = vine_points[i + 1]
+			#vine_points_acc.append(midpoint(source, desti))
+			#vine_points_acc.append(desti)
+		#vine_points = vine_points_acc
+		#counter += 1
+	#vine.get_child(0).points = vine_points
+	#scene.add_child(vine)
 
 # CHANGING TOOL STATE, visuals
 func change_tool_state(new_state: ToolState):
@@ -492,7 +505,6 @@ func _handle_vine_growth(delta: float):
 	var result = space_state.intersect_point(params, 32)
 	var hit_wall = false
 	for r in result:
-		print(r)
 		# ignore hitting the vine itself extending
 		if active_vine.get_parent().has_node("LineStaticBody2D"):
 			if r.collider == active_vine.get_parent().get_node("LineStaticBody2D"):
@@ -531,7 +543,7 @@ func update_lantern_visuals():
 	var light = lantern.get_node_or_null("PointLight2D")
 	if light:
 		light.texture_scale = lerp(0.3, 1.0, life_ratio)
-		light.energy = lerp(0.3, 1.5, life_ratio)
+		light.energy = lerp(0.3, 0.9, life_ratio)
 
 func activate_light():
 	worm_in_use = true
@@ -572,11 +584,24 @@ func update_worm_segments():
 		else:
 			segments[i].color = Color("#292929")
 
-var on_vine := false
-func _feet_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
-	if area:
-		if area.name == "LineArea2D": on_vine = true
+# FOR DETECTING WHETHER PLAYER IS ACTIVELY ON A STEP--FOR GOING DOWN
+var on_step := false
+func _feet_area_shape_entered(_area_rid: RID, body: Node2D, body_shape_index: int, _local_shape_index: int) -> void:
+	if !body is PhysicsBody2D: return
+	if !is_instance_valid(body): return
+	if body.get_shape_owners().is_empty(): return
+	var owner_id = body.shape_find_owner(body_shape_index)
+	if owner_id == -1: return
+	var shape_node = body.shape_owner_get_owner(owner_id)
+	if shape_node and shape_node.one_way_collision:
+		on_step = true
 
-func _on_feet_area_shape_exited(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
-	if area:
-		if area.name == "LineArea2D": on_vine = false
+func _feet_area_shape_exited(_area_rid: RID, body: Node2D, body_shape_index: int, _local_shape_index: int) -> void:
+	if !body is PhysicsBody2D: return
+	if !is_instance_valid(body): return
+	if body.get_shape_owners().is_empty(): return
+	var owner_id = body.shape_find_owner(body_shape_index)
+	if owner_id == -1: return
+	var shape_node = body.shape_owner_get_owner(owner_id)
+	if shape_node and shape_node.one_way_collision:
+		on_step = false

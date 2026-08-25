@@ -12,25 +12,33 @@ extends Area2D
 @export var minigame: GameGlobals.Minigame = GameGlobals.Minigame.MAZE
 @export var blocking_rot: Array[Node2D] = []
 var minigame_solved: bool = false
+var can_def_pass = false
 
 var near_door = false
 var player = null
 
-#func _ready() -> void:
-	#current_scene = GameGlobals.level_root.get_child(0).name.to_lower()
+func _ready() -> void:
+	if GameGlobals.rotten_door == true:
+		can_def_pass = true
 
+enum Minigame { NONE, MAZE, LETTER }
+#var minigame_completion
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	#print(blocking_rot.size())
+
 	if near_door:
-		var can_pass = _check_condtion()
+		var can_pass = _check_condtion() or can_def_pass # if can def pass, will pass...
 		if interact_carat:
 			if can_pass:
 				interact_carat.show_carat()
+			if can_pass and self.name == "DoorToTemple": GameGlobals.rotten_door = true
 			else:
 				interact_carat.hide_carat()
 		if can_pass and Input.is_action_just_pressed("interact"):
 			if !crack: AudioManager.play_os("open_door")
-			if has_minigame and not minigame_solved:
+			# if the door has a minigame, load it if it hasn't been attempted or completed yet.
+			if has_minigame and !minigame_solved and !GameGlobals.minigame_completion[minigame]:
 				GameGlobals.load_minigame(minigame)
 				await GameGlobals.minigame_completed
 				minigame_solved = true

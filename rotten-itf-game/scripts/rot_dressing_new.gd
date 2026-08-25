@@ -14,10 +14,9 @@ var wave_speed:= 2.0
 var wave_frequency := 0.8
 
 const ROT_DRESSING = preload("uid://di31qowjleyl4")
-var scene
+@onready var scene =  GameGlobals.get_current_level_tree()
 
 func _ready():
-	scene = get_tree().current_scene
 	# random width, curve, and wave param.s
 	if width == 7.0: width = randi_range(10,20)
 	wave_strength  = randf_range(1.5, 3.0)
@@ -35,7 +34,26 @@ func _ready():
 	segments_in_area = []
 	pts = points
 	
-	if collidable or clearable: call_deferred("inst_collisions") # instantiate collision shape from inspector defined curve
+	# add rot-dressing obj to persistence tracker of c_tree
+	if collidable or clearable:
+		var p_data : PersistentData = GameGlobals.get_current_tree_p_data()
+		if p_data:
+			p_data.add_obj(self)
+
+		call_deferred("inst_collisions") # instantiate collision shape from inspector defined curve
+
+# FOR PERSISTING VINESSSS
+func get_persist_data() -> Dictionary:
+	return {
+		"points": points,
+	}
+
+func apply_persist_data(data: Dictionary) -> void:
+	if data.has("points"):
+		points = data["points"]
+		rest_points = points.duplicate()
+		pts = points
+		#call_deferred("update_collisions")
 
 func _physics_process(delta: float) -> void:
 	animate_tentacle(delta)
@@ -114,12 +132,57 @@ func _on_line_area_2d_area_shape_entered(_area_rid: RID, area: Area2D, _area_sha
 		queue_free()
 		#call_deferred("update_collisions")
 
+#func update_collisions():
+	#var static_body = $LineStaticBody2D
+	#var area = $LineArea2D
+	## however many points there, there must be p-1 segments
+	## connecting 2 points to each other...
+	#var needed_segment_count = maxi(points.size() - 1, 0)
+#
+	## reuse existing shapes, create only what's missing
+	#for i in needed_segment_count:
+		#var cshape_node_static: CollisionShape2D
+		#var cshape_node_area: CollisionShape2D
+		## if there are more shapes
+		#if i < static_body.get_child_count():
+			#cshape_node_static = static_body.get_child(i)
+			#cshape_node_area = area.get_child(i)
+		#else:
+			#cshape_node_static = CollisionShape2D.new()
+			#cshape_node_area = CollisionShape2D.new()
+			#static_body.add_child(cshape_node_static)
+			#area.add_child(cshape_node_area)
+#
+		## static: collision
+		#var segment = SegmentShape2D.new()
+		#segment.a = points[i]
+		#segment.b = points[i + 1]
+		#cshape_node_static.shape = segment
+		#
+		## area: overlap
+		#var rect = RectangleShape2D.new()
+		#cshape_node_area.position = (points[i] + points[i + 1]) / 2
+		#cshape_node_area.rotation = points[i].direction_to(points[i + 1]).angle()
+		#var length = points[i].distance_to(points[i + 1])
+		#rect.extents = Vector2(length / 2, width / 2)
+		#cshape_node_area.shape = rect
+#
+	## free any leftover shapes beyond what's needed_segment_count
+	#while static_body.get_child_count() > needed_segment_count:
+		#var static_shape = static_body.get_child(static_body.get_child_count() - 1)
+		#static_body.remove_child(static_shape)
+		#static_shape.queue_free()
+		#var area_shape = area.get_child(area.get_child_count() - 1)
+		#area.remove_child(area_shape)
+		#area_shape.queue_free()
+
 func add_vine(pts_slice: PackedVector2Array):
 	#print("inst along" + str(pts_slice[0]) + " & " + str(pts_slice[pts_slice.size()-1]))
 	var vine := ROT_DRESSING.instantiate()
 	vine.collidable = collidable
 	vine.points = pts_slice
 	scene.add_child(vine)
+	print("since i am adding rot to this scene %s i should add this to the persist node" %scene)
 	#print("inst: %s w/ points: %s and in scene: %s" %[vine, pts_slice, scene])
 	return
 	
