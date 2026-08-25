@@ -96,31 +96,48 @@ var persephone := false
 var transformed := false
 var transforming := false
 func _handle_animation():
+	if transforming: return
+	# fade and transforn INTO P
 	if persephone and !transformed:
-		if transforming: return
 		transforming = true
-		var target_anim := "p_walk" if move_state == MoveState.WALKING else "p_idle"
-		var fade_char := create_tween()
-		fade_char.tween_property(animated_sprite_2d, "modulate:a", 0.0, 1.0) # fade out daphne
-		fade_char.tween_callback(func(): animated_sprite_2d.animation = target_anim) # change to P
-		fade_char.tween_property(animated_sprite_2d, "modulate:a", 1.0, 1.0) # fade in P
-		await fade_char.finished
-		transformed = true; transforming = false
+		await transform_self(true)
+		transformed = true
+		transforming = false
 		return
-	if transformed:
-		animated_sprite_2d.animation = "p_walk" if move_state == MoveState.WALKING else "p_idle"
+	# fade and transforn INTO !P AKA Daphne
+	if !persephone and transformed:
+		transforming = true
+		await transform_self(false)
+		transformed = false
+		transforming = false
+		return
+	animated_sprite_2d.animation = get_anim_for(transformed)
+
+func transform_self(to_persephone: bool) -> void:
+	var target_anim := get_anim_for(to_persephone)
+	var fade_char := create_tween()
+	fade_char.tween_property(animated_sprite_2d, "modulate:a", 0.0, 1.0)
+	fade_char.tween_callback(func(): animated_sprite_2d.animation = target_anim)
+	fade_char.tween_property(animated_sprite_2d, "modulate:a", 1.0, 1.0)
+	await fade_char.finished
+
+func get_anim_for(is_persephone: bool) -> String:
+	if is_persephone: return "p_walk" if move_state == MoveState.WALKING else "p_idle"
 	else:
 		if move_state == MoveState.IDLE:
-			if tool_state == ToolState.IDLE:
-				animated_sprite_2d.animation = "idle"
-			else:
-				animated_sprite_2d.animation = "idle_equipped"
-			
-		if move_state == MoveState.WALKING:
-			if tool_state == ToolState.IDLE:
-				animated_sprite_2d.animation = "walk"
-			else:
-				animated_sprite_2d.animation = "walk_equipped"
+			return "idle" if tool_state == ToolState.IDLE else "idle_equipped"
+		else:
+			return "walk" if tool_state == ToolState.IDLE else "walk_equipped"
+
+func _on_transform_to_p_body_entered(body: Node2D) -> void:
+	# when player enters transform to Persephone area in underworld scene
+	if body.name == "Player" and !persephone:
+		persephone = true
+
+func _on_transform_to_d_body_entered(body: Node2D) -> void:
+	# when player enters transform to Daphne area in scene_06_copy scene
+	if body.name == "Player" and persephone:
+		persephone = false
 
 var step_target_y := 0.0
 func can_step_up() -> bool:
@@ -622,8 +639,3 @@ func _feet_area_shape_exited(_area_rid: RID, body: Node2D, body_shape_index: int
 	var shape_node = body.shape_owner_get_owner(owner_id)
 	if shape_node and shape_node.one_way_collision:
 		on_step = false
-
-func _on_transform_to_p_body_entered(body: Node2D) -> void:
-	# when player enters transform to Persephone area in underworld scene
-	if body.name == "Player" and !persephone:
-		persephone = true

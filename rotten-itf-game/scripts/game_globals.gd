@@ -27,6 +27,7 @@ var audio_prog := {
 	level_prog[7]: {"ambience": "Int_Ambiance", "music": "Temple_Music"}, # Tower
 	level_prog[8]: {"ambience": "Int_Ambiance", "music": "Temple_Music"}, # P's altar room
 	level_prog[9]: {"ambience": "Underworld_Ambience", "music": "Underworld_Music"}, # Underworld
+	"scene_06_post_switch": {"ambience": "Cutscene_ambi", "music": "Cutscene_music"},
 	"cutscene": {"ambience": "Cutscene_ambi", "music": "Cutscene_music"}
 }
 

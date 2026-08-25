@@ -32,7 +32,8 @@ func cutscene():
 	var transition_manager = get_tree().get_first_node_in_group("transition_manager")
 	if transition_manager and transition_manager.get_child(0):
 		await transition_manager.play_rot_cutscene()
-		print("change back to above ground!")
+		transition_manager.fade_out()
+		GameGlobals.load_level("scene_06_post_switch")
 
 func clear():
 	var out_tween = create_tween()
