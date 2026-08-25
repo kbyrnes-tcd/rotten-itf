@@ -14,7 +14,7 @@ func _ready() -> void:
 	label.modulate.a = 0.0
 	dark_frame.modulate.a = 0.0
 
-func _show_text(text: String, duration: float = 3.5, fade: float = 1.0, seq := false):
+func _show_text(text: String, duration: float = 3.5, fade: float = 1.0, seq := false, hades:=false):
 	dark_frame.visible = true
 
 	if !seq:
@@ -25,6 +25,8 @@ func _show_text(text: String, duration: float = 3.5, fade: float = 1.0, seq := f
 		current_tween.kill()
 
 	label.text = text
+	if hades: label.set("theme_override_colors/font_color", Color("959c6cff"))
+	else:  label.set("theme_override_colors/font_color", Color("ffffffff"))
 	label.modulate.a = 1.0
 	current_tween = create_tween()
 	current_tween.tween_interval(duration)
@@ -36,14 +38,15 @@ func _show_text(text: String, duration: float = 3.5, fade: float = 1.0, seq := f
 		await out_tween.tween_property(dark_frame, "modulate:a", 0.0, 1.0).finished
 		dark_frame.visible = false
 
-func show_sequence(lines: Array, duration: float = 3.5):
+func show_sequence(lines: Array, duration: float = 3.5, hades := false):
 	dark_frame.visible = true
 	dark_frame.modulate.a = 0.0
 	var in_tween = create_tween()
 	await in_tween.tween_property(dark_frame, "modulate:a", 0.5, 0.5).finished
 
 	for line in lines:
-		await _show_text(line, duration, 1.0, true)
+		if line == "...": hades = false
+		await _show_text(line, duration, 1.0, true, hades)
 		await current_tween.finished
 
 	var out_tween = create_tween()

@@ -8,6 +8,7 @@ extends Node2D
 
 @export var seq := false
 @export var seq_text : Array[String]
+@export var hades := false
 var triggered = false
 var body_in_range := false
 var seq_active := false
@@ -38,7 +39,7 @@ func _process(_delta: float) -> void:
 			seq_active = true
 			triggered = true
 			GameGlobals.slow_player()
-			await lio.show_sequence(seq_text)
+			await lio.show_sequence(seq_text, display_duration, hades)
 			GameGlobals.speed_player()
 			queue_free()
 

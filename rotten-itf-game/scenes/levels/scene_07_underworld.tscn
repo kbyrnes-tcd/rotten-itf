@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://ccs5lagcbm4dh" path="res://assets/images/env/underworld/Hades2.png" id="5_q6yyf"]
 [ext_resource type="Texture2D" uid="uid://r73l5k436dgh" path="res://assets/images/env/underworld/Hades3.png" id="6_wx6i3"]
 [ext_resource type="PackedScene" uid="uid://dr3ff06oljyer" path="res://scenes/lio_trigger.tscn" id="9_0as34"]
+[ext_resource type="PackedScene" uid="uid://bimatr4hej8ja" path="res://scenes/ui/interactive_carat.tscn" id="9_wx6i3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w2pfo"]
 animations = [{
@@ -77,7 +78,9 @@ frame = 1
 frame_progress = 0.5302776
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("3_xllsq")]
-position = Vector2(383.00003, 178)
+position = Vector2(2254, 151)
+NORMAL_SPEED = 150.0
+STEP_SPEED = 80.0
 
 [node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
 limit_left = -441
@@ -142,25 +145,48 @@ texture = SubResource("GradientTexture2D_tjxil")
 [node name="LIOs" type="Node2D" parent="." unique_id=1452585461]
 
 [node name="LioSeqTrigger" parent="LIOs" unique_id=2072932904 instance=ExtResource("9_0as34")]
-position = Vector2(507, 260)
-scale = Vector2(5.4562945, 1)
+position = Vector2(460, 260)
+scale = Vector2(2.0962946, 1)
 lio_text = ""
 seq = true
-seq_text = Array[String](["Strange… no matter how cold it gets up above, it’s always just the same sweltering smog down here.", "This year is especially bad. It’s hard even to breathe in my garden. I worry I’ll need a greenhouse soon. I don’t think I can go outside."])
+seq_text = Array[String](["Strange… no matter how cold it gets up above, it’s always just the same sweltering smog down here.", "This year is especially bad. It’s hard even to breathe in my garden.", "I worry I’ll need a greenhouse soon. I don’t think I can go outside."])
+
+[node name="InteractiveCarat" parent="LIOs/LioSeqTrigger" unique_id=1099497837 instance=ExtResource("9_wx6i3")]
+position = Vector2(-2.861023e-06, -141)
+scale = Vector2(0.47703218, 1)
+unlocked_carat = true
 
 [node name="LioSeqTrigger2" parent="LIOs" unique_id=110257511 instance=ExtResource("9_0as34")]
 position = Vector2(-102, 260)
 scale = Vector2(21.319998, 1.0351171)
 lio_text = ""
+display_duration = 4.0
 seq = true
 seq_text = Array[String](["My mother sent me down this winter with Lilly and lavender seeds, but they’re struggling in this pollution.", "I suppose I should keep a few, and plant them in the garden when I return in the Spring. ", "Maybe my Amulet will help some of it to grow. I left it with my Mother, but I should retrieve my ruby sigil when I return. ", "It has long helped my plants to grow, though it’s power is not as strong here as it is above. The winter time is harsh on me. "])
 
+[node name="InteractiveCarat2" parent="LIOs/LioSeqTrigger2" unique_id=485324510 instance=ExtResource("9_wx6i3")]
+position = Vector2(-3.705441, -112.064606)
+scale = Vector2(0.04690432, 0.9660743)
+unlocked_carat = true
+
+[node name="Area2D" parent="LIOs/LioSeqTrigger2/InteractiveCarat2" index="1" unique_id=1489179703]
+scale = Vector2(2.8799987, 1)
+
 [node name="LioSeqTriggerx" parent="LIOs" unique_id=204776901 instance=ExtResource("9_0as34")]
-position = Vector2(943, 260)
-scale = Vector2(23.919994, 1)
+position = Vector2(1063, 260)
+scale = Vector2(6.9199963, 1)
 lio_text = ""
 seq = true
-seq_text = Array[String](["My husband. I may not love Hades, but I have to admit half a life is long enough to grow familiar enough. His presence has become as equal in my life as that of my mother, or my gardens, or my blood.", "He is the king of this realm and, as king, he asks for nothing. He acquiesces to nothing. He appeals to nothing. He is, he wants, he has. His will is the way, and sometimes that will extend to the wants of his wife. ", "I see… oddly little of him. This has been one of the winters he avoids me. Some days, I will glimpse an edge of him, a shoulder, a finger, through the chilled, cold halls of our home here, and he will not even stop to acknowledge me.", "He seems… guilty.", "I don’t like it. It feels wrong. I think something is wrong.", "I think I’m… scared."])
+seq_text = Array[String](["My husband. I may not love Hades, but I have to admit half a life is long enough to grow familiar enough.", "His presence has become as equal in my life as that of my mother, or my gardens, or my blood.", "He is the king of this realm and, as king, he asks for nothing. ", "He appeals to nothing. He is, he wants, he has. ", "His will is the way, and sometimes that will extend to the wants of his wife. ", "I see… oddly little of him.", "This has been one of the winters he avoids me.", "Some days, I will glimpse an edge of him, a shoulder, a finger, through the chilled, cold halls of our home here, and he will not even stop to acknowledge me.", "He seems… guilty.", "I don’t like it. It feels wrong. I think something is wrong.", "I think I’m… scared."])
+
+[node name="InteractiveCarat2" parent="LIOs/LioSeqTriggerx" unique_id=1683500878 instance=ExtResource("9_wx6i3")]
+position = Vector2(-0.4335327, -219)
+scale = Vector2(0.14450875, 1)
+unlocked_carat = true
+
+[node name="Area2D" parent="LIOs/LioSeqTriggerx/InteractiveCarat2" index="1" unique_id=1489179703]
+position = Vector2(0, 47.999996)
+scale = Vector2(3.1600099, 1.04)
 
 [node name="LioSeqTriggerx2" parent="LIOs" unique_id=588385984 instance=ExtResource("9_0as34")]
 position = Vector2(1469, 260)
@@ -169,12 +195,64 @@ lio_text = ""
 seq = true
 seq_text = Array[String](["Even after my many years in this deal, I’m still always under watch. I wonder how many winters I’ve spent here…", "I was so young that first Autumn I came here through the Yew Tree, but I’ve spent almost half my life here. When exactly will it start feeling like home?", "Maybe when it stops feeling like a prison. Or tomb."])
 
-[node name="LioSeqTriggerx3" parent="LIOs" unique_id=1617503641 instance=ExtResource("9_0as34")]
-position = Vector2(1971, 260)
-scale = Vector2(10.600019, 1)
+[node name="InteractiveCarat3" parent="LIOs/LioSeqTriggerx2" unique_id=372839711 instance=ExtResource("9_wx6i3")]
+position = Vector2(-6.49123, -177)
+scale = Vector2(0.043859657, 1)
+unlocked_carat = true
+
+[node name="Area2D" parent="LIOs/LioSeqTriggerx2/InteractiveCarat3" index="1" unique_id=1489179703]
+scale = Vector2(1.9600098, 1.6)
+
+[node name="LioPreOffice" parent="LIOs" unique_id=1477949584 instance=ExtResource("9_0as34")]
+position = Vector2(1829, 260)
+scale = Vector2(2.3600197, 1)
+lio_text = "His office. Quiet. "
+seq_text = Array[String]([""])
+
+[node name="LioPreOffice2" parent="LIOs" unique_id=1617503641 instance=ExtResource("9_0as34")]
+position = Vector2(1916, 260)
+scale = Vector2(2.3600197, 1)
+lio_text = "No… I can hear him in there. He is speaking with someone so quietly I can hardly make it out."
+
+[node name="LIOOFFICE" parent="LIOs" unique_id=856708270 instance=ExtResource("9_0as34")]
+position = Vector2(2085, 259)
+scale = Vector2(10.7292385, 1)
 lio_text = ""
-display_duration = 0.1
-seq_text = Array[String](["His office. Quiet. ", "No… I can hear him in there. He is speaking with someone so quietly I can hardly make it out."])
+seq = true
+seq_text = Array[String](["“Yes, brother. I know.” ", "“Too many years have passed now and I’m growing impatient.”", "“Our deal must end.”", "“Persephone must not leave again. I will not allow it.”", "...", "No.", "He… he can’t do this. He can’t.", "He can’t."])
+hades = true
+
+[node name="InteractiveCarat4" parent="LIOs/LIOOFFICE" unique_id=84861037 instance=ExtResource("9_wx6i3")]
+position = Vector2(0, -172.99997)
+scale = Vector2(0.09337288, 0.99999994)
+unlocked_carat = true
+
+[node name="Area2D" parent="LIOs/LIOOFFICE/InteractiveCarat4" index="1" unique_id=1489179703]
+position = Vector2(0, 19.99997)
+scale = Vector2(2.1364217, 0.7193657)
+
+[node name="CollisionShape2D" parent="LIOs/LIOOFFICE/InteractiveCarat4/Area2D" index="0" unique_id=1877122585]
+scale = Vector2(5.1619253, 8.434657)
+
+[node name="TheDecision" parent="LIOs" unique_id=1375906023 instance=ExtResource("9_0as34")]
+position = Vector2(2254, 260)
+scale = Vector2(10.7292385, 1)
+lio_text = ""
+seq = true
+seq_text = Array[String](["“Yes, brother. I know.” ", "“Too many years have passed now and I’m growing impatient.”", "“Our deal must end.”", "“Persephone must not leave again. I will not allow it.”", "...", "No.", "He… he can’t do this. He can’t.", "He can’t."])
+hades = true
+
+[node name="InteractiveCarat4" parent="LIOs/TheDecision" unique_id=337905213 instance=ExtResource("9_wx6i3")]
+position = Vector2(0, -172.99997)
+scale = Vector2(0.09337288, 0.99999994)
+unlocked_carat = true
+
+[node name="Area2D" parent="LIOs/TheDecision/InteractiveCarat4" index="1" unique_id=1489179703]
+position = Vector2(0, 19.99997)
+scale = Vector2(0.97850955, 0.7193657)
+
+[node name="CollisionShape2D" parent="LIOs/TheDecision/InteractiveCarat4/Area2D" index="0" unique_id=1877122585]
+scale = Vector2(5.1619253, 8.434657)
 
 [node name="DialogueTrigger" parent="." unique_id=413688381 instance=ExtResource("4_5qgul")]
 process_mode = 4
@@ -194,4 +272,9 @@ position = Vector2(959.00006, 174)
 scale = Vector2(0.09079814, 0.08184042)
 
 [editable path="Player"]
+[editable path="LIOs/LioSeqTrigger2/InteractiveCarat2"]
+[editable path="LIOs/LioSeqTriggerx/InteractiveCarat2"]
+[editable path="LIOs/LioSeqTriggerx2/InteractiveCarat3"]
+[editable path="LIOs/LIOOFFICE/InteractiveCarat4"]
+[editable path="LIOs/TheDecision/InteractiveCarat4"]
 [editable path="DialogueTrigger"]
