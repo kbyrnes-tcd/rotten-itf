@@ -55,6 +55,9 @@ func fade(c_tween:Tween, stream:AudioStreamPlayer, start_vol := 0.0, end_vol := 
 
 func change_ambience(am_name: String) -> void:
 	if active_ambience:
+		if am_name == "null": 
+			active_ambience.stop()
+			return
 		var c_am := active_ambience.stream.resource_path.get_file().get_basename()
 		# if it's the same track, keep continue
 		if c_am == am_name: return

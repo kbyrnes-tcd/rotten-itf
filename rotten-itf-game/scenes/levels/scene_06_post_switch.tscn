@@ -1,0 +1,265 @@
+[gd_scene format=3 uid="uid://cu7rqmvei35it"]
+
+[ext_resource type="Texture2D" uid="uid://ej8ln4a8vxv4" path="res://assets/images/env/tower/Alterback.png" id="1_nho37"]
+[ext_resource type="PackedScene" uid="uid://cfukrntau5ufh" path="res://scenes/levels/persistent_data.tscn" id="1_yngdd"]
+[ext_resource type="Texture2D" uid="uid://u3r1a2e4n302" path="res://assets/images/env/tower/Alterfront.png" id="2_coox1"]
+[ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="3_yngdd"]
+[ext_resource type="PackedScene" uid="uid://dismh7ltsr7nx" path="res://scenes/rot_dressing.tscn" id="4_eujvt"]
+[ext_resource type="Texture2D" uid="uid://oq2dwufi0cro" path="res://assets/images/env/tower/Rotmappng.png" id="5_1awfp"]
+[ext_resource type="PackedScene" uid="uid://dr3ff06oljyer" path="res://scenes/lio_trigger.tscn" id="6_coox1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nbikq"]
+size = Vector2(20, 265.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b3hyr"]
+size = Vector2(1122, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oftv0"]
+size = Vector2(20, 235.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q01m8"]
+size = Vector2(1161, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nho37"]
+size = Vector2(20, 71)
+
+[node name="Scene06_post_switch" type="Node2D" unique_id=311908995]
+
+[node name="PersistentData" parent="." unique_id=1117547414 instance=ExtResource("1_yngdd")]
+
+[node name="Background" type="Sprite2D" parent="." unique_id=306356458]
+position = Vector2(473, 187)
+texture = ExtResource("1_nho37")
+
+[node name="Foreground" type="Sprite2D" parent="." unique_id=1155142686]
+position = Vector2(469, 185)
+texture = ExtResource("2_coox1")
+
+[node name="Player" parent="." unique_id=1515659648 instance=ExtResource("3_yngdd")]
+z_index = 1
+position = Vector2(695, 237)
+
+[node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
+limit_top = 252
+limit_right = 1057
+limit_bottom = 110
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=304900103]
+
+[node name="LeftCollision" type="CollisionShape2D" parent="StaticBody2D" unique_id=397814039]
+position = Vector2(3, 183)
+shape = SubResource("RectangleShape2D_nbikq")
+
+[node name="BottomCollision" type="CollisionShape2D" parent="StaticBody2D" unique_id=1738080502]
+position = Vector2(571, 282)
+shape = SubResource("RectangleShape2D_b3hyr")
+
+[node name="RightCollision" type="CollisionShape2D" parent="StaticBody2D" unique_id=326114271]
+position = Vector2(1144, 182)
+shape = SubResource("RectangleShape2D_oftv0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=803533418]
+position = Vector2(566, 54)
+shape = SubResource("RectangleShape2D_q01m8")
+
+[node name="RotMap" parent="." unique_id=1749191672 instance=ExtResource("4_eujvt")]
+position = Vector2(174, 167)
+
+[node name="Line2D" parent="RotMap" index="0" unique_id=1590463200]
+position = Vector2(-157, 48)
+points = PackedVector2Array(2.2655604, -8.177147, 4, 31, 16, 43, 29, 33)
+
+[node name="Vine2" parent="RotMap" unique_id=524866244 instance=ExtResource("4_eujvt")]
+
+[node name="Line2D" parent="RotMap/Vine2" index="0" unique_id=1590463200]
+position = Vector2(147, 14)
+points = PackedVector2Array(2.2655604, -8.177147, -8, 5, -8, 25, -26, 51, -28, 82)
+
+[node name="Vine3" parent="RotMap" unique_id=168553644 instance=ExtResource("4_eujvt")]
+
+[node name="Line2D" parent="RotMap/Vine3" index="0" unique_id=1590463200]
+position = Vector2(202, -32)
+points = PackedVector2Array(2.2655604, -8.177147, 5, 42, 15, 57, 18, 75, 28, 91, 37, 107, 47, 125, 93, 127, 110, 106, 129, 87)
+
+[node name="Vine4" parent="RotMap" unique_id=1889889644 instance=ExtResource("4_eujvt")]
+
+[node name="Line2D" parent="RotMap/Vine4" index="0" unique_id=1590463200]
+position = Vector2(345, -81)
+points = PackedVector2Array(2.2655604, -8.177147, -17, 3, -19, 45, -14, 77)
+
+[node name="Vine5" parent="RotMap" unique_id=755096930 instance=ExtResource("4_eujvt")]
+
+[node name="Line2D" parent="RotMap/Vine5" index="0" unique_id=1590463200]
+position = Vector2(389, -74)
+points = PackedVector2Array(2.2655604, -8.177147, 0, 31, 13, 62, 17, 96, 24, 122, 30, 140)
+
+[node name="Vine6" parent="RotMap" unique_id=1220092272 instance=ExtResource("4_eujvt")]
+
+[node name="Line2D" parent="RotMap/Vine6" index="0" unique_id=1590463200]
+position = Vector2(510, 39)
+points = PackedVector2Array(2.2655604, -8.177147, -4, 6, 1, 16)
+
+[node name="Vine7" parent="RotMap" unique_id=1044987848 instance=ExtResource("4_eujvt")]
+
+[node name="Line2D" parent="RotMap/Vine7" index="0" unique_id=1590463200]
+position = Vector2(457, 8)
+points = PackedVector2Array(2.2655604, -8.177147, 0, 34, -3, 61)
+
+[node name="Vine8" parent="RotMap" unique_id=1489286148 instance=ExtResource("4_eujvt")]
+
+[node name="Line2D" parent="RotMap/Vine8" index="0" unique_id=1590463200]
+position = Vector2(476, -75)
+points = PackedVector2Array(2.2655604, -8.177147, 8, 27, 11, 60, 15, 95, -2, 118, -6, 136, 2, 148, 24, 135, 21, 80, 21, 27, 24, 3, 27, -27)
+
+[node name="Vine9" parent="RotMap" unique_id=1883689741 instance=ExtResource("4_eujvt")]
+
+[node name="Line2D" parent="RotMap/Vine9" index="0" unique_id=1590463200]
+position = Vector2(501, -95)
+points = PackedVector2Array(2.2655604, -8.177147, 0, 12, 2, 29, 8, 42)
+
+[node name="Vine10" parent="RotMap" unique_id=87274679 instance=ExtResource("4_eujvt")]
+
+[node name="Line2D" parent="RotMap/Vine10" index="0" unique_id=1590463200]
+position = Vector2(518, -90)
+points = PackedVector2Array(2.2655604, -8.177147, 26, 5, 9, 19, 10, 49)
+
+[node name="Vine11" parent="RotMap" unique_id=1496436211 instance=ExtResource("4_eujvt")]
+
+[node name="Line2D" parent="RotMap/Vine11" index="0" unique_id=1590463200]
+position = Vector2(563, -89)
+points = PackedVector2Array(2.2655604, -8.177147, -6, 17, -29, 45)
+
+[node name="Vine12" parent="RotMap" unique_id=261719934 instance=ExtResource("4_eujvt")]
+
+[node name="Line2D" parent="RotMap/Vine12" index="0" unique_id=1590463200]
+position = Vector2(580, -60)
+points = PackedVector2Array(2.2655604, -8.177147, -8, 27, -30, 52, -38, 80, -39, 123)
+
+[node name="Vine13" parent="RotMap" unique_id=1066123178 instance=ExtResource("4_eujvt")]
+
+[node name="Line2D" parent="RotMap/Vine13" index="0" unique_id=1590463200]
+position = Vector2(547, 39)
+points = PackedVector2Array(2.2655604, -8.177147, 2, 6, -6, 20)
+
+[node name="Vine14" parent="RotMap" unique_id=909163915 instance=ExtResource("4_eujvt")]
+
+[node name="Line2D" parent="RotMap/Vine14" index="0" unique_id=1590463200]
+position = Vector2(526, 51)
+points = PackedVector2Array(2.2655604, -8.177147, 8, 6, 6, 18)
+
+[node name="Vine15" parent="RotMap" unique_id=577173788 instance=ExtResource("4_eujvt")]
+
+[node name="Line2D" parent="RotMap/Vine15" index="0" unique_id=1590463200]
+position = Vector2(549, 67)
+points = PackedVector2Array(2.2655604, -8.177147, 37, -1, 43, -17, 58, -32, 42, -50, 38, -83)
+
+[node name="Vine16" parent="RotMap" unique_id=471434042 instance=ExtResource("4_eujvt")]
+
+[node name="Line2D" parent="RotMap/Vine16" index="0" unique_id=1590463200]
+position = Vector2(635, 38)
+points = PackedVector2Array(2.2655604, -8.177147, -4, 8, -8, 29)
+
+[node name="Vine17" parent="RotMap" unique_id=644288850 instance=ExtResource("4_eujvt")]
+
+[node name="Line2D" parent="RotMap/Vine17" index="0" unique_id=1590463200]
+position = Vector2(657, -10)
+points = PackedVector2Array(2.2655604, -8.177147, 7, 23, 5, 50, 8, 75)
+
+[node name="Vine18" parent="RotMap" unique_id=1124554458 instance=ExtResource("4_eujvt")]
+
+[node name="Line2D" parent="RotMap/Vine18" index="0" unique_id=1590463200]
+position = Vector2(687, 84)
+points = PackedVector2Array(2.2655604, -8.177147, 17, 11, 15, -16, 17, 12, 28, -7, 15, 13, 45, 5)
+
+[node name="Vine19" parent="RotMap" unique_id=66822233 instance=ExtResource("4_eujvt")]
+
+[node name="Line2D" parent="RotMap/Vine19" index="0" unique_id=1590463200]
+position = Vector2(887, -85)
+points = PackedVector2Array(2.2655604, -8.177147, 53, -8, 59, 13, 50, 37, 75, 66, 73, 112, 75, 179)
+
+[node name="Vine20" parent="RotMap" unique_id=811250476 instance=ExtResource("4_eujvt")]
+
+[node name="Line2D" parent="RotMap/Vine20" index="0" unique_id=1590463200]
+position = Vector2(832, 40)
+points = PackedVector2Array(2.2655604, -8.177147, 13, 10, 7, 29, 17, 45)
+
+[node name="Vine21" parent="RotMap" unique_id=836133730 instance=ExtResource("4_eujvt")]
+
+[node name="Line2D" parent="RotMap/Vine21" index="0" unique_id=1590463200]
+position = Vector2(934, 55)
+points = PackedVector2Array(2.2655604, -8.177147, 7, 18, 4, 41)
+
+[node name="Vine22" parent="RotMap" unique_id=2108317373 instance=ExtResource("4_eujvt")]
+
+[node name="Line2D" parent="RotMap/Vine22" index="0" unique_id=1590463200]
+position = Vector2(872, 50)
+points = PackedVector2Array(0, -23, -14, -12, -15, 1, -7, 22, -6, 45)
+
+[node name="Vine23" parent="RotMap" unique_id=320501868 instance=ExtResource("4_eujvt")]
+
+[node name="Line2D" parent="RotMap/Vine23" index="0" unique_id=1590463200]
+position = Vector2(404, -9)
+points = PackedVector2Array(28, -14, 30, 14, 35, 45, 25, 66)
+
+[node name="Vine24" parent="RotMap" unique_id=1240389039 instance=ExtResource("4_eujvt")]
+
+[node name="Line2D" parent="RotMap/Vine24" index="0" unique_id=1590463200]
+points = PackedVector2Array(24, -11, 22, 17, 29, 63, 39, 85, 77, 90)
+
+[node name="rot" type="Sprite2D" parent="." unique_id=2144601231]
+visible = false
+position = Vector2(476, 187.5)
+scale = Vector2(1.0014814, 0.98888886)
+texture = ExtResource("5_1awfp")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1671339769]
+color = Color(0.7107411, 0.71074116, 0.7107411, 1)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=196106957]
+color = Color(1, 0.7921569, 0.62352943, 0.26666668)
+energy = 0.8
+
+[node name="TransformToD" type="Area2D" parent="." unique_id=330969439]
+position = Vector2(693, 192)
+scale = Vector2(0.8, 0.8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransformToD" unique_id=1462261950]
+position = Vector2(0, 25.5)
+scale = Vector2(5.6987634, 2.1080432)
+shape = SubResource("RectangleShape2D_nho37")
+
+[node name="LioSeqTrigger" parent="." unique_id=110257511 instance=ExtResource("6_coox1")]
+position = Vector2(695, 260)
+scale = Vector2(12.2562895, 1.3600024)
+lio_text = ""
+seq = true
+seq_text = Array[String](["My Goddess Persephone. It was you. You’ve done this to the world.", "My… my skin. My hands. They’re… rotting.", "No. Never mind that. I need to keep going. I need to stop this, at whatever cost.", "The Yew Tree… Not just a Yew tree. A gate. To the Underworld.", "My Goddess. My sisters. My temple. They must be saved. Avenged. Stopped."])
+fin_lio = true
+
+[connection signal="body_entered" from="TransformToD" to="Player" method="_on_transform_to_d_body_entered"]
+
+[editable path="Player"]
+[editable path="RotMap"]
+[editable path="RotMap/Vine2"]
+[editable path="RotMap/Vine3"]
+[editable path="RotMap/Vine4"]
+[editable path="RotMap/Vine5"]
+[editable path="RotMap/Vine6"]
+[editable path="RotMap/Vine7"]
+[editable path="RotMap/Vine8"]
+[editable path="RotMap/Vine9"]
+[editable path="RotMap/Vine10"]
+[editable path="RotMap/Vine11"]
+[editable path="RotMap/Vine12"]
+[editable path="RotMap/Vine13"]
+[editable path="RotMap/Vine14"]
+[editable path="RotMap/Vine15"]
+[editable path="RotMap/Vine16"]
+[editable path="RotMap/Vine17"]
+[editable path="RotMap/Vine18"]
+[editable path="RotMap/Vine19"]
+[editable path="RotMap/Vine20"]
+[editable path="RotMap/Vine21"]
+[editable path="RotMap/Vine22"]
+[editable path="RotMap/Vine23"]
+[editable path="RotMap/Vine24"]
