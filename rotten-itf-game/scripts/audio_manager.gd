@@ -19,7 +19,7 @@ var music_tween : Tween
 @export_group("Source")
 @export var fx: Dictionary[String, AudioStream] = {}
 @export var ambi_vol : float = 0.0
-@export var music_vol : float = -8.0
+@export var music_vol : float = -10.0
 @export_group("Music")
 @export var ambiences : Dictionary[String, AudioStream] = {}
 @export var music : Dictionary[String, AudioStream] = {}
@@ -84,7 +84,7 @@ func change_music(song: String) -> void:
 		if c_song == song: return
 		else: 
 			if song.get_basename() == "Title_Song": music_vol = 5.0
-			else: music_vol = -8.0
+			else: music_vol = -10.0
 			music_tween = await fade(music_tween, active_music, music_vol, music_vol-20, 1.0, true) # fadeOUT current track b4 changing
 			active_music = null
 			play_music(song)
@@ -94,11 +94,11 @@ func play_music(song: String) -> void:
 		active_music = clips.get_node("Music")
 		active_music.stream = music[song]
 		if song.get_basename() == "Title_Song": music_vol = 5.0
-		else: music_vol = -8.0
+		else: music_vol = -10.0
 		music_tween = await fade(music_tween, active_music, music_vol-20, music_vol, 1.0) # fadeIN new track
 		active_music.play()
 
-func increase_music_vol(amount: float = 15.0, dur: float = 1.5):
+func increase_music_vol(amount: float = 8.0, dur: float = 1.5):
 	if music_tween:
 		music_tween = await fade(music_tween, active_music, active_music.volume_db, active_music.volume_db + amount, dur)
 	else: 
