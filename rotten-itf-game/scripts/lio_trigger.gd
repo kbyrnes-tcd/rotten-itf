@@ -40,10 +40,12 @@ func _process(_delta: float) -> void:
 			#print("pausing game and showing seq...")
 			seq_active = true
 			triggered = true
-			GameGlobals.slow_player()
+			# PAUSE for hades dialog
+			# cue decision AFTER HADES dialog lio is done
+			if hades: GameGlobals.pause()
 			await lio.show_sequence(seq_text, display_duration, hades)
-			if hades: GameGlobals.cue_decision = true # cue dec AFTER HADES dialog lio is done
-			GameGlobals.speed_player()
+			if hades: GameGlobals.cue_decision = true 
+			if hades: GameGlobals.resume()
 			queue_free()
 
 func _on_body_entered(body: Node2D):
