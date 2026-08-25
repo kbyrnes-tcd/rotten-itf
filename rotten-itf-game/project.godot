@@ -13,7 +13,7 @@ config_version=5
 config/name="rotten-itf-game"
 run/main_scene="uid://cl2kf7fr304tf"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://d8d01es0idoc"
 
 [autoload]
 

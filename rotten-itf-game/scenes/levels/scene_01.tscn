@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="9_b3nsi"]
 [ext_resource type="PackedScene" uid="uid://dr3ff06oljyer" path="res://scenes/lio_trigger.tscn" id="10_amr1b"]
 [ext_resource type="PackedScene" uid="uid://dxagx7pjis8m5" path="res://scenes/lighting/exterior_lighting.tscn" id="11_2b8q8"]
+[ext_resource type="PackedScene" uid="uid://di31qowjleyl4" path="res://scenes/rot_dressing_new.tscn" id="13_gfw7l"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8bo55"]
 load_path = "res://.godot/imported/Trees.png-61f64ec7b583c9702c4d368fac49f2b6.ctex"
@@ -155,5 +156,11 @@ lio_text = "Press E to interact."
 
 [node name="InteractiveCarat" parent="." unique_id=1099497837 instance=ExtResource("8_5t0pk")]
 position = Vector2(2479, 154)
+
+[node name="Node" type="Node" parent="." unique_id=1555758467]
+
+[node name="Line2D" parent="Node" unique_id=1590463200 instance=ExtResource("13_gfw7l")]
+position = Vector2(1865, 131)
+points = PackedVector2Array(-10, -32, 14, 6, 39, 14, 60, 6, 72, 30)
 
 [editable path="Player"]
