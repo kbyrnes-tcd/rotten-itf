@@ -72,6 +72,7 @@ texture = ExtResource("1_425tl")
 texture = ExtResource("2_fsx4r")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Environment/Building/Interior" unique_id=2142002937]
+process_mode = 3
 sprite_frames = SubResource("SpriteFrames_w2pfo")
 autoplay = "default"
 frame = 1
