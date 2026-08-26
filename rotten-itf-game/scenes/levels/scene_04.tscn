@@ -162,14 +162,13 @@ spawn_to_the_left = true
 requires_minigame_complete = true
 blocked_lio_text = "The tower to Persephone’s altar. I remember this well. The High Priestess told me I needed to read the letter first. I must know."
 
-[node name="DoorLetter" parent="." unique_id=929734346 node_paths=PackedStringArray("interact_carat") instance=ExtResource("7_oo6cp")]
+[node name="DoorLetter" parent="." unique_id=929734346 instance=ExtResource("7_oo6cp")]
 position = Vector2(3993, 408)
 next_scene_path = "scene_04"
 door_id = "DoorLetter"
 twin_id = "DoorLetter"
 required_item = ExtResource("5_8k800")
 required_amount = 7
-interact_carat = NodePath("../InteractiveCarat")
 has_minigame = true
 minigame = 2
 

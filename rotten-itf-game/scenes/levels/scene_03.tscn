@@ -276,19 +276,17 @@ requires_dialogue_done = true
 [node name="InteractiveCarat" parent="." unique_id=1099497837 instance=ExtResource("16_a3hc7")]
 position = Vector2(3922, 77)
 
-[node name="DoorBack" parent="." unique_id=1160326856 node_paths=PackedStringArray("interact_carat") instance=ExtResource("15_6d0e5")]
+[node name="DoorBack" parent="." unique_id=1160326856 instance=ExtResource("15_6d0e5")]
 position = Vector2(121, 220)
 next_scene_path = "scene_02_int"
 door_id = "DoorBack"
 twin_id = "DoorToTemple"
-interact_carat = NodePath("../InteractiveCarat3")
 
-[node name="DoorToMiniGarden" parent="." unique_id=811292301 node_paths=PackedStringArray("interact_carat") instance=ExtResource("15_6d0e5")]
+[node name="DoorToMiniGarden" parent="." unique_id=811292301 instance=ExtResource("15_6d0e5")]
 position = Vector2(2817, 159)
 next_scene_path = "scene_03_garden"
 door_id = "DoorToMiniGarden"
 twin_id = "GardenDoor"
-interact_carat = NodePath("../InteractiveCarat2")
 
 [node name="DoorMaze" parent="." unique_id=25365531 node_paths=PackedStringArray("interact_carat") instance=ExtResource("15_6d0e5")]
 position = Vector2(3922, 158)
@@ -296,6 +294,8 @@ next_scene_path = "scene_04"
 door_id = "DoorMaze"
 twin_id = "DoorBackToAltar"
 spawn_to_the_left = true
+required_item = ExtResource("13_e0ngt")
+required_amount = 1
 interact_carat = NodePath("../InteractiveCarat")
 has_minigame = true
 

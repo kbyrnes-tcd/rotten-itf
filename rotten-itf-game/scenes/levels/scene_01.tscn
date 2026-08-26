@@ -117,13 +117,12 @@ safe_margin = 0.08
 [node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
 limit_right = 2758
 
-[node name="DoorToGardenInt" parent="." unique_id=1160326856 node_paths=PackedStringArray("interact_carat") instance=ExtResource("9_b3nsi")]
+[node name="DoorToGardenInt" parent="." unique_id=1160326856 instance=ExtResource("9_b3nsi")]
 position = Vector2(2481, 225.00003)
 scale = Vector2(3.594, 6.575)
 next_scene_path = "scene_02_int"
 door_id = "DoorToGardenInt"
 twin_id = "DoorCrackBackToExt"
-interact_carat = NodePath("../InteractiveCarat")
 crack = true
 
 [node name="LIOTriggers" type="Node" parent="." unique_id=482749486]
@@ -164,3 +163,4 @@ position = Vector2(1865, 131)
 points = PackedVector2Array(-10, -32, 14, 6, 39, 14, 60, 6, 72, 30)
 
 [editable path="Player"]
+[editable path="InteractiveCarat"]
