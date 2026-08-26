@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://rb4bm6kn5o8w"]
+
+[ext_resource type="Script" uid="uid://ckvsxjqmja4l4" path="res://addons/credits.gd" id="1_uvwux"]
+[ext_resource type="FontFile" uid="uid://b6i7rpldejb8" path="res://assets/fonts/FaytePixel-Soft.ttf" id="2_m0gy5"]
+[ext_resource type="FontFile" uid="uid://3u1i6waxj8qa" path="res://assets/fonts/HyperlegibleSans-Bold.ttf" id="3_mpx5v"]
+
+[node name="Background" type="ColorRect" unique_id=1937097408]
+z_index = 100
+custom_minimum_size = Vector2(480, 270)
+offset_right = 480.0
+offset_bottom = 270.0
+color = Color(0, 0.8, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=371675785]
+z_index = 100
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="Credits" type="Control" parent="MarginContainer" unique_id=760151639]
+z_index = 100
+layout_mode = 2
+script = ExtResource("1_uvwux")
+TitleFont = ExtResource("2_m0gy5")
+LegibleFont = ExtResource("3_mpx5v")
+
+[node name="CreditsContainer" type="VBoxContainer" parent="MarginContainer/Credits" unique_id=1244461441]
+z_index = 100
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 44.0
+grow_horizontal = 2
+theme_override_constants/separation = 5
