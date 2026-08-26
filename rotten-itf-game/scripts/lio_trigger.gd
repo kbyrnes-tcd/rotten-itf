@@ -32,8 +32,9 @@ func _ready() -> void:
 			if credits:
 				credits.play()
 				await credits.finished
-				get_tree().quit()
-				#GameGlobals.start_new_game()
+				#get_tree().quit()
+				GameGlobals.start_new_game()
+				GameGlobals.resume()
 	elif p_switch: 
 		var lio = get_tree().get_first_node_in_group("lio_manager")
 		if lio:

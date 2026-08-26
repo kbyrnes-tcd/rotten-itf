@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_r1k4f")
-name = "letter_scrap"
+name = "Letter scrap"
 texture = ExtResource("2_r1k4f")
 desc = "This is a letter scrap."
 metadata/_custom_type_script = "uid://b0vt1mp7wu6pu"

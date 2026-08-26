@@ -100,9 +100,31 @@ func start_level_or_debug() -> void:
 		AudioManager.change_music(audio_prog[debug_scene_name].music)
 		AudioManager.play_ambience(audio_prog[debug_scene_name].ambience)
 
+static var has_started_before: bool = false
 func start_new_game() -> void:
 	pending_start = true
-	get_tree().change_scene_to_file("res://scenes/levels/begin.tscn")
+	prog_counter = 0
+	previous_level = ""
+	pending_spawn_door_id = ""
+	target_door = null
+	game_audio_has_begun = false
+	current_mg = Minigame.NONE
+	mid_mg = null
+	minigame_completion = {Minigame.MAZE: false, Minigame.LETTER: false}
+	persistent_scenes.clear()
+	cue_decision = false
+	rotten_door = false
+
+	dialogue_done = false
+	return_position = Vector2.ZERO
+	first_rot_shot = false
+	letter_minigame_complete = false
+	first_lantern = false
+	first_worm = false
+
+	var target_scene := "res://scenes/levels/begin.tscn" if !has_started_before else "res://scenes/levels/intro.tscn"
+	has_started_before = true
+	get_tree().change_scene_to_file(target_scene)
 
 func _process(_delta: float) -> void:
 	# esc button closes letter pop_ups and inventory, and exits minigames

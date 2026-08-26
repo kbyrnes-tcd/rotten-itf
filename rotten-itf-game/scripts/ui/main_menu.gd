@@ -3,12 +3,18 @@ extends Control
 @onready var main_btns = $BorderBox/VBoxContainer/MainButtons
 @onready var settings_panel = $BorderBox/VBoxContainer/SettingsPanel
 @onready var volume_slider = $BorderBox/VBoxContainer/SettingsPanel/HBoxContainer/VolumeSilder
+@onready var begin: Button = $BorderBox/VBoxContainer/MainButtons/Begin
 
 func _ready():
 	settings_panel.visible = false 
 	#_setup_hovers()
 	volume_slider.value = db_to_linear(AudioServer.get_bus_volume_db(0))
+	if GameGlobals.has_started_before:
+		self.hide_start()
 
+func hide_start():
+	begin.visible = false
+	
 func _setup_hovers():
 	var buttons := get_tree().get_nodes_in_group("buttons")
 	buttons.map(func(b): _setup_hover(b))

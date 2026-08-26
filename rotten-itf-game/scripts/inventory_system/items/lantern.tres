@@ -7,5 +7,5 @@
 script = ExtResource("1_oj7hd")
 name = "Lantern"
 texture = ExtResource("2_oj7hd")
-desc = "This amulet will help you expel rot from your surroundings. Press [ to equip it and then hold Shift to activate the lantern. You will need a glowworm to activate the lantern."
+desc = "This lantern will help you expel rot from your surroundings. Press [ to equip it and then hold Shift to activate the lantern. You will need a glowworm to activate the lantern."
 metadata/_custom_type_script = "uid://b0vt1mp7wu6pu"

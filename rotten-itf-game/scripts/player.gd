@@ -34,7 +34,7 @@ var segments: Array = []
 # Drag and drop player inv, set player speed/jump params
 @export var inv: Inventory
 var target_speed:= -1.0
-@export var NORMAL_SPEED := 865.0
+@export var NORMAL_SPEED := 165.0
 #@export var NORMAL_SPEED := 850.0
 @export var STEP_SPEED := 100.0
 const ACCELERATION := 800.0

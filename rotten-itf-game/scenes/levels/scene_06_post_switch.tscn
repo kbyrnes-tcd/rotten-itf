@@ -34,7 +34,6 @@ shape = SubResource("RectangleShape2D_nho37")
 position = Vector2(695, 260)
 scale = Vector2(12.2562895, 1.3600024)
 lio_text = ""
-display_duration = 0.0
 seq = true
 seq_text = Array[String](["My Goddess Persephone. It was you. You’ve done this to the world.", "My… my skin. My hands. They’re… rotting.", "No. Never mind that. I need to keep going. I need to stop this, at whatever cost.", "The Yew Tree… Not just a Yew tree. A gate. To the Underworld.", "My Goddess. My sisters. My temple. They must be saved. Avenged. Stopped."])
 fin_lio = true
