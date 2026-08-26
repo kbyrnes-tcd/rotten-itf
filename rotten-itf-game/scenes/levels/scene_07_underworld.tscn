@@ -162,7 +162,6 @@ seq_text = Array[String](["Strange… no matter how cold it gets up above, it’
 [node name="InteractiveCarat" parent="LIOs/LioSeqTrigger" unique_id=1099497837 instance=ExtResource("9_wx6i3")]
 position = Vector2(-2.861023e-06, -141)
 scale = Vector2(0.47703218, 1)
-unlocked_carat = true
 
 [node name="LioSeqTrigger2" parent="LIOs" unique_id=110257511 instance=ExtResource("9_0as34")]
 position = Vector2(-102, 260)
@@ -170,12 +169,11 @@ scale = Vector2(21.319998, 1.0351171)
 lio_text = ""
 display_duration = 4.0
 seq = true
-seq_text = Array[String](["My mother sent me down this winter with Lilly and lavender seeds, but they’re struggling in this pollution.", "I suppose I should keep a few, and plant them in the garden when I return in the Spring. ", "Maybe my Amulet will help some of it to grow. I left it with my Mother, but I should retrieve my ruby sigil when I return. ", "It has long helped my plants to grow, though it’s power is not as strong here as it is above. The winter time is harsh on me. "])
+seq_text = Array[String](["My mother sent me down this winter with lily and lavender seeds, but they’re struggling in this pollution.", "I suppose I should keep a few, and plant them in the garden when I return in the Spring. ", "Maybe my Amulet will help some of it to grow. I left it with my Mother, but I should retrieve my ruby sigil when I return. ", "It has long helped my plants to grow, though it’s power is not as strong here as it is above. The winter time is harsh on me. "])
 
 [node name="InteractiveCarat2" parent="LIOs/LioSeqTrigger2" unique_id=485324510 instance=ExtResource("9_wx6i3")]
 position = Vector2(-3.705441, -112.064606)
 scale = Vector2(0.04690432, 0.9660743)
-unlocked_carat = true
 
 [node name="Area2D" parent="LIOs/LioSeqTrigger2/InteractiveCarat2" index="1" unique_id=1489179703]
 scale = Vector2(2.8799987, 1)
@@ -190,7 +188,6 @@ seq_text = Array[String](["My husband. I may not love Hades, but I have to admit
 [node name="InteractiveCarat2" parent="LIOs/LioSeqTriggerx" unique_id=1683500878 instance=ExtResource("9_wx6i3")]
 position = Vector2(-0.4335327, -219)
 scale = Vector2(0.14450875, 1)
-unlocked_carat = true
 
 [node name="Area2D" parent="LIOs/LioSeqTriggerx/InteractiveCarat2" index="1" unique_id=1489179703]
 position = Vector2(0, 47.999996)
@@ -206,7 +203,6 @@ seq_text = Array[String](["Even after my many years in this deal, I’m still al
 [node name="InteractiveCarat3" parent="LIOs/LioSeqTriggerx2" unique_id=372839711 instance=ExtResource("9_wx6i3")]
 position = Vector2(-6.49123, -177)
 scale = Vector2(0.043859657, 1)
-unlocked_carat = true
 
 [node name="Area2D" parent="LIOs/LioSeqTriggerx2/InteractiveCarat3" index="1" unique_id=1489179703]
 scale = Vector2(1.9600098, 1.6)
@@ -233,7 +229,6 @@ hades = true
 [node name="InteractiveCarat4" parent="LIOs/LIOOFFICE" unique_id=84861037 instance=ExtResource("9_wx6i3")]
 position = Vector2(0, -172.99997)
 scale = Vector2(0.09337288, 0.99999994)
-unlocked_carat = true
 
 [node name="Area2D" parent="LIOs/LIOOFFICE/InteractiveCarat4" index="1" unique_id=1489179703]
 position = Vector2(0, 19.99997)

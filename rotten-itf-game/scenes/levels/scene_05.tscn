@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://di31qowjleyl4" path="res://scenes/rot_dressing_new.tscn" id="6_h5llc"]
 [ext_resource type="PackedScene" uid="uid://dr3ff06oljyer" path="res://scenes/lio_trigger.tscn" id="9_71lf2"]
 [ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="10_58gdg"]
+[ext_resource type="PackedScene" uid="uid://bimatr4hej8ja" path="res://scenes/ui/interactive_carat.tscn" id="11_c1r6f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w2pfo"]
 size = Vector2(20, 261.00327)
@@ -956,6 +957,12 @@ position = Vector2(183, -479)
 next_scene_path = "scene_06"
 door_id = "DoorToAltar"
 twin_id = "DoorBackTower"
+
+[node name="InteractiveCarat" parent="." unique_id=1099497837 instance=ExtResource("11_c1r6f")]
+position = Vector2(-190, 480)
+
+[node name="InteractiveCarat2" parent="." unique_id=1842782935 instance=ExtResource("11_c1r6f")]
+position = Vector2(182, -569)
 
 [connection signal="area_shape_entered" from="Player/FeetOnVine" to="Player" method="_feet_area_shape_entered"]
 [connection signal="area_shape_exited" from="Player/FeetOnVine" to="Player" method="_on_feet_area_shape_exited"]

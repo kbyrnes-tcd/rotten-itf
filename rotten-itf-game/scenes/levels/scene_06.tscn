@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://oq2dwufi0cro" path="res://assets/images/env/tower/Rotmappng.png" id="5_qq6m5"]
 [ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="6_qq6m5"]
 [ext_resource type="PackedScene" uid="uid://dr3ff06oljyer" path="res://scenes/lio_trigger.tscn" id="7_sefsp"]
+[ext_resource type="PackedScene" uid="uid://bimatr4hej8ja" path="res://scenes/ui/interactive_carat.tscn" id="8_tkwd6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nbikq"]
 size = Vector2(20, 265.5)
@@ -226,6 +227,9 @@ lio_text = ""
 seq = true
 seq_text = Array[String](["I remember this room...", "This is where it all happened...", "I never thought I'd return here..."])
 p_switch = true
+
+[node name="InteractiveCarat" parent="." unique_id=1099497837 instance=ExtResource("8_tkwd6")]
+position = Vector2(101, 121)
 
 [editable path="Player"]
 [editable path="RotMap"]

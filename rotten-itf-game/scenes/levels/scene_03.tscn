@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://bimatr4hej8ja" path="res://scenes/ui/interactive_carat.tscn" id="16_a3hc7"]
 [ext_resource type="Script" uid="uid://82kujb2eytv4" path="res://scripts/player_respawn_pit.gd" id="17_1guhu"]
 [ext_resource type="PackedScene" uid="uid://dagsvgdwskmcw" path="res://scenes/high_priestess.tscn" id="17_a3hc7"]
+[ext_resource type="Texture2D" uid="uid://lw5ofq4m0uwv" path="res://assets/images/ui/Altar_lever_UP.png" id="19_ebb5g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eryr6"]
 shader = ExtResource("2_43shx")
@@ -222,7 +223,8 @@ chandelier = NodePath("../Chandelier")
 [node name="Sprite2D" parent="Lever" index="0" unique_id=1833286394]
 z_index = 0
 position = Vector2(370.00003, 244)
-scale = Vector2(0.74390244, 0.72077924)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("19_ebb5g")
 
 [node name="CollisionShape2D" parent="Lever" index="1" unique_id=1930738376]
 position = Vector2(369, 244)
