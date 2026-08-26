@@ -10,6 +10,7 @@ extends Node2D
 @export var seq_text : Array[String]
 @export var hades := false
 @export var fin_lio := false
+@export var p_switch := false
 var triggered = false
 var body_in_range := false
 var seq_active := false
@@ -26,6 +27,11 @@ func _ready() -> void:
 			GameGlobals.pause()
 			await lio.show_sequence(seq_text, display_duration, hades)
 			GameGlobals.load_level("fin")
+	elif p_switch: 
+		var lio = get_tree().get_first_node_in_group("lio_manager")
+		if lio:
+			await lio.show_sequence(seq_text, display_duration)
+			GameGlobals.load_level("scene_07_underworld")
 
 	# add LIO obj to persistence tracker of c_tree
 	var p_data : PersistentData = GameGlobals.get_current_tree_p_data()

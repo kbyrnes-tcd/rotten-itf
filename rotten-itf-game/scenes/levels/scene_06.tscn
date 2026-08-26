@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://cr5i32q6le804" path="res://scenes/player.tscn" id="3_u6dhm"]
 [ext_resource type="PackedScene" uid="uid://dismh7ltsr7nx" path="res://scenes/rot_dressing.tscn" id="4_8sk0i"]
 [ext_resource type="Texture2D" uid="uid://oq2dwufi0cro" path="res://assets/images/env/tower/Rotmappng.png" id="5_qq6m5"]
+[ext_resource type="PackedScene" uid="uid://cxcp58bwegkny" path="res://scenes/door.tscn" id="6_qq6m5"]
+[ext_resource type="PackedScene" uid="uid://dr3ff06oljyer" path="res://scenes/lio_trigger.tscn" id="7_sefsp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nbikq"]
 size = Vector2(20, 265.5)
@@ -30,7 +32,7 @@ texture = ExtResource("2_u6dhm")
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("3_u6dhm")]
 z_index = 1
-position = Vector2(31.999992, 238)
+position = Vector2(125.99999, 235)
 
 [node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
 limit_top = 252
@@ -211,6 +213,19 @@ color = Color(0.7107411, 0.71074116, 0.7107411, 1)
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=196106957]
 color = Color(1, 0.7921569, 0.62352943, 0.26666668)
 energy = 0.8
+
+[node name="DoorBackTower" parent="." unique_id=1160326856 instance=ExtResource("6_qq6m5")]
+position = Vector2(102, 212)
+next_scene_path = "scene_05"
+door_id = "DoorBackTower"
+twin_id = "DoorToAltar"
+
+[node name="LioTrigger" parent="." unique_id=110257511 instance=ExtResource("7_sefsp")]
+position = Vector2(351, 264)
+lio_text = ""
+seq = true
+seq_text = Array[String](["I remember this room...", "This is where it all happened...", "I never thought I'd return here..."])
+p_switch = true
 
 [editable path="Player"]
 [editable path="RotMap"]

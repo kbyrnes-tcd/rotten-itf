@@ -209,7 +209,7 @@ z_index = 1
 texture = ExtResource("2_iwol2")
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("2_coyto")]
-position = Vector2(-186, 553.99994)
+position = Vector2(-181, 591)
 inv = ExtResource("4_504hx")
 
 [node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
@@ -950,6 +950,12 @@ position = Vector2(-189, 576)
 next_scene_path = "scene_04"
 door_id = "DoorBack"
 twin_id = "DoorToTower"
+
+[node name="DoorToAltar" parent="." unique_id=1366758615 instance=ExtResource("10_58gdg")]
+position = Vector2(183, -479)
+next_scene_path = "scene_06"
+door_id = "DoorToAltar"
+twin_id = "DoorBackTower"
 
 [connection signal="area_shape_entered" from="Player/FeetOnVine" to="Player" method="_feet_area_shape_entered"]
 [connection signal="area_shape_exited" from="Player/FeetOnVine" to="Player" method="_on_feet_area_shape_exited"]
