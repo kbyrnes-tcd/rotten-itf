@@ -72,6 +72,8 @@ func _process(_delta):
 		label_text += format_label("Current music & vol", AudioManager.get_cur_song())
 		#label_text += format_label("Object count", Performance.get_monitor(Performance.OBJECT_COUNT))
 		label_text += format_label("Leaked node count", Performance.get_monitor(Performance.OBJECT_ORPHAN_NODE_COUNT))
+		if GameGlobals.get_current_level_tree():
+			label_text += format_label("Scene", GameGlobals.get_current_level_tree().name)
 		#if GameGlobals.player:
 			#label_text += format_label("Player speed", GameGlobals.player.target_speed)
 		

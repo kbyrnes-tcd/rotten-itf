@@ -25,8 +25,10 @@ func _ready() -> void:
 		var lio = get_tree().get_first_node_in_group("lio_manager")
 		if lio:
 			GameGlobals.pause()
-			await lio.show_sequence(seq_text, display_duration, hades)
-			GameGlobals.load_level("fin")
+			await lio.show_sequence(seq_text, display_duration)
+			AudioManager.change_music(GameGlobals.audio_prog["fin"].music)
+			AudioManager.change_ambience(GameGlobals.audio_prog["fin"].ambience)
+			# TODO: cutscene scroll
 	elif p_switch: 
 		var lio = get_tree().get_first_node_in_group("lio_manager")
 		if lio:

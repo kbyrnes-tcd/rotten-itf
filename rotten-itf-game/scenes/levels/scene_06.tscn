@@ -21,7 +21,7 @@ size = Vector2(20, 235.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q01m8"]
 size = Vector2(1161, 20)
 
-[node name="Scene06" type="Node2D" unique_id=311908995]
+[node name="Scene_06" type="Node2D" unique_id=311908995]
 
 [node name="Background" type="Sprite2D" parent="." unique_id=306356458]
 position = Vector2(473, 187)
