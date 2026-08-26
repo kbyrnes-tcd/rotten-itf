@@ -28,7 +28,11 @@ func _ready() -> void:
 			await lio.show_sequence(seq_text, display_duration)
 			AudioManager.change_music(GameGlobals.audio_prog["fin"].music)
 			AudioManager.change_ambience(GameGlobals.audio_prog["fin"].ambience)
-			# TODO: cutscene scroll
+			var credits : VideoStreamPlayer = get_tree().get_first_node_in_group("credits_manager")
+			if credits:
+				credits.play()
+				await credits.finished
+				GameGlobals.start_new_game()
 	elif p_switch: 
 		var lio = get_tree().get_first_node_in_group("lio_manager")
 		if lio:
