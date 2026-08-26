@@ -13,7 +13,9 @@ config_version=5
 config/name="rotten-itf-game"
 run/main_scene="uid://cl2kf7fr304tf"
 config/features=PackedStringArray("4.7", "GL Compatibility")
+boot_splash/image="uid://byyforclcm5f1"
 config/icon="uid://d8d01es0idoc"
+boot_splash/minimum_display_time=2
 
 [autoload]
 
@@ -25,6 +27,7 @@ GameGlobals="*uid://cqsam3tswmb5s"
 
 window/size/viewport_width=480
 window/size/viewport_height=270
+window/size/mode=2
 window/stretch/mode="canvas_items"
 
 [dotnet]
