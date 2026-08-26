@@ -64,7 +64,7 @@ func _process(_delta: float) -> void:
 				GameGlobals.load_minigame(minigame)
 				await GameGlobals.minigame_completed
 				minigame_solved = true
-				GameGlobals.prev_scene = GameGlobals.level_root.get_child(0).name
+				GameGlobals.prev_scene = GameGlobals.get_current_level_tree().name
 				GameGlobals.pending_spawn_door_id = twin_id
 				GameGlobals.load_level(next_scene_path)
 			else:

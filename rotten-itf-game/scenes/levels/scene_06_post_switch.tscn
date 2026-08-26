@@ -12,6 +12,7 @@ size = Vector2(20, 71)
 [node name="PersistentData" parent="." unique_id=1117547414 instance=ExtResource("1_yngdd")]
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("3_yngdd")]
+visible = false
 z_index = 1
 position = Vector2(695, 237)
 

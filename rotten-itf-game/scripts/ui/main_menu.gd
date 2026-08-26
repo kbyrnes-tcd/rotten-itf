@@ -6,7 +6,7 @@ extends Control
 
 func _ready():
 	settings_panel.visible = false 
-	_setup_hovers()
+	#_setup_hovers()
 	volume_slider.value = db_to_linear(AudioServer.get_bus_volume_db(0))
 
 func _setup_hovers():
