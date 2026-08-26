@@ -19,7 +19,7 @@ var music_tween : Tween
 @export_group("Source")
 @export var fx: Dictionary[String, AudioStream] = {}
 @export var ambi_vol : float = 0.0
-@export var music_vol : float = -8.0
+@export var music_vol : float = -10.0
 @export_group("Music")
 @export var ambiences : Dictionary[String, AudioStream] = {}
 @export var music : Dictionary[String, AudioStream] = {}
@@ -35,6 +35,19 @@ func get_cur_song():
 
 func get_cur_ambience():
 	return "%s & %s" %[active_ambience.stream.resource_path.get_file().get_basename(), active_ambience.volume_db] if active_ambience!=null else "n/a"
+
+# AUDIO SETTINGS
+func set_master_volume(value: float) -> void:
+	var index := AudioServer.get_bus_index("Master")
+	AudioServer.set_bus_volume_db(index, linear_to_db(value))
+
+func set_music_volume(value: float) -> void:
+	var index := AudioServer.get_bus_index("Music")
+	AudioServer.set_bus_volume_db(index, linear_to_db(value))
+
+func set_sfx_volume(value: float) -> void:
+	var index := AudioServer.get_bus_index("SFX")
+	AudioServer.set_bus_volume_db(index, linear_to_db(value))
 
 func fade(c_tween:Tween, stream:AudioStreamPlayer, start_vol := 0.0, end_vol := 0.0, dur := 0.5, stop_on_end := false):
 	if c_tween:
@@ -84,7 +97,7 @@ func change_music(song: String) -> void:
 		if c_song == song: return
 		else: 
 			if song.get_basename() == "Title_Song": music_vol = 5.0
-			else: music_vol = -8.0
+			else: music_vol = -10.0
 			music_tween = await fade(music_tween, active_music, music_vol, music_vol-20, 1.0, true) # fadeOUT current track b4 changing
 			active_music = null
 			play_music(song)
@@ -94,11 +107,11 @@ func play_music(song: String) -> void:
 		active_music = clips.get_node("Music")
 		active_music.stream = music[song]
 		if song.get_basename() == "Title_Song": music_vol = 5.0
-		else: music_vol = -8.0
+		else: music_vol = -10.0
 		music_tween = await fade(music_tween, active_music, music_vol-20, music_vol, 1.0) # fadeIN new track
 		active_music.play()
 
-func increase_music_vol(amount: float = 15.0, dur: float = 1.5):
+func increase_music_vol(amount: float = 8.0, dur: float = 1.5):
 	if music_tween:
 		music_tween = await fade(music_tween, active_music, active_music.volume_db, active_music.volume_db + amount, dur)
 	else: 
@@ -111,18 +124,23 @@ func decrease_music_vol(amount: float = 15.0, dur: float = 1.5):
 		music_tween = create_tween()
 
 func play_walk_fx() -> void:
-	if !active_walk_fx:
-		active_walk_fx = clips.get_node("WalkFX")
-		active_walk_fx.stream = fx["walk"]
-		var fx_ref = active_walk_fx 
-		walk_tween = await fade(walk_tween, active_walk_fx, -10.0, 0.0, 0.2)
-		if fx_ref:
-			fx_ref.play()
+	if active_walk_fx: return
+	active_walk_fx = clips.get_node("WalkFX")
+	active_walk_fx.stream = fx["walk"]
+	if walk_tween: walk_tween.kill()
+	walk_tween = create_tween()
+	active_walk_fx.volume_db = -10.0
+	active_walk_fx.play()
+	walk_tween.tween_property(active_walk_fx, "volume_db", 0.0, 0.2)
 
 func stop_walk_fx() -> void:
-	if active_walk_fx:
-		walk_tween = await fade(walk_tween, active_walk_fx, 0.0, -10.0, 0.2)
-		active_walk_fx = null
+	if not active_walk_fx: return
+	var fx_ref = active_walk_fx
+	active_walk_fx = null
+	if walk_tween: walk_tween.kill()
+	walk_tween = create_tween()
+	walk_tween.tween_property(fx_ref, "volume_db", -10.0, 0.2)
+	walk_tween.tween_callback(fx_ref.stop)
 
 func play_fx(fx_name: String, from: float = 0.0) -> void:
 	if !active_fx:
