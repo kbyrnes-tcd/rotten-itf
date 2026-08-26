@@ -42,3 +42,7 @@ func remove(item: InvItem):
 	if item_slots[0].amount == 0:
 		item_slots[0].item = null
 	update.emit()
+
+func clear():
+	for slot in slots:
+		slot.amount = 0

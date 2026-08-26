@@ -133,6 +133,7 @@ func _on_transform_to_p_body_entered(body: Node2D) -> void:
 	# when player enters transform to Persephone area in underworld scene
 	if body.name == "Player" and !persephone:
 		persephone = true
+		GameGlobals.player.inv.clear()
 
 func _on_transform_to_d_body_entered(body: Node2D) -> void:
 	# when player enters transform to Daphne area in scene_06_copy scene

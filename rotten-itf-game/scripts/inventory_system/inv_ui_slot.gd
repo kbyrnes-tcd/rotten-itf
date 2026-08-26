@@ -8,7 +8,7 @@ var inv_slot : InvSlot
 
 # called in inv_ui.gd to render visuals
 func update(slot: InvSlot):
-	if !slot.item:
+	if !slot.item or slot.amount == 0:
 		inv_slot = null
 		item_img.visible = false;
 		amount_text.visible = false;
