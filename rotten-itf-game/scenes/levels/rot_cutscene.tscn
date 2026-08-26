@@ -11,7 +11,7 @@ length = 30.533333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Vines/Line2D:points")
+tracks/0/path = NodePath("Vines/DOWN/Line2D:points")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -23,7 +23,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Vines/Line2D:width")
+tracks/1/path = NodePath("Vines/DOWN/Line2D:width")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -35,7 +35,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Vines/Line2D2:points")
+tracks/2/path = NodePath("Vines/DOWN/Line2D2:points")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -47,7 +47,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Vines/Line2D2:width")
+tracks/3/path = NodePath("Vines/DOWN/Line2D2:width")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -59,7 +59,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Vines/Line2D3:points")
+tracks/4/path = NodePath("Vines/DOWN/Line2D3:points")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -71,7 +71,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Vines/Line2D3:width")
+tracks/5/path = NodePath("Vines/DOWN/Line2D3:width")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -83,7 +83,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Vines/Line2D4:points")
+tracks/6/path = NodePath("Vines/DOWN/Line2D4:points")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -95,7 +95,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Vines/Line2D4:width")
+tracks/7/path = NodePath("Vines/DOWN/Line2D4:width")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -107,7 +107,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Vines/Line2D5:points")
+tracks/8/path = NodePath("Vines/DOWN/Line2D5:points")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -119,7 +119,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = false
-tracks/9/path = NodePath("Vines/Line2D5:width_curve")
+tracks/9/path = NodePath("Vines/DOWN/Line2D5:width_curve")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -131,7 +131,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Vines/Line2D5:width")
+tracks/10/path = NodePath("Vines/DOWN/Line2D5:width")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -143,7 +143,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Vines/Line2D6:points")
+tracks/11/path = NodePath("Vines/DOWN/Line2D6:points")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -155,7 +155,7 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("Vines/Line2D6:width")
+tracks/12/path = NodePath("Vines/DOWN/Line2D6:width")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
@@ -167,7 +167,7 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("Vines/Line2D7:points")
+tracks/13/path = NodePath("Vines/DOWN/Line2D7:points")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
@@ -179,7 +179,7 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("Vines/Line2D7:width")
+tracks/14/path = NodePath("Vines/DOWN/Line2D7:width")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
@@ -191,7 +191,7 @@ tracks/14/keys = {
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("Vines/Line2D8:points")
+tracks/15/path = NodePath("Vines/DOWN/Line2D8:points")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
@@ -203,7 +203,7 @@ tracks/15/keys = {
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("Vines/Line2D8:width")
+tracks/16/path = NodePath("Vines/DOWN/Line2D8:width")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
@@ -227,7 +227,7 @@ tracks/17/keys = {
 tracks/18/type = "value"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("Vines/Line2D:default_color")
+tracks/18/path = NodePath("Vines/DOWN/Line2D:default_color")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
@@ -239,7 +239,7 @@ tracks/18/keys = {
 tracks/19/type = "value"
 tracks/19/imported = false
 tracks/19/enabled = true
-tracks/19/path = NodePath("Vines/Line2D2:default_color")
+tracks/19/path = NodePath("Vines/DOWN/Line2D2:default_color")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
@@ -251,7 +251,7 @@ tracks/19/keys = {
 tracks/20/type = "value"
 tracks/20/imported = false
 tracks/20/enabled = true
-tracks/20/path = NodePath("Vines/Line2D3:default_color")
+tracks/20/path = NodePath("Vines/DOWN/Line2D3:default_color")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/keys = {
@@ -263,7 +263,7 @@ tracks/20/keys = {
 tracks/21/type = "value"
 tracks/21/imported = false
 tracks/21/enabled = true
-tracks/21/path = NodePath("Vines/Line2D4:default_color")
+tracks/21/path = NodePath("Vines/DOWN/Line2D4:default_color")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = {
@@ -275,7 +275,7 @@ tracks/21/keys = {
 tracks/22/type = "value"
 tracks/22/imported = false
 tracks/22/enabled = true
-tracks/22/path = NodePath("Vines/Line2D5:default_color")
+tracks/22/path = NodePath("Vines/DOWN/Line2D5:default_color")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/keys = {
@@ -287,7 +287,7 @@ tracks/22/keys = {
 tracks/23/type = "value"
 tracks/23/imported = false
 tracks/23/enabled = true
-tracks/23/path = NodePath("Vines/Line2D6:default_color")
+tracks/23/path = NodePath("Vines/DOWN/Line2D6:default_color")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/keys = {
@@ -299,7 +299,7 @@ tracks/23/keys = {
 tracks/24/type = "value"
 tracks/24/imported = false
 tracks/24/enabled = true
-tracks/24/path = NodePath("Vines/Line2D7:default_color")
+tracks/24/path = NodePath("Vines/DOWN/Line2D7:default_color")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/keys = {
@@ -311,7 +311,7 @@ tracks/24/keys = {
 tracks/25/type = "value"
 tracks/25/imported = false
 tracks/25/enabled = true
-tracks/25/path = NodePath("Vines/Line2D8:default_color")
+tracks/25/path = NodePath("Vines/DOWN/Line2D8:default_color")
 tracks/25/interp = 1
 tracks/25/loop_wrap = true
 tracks/25/keys = {
@@ -319,6 +319,150 @@ tracks/25/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0.93333334, 1, 0.93333334, 0), Color(0.93333334, 1, 0.93333334, 0.7176471)]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("Vines/UP/Line2D:default_color")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0, 8.231899),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.93333334, 1, 0.93333334, 0), Color(0.93333334, 1, 0.93333334, 0.53333336)]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("Vines/UP/Line2D:width")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0, 30.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [15.0, 30.0]
+}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("Vines/UP/Line2D:points")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(8.266666, 30.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [PackedVector2Array(-3, -10, 14, 3, 34, 10), PackedVector2Array(-3, -10, 14, 3, 34, 10, 78, 44, 98, 90, 136, 126, 154, 159)]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("Vines/UP/Line2D2:points")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0, 30.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [PackedVector2Array(-3, -10, 26.047821, 19.937683, 57.632362, 37.356537), PackedVector2Array(-3, -10, 26.047821, 19.937683, 57.632362, 37.356537, 79.64559, 77.010254, 114.335976, 106.0202, 166.34366, 126.2489, 210.78123, 172.31735, 255.28816, 222.50832)]
+}
+tracks/30/type = "value"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("Vines/UP/Line2D2:width")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
+"times": PackedFloat32Array(0, 30.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [30.0, 30.0]
+}
+tracks/31/type = "value"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("Vines/UP/Line2D2:default_color")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
+"times": PackedFloat32Array(0, 8.269487, 30.533333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.93333334, 1, 0.93333334, 0), Color(0.93333334, 1, 0.93333334, 0.44313726), Color(0.93333334, 1, 0.93333334, 0.53333336)]
+}
+tracks/32/type = "value"
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/path = NodePath("Vines/UP/Line2D3:points")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/keys = {
+"times": PackedFloat32Array(0, 30.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [PackedVector2Array(-3, -10, 26.047821, 19.937683, 57.632362, 37.356537), PackedVector2Array(-3, -10, 26.047821, 19.937683, 57.632362, 37.356537, 79.64559, 77.010254, 114.335976, 106.0202, 166.34366, 126.2489, 210.78123, 172.31735, 255.28816, 222.50832)]
+}
+tracks/33/type = "value"
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/path = NodePath("Vines/UP/Line2D3:width")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/keys = {
+"times": PackedFloat32Array(0, 30.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [30.0, 30.0]
+}
+tracks/34/type = "value"
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/path = NodePath("Vines/UP/Line2D3:default_color")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/keys = {
+"times": PackedFloat32Array(0, 8.269487, 30.533333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.93333334, 1, 0.93333334, 0), Color(0.93333334, 1, 0.93333334, 0.44313726), Color(0.93333334, 1, 0.93333334, 0.53333336)]
+}
+tracks/35/type = "value"
+tracks/35/imported = false
+tracks/35/enabled = true
+tracks/35/path = NodePath("Vines/UP/Line2D4:points")
+tracks/35/interp = 1
+tracks/35/loop_wrap = true
+tracks/35/keys = {
+"times": PackedFloat32Array(0, 30.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [PackedVector2Array(-3, -10, 26.047821, 19.937683, 57.632362, 37.356537), PackedVector2Array(-3, -10, 26.047821, 19.937683, 57.632362, 37.356537, 79.64559, 77.010254, 114.335976, 106.0202, 166.34366, 126.2489, 210.78123, 172.31735, 255.28816, 222.50832)]
+}
+tracks/36/type = "value"
+tracks/36/imported = false
+tracks/36/enabled = true
+tracks/36/path = NodePath("Vines/UP/Line2D4:width")
+tracks/36/interp = 1
+tracks/36/loop_wrap = true
+tracks/36/keys = {
+"times": PackedFloat32Array(0, 30.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [30.0, 30.0]
+}
+tracks/37/type = "value"
+tracks/37/imported = false
+tracks/37/enabled = true
+tracks/37/path = NodePath("Vines/UP/Line2D4:default_color")
+tracks/37/interp = 1
+tracks/37/loop_wrap = true
+tracks/37/keys = {
+"times": PackedFloat32Array(0, 8.269487, 30.533333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.93333334, 1, 0.93333334, 0), Color(0.93333334, 1, 0.93333334, 0.44313726), Color(0.93333334, 1, 0.93333334, 0.53333336)]
 }
 
 [sub_resource type="Animation" id="Animation_s4ab0"]
@@ -343,7 +487,9 @@ speed_scale = 5.0
 
 [node name="Vines" type="Node2D" parent="." unique_id=2047306366]
 
-[node name="Line2D" parent="Vines" unique_id=1590463200 instance=ExtResource("1_62mml")]
+[node name="DOWN" type="Node2D" parent="Vines" unique_id=1017835393]
+
+[node name="Line2D" parent="Vines/DOWN" unique_id=1590463200 instance=ExtResource("1_62mml")]
 position = Vector2(13.000008, 270.00003)
 rotation = -1.8325958
 points = PackedVector2Array(2.2655604, -8.177147, 33.929363, 3.2084224, 58.04458, 19.94156)
@@ -353,7 +499,7 @@ default_color = Color(0.93333334, 1, 0.93333334, 0)
 texture = SubResource("CompressedTexture2D_62mml")
 cutscene = true
 
-[node name="Line2D2" parent="Vines" unique_id=1560338529 instance=ExtResource("1_62mml")]
+[node name="Line2D2" parent="Vines/DOWN" unique_id=1560338529 instance=ExtResource("1_62mml")]
 position = Vector2(471.00006, 288)
 rotation = -1.3089969
 scale = Vector2(1, -1.820503)
@@ -364,10 +510,10 @@ default_color = Color(0.93333334, 1, 0.93333334, 0)
 texture = SubResource("CompressedTexture2D_62mml")
 cutscene = true
 
-[node name="Line2D3" parent="Vines" unique_id=1521949185 instance=ExtResource("1_62mml")]
+[node name="Line2D3" parent="Vines/DOWN" unique_id=1521949185 instance=ExtResource("1_62mml")]
 position = Vector2(5, 257)
 rotation = -0.26179937
-scale = Vector2(0.9999999, -1.820503)
+scale = Vector2(0.9999998, -1.820503)
 points = PackedVector2Array(2.2655604, -8.177147, 33.929363, 3.2084224, 58.04458, 19.94156)
 width = 18.0
 width_curve = SubResource("Curve_62mml")
@@ -375,7 +521,7 @@ default_color = Color(0.93333334, 1, 0.93333334, 0)
 texture = SubResource("CompressedTexture2D_62mml")
 cutscene = true
 
-[node name="Line2D4" parent="Vines" unique_id=167246391 instance=ExtResource("1_62mml")]
+[node name="Line2D4" parent="Vines/DOWN" unique_id=167246391 instance=ExtResource("1_62mml")]
 position = Vector2(229, 276)
 rotation = -1.0471976
 scale = Vector2(0.99999994, -1.8205031)
@@ -386,7 +532,7 @@ default_color = Color(0.93333334, 1, 0.93333334, 0)
 texture = SubResource("CompressedTexture2D_62mml")
 cutscene = true
 
-[node name="Line2D5" parent="Vines" unique_id=676279896 instance=ExtResource("1_62mml")]
+[node name="Line2D5" parent="Vines/DOWN" unique_id=676279896 instance=ExtResource("1_62mml")]
 position = Vector2(84.000015, 269)
 rotation = -0.5235988
 scale = Vector2(0.99999994, -1.820503)
@@ -397,7 +543,7 @@ default_color = Color(0.93333334, 1, 0.93333334, 0)
 texture = SubResource("CompressedTexture2D_62mml")
 cutscene = true
 
-[node name="Line2D6" parent="Vines" unique_id=719171257 instance=ExtResource("1_62mml")]
+[node name="Line2D6" parent="Vines/DOWN" unique_id=719171257 instance=ExtResource("1_62mml")]
 position = Vector2(351.99997, 295)
 rotation = -2.3561945
 scale = Vector2(0.9999999, 1.9794968)
@@ -408,7 +554,7 @@ default_color = Color(0.93333334, 1, 0.93333334, 0)
 texture = SubResource("CompressedTexture2D_62mml")
 cutscene = true
 
-[node name="Line2D7" parent="Vines" unique_id=859321804 instance=ExtResource("1_62mml")]
+[node name="Line2D7" parent="Vines/DOWN" unique_id=859321804 instance=ExtResource("1_62mml")]
 position = Vector2(-23, 284.00003)
 rotation = -0.7853982
 scale = Vector2(0.9999999, 1.9794968)
@@ -419,7 +565,7 @@ default_color = Color(0.93333334, 1, 0.93333334, 0)
 texture = SubResource("CompressedTexture2D_62mml")
 cutscene = true
 
-[node name="Line2D8" parent="Vines" unique_id=1627745167 instance=ExtResource("1_62mml")]
+[node name="Line2D8" parent="Vines/DOWN" unique_id=1627745167 instance=ExtResource("1_62mml")]
 position = Vector2(508.99997, 218.00003)
 rotation = -2.8797934
 scale = Vector2(0.99999994, -1.9400513)
@@ -428,6 +574,45 @@ width = 15.0
 width_curve = SubResource("Curve_62mml")
 default_color = Color(0.93333334, 1, 0.93333334, 0)
 texture = SubResource("CompressedTexture2D_62mml")
+cutscene = true
+
+[node name="UP" type="Node2D" parent="Vines" unique_id=638052263]
+
+[node name="Line2D" parent="Vines/UP" unique_id=99631805 instance=ExtResource("1_62mml")]
+position = Vector2(-19, 13)
+rotation = -0.5235988
+points = PackedVector2Array(-3, -10, 14, 3, 34, 10)
+width = 15.0
+default_color = Color(0.93333334, 1, 0.93333334, 0)
+clearable = false
+cutscene = true
+
+[node name="Line2D2" parent="Vines/UP" unique_id=1746288212 instance=ExtResource("1_62mml")]
+position = Vector2(509.00003, -1.5258789e-05)
+rotation = 2.3561945
+points = PackedVector2Array(-3, -10, 26.047821, 19.937683, 57.632362, 37.356537)
+width = 30.0
+default_color = Color(0.93333334, 1, 0.93333334, 0)
+clearable = false
+cutscene = true
+
+[node name="Line2D3" parent="Vines/UP" unique_id=837335093 instance=ExtResource("1_62mml")]
+position = Vector2(504, 121.000015)
+rotation = 2.3561945
+points = PackedVector2Array(-3, -10, 26.047821, 19.937683, 57.632362, 37.356537)
+width = 30.0
+default_color = Color(0.93333334, 1, 0.93333334, 0)
+clearable = false
+cutscene = true
+
+[node name="Line2D4" parent="Vines/UP" unique_id=1245531777 instance=ExtResource("1_62mml")]
+position = Vector2(3.8146973e-06, 127)
+rotation = 2.3561945
+scale = Vector2(-0.8867226, -0.9189483)
+points = PackedVector2Array(-3, -10, 26.047821, 19.937683, 57.632362, 37.356537)
+width = 30.0
+default_color = Color(0.93333334, 1, 0.93333334, 0)
+clearable = false
 cutscene = true
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1798368155]
