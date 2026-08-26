@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dxl432f7bjonh" path="res://assets/images/ui/intro/UI-pause-border-only.png" id="1_5efmg"]
 [ext_resource type="Script" uid="uid://cfuflkxlkv306" path="res://scripts/lore_scene.gd" id="1_6bukj"]
 [ext_resource type="Texture2D" uid="uid://cpx1f10ix7aq8" path="res://assets/images/ui/intro/RITF_Logo_white.png" id="2_gb14e"]
-[ext_resource type="Texture2D" uid="uid://dclvu8v18i6k" path="res://assets/images/env/p1_start/Backdrop.png" id="3_gb14e"]
+[ext_resource type="Texture2D" uid="uid://taoy1h7nalm" path="res://assets/images/ui/intro/Part_2_Full_Panel_Interior.png" id="5_v408k"]
 [ext_resource type="FontFile" uid="uid://3u1i6waxj8qa" path="res://assets/fonts/HyperlegibleSans-Bold.ttf" id="6_6jll0"]
 
 [node name="Lore_Scene" type="Node2D" unique_id=147676473]
@@ -39,10 +39,11 @@ autowrap_mode = 2
 vertical_alignment = 1
 
 [node name="Back" type="Sprite2D" parent="CanvasLayer" unique_id=1803944351]
+modulate = Color(1, 1, 1, 0.4745098)
 z_index = -1
-position = Vector2(1012.00006, 137)
-scale = Vector2(0.8027778, 1)
-texture = ExtResource("3_gb14e")
+position = Vector2(238, 138)
+scale = Vector2(0.9895834, 1)
+texture = ExtResource("5_v408k")
 
 [node name="ContinueHint" type="Label" parent="CanvasLayer" unique_id=2134530915]
 offset_left = 223.0

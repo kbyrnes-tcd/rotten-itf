@@ -96,9 +96,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -95.0
-offset_top = -57.5
+offset_top = -47.0
 offset_right = 95.0
-offset_bottom = 127.5
+offset_bottom = 138.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -110,15 +110,6 @@ size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("4_q85j6")
 theme_override_font_sizes/font_size = 37
 text = "Rotten is the Fruit"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="RITF2" type="Label" parent="BorderBox/VBoxContainer" unique_id=57318454]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("4_q85j6")
-theme_override_font_sizes/font_size = 30
-text = "(Play-Test)"
 horizontal_alignment = 1
 vertical_alignment = 1
 
