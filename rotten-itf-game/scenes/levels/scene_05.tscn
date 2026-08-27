@@ -944,7 +944,7 @@ collidable = true
 
 [node name="LioTrigger" parent="." unique_id=110257511 instance=ExtResource("9_71lf2")]
 position = Vector2(-157, 613)
-lio_text = "The path to Persephone’s Alter has been chewed by rot. I will have to forge my own path."
+lio_text = "The path to Persephone’s Altar has been chewed by rot. I will have to forge my own path."
 
 [node name="DoorBack" parent="." unique_id=1160326856 instance=ExtResource("10_58gdg")]
 position = Vector2(-189, 576)

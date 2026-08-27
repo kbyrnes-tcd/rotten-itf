@@ -170,7 +170,7 @@ scale = Vector2(21.319998, 1.0351171)
 lio_text = ""
 display_duration = 4.0
 seq = true
-seq_text = Array[String](["My mother sent me down this winter with lily and lavender seeds, but they’re struggling in this pollution.", "I suppose I should keep a few, and plant them in the garden when I return in the Spring. ", "Maybe my Amulet will help some of it to grow. I left it with my Mother, but I should retrieve my ruby sigil when I return. ", "It has long helped my plants to grow, though it’s power is not as strong here as it is above. The winter time is harsh on me. "])
+seq_text = Array[String](["My mother sent me down this winter with lily and lavender seeds, but they’re struggling in this pollution.", "I suppose I should keep a few, and plant them in the garden when I return in the Spring. ", "Maybe my Amulet will help some of it to grow. I left it with my Mother, but I should retrieve my ruby sigil when I return. ", "It has long helped my plants to grow, though its power is not as strong here as it is above. The winter time is harsh on me. "])
 
 [node name="InteractiveCarat2" parent="LIOs/LioSeqTrigger2" unique_id=485324510 instance=ExtResource("9_wx6i3")]
 position = Vector2(-3.705441, -112.064606)

@@ -287,7 +287,7 @@ func start_vine():
 				"Oh, Goddess… the rot is growing…",
 				"The High Priestess said I must use this rot, but… why?",
 				"This rotten substance… I too shall honor my deal with you, High Priestess. ",
-				"This power to grow the rot, I must be careful with it. I don’t know what affects it’ll have on this place.",
+				"This power to grow the rot, I must be careful with it. I don’t know what effects it’ll have on this place.",
 				"Or on me."
 			])
 	var dir = get_snapped_direction()
