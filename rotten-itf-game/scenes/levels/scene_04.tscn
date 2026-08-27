@@ -150,7 +150,7 @@ width = 10.0
 points = PackedVector2Array(616, 281, 616, 273, 615, 266, 610, 248, 610, 226, 624, 195)
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("3_jkm6f")]
-position = Vector2(-107, 244)
+position = Vector2(3853, 317.99997)
 
 [node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
 limit_left = -343

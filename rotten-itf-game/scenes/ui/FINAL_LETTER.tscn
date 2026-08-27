@@ -2,9 +2,13 @@
 
 [ext_resource type="Script" uid="uid://bbxrywubuc2iq" path="res://scripts/final_letter.gd" id="1_2gbn3"]
 [ext_resource type="Texture2D" uid="uid://necrl1diw74g" path="res://assets/images/minigames/constellation/Decoder_Background.png" id="1_iaw2m"]
-[ext_resource type="Texture2D" uid="uid://ertioryfears" path="res://assets/images/minigames/constellation/Decoder_text_sq.png" id="2_11aph"]
 [ext_resource type="FontFile" uid="uid://3u1i6waxj8qa" path="res://assets/fonts/HyperlegibleSans-Bold.ttf" id="3_5h2n7"]
 [ext_resource type="FontFile" uid="uid://k624ytk385ty" path="res://assets/fonts/HomemadeApple-Regular.ttf" id="3_6i1t4"]
+[ext_resource type="Texture2D" uid="uid://blrygdasdc6ar" path="res://assets/images/minigames/constellation/buttons/Hades-button.png" id="4_q8l47"]
+[ext_resource type="Texture2D" uid="uid://bn5oyepk0wox8" path="res://assets/images/minigames/constellation/buttons/Is-button.png" id="5_kieur"]
+[ext_resource type="Texture2D" uid="uid://cnyf7aw3ydcip" path="res://assets/images/minigames/constellation/buttons/Something-button.png" id="6_xsfty"]
+[ext_resource type="Texture2D" uid="uid://kwlkexhiumqc" path="res://assets/images/minigames/constellation/buttons/With-button.png" id="7_8ptx1"]
+[ext_resource type="Texture2D" uid="uid://tapacbl7t2vc" path="res://assets/images/minigames/constellation/buttons/Wrong-button.png" id="8_6bnit"]
 
 [node name="FinalLetter" type="Control" unique_id=833408083]
 layout_mode = 3
@@ -67,24 +71,25 @@ offset_top = 41.0
 offset_right = 237.0
 offset_bottom = 240.0
 theme_override_fonts/normal_font = ExtResource("3_6i1t4")
-theme_override_font_sizes/normal_font_size = 6
+theme_override_font_sizes/normal_font_size = 5
 bbcode_enabled = true
 autowrap_mode = 2
 
 [node name="OptionsSide" type="GridContainer" parent="." unique_id=2004580034]
 layout_mode = 0
-offset_left = 257.0
-offset_top = -6.0
-offset_right = 457.0
-offset_bottom = 281.0
+offset_left = 258.0
+offset_top = 20.0
+offset_right = 458.0
+offset_bottom = 307.0
 columns = 2
 
 [node name="Btn_0" type="TextureButton" parent="OptionsSide" unique_id=1384144294]
 layout_mode = 2
-texture_normal = ExtResource("2_11aph")
+texture_normal = ExtResource("6_xsfty")
 ignore_texture_size = true
 
 [node name="Something" type="Label" parent="OptionsSide/Btn_0" unique_id=1722913380]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -100,9 +105,10 @@ autowrap_mode = 2
 
 [node name="Btn_1" type="TextureButton" parent="OptionsSide" unique_id=681191856]
 layout_mode = 2
-texture_normal = ExtResource("2_11aph")
+texture_normal = ExtResource("5_kieur")
 
 [node name="is" type="Label" parent="OptionsSide/Btn_1" unique_id=635468827]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -118,9 +124,10 @@ autowrap_mode = 2
 
 [node name="Btn_2" type="TextureButton" parent="OptionsSide" unique_id=1429998751]
 layout_mode = 2
-texture_normal = ExtResource("2_11aph")
+texture_normal = ExtResource("8_6bnit")
 
 [node name="wrong" type="Label" parent="OptionsSide/Btn_2" unique_id=1500362410]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -136,9 +143,10 @@ autowrap_mode = 2
 
 [node name="Btn_3" type="TextureButton" parent="OptionsSide" unique_id=336875012]
 layout_mode = 2
-texture_normal = ExtResource("2_11aph")
+texture_normal = ExtResource("7_8ptx1")
 
 [node name="with" type="Label" parent="OptionsSide/Btn_3" unique_id=2037460945]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -154,9 +162,10 @@ autowrap_mode = 2
 
 [node name="Btn_4" type="TextureButton" parent="OptionsSide" unique_id=39004455]
 layout_mode = 2
-texture_normal = ExtResource("2_11aph")
+texture_normal = ExtResource("4_q8l47")
 
 [node name="Hades" type="Label" parent="OptionsSide/Btn_4" unique_id=951827831]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

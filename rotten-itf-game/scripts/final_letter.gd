@@ -1,19 +1,19 @@
 extends Control
 
 var gaps = [
-	{"before": "I am glad to be at peace here in my home. I am settling", "after": "in comfortably this winter, and have been enjoying the company of my husband.", "correct": "SOMETHING"},
-	{"before": "We are quite well, and have been enjoying the good weather.", "after": "My lavender bush is thriving,", "correct": "IS"},
-	{"before": ", and I plan to", "after": "grow some more in my chambers", "correct": "WRONG"},
-	{"before": "Though I miss the sun, stars, and you", "after": ", my family here is flourishing.", "correct": "WITH"},
-	{"before": "I miss you dearly, and am", "after": "glad to see you soon.", "correct": "HADES"},
+	{"before": "I am glad to be at peace here in my home. ", "after": "Something has taken root in my gardens, and they are exceptionally grand this winter.", "correct": "SOMETHING"},
+	{"before": "Though I miss the sun, stars, and you,", "after": "my family here is flourishing.,", "correct": "IS"},
+	{"before": "We are quite well and have been enjoying the good weather. My lilies are thriving,", "after": "and I plan to grow some more in my chambers, though they may be the wrong color for my decor.", "correct": "WRONG"},
+	{"before": "I miss you dearly, and am excited to", "after": "bring about the blooms with you this spring.", "correct": "WITH"},
+	{"before": "I am settling in comfortably this winter, and", "after": "have been enjoying the company of Hades.", "correct": "HADES"},
 ]
 
 const CONSTELLATION_IMAGES = {
-	"SOMETHING": preload("res://assets/images/minigames/constellation/Decoder_sq2.png"),
-	"IS": preload("res://assets/images/minigames/constellation/Decoder_sq4.png"),
-	"WRONG": preload("res://assets/images/minigames/constellation/Decoder_sq2.png"),
-	"WITH": preload("res://assets/images/minigames/constellation/Decoder_sq5.png"),
-	"HADES": preload("res://assets/images/minigames/constellation/Decoder_sq6.png"),
+	"SOMETHING": preload("res://assets/images/minigames/constellation/Something.png"),
+	"IS": preload("res://assets/images/minigames/constellation/Is.png"),
+	"WRONG": preload("res://assets/images/minigames/constellation/Wrong.png"),
+	"WITH": preload("res://assets/images/minigames/constellation/With.png"),
+	"HADES": preload("res://assets/images/minigames/constellation/Hades.png"),
 }
 
 var current_gap_index = 0
