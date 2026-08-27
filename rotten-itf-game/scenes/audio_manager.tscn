@@ -20,6 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://dl2yaejaa2r4h" path="res://assets/audio/fx/RITF_Minigame_Win (4).mp3" id="12_cuol6"]
 [ext_resource type="AudioStream" uid="uid://dlq32wjm88aj" path="res://assets/audio/ui-fx/RITF_UI_Selection_Confirm_v1.mp3" id="12_hk38w"]
 [ext_resource type="AudioStream" uid="uid://caepxal4fyoln" path="res://assets/audio/ambience/Temple_Music.mp3" id="12_opu6i"]
+[ext_resource type="AudioStream" uid="uid://dhgcd6mw017ow" path="res://assets/audio/fx/Jump.mp3" id="13_f4gnk"]
 [ext_resource type="AudioStream" uid="uid://6tadeq0h04w8" path="res://assets/audio/fx/RITF_Minigame_Win (5).mp3" id="13_m1k83"]
 [ext_resource type="AudioStream" uid="uid://dgdqmsms7tfes" path="res://assets/audio/fx/RITF_Minigame_Win (6).mp3" id="14_2y5yn"]
 [ext_resource type="AudioStream" uid="uid://frxt7n6wwrup" path="res://assets/audio/ambience/Underworld_Ambience.mp3" id="16_hk38w"]
@@ -27,11 +28,11 @@
 [ext_resource type="AudioStream" uid="uid://1fax1ov54mry" path="res://assets/audio/ambience/Altar_Music_2.mp3" id="18_st500"]
 [ext_resource type="AudioStream" uid="uid://rvtw7indd10s" path="res://assets/audio/ambience/Title_Song.wav" id="18_ypd68"]
 [ext_resource type="AudioStream" uid="uid://buqurf5do3yh7" path="res://assets/audio/ambience/Underworld_Music.mp3" id="19_st500"]
+[ext_resource type="AudioStream" uid="uid://be0e1ittmfnc5" path="res://assets/audio/ambience/Kores_Outro.mp3" id="20_3r3kj"]
 [ext_resource type="AudioStream" uid="uid://032y4navgxdq" path="res://assets/audio/alphabet/Daphne Alphabet/a.wav" id="20_sa6p2"]
 [ext_resource type="AudioStream" uid="uid://cc1ytfoa15lp1" path="res://assets/audio/alphabet/Daphne Alphabet/b.wav" id="21_opu6i"]
 [ext_resource type="AudioStream" uid="uid://dfudextxwouwh" path="res://assets/audio/ambience/Cutscene_music.mp3" id="22_3r3kj"]
 [ext_resource type="AudioStream" uid="uid://ban0fc2du6522" path="res://assets/audio/alphabet/Daphne Alphabet/c.wav" id="22_t2ybr"]
-[ext_resource type="AudioStream" uid="uid://dxov4x5suy61x" path="res://assets/audio/ambience/Outro_Song.wav" id="23_3r3kj"]
 [ext_resource type="AudioStream" uid="uid://ckd87t32q13ct" path="res://assets/audio/alphabet/Daphne Alphabet/d.wav" id="23_cewst"]
 [ext_resource type="AudioStream" uid="uid://daadhgf8syywt" path="res://assets/audio/alphabet/Daphne Alphabet/e.wav" id="24_g5lra"]
 [ext_resource type="AudioStream" uid="uid://dx46omhhtbjcb" path="res://assets/audio/alphabet/Daphne Alphabet/f.wav" id="25_ccetw"]
@@ -41,6 +42,8 @@
 [ext_resource type="AudioStream" uid="uid://cj7554oxlomsb" path="res://assets/audio/alphabet/Daphne Alphabet/j.wav" id="29_wutdd"]
 [ext_resource type="AudioStream" uid="uid://dnjot22bh30mj" path="res://assets/audio/alphabet/Daphne Alphabet/k.wav" id="30_n4ll6"]
 [ext_resource type="AudioStream" uid="uid://c0jqaiuwxr712" path="res://assets/audio/alphabet/Daphne Alphabet/l.wav" id="31_b6biq"]
+[ext_resource type="AudioStream" uid="uid://ctoyg5efx2am4" path="res://assets/audio/fx/scrap.mp3" id="31_e3c6b"]
+[ext_resource type="AudioStream" uid="uid://ds44n7w5ph2ap" path="res://assets/audio/fx/scrap_1.mp3" id="32_2tk88"]
 [ext_resource type="AudioStream" uid="uid://cs38vacch8pow" path="res://assets/audio/alphabet/Daphne Alphabet/m.wav" id="32_7vawh"]
 [ext_resource type="AudioStream" uid="uid://bjus6clm5gx6v" path="res://assets/audio/alphabet/Daphne Alphabet/n.wav" id="33_g3h6h"]
 [ext_resource type="AudioStream" uid="uid://cmoposq8sxysx" path="res://assets/audio/alphabet/Daphne Alphabet/o.wav" id="34_g22av"]
@@ -91,6 +94,7 @@ clips = NodePath("Clips")
 fx = Dictionary[String, AudioStream]({
 "equip": ExtResource("4_ic5jq"),
 "grow": ExtResource("6_8igv3"),
+"jump": ExtResource("13_f4gnk"),
 "open_door": ExtResource("3_064dn"),
 "place": ExtResource("5_if78k"),
 "shrink": ExtResource("7_2y2jw"),
@@ -112,12 +116,13 @@ music = Dictionary[String, AudioStream]({
 "": null,
 "Altar_Music": ExtResource("18_st500"),
 "Cutscene_music": ExtResource("22_3r3kj"),
-"Outro": ExtResource("23_3r3kj"),
+"Outro": ExtResource("20_3r3kj"),
 "Temple_Music": ExtResource("12_opu6i"),
 "Title_Song": ExtResource("18_ypd68"),
 "Underworld_Music": ExtResource("19_st500")
 })
 win_fx = Array[AudioStream]([ExtResource("9_2y2jw"), ExtResource("10_2y5yn"), ExtResource("11_oucy0"), ExtResource("12_cuol6"), ExtResource("13_m1k83"), ExtResource("14_2y5yn")])
+scraps_fx = Array[AudioStream]([ExtResource("31_e3c6b"), ExtResource("32_2tk88")])
 daphne_alpha = Array[AudioStream]([ExtResource("20_sa6p2"), ExtResource("21_opu6i"), ExtResource("22_t2ybr"), ExtResource("23_cewst"), ExtResource("24_g5lra"), ExtResource("25_ccetw"), ExtResource("26_bsfxv"), ExtResource("27_5n573"), ExtResource("28_550e2"), ExtResource("29_wutdd"), ExtResource("30_n4ll6"), ExtResource("31_b6biq"), ExtResource("32_7vawh"), ExtResource("33_g3h6h"), ExtResource("34_g22av"), ExtResource("35_kjqg2"), ExtResource("36_6u176"), ExtResource("37_llx4k"), ExtResource("38_k76kq"), ExtResource("39_4gnqx"), ExtResource("40_kqu28"), ExtResource("41_4yhd7"), ExtResource("42_ow680"), ExtResource("43_41nv4"), ExtResource("44_n2nvi"), ExtResource("45_mqk67"), ExtResource("46_au13t")])
 persephone_alpha = Array[AudioStream]([ExtResource("47_yhs0o"), ExtResource("48_dpe6u"), ExtResource("49_27myr"), ExtResource("50_2f2lb"), ExtResource("51_po4tp"), ExtResource("52_ypd68"), ExtResource("53_st500"), ExtResource("54_hk38w"), ExtResource("55_0ey0u"), ExtResource("56_qswim"), ExtResource("57_3r3kj"), ExtResource("58_f4gnk"), ExtResource("59_56056"), ExtResource("60_e3c6b"), ExtResource("61_2tk88"), ExtResource("62_qb2uq"), ExtResource("63_hba6g"), ExtResource("64_wf1jd"), ExtResource("65_s0pe2"), ExtResource("66_jp16q"), ExtResource("67_4peji"), ExtResource("68_542w4"), ExtResource("69_7namd"), ExtResource("70_mte04"), ExtResource("71_j721c"), ExtResource("72_g2ve8"), ExtResource("73_yqx6i")])
 

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dabmux7g7fuy7"]
 
 [ext_resource type="Texture2D" uid="uid://dps5b2kvqqiw3" path="res://assets/images/env/p4_chambers/Part_4_Chambers_v3.png" id="1_f732m"]
+[ext_resource type="PackedScene" uid="uid://cfukrntau5ufh" path="res://scenes/levels/persistent_data.tscn" id="1_jkm6f"]
 [ext_resource type="Texture2D" uid="uid://bn8phnqgt0ukt" path="res://assets/images/env/p4_chambers/Part_4_Chambers_Platforms_Overlay.png" id="2_74q4b"]
 [ext_resource type="PackedScene" uid="uid://ckqadahrf8par" path="res://scenes/ui/scrap_letter.tscn" id="3_2yw38"]
 [ext_resource type="Texture2D" uid="uid://ig2fc5h8bc5e" path="res://assets/images/env/p4_chambers/Part_4_Chambers_Collision_Mask.png" id="3_fc5q1"]
@@ -14,6 +15,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w2pfo"]
 
 [node name="Scene_04" type="Node2D" unique_id=345651132]
+
+[node name="PersistentData" parent="." unique_id=1117547414 node_paths=PackedStringArray("objects") instance=ExtResource("1_jkm6f")]
+objects = [NodePath("../Letters/ScrapLetter"), NodePath("../Letters/ScrapLetter2"), NodePath("../Letters/ScrapLetter3"), NodePath("../Letters/ScrapLetter4"), NodePath("../Letters/ScrapLetter6"), NodePath("../Letters/ScrapLetter7"), NodePath("../Letters/ScrapLetter5")]
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1309616939]
 position = Vector2(2002, 122)
@@ -150,7 +154,7 @@ width = 10.0
 points = PackedVector2Array(616, 281, 616, 273, 615, 266, 610, 248, 610, 226, 624, 195)
 
 [node name="Player" parent="." unique_id=1515659648 instance=ExtResource("3_jkm6f")]
-position = Vector2(3853, 317.99997)
+position = Vector2(-85, 252)
 
 [node name="Camera2D" parent="Player" index="4" unique_id=1705181399]
 limit_left = -343
