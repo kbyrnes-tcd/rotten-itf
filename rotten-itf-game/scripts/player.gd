@@ -205,13 +205,16 @@ func _handle_movement(delta: float):
 	if can_step and Input.is_action_just_pressed("jump"):
 		velocity.y = STEP_JUMP_VELOCITY
 		move_state = MoveState.JUMPING
+		AudioManager.play_os("jump")
 	elif can_step and Input.is_action_pressed("jump") and on_step:
 		velocity.y = STEP_JUMP_VELOCITY
 		move_state = MoveState.JUMPING
+		AudioManager.play_os("jump")
 	
 	if Input.is_action_just_pressed("jump") and jump_state["can_jump"]:
 		velocity.y = jump_state["jump_velocity"]
 		move_state = MoveState.JUMPING
+		AudioManager.play_os("jump")
 		
 	# STEPPING DOWN
 	if on_step and Input.is_action_just_pressed("down") and not is_dropping:
