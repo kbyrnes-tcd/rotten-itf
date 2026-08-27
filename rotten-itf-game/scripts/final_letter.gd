@@ -45,9 +45,19 @@ func _ready():
 		$OptionsSide/Btn_4
 	]
 	
+
+	var fixed_symbols = ["SOMETHING", "IS", "WRONG", "WITH", "HADES"]
+	
+	#shuffle buttons NOT LABELS!!!!
+	var positions = []
+	for btn in buttons:
+		positions.append(btn.position)
+	positions.shuffle()
 	for i in buttons.size():
-		buttons[i].get_child(0).text = symbols[i]
-		var captured = symbols[i]
+		buttons[i].position = positions[i]
+	
+	for i in buttons.size():
+		var captured = fixed_symbols[i]
 		buttons[i].pressed.connect(func(): _on_symbol_selected(captured))
 	
 	continue_button.visible = false

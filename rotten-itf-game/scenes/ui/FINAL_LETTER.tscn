@@ -83,101 +83,26 @@ offset_right = 458.0
 offset_bottom = 307.0
 columns = 2
 
-[node name="Btn_0" type="TextureButton" parent="OptionsSide" unique_id=1384144294]
-layout_mode = 2
-texture_normal = ExtResource("6_xsfty")
-ignore_texture_size = true
-
-[node name="Something" type="Label" parent="OptionsSide/Btn_0" unique_id=1722913380]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_5h2n7")
-theme_override_font_sizes/font_size = 8
-text = "SOMETHING"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
 [node name="Btn_1" type="TextureButton" parent="OptionsSide" unique_id=681191856]
 layout_mode = 2
 texture_normal = ExtResource("5_kieur")
-
-[node name="is" type="Label" parent="OptionsSide/Btn_1" unique_id=635468827]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_5h2n7")
-theme_override_font_sizes/font_size = 11
-text = "IS"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="Btn_2" type="TextureButton" parent="OptionsSide" unique_id=1429998751]
-layout_mode = 2
-texture_normal = ExtResource("8_6bnit")
-
-[node name="wrong" type="Label" parent="OptionsSide/Btn_2" unique_id=1500362410]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_5h2n7")
-theme_override_font_sizes/font_size = 11
-text = "WRONG"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
 
 [node name="Btn_3" type="TextureButton" parent="OptionsSide" unique_id=336875012]
 layout_mode = 2
 texture_normal = ExtResource("7_8ptx1")
 
-[node name="with" type="Label" parent="OptionsSide/Btn_3" unique_id=2037460945]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_5h2n7")
-theme_override_font_sizes/font_size = 12
-text = "WITH"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
+[node name="Btn_0" type="TextureButton" parent="OptionsSide" unique_id=1384144294]
+layout_mode = 2
+texture_normal = ExtResource("6_xsfty")
+ignore_texture_size = true
 
 [node name="Btn_4" type="TextureButton" parent="OptionsSide" unique_id=39004455]
 layout_mode = 2
 texture_normal = ExtResource("4_q8l47")
 
-[node name="Hades" type="Label" parent="OptionsSide/Btn_4" unique_id=951827831]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_5h2n7")
-theme_override_font_sizes/font_size = 11
-text = "HADES"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
+[node name="Btn_2" type="TextureButton" parent="OptionsSide" unique_id=1429998751]
+layout_mode = 2
+texture_normal = ExtResource("8_6bnit")
 
 [node name="FeedbackLabel" type="Label" parent="." unique_id=1552213719]
 layout_mode = 0
